@@ -7,7 +7,7 @@
   },
   "M10Robot:AmmoBox": {
     "NAME": "Ammo Box",
-    "DESCRIPTION": "While Equipped: m10robot:Reloading Attacks don't consume ammo and deal !M! additional damage."
+    "DESCRIPTION": "While Equipped: m10robot:Recharging Attacks don't consume ammo and deal !M! additional damage."
   },
   "M10Robot:AssaultField": {
     "NAME": "Assault Field",
@@ -63,7 +63,7 @@
   },
   "M10Robot:PowerSavings": {
     "NAME": "Power Saving Mode",
-    "DESCRIPTION": "While Equipped: Deal !M10Robot:SecondMagic! % less damage. NL At the start of your turn, gain ",
+    "DESCRIPTION": "While Equipped: NL Deal !M10Robot:SecondMagic! % less damage. NL At the start of your turn, gain ",
     "EXTENDED_DESCRIPTION": [".","[E] "]
   },
   "M10Robot:QuickFix": {
@@ -76,7 +76,12 @@
   },
   "M10Robot:Railgun": {
     "NAME": "Railgun",
-    "DESCRIPTION": "m10robot:Reloading !M10Robot:AmmoCount! / !M10Robot:ThirdMagic!. NL Deal !D! damage."
+    "DESCRIPTION": "m10robot:Recharging !M10Robot:AmmoCount! / !M10Robot:ThirdMagic!. NL Deal !D! damage."
+  },
+  "M10Robot:RAMUpgrade": {
+    "NAME": "RAM Upgrade",
+    "DESCRIPTION": "Gain !M! m10robot:Module slot.",
+    "UPGRADE_DESCRIPTION": "Gain !M! m10robot:Module slots."
   },
   "M10Robot:RecoveryMode": {
     "NAME": "Recovery Mode",
@@ -88,7 +93,11 @@
   },
   "M10Robot:RoboBeam": {
     "NAME": "Robo Beam",
-    "DESCRIPTION": "Deal !D! damage to a random enemy. NL Repeat for every turn that has passed this combat."
+    "DESCRIPTION": "Deal !D! damage to a random enemy. NL Repeat for every 5 turns that has passed this combat."
+  },
+  "M10Robot:Rushdown": {
+    "NAME": "Rush Down",
+    "DESCRIPTION": "Charge towards the enemy. NL Deal !D! damage to any enemy you collide with."
   },
   "M10Robot:ScrambleField": {
     "NAME": "Scramble Field",
