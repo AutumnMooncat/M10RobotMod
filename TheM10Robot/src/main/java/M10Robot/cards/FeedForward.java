@@ -3,6 +3,8 @@ package M10Robot.cards;
 import M10Robot.M10RobotMod;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
+import basemod.BaseMod;
+import basemod.interfaces.PostEnergyRechargeSubscriber;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.GameActionManager;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
@@ -17,7 +19,7 @@ import com.megacrit.cardcrawl.vfx.combat.SmallLaserEffect;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
-public class FeedForward extends AbstractDynamicCard {
+public class FeedForward extends AbstractDynamicCard implements PostEnergyRechargeSubscriber {
 
 
     // TEXT DECLARATION
@@ -57,6 +59,7 @@ public class FeedForward extends AbstractDynamicCard {
         this.addToBot(new SFXAction("ATTACK_MAGIC_BEAM_SHORT", 0.5F));
         this.addToBot(new VFXAction(new SmallLaserEffect(m.hb.cX, m.hb.cY, p.hb.cX, p.hb.cY), 0.0F));
         this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.NONE, true));
+        BaseMod.subscribe(this);
         playedThisTurn = true;
     }
 
@@ -68,11 +71,6 @@ public class FeedForward extends AbstractDynamicCard {
         }
     }
 
-    @Override
-    public void atTurnStartPreDraw() {
-        playedThisTurn = false;
-    }
-
     // Upgraded stats.
     @Override
     public void upgrade() {
@@ -82,5 +80,11 @@ public class FeedForward extends AbstractDynamicCard {
             upgradeMagicNumber(UPGRADE_PLUS_DAMAGE_INCREASE);
             initializeDescription();
         }
+    }
+
+    @Override
+    public void receivePostEnergyRecharge() {
+        playedThisTurn = false;
+        BaseMod.unsubscribeLater(this);
     }
 }
