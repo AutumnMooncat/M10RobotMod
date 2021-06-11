@@ -81,7 +81,7 @@ public abstract class AbstractReloadableCard extends AbstractClickableCard {
                 break;
             }
         }
-        if (!hasAmmoBox) {
+        if (!hasAmmoBox || this.type != CardType.ATTACK) {
             if (ammoCount > 0) {
                 ammoCount--;
             }
