@@ -37,8 +37,8 @@ public class RoboBeam extends AbstractDynamicCard {
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
     private static final int COST = 1;
-    private static final int DAMAGE = 1;
-    private static final int UPGRADE_PLUS_DMG = 1;
+    private static final int DAMAGE = 4;
+    private static final int UPGRADE_PLUS_DMG = 2;
 
     // /STAT DECLARATION/
 
@@ -50,7 +50,8 @@ public class RoboBeam extends AbstractDynamicCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        for (int i = 0 ; i < GameActionManager.turn ; i++) {
+        int hits = Math.max(1, GameActionManager.turn/5);
+        for (int i = 0 ; i < hits ; i++) {
             AbstractMonster mo = AbstractDungeon.getRandomMonster();
             this.addToBot(new SFXAction("ATTACK_MAGIC_BEAM_SHORT", 0.5F));
             this.addToBot(new VFXAction(new SmallLaserEffect(mo.hb.cX, mo.hb.cY, p.hb.cX, p.hb.cY), 0.0F));
