@@ -137,9 +137,9 @@ public class M10Robot extends CustomPlayer {
 
         initializeClass(null, // required call to load textures and setup energy/loadout.
                 // I left these in DefaultMod.java (Ctrl+click them to see where they are, Ctrl+hover to see what they read.)
-                VIVIAN_SHOULDER_2, // campfire pose
-                VIVIAN_SHOULDER_1, // another campfire pose
-                VIVIAN_CORPSE, // dead corpse
+                M10_SHOULDER_2, // campfire pose
+                M10_SHOULDER_1, // another campfire pose
+                M10_CORPSE, // dead corpse
                 getLoadout(), 20.0F, -10.0F, 220.0F, 290.0F, new EnergyManager(ENERGY_PER_TURN)); // energy manager
 
         // =============== /TEXTURES, ENERGY, LOADOUT/ =================

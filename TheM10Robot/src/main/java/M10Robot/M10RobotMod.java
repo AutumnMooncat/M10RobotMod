@@ -161,10 +161,9 @@ public class M10RobotMod implements
     private static final String M10_BUTTON = "M10RobotResources/images/charSelect/Button6.png"; //
     //private static final String THE_DEFAULT_PORTRAIT = "M10RobotResources/images/charSelect/DefaultCharacterPortraitBG.png";
     private static final String M10_BG = "M10RobotResources/images/charSelect/M10BG2.png";
-    //TODO still vivian stuff
-    public static final String VIVIAN_SHOULDER_1 = "M10RobotResources/images/char/tachy/shoulder.png"; //
-    public static final String VIVIAN_SHOULDER_2 = "M10RobotResources/images/char/tachy/shoulder2.png";
-    public static final String VIVIAN_CORPSE = "M10RobotResources/images/char/tachy/VivianHat.png"; //
+    public static final String M10_SHOULDER_1 = "M10RobotResources/images/char/tachy/shoulder.png"; //
+    public static final String M10_SHOULDER_2 = "M10RobotResources/images/char/tachy/shoulder2.png";
+    public static final String M10_CORPSE = "M10RobotResources/images/char/tachy/KO_flip.png"; //
     
     //Mod Badge - A small icon that appears in the mod settings menu next to your mod.
     public static final String BADGE_IMAGE = "M10RobotResources/images/Badge.png";
