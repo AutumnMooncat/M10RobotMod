@@ -5,10 +5,10 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 
 import java.util.function.Predicate;
 
-public class CompoundPredicate {
+public class SwappableAttentivePredicate {
     Predicate<AbstractCard> p;
 
-    public CompoundPredicate(Predicate<AbstractCard> p) {
+    public SwappableAttentivePredicate(Predicate<AbstractCard> p) {
         this.p = p;
     }
 

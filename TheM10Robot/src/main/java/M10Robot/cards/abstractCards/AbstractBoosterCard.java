@@ -4,7 +4,7 @@ import M10Robot.M10RobotMod;
 import M10Robot.actions.EquipBoosterAction;
 import M10Robot.cardModifiers.AbstractBoosterModifier;
 import M10Robot.patches.BoosterFieldPatch;
-import M10Robot.predicates.CompoundPredicate;
+import M10Robot.predicates.SwappableAttentivePredicate;
 import basemod.BaseMod;
 import basemod.helpers.TooltipInfo;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
@@ -72,7 +72,7 @@ public abstract class AbstractBoosterCard extends AbstractClickableCard {
         if (!madeAttempt && action == null) {
             madeAttempt = true;
             Consumer<List<AbstractCard>> plsWork = l -> l.forEach(this::onEquip);
-            CompoundPredicate pre = new CompoundPredicate(getFilter().and(BoosterFieldPatch::canEquipBooster));
+            SwappableAttentivePredicate pre = new SwappableAttentivePredicate(getFilter().and(BoosterFieldPatch::canEquipBooster));
             //action = new SelectCardsInHandAction(1, CardCrawlGame.languagePack.getUIString(M10RobotMod.makeID("Boosters")).TEXT[0], true, true, getFilter().and(BoosterFieldPatch::canEquipBooster), plsWork);
             action = new SelectCardsInHandAction(1, CardCrawlGame.languagePack.getUIString(M10RobotMod.makeID("Boosters")).TEXT[0], true, true, pre::testPredicatesOnSwappable, plsWork);
             this.addToTop(action);
