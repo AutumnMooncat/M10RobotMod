@@ -1,0 +1,82 @@
+{
+  "M10Robot:AbstractExtraEffectModifier": {
+    "EXTENDED_DESCRIPTION": [
+      "M10Robot:Mutable: ",
+      " ",
+      " times.",
+      "."
+    ]
+  },
+  "M10Robot:DamageEffect": {
+    "EXTENDED_DESCRIPTION": [
+      "Deal ",
+      " damage",
+      "Da",""
+    ]
+  },
+  "M10Robot:DrawCardEffect": {
+    "EXTENDED_DESCRIPTION": [
+      "Draw a card.",
+      "Draw ",
+      " cards.",
+      "Dr",""
+    ]
+  },
+  "M10Robot:GainBlockEffect": {
+    "EXTENDED_DESCRIPTION": [
+      "Gain ",
+      " Block",
+      "B",""
+    ]
+  },
+  "M10Robot:GainEnergyEffect": {
+    "EXTENDED_DESCRIPTION": [
+      "Gain [E] .",
+      "Gain [E] ",
+      " times.",
+      "E",""
+    ]
+  },
+  "M10Robot:HealHPEffect": {
+    "EXTENDED_DESCRIPTION": [
+      "Heal ",
+      " HP.",
+      "H",""
+    ]
+  },
+  "M10Robot:LoseEnergyEffect": {
+    "EXTENDED_DESCRIPTION": [
+      "Lose [E] .",
+      "Lose [E] ",
+      " times.",
+      "L",""
+    ]
+  },
+  "M10Robot:LoseHPEffect": {
+    "EXTENDED_DESCRIPTION": [
+      "Lose ",
+      " HP.",
+      "H",""
+    ]
+  },
+  "M10Robot:TempBlockModifier": {
+    "EXTENDED_DESCRIPTION": [
+      "","b"
+    ]
+  },
+  "M10Robot:TempDamageModifier": {
+    "EXTENDED_DESCRIPTION": [
+      "","d"
+    ]
+  },
+  "M10Robot:TempMagicNumberModifier": {
+    "EXTENDED_DESCRIPTION": [
+      "","m"
+    ]
+  },
+  "M10Robot:TransmuteSelfEffect": {
+    "EXTENDED_DESCRIPTION": [
+      "M10Robot:Transmute this card."
+    ]
+  }
+}

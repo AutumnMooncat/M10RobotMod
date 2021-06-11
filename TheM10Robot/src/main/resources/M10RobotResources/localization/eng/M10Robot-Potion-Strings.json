@@ -1,0 +1,6 @@
+{
+  "M10Robot:BurnPotion": {
+    "NAME": "Burn Potion",
+    "DESCRIPTIONS": ["Apply #b"," #yBurn to ALL enemies."]
+  }
+}

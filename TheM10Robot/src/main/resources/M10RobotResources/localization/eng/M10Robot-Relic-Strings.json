@@ -1,0 +1,33 @@
+{
+  "M10Robot:ArmorModule": {
+    "NAME": "Armor Module",
+    "FLAVOR": "Product ID - 028975",
+    "DESCRIPTIONS": [
+      "Start each combat with a #b"," #ym10robot:Repairable_Armor #ym10robot:Module in your hand."
+    ]
+  },
+  "M10Robot:ArmorModule2": {
+    "NAME": "Armor Module 2.0",
+    "FLAVOR": "Product ID - 040086",
+    "DESCRIPTIONS": [
+      "Start each combat with a #b"," #ym10robot:Repairable_Armor #ym10robot:Module in your hand."
+    ]
+  },
+  "M10Robot:BottledStar": {
+    "NAME": "Bottled Star",
+    "FLAVOR": "Now you can watch for shooting stars whenever you wish.",
+    "DESCRIPTIONS": [
+      "Upon pickup, choose a card. Whenever you play this card, deal #b5 damage to ALL enemies.",
+      "Choose a card for ",
+      "Whenever you play ",", deal #b5 damage to ALL enemies.",
+      "Damage dealt: "," NL Per combat: "," NL Per turn: "
+    ]
+  },
+  "M10Robot:ModularBody": {
+    "NAME": "Modular Body",
+    "FLAVOR": "So much room for customization!",
+    "DESCRIPTIONS": [
+      "Start each combat with #b"," #ym10robot:Module slots."
+    ]
+  }
+}

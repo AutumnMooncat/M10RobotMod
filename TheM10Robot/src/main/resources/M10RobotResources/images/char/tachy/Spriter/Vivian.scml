@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r11">
+    <folder id="0" name="Full Images">
+        <file id="0" name="Full Images/VivianHide.png" width="222" height="297" pivot_x="0.5" pivot_y="0"/>
+        <file id="1" name="Full Images/VivianGesture.png" width="227" height="279" pivot_x="0.5" pivot_y="0"/>
+        <file id="2" name="Full Images/VivianHappy.png" width="250" height="296" pivot_x="0.5" pivot_y="0"/>
+        <file id="3" name="Full Images/VivianHat.png" width="214" height="139" pivot_x="0.5" pivot_y="0"/>
+        <file id="4" name="Full Images/VivianHurt.png" width="219" height="285" pivot_x="0.5" pivot_y="0"/>
+        <file id="5" name="Full Images/VivianIdle.png" width="241" height="287" pivot_x="0.5" pivot_y="0"/>
+        <file id="6" name="Full Images/VivianMagic.png" width="242" height="291" pivot_x="0.5" pivot_y="0"/>
+        <file id="7" name="Full Images/VivianPunch.png" width="241" height="296" pivot_x="0.5" pivot_y="0"/>
+    </folder>
+    <entity id="0" name="Vivian">
+        <animation id="0" name="idle" length="4000" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="2000">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="VivianIdle">
+                <key id="0" spin="0">
+                    <object folder="0" file="5" angle="0" scale_x="-0.8" scale_y="0.8"/>
+                </key>
+                <key id="1" time="2000" spin="0">
+                    <object folder="0" file="5" angle="0" scale_x="-0.78" scale_y="0.82"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="1" name="punch" length="500" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="500">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="VivianPunch">
+                <key id="0" spin="0">
+                    <object folder="0" file="7" angle="0" scale_x="-0.8" scale_y="0.8"/>
+                </key>
+                <key id="1" time="500" spin="0">
+                    <object folder="0" file="7" angle="0" scale_x="-0.77" scale_y="0.83"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="2" name="magic" length="500" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="500">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="VivianMagic">
+                <key id="0" spin="0">
+                    <object folder="0" file="6" angle="0" scale_x="-0.8" scale_y="0.8"/>
+                </key>
+                <key id="1" time="500" spin="0">
+                    <object folder="0" file="6" angle="0" scale_x="-0.77" scale_y="0.83"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="3" name="hurt" length="500" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="500">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="VivianHurt">
+                <key id="0" spin="0">
+                    <object folder="0" file="4" angle="0" scale_x="-0.8" scale_y="0.8"/>
+                </key>
+                <key id="1" time="500" spin="0">
+                    <object folder="0" file="4" angle="0" scale_x="-0.77" scale_y="0.83"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="4" name="hide" length="4000" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="2000">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="VivianHide">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" angle="0" scale_x="-0.8" scale_y="0.8" a="0.5"/>
+                </key>
+                <key id="1" time="2000" spin="0">
+                    <object folder="0" file="0" angle="0" scale_x="-0.78" scale_y="0.82" a="0.25"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="5" name="void" length="4000" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="1000">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+                <key id="2" time="2000">
+                    <object_ref id="0" timeline="0" key="2" z_index="0"/>
+                </key>
+                <key id="3" time="3000">
+                    <object_ref id="0" timeline="0" key="3" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="VivianIdle_000">
+                <key id="0" spin="-1">
+                    <object folder="0" file="5" angle="0" scale_x="-0.8" scale_y="0.8"/>
+                </key>
+                <key id="1" time="1000">
+                    <object folder="0" file="5" x="-5" angle="359" scale_x="-0.79" scale_y="0.81"/>
+                </key>
+                <key id="2" time="2000">
+                    <object folder="0" file="5" x="-10" angle="0" scale_x="-0.78" scale_y="0.82"/>
+                </key>
+                <key id="3" time="3000" spin="-1">
+                    <object folder="0" file="5" x="-5" angle="1" scale_x="-0.79" scale_y="0.81"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="6" name="happy" length="500" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="500">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="VivianHappy">
+                <key id="0" spin="0">
+                    <object folder="0" file="2" angle="0" scale_x="-0.8" scale_y="0.8"/>
+                </key>
+                <key id="1" time="500" spin="0">
+                    <object folder="0" file="2" angle="0" scale_x="-0.77" scale_y="0.83"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="7" name="gesture" length="500" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="500">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="VivianGesture">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" angle="0" scale_x="-0.8" scale_y="0.8"/>
+                </key>
+                <key id="1" time="500" spin="0">
+                    <object folder="0" file="1" angle="0" scale_x="-0.77" scale_y="0.83"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="8" name="hat" length="4000" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="2000">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="VivianHat">
+                <key id="0" spin="0">
+                    <object folder="0" file="3" angle="10" scale_x="-0.8" scale_y="0.8"/>
+                </key>
+                <key id="1" time="2000" spin="0">
+                    <object folder="0" file="3" angle="10" scale_x="-0.77" scale_y="0.83"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>

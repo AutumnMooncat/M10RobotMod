@@ -1,0 +1,43 @@
+{
+  "M10Robot:ChooseStance": {
+    "TEXT": ["Choose a Stance to enter.",
+      "Encore","Remain in your current Stance.",
+      "Shadowy Dance","Enter shadowsiren:Veil.",
+      "Abyssal Dance","Enter shadowsiren:Abyss.",
+      "Ashen Dance","Enter shadowsiren:Smoke.",
+      "Titan's Dance","Enter shadowsiren:Giant",
+      "Steadfast Dance","Enter shadowsiren:Hyper."]
+  },
+  "M10Robot:FetchFromAnywhere": {
+    "TEXT": ["Select a card to add to your hand. All Draw Pile cards are shown before Discard Pile and then Exhaust Pile cards"]
+  },
+  "M10Robot:Boosters": {
+    "TEXT": ["Boost",
+            "No appropriate cards",
+            "Gain "," Block."]
+  },
+  "M10Robot:ChooseMagic": {
+    "TEXT": ["Choose 1 of 3 Magical Memories to add to your Discard Pile."]
+  },
+  "M10Robot:ChooseMemory": {
+    "TEXT": ["Choose up to "," card(s) to turn into Memories."]
+  },
+  "M10Robot:ModConfigSeagulls": {
+    "TEXT": ["Lol it's the same config from my other mod. Default: false."]
+  },
+  "M10Robot:ModConfigWanted": {
+    "TEXT": ["These don't do anything yet. Default: false."]
+  },
+  "M10Robot:ModConfigBattleTalkButton": {
+    "TEXT": ["Enable random card phrases. Defaults: true, 25% chance."]
+  },
+  "M10Robot:ModConfigDamagedTalkButton": {
+    "TEXT": ["Enable random phrases when attacked. Defaults: true, 50% chance."]
+  },
+  "M10Robot:ModConfigPreBattleTalkButton": {
+    "TEXT": ["Enable random pre/post combat phrases. Defaults: true, 75% chance."]
+  },
+  "M10Robot:ModConfigGullVFXButton": {
+    "TEXT": ["Well the phrases do if you turn them on. Default: false."]
+  }
+}

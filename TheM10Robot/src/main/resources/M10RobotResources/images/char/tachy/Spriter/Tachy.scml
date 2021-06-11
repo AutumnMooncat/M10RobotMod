@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r11">
+    <folder id="0" name="Full Images">
+        <file id="0" name="Full Images/Attack.png" width="256" height="256" pivot_x="0.5" pivot_y="0"/>
+        <file id="1" name="Full Images/Happy.png" width="256" height="256" pivot_x="0.5" pivot_y="0"/>
+        <file id="2" name="Full Images/Hurt.png" width="256" height="256" pivot_x="0.5" pivot_y="0"/>
+        <file id="3" name="Full Images/Idle.png" width="256" height="256" pivot_x="0.5" pivot_y="0"/>
+        <file id="4" name="Full Images/KO.png" width="256" height="256" pivot_x="0.5" pivot_y="0"/>
+        <file id="5" name="Full Images/Skill.png" width="256" height="256" pivot_x="0.5" pivot_y="0"/>
+    </folder>
+    <entity id="0" name="Tachy">
+        <animation id="0" name="idle" length="4000" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="2000">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="Idle">
+                <key id="0" spin="0">
+                    <object folder="0" file="3" angle="0" scale_x="-1"/>
+                </key>
+                <key id="1" time="2000" spin="0">
+                    <object folder="0" file="3" y="10" angle="0" scale_x="-0.97" scale_y="1.03"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="1" name="hurt" length="500" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="250">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="Hurt">
+                <key id="0">
+                    <object folder="0" file="2" angle="0" scale_x="-1"/>
+                </key>
+                <key id="1" time="250" spin="-1">
+                    <object folder="0" file="2" angle="3" scale_x="-0.95" scale_y="1.05"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="2" name="happy" length="500" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="250">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="Happy">
+                <key id="0">
+                    <object folder="0" file="1" angle="0" scale_x="-1"/>
+                </key>
+                <key id="1" time="250" spin="-1">
+                    <object folder="0" file="1" angle="3" scale_x="-0.95" scale_y="1.05"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="3" name="skill" length="500" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="500">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="Skill">
+                <key id="0" spin="-1">
+                    <object folder="0" file="5" angle="0" scale_x="-1"/>
+                </key>
+                <key id="1" time="500">
+                    <object folder="0" file="5" y="-10" angle="357" scale_x="-0.95" scale_y="1.05"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="4" name="ko" length="1000" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="KO">
+                <key id="0" spin="0">
+                    <object folder="0" file="4" angle="0" scale_x="-1"/>
+                </key>
+            </timeline>
+        </animation>
+        <animation id="5" name="attack" length="500" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                </key>
+                <key id="1" time="500">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="Attack">
+                <key id="0" spin="-1">
+                    <object folder="0" file="0" angle="0" scale_x="-1"/>
+                </key>
+                <key id="1" time="500">
+                    <object folder="0" file="0" angle="355" scale_x="-0.95" scale_y="1.05"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>

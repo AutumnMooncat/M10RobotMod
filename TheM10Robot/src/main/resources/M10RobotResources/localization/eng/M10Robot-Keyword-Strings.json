@@ -1,0 +1,81 @@
+[
+  {
+    "NAMES": [
+      "Booster",
+      "booster"
+    ],
+    "DESCRIPTION": "An #yUnplayable card that may be attached to a card by right clicking and then choosing a card in your hand. May have requirements for attachment."
+  },
+  {
+    "NAMES": [
+      "Framework",
+      "framework"
+    ],
+    "DESCRIPTION": "An #yUnplayable card that is unfinished. May be converted into a playable card by right clicking and then choosing an appropriate amount of cards in your hand to #yExhaust."
+  },
+  {
+    "NAMES": [
+      "Relay",
+      "relay"
+    ],
+    "DESCRIPTION": "At the beginning of your next turn, add the selected cards to your hand. Will not recover cards which are exhausted or otherwise removed from play."
+  },
+  {
+    "NAMES": [
+      "Recharging",
+      "recharging"
+    ],
+    "DESCRIPTION": "When out of charges, you may Right Click to spend [E] to restore all charges. Will automatically recharge for free if drawn twice while empty."
+  },
+  {
+    "NAMES": [
+      "Reloading",
+      "reloading"
+    ],
+    "DESCRIPTION": "When out of ammo, you may Right Click to spend [E] to restore all ammo. Will automatically reload for free if drawn twice while empty."
+  },
+  {
+    "NAMES": [
+      "Repair",
+      "repair"
+    ],
+    "DESCRIPTION": "Increase the amount of #yRepairable #yArmor. Cannot surpass its maximum capacity."
+  },
+  {
+    "PROPER_NAME": "Repairable Armor",
+    "NAMES": [
+      "Repairable Armor",
+      "repairable_armor"
+    ],
+    "DESCRIPTION": "At the end of your turn, gain #yBlock. Can be repaired up to its maximum capacity."
+  },
+  {
+    "NAMES": [
+      "Retoolable",
+      "retoolable"
+    ],
+    "DESCRIPTION": "Right Click to swap the effect of this card."
+  },
+  {
+    "NAMES": [
+      "Returning",
+      "returning"
+    ],
+    "DESCRIPTION": "This card returns to your hand when played."
+  },
+  {
+    "NAMES": [
+      "Module",
+      "module"
+    ],
+    "DESCRIPTION": "An #yUnplayable card that has effects active while equipped. May be equipped by right clicking if you have an open slot."
+  },
+  {
+    "PROPER_NAME": "Multi-Cost",
+    "NAMES": [
+      "Multi-Cost",
+      "multi-cost"
+    ],
+    "DESCRIPTION": "This card can right clicked in-hand to cycle its cost and effect."
+  }
+]

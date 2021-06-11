@@ -1,0 +1,67 @@
+{
+  "M10Robot:AttackTextContainer": {
+    "NAME": "Generic Attack Text",
+    "DESCRIPTION": "Extended Description used to hold text that will occasionally appear when playing an attack.",
+    "EXTENDED_DESCRIPTION": ["Initializing Attack","Refactoring Target","Disassembly: In Progress",""]
+  },
+  "M10Robot:SkillTextContainer": {
+    "NAME": "Generic Skill Text",
+    "DESCRIPTION": "Extended Description used to hold text that will occasionally appear when playing a skill.",
+    "EXTENDED_DESCRIPTION": ["Utilizing Skill","",""]
+  },
+  "M10Robot:PowerTextContainer": {
+    "NAME": "Generic Power Text",
+    "DESCRIPTION": "Extended Description used to hold text that will occasionally appear when playing a power.",
+    "EXTENDED_DESCRIPTION": ["Applying Power","",""]
+  },
+  "M10Robot:BattleStartTextContainer": {
+    "NAME": "Battle Start Text",
+    "DESCRIPTION": "Extended Description used to hold text that will occasionally appear at the beginning of combat.",
+    "EXTENDED_DESCRIPTION": ["Hull Integrity: High","Beginning Disassembly","Target Detected","Weapons: Ready"]
+  },
+  "M10Robot:LowHPBattleStartTextContainer": {
+    "NAME": "Low HP Battle Start Text",
+    "DESCRIPTION": "Extended Description used to hold text that will occasionally appear at the beginning of combat if you are badly injured.",
+    "EXTENDED_DESCRIPTION": ["Hull Integrity: Low","Battle: Unavoidable","Irritation: Increasing",""]
+  },
+  "M10Robot:BattleEndTextContainer": {
+    "NAME": "Battle End Text",
+    "DESCRIPTION": "Extended Description used to hold text that will occasionally appear at the end of combat.",
+    "EXTENDED_DESCRIPTION": ["Disassembly: Complete","Cleaning: Performed","Targets: Neutralized",""]
+  },
+  "M10Robot:BossFightTextContainer": {
+    "NAME": "Boss Fight Text",
+    "DESCRIPTION": "Extended Description used to hold text that will occasionally appear at the beginning of a boss fight.",
+    "EXTENDED_DESCRIPTION": ["Priority Target Detected","Threat Detected","Rival: Located"]
+  },
+  "M10Robot:HealingTextContainer": {
+    "NAME": "Healing Text",
+    "DESCRIPTION": "Extended Description used to hold text that will occasionally appear when healing.",
+    "EXTENDED_DESCRIPTION": ["Hull Repaired","Circuits Rectified","Coolant Replenished","Mood: Improved","Outlook: Increased"]
+  },
+  "M10Robot:FieldDamageTextContainer": {
+    "NAME": "Field Damage Text",
+    "DESCRIPTION": "Extended Description used to hold text that will occasionally appear when taking thorns damage.",
+    "EXTENDED_DESCRIPTION": ["Damage: Annoying","","",""]
+  },
+  "M10Robot:LightDamageTextContainer": {
+    "NAME": "Light Damage Text",
+    "DESCRIPTION": "Extended Description used to hold text that will occasionally appear when taking light damage.",
+    "EXTENDED_DESCRIPTION": ["Armor: Ineffective","Shields: Missing","Damage: Sustainable","Evaluating damage..."]
+  },
+  "M10Robot:HeavyDamageTextContainer": {
+    "NAME": "Heavy Damage Text",
+    "DESCRIPTION": "Extended Description used to hold text that will occasionally appear when taking heavy damage.",
+    "EXTENDED_DESCRIPTION": ["Armor: Ignored","Hull: Breached","Damage: Severe","Ouch: Yes"]
+  },
+  "M10Robot:BlockedDamageTextContainer": {
+    "NAME": "Blocked Damage Text",
+    "DESCRIPTION": "Extended Description used to hold text that will occasionally appear when blocking damage.",
+    "EXTENDED_DESCRIPTION": ["Damage: Mitigated.","Armor: Effective","Shields: Operational"]
+  },
+  "M10Robot:KOTextContainer": {
+    "NAME": "KO Text",
+    "DESCRIPTION": "Extended Description used to hold text that will occasionally appear when defeated in battle.",
+    "EXTENDED_DESCRIPTION": ["Reboot Sequence... Failed.","Hull Collapse Immanent","Symmetry: Violated","Chrono-Stabilizers: Failing","Process: Terminated"]
+  }
+}

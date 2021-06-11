@@ -1,0 +1,130 @@
+{
+  "M10Robot:ExampleCard": {
+    "NAME": "Name",
+    "DESCRIPTION": "Main description",
+    "UPGRADE_DESCRIPTION": "Upgrade description",
+    "EXTENDED_DESCRIPTION": ["Extra Stuff"]
+  },
+  "M10Robot:AmmoBox": {
+    "NAME": "Ammo Box",
+    "DESCRIPTION": "While Equipped: m10robot:Reloading Attacks don't consume ammo and deal !M! additional damage."
+  },
+  "M10Robot:AssaultField": {
+    "NAME": "Assault Field",
+    "DESCRIPTION": "Deal !D! damage and apply !M10Robot:SecondMagic! Weak to a random enemy !M! times."
+  },
+  "M10Robot:AttackDown": {
+    "NAME": "Attack Down",
+    "DESCRIPTION": "ALL enemies lose !M! Strength this turn. NL Gain !M! Strength this turn. NL Exhaust."
+  },
+  "M10Robot:CardSupplier": {
+    "NAME": "Card Supplier",
+    "DESCRIPTION": "m10robot:Relay !M! card.",
+    "UPGRADE_DESCRIPTION": "m10robot:Relay !M! cards.",
+    "EXTENDED_DESCRIPTION": ["Relay"]
+  },
+  "M10Robot:Defend": {
+    "NAME": "Defend",
+    "DESCRIPTION": "Gain !B! Block."
+  },
+  "M10Robot:EnergyShield": {
+    "NAME": "Energy Shield",
+    "DESCRIPTION": "m10robot:Recharging !M10Robot:AmmoCount! / !M10Robot:ThirdMagic!. NL Gain !B! Block."
+  },
+  "M10Robot:FeedForward": {
+    "NAME": "Feed Forward",
+    "DESCRIPTION": "Deal !D! damage. NL Damage increases by !M! this combat for each subsequent card played this turn."
+  },
+  "M10Robot:HomeSweeper": {
+    "NAME": "Home Sweeper",
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Damage increases by !M! every 10 turns."
+  },
+  "M10Robot:MagicTinkering": {
+    "NAME": "Magic Tinkering",
+    "DESCRIPTION": "Modifications: NL + !M! Magic Number NL Requirements: NL Has Magic"
+  },
+  "M10Robot:Malfunction": {
+    "NAME": "Malfunction",
+    "DESCRIPTION": "Draw !M! card. NL Lose !M10Robot:SecondMagic! HP. NL m10robot:Returning.",
+    "UPGRADE_DESCRIPTION": "Retain. NL Draw !M! card. NL Lose !M10Robot:SecondMagic! HP. NL m10robot:Returning.",
+    "EXTENDED_DESCRIPTION": ["Draw !M! cards. NL Lose !M10Robot:SecondMagic! HP. NL m10robot:Returning.", "Retain. NL Draw !M! cards. NL Lose !M10Robot:SecondMagic! HP. NL m10robot:Returning."]
+  },
+  "M10Robot:MultiTool": {
+    "NAME": "Multi Tool",
+    "DESCRIPTION": "m10robot:Retoolable. NL Deal !D! damage."
+  },
+  "M10Robot:MultiTool2": {
+    "NAME": "Multi Tool",
+    "DESCRIPTION": "m10robot:Retoolable. NL Gain !B! Block."
+  },
+  "M10Robot:PolishingKit": {
+    "NAME": "Polishing Kit",
+    "DESCRIPTION": "Modifications: NL + !M! damage NL + !M! Block NL Requirements: NL Has Block or damage."
+  },
+  "M10Robot:PowerSavings": {
+    "NAME": "Power Saving Mode",
+    "DESCRIPTION": "While Equipped: Deal !M10Robot:SecondMagic! % less damage. NL At the start of your turn, gain ",
+    "EXTENDED_DESCRIPTION": [".","[E] "]
+  },
+  "M10Robot:QuickFix": {
+    "NAME": "Quick Fix",
+    "DESCRIPTION": "m10robot:Repair !M!."
+  },
+  "M10Robot:QuickRepair": {
+    "NAME": "Quick Repair",
+    "DESCRIPTION": "At the start of each turn m10robot:Repair !M!."
+  },
+  "M10Robot:Railgun": {
+    "NAME": "Railgun",
+    "DESCRIPTION": "m10robot:Reloading !M10Robot:AmmoCount! / !M10Robot:ThirdMagic!. NL Deal !D! damage."
+  },
+  "M10Robot:RecoveryMode": {
+    "NAME": "Recovery Mode",
+    "DESCRIPTION": "Gain !M! Temporary_HP at the beginning of every turn, up to a maximum of 5."
+  },
+  "M10Robot:RecklessAttack": {
+    "NAME": "Reckless Attack",
+    "DESCRIPTION": "Modifications: NL + !D! Damage NL Lose [E] NL Requirements: NL Deals damage"
+  },
+  "M10Robot:RoboBeam": {
+    "NAME": "Robo Beam",
+    "DESCRIPTION": "Deal !D! damage to a random enemy. NL Repeat for every turn that has passed this combat."
+  },
+  "M10Robot:ScrambleField": {
+    "NAME": "Scramble Field",
+    "DESCRIPTION": "This turn, the target is unable to deal over !M! damage and unable to gain over !M! Block."
+  },
+  "M10Robot:ScrapArmor": {
+    "NAME": "Scrap Armor",
+    "DESCRIPTION": "While Equipped: NL Gain !M! m10robot:Repairable_Armor."
+  },
+  "M10Robot:ScrapBooster": {
+    "NAME": "Scrap Booster",
+    "DESCRIPTION": "Modifications: NL + !M! Block NL Requirements: NL Has Block"
+  },
+  "M10Robot:SpikyPlating": {
+    "NAME": "Spiky Plating",
+    "DESCRIPTION": "While Equipped: NL Whenever you are attacked, deal !M! damage back."
+  },
+  "M10Robot:SplitBeam": {
+    "NAME": "Split Beam",
+    "DESCRIPTION": "Deal !D! damage to a random enemy !M! times. Any enemy hit more than once takes an additional !D! damage."
+  },
+  "M10Robot:Strike": {
+    "NAME": "Strike",
+    "DESCRIPTION": "Deal !D! damage."
+  },
+  "M10Robot:SubroutineDefend": {
+    "NAME": "Subroutine: Defend",
+    "DESCRIPTION": "Modifications: NL Gain !B! Block NL Requirements: NL Is playable"
+  },
+  "M10Robot:SubroutineDraw": {
+    "NAME": "Subroutine: Draw",
+    "DESCRIPTION": "Modifications: NL Draw !M! card NL Requirements: NL Is playable",
+    "UPGRADE_DESCRIPTION": "Modifications: NL Draw !M! cards NL Requirements: NL Is playable"
+  },
+  "M10Robot:SubroutineStrike": {
+    "NAME": "Subroutine: Strike",
+    "DESCRIPTION": "Modifications: NL Deal !D! damage NL Requirements: NL Is playable"
+  }
+}
