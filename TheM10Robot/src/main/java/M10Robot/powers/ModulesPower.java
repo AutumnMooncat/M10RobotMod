@@ -91,7 +91,7 @@ public class ModulesPower extends AbstractPower implements CloneablePowerInterfa
     public float atDamageFinalGive(float damage, DamageInfo.DamageType type) {
         for (AbstractCard m : modules.group) {
             if (m instanceof PowerSavings) {
-                damage *= 1 - (m.magicNumber/100f);
+                damage *= (1 - (m.magicNumber/100f));
             }
         }
         return damage;
