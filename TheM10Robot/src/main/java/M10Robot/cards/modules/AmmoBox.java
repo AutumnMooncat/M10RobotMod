@@ -20,7 +20,7 @@ public class AmmoBox extends AbstractModuleCard {
     // TEXT DECLARATION
 
     public static final String ID = M10RobotMod.makeID(AmmoBox.class.getSimpleName());
-    public static final String IMG = makeCardPath("AmmoBox.png");
+    public static final String IMG = makeCardPath("PlaceholderPower.png");
 
     // /TEXT DECLARATION/
 
@@ -29,7 +29,7 @@ public class AmmoBox extends AbstractModuleCard {
 
     private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.NONE;
-    private static final CardType TYPE = CardType.SKILL;
+    private static final CardType TYPE = CardType.POWER;
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
     private static final int DMG_BOOST = 2;

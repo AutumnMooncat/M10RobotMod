@@ -18,7 +18,7 @@ public class SpikyPlating extends AbstractModuleCard {
     // TEXT DECLARATION
 
     public static final String ID = M10RobotMod.makeID(SpikyPlating.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderSkill.png");
+    public static final String IMG = makeCardPath("PlaceholderPower.png");
 
     // /TEXT DECLARATION/
 
@@ -27,7 +27,7 @@ public class SpikyPlating extends AbstractModuleCard {
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.NONE;
-    private static final CardType TYPE = CardType.SKILL;
+    private static final CardType TYPE = CardType.POWER;
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
     private static final int THORNS = 3;

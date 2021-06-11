@@ -21,7 +21,7 @@ public class PowerSavings extends AbstractModuleCard implements ModularDescripti
     // TEXT DECLARATION
 
     public static final String ID = M10RobotMod.makeID(PowerSavings.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderSkill.png");
+    public static final String IMG = makeCardPath("PlaceholderPower.png");
 
     // /TEXT DECLARATION/
 
@@ -30,7 +30,7 @@ public class PowerSavings extends AbstractModuleCard implements ModularDescripti
 
     private static final CardRarity RARITY = CardRarity.RARE;
     private static final CardTarget TARGET = CardTarget.NONE;
-    private static final CardType TYPE = CardType.SKILL;
+    private static final CardType TYPE = CardType.POWER;
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
     private static final int ENERGY = 1;
