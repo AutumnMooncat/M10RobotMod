@@ -2,17 +2,17 @@
   "M10Robot:AttackTextContainer": {
     "NAME": "Generic Attack Text",
     "DESCRIPTION": "Extended Description used to hold text that will occasionally appear when playing an attack.",
-    "EXTENDED_DESCRIPTION": ["Initializing Attack","Refactoring Target","Disassembly: In Progress",""]
+    "EXTENDED_DESCRIPTION": ["Initializing Attack","Refactoring Target","Disassembly In Progress","Dealing Damage"]
   },
   "M10Robot:SkillTextContainer": {
     "NAME": "Generic Skill Text",
     "DESCRIPTION": "Extended Description used to hold text that will occasionally appear when playing a skill.",
-    "EXTENDED_DESCRIPTION": ["Utilizing Skill","",""]
+    "EXTENDED_DESCRIPTION": ["Utilizing Skill","Technique Executed","Implementing Strategy"]
   },
   "M10Robot:PowerTextContainer": {
     "NAME": "Generic Power Text",
     "DESCRIPTION": "Extended Description used to hold text that will occasionally appear when playing a power.",
-    "EXTENDED_DESCRIPTION": ["Applying Power","",""]
+    "EXTENDED_DESCRIPTION": ["Applying Power","Power Engaged","Body Upgraded"]
   },
   "M10Robot:BattleStartTextContainer": {
     "NAME": "Battle Start Text",
@@ -22,12 +22,12 @@
   "M10Robot:LowHPBattleStartTextContainer": {
     "NAME": "Low HP Battle Start Text",
     "DESCRIPTION": "Extended Description used to hold text that will occasionally appear at the beginning of combat if you are badly injured.",
-    "EXTENDED_DESCRIPTION": ["Hull Integrity: Low","Battle: Unavoidable","Irritation: Increasing",""]
+    "EXTENDED_DESCRIPTION": ["Hull Integrity: Low","Battle Unavoidable","Irritation Increasing","Desire For Smokebomb: High"]
   },
   "M10Robot:BattleEndTextContainer": {
     "NAME": "Battle End Text",
     "DESCRIPTION": "Extended Description used to hold text that will occasionally appear at the end of combat.",
-    "EXTENDED_DESCRIPTION": ["Disassembly: Complete","Cleaning: Performed","Targets: Neutralized",""]
+    "EXTENDED_DESCRIPTION": ["Disassembly Complete","Cleaning Performed","Targets Neutralized"]
   },
   "M10Robot:BossFightTextContainer": {
     "NAME": "Boss Fight Text",
@@ -42,7 +42,7 @@
   "M10Robot:FieldDamageTextContainer": {
     "NAME": "Field Damage Text",
     "DESCRIPTION": "Extended Description used to hold text that will occasionally appear when taking thorns damage.",
-    "EXTENDED_DESCRIPTION": ["Damage: Annoying","","",""]
+    "EXTENDED_DESCRIPTION": ["Damage: Annoying"]
   },
   "M10Robot:LightDamageTextContainer": {
     "NAME": "Light Damage Text",
