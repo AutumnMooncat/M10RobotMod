@@ -37,6 +37,13 @@
       "E",""
     ]
   },
+  "M10Robot:GainRecoilEffect": {
+    "EXTENDED_DESCRIPTION": [
+      "Gain ",
+      " m10robot:Recoil.",
+      "R",""
+    ]
+  },
   "M10Robot:HealHPEffect": {
     "EXTENDED_DESCRIPTION": [
       "Heal ",
