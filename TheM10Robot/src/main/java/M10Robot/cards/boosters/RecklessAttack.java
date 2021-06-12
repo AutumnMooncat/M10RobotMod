@@ -1,10 +1,7 @@
 package M10Robot.cards.boosters;
 
 import M10Robot.M10RobotMod;
-import M10Robot.cardModifiers.AbstractBoosterModifier;
-import M10Robot.cardModifiers.LoseEnergyEffect;
-import M10Robot.cardModifiers.TempBlockModifier;
-import M10Robot.cardModifiers.TempDamageModifier;
+import M10Robot.cardModifiers.*;
 import M10Robot.cards.abstractCards.AbstractBoosterCard;
 import M10Robot.characters.M10Robot;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -65,7 +62,7 @@ public class RecklessAttack extends AbstractBoosterCard {
 
     @Override
     public ArrayList<AbstractBoosterModifier> getBoosterModifiers() {
-        return new ArrayList<>(Arrays.asList(new TempDamageModifier(damage), new LoseEnergyEffect(this, magicNumber)));
+        return new ArrayList<>(Arrays.asList(new TempDamageModifier(damage), new GainRecoilEffect(this, 1)));
     }
 
     //Upgraded stats.

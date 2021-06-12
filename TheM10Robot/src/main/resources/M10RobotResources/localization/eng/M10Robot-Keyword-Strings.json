@@ -15,17 +15,24 @@
   },
   {
     "NAMES": [
-      "Relay",
-      "relay"
-    ],
-    "DESCRIPTION": "At the beginning of your next turn, add the selected cards to your hand. Will not recover cards which are exhausted or otherwise removed from play."
-  },
-  {
-    "NAMES": [
       "Recharging",
       "recharging"
     ],
     "DESCRIPTION": "When out of charges, you may Right Click to spend [E] to restore all charges. Will automatically recharge for free if drawn twice while empty."
+  },
+  {
+    "NAMES": [
+      "Recoil",
+      "recoil"
+    ],
+    "DESCRIPTION": "Your next attack deals #b50% less damage."
+  },
+  {
+    "NAMES": [
+      "Relay",
+      "relay"
+    ],
+    "DESCRIPTION": "At the beginning of your next turn, add the selected cards to your hand. Will not recover cards which are exhausted or otherwise removed from play."
   },
   {
     "NAMES": [
