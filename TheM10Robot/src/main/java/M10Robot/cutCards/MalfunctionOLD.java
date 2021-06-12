@@ -1,19 +1,17 @@
-package M10Robot.cards;
+package M10Robot.cutCards;
 
 import M10Robot.M10RobotMod;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.cards.interfaces.ModularDescription;
 import M10Robot.characters.M10Robot;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
-public class Malfunction extends AbstractDynamicCard implements ModularDescription {
+public class MalfunctionOLD extends AbstractDynamicCard implements ModularDescription {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
@@ -24,7 +22,7 @@ public class Malfunction extends AbstractDynamicCard implements ModularDescripti
 
     // TEXT DECLARATION
 
-    public static final String ID = M10RobotMod.makeID(Malfunction.class.getSimpleName());
+    public static final String ID = M10RobotMod.makeID(MalfunctionOLD.class.getSimpleName());
     public static final String IMG = makeCardPath("PlaceholderSkill.png");
 
     // /TEXT DECLARATION/
@@ -44,7 +42,7 @@ public class Malfunction extends AbstractDynamicCard implements ModularDescripti
     // /STAT DECLARATION/
 
 
-    public Malfunction() {
+    public MalfunctionOLD() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = CARDS;
         secondMagicNumber = baseSecondMagicNumber = LOSS;
