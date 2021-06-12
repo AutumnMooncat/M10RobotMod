@@ -35,7 +35,6 @@ public class DealDamageEffect extends AbstractExtraEffectModifier {
     public String addExtraText(String rawDescription, AbstractCard card) {
         String s = TEXT[0] + key + TEXT[1];
         s = applyTimes(s);
-        s = applyMutable(s);
         return rawDescription + " NL " + s;
     }
 

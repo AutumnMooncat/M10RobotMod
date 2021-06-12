@@ -1,9 +1,10 @@
 package M10Robot.cardModifiers;
 
 import M10Robot.M10RobotMod;
+import M10Robot.powers.RecoilPower;
 import basemod.abstracts.AbstractCardModifier;
 import basemod.helpers.CardModifierManager;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -12,41 +13,37 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 @AbstractCardModifier.SaveIgnore
-public class DrawCardEffect extends AbstractExtraEffectModifier {
-    private static final String ID = M10RobotMod.makeID("DrawCardEffect");
+public class GainRecoilEffect extends AbstractExtraEffectModifier {
+    private static final String ID = M10RobotMod.makeID("GainRecoilEffect");
     private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
     private static final String[] TEXT = cardStrings.EXTENDED_DESCRIPTION;
 
-    public DrawCardEffect(AbstractCard card, int times) {
+    public GainRecoilEffect(AbstractCard card, int times) {
         super(card, VariableType.MAGIC, false, times);
-        priority = 0;
+        priority = 6;
     }
 
     @Override
     public void doExtraEffects(AbstractCard card, AbstractPlayer p, AbstractCreature m) {
-        addToBot(new DrawCardAction(p, value));
+        addToBot(new ApplyPowerAction(p, p, new RecoilPower(p, value)));
     }
 
     @Override
     public boolean shouldRenderValue() {
-        return value != 1;
+        return true;
     }
 
     @Override
     public String addExtraText(String rawDescription, AbstractCard card) {
         String s;
-        if (value == 1) {
-            s = TEXT[0];
-        } else {
-            s = TEXT[1] + key + TEXT[2];
-        }
+        s = TEXT[0] + key + TEXT[1];
         return rawDescription + " NL " + s;
     }
 
     @Override
     public boolean shouldApply(AbstractCard card) {
         if (CardModifierManager.hasModifier(card, ID)) {
-            ((AbstractExtraEffectModifier)CardModifierManager.getModifiers(card, ID).get(0)).amount++;
+            ((AbstractExtraEffectModifier) CardModifierManager.getModifiers(card, ID).get(0)).amount++;
             card.applyPowers();
             card.initializeDescription();
             return false;
@@ -75,6 +72,7 @@ public class DrawCardEffect extends AbstractExtraEffectModifier {
 
     @Override
     public AbstractCardModifier makeCopy() {
-        return new DrawCardEffect(attachedCard, amount);
+        return new GainRecoilEffect(attachedCard, amount);
     }
+
 }

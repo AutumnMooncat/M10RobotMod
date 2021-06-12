@@ -29,14 +29,13 @@ public class HealHPEffect extends AbstractExtraEffectModifier {
 
     @Override
     public boolean shouldRenderValue() {
-        return value != 1;
+        return true;
     }
 
     @Override
     public String addExtraText(String rawDescription, AbstractCard card) {
         String s;
         s = TEXT[0] + key + TEXT[1];
-        s = applyMutable(s);
         return rawDescription + " NL " + s;
     }
 

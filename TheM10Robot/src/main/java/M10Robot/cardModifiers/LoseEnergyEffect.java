@@ -40,7 +40,6 @@ public class LoseEnergyEffect extends AbstractExtraEffectModifier {
         } else {
             s = TEXT[1] + key + TEXT[2];
         }
-        s = applyMutable(s);
         return rawDescription + " NL " + s;
     }
 
