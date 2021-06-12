@@ -11,9 +11,19 @@
     "NAME": "Quick Repair",
     "DESCRIPTIONS": ["At the start of your turn, #yRepair #b","."]
   },
+  "M10Robot:RecoilPower": {
+    "NAME": "Recoil",
+    "DESCRIPTIONS": ["The next attack you play deals #b50% less damage",
+                    "The next #b"," attacks you play deal #b50% less damage"]
+  },
   "M10Robot:RecoveryModePower": {
     "NAME": "Recovery Mode",
     "DESCRIPTIONS": ["Gain #b"," #yTemporary #yHP at the beginning of every turn, up to a maximum of #b","."]
+  },
+  "M10Robot:ReflectiveShellPower": {
+    "NAME": "Reflective Shell",
+    "DESCRIPTIONS": ["This turn, you may not take damage and attacks upon you are reflected onto the attacker.",
+                    "For #b"," turns, you may not take damage and attacks upon you are reflected onto the attacker."]
   },
   "M10Robot:RelayPower": {
     "NAME": "Relay",
