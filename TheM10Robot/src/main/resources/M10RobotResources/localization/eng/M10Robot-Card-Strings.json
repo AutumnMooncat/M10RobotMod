@@ -45,6 +45,12 @@
   },
   "M10Robot:Malfunction": {
     "NAME": "Malfunction",
+    "DESCRIPTION": "Retain. NL Lose !M10Robot:SecondMagic! HP. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Retain. NL Draw !M! card. NL Lose !M10Robot:SecondMagic! HP. NL m10robot:Returning.",
+    "EXTENDED_DESCRIPTION": ["Draw !M! cards. NL Lose !M10Robot:SecondMagic! HP. NL m10robot:Returning.", "Retain. NL Draw !M! cards. NL Lose !M10Robot:SecondMagic! HP. NL m10robot:Returning."]
+  },
+  "M10Robot:MalfunctionOLD": {
+    "NAME": "Malfunction OLD",
     "DESCRIPTION": "Draw !M! card. NL Lose !M10Robot:SecondMagic! HP. NL m10robot:Returning.",
     "UPGRADE_DESCRIPTION": "Retain. NL Draw !M! card. NL Lose !M10Robot:SecondMagic! HP. NL m10robot:Returning.",
     "EXTENDED_DESCRIPTION": ["Draw !M! cards. NL Lose !M10Robot:SecondMagic! HP. NL m10robot:Returning.", "Retain. NL Draw !M! cards. NL Lose !M10Robot:SecondMagic! HP. NL m10robot:Returning."]
@@ -89,7 +95,16 @@
   },
   "M10Robot:RecklessAttack": {
     "NAME": "Reckless Attack",
-    "DESCRIPTION": "Modifications: NL + !D! Damage NL Lose [E] NL Requirements: NL Deals damage"
+    "DESCRIPTION": "Modifications: NL + !D! Damage NL Gain !M! m10robot:Recoil Requirements: NL Deals damage"
+  },
+  "M10Robot:ReflectiveShell": {
+    "NAME": "Reflective Shell",
+    "DESCRIPTION": "This turn, you may not take damage and attacks upon you are reflected onto the attacker.",
+    "UPGRADE_DESCRIPTION": "For !M! turns, you may not take damage and attacks upon you are reflected onto the attacker."
+  },
+  "M10Robot:ReturningShield": {
+    "NAME": "Returning Shield",
+    "DESCRIPTION": "Gain !B! Block. NL Next turn, gain !B! Block."
   },
   "M10Robot:RoboBeam": {
     "NAME": "Robo Beam",
@@ -110,6 +125,10 @@
   "M10Robot:ScrapBooster": {
     "NAME": "Scrap Booster",
     "DESCRIPTION": "Modifications: NL + !M! Block NL Requirements: NL Has Block"
+  },
+  "M10Robot:SpectralCannon": {
+    "NAME": "Spectral Cannon",
+    "DESCRIPTION": "Ethereal. NL m10robot:Recharging !M10Robot:AmmoCount! / !M10Robot:ThirdMagic!. NL Deal !D! damage to ALL enemies."
   },
   "M10Robot:SpikyPlating": {
     "NAME": "Spiky Plating",
