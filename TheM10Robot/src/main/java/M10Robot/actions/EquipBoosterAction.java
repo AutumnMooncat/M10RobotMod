@@ -29,8 +29,6 @@ public class EquipBoosterAction extends AbstractGameAction {
 
     public void update() {
         if (this.duration == DURATION && p.hand.contains(boosterCard)) {
-            //Consumer<List<AbstractCard>> plsWork = l -> l.forEach(booster::onEquip);
-            //this.addToTop(new SelectCardsInHandAction(CardCrawlGame.languagePack.getUIString("CardRewardScreen").TEXT[1], booster.getFilter().and(BoosterFieldPatch::canEquipBooster), plsWork));
             for (AbstractBoosterModifier mod : boosterCard.getBoosterModifiers()) {
                 CardModifierManager.addModifier(targetCard, mod);
                 BoosterFieldPatch.equipBooster(targetCard);
@@ -50,17 +48,10 @@ public class EquipBoosterAction extends AbstractGameAction {
             this.addToTop(new AbstractGameAction() {
                 @Override
                 public void update() {
-                    /*boosterCard.current_x = Settings.WIDTH/2f;
-                    boosterCard.current_y = Settings.HEIGHT;
-                    boosterCard.target_x = Settings.WIDTH/2f;
-                    boosterCard.target_y = Settings.HEIGHT;
-                    EmpowerRedirectPatches.setRedirect(boosterCard, targetCard);
-                    AbstractDungeon.player.hand.empower(boosterCard);*/
                     AbstractDungeon.effectList.add(new EmpowerEffect(targetCard.hb.cX, targetCard.hb.cY));
                     this.isDone = true;
                 }
             });
-            //AbstractDungeon.player.hand.moveToExhaustPile(booster);
         }
         this.tickDuration();
     }
