@@ -7,7 +7,14 @@
       "."
     ]
   },
-  "M10Robot:DamageEffect": {
+  "M10Robot:ApplyPoisonEffect": {
+    "EXTENDED_DESCRIPTION": [
+      "Apply ",
+      " Poison.",
+      "Po",""
+    ]
+  },
+  "M10Robot:DealDamageEffect": {
     "EXTENDED_DESCRIPTION": [
       "Deal ",
       " damage",
@@ -16,8 +23,8 @@
   },
   "M10Robot:DrawCardEffect": {
     "EXTENDED_DESCRIPTION": [
-      "Draw a card.",
       "Draw ",
+      " card.",
       " cards.",
       "Dr",""
     ]
@@ -26,7 +33,14 @@
     "EXTENDED_DESCRIPTION": [
       "Gain ",
       " Block",
-      "B",""
+      "Bl",""
+    ]
+  },
+  "M10Robot:GainDexterityEffect": {
+    "EXTENDED_DESCRIPTION": [
+      "Gain ",
+      " Dexterity.",
+      "De",""
     ]
   },
   "M10Robot:GainEnergyEffect": {
@@ -34,14 +48,36 @@
       "Gain [E] .",
       "Gain [E] ",
       " times.",
-      "E",""
+      "En",""
+    ]
+  },
+  "M10Robot:GainFocusEffect": {
+    "EXTENDED_DESCRIPTION": [
+      "Gain ",
+      " Focus.",
+      "Fo",""
+    ]
+  },
+  "M10Robot:GainOrbSlotEffect": {
+    "EXTENDED_DESCRIPTION": [
+      "Gain ",
+      " Orb Slot.",
+      " Orb Slots.",
+      "Or",""
     ]
   },
   "M10Robot:GainRecoilEffect": {
     "EXTENDED_DESCRIPTION": [
       "Gain ",
       " m10robot:Recoil.",
-      "R",""
+      "Re",""
+    ]
+  },
+  "M10Robot:GainStrengthEffect": {
+    "EXTENDED_DESCRIPTION": [
+      "Gain ",
+      " Strength.",
+      "St",""
     ]
   },
   "M10Robot:HealHPEffect": {
@@ -49,6 +85,13 @@
       "Heal ",
       " HP.",
       "H",""
+    ]
+  },
+  "M10Robot:LoseDexterityEffect": {
+    "EXTENDED_DESCRIPTION": [
+      "Lose ",
+      " Dexterity.",
+      "De",""
     ]
   },
   "M10Robot:LoseEnergyEffect": {
@@ -59,11 +102,40 @@
       "L",""
     ]
   },
+  "M10Robot:LoseFocusEffect": {
+    "EXTENDED_DESCRIPTION": [
+      "Lose ",
+      " Focus.",
+      "Fo",""
+    ]
+  },
   "M10Robot:LoseHPEffect": {
     "EXTENDED_DESCRIPTION": [
       "Lose ",
       " HP.",
       "H",""
+    ]
+  },
+  "M10Robot:LoseOrbSlotEffect": {
+    "EXTENDED_DESCRIPTION": [
+      "Lose ",
+      " Orb Slot.",
+      " Orb Slots.",
+      "Or",""
+    ]
+  },
+  "M10Robot:LoseRecoilEffect": {
+    "EXTENDED_DESCRIPTION": [
+      "Lose ",
+      " m10robot:Recoil.",
+      "Re",""
+    ]
+  },
+  "M10Robot:LoseStrengthEffect": {
+    "EXTENDED_DESCRIPTION": [
+      "Lose ",
+      " Strength.",
+      "St",""
     ]
   },
   "M10Robot:TempBlockModifier": {

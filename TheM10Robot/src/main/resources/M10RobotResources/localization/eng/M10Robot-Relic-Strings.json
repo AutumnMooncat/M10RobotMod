@@ -1,16 +1,18 @@
 {
-  "M10Robot:ArmorModule": {
-    "NAME": "Armor Module",
-    "FLAVOR": "Product ID - 028975",
+  "M10Robot:ProtectiveShell": {
+    "NAME": "Protective Shell",
+    "FLAVOR": "Not to be confused with Reflective Shell",
     "DESCRIPTIONS": [
-      "Start each combat with a #b"," #ym10robot:Repairable_Armor #ym10robot:Module in your hand."
+      "At the start of each combat, gain #b"," #ym10robot:Protect.",
+      "Damage mitigated: "," NL Scrambles: "
     ]
   },
-  "M10Robot:ArmorModule2": {
-    "NAME": "Armor Module 2.0",
-    "FLAVOR": "Product ID - 040086",
+  "M10Robot:ProtectiveShell": {
+    "NAME": "ProtectiveShell 2.0",
+    "FLAVOR": "The upgraded shell can withstand additional hits over its predecessor.",
     "DESCRIPTIONS": [
-      "Start each combat with a #b"," #ym10robot:Repairable_Armor #ym10robot:Module in your hand."
+      "At the start of each combat, gain #b"," #ym10robot:Protect.",
+      "Damage mitigated: "," NL Scrambles: "
     ]
   },
   "M10Robot:BottledStar": {

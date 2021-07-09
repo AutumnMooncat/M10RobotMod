@@ -1,8 +1,65 @@
 {
-  "M10Robot:UnunsedOrbPlaceholder": {
-    "NAME": "Placeholder",
+  "M10Robot:ArmorOrb": {
+    "NAME": "Plating Orb",
     "DESCRIPTION": [
-      "This is only here to act as a reference if orbs are added later."
+      "#yPassive: #yDexterity increased by #b",".",
+      " NL #yEvoke: Gain #b"," #yMakeshift #yArmor."
+    ]
+  },
+  "M10Robot:BombOrb": {
+    "NAME": "Bomb",
+    "DESCRIPTION": [
+      "#yPassive: At the end of turn, ","decrease","increase"," this Orb's damage by #b",".",
+      " NL #yEvoke: Deal #b"," damage to ALL enemies."
+    ]
+  },
+  "M10Robot:ReactiveOrb": {
+    "NAME": "Reactive Orb",
+    "DESCRIPTION": [
+      "#yPassive: Upon gaining #yEnergy, draw #b"," card.",
+      " NL #yEvoke: Gain #b"," [E] . NL Reactive is unaffected by #yFocus."
+    ]
+  },
+  "M10Robot:RitualOrb": {
+    "NAME": "Ritual Orb",
+    "DESCRIPTION": [
+      "#yPassive: At the end of turn, gain #b"," #yStrength.",
+      " NL #yEvoke: Double your #yStrength and lose an Orb Slot. NL Ritual is unaffected by #yFocus."
+    ]
+  },
+  "M10Robot:BitOrb": {
+    "NAME": "Bit",
+    "DESCRIPTION": [
+      "#yPassive: Deal #b"," damage to any enemy you attack and increase this Orb's evoke damage by the same amount.",
+      " NL #yEvoke: Deal #b"," damage to a random enemy."
+    ]
+  },
+  "M10Robot:PresentOrb": {
+    "NAME": "Present",
+    "DESCRIPTION": [
+      "#yPassive: At the start of turn, gain #b","% progress towards assembling ",". When complete, it is added to your hand, and assembly begins on a new random #yBooster.",
+      " NL #yEvoke: Add "," to your hand."
+    ]
+  },
+  "M10Robot:SearchlightOrb": {
+    "NAME": "Searchlight",
+    "DESCRIPTION": [
+      "#yPassive: When attacked, deal #b"," damage back.",
+      " NL #yEvoke: ALL enemies lose #b"," HP."
+    ]
+  },
+  "M10Robot:TungstenOrb": {
+    "NAME": "Tungsten Orb",
+    "DESCRIPTION": [
+      "#yPassive: Take #b"," less damage when attacked.",
+      " NL #yEvoke: Gain #b"," #yMetallicize and lose an Orb Slot. NL Tungsten is unaffected by #yFocus."
+    ]
+  },
+  "M10Robot:ToxicOrb": {
+    "NAME": "Toxic Orb",
+    "DESCRIPTION": [
+      "#yPassive: At the end of turn, apply #b"," #yPoison to ALL enemies.",
+      " NL #yEvoke: Gain #b"," #yEnvenom and lose an Orb Slot. NL Toxic is unaffected by #yFocus."
     ]
   }
 }

@@ -1,11 +1,24 @@
 {
+  "M10Robot:EMPPower": {
+    "NAME": "Stasis",
+    "DESCRIPTIONS": ["Debuffs can not decrease this turn",
+                    "Debuffs can not decrease for #b"," turns."]
+  },
+  "M10Robot:LoseFocusPower": {
+    "NAME": "Focus Down",
+    "DESCRIPTIONS": ["At the end of this turn, lose #b", " #yFocus."]
+  },
   "M10Robot:ModulesPower": {
     "NAME": "Modular Body",
     "DESCRIPTIONS": ["Modules may be equipped to increase your effectiveness or to change certain mechanics.",
       " NL Module Slots: ", "Empty", "Slot ",
       " NL Left Click to view or unequip modules.",
-      "Select any modules to unequip.",
+      "Select any modules to unequip and discard them.",
       "No open module slots."]
+  },
+  "M10Robot:ProtectPower": {
+    "NAME": "Protect",
+    "DESCRIPTIONS": ["Whenever you would lose HP, lose #b"," less and reduce #yProtect by #b1. NL When depleted, you become #yScrambled and draw #b1 less card next turn."]
   },
   "M10Robot:QuickRepairPower": {
     "NAME": "Quick Repair",
@@ -14,7 +27,9 @@
   "M10Robot:RecoilPower": {
     "NAME": "Recoil",
     "DESCRIPTIONS": ["The next attack you play deals #b50% less damage",
-                    "The next #b"," attacks you play deal #b50% less damage"]
+                    "The next #b"," attacks you play deal #b50% less damage",
+                    "Negates the next #yRecoil you receive.",
+                    "Negates the next #b"," #yRecoil you receive."]
   },
   "M10Robot:RecoveryModePower": {
     "NAME": "Recovery Mode",
@@ -30,11 +45,21 @@
     "DESCRIPTIONS": ["At the beginning of your next turn, add the following cards to your hand if they are still in play: "]
   },
   "M10Robot:RepairableArmorPower": {
-    "NAME": "Repairable Armor",
-    "DESCRIPTIONS": ["At the end of your turn, gain #b"," #yBlock. When attacked, reduce this amount by #b1. NL Has a maximum capacity of #b", " stacks."]
+    "NAME": "Makeshift Armor",
+    "DESCRIPTIONS": ["At the end of your turn, gain #b"," #yBlock. When attacked, reduce this amount by #b1."]
+  },
+  "M10Robot:ScrambledPower": {
+    "NAME": "Scrambled",
+    "DESCRIPTIONS": ["Draw #b1 less card next turn.",
+                    "Draw #b1 less card for #b", " turns."]
   },
   "M10Robot:ScrambleFieldPower": {
     "NAME": "Scramble Field",
     "DESCRIPTIONS": ["This turn, this creature is unable to deal over #b"," damage and unable to gain over #b"," #yBlock."]
+  },
+  "M10Robot:TurboPower": {
+    "NAME": "Turbo Mode",
+    "DESCRIPTIONS": ["At the beginning of your next turn, draw an additional card and gain [E] .",
+                    "At the beginning of your next #b"," turns, draw an additional card and gain [E] ."]
   }
 }

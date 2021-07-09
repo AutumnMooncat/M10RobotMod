@@ -14,7 +14,8 @@
   "M10Robot:Boosters": {
     "TEXT": ["Boost",
             "No appropriate cards",
-            "Gain "," Block."]
+            "Viewing equipped boosters. Selected boosters will be unequipped and discarded.",
+            "Viewing equipped boosters."]
   },
   "M10Robot:ChooseMagic": {
     "TEXT": ["Choose 1 of 3 Magical Memories to add to your Discard Pile."]

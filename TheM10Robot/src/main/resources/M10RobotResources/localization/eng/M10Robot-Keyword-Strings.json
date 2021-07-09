@@ -1,10 +1,25 @@
 [
   {
     "NAMES": [
+      "Augmented",
+      "augmented"
+    ],
+    "DESCRIPTION": "This card has #yboosters attached to it. "
+  },
+  {
+    "NAMES": [
       "Booster",
-      "booster"
+      "booster",
+      "boosters"
     ],
     "DESCRIPTION": "An #yUnplayable card that may be attached to a card by right clicking and then choosing a card in your hand. May have requirements for attachment."
+  },
+  {
+    "NAMES": [
+      "Bound",
+      "bound"
+    ],
+    "DESCRIPTION": "May not be removed once equipped."
   },
   {
     "NAMES": [
@@ -12,6 +27,20 @@
       "framework"
     ],
     "DESCRIPTION": "An #yUnplayable card that is unfinished. May be converted into a playable card by right clicking and then choosing an appropriate amount of cards in your hand to #yExhaust."
+  },
+  {
+    "NAMES": [
+      "Primary",
+      "primary"
+    ],
+    "DESCRIPTION": "The Primary of a card is the card's main non-damage and non-Block related attribute or effect."
+  },
+  {
+    "NAMES": [
+      "Protect",
+      "protect"
+    ],
+    "DESCRIPTION": "Whenever you would lose HP, lose #b2 less and reduce Protect by #b1. NL When depleted, you become #yScrambled and draw #b1 less card next turn."
   },
   {
     "NAMES": [
@@ -49,12 +78,27 @@
     "DESCRIPTION": "Increase the amount of #yRepairable #yArmor. Cannot surpass its maximum capacity."
   },
   {
-    "PROPER_NAME": "Repairable Armor",
     "NAMES": [
-      "Repairable Armor",
-      "repairable_armor"
+      "Scrambled",
+      "scrambled"
     ],
-    "DESCRIPTION": "At the end of your turn, gain #yBlock. Can be repaired up to its maximum capacity."
+    "DESCRIPTION": "Draw #b1 less card next turn."
+  },
+  {
+    "NAMES": [
+      "Stasis",
+      "stasis"
+    ],
+    "DESCRIPTION": "Debuffs can not decrease while #yStasis is active."
+  },
+  {
+    "PROPER_NAME": "Makeshift Armor",
+    "NAMES": [
+      "Makeshift Armor",
+      "makeshift_armor",
+      "armor"
+    ],
+    "DESCRIPTION": "At the end of your turn, gain #yBlock. Being attacked reduces Armor by 1."
   },
   {
     "NAMES": [
@@ -84,5 +128,68 @@
       "multi-cost"
     ],
     "DESCRIPTION": "This card can right clicked in-hand to cycle its cost and effect."
+  },
+  {
+    "NAMES": [
+      "Present",
+      "present"
+    ],
+    "DESCRIPTION": "Orb: Assembles random #yBoosters. When #yEvoked, adds a random #yBooster your hand."
+  },
+  {
+    "NAMES": [
+      "Searchlight",
+      "searchlight"
+    ],
+    "DESCRIPTION": "Orb: Deals damage when attacked. When #yEvoked, ALL enemies lose HP."
+  },
+  {
+    "NAMES": [
+      "Reactive",
+      "reactive"
+    ],
+    "DESCRIPTION": "Orb: Draws a card when you gain [E] . When #yEvoked, gains [E] . NL Reactive is unaffected by #yFocus."
+  },
+  {
+    "NAMES": [
+      "Bit",
+      "bit"
+    ],
+    "DESCRIPTION": "Orb: Deals damage when you attack. When #yEvoked, deals damage to a random enemy equal to accumulative damage dealt."
+  },
+  {
+    "NAMES": [
+      "Ritualist",
+      "ritualist"
+    ],
+    "DESCRIPTION": "Orb: Gains #yStrength. When #yEvoked, doubles #yStrength and removes an Orb Slot. NL Ritualist is unaffected by #yFocus."
+  },
+  {
+    "NAMES": [
+      "Tungsten",
+      "tungsten"
+    ],
+    "DESCRIPTION": "Orb: Reduces damage taken. When #yEvoked, grants #yMetallicize and removes an Orb Slot. NL Tungsten is unaffected by #yFocus."
+  },
+  {
+    "NAMES": [
+      "Toxic",
+      "toxic"
+    ],
+    "DESCRIPTION": "Orb: Applies #yPoison. When #yEvoked, grants #yEnvenom and removes an Orb Slot. NL Toxic is unaffected by #yFocus."
+  },
+  {
+    "NAMES": [
+      "Plating",
+      "plating"
+    ],
+    "DESCRIPTION": "Orb: Increases #yDexterity. When #yEvoked, grants #yMakeshift #yArmor."
+  },
+  {
+    "NAMES": [
+      "Bomb",
+      "bomb"
+    ],
+    "DESCRIPTION": "Orb: Decreases damage every turn. When #yEvoked, deals damage to ALL enemies."
   }
 ]
