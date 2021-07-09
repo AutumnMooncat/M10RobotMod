@@ -56,6 +56,13 @@ public class RecoveryModePower extends AbstractPower implements CloneablePowerIn
     }
 
     @Override
+    public void reducePower(int reduceAmount) {
+        super.reducePower(reduceAmount);
+        this.maxTempHP -= MAX_PER_APPLICATION;
+        updateDescription();;
+    }
+
+    @Override
     public void atStartOfTurn() {
         int amt = Math.min(amount, Math.max(0, maxTempHP - TempHPField.tempHp.get(owner)));
         if (amt > 0) {

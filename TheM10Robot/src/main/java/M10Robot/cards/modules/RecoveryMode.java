@@ -1,17 +1,18 @@
-package M10Robot.cards;
+package M10Robot.cards.modules;
 
 import M10Robot.M10RobotMod;
-import M10Robot.cards.abstractCards.AbstractDynamicCard;
+import M10Robot.cards.abstractCards.AbstractModuleCard;
 import M10Robot.characters.M10Robot;
-import M10Robot.powers.QuickRepairPower;
 import M10Robot.powers.RecoveryModePower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
-public class RecoveryMode extends AbstractDynamicCard {
+public class RecoveryMode extends AbstractModuleCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
@@ -43,7 +44,7 @@ public class RecoveryMode extends AbstractDynamicCard {
 
 
     public RecoveryMode() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        super(ID, IMG, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = EFFECT;
     }
 
@@ -61,5 +62,15 @@ public class RecoveryMode extends AbstractDynamicCard {
             upgradeMagicNumber(UPGRADE_PLUS_EFFECT);
             initializeDescription();
         }
+    }
+
+    @Override
+    public void onEquip() {
+        this.addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new RecoveryModePower(AbstractDungeon.player, magicNumber)));
+    }
+
+    @Override
+    public void onRemove() {
+        this.addToTop(new ReducePowerAction(AbstractDungeon.player, AbstractDungeon.player, RecoveryModePower.POWER_ID, magicNumber));
     }
 }
