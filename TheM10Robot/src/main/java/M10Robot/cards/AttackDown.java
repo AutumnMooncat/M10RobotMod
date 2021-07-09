@@ -17,12 +17,6 @@ import static M10Robot.M10RobotMod.makeCardPath;
 
 public class AttackDown extends AbstractDynamicCard {
 
-    /*
-     * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
-     *
-     * Defend Gain 5 (8) block.
-     */
-
 
     // TEXT DECLARATION
 
@@ -34,8 +28,8 @@ public class AttackDown extends AbstractDynamicCard {
 
     // STAT DECLARATION
 
-    private static final CardRarity RARITY = CardRarity.COMMON;
-    private static final CardTarget TARGET = CardTarget.SELF;
+    private static final CardRarity RARITY = CardRarity.UNCOMMON;
+    private static final CardTarget TARGET = CardTarget.ALL;
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
@@ -55,16 +49,20 @@ public class AttackDown extends AbstractDynamicCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        int sum = 0;
         for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
             if (!aM.isDeadOrEscaped()) {
                 this.addToBot(new ApplyPowerAction(aM, p, new StrengthPower(aM, -this.magicNumber), -this.magicNumber, true, AbstractGameAction.AttackEffect.NONE));
                 if (!aM.hasPower(ArtifactPower.POWER_ID)) {
                     this.addToBot(new ApplyPowerAction(aM, p, new GainStrengthPower(aM, this.magicNumber), this.magicNumber, true, AbstractGameAction.AttackEffect.NONE));
+                    sum += magicNumber;
                 }
             }
         }
-        this.addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, this.magicNumber), this.magicNumber));
-        this.addToBot(new ApplyPowerAction(p, p, new LoseStrengthPower(p, this.magicNumber), this.magicNumber));
+        if (sum > 0) {
+            this.addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, sum), sum));
+            this.addToBot(new ApplyPowerAction(p, p, new LoseStrengthPower(p, sum), sum));
+        }
     }
 
     //Upgraded stats.
