@@ -1,30 +1,31 @@
 package M10Robot.cardModifiers;
 
 import M10Robot.M10RobotMod;
-import M10Robot.cardModifiers.interfaces.RequiresSingleTargetAimingMode;
 import basemod.abstracts.AbstractCardModifier;
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.localization.CardStrings;
 
 import java.util.ArrayList;
 
 @AbstractCardModifier.SaveIgnore
-public class DealDamageEffect extends AbstractExtraEffectModifier implements RequiresSingleTargetAimingMode {
-    private static final String ID = M10RobotMod.makeID("DealDamageEffect");
+public class DealDamageToAllEnemiesEffect extends AbstractExtraEffectModifier {
+    private static final String ID = M10RobotMod.makeID("DealDamageToAllEnemiesEffect");
 
-    public DealDamageEffect(AbstractCard card, int times) {
+    public DealDamageToAllEnemiesEffect(AbstractCard card, int times) {
         super(ID, card, VariableType.DAMAGE, false, times);
     }
 
     @Override
     public void doExtraEffects(AbstractCard card, AbstractPlayer p, AbstractCreature m) {
         for (int i = 0 ; i < amount ; i++) {
-            addToBot(new DamageAction(m, new DamageInfo(p, value, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.FIRE, true));
+            addToBot(new DamageAllEnemiesAction(p, DamageInfo.createDamageMatrix(value), DamageInfo.DamageType.NORMAL, AbstractGameAction.AttackEffect.FIRE, true));
         }
     }
 
@@ -46,7 +47,7 @@ public class DealDamageEffect extends AbstractExtraEffectModifier implements Req
         if (CardModifierManager.hasModifier(card, ID)) {
             //Grab the base value offset
             int offset = 0;
-            if (CardModifierManager.hasModifier(card, TempDamageModifier.ID)) {
+            if (CardModifierManager.hasModifier(card, TempBlockModifier.ID)) {
                 //Get a list of all the base value effects and loop add to the offset
                 ArrayList<AbstractCardModifier> list = CardModifierManager.getModifiers(card, TempDamageModifier.ID);
                 for (AbstractCardModifier mod : list) {
@@ -118,6 +119,6 @@ public class DealDamageEffect extends AbstractExtraEffectModifier implements Req
 
     @Override
     public AbstractCardModifier makeCopy() {
-        return new DealDamageEffect(attachedCard.makeStatEquivalentCopy(), amount);
+        return new DealDamageToAllEnemiesEffect(attachedCard.makeStatEquivalentCopy(), amount);
     }
 }

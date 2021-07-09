@@ -12,14 +12,11 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 @AbstractCardModifier.SaveIgnore
-public class DrawCardEffect extends AbstractExtraEffectModifier {
+public class DrawCardEffect extends AbstractSimpleStackingExtraEffectModifier {
     private static final String ID = M10RobotMod.makeID("DrawCardEffect");
-    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    private static final String[] TEXT = cardStrings.EXTENDED_DESCRIPTION;
 
-    public DrawCardEffect(AbstractCard card, int times) {
-        super(card, VariableType.MAGIC, false, times);
-        priority = 0;
+    public DrawCardEffect(AbstractCard card) {
+        super(ID, card, VariableType.MAGIC, false);
     }
 
     @Override
@@ -29,29 +26,18 @@ public class DrawCardEffect extends AbstractExtraEffectModifier {
 
     @Override
     public boolean shouldRenderValue() {
-        return value != 1;
+        return true;
     }
 
     @Override
     public String addExtraText(String rawDescription, AbstractCard card) {
         String s;
         if (value == 1) {
-            s = TEXT[0];
+            s = TEXT[0] + key + TEXT[1];
         } else {
-            s = TEXT[1] + key + TEXT[2];
+            s = TEXT[0] + key + TEXT[2];
         }
         return rawDescription + " NL " + s;
-    }
-
-    @Override
-    public boolean shouldApply(AbstractCard card) {
-        if (CardModifierManager.hasModifier(card, ID)) {
-            ((AbstractExtraEffectModifier)CardModifierManager.getModifiers(card, ID).get(0)).amount++;
-            card.applyPowers();
-            card.initializeDescription();
-            return false;
-        }
-        return true;
     }
 
     @Override
@@ -60,21 +46,7 @@ public class DrawCardEffect extends AbstractExtraEffectModifier {
     }
 
     @Override
-    public void onApplyPowers(AbstractCard card) {
-        super.onApplyPowers(card);
-        baseValue *= amount;
-        value *= amount;
-    }
-
-    @Override
-    public void onCalculateCardDamage(AbstractCard card, AbstractMonster mo) {
-        super.onCalculateCardDamage(card, mo);
-        baseValue *= amount;
-        value *= amount;
-    }
-
-    @Override
     public AbstractCardModifier makeCopy() {
-        return new DrawCardEffect(attachedCard, amount);
+        return new DrawCardEffect(attachedCard.makeStatEquivalentCopy());
     }
 }

@@ -9,28 +9,25 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 
 public class TempBlockModifier extends AbstractValueBuffModifier {
     public static final String ID = M10RobotMod.makeID("TempBlockModifier");
-    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    private static final String[] TEXT = cardStrings.EXTENDED_DESCRIPTION;
 
     public TempBlockModifier(int increase) {
-        this.increase = increase;
-        this.priority = -5;
+        super(ID, increase);
     }
 
     @Override
     public AbstractCardModifier makeCopy() {
-        return new TempBlockModifier(increase);
+        return new TempBlockModifier(amount);
     }
 
     @Override
     public void onInitialApplication(AbstractCard card) {
-        card.baseBlock += increase;
+        card.baseBlock += amount;
         card.applyPowers();
     }
 
     @Override
     public void onRemove(AbstractCard card) {
-        card.baseBlock -= increase;
+        card.baseBlock -= amount;
         card.applyPowers();
     }
 
@@ -42,12 +39,22 @@ public class TempBlockModifier extends AbstractValueBuffModifier {
     @Override
     public boolean shouldApply(AbstractCard card) {
         if (CardModifierManager.hasModifier(card, ID)) {
-            ((TempBlockModifier)CardModifierManager.getModifiers(card, ID).get(0)).increase += increase;
-            card.baseBlock += increase;
+            ((AbstractBoosterModifier)CardModifierManager.getModifiers(card, ID).get(0)).amount += amount;
+            card.baseBlock += amount;
             card.applyPowers();
             return false;
         }
         return true;
+    }
+
+    @Override
+    public boolean unstack(AbstractCard card, int stacksToUnstack) {
+        if (CardModifierManager.hasModifier(card, ID)) {
+            ((AbstractBoosterModifier)CardModifierManager.getModifiers(card, ID).get(0)).amount -= stacksToUnstack;
+            card.baseBlock -= stacksToUnstack;
+            card.applyPowers();
+        }
+        return amount <= 0;
     }
 
     @Override
@@ -57,6 +64,6 @@ public class TempBlockModifier extends AbstractValueBuffModifier {
 
     @Override
     public String getSuffix() {
-        return TEXT[1]+increase;
+        return TEXT[1]+amount;
     }
 }

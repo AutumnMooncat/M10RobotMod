@@ -1,6 +1,7 @@
 package M10Robot.cardModifiers;
 
 import M10Robot.M10RobotMod;
+import M10Robot.variables.DynamicDynamicVariableManager;
 import basemod.abstracts.AbstractCardModifier;
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
@@ -15,17 +16,9 @@ import java.util.ArrayList;
 @AbstractCardModifier.SaveIgnore
 public class GainBlockEffect extends AbstractExtraEffectModifier {
     private static final String ID = M10RobotMod.makeID("GainBlockEffect");
-    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    private static final String[] TEXT = cardStrings.EXTENDED_DESCRIPTION;
 
     public GainBlockEffect(AbstractCard card, int times) {
-        super(card, VariableType.BLOCK, false, times);
-        priority = -1;
-    }
-
-    public GainBlockEffect(AbstractCard card, boolean isMutable, int times) {
-        super(card, VariableType.BLOCK, isMutable, times);
-        priority = -1;
+        super(ID, card, VariableType.BLOCK, false, times);
     }
 
     @Override
@@ -52,7 +45,7 @@ public class GainBlockEffect extends AbstractExtraEffectModifier {
                 //Get a list of all the base value effects and loop add to the offset
                 ArrayList<AbstractCardModifier> list = CardModifierManager.getModifiers(card, TempBlockModifier.ID);
                 for (AbstractCardModifier mod : list) {
-                    offset += ((AbstractValueBuffModifier)mod).increase;
+                    offset += ((AbstractValueBuffModifier)mod).amount;
                 }
             }
             //Get a list of all the gain effects
@@ -76,6 +69,44 @@ public class GainBlockEffect extends AbstractExtraEffectModifier {
     }
 
     @Override
+    public boolean unstack(AbstractCard card, int stacksToUnstack) {
+        //If we have a GainBlockEffect mod
+        if (CardModifierManager.hasModifier(card, ID)) {
+            //Grab the base value offset
+            int offset = 0;
+            if (CardModifierManager.hasModifier(card, TempBlockModifier.ID)) {
+                //Get a list of all the base value effects and loop add to the offset
+                ArrayList<AbstractCardModifier> list = CardModifierManager.getModifiers(card, TempBlockModifier.ID);
+                for (AbstractCardModifier mod : list) {
+                    offset += ((AbstractValueBuffModifier)mod).amount;
+                }
+            }
+            //Get a list of all the gain effects
+            ArrayList<AbstractCardModifier> list = CardModifierManager.getModifiers(card, ID);
+            //Loop through them
+            for (AbstractCardModifier mod : list) {
+                //Grab the attached card from the mod
+                AbstractCard c = ((AbstractExtraEffectModifier)mod).attachedCard;
+                //If the base block of the card from the mod is equal to the base block of our mod (plus the offset that will get added)
+                if (c.baseBlock == (attachedCard.baseBlock+offset)) {
+                    //Reduce the amount
+                    ((AbstractExtraEffectModifier)mod).amount -= stacksToUnstack;
+                    card.applyPowers();
+                    card.initializeDescription();
+                    //remove it if it hit 0
+                    if (((AbstractExtraEffectModifier)mod).amount <= 0) {
+                        CardModifierManager.removeSpecificModifier(card, mod, true);
+                        AbstractExtraEffectModifier.clearAndRecreateRegister(card);
+                        return true;
+                    }
+                }
+            }
+        }
+        //Else we did nothing
+        return false;
+    }
+
+    @Override
     public String identifier(AbstractCard card) {
         return ID;
     }
@@ -87,7 +118,7 @@ public class GainBlockEffect extends AbstractExtraEffectModifier {
 
     @Override
     public AbstractCardModifier makeCopy() {
-        return new GainBlockEffect(attachedCard.makeStatEquivalentCopy(), isMutable, amount);
+        return new GainBlockEffect(attachedCard.makeStatEquivalentCopy(), amount);
     }
 
     @Override

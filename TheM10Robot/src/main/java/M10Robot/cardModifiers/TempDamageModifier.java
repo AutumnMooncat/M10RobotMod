@@ -9,28 +9,25 @@ import com.megacrit.cardcrawl.localization.CardStrings;
 
 public class TempDamageModifier extends AbstractValueBuffModifier {
     public static final String ID = M10RobotMod.makeID("TempDamageModifier");
-    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    private static final String[] TEXT = cardStrings.EXTENDED_DESCRIPTION;
 
     public TempDamageModifier(int increase) {
-        this.increase = increase;
-        this.priority = -4;
+        super(ID, increase);
     }
 
     @Override
     public AbstractCardModifier makeCopy() {
-        return new TempDamageModifier(increase);
+        return new TempDamageModifier(amount);
     }
 
     @Override
     public void onInitialApplication(AbstractCard card) {
-        card.baseDamage += increase;
+        card.baseDamage += amount;
         card.applyPowers();
     }
 
     @Override
     public void onRemove(AbstractCard card) {
-        card.baseDamage -= increase;
+        card.baseDamage -= amount;
         card.applyPowers();
     }
 
@@ -42,12 +39,22 @@ public class TempDamageModifier extends AbstractValueBuffModifier {
     @Override
     public boolean shouldApply(AbstractCard card) {
         if (CardModifierManager.hasModifier(card, ID)) {
-            ((TempDamageModifier)CardModifierManager.getModifiers(card, ID).get(0)).increase += increase;
-            card.baseDamage += increase;
+            ((AbstractBoosterModifier)CardModifierManager.getModifiers(card, ID).get(0)).amount += amount;
+            card.baseDamage += amount;
             card.applyPowers();
             return false;
         }
         return true;
+    }
+
+    @Override
+    public boolean unstack(AbstractCard card, int stacksToUnstack) {
+        if (CardModifierManager.hasModifier(card, ID)) {
+            ((AbstractBoosterModifier)CardModifierManager.getModifiers(card, ID).get(0)).amount -= stacksToUnstack;
+            card.baseDamage -= stacksToUnstack;
+            card.applyPowers();
+        }
+        return amount <= 0;
     }
 
     @Override
@@ -57,6 +64,6 @@ public class TempDamageModifier extends AbstractValueBuffModifier {
 
     @Override
     public String getSuffix() {
-        return TEXT[1]+increase;
+        return TEXT[1]+amount;
     }
 }
