@@ -688,18 +688,18 @@ public class M10RobotMod implements
         // in order to automatically differentiate which pool to add the relic too.
 
         // This adds a character specific relic. Only when you play with the mentioned color, will you get this relic.
-        BaseMod.addRelicToCustomPool(new ArmorModule(), M10Robot.Enums.GREEN_SPRING_CARD_COLOR);
+        BaseMod.addRelicToCustomPool(new ProtectiveShell(), M10Robot.Enums.GREEN_SPRING_CARD_COLOR);
         //BaseMod.addRelicToCustomPool(new BottledStar(), M10Robot.Enums.GREEN_SPRING_CARD_COLOR);
-        BaseMod.addRelicToCustomPool(new ArmorModule2(), M10Robot.Enums.GREEN_SPRING_CARD_COLOR);
+        BaseMod.addRelicToCustomPool(new ProtectiveShell2(), M10Robot.Enums.GREEN_SPRING_CARD_COLOR);
         BaseMod.addRelicToCustomPool(new ModularBody(), M10Robot.Enums.GREEN_SPRING_CARD_COLOR);
 
         // This adds a relic to the Shared pool. Every character can find this relic.
         //BaseMod.addRelic(new PlaceholderRelic2(), RelicType.SHARED);
 
         // Mark relics as seen (the others are all starters so they're marked as seen in the character file
-        UnlockTracker.markRelicAsSeen(ArmorModule.ID);
+        UnlockTracker.markRelicAsSeen(ProtectiveShell.ID);
         //UnlockTracker.markRelicAsSeen(BottledStar.ID);
-        UnlockTracker.markRelicAsSeen(ArmorModule2.ID);
+        UnlockTracker.markRelicAsSeen(ProtectiveShell2.ID);
         UnlockTracker.markRelicAsSeen(ModularBody.ID);
         logger.info("Done adding relics!");
     }

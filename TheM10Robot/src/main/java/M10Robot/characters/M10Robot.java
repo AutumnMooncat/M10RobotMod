@@ -7,7 +7,7 @@ import M10Robot.M10RobotMod;
 import M10Robot.cards.*;
 import M10Robot.cards.interfaces.SkillAnimationAttack;
 import M10Robot.cards.modules.TargetingSystem;
-import M10Robot.relics.ArmorModule;
+import M10Robot.relics.ProtectiveShell;
 import M10Robot.relics.ModularBody;
 import M10Robot.vfx.StarBreakerVictoryEffect;
 import basemod.ReflectionHacks;
@@ -203,10 +203,10 @@ public class M10Robot extends CustomPlayer {
     public ArrayList<String> getStartingRelics() {
         ArrayList<String> retVal = new ArrayList<>();
 
-        retVal.add(ArmorModule.ID);
+        retVal.add(ProtectiveShell.ID);
         retVal.add(ModularBody.ID);
 
-        UnlockTracker.markRelicAsSeen(ArmorModule.ID);
+        UnlockTracker.markRelicAsSeen(ProtectiveShell.ID);
         UnlockTracker.markRelicAsSeen(ModularBody.ID);
 
         //logger.info("Starter Relic, crash?");
