@@ -1,14 +1,22 @@
 package M10Robot.powers;
 
 import M10Robot.M10RobotMod;
+import M10Robot.actions.EquipBoosterAction;
+import M10Robot.actions.EvokeSpecificOrbMultipleTimesAction;
+import M10Robot.cardModifiers.DealDamageEffect;
 import M10Robot.cards.abstractCards.AbstractModuleCard;
-import M10Robot.cards.modules.PowerSavings;
+import M10Robot.cards.modules.*;
+import M10Robot.cards.tempCards.WeaponPolishBooster;
 import basemod.ClickableUIElement;
+import basemod.helpers.CardModifierManager;
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
@@ -19,7 +27,9 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.orbs.AbstractOrb;
+import com.megacrit.cardcrawl.powers.*;
 
 import java.util.ArrayList;
 
@@ -32,6 +42,8 @@ public class ModulesPower extends AbstractPower implements CloneablePowerInterfa
 
     public ClickablePowerElement clickableElement;
     public final CardGroup modules;
+    public int evokedThisTurn;
+    private final ArrayList<AbstractOrb> orbsEvokedThisTurn = new ArrayList<>();
     // We create 2 new textures *Using This Specific Texture Loader* - an 84x84 image and a 32x32 one.
     // There's a fallback "missing texture" image, so the game shouldn't crash if you accidentally put a non-existent file.
     //private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power84.png"));
@@ -69,22 +81,139 @@ public class ModulesPower extends AbstractPower implements CloneablePowerInterfa
         updateDescription();
     }
 
+    @Override
+    public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
+        if (target != owner && info.type == DamageInfo.DamageType.NORMAL) {
+            int str = 0;
+            for (AbstractCard m : modules.group) {
+                if (m instanceof Rumble) {
+                    str += m.magicNumber;
+                }
+            }
+            if (str > 0) {
+                this.addToBot(new ApplyPowerAction(owner, owner, new StrengthPower(owner, str), str, true));
+                this.addToBot(new ApplyPowerAction(owner, owner, new LoseStrengthPower(owner, str), str, true));
+                flash();
+            }
+        }
+    }
+
+    @Override
+    public void onAfterCardPlayed(AbstractCard usedCard) {
+        if (usedCard.type == AbstractCard.CardType.ATTACK) {
+            int increase = 0;
+            for (AbstractCard m : modules.group) {
+                if (m instanceof WeaponPolish) {
+                    increase += m.magicNumber;
+                }
+            }
+            if (increase > 0) {
+                WeaponPolishBooster booster = new WeaponPolishBooster(increase);
+                this.addToTop(new EquipBoosterAction(usedCard, booster, true));
+                flash();
+            }
+        }
+    }
+
+    @Override
+    public void onChannel(AbstractOrb orb) {
+        boolean flash = false;
+        int evokes = 0;
+        for (AbstractCard m : modules.group) {
+            if (m instanceof AutoCaster) {
+                evokes += m.magicNumber;
+            }
+        }
+        if (evokes > 0) {
+            this.addToTop(new EvokeSpecificOrbMultipleTimesAction(orb, evokes));
+            flash = true;
+        }
+        if (flash) {
+            flash();
+        }
+        super.onChannel(orb);
+    }
+
+    @Override
+    public void onEvokeOrb(AbstractOrb orb) {
+        int doublers = 0;
+        for (AbstractCard m : modules.group) {
+            if (m instanceof DoubleCaster) {
+                doublers += m.magicNumber;
+            }
+        }
+        if (evokedThisTurn < doublers && !orbsEvokedThisTurn.contains(orb)) {
+            orbsEvokedThisTurn.add(orb);
+            evokedThisTurn++;
+            orb.onEvoke();
+            flash();
+        }
+        super.onEvokeOrb(orb);
+    }
+
     public void atStartOfTurn() {
         boolean flash = false;
         int energy = 0;
+        int focus = 0;
+        int lockon = 0;
         for (AbstractCard m : modules.group) {
             if (m instanceof PowerSavings) {
                 energy += m.magicNumber;
+            }
+            if (m instanceof Concentration) {
+                if (((AbstractModuleCard)m).secondMagicNumber < m.magicNumber) {
+                    ((AbstractModuleCard)m).secondMagicNumber++;
+                    focus++;
+                }
+            }
+            if (m instanceof Repeater) {
+                if (CardModifierManager.modifiers(m).size() > 0) {
+                    CardModifierManager.onUseCard(m, AbstractDungeon.getRandomMonster(), null);
+                    flash = true;
+                }
+            }
+            if (m instanceof TargetingSystem) {
+                lockon += m.magicNumber;
             }
         }
         if (energy > 0) {
             this.addToBot(new GainEnergyAction(energy));
             flash = true;
         }
+        if (focus > 0) {
+            this.addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new FocusPower(AbstractDungeon.player, focus)));
+            flash = true;
+        }
+        if (lockon > 0) {
+            //this.addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new RepairableArmorPower(AbstractDungeon.player, protect)));
+            for (int i = 0 ; i < lockon ; i++) {
+                AbstractMonster aM = AbstractDungeon.getRandomMonster();
+                this.addToBot(new ApplyPowerAction(aM, owner, new LockOnPower(aM, 1), 1, true));
+            }
+            flash = true;
+        }
         if (flash) {
             this.flash();
         }
+        evokedThisTurn = 0;
+    }
 
+    @Override
+    public void atEndOfTurn(boolean isPlayer) {
+        boolean flash = false;
+        for (AbstractCard m : modules.group) {
+            if (m instanceof WeaponPlatform) {
+                for (AbstractMonster mon : AbstractDungeon.getMonsters().monsters) {
+                    if (!mon.isDeadOrEscaped() && mon.hasPower(LockOnPower.POWER_ID)) {
+                        this.addToBot(new DamageAction(mon, new DamageInfo(owner, m.magicNumber, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.FIRE, true));
+                    }
+                }
+                flash = true;
+            }
+        }
+        if (flash) {
+            this.flash();
+        }
     }
 
     @Override
@@ -114,14 +243,22 @@ public class ModulesPower extends AbstractPower implements CloneablePowerInterfa
         description = sb.toString();
     }
 
+    public static int getModuleAmount(Class<AbstractCard> moduleClass) {
+        int ret = 0;
+        for (AbstractCard mod : getEquippedModules()) {
+            if (moduleClass.isInstance(mod)) {
+                ret++;
+            }
+        }
+        return ret;
+    }
+
 
     @Override
     public void renderAmount(SpriteBatch sb, float x, float y, Color c) {
         c = new Color(0.0F, 1.0F, 0.0F, 1.0F);
-        if (this.amount > 0) {
-            FontHelper.renderFontRightTopAligned(sb, FontHelper.powerAmountFont, Integer.toString(this.modules.size()), x, y, this.fontScale, c);
-        }
-        FontHelper.renderFontRightTopAligned(sb, FontHelper.powerAmountFont, Integer.toString(this.amount), x, y + 15.0F * Settings.scale, this.fontScale, c);
+        FontHelper.renderFontRightTopAligned(sb, FontHelper.powerAmountFont, Integer.toString(this.amount), x, y, this.fontScale, c);
+        FontHelper.renderFontRightTopAligned(sb, FontHelper.powerAmountFont, Integer.toString(this.modules.size()), x, y + 15.0F * Settings.scale, this.fontScale, c);
     }
 
     @Override
