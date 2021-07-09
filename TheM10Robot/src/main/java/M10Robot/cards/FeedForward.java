@@ -47,6 +47,7 @@ public class FeedForward extends AbstractDynamicCard implements PostEnergyRechar
 
     // /STAT DECLARATION/
 
+    //TODO upgrade ALL Feed Forward cards?
     public FeedForward() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = damage = DAMAGE;
@@ -66,7 +67,7 @@ public class FeedForward extends AbstractDynamicCard implements PostEnergyRechar
     @Override
     public void onPlayCard(AbstractCard c, AbstractMonster m) {
         if (c != this && playedThisTurn) {
-            CardCrawlGame.sound.play("CARD_UPGRADE", 0.1F);
+            //CardCrawlGame.sound.play("CARD_UPGRADE", 0.1F);
             upgradeDamage(UPGRADE_PLUS_DMG);
         }
     }
