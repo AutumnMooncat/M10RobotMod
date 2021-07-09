@@ -60,10 +60,12 @@ public class ReflectiveShell extends AbstractDynamicCard implements ModularDescr
 
     @Override
     public void changeDescription() {
-        if (magicNumber == 1) {
-            rawDescription = DESCRIPTION;
-        } else {
-            rawDescription = UPGRADE_DESCRIPTION;
+        if (DESCRIPTION != null) {
+            if (magicNumber > 1) {
+                rawDescription = UPGRADE_DESCRIPTION;
+            } else {
+                rawDescription = DESCRIPTION;
+            }
         }
     }
 }
