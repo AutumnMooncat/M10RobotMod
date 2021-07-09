@@ -27,13 +27,13 @@ public class AmmoBox extends AbstractModuleCard {
 
     // STAT DECLARATION
 
-    private static final CardRarity RARITY = CardRarity.COMMON;
+    private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.NONE;
     private static final CardType TYPE = CardType.POWER;
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
-    private static final int DMG_BOOST = 2;
-    private static final int UPGRADE_PLUS_BOOST = 1;
+    private static final int DMG_BOOST = 3;
+    private static final int UPGRADE_PLUS_BOOST = 2;
 
     // /STAT DECLARATION/
 
