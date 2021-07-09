@@ -403,13 +403,13 @@ public class M10RobotMod implements
     
     @Override
     public void receiveEditCharacters() {
-        logger.info("Beginning to edit characters. " + "Add " + M10Robot.Enums.THE_M10_ROBOT.toString());
+        logger.info("Beginning to edit characters. " + "Add " + M10Robot.Enums.THE_MIO_ROBOT.toString());
         
-        BaseMod.addCharacter(new M10Robot("M10 Robot", M10Robot.Enums.THE_M10_ROBOT),
-                M10_BUTTON, M10_BG, M10Robot.Enums.THE_M10_ROBOT);
+        BaseMod.addCharacter(new M10Robot("The M10 Robot", M10Robot.Enums.THE_MIO_ROBOT),
+                M10_BUTTON, M10_BG, M10Robot.Enums.THE_MIO_ROBOT);
         
         receiveEditPotions();
-        logger.info("Added " + M10Robot.Enums.THE_M10_ROBOT.toString());
+        logger.info("Added " + M10Robot.Enums.THE_MIO_ROBOT.toString());
     }
     
     // =============== /LOAD THE CHARACTER/ =================
@@ -666,7 +666,7 @@ public class M10RobotMod implements
         // just remove the player class at the end (in this case the "TheDefaultEnum.THE_DEFAULT".
         // Remember, you can press ctrl+P inside parentheses like addPotions)
 
-        BaseMod.addPotion(BurnPotion.class, BURN_POTION_LIQUID, BURN_POTION_HYBRID, BURN_POTION_SPOTS, BurnPotion.POTION_ID, M10Robot.Enums.THE_M10_ROBOT);
+        BaseMod.addPotion(BurnPotion.class, BURN_POTION_LIQUID, BURN_POTION_HYBRID, BURN_POTION_SPOTS, BurnPotion.POTION_ID, M10Robot.Enums.THE_MIO_ROBOT);
 
         logger.info("Done editing potions");
     }
