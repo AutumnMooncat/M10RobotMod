@@ -45,24 +45,12 @@ public class PowerSavings extends AbstractModuleCard implements ModularDescripti
         super(ID, IMG, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = ENERGY;
         secondMagicNumber = baseSecondMagicNumber = WEAK;
-        changeDescription();
+        initializeDescription();
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {}
-
-    @Override
-    public void applyPowers() {
-        super.applyPowers();
-        changeDescription();
-    }
-
-    @Override
-    public void triggerOnGlowCheck() {
-        super.triggerOnGlowCheck();
-        changeDescription();
-    }
 
     //Upgraded stats.
     @Override
@@ -77,13 +65,14 @@ public class PowerSavings extends AbstractModuleCard implements ModularDescripti
 
     @Override
     public void changeDescription() {
-        StringBuilder sb = new StringBuilder();
-        sb.append(DESCRIPTION);
-        for (int i = 0 ; i < magicNumber ; i++) {
-            sb.append(EXTENDED_DESCRIPTION[1]);
+        if (DESCRIPTION != null) {
+            StringBuilder sb = new StringBuilder();
+            sb.append(DESCRIPTION);
+            for (int i = 0 ; i < magicNumber ; i++) {
+                sb.append(EXTENDED_DESCRIPTION[1]);
+            }
+            sb.append(EXTENDED_DESCRIPTION[0]);
+            rawDescription = sb.toString();
         }
-        sb.append(EXTENDED_DESCRIPTION[0]);
-        rawDescription = sb.toString();
-        initializeDescription();
     }
 }
