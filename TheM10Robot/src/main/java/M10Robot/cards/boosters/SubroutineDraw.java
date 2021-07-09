@@ -55,7 +55,7 @@ public class SubroutineDraw extends AbstractBoosterCard {
 
     @Override
     public ArrayList<AbstractBoosterModifier> getBoosterModifiers() {
-        return new ArrayList<>(Collections.singletonList(new DrawCardEffect(this, 1)));
+        return new ArrayList<>(Collections.singletonList(new DrawCardEffect(this)));
     }
 
     //Upgraded stats.
