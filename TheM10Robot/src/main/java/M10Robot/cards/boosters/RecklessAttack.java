@@ -62,7 +62,7 @@ public class RecklessAttack extends AbstractBoosterCard {
 
     @Override
     public ArrayList<AbstractBoosterModifier> getBoosterModifiers() {
-        return new ArrayList<>(Arrays.asList(new TempDamageModifier(damage), new GainRecoilEffect(this, 1)));
+        return new ArrayList<>(Arrays.asList(new TempDamageModifier(damage), new GainRecoilEffect(this)));
     }
 
     //Upgraded stats.
