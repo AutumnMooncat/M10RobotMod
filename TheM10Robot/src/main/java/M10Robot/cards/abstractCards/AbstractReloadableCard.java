@@ -70,7 +70,7 @@ public abstract class AbstractReloadableCard extends AbstractClickableCard {
 
     @Override
     public boolean canUse(AbstractPlayer p, AbstractMonster m) {
-        return super.canUse(p, m) && !needsReload;
+        return super.canUse(p, m) && (isInAutoplay || !needsReload);
     }
 
     public void useShot() {
