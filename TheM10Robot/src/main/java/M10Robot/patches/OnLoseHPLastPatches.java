@@ -7,11 +7,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import javassist.CtBehavior;
 
 public class OnLoseHPLastPatches {
-    @SpirePatch(
-            clz = AbstractPlayer.class,
-            method = "damage"
-
-    )
+    @SpirePatch(clz = AbstractPlayer.class, method = "damage")
     public static class DamageTakenListener {
         @SpireInsertPatch(locator = Locator.class, localvars = {"damageAmount"})
         public static void damageTakenListener(AbstractPlayer __instance, DamageInfo info, @ByRef int[] damageAmount) {
