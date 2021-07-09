@@ -7,7 +7,7 @@
       "Damage mitigated: "," NL Scrambles: "
     ]
   },
-  "M10Robot:ProtectiveShell": {
+  "M10Robot:ProtectiveShell2": {
     "NAME": "ProtectiveShell 2.0",
     "FLAVOR": "The upgraded shell can withstand additional hits over its predecessor.",
     "DESCRIPTIONS": [
