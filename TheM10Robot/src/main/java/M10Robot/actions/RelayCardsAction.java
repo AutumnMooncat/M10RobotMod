@@ -35,6 +35,9 @@ public class RelayCardsAction extends AbstractGameAction {
                     r.relayCards.addToTop(c);
                     //p.hand.empower(c);
                 }
+                r.amount = r.relayCards.size();
+                r.flash();
+                r.updateDescription();
             } else {
                 for (AbstractCard c : cards) {
                     //p.hand.empower(c);
