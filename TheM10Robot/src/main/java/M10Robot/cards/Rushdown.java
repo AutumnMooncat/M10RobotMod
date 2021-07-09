@@ -16,6 +16,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.Hitbox;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.ThornsPower;
 import com.megacrit.cardcrawl.vfx.combat.SmallLaserEffect;
 
 import java.util.ArrayList;
@@ -57,7 +58,8 @@ public class Rushdown extends AbstractDynamicCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         float xB = p.drawX;
         float yB = p.drawY;
-        float speed = 150f;
+        float speed = 150f * Settings.scale;
+        boolean hasThorns = p.hasPower(ThornsPower.POWER_ID);
         ArrayList<AbstractMonster> hits = findCollisions(p, m);
         Vector2 tmp = new Vector2(m.hb.cX - p.hb.cX, m.hb.cY - p.hb.cY);
         if (tmp.len() == 0) {
@@ -76,8 +78,18 @@ public class Rushdown extends AbstractDynamicCard {
                 }
             }
         });
+
         for (AbstractMonster aM : hits) {
             this.addToBot(new DamageAction(aM, new DamageInfo(p, multiDamage[AbstractDungeon.getMonsters().monsters.indexOf(aM)], damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+            if (hasThorns) {
+                this.addToBot(new AbstractGameAction() {
+                    @Override
+                    public void update() {
+                        p.getPower(ThornsPower.POWER_ID).onAttacked(new DamageInfo(aM, 0, DamageInfo.DamageType.NORMAL), 0);
+                        this.isDone = true;
+                    }
+                });
+            }
         }
         this.addToBot(new AbstractGameAction() {
             @Override
