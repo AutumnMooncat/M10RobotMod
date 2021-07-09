@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static M10Robot.M10RobotMod.makeCardPath;
-
+@Deprecated
 public class MalfunctionOLD extends AbstractDynamicCard implements ModularDescription {
 
     /*
@@ -56,24 +56,11 @@ public class MalfunctionOLD extends AbstractDynamicCard implements ModularDescri
         this.addToBot(new LoseHPAction(p, p, secondMagicNumber));
     }
 
-    @Override
-    public void applyPowers() {
-        super.applyPowers();
-        changeDescription();
-    }
-
-    @Override
-    public void triggerOnGlowCheck() {
-        super.triggerOnGlowCheck();
-        changeDescription();
-    }
-
     //Upgraded stats.
     @Override
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            changeDescription();
             this.selfRetain = true;
             initializeDescription();
         }
@@ -81,19 +68,20 @@ public class MalfunctionOLD extends AbstractDynamicCard implements ModularDescri
 
     @Override
     public void changeDescription() {
-        if (magicNumber == 1) {
-            if (upgraded) {
-                rawDescription = UPGRADE_DESCRIPTION;
+        if (DESCRIPTION != null) {
+            if (magicNumber > 1) {
+                if (upgraded) {
+                    rawDescription = EXTENDED_DESCRIPTION[1];
+                } else {
+                    rawDescription = EXTENDED_DESCRIPTION[0];
+                }
             } else {
-                rawDescription = DESCRIPTION;
-            }
-        } else {
-            if (upgraded) {
-                rawDescription = EXTENDED_DESCRIPTION[1];
-            } else {
-                rawDescription = EXTENDED_DESCRIPTION[0];
+                if (upgraded) {
+                    rawDescription = UPGRADE_DESCRIPTION;
+                } else {
+                    rawDescription = DESCRIPTION;
+                }
             }
         }
-        initializeDescription();
     }
 }
