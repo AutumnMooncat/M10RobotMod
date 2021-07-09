@@ -45,25 +45,12 @@ public class RAMUpgrade extends AbstractDynamicCard implements ModularDescriptio
     public RAMUpgrade() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = EFFECT;
-        changeDescription();
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.addToBot(new ApplyPowerAction(p, p, new ModulesPower(p, magicNumber)));
-    }
-
-    @Override
-    public void applyPowers() {
-        super.applyPowers();
-        changeDescription();
-    }
-
-    @Override
-    public void triggerOnGlowCheck() {
-        super.triggerOnGlowCheck();
-        changeDescription();
     }
 
     //Upgraded stats.
@@ -78,11 +65,12 @@ public class RAMUpgrade extends AbstractDynamicCard implements ModularDescriptio
 
     @Override
     public void changeDescription() {
-        if (magicNumber > 1) {
-            rawDescription = UPGRADE_DESCRIPTION;
-        } else {
-            rawDescription = DESCRIPTION;
+        if (DESCRIPTION != null) {
+            if (magicNumber > 1) {
+                rawDescription = UPGRADE_DESCRIPTION;
+            } else {
+                rawDescription = DESCRIPTION;
+            }
         }
-        initializeDescription();
     }
 }
