@@ -62,14 +62,12 @@ public class SplitBeam extends AbstractDynamicCard {
             this.addToBot(new SFXAction("ATTACK_MAGIC_BEAM_SHORT", 0.5F));
             this.addToBot(new VFXAction(new SmallLaserEffect(mo.hb.cX, mo.hb.cY, p.hb.cX, p.hb.cY), 0.1F));
             this.addToBot(new DamageAction(mo, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.NONE, true));
-            this.addToBot(new ApplyPowerAction(mo, p, new WeakPower(mo, secondMagicNumber, false), secondMagicNumber, true));
         }
 
         for (AbstractMonster mo : hitMap.keySet()) {
             if (hitMap.get(mo) > 1) {
                 this.addToBot(new VFXAction(new ExplosionSmallEffect(mo.hb.cX, mo.hb.cY), 0.1F));
                 this.addToBot(new DamageAction(mo, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.NONE, true));
-                this.addToBot(new ApplyPowerAction(mo, p, new WeakPower(mo, secondMagicNumber, false), secondMagicNumber, true));
             }
         }
     }
