@@ -1,6 +1,7 @@
 package M10Robot.cards.abstractCards;
 
 import com.evacipated.cardcrawl.mod.stslib.patches.HitboxRightClick;
+import com.megacrit.cardcrawl.actions.GameActionManager;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
@@ -36,7 +37,7 @@ public abstract class AbstractClickableCard extends AbstractDynamicCard {
     }
 
     public void clickUpdate() {
-        if (!AbstractDungeon.isScreenUp && HitboxRightClick.rightClicked.get(this.hb)) {
+        if (!AbstractDungeon.isScreenUp && HitboxRightClick.rightClicked.get(this.hb) && !AbstractDungeon.actionManager.turnHasEnded) {
             onRightClick();
         }
     }
