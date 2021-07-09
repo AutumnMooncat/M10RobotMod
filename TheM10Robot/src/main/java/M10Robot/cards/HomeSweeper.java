@@ -3,24 +3,22 @@ package M10Robot.cards;
 import M10Robot.M10RobotMod;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
+import basemod.BaseMod;
+import basemod.interfaces.PostEnergyRechargeSubscriber;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.GameActionManager;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.vfx.combat.SmallLaserEffect;
 import com.megacrit.cardcrawl.vfx.combat.SweepingBeamEffect;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
-public class HomeSweeper extends AbstractDynamicCard {
+public class HomeSweeper extends AbstractDynamicCard implements PostEnergyRechargeSubscriber {
 
 
     // TEXT DECLARATION
@@ -41,19 +39,22 @@ public class HomeSweeper extends AbstractDynamicCard {
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
-    private static final int COST = 3;
-    private static final int DAMAGE = 15;
-    private static final int UPGRADE_PLUS_DMG = 5;
-
-    private static final int TURN_INCREASE = 10;
+    private static final int COST = 2;
+    private static final int DAMAGE = 16;
+    private static final int UPGRADE_PLUS_DMG = 6;
+    private static final int DAMAGE_PER_TURN_SCALING = 2;
 
     // /STAT DECLARATION/
 
     public HomeSweeper() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = damage = DAMAGE;
-        magicNumber = baseMagicNumber = DAMAGE;
+        magicNumber = baseMagicNumber = DAMAGE_PER_TURN_SCALING;
+        secondMagicNumber = baseSecondMagicNumber = DAMAGE;
         isMultiDamage = true;
+        if (AbstractDungeon.player != null && !AbstractDungeon.player.masterDeck.contains(this)) {
+            BaseMod.subscribe(this);
+        }
     }
 
     // Actions the card should do.
@@ -64,22 +65,21 @@ public class HomeSweeper extends AbstractDynamicCard {
         this.addToBot(new DamageAllEnemiesAction(p, this.multiDamage, this.damageTypeForTurn, AbstractGameAction.AttackEffect.FIRE));
     }
 
-    @Override
-    public void calculateCardDamage(AbstractMonster mo) {
-        int bonus = (GameActionManager.turn % TURN_INCREASE);
-        super.calculateCardDamage(mo);
-        damage += magicNumber*bonus;
-        isDamageModified = baseDamage != damage;
-    }
-
     // Upgraded stats.
     @Override
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
             upgradeDamage(UPGRADE_PLUS_DMG);
-            upgradeMagicNumber(UPGRADE_PLUS_DMG);
             initializeDescription();
+        }
+    }
+
+    @Override
+    public void receivePostEnergyRecharge() {
+        if (!AbstractDungeon.player.masterDeck.contains(this)) {
+            upgradeDamage(magicNumber);
+            superFlash();
         }
     }
 }
