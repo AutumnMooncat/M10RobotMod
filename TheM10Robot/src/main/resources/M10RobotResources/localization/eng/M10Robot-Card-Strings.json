@@ -289,8 +289,8 @@
     "NAME": "Subroutine: Strike",
     "DESCRIPTION": "Modifications: NL Deal !D! damage NL Requirements: NL Is playable"
   },
-  "M10Robot:Surveillance ": {
-    "NAME": "Surveillance ",
+  "M10Robot:Surveillance": {
+    "NAME": "Surveillance",
     "DESCRIPTION": "Channel !M! m10robot:Searchlight."
   },
   "M10Robot:TargetingSystem": {
