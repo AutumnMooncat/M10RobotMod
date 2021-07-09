@@ -5,6 +5,7 @@ import M10Robot.cardModifiers.AbstractBoosterModifier;
 import M10Robot.cardModifiers.TempMagicNumberModifier;
 import M10Robot.cards.abstractCards.AbstractBoosterCard;
 import M10Robot.characters.M10Robot;
+import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.BranchingUpgradesCard;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.colorless.RitualDagger;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -16,7 +17,7 @@ import java.util.function.Predicate;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
-public class MagicTinkering extends AbstractBoosterCard {
+public class MagicTinkering extends AbstractBoosterCard implements BranchingUpgradesCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
@@ -70,8 +71,21 @@ public class MagicTinkering extends AbstractBoosterCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(UPGRADE_PLUS_EFFECT);
+            if (isBranchUpgrade()) {
+                branchUpgrade();
+            } else {
+                baseUpgrade();
+            }
             initializeDescription();
         }
+    }
+
+    public void baseUpgrade() {
+        upgradeMagicNumber(UPGRADE_PLUS_EFFECT);
+    }
+
+    public void branchUpgrade() {
+        this.selfRetain = true;
+        rawDescription = UPGRADE_DESCRIPTION;
     }
 }
