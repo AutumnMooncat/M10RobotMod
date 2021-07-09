@@ -2,7 +2,6 @@ package M10Robot.actions;
 
 import M10Robot.powers.RepairableArmorPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 
 public class RepairArmorAction extends AbstractGameAction {
@@ -18,7 +17,8 @@ public class RepairArmorAction extends AbstractGameAction {
     public void update() {
         if (this.duration == DURATION && this.target != null) {
             if (target.hasPower(RepairableArmorPower.POWER_ID)) {
-                this.addToTop(new ApplyPowerAction(target, target, new RepairableArmorPower(target, amount, amount), amount, true));
+                target.getPower(RepairableArmorPower.POWER_ID).flash();
+                //((RepairableArmorPower)target.getPower(RepairableArmorPower.POWER_ID)).modifyCurrentAmount(amount);
             }
         }
         this.tickDuration();
