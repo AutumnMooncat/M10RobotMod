@@ -20,7 +20,7 @@ public class MonsterBlockPatches {
         public static SpireReturn<?> BlockReader(AbstractCreature __instance, @ByRef int[] blockAmount) //Patches receive both the instance (when the method is called, the AbstractCreature it's being called on) and any parameters of the method being patched (in this case, the block amount.)
         {
             //To make sure it doesn't interfere with other mods
-            if(AbstractDungeon.player.chosenClass == M10Robot.Enums.THE_M10_ROBOT) {
+            if(AbstractDungeon.player.chosenClass == M10Robot.Enums.THE_MIO_ROBOT) {
                 if (__instance instanceof AbstractMonster) {
                     float tmp = blockAmount[0];
                     //logger.info("Intro block:" + tmp);
