@@ -6,7 +6,7 @@
     <groupId>M10Robot</groupId>
     <artifactId>M10Robot</artifactId> <!--Keep a note of this one: this is the ID used in the "auto add cards" method-->
     <name>The M10 Robot</name>
-    <version>0.0.2</version>
+    <version>0.0.3</version>
     <description>Adds M10 Robot from 100% Orange Juice.</description>
 
     <properties>
