@@ -1,6 +1,6 @@
 package M10Robot.actions;
 
-import M10Robot.cards.interfaces.SwappableCard;
+import M10Robot.cards.abstractCards.AbstractSwappableCard;
 import M10Robot.patches.relics.BottleFields;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.TransformCardInHandAction;
@@ -27,16 +27,16 @@ public class SwapCardsAction extends AbstractGameAction {
         boolean found = false;
         for (AbstractCard card : p.hand.group)
         {
-            if (card.cardID.equals(toReplace.cardID)) {
+            if (card == toReplace) {
                 found = true;
                 break;
             }
             index++;
         }
         if(found) {
-            if (toReplace instanceof SwappableCard && newCard instanceof SwappableCard) {
-                ((SwappableCard) toReplace).onSwapOut();
-                ((SwappableCard) newCard).onSwapIn();
+            if (toReplace instanceof AbstractSwappableCard && newCard instanceof AbstractSwappableCard) {
+                ((AbstractSwappableCard) toReplace).onSwapOut();
+                ((AbstractSwappableCard) newCard).onSwapIn();
                 //CardModifierManager.removeAllModifiers(toReplace, true);
                 //for (AbstractCardModifier mod : CardModifierManager.modifiers(toReplace)) {
                 //    CardModifierManager.addModifier(newCard, mod.makeCopy());

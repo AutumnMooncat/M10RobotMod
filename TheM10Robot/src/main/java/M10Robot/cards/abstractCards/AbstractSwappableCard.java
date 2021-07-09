@@ -1,0 +1,53 @@
+package M10Robot.cards.abstractCards;
+
+import M10Robot.actions.SwapCardsAction;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
+
+public abstract class AbstractSwappableCard extends AbstractClickableCard {
+    private AbstractGameAction action;
+
+    public AbstractSwappableCard(String id, String img, int cost, CardType type, CardColor color, CardRarity rarity, CardTarget target) {
+        this(id, img, cost, type, color, rarity, target, null);
+    }
+
+    public AbstractSwappableCard(String id, String img, int cost, CardType type, CardColor color, CardRarity rarity, CardTarget target, AbstractSwappableCard linkedCard) {
+        super(id, img, cost, type, color, rarity, target);
+        if (linkedCard != null) {
+            this.cardsToPreview = linkedCard;
+            this.cardsToPreview.cardsToPreview = this;
+        }
+    }
+
+    @Override
+    public void upgrade() {
+        if (cardsToPreview != null) {
+            cardsToPreview.upgrade();
+        }
+    }
+
+    @Override
+    public void onRightClick() {
+        if (canSwap() && action == null) {
+            CardCrawlGame.sound.play("CARD_SELECT", 0.1F);
+            action = new SwapCardsAction(this, cardsToPreview);
+            this.addToTop(action);
+        }
+    }
+
+    @Override
+    public void update() {
+        super.update();
+        if (action != null && action.isDone) {
+            action = null;
+        }
+    }
+
+    public boolean canSwap() {
+        return true;
+    }
+
+    public void onSwapOut() {}
+
+    public void onSwapIn() {}
+}

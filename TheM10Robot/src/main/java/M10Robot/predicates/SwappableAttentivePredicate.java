@@ -1,6 +1,6 @@
 package M10Robot.predicates;
 
-import M10Robot.cards.interfaces.SwappableCard;
+import M10Robot.cards.abstractCards.AbstractSwappableCard;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 
 import java.util.function.Predicate;
@@ -14,7 +14,7 @@ public class SwappableAttentivePredicate {
 
     public boolean testPredicatesOnSwappable(AbstractCard c) {
         boolean b = p.test(c);
-        if (c instanceof SwappableCard && c.cardsToPreview != null) {
+        if (c instanceof AbstractSwappableCard && c.cardsToPreview != null) {
             b |= p.test(c.cardsToPreview);
         }
         return b;
