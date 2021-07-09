@@ -1,7 +1,6 @@
 package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
-import M10Robot.actions.RepairArmorAction;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
@@ -31,8 +30,6 @@ public class ImmovableObject extends AbstractDynamicCard {
     private static final int COST = 3;
     private static final int BLOCK = 25;
     private static final int UPGRADE_PLUS_BLOCK = 10;
-    private static final int REPAIR = 7;
-    private static final int UPGRADE_PLUS_REPAIR = 3;
 
     // /STAT DECLARATION/
 
@@ -47,7 +44,6 @@ public class ImmovableObject extends AbstractDynamicCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.addToBot(new GainBlockAction(p, p, block));
-        //this.addToBot(new RepairArmorAction(p, magicNumber));
     }
 
     //Upgraded stats.
@@ -56,7 +52,6 @@ public class ImmovableObject extends AbstractDynamicCard {
         if (!upgraded) {
             upgradeName();
             upgradeBlock(UPGRADE_PLUS_BLOCK);
-            upgradeMagicNumber(UPGRADE_PLUS_REPAIR);
             initializeDescription();
         }
     }
