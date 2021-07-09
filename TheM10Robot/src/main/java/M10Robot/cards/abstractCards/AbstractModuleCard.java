@@ -2,6 +2,7 @@ package M10Robot.cards.abstractCards;
 
 
 import M10Robot.actions.EquipModuleAction;
+import M10Robot.patches.TypeOverridePatch;
 import basemod.BaseMod;
 import basemod.helpers.TooltipInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -16,6 +17,7 @@ public abstract class AbstractModuleCard extends AbstractClickableCard {
 
     public AbstractModuleCard(String id, String img, CardType type, CardColor color, CardRarity rarity, CardTarget target) {
         super(id, img, -2, type, color, rarity, target);
+        TypeOverridePatch.setOverride(this, BaseMod.getKeywordTitle("m10robot:module"));
     }
 
     @Override
@@ -23,12 +25,17 @@ public abstract class AbstractModuleCard extends AbstractClickableCard {
         return false;
     }
 
-    public List<String> getCardDescriptors() {
+    @Override
+    public boolean cardPlayable(AbstractMonster m) {
+        return false;
+    }
+
+    /*public List<String> getCardDescriptors() {
         List<String> tags = new ArrayList<>();
         tags.add(BaseMod.getKeywordTitle("m10robot:module"));
         tags.addAll(super.getCardDescriptors());
         return tags;
-    }
+    }*/
 
     @Override
     public List<TooltipInfo> getCustomTooltipsTop() {
