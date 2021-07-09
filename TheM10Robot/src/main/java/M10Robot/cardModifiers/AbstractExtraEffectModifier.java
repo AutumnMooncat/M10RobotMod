@@ -16,9 +16,9 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 @AbstractCardModifier.SaveIgnore
 public abstract class AbstractExtraEffectModifier extends AbstractBoosterModifier {
-    protected static final String ID = M10RobotMod.makeID("AbstractExtraEffectModifier");
-    protected static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-    protected static final String[] TEXT = cardStrings.EXTENDED_DESCRIPTION;
+    private static final String EXTRA_ID = M10RobotMod.makeID("AbstractExtraEffectModifier");
+    private static final CardStrings EXTRA_CARDSTRINGS = CardCrawlGame.languagePack.getCardStrings(EXTRA_ID);
+    private static final String[] EXTRA_TEXT = EXTRA_CARDSTRINGS.EXTENDED_DESCRIPTION;
     public AbstractCard attachedCard;
     public boolean isValueModified;
     public int value;
@@ -26,9 +26,9 @@ public abstract class AbstractExtraEffectModifier extends AbstractBoosterModifie
     private VariableType type;
     protected String key;
     public boolean isMutable;
-    protected int amount;
 
-    public AbstractExtraEffectModifier(AbstractCard card, VariableType type, boolean isMutable, int times) {
+    public AbstractExtraEffectModifier(String ID, AbstractCard card, VariableType type, boolean isMutable, int times) {
+        super(ID);
         attachedCard = card.makeStatEquivalentCopy();
         this.type = type;
         this.isMutable = isMutable;
@@ -110,8 +110,21 @@ public abstract class AbstractExtraEffectModifier extends AbstractBoosterModifie
 
     @Override
     public void onInitialApplication(AbstractCard card) {
+        registerVariable(card);
+    }
+
+    public void registerVariable(AbstractCard card) {
         DynamicDynamicVariableManager.registerVariable(card, this);
         key = "!" + DynamicDynamicVariableManager.generateKey(card, this) + "!";
+    }
+
+    public static void clearAndRecreateRegister(AbstractCard card) {
+        DynamicDynamicVariableManager.clearSpecificVariable(card);
+        for (AbstractCardModifier mod : CardModifierManager.modifiers(card)) {
+            if (mod instanceof AbstractExtraEffectModifier) {
+                ((AbstractExtraEffectModifier) mod).registerVariable(card);
+            }
+        }
     }
 
     protected enum VariableType {
@@ -134,16 +147,16 @@ public abstract class AbstractExtraEffectModifier extends AbstractBoosterModifie
 
     protected String applyTimes(String s) {
         if (amount == 1) {
-            s += TEXT[3];
+            s += EXTRA_TEXT[3];
         } else {
-            s += TEXT[1] + amount + TEXT[2];
+            s += EXTRA_TEXT[1] + amount + EXTRA_TEXT[2];
         }
         return s;
     }
 
     protected String applyMutable(String s) {
         if (isMutable) {
-            s = TEXT[0] + s;
+            s = EXTRA_TEXT[0] + s;
         }
         return s;
     }

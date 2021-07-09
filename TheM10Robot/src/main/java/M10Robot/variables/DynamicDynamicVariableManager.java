@@ -99,6 +99,14 @@ public class DynamicDynamicVariableManager extends DynamicVariable {
         managerInstance.variableDatabase.clear();
     }
 
+    public static void clearSpecificVariable(AbstractCard card) {
+        ArrayList<AbstractExtraEffectModifier> list = managerInstance.variableDatabase.get(card);
+        for (AbstractExtraEffectModifier mod : list) {
+            BaseMod.cardDynamicVariableMap.remove(generateKey(card, mod));
+        }
+        managerInstance.variableDatabase.remove(card);
+    }
+
     public static void registerVariable(AbstractCard card, AbstractExtraEffectModifier mod) {
         if (!managerInstance.variableDatabase.containsKey(card)) {
             ArrayList<AbstractExtraEffectModifier> list = new ArrayList<>();
