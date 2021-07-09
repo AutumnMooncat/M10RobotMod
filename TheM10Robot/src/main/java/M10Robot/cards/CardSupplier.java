@@ -60,36 +60,24 @@ public class CardSupplier extends AbstractDynamicCard implements ModularDescript
         this.addToBot(new SelectCardsInHandAction(magicNumber, EXTENDED_DESCRIPTION[0], true, true, Objects::nonNull, plsWork));
     }
 
-    @Override
-    public void applyPowers() {
-        super.applyPowers();
-        changeDescription();
-    }
-
-    @Override
-    public void triggerOnGlowCheck() {
-        super.triggerOnGlowCheck();
-        changeDescription();
-    }
-
     //Upgraded stats.
     @Override
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
             upgradeMagicNumber(UPGRADE_PLUS_CARDS);
-            changeDescription();
             initializeDescription();
         }
     }
 
     @Override
     public void changeDescription() {
-        if (magicNumber == 1) {
-            rawDescription = DESCRIPTION;
-        } else {
-            rawDescription = UPGRADE_DESCRIPTION;
+        if (DESCRIPTION != null) {
+            if (magicNumber > 1) {
+                rawDescription = UPGRADE_DESCRIPTION;
+            } else {
+                rawDescription = DESCRIPTION;
+            }
         }
-        initializeDescription();
     }
 }
