@@ -15,7 +15,7 @@ public class ImmovableObject extends AbstractDynamicCard {
     // TEXT DECLARATION
 
     public static final String ID = M10RobotMod.makeID(ImmovableObject.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderSkill.png");
+    public static final String IMG = makeCardPath("ImmovableObject.png");
 
     // /TEXT DECLARATION/
 
