@@ -122,7 +122,7 @@ public abstract class AbstractBoosterCard extends AbstractClickableCard {
         if (action != null && action.isDone) {
             HandCardSelectScreenPatches.PreviewWithBoosterField.previewBooster.set(AbstractDungeon.handCardSelectScreen, false);
             HandCardSelectScreenPatches.PreviewWithBoosterField.booster.set(AbstractDungeon.handCardSelectScreen, null);
-            if (madeAttempt && action.screenWasOpened) {
+            if (madeAttempt && !action.screenWasOpened) {
                 AbstractDungeon.effectList.add(new ThoughtBubble(AbstractDungeon.player.dialogX, AbstractDungeon.player.dialogY, 2.0f, CardCrawlGame.languagePack.getUIString(M10RobotMod.makeID("Boosters")).TEXT[1], true));
             }
             madeAttempt = false;
