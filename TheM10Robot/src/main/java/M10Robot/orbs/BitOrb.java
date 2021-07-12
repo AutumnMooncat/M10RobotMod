@@ -57,7 +57,7 @@ public class BitOrb extends AbstractCustomOrb {
         ID = ORB_ID;
         name = orbString.NAME;
 
-        linkedPower = new RobotOrbPower(this);
+        linkedPower = new BitOrbPower(this);
 
         evokeAmount = baseEvokeAmount = 0;
         passiveAmount = basePassiveAmount = 1;
@@ -165,9 +165,9 @@ public class BitOrb extends AbstractCustomOrb {
         return new BitOrb();
     }
 
-    private static class RobotOrbPower extends AbstractLinkedOrbPower {
+    private static class BitOrbPower extends AbstractLinkedOrbPower {
 
-        public RobotOrbPower(AbstractCustomOrb linkedOrb) {
+        public BitOrbPower(AbstractCustomOrb linkedOrb) {
             super(linkedOrb);
         }
 
@@ -219,7 +219,7 @@ public class BitOrb extends AbstractCustomOrb {
 
         @Override
         public AbstractPower makeCopy() {
-            return new RobotOrbPower(linkedOrb);
+            return new BitOrbPower(linkedOrb);
         }
     }
 

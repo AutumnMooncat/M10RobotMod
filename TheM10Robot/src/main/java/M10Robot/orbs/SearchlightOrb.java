@@ -22,7 +22,6 @@ import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.LockOnPower;
 import com.megacrit.cardcrawl.vfx.combat.DarkOrbActivateEffect;
-import com.megacrit.cardcrawl.vfx.combat.DarkOrbPassiveEffect;
 import com.megacrit.cardcrawl.vfx.combat.FrostOrbPassiveEffect;
 import com.megacrit.cardcrawl.vfx.combat.OrbFlareEffect;
 
@@ -54,7 +53,7 @@ public class SearchlightOrb extends AbstractCustomOrb {
         ID = ORB_ID;
         name = orbString.NAME;
 
-        linkedPower = new ThornOrbPower(this);
+        linkedPower = new SearchlightOrbPower(this);
 
         evokeAmount = baseEvokeAmount = 5;
         passiveAmount = basePassiveAmount = 2;
@@ -141,9 +140,9 @@ public class SearchlightOrb extends AbstractCustomOrb {
         return new SearchlightOrb();
     }
 
-    private static class ThornOrbPower extends AbstractLinkedOrbPower {
+    private static class SearchlightOrbPower extends AbstractLinkedOrbPower {
 
-        public ThornOrbPower(AbstractCustomOrb linkedOrb) {
+        public SearchlightOrbPower(AbstractCustomOrb linkedOrb) {
             super(linkedOrb);
         }
 
@@ -168,7 +167,7 @@ public class SearchlightOrb extends AbstractCustomOrb {
 
         @Override
         public AbstractPower makeCopy() {
-            return new ThornOrbPower(linkedOrb);
+            return new SearchlightOrbPower(linkedOrb);
         }
     }
 }
