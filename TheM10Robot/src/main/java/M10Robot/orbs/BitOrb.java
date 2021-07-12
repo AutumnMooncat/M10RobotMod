@@ -97,8 +97,8 @@ public class BitOrb extends AbstractCustomOrb {
                 this.isDone = true;
             }
         });
-        this.addToBot(new SFXAction("ATTACK_MAGIC_BEAM_SHORT", 0.5F));
-        this.addToBot(new VFXAction(new SmallLaserEffect(m.hb.cX, m.hb.cY, getXPosition(), getYPosition()), 0.0F));
+        //this.addToBot(new SFXAction("ATTACK_MAGIC_BEAM_SHORT", 0.5F));
+        //this.addToBot(new VFXAction(new SmallLaserEffect(m.hb.cX, m.hb.cY, getXPosition(), getYPosition()), 0.0F));
         this.addToBot(new VFXAction(new ExplosionSmallEffect(m.hb.cX, m.hb.cY), 0.0F));
         this.addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.NONE, true));
         this.addToTop(new RemoveSpecificPowerAction(p, p, linkedPower));
@@ -201,6 +201,20 @@ public class BitOrb extends AbstractCustomOrb {
                     }
                 });
             }
+        }
+
+        @Override
+        public int onAttacked(DamageInfo info, int damageAmount) {
+            if (info.type != DamageInfo.DamageType.THORNS && info.type != DamageInfo.DamageType.HP_LOSS) {
+                this.addToTop(new AbstractGameAction() {
+                    @Override
+                    public void update() {
+                        linkedOrb.playAnimation(HURT_IMG, MED_ANIM);
+                        this.isDone = true;
+                    }
+                });
+            }
+            return damageAmount;
         }
 
         @Override
