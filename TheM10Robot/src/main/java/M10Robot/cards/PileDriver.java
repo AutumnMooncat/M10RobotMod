@@ -25,7 +25,7 @@ public class PileDriver extends AbstractDynamicCard {
     // TEXT DECLARATION
 
     public static final String ID = M10RobotMod.makeID(PileDriver.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderAttack.png");
+    public static final String IMG = makeCardPath("PileDriver.png");
 
     // /TEXT DECLARATION/
 
