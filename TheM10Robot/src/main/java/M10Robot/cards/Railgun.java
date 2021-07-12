@@ -33,7 +33,7 @@ public class Railgun extends AbstractReloadableCard {
     // TEXT DECLARATION
 
     public static final String ID = M10RobotMod.makeID(Railgun.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderAttack.png");
+    public static final String IMG = makeCardPath("Railgun.png");
 
     // /TEXT DECLARATION/
 
