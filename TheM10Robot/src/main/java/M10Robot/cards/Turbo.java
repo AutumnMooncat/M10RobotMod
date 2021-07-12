@@ -16,7 +16,7 @@ public class Turbo extends AbstractDynamicCard implements BranchingUpgradesCard 
     // TEXT DECLARATION
 
     public static final String ID = M10RobotMod.makeID(Turbo.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderSkill.png");
+    public static final String IMG = makeCardPath("Turbo.png");
 
     // /TEXT DECLARATION/
 
