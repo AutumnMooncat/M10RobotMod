@@ -24,7 +24,7 @@ public class ScrambleField extends AbstractDynamicCard implements NegativePrimar
     // TEXT DECLARATION
 
     public static final String ID = M10RobotMod.makeID(ScrambleField.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderSkill.png");
+    public static final String IMG = makeCardPath("ScrambledDeltaField.png");
 
     // /TEXT DECLARATION/
 
