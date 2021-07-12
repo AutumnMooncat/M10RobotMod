@@ -23,7 +23,7 @@ public class RAMUpgrade extends AbstractDynamicCard implements ModularDescriptio
     // TEXT DECLARATION
 
     public static final String ID = M10RobotMod.makeID(RAMUpgrade.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderPower.png");
+    public static final String IMG = makeCardPath("RAMUpgrade.png");
 
     // /TEXT DECLARATION/
 
