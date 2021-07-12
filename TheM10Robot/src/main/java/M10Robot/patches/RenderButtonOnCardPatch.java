@@ -4,6 +4,7 @@ import M10Robot.M10RobotMod;
 import M10Robot.cards.abstractCards.AbstractBoosterCard;
 import basemod.ClickableUIElement;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
@@ -91,11 +92,11 @@ public class RenderButtonOnCardPatch {
         }
     }
 
-    @SpirePatch(clz = AbstractCard.class, method = "renderEnergy")
+    @SpirePatch(clz = AbstractCard.class, method = "renderCard")
     public static class RenderOnCardPatch
     {
-        @SpirePostfixPatch
-        public static void RenderOnCard(AbstractCard __instance, SpriteBatch sb) {
+        @SpireInsertPatch(locator = Locator.class)
+        public static void RenderOnCard(AbstractCard __instance, SpriteBatch sb, boolean hovered, boolean selected, Color ___renderColor) {
             if (AbstractDungeon.player != null && validLocation(__instance)) {
                 if (BoosterFieldPatch.hasBoosterEquipped(__instance)) {
                     if (ClickableElementField.element.get(__instance) == null) {
@@ -104,9 +105,17 @@ public class RenderButtonOnCardPatch {
                                         __instance,
                                         new TextureAtlas(Gdx.files.internal("powers/powers.atlas")).findRegion("128/" + "artifact")));
                     } else {
-                        renderHelper(sb, __instance.current_x, __instance.current_y, __instance);
+                        renderHelper(sb, ___renderColor, __instance.current_x, __instance.current_y, __instance);
                     }
                 }
+            }
+        }
+
+        private static class Locator extends SpireInsertLocator {
+            @Override
+            public int[] Locate(CtBehavior ctMethodToPatch) throws Exception {
+                Matcher finalMatcher = new Matcher.MethodCallMatcher(AbstractCard.class, "renderImage");
+                return LineFinder.findInOrder(ctMethodToPatch, finalMatcher);
             }
         }
 
@@ -119,64 +128,87 @@ public class RenderButtonOnCardPatch {
         }
 
 
-        private static void renderHelper(SpriteBatch sb, float drawX, float drawY, AbstractCard C) {
+        private static void renderHelper(SpriteBatch sb, Color color, float drawX, float drawY, AbstractCard C) {
+            sb.setColor(color);
             ClickableCardElement e = ClickableElementField.element.get(C);
             AtlasRegion img = e.imageToRender;
-            //sb.setColor(Color.WHITE);
-
-            //Used to offset where the image will appear on the card, relative to the centre of the card
-            //float dx = 155f;
-            //float dy = 210f;
-            //float dx = -(AbstractCard.RAW_W * Settings.scale) / 2f + img.originalWidth / 2.0F;
-            //float dy = 0;//(AbstractCard.RAW_H * Settings.scale) / 2f;
-            float dx = 0;
-            float dy = img.originalWidth / 2.0F;//(AbstractCard.RAW_H * Settings.scale) / 5f;
-
-            //Constants pulled from sb.draw, modified by dx and dy. This dumps the image directly in the centre of the card when dy and dy are 0
+            //Primary Cog
+            float drawScale = 1.25f;
+            float xOff = 0;
+            float yOff = 0;
+            float orbX = -132f + xOff;
+            float orbY = 192 + yOff;
+            float dist = (float) Math.sqrt(Math.pow(orbX,2) + Math.pow(orbY,2));
+            float angle = (float) (Math.toDegrees(Math.atan(orbX/orbY)) - C.angle);
+            float dx = dist * Settings.scale * C.drawScale * MathUtils.sinDeg(angle);
+            float dy = dist * Settings.scale * C.drawScale * MathUtils.cosDeg(angle);
+            float originX = img.packedWidth / 2.0F;
+            float originY = img.packedWidth / 2.0F;
+            float width = img.packedWidth;
+            float height = img.packedHeight;
+            float scaleX = C.drawScale * Settings.scale * drawScale;
+            float scaleY = C.drawScale * Settings.scale * drawScale;
+            float rotation = C.angle + e.rotAngle;
+            /*
             float x = drawX + dx + img.offsetX - (float) img.originalWidth / 2.0F;
             float y = drawY + dy + img.offsetY - (float) img.originalHeight / 2.0F;
-            float originX = img.originalWidth / 2.0F - img.offsetX - dx;
-            float originY = img.originalHeight / 2.0F - img.offsetY - dy;
+            float originX = img.originalWidth / 2.0F - img.offsetX - 0;
+            float originY = img.originalHeight / 2.0F - img.offsetY - 0;
             float worldOriginX = x + originX;
             float worldOriginY = y + originY;
             float width = img.packedWidth;
             float height = img.packedHeight;
-            float scaleX = C.drawScale * Settings.scale;
-            float scaleY = C.drawScale * Settings.scale;
-            float rotation = C.angle;
-            //sb.draw(img, drawX + img.offsetX - (float) img.originalWidth / 2.0F, drawY + img.offsetY - (float) img.originalHeight / 2.0F, (float) img.originalWidth / 2.0F - img.offsetX, (float) img.originalHeight / 2.0F - img.offsetY, (float) img.packedWidth, (float) img.packedHeight, C.drawScale * Settings.scale, C.drawScale * Settings.scale, C.angle);
-            sb.draw(img, x, y, originX, originY, width, height, scaleX, scaleY, rotation);
+            float scaleX = C.drawScale * Settings.scale * drawScale;
+            float scaleY = C.drawScale * Settings.scale * drawScale;
+            float rotation = C.angle + e.rotAngle;
+             */
 
+            //sb.draw(img, drawX + img.offsetX - (float) img.originalWidth / 2.0F, drawY + img.offsetY - (float) img.originalHeight / 2.0F, (float) img.originalWidth / 2.0F - img.offsetX, (float) img.originalHeight / 2.0F - img.offsetY, (float) img.packedWidth, (float) img.packedHeight, C.drawScale * Settings.scale, C.drawScale * Settings.scale, C.angle);
+            sb.draw(img, drawX + dx - originX, drawY + dy - originY, originX, originY, width, height, scaleX, scaleY, rotation);
 
             //Math stuff to determine the correct place to move the hitbox after factoring in scale and rotation from sb.draw
-            float fx = -originX;
-            float fy = -originY;
-            if (scaleX != 1.0F || scaleY != 1.0F) {
-                fx *= scaleX;
-                fy *= scaleY;
-            }
-
-            float x1;
-            float y1;
-            float u;
-            float v;
-            if (rotation != 0.0F) {
-                u = MathUtils.cosDeg(rotation);
-                v = MathUtils.sinDeg(rotation);
-                x1 = u * fx - v * fy;
-                y1 = v * fx + u * fy;
-            } else {
-                x1 = fx;
-                y1 = fy;
-            }
-            x1 += worldOriginX;
-            y1 += worldOriginY;
+            float hx = dist * Settings.scale * C.drawScale * MathUtils.sinDeg(C.angle);
+            float hy = dist * Settings.scale * C.drawScale * MathUtils.cosDeg(C.angle);
 
             //Move scale and angle the hitbox, then render it
-            e.setScale(C.drawScale * Settings.scale);
-            e.move(x1, y1);
+            e.setScale(C.drawScale * Settings.scale * drawScale);
+            e.move(drawX + dx - originX, drawY + dy - originY);
             //e.setAngle(C.angle);
             e.render(sb);
+
+            //Secondary Cog
+            float secondScale = 0.9f;
+            xOff = img.packedWidth*(drawScale/2f + secondScale/2f);
+            yOff = 0;
+            orbX = -132f + xOff;
+            orbY = 192 + yOff;
+            dist = (float) Math.sqrt(Math.pow(orbX,2) + Math.pow(orbY,2));
+            angle = (float) (Math.toDegrees(Math.atan(orbX/orbY)) - C.angle);
+            dx = dist * Settings.scale * C.drawScale * MathUtils.sinDeg(angle);
+            dy = dist * Settings.scale * C.drawScale * MathUtils.cosDeg(angle);
+            originX = img.packedWidth / 2.0F;
+            originY = img.packedWidth / 2.0F;
+            width = img.packedWidth;
+            height = img.packedHeight;
+            scaleX = C.drawScale * Settings.scale * secondScale;
+            scaleY = C.drawScale * Settings.scale * secondScale;
+            rotation = C.angle - e.rotAngle;
+            /*
+            float x = drawX + dx + img.offsetX - (float) img.originalWidth / 2.0F;
+            float y = drawY + dy + img.offsetY - (float) img.originalHeight / 2.0F;
+            float originX = img.originalWidth / 2.0F - img.offsetX - 0;
+            float originY = img.originalHeight / 2.0F - img.offsetY - 0;
+            float worldOriginX = x + originX;
+            float worldOriginY = y + originY;
+            float width = img.packedWidth;
+            float height = img.packedHeight;
+            float scaleX = C.drawScale * Settings.scale * drawScale;
+            float scaleY = C.drawScale * Settings.scale * drawScale;
+            float rotation = C.angle + e.rotAngle;
+             */
+
+            //sb.draw(img, drawX + img.offsetX - (float) img.originalWidth / 2.0F, drawY + img.offsetY - (float) img.originalHeight / 2.0F, (float) img.originalWidth / 2.0F - img.offsetX, (float) img.originalHeight / 2.0F - img.offsetY, (float) img.packedWidth, (float) img.packedHeight, C.drawScale * Settings.scale, C.drawScale * Settings.scale, C.angle);
+            sb.draw(img, drawX + dx - originX, drawY + dy - originY, originX, originY, width, height, scaleX, scaleY, rotation);
         }
     }
 
@@ -194,6 +226,9 @@ public class RenderButtonOnCardPatch {
         private static final float INTERVAL = 0.1f;
         private float particleTimer;
         private static Random rng = new Random();
+        public float rotAngle;
+        private static float rotSpeed = 60f;
+        private boolean clockwise = MathUtils.randomBoolean();
 
         public ClickableCardElement(AbstractCard card, TextureAtlas.AtlasRegion imageToRender) {
             super(new TextureAtlas(Gdx.files.internal("powers/powers.atlas")).findRegion("48/" + ""), 0, 0, hitboxSize, hitboxSize);
@@ -229,6 +264,8 @@ public class RenderButtonOnCardPatch {
 
         @Override
         protected void onHover() {
+            rotAngle += rotSpeed*2*Gdx.graphics.getRawDeltaTime() * (clockwise ? -1 : 1);
+            rotAngle %= 360f;
             this.particleTimer -= Gdx.graphics.getRawDeltaTime();
             if (this.particleTimer < 0.0F) {
                 float xOff = ((hitbox.width) * (float) rng.nextGaussian())*0.25f;
@@ -271,6 +308,8 @@ public class RenderButtonOnCardPatch {
         @Override
         public void update() {
             super.update();
+            rotAngle += rotSpeed*Gdx.graphics.getRawDeltaTime() * (clockwise ? -1 : 1);
+            rotAngle %= 360f;
             if (wasClicked && canOpen && canOverrideScreen()) {
                 if (AbstractDungeon.isScreenUp) {
                     //backupScreen = AbstractDungeon.screen;
