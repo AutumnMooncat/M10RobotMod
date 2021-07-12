@@ -8,8 +8,14 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -17,9 +23,10 @@ import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.OrbStrings;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.LockOnPower;
 import com.megacrit.cardcrawl.vfx.combat.LightningOrbPassiveEffect;
 import com.megacrit.cardcrawl.vfx.combat.PlasmaOrbActivateEffect;
-import com.megacrit.cardcrawl.vfx.combat.PlasmaOrbPassiveEffect;
+import com.megacrit.cardcrawl.vfx.combat.SmallLaserEffect;
 
 import static M10Robot.M10RobotMod.makeOrbPath;
 
@@ -52,6 +59,8 @@ public class BombOrb extends AbstractCustomOrb {
         name = orbString.NAME;
         scale = 1.2f;
 
+        linkedPower = new BombOrbPower(this);
+
         evokeAmount = baseEvokeAmount = 20;
         passiveAmount = basePassiveAmount = -2;
 
@@ -59,6 +68,11 @@ public class BombOrb extends AbstractCustomOrb {
 
         //angle = MathUtils.random(360.0f); // More Animation-related Numbers
         channelAnimTimer = 0.5f;
+    }
+
+    @Override
+    public void onChannel() {
+        this.addToBot(new ApplyPowerAction(p, p, linkedPower));
     }
 
     @Override
@@ -90,6 +104,7 @@ public class BombOrb extends AbstractCustomOrb {
             }
         });
         this.addToBot(new DamageAllEnemiesAction(p, DamageInfo.createDamageMatrix(evokeAmount, true, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.FIRE));
+        this.addToTop(new RemoveSpecificPowerAction(p, p, linkedPower));
     }
 
     @Override
@@ -149,5 +164,31 @@ public class BombOrb extends AbstractCustomOrb {
     @Override
     public AbstractOrb makeCopy() {
         return new BombOrb();
+    }
+
+    private static class BombOrbPower extends AbstractLinkedOrbPower {
+
+        public BombOrbPower(AbstractCustomOrb linkedOrb) {
+            super(linkedOrb);
+        }
+
+        @Override
+        public int onAttacked(DamageInfo info, int damageAmount) {
+            if (info.type != DamageInfo.DamageType.THORNS && info.type != DamageInfo.DamageType.HP_LOSS) {
+                this.addToTop(new AbstractGameAction() {
+                    @Override
+                    public void update() {
+                        linkedOrb.playAnimation(HURT_IMG, MED_ANIM);
+                        this.isDone = true;
+                    }
+                });
+            }
+            return damageAmount;
+        }
+
+        @Override
+        public AbstractPower makeCopy() {
+            return new BombOrbPower(linkedOrb);
+        }
     }
 }

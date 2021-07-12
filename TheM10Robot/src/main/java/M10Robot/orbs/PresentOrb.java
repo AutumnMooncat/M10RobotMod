@@ -9,8 +9,11 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -18,8 +21,6 @@ import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.OrbStrings;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.vfx.combat.LightningOrbActivateEffect;
-import com.megacrit.cardcrawl.vfx.combat.LightningOrbPassiveEffect;
 import com.megacrit.cardcrawl.vfx.combat.PlasmaOrbActivateEffect;
 import com.megacrit.cardcrawl.vfx.combat.PlasmaOrbPassiveEffect;
 
@@ -67,6 +68,8 @@ public class PresentOrb extends AbstractCustomOrb {
         ID = ORB_ID;
         name = orbString.NAME;
 
+        linkedPower = new PresentOrbPower(this);
+
         evokeAmount = baseEvokeAmount = 2;
         passiveAmount = basePassiveAmount = 4;
         currentAmount = 0;
@@ -77,6 +80,11 @@ public class PresentOrb extends AbstractCustomOrb {
         //angle = MathUtils.random(360.0f); // More Animation-related Numbers
         channelAnimTimer = 0.5f;
 
+    }
+
+    @Override
+    public void onChannel() {
+        this.addToBot(new ApplyPowerAction(p, p, linkedPower));
     }
 
     @Override
@@ -97,6 +105,7 @@ public class PresentOrb extends AbstractCustomOrb {
     @Override
     public void onEvoke() { // 1.On Orb Evoke
         createBooster();
+        this.addToTop(new RemoveSpecificPowerAction(p, p, linkedPower));
     }
 
     private void createBooster() {
@@ -190,5 +199,31 @@ public class PresentOrb extends AbstractCustomOrb {
     @Override
     public AbstractOrb makeCopy() {
         return new PresentOrb();
+    }
+
+    private static class PresentOrbPower extends AbstractLinkedOrbPower {
+
+        public PresentOrbPower(AbstractCustomOrb linkedOrb) {
+            super(linkedOrb);
+        }
+
+        @Override
+        public int onAttacked(DamageInfo info, int damageAmount) {
+            if (info.type != DamageInfo.DamageType.THORNS && info.type != DamageInfo.DamageType.HP_LOSS) {
+                this.addToTop(new AbstractGameAction() {
+                    @Override
+                    public void update() {
+                        linkedOrb.playAnimation(HURT_IMG, MED_ANIM);
+                        this.isDone = true;
+                    }
+                });
+            }
+            return damageAmount;
+        }
+
+        @Override
+        public AbstractPower makeCopy() {
+            return new PresentOrbPower(linkedOrb);
+        }
     }
 }
