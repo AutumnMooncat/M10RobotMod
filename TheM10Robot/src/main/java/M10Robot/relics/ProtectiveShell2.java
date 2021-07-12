@@ -36,6 +36,7 @@ public class ProtectiveShell2 extends CustomRelic {
 
     public ProtectiveShell2() {
         super(ID, IMG, OUTLINE, RelicTier.BOSS, LandingSound.MAGICAL);
+        resetStats();
     }
 
     @Override //Should replace default relic. Thanks kiooeht#3584 10/25/2020, #modding-technical
@@ -44,14 +45,15 @@ public class ProtectiveShell2 extends CustomRelic {
         AbstractPlayer p = AbstractDungeon.player;
         //If we have the starter relic...
         if (p.hasRelic(ProtectiveShell.ID)) {
+            //Grab its data
+            ProtectiveShell r = (ProtectiveShell) p.getRelic(ProtectiveShell.ID);
+            stats.put(DAMAGE_MITIGATED, r.getMitigation());
+            stats.put(SCRAMBLES, r.getScrambles());
             //Find it...
             for (int i = 0; i < p.relics.size(); ++i) {
                 if (p.relics.get(i).relicId.equals(ProtectiveShell.ID)) {
                     //Replace it
                     instantObtain(p, i, true);
-                    ProtectiveShell r = (ProtectiveShell) p.getRelic(ProtectiveShell.ID);
-                    stats.put(DAMAGE_MITIGATED, r.getMitigation());
-                    stats.put(SCRAMBLES, r.getScrambles());
                     break;
                 }
             }
