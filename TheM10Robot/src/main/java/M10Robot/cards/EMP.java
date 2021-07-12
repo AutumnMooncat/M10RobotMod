@@ -25,7 +25,7 @@ public class EMP extends AbstractDynamicCard {
     // TEXT DECLARATION
 
     public static final String ID = M10RobotMod.makeID(EMP.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderAttack.png");
+    public static final String IMG = makeCardPath("EMP.png");
 
     // /TEXT DECLARATION/
 
