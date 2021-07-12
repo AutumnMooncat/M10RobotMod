@@ -18,7 +18,7 @@ public class ReflectiveShell extends AbstractDynamicCard implements ModularDescr
     // TEXT DECLARATION
 
     public static final String ID = M10RobotMod.makeID(ReflectiveShell.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderPower.png");
+    public static final String IMG = makeCardPath("ReflectiveShell.png");
 
     // /TEXT DECLARATION/
 
