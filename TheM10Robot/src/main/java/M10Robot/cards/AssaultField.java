@@ -24,7 +24,7 @@ public class AssaultField extends AbstractDynamicCard {
     // TEXT DECLARATION
 
     public static final String ID = M10RobotMod.makeID(AssaultField.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderAttack.png");
+    public static final String IMG = makeCardPath("AssaultField.png");
 
     // /TEXT DECLARATION/
 
