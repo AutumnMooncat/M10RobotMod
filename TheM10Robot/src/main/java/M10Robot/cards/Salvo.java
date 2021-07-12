@@ -26,7 +26,7 @@ public class Salvo extends AbstractDynamicCard {
     // TEXT DECLARATION
 
     public static final String ID = M10RobotMod.makeID(Salvo.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderAttack.png");
+    public static final String IMG = makeCardPath("Salvo.png");
 
     // /TEXT DECLARATION/
 
