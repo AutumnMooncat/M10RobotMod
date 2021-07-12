@@ -18,7 +18,7 @@ public class SlotConversion extends AbstractModuleCard {
     // TEXT DECLARATION
 
     public static final String ID = M10RobotMod.makeID(SlotConversion.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderPower.png");
+    public static final String IMG = makeCardPath("SlotConversion.png");
 
     // /TEXT DECLARATION/
 
