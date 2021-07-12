@@ -16,8 +16,6 @@ public class ScrambledPower extends AbstractPower implements CloneablePowerInter
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
-    private boolean justApplied = true;
-
     // We create 2 new textures *Using This Specific Texture Loader* - an 84x84 image and a 32x32 one.
     // There's a fallback "missing texture" image, so the game shouldn't crash if you accidentally put a non-existent file.
     //private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power84.png"));
@@ -45,12 +43,9 @@ public class ScrambledPower extends AbstractPower implements CloneablePowerInter
         --AbstractDungeon.player.gameHandSize;
     }
 
-    public void atEndOfRound() {
-        if (this.justApplied) {
-            this.justApplied = false;
-        } else {
-            this.addToBot(new ReducePowerAction(this.owner, this.owner, this, 1));
-        }
+    @Override
+    public void atStartOfTurnPostDraw() {
+        this.addToTop(new ReducePowerAction(this.owner, this.owner, this, 1));
     }
 
     public void onRemove() {
