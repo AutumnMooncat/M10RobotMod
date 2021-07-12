@@ -30,7 +30,7 @@
   "M10Robot:BitOrb": {
     "NAME": "Bit",
     "DESCRIPTION": [
-      "#yPassive: Deal #b"," damage to any enemy you attack and increase this Orb's evoke damage by the same amount.",
+      "#yPassive: Deal #b"," damage to any enemy you damage and increase this Orb's evoke damage by the same amount.",
       " NL #yEvoke: Deal #b"," damage to a random enemy."
     ]
   },

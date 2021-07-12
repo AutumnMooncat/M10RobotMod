@@ -155,7 +155,7 @@
       "Bit",
       "bit"
     ],
-    "DESCRIPTION": "Orb: Deals damage when you attack. When #yEvoked, deals damage to a random enemy equal to accumulative damage dealt."
+    "DESCRIPTION": "Orb: Deals damage when you deal damage. When #yEvoked, deals damage to a random enemy equal to accumulative damage dealt."
   },
   {
     "NAMES": [
