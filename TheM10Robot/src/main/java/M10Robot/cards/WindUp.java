@@ -21,7 +21,7 @@ public class WindUp extends AbstractDynamicCard implements CustomSavable<Integer
     // TEXT DECLARATION
 
     public static final String ID = M10RobotMod.makeID(WindUp.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderAttack.png");
+    public static final String IMG = makeCardPath("WindUp.png");
 
     // /TEXT DECLARATION/
 
