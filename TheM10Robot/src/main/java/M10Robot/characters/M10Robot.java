@@ -11,6 +11,7 @@ import M10Robot.relics.ProtectiveShell;
 import M10Robot.relics.ModularBody;
 import M10Robot.vfx.StarBreakerVictoryEffect;
 import basemod.ReflectionHacks;
+import basemod.abstracts.CustomEnergyOrb;
 import basemod.abstracts.CustomPlayer;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
@@ -124,8 +125,8 @@ public class M10Robot extends CustomPlayer {
 
     public M10Robot(String name, PlayerClass setClass) {
         //super(name, setClass, orbTextures, "M10RobotResources/images/char/defaultCharacter/orb/vfxm.png", null, idleAnimation);
-        super(name, setClass, orbTextures, "M10RobotResources/images/char/tachy/orb/vfx.png", layerSpeeds, new CustomSpriterAnimation(ANIM_FILE));
-
+        super(name, setClass, new DoubleEnergyOrb(orbTextures, "M10RobotResources/images/char/tachy/orb/vfx.png", layerSpeeds), new CustomSpriterAnimation(ANIM_FILE));
+        DoubleEnergyOrb.DoubleOrbField.orb.set(this, true);
         Player.PlayerListener listener = new CustomAnimationListener(this);
         ((CustomSpriterAnimation)this.animation).myPlayer.addListener(listener);
 

@@ -146,15 +146,15 @@ public class M10RobotMod implements
     public static final String SKILL_BASE = "M10RobotResources/images/512/bg_skill.png"; //
     public static final String POWER_BASE = "M10RobotResources/images/512/bg_power.png"; //
 
-    public static final String ENERGY_ORB = "M10RobotResources/images/512/card_orb.png"; //
+    public static final String ENERGY_ORB = "M10RobotResources/images/512/card_orb_green.png"; //
 
-    public static final String CARD_ENERGY_ORB = "M10RobotResources/images/512/card_small_orb.png"; //
+    public static final String CARD_ENERGY_ORB = "M10RobotResources/images/512/card_small_orb_green.png"; //
 
     public static final String ATTACK_BASE_PORTRAIT = "M10RobotResources/images/1024/bg_attack.png"; //
     public static final String SKILL_BASE_PORTRAIT = "M10RobotResources/images/1024/bg_skill.png"; //
     public static final String POWER_BASE_PORTRAIT = "M10RobotResources/images/1024/bg_power.png"; //
 
-    public static final String ENERGY_ORB_PORTRAIT = "M10RobotResources/images/1024/card_orb.png"; //
+    public static final String ENERGY_ORB_PORTRAIT = "M10RobotResources/images/1024/card_orb_green.png"; //
     
     // Character assets
     //private static final String THE_DEFAULT_BUTTON = "M10RobotResources/images/charSelect/DefaultCharacterButton.png";
