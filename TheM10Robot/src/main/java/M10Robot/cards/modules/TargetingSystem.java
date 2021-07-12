@@ -14,7 +14,7 @@ public class TargetingSystem extends AbstractModuleCard implements BranchingUpgr
     // TEXT DECLARATION
 
     public static final String ID = M10RobotMod.makeID(TargetingSystem.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderPower.png");
+    public static final String IMG = makeCardPath("TargetingSystem.png");
 
     // /TEXT DECLARATION/
 
