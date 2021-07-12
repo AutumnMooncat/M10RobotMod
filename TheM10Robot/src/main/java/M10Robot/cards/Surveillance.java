@@ -15,7 +15,7 @@ public class Surveillance extends AbstractDynamicCard {
     // TEXT DECLARATION
 
     public static final String ID = M10RobotMod.makeID(Surveillance.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderSkill.png");
+    public static final String IMG = makeCardPath("Surveillance.png");
 
     // /TEXT DECLARATION/
 
