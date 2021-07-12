@@ -25,7 +25,7 @@ public class FeedForward extends AbstractDynamicCard implements PostEnergyRechar
     // TEXT DECLARATION
 
     public static final String ID = M10RobotMod.makeID(FeedForward.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderAttack.png");
+    public static final String IMG = makeCardPath("FeedForward.png");
 
     // /TEXT DECLARATION/
 
