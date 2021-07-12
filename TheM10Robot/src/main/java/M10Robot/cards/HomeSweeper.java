@@ -24,9 +24,7 @@ public class HomeSweeper extends AbstractDynamicCard implements PostEnergyRechar
     // TEXT DECLARATION
 
     public static final String ID = M10RobotMod.makeID(HomeSweeper.class.getSimpleName());
-    private static final CardStrings cardStrings = CardCrawlGame.languagePack.getCardStrings(ID);
-
-    public static final String IMG = makeCardPath("PlaceholderAttack.png");
+    public static final String IMG = makeCardPath("HomeSweeper.png");
     // Setting the image as as easy as can possibly be now. You just need to provide the image name
 
     // /TEXT DECLARATION/
