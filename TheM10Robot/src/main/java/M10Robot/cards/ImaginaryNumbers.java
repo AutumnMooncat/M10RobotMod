@@ -20,7 +20,7 @@ public class ImaginaryNumbers extends AbstractDynamicCard implements BranchingUp
     // TEXT DECLARATION
 
     public static final String ID = M10RobotMod.makeID(ImaginaryNumbers.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderSkill.png");
+    public static final String IMG = makeCardPath("ImaginaryNumbers.png");
 
     // /TEXT DECLARATION/
 
