@@ -43,10 +43,10 @@ public class WaveGenerator extends AbstractReloadableCard {
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
-    private static final int COST = 2;
-    private static final int DAMAGE = 12;
+    private static final int COST = 1;
+    private static final int DAMAGE = 10;
     private static final int UPGRADE_PLUS_DMG = 4;
-    private static final int HP_LOSS = 6;
+    private static final int HP_LOSS = 5;
     private static final int UPGRADE_PLUS_HP_LOSS = 2;
     private static final int SHOTS = 1;
 
