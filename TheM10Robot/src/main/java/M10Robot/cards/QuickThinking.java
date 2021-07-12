@@ -17,7 +17,7 @@ public class QuickThinking extends AbstractDynamicCard implements ModularDescrip
     // TEXT DECLARATION
 
     public static final String ID = M10RobotMod.makeID(QuickThinking.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderSkill.png");
+    public static final String IMG = makeCardPath("QuickThinking.png");
 
     // /TEXT DECLARATION/
 
