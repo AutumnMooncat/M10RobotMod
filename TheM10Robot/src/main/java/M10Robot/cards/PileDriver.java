@@ -38,8 +38,8 @@ public class PileDriver extends AbstractDynamicCard {
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
     private static final int COST = 1;
-    private static final int DAMAGE = 10;
-    private static final int UPGRADE_PLUS_DMG = 4;
+    private static final int DAMAGE = 8;
+    private static final int UPGRADE_PLUS_DMG = 3;
 
     // /STAT DECLARATION/
 
@@ -161,7 +161,7 @@ public class PileDriver extends AbstractDynamicCard {
             }
         });
         this.addToBot(new DamageAction(m, new DamageInfo(p, multiDamage[AbstractDungeon.getMonsters().monsters.indexOf(m)], damageTypeForTurn),true));
-        if (collisionMonster != null) {
+        if (collisionMonster != null && collisionMonster != m) {
             this.addToBot(new DamageAction(collisionMonster, new DamageInfo(p, multiDamage[AbstractDungeon.getMonsters().monsters.indexOf(collisionMonster)], damageTypeForTurn),true));
         }
 
