@@ -50,11 +50,12 @@
   },
   "M10Robot:BlankSlate": {
     "NAME": "Blank Slate",
-    "DESCRIPTION": "m10robot:Boosters on this card are applied twice.",
-    "UPGRADE_DESCRIPTION": "Retain. NL m10robot:Boosters on this card are applied twice."
+    "DESCRIPTION": "",
+    "UPGRADE_DESCRIPTION": "Retain.",
+    "EXTENDED_DESCRIPTION": ["Blank Slate","Boosters applied to this card are applied twice."]
   },
-  "M10Robot:BreakingForce": {
-    "NAME": "Breaking Force",
+  "M10Robot:BriefRespite": {
+    "NAME": "Brief Respite",
     "DESCRIPTION": "Retain. NL Gain !B! Block. NL Draw !M! card.",
     "UPGRADE_DESCRIPTION": "Retain. NL Gain !B! Block. NL Draw !M! cards."
   },
@@ -97,7 +98,7 @@
   },
   "M10Robot:EMP": {
     "NAME": "EMP",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies. If this attack deals unblocked damage, apply !M! m10robot:Stasis."
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL If this attack deals unblocked damage, apply !M! m10robot:Stasis."
   },
   "M10Robot:EmptyBuffer": {
     "NAME": "Empty Buffer",
@@ -129,6 +130,11 @@
   "M10Robot:Fortify": {
     "NAME": "Fortify",
     "DESCRIPTION": "Gain !B! Block. NL Channel !M! m10robot:Bit."
+  },
+  "M10Robot:FullAuto": {
+    "NAME": "Full Auto",
+    "DESCRIPTION": "m10robot:Recharging !M10Robot:AmmoCount! / !M10Robot:ThirdMagic!. NL Deal !D! damage !M! times.",
+    "EXTENDED_DESCRIPTION": ["Fuller Auto"]
   },
   "M10Robot:HealthDown": {
     "NAME": "Health Down",
@@ -181,7 +187,7 @@
   },
   "M10Robot:PileDriver": {
     "NAME": "Pile Driver",
-    "DESCRIPTION": "Lift an enemy into the air and slam it down onto a random other enemy, dealing !D! damage to both, if applicable."
+    "DESCRIPTION": "Deal !D! damage. NL Deal !D! damage to a random other enemy."
   },
   "M10Robot:PolishingKit": {
     "NAME": "Polishing Kit",
@@ -252,11 +258,16 @@
   },
   "M10Robot:Rushdown": {
     "NAME": "Rush Down",
-    "DESCRIPTION": "Charge towards the enemy, dealing !D! damage to any enemy you collide with. If you have Thorns, they activate on each hit."
+    "DESCRIPTION": "Deal !D! damage to ALL enemies you collide with. If you have Thorns, they activate on each hit."
+  },
+  "M10Robot:SaleTag": {
+    "NAME": "Sale Tag",
+    "DESCRIPTION": "Modifications: NL + !M! Refund NL Requirements: NL Non-zero cost.",
+    "UPGRADE_DESCRIPTION": "Retain. NL Modifications: NL + !M! Refund NL Requirements: NL Non-zero cost."
   },
   "M10Robot:Salvo": {
     "NAME": "Salvo",
-    "DESCRIPTION": "Remove all Orbs without Evoking them. For each Orb removed this way, throw it, dealing !D! damage."
+    "DESCRIPTION": "Remove all Orbs without Evoking them. NL Deal !D! damage for each Orb removed."
   },
   "M10Robot:ScrambleField": {
     "NAME": "Scramble Field",
@@ -272,7 +283,7 @@
   },
   "M10Robot:SelfDestruction": {
     "NAME": "Self Destruction",
-    "DESCRIPTION": "Move towards the enemy and explode. Deals up to !D! damage to ALL enemies based on proximity.",
+    "DESCRIPTION": "Deal up to !D! damage to ALL enemies based on proximity.",
     "EXTENDED_DESCRIPTION": [" NL Lose !M10Robot:SecondMagic! HP.", " NL Gain !M10Robot:SecondMagic! HP."]
   },
   "M10Robot:SlotConversion": {
@@ -293,7 +304,7 @@
   },
   "M10Robot:SplitBeam": {
     "NAME": "Split Beam",
-    "DESCRIPTION": "Deal !D! damage to a random enemy !M! times. Any enemy hit more than once takes an additional !D! damage."
+    "DESCRIPTION": "Deal !D! damage to a random enemy !M! times. NL Any enemy hit more than once takes an additional !D! damage."
   },
   "M10Robot:Strike": {
     "NAME": "Strike",

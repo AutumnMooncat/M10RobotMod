@@ -153,6 +153,12 @@
       "","m"
     ]
   },
+  "M10Robot:TempRefundModifier": {
+    "EXTENDED_DESCRIPTION": [
+      "Refund ",".",
+      "","r"
+    ]
+  },
   "M10Robot:TransmuteSelfEffect": {
     "EXTENDED_DESCRIPTION": [
       "M10Robot:Transmute this card."
