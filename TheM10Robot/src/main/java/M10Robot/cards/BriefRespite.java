@@ -4,21 +4,19 @@ import M10Robot.M10RobotMod;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.cards.interfaces.ModularDescription;
 import M10Robot.characters.M10Robot;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.NextTurnBlockPower;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
-public class BreakingForce extends AbstractDynamicCard implements ModularDescription {
+public class BriefRespite extends AbstractDynamicCard implements ModularDescription {
 
     // TEXT DECLARATION
 
-    public static final String ID = M10RobotMod.makeID(BreakingForce.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderSkill.png");
+    public static final String ID = M10RobotMod.makeID(BriefRespite.class.getSimpleName());
+    public static final String IMG = makeCardPath("BriefRespite.png");
 
     // /TEXT DECLARATION/
 
@@ -38,7 +36,7 @@ public class BreakingForce extends AbstractDynamicCard implements ModularDescrip
     // /STAT DECLARATION/
 
 
-    public BreakingForce() {
+    public BriefRespite() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         block = baseBlock = BLOCK;
         magicNumber = baseMagicNumber = CARDS;
