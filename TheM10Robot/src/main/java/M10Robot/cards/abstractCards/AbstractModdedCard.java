@@ -39,6 +39,7 @@ public abstract class AbstractModdedCard extends CustomCard {
     public String DESCRIPTION; //The main description of the card
     public String UPGRADE_DESCRIPTION; //The upgrade description of the card, if applicable
     public String[] EXTENDED_DESCRIPTION; //The Norma Effects of the card
+    public String NAME; //The base name of the card
 
     public AbstractModdedCard(final String id,
                               final String name,
@@ -69,6 +70,7 @@ public abstract class AbstractModdedCard extends CustomCard {
         DESCRIPTION = cardStrings.DESCRIPTION;
         UPGRADE_DESCRIPTION = cardStrings.UPGRADE_DESCRIPTION;
         EXTENDED_DESCRIPTION = cardStrings.EXTENDED_DESCRIPTION;
+        NAME = cardStrings.NAME;
 
         initializeDescription();
     }
