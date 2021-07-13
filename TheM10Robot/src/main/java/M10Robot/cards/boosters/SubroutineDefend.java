@@ -22,7 +22,7 @@ public class SubroutineDefend extends AbstractBoosterCard {
     // TEXT DECLARATION
 
     public static final String ID = M10RobotMod.makeID(SubroutineDefend.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderSkill.png");
+    public static final String IMG = makeCardPath("SubroutineDefend.png");
 
     // /TEXT DECLARATION/
 
