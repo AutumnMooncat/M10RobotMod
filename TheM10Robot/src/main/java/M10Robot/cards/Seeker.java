@@ -19,7 +19,7 @@ public class Seeker extends AbstractDynamicCard {
     // TEXT DECLARATION
 
     public static final String ID = M10RobotMod.makeID(Seeker.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderAttack.png");
+    public static final String IMG = makeCardPath("Seeker.png");
 
     // /TEXT DECLARATION/
 
