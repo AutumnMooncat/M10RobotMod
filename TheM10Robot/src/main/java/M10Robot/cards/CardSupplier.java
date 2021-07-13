@@ -29,7 +29,7 @@ public class CardSupplier extends AbstractDynamicCard implements ModularDescript
     // TEXT DECLARATION
 
     public static final String ID = M10RobotMod.makeID(CardSupplier.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderSkill.png");
+    public static final String IMG = makeCardPath("CardSupplier.png");
 
     // /TEXT DECLARATION/
 
