@@ -29,7 +29,7 @@ public class MagicTinkering extends AbstractBoosterCard implements BranchingUpgr
     // TEXT DECLARATION
 
     public static final String ID = M10RobotMod.makeID(MagicTinkering.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderSkill.png");
+    public static final String IMG = makeCardPath("MagicTinkering.png");
 
     // /TEXT DECLARATION/
 
