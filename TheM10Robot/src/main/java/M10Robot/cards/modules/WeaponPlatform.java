@@ -13,7 +13,7 @@ public class WeaponPlatform extends AbstractModuleCard {
     // TEXT DECLARATION
 
     public static final String ID = M10RobotMod.makeID(WeaponPlatform.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderPower.png");
+    public static final String IMG = makeCardPath("WeaponPlatform.png");
 
     // /TEXT DECLARATION/
 
