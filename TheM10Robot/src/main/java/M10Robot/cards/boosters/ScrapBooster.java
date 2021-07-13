@@ -17,17 +17,11 @@ import static M10Robot.M10RobotMod.makeCardPath;
 
 public class ScrapBooster extends AbstractBoosterCard {
 
-    /*
-     * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
-     *
-     * Defend Gain 5 (8) block.
-     */
-
 
     // TEXT DECLARATION
 
     public static final String ID = M10RobotMod.makeID(ScrapBooster.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderSkill.png");
+    public static final String IMG = makeCardPath("ScrapBooster.png");
 
     // /TEXT DECLARATION/
 
