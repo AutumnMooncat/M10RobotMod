@@ -50,11 +50,16 @@ public class TempDamageModifier extends AbstractValueBuffModifier {
     @Override
     public boolean unstack(AbstractCard card, int stacksToUnstack) {
         if (CardModifierManager.hasModifier(card, ID)) {
-            ((AbstractBoosterModifier)CardModifierManager.getModifiers(card, ID).get(0)).amount -= stacksToUnstack;
+            AbstractBoosterModifier mod = (AbstractBoosterModifier) CardModifierManager.getModifiers(card, ID).get(0);
+            mod.amount -= stacksToUnstack;
             card.baseDamage -= stacksToUnstack;
             card.applyPowers();
+            if (mod.amount <= 0) {
+                CardModifierManager.removeSpecificModifier(card, mod, true);
+                return true;
+            }
         }
-        return amount <= 0;
+        return false;
     }
 
     @Override

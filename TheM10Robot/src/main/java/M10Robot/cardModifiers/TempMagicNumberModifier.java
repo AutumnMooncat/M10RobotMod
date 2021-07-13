@@ -54,13 +54,16 @@ public class TempMagicNumberModifier extends AbstractValueBuffModifier {
     @Override
     public boolean unstack(AbstractCard card, int stacksToUnstack) {
         if (CardModifierManager.hasModifier(card, ID)) {
-            ((AbstractBoosterModifier)CardModifierManager.getModifiers(card, ID).get(0)).amount -= stacksToUnstack;
-            card.baseMagicNumber -= stacksToUnstack;
+            AbstractBoosterModifier mod = (AbstractBoosterModifier) CardModifierManager.getModifiers(card, ID).get(0);
+            mod.amount -= stacksToUnstack;
             card.magicNumber = card.baseMagicNumber;
             card.applyPowers();
-            card.initializeDescription();;
+            if (mod.amount <= 0) {
+                CardModifierManager.removeSpecificModifier(card, mod, true);
+                return true;
+            }
         }
-        return amount <= 0;
+        return false;
     }
 
     @Override
