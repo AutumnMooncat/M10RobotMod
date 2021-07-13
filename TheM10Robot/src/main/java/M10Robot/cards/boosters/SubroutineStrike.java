@@ -21,7 +21,7 @@ public class SubroutineStrike extends AbstractBoosterCard {
     // TEXT DECLARATION
 
     public static final String ID = M10RobotMod.makeID(SubroutineStrike.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderSkill.png");
+    public static final String IMG = makeCardPath("SubroutineStrike.png");
 
     // /TEXT DECLARATION/
 
