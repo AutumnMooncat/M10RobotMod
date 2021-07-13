@@ -23,7 +23,7 @@ public class RapidAssembly extends AbstractDynamicCard implements ModularDescrip
     // TEXT DECLARATION
 
     public static final String ID = M10RobotMod.makeID(RapidAssembly.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderSkill.png");
+    public static final String IMG = makeCardPath("RapidAssembly.png");
 
     // /TEXT DECLARATION/
 
