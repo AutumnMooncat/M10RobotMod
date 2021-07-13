@@ -24,7 +24,7 @@ public class DoubleCaster extends AbstractModuleCard implements ModularDescripti
     // TEXT DECLARATION
 
     public static final String ID = M10RobotMod.makeID(DoubleCaster.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderPower.png");
+    public static final String IMG = makeCardPath("DoubleCaster.png");
 
     // /TEXT DECLARATION/
 
