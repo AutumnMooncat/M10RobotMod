@@ -21,7 +21,7 @@ public class AutoCaster extends AbstractModuleCard implements ModularDescription
     // TEXT DECLARATION
 
     public static final String ID = M10RobotMod.makeID(AutoCaster.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderPower.png");
+    public static final String IMG = makeCardPath("AutoCaster.png");
 
     // /TEXT DECLARATION/
 
