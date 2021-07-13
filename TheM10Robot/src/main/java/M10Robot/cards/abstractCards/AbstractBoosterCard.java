@@ -38,6 +38,7 @@ public abstract class AbstractBoosterCard extends AbstractClickableCard {
     protected Predicate<AbstractCard> isSkill = c -> c.type == CardType.SKILL && !(c instanceof AbstractBoosterCard);
     protected Predicate<AbstractCard> isPower = c -> c.type == CardType.POWER && !(c instanceof AbstractModuleCard);
     protected Predicate<AbstractCard> isModule = c -> c instanceof AbstractModuleCard;
+    protected Predicate<AbstractCard> nonZeroCost = c -> c.cost > 0 || c.cost == -1;
 
     public AbstractBoosterCard(String id, String img, CardType type, CardColor color, CardRarity rarity, CardTarget target) {
         super(id, img, -2, type, color, rarity, target);

@@ -26,7 +26,8 @@ public class AbstractBoosterPriorityLookup {
             GainOrbSlotEffect.class,
             LoseOrbSlotEffect.class,
             GainRecoilEffect.class,
-            LoseRecoilEffect.class));
+            LoseRecoilEffect.class,
+            TempRefundModifier.class));
 
     public static int getPriorityIndex(AbstractBoosterModifier mod) {
         int i = 0;
