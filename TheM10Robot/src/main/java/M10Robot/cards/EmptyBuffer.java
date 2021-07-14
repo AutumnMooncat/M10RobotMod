@@ -17,7 +17,7 @@ public class EmptyBuffer extends AbstractDynamicCard {
     // TEXT DECLARATION
 
     public static final String ID = M10RobotMod.makeID(EmptyBuffer.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderSkill.png");
+    public static final String IMG = makeCardPath("EmptyBuffer.png");
 
     // /TEXT DECLARATION/
 
