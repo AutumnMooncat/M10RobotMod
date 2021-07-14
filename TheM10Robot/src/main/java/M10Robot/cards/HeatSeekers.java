@@ -40,9 +40,18 @@ public class HeatSeekers extends AbstractSwappableCard implements UniqueCard {
     // /STAT DECLARATION/
 
     public HeatSeekers() {
+        this(null);
+    }
+
+    public HeatSeekers(AbstractSwappableCard linkedCard) {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = damage = DAMAGE;
         this.isMultiDamage = true;
+        if (linkedCard == null) {
+            setLinkedCard(new ThermalImaging(this));
+        } else {
+            setLinkedCard(linkedCard);
+        }
     }
 
     // Actions the card should do.

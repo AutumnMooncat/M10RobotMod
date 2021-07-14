@@ -35,8 +35,17 @@ public class ThermalImaging extends AbstractSwappableCard {
     // /STAT DECLARATION/
 
     public ThermalImaging() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, new HeatSeekers());
+        this(null);
+    }
+
+    public ThermalImaging(AbstractSwappableCard linkedCard) {
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = EFFECT;
+        if (linkedCard == null) {
+            setLinkedCard(new HeatSeekers(this));
+        } else {
+            setLinkedCard(linkedCard);
+        }
     }
 
     // Actions the card should do.

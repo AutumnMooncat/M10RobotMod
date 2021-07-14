@@ -42,8 +42,17 @@ public class MultiTool2 extends AbstractSwappableCard implements UniqueCard {
     // /STAT DECLARATION/
 
     public MultiTool2() {
+        this(null);
+    }
+
+    public MultiTool2(AbstractSwappableCard linkedCard) {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         block = baseBlock = BLOCK;
+        if (linkedCard == null) {
+            setLinkedCard(new MultiTool(this));
+        } else {
+            setLinkedCard(linkedCard);
+        }
     }
 
     // Actions the card should do.

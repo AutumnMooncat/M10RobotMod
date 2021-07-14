@@ -44,8 +44,17 @@ public class MultiTool extends AbstractSwappableCard {
     // /STAT DECLARATION/
 
     public MultiTool() {
-        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET, new MultiTool2());
+        this(null);
+    }
+
+    public MultiTool(AbstractSwappableCard linkedCard) {
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = damage = DAMAGE;
+        if (linkedCard == null) {
+            setLinkedCard(new MultiTool2(this));
+        } else {
+            setLinkedCard(linkedCard);
+        }
     }
 
     // Actions the card should do.

@@ -8,15 +8,12 @@ public abstract class AbstractSwappableCard extends AbstractClickableCard {
     private AbstractGameAction action;
 
     public AbstractSwappableCard(String id, String img, int cost, CardType type, CardColor color, CardRarity rarity, CardTarget target) {
-        this(id, img, cost, type, color, rarity, target, null);
+        super(id, img, cost, type, color, rarity, target);
     }
 
-    public AbstractSwappableCard(String id, String img, int cost, CardType type, CardColor color, CardRarity rarity, CardTarget target, AbstractSwappableCard linkedCard) {
-        super(id, img, cost, type, color, rarity, target);
-        if (linkedCard != null) {
-            this.cardsToPreview = linkedCard;
-            this.cardsToPreview.cardsToPreview = this;
-        }
+    protected void setLinkedCard(AbstractSwappableCard linkedCard) {
+        this.cardsToPreview = linkedCard;
+        this.cardsToPreview.cardsToPreview = this;
     }
 
     @Override
@@ -28,7 +25,7 @@ public abstract class AbstractSwappableCard extends AbstractClickableCard {
 
     @Override
     public void onRightClick() {
-        if (canSwap() && action == null) {
+        if (canSwap() && action == null && cardsToPreview != null) {
             CardCrawlGame.sound.play("CARD_SELECT", 0.1F);
             action = new SwapCardsAction(this, cardsToPreview);
             this.addToTop(action);

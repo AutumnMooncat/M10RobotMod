@@ -33,7 +33,7 @@ public class SwapCardsAction extends AbstractGameAction {
             }
             index++;
         }
-        if(found) {
+        if(found && toReplace != null) {
             if (toReplace instanceof AbstractSwappableCard && newCard instanceof AbstractSwappableCard) {
                 ((AbstractSwappableCard) toReplace).onSwapOut();
                 ((AbstractSwappableCard) newCard).onSwapIn();
