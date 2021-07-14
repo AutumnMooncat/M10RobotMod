@@ -13,7 +13,7 @@ public class Repeater extends AbstractModuleCard {
     // TEXT DECLARATION
 
     public static final String ID = M10RobotMod.makeID(Repeater.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderPower.png");
+    public static final String IMG = makeCardPath("Repeater.png");
 
     // /TEXT DECLARATION/
 
