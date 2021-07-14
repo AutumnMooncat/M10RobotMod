@@ -34,7 +34,7 @@ public class AirRaid extends AbstractDynamicCard implements ModularDescription {
     // TEXT DECLARATION
 
     public static final String ID = M10RobotMod.makeID(AirRaid.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderAttack.png");
+    public static final String IMG = makeCardPath("AirRaid.png");
 
     // /TEXT DECLARATION/
 
