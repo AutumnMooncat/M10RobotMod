@@ -15,7 +15,7 @@ public class AssemblyLine extends AbstractDynamicCard {
     // TEXT DECLARATION
 
     public static final String ID = M10RobotMod.makeID(AssemblyLine.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderSkill.png");
+    public static final String IMG = makeCardPath("AssemblyLine.png");
 
     // /TEXT DECLARATION/
 
