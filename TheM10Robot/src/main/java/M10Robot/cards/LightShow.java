@@ -23,7 +23,7 @@ public class LightShow extends AbstractDynamicCard implements ModularDescription
     // TEXT DECLARATION
 
     public static final String ID = M10RobotMod.makeID(LightShow.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderSkill.png");
+    public static final String IMG = makeCardPath("LightShow.png");
 
     // /TEXT DECLARATION/
 
