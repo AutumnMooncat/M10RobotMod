@@ -21,7 +21,7 @@ public class PowerSavings extends AbstractModuleCard implements ModularDescripti
     // TEXT DECLARATION
 
     public static final String ID = M10RobotMod.makeID(PowerSavings.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderPower.png");
+    public static final String IMG = makeCardPath("PowerSavings.png");
 
     // /TEXT DECLARATION/
 
@@ -40,7 +40,7 @@ public class PowerSavings extends AbstractModuleCard implements ModularDescripti
 
     // /STAT DECLARATION/
 
-
+    //TODO let this bounce under zero to become deal more damage?
     public PowerSavings() {
         super(ID, IMG, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = ENERGY;
@@ -59,6 +59,10 @@ public class PowerSavings extends AbstractModuleCard implements ModularDescripti
             upgradeName();
             //upgradeMagicNumber(UPGRADE_PLUS_ENERGY);
             upgradeSecondMagicNumber(UPGRADE_PLUS_WEAK);
+            if (baseSecondMagicNumber < 0) {
+                baseSecondMagicNumber = 0;
+                secondMagicNumber = baseSecondMagicNumber;
+            }
             initializeDescription();
         }
     }
