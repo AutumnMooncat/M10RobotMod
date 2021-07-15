@@ -52,7 +52,7 @@
     "NAME": "Blank Slate",
     "DESCRIPTION": "",
     "UPGRADE_DESCRIPTION": "Retain.",
-    "EXTENDED_DESCRIPTION": ["Blank Slate","Boosters applied to this card are applied twice."]
+    "EXTENDED_DESCRIPTION": ["Blank Slate","#yBoosters applied to this card are applied twice."]
   },
   "M10Robot:BriefRespite": {
     "NAME": "Brief Respite",
@@ -241,8 +241,9 @@
   },
   "M10Robot:Repeater": {
     "NAME": "Repeater",
-    "DESCRIPTION": "While Equipped: NL Plays the effect of equipped m10robot:Boosters at the beginning of your turn.",
-    "UPGRADE_DESCRIPTION": "Retain. NL While Equipped: NL Plays the effect of equipped m10robot:Boosters at the beginning of your turn."
+    "DESCRIPTION": "",
+    "UPGRADE_DESCRIPTION": "Retain.",
+    "EXTENDED_DESCRIPTION": ["Repeater","While Equipped: NL Plays the effect of equipped #yBoosters at the beginning of your turn."]
   },
   "M10Robot:ReturningShield": {
     "NAME": "Returning Shield",
@@ -292,7 +293,7 @@
   },
   "M10Robot:SolidWitch": {
     "NAME": "Solid Witch",
-    "DESCRIPTION": ""
+    "DESCRIPTION": "Gain !M! Intangible. NL Exhaust."
   },
   "M10Robot:SpectralCannon": {
     "NAME": "Spectral Cannon",
