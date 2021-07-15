@@ -137,10 +137,10 @@ public class DoubleEnergyOrb extends CustomEnergyOrb {
     protected void calculateLeanValues(float x, float y, boolean enabled) {
         if (!enabled) {
             for (int i = 0 ; i < energyLayers.length ; i++) {
-                primaryXLean[i] = 0;
-                primaryYLean[i] = 0;
-                secondaryXLean[i] = 0;
-                secondaryYLean[i] = 0;
+                primaryXLean[i] -= (Math.min(Math.abs(primaryXLean[i]), i * MAX_LEAN_PER_LAYER * PRIMARY_ORB_IMG_SCALE) * Math.signum(primaryXLean[i]));
+                primaryYLean[i] -= (Math.min(Math.abs(primaryYLean[i]), i * MAX_LEAN_PER_LAYER * PRIMARY_ORB_IMG_SCALE) * Math.signum(primaryYLean[i]));
+                secondaryXLean[i] -= (Math.min(Math.abs(secondaryXLean[i]), i * MAX_LEAN_PER_LAYER * SECOND_ORB_IMG_SCALE) * Math.signum(secondaryXLean[i]));
+                secondaryYLean[i] -= (Math.min(Math.abs(secondaryYLean[i]), i * MAX_LEAN_PER_LAYER * SECOND_ORB_IMG_SCALE) * Math.signum(secondaryYLean[i]));
             }
         } else {
             Vector2 pVec = new Vector2(InputHelper.mX - x, InputHelper.mY - y);
