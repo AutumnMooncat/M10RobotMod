@@ -23,7 +23,7 @@ public class Concentration extends AbstractModuleCard {
     // TEXT DECLARATION
 
     public static final String ID = M10RobotMod.makeID(Concentration.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderPower.png");
+    public static final String IMG = makeCardPath("Concentration.png");
 
     // /TEXT DECLARATION/
 
