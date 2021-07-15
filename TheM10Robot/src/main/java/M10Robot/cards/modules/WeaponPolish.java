@@ -20,7 +20,7 @@ public class WeaponPolish extends AbstractModuleCard {
     // TEXT DECLARATION
 
     public static final String ID = M10RobotMod.makeID(WeaponPolish.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderPower.png");
+    public static final String IMG = makeCardPath("WeaponPolish.png");
 
     // /TEXT DECLARATION/
 
