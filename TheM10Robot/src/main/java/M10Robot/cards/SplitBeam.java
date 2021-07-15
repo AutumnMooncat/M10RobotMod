@@ -26,7 +26,7 @@ public class SplitBeam extends AbstractDynamicCard {
     // TEXT DECLARATION
 
     public static final String ID = M10RobotMod.makeID(SplitBeam.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderAttack.png");
+    public static final String IMG = makeCardPath("SplitBeam.png");
 
     // /TEXT DECLARATION/
 
