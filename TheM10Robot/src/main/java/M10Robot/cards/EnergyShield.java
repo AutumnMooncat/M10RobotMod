@@ -27,7 +27,7 @@ public class EnergyShield extends AbstractReloadableCard {
     // TEXT DECLARATION
 
     public static final String ID = M10RobotMod.makeID(EnergyShield.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderSkill.png");
+    public static final String IMG = makeCardPath("EnergyShield.png");
 
     // /TEXT DECLARATION/
 
