@@ -51,7 +51,7 @@ public class DefenseDown extends AbstractDynamicCard {
         int sum = 0;
         for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
             if (!aM.isDeadOrEscaped()) {
-                this.addToBot(new ApplyPowerAction(aM, p, new VulnerablePower(aM, this.magicNumber, false), -this.magicNumber, true, AbstractGameAction.AttackEffect.NONE));
+                this.addToBot(new ApplyPowerAction(aM, p, new VulnerablePower(aM, this.magicNumber, false), this.magicNumber, true, AbstractGameAction.AttackEffect.NONE));
                 if (!aM.hasPower(ArtifactPower.POWER_ID)) {
                     sum += magicNumber;
                 }
