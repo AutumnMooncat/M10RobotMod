@@ -18,7 +18,7 @@ public class Atomize extends AbstractDynamicCard {
     // TEXT DECLARATION
 
     public static final String ID = M10RobotMod.makeID(Atomize.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderSkill.png");
+    public static final String IMG = makeCardPath("Atomize.png");
 
     // /TEXT DECLARATION/
 
