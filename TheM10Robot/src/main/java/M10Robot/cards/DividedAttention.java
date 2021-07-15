@@ -20,7 +20,7 @@ public class DividedAttention extends AbstractDynamicCard implements ModularDesc
     // TEXT DECLARATION
 
     public static final String ID = M10RobotMod.makeID(DividedAttention.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderSkill.png");
+    public static final String IMG = makeCardPath("DividedAttention.png");
 
     // /TEXT DECLARATION/
 
