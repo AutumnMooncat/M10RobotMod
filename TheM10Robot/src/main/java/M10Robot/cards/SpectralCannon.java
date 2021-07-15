@@ -31,7 +31,7 @@ public class SpectralCannon extends AbstractReloadableCard {
     // TEXT DECLARATION
 
     public static final String ID = M10RobotMod.makeID(SpectralCannon.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderAttack.png");
+    public static final String IMG = makeCardPath("SpectralCannon.png");
 
     // /TEXT DECLARATION/
 
