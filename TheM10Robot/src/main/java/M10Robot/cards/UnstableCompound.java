@@ -15,7 +15,7 @@ public class UnstableCompound extends AbstractDynamicCard {
     // TEXT DECLARATION
 
     public static final String ID = M10RobotMod.makeID(UnstableCompound.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderSkill.png");
+    public static final String IMG = makeCardPath("UnstableCompound.png");
 
     // /TEXT DECLARATION/
 
