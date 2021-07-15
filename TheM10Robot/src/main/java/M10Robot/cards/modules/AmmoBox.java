@@ -20,7 +20,7 @@ public class AmmoBox extends AbstractModuleCard {
     // TEXT DECLARATION
 
     public static final String ID = M10RobotMod.makeID(AmmoBox.class.getSimpleName());
-    public static final String IMG = makeCardPath("PlaceholderPower.png");
+    public static final String IMG = makeCardPath("AmmoBox.png");
 
     // /TEXT DECLARATION/
 
