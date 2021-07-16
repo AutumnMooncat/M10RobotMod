@@ -159,6 +159,12 @@
       "","r"
     ]
   },
+  "M10Robot:TempRepeatModifier": {
+    "EXTENDED_DESCRIPTION": [
+      "m10robot:Repeat ",".",
+      "","r"
+    ]
+  },
   "M10Robot:TransmuteSelfEffect": {
     "EXTENDED_DESCRIPTION": [
       "M10Robot:Transmute this card."

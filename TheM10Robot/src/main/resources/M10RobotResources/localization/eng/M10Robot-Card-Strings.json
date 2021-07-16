@@ -50,9 +50,9 @@
   },
   "M10Robot:BlankSlate": {
     "NAME": "Blank Slate",
-    "DESCRIPTION": "",
-    "UPGRADE_DESCRIPTION": "Retain.",
-    "EXTENDED_DESCRIPTION": ["Blank Slate","#yBoosters applied to this card are applied twice."]
+    "DESCRIPTION": "m10robot:Doubling.",
+    "UPGRADE_DESCRIPTION": "Retain. NL m10robot:Doubling.",
+    "EXTENDED_DESCRIPTION": ["Blank Slate","Accepts ALL #yBoosters. NL #yBoosters applied to this card are applied twice."]
   },
   "M10Robot:BriefRespite": {
     "NAME": "Brief Respite",
@@ -162,6 +162,11 @@
     "DESCRIPTION": "Channel X m10robot:Searchlight.",
     "UPGRADE_DESCRIPTION": "Channel X + !M! m10robot:Searchlight."
   },
+  "M10Robot:Loopcaster": {
+    "NAME": "Loopcaster",
+    "DESCRIPTION": "Modifications: NL + !M! m10robot:Repeat NL Requirements: NL Can be played",
+    "UPGRADE_DESCRIPTION": "Retain. NL Modifications: NL + !M! m10robot:Repeat NL Requirements: NL Can be played"
+  },
   "M10Robot:MagicTinkering": {
     "NAME": "Magic Tinkering",
     "DESCRIPTION": "Modifications: NL + !M! m10robot:Primary NL Requirements: NL Has a m10robot:Primary",
@@ -171,12 +176,6 @@
     "NAME": "Malfunction",
     "DESCRIPTION": "Retain. NL Lose !M10Robot:SecondMagic! HP. NL Exhaust."
   },
-  "M10Robot:MalfunctionOLD": {
-    "NAME": "Malfunction OLD",
-    "DESCRIPTION": "Draw !M! card. NL Lose !M10Robot:SecondMagic! HP. NL m10robot:Returning.",
-    "UPGRADE_DESCRIPTION": "Retain. NL Draw !M! card. NL Lose !M10Robot:SecondMagic! HP. NL m10robot:Returning.",
-    "EXTENDED_DESCRIPTION": ["Draw !M! cards. NL Lose !M10Robot:SecondMagic! HP. NL m10robot:Returning.", "Retain. NL Draw !M! cards. NL Lose !M10Robot:SecondMagic! HP. NL m10robot:Returning."]
-  },
   "M10Robot:MultiTool": {
     "NAME": "Multi Tool",
     "DESCRIPTION": "m10robot:Retoolable. NL Deal !D! damage."
@@ -185,13 +184,17 @@
     "NAME": "Multi Tool",
     "DESCRIPTION": "m10robot:Retoolable. NL Gain !B! Block."
   },
+  "M10Robot:PerpetualAssembly": {
+    "NAME": "Perpetual Assembly",
+    "DESCRIPTION": "Channel !M! m10robot:Present."
+  },
   "M10Robot:PileDriver": {
     "NAME": "Pile Driver",
     "DESCRIPTION": "Deal !D! damage. NL Deal !D! damage to a random other enemy."
   },
   "M10Robot:PolishingKit": {
     "NAME": "Polishing Kit",
-    "DESCRIPTION": "Modifications: NL + !M! damage NL + !M! Block NL Requirements: NL Has Block or damage."
+    "DESCRIPTION": "Modifications: NL + !M! damage NL + !M! Block NL Requirements: NL Has Block or damage"
   },
   "M10Robot:PowerSavings": {
     "NAME": "Power Saving Mode",
@@ -241,9 +244,9 @@
   },
   "M10Robot:Repeater": {
     "NAME": "Repeater",
-    "DESCRIPTION": "",
-    "UPGRADE_DESCRIPTION": "Retain.",
-    "EXTENDED_DESCRIPTION": ["Repeater","While Equipped: NL Plays the effect of equipped #yBoosters at the beginning of your turn."]
+    "DESCRIPTION": "m10robot:Reciting.",
+    "UPGRADE_DESCRIPTION": "Retain. NL m10robot:Reciting.",
+    "EXTENDED_DESCRIPTION": ["Repeater","Accepts ALL #yBoosters. NL While Equipped: NL Plays the effect of equipped #yBoosters at the beginning of your turn."]
   },
   "M10Robot:ReturningShield": {
     "NAME": "Returning Shield",
@@ -263,8 +266,8 @@
   },
   "M10Robot:SaleTag": {
     "NAME": "Sale Tag",
-    "DESCRIPTION": "Modifications: NL + !M! Refund NL Requirements: NL Non-zero cost.",
-    "UPGRADE_DESCRIPTION": "Retain. NL Modifications: NL + !M! Refund NL Requirements: NL Non-zero cost."
+    "DESCRIPTION": "Modifications: NL + !M! Refund NL Requirements: NL Non-zero cost",
+    "UPGRADE_DESCRIPTION": "Retain. NL Modifications: NL + !M! Refund NL Requirements: NL Non-zero cost"
   },
   "M10Robot:Salvo": {
     "NAME": "Salvo",
@@ -313,16 +316,16 @@
   },
   "M10Robot:SubroutineDefend": {
     "NAME": "Subroutine: Defend",
-    "DESCRIPTION": "Modifications: NL Gain !B! Block NL Requirements: NL Is playable"
+    "DESCRIPTION": "Modifications: NL Gain !B! Block NL Requirements: NL Can be played"
   },
   "M10Robot:SubroutineDraw": {
     "NAME": "Subroutine: Draw",
-    "DESCRIPTION": "Modifications: NL Draw !M! card NL Requirements: NL Is playable",
-    "UPGRADE_DESCRIPTION": "Modifications: NL Draw !M! cards NL Requirements: NL Is playable"
+    "DESCRIPTION": "Modifications: NL Draw !M! card NL Requirements: NL Can be played",
+    "UPGRADE_DESCRIPTION": "Modifications: NL Draw !M! cards NL Requirements: NL Can be played"
   },
   "M10Robot:SubroutineStrike": {
     "NAME": "Subroutine: Strike",
-    "DESCRIPTION": "Modifications: NL Deal !D! damage NL Requirements: NL Is playable"
+    "DESCRIPTION": "Modifications: NL Deal !D! damage NL Requirements: NL Can be played"
   },
   "M10Robot:Surveillance": {
     "NAME": "Surveillance",

@@ -12,7 +12,7 @@
       "booster",
       "boosters"
     ],
-    "DESCRIPTION": "An #yUnplayable card that may be attached to a card by right clicking and then choosing a card in your hand. May have requirements for attachment."
+    "DESCRIPTION": "An #yUnplayable card that modifies #bother #bcards. NL May be attached by #yRight #yClicking and then choosing a card in your hand that meets the requirements."
   },
   {
     "NAMES": [
@@ -23,10 +23,17 @@
   },
   {
     "NAMES": [
+      "Doubling",
+      "doubling"
+    ],
+    "DESCRIPTION": "Accepts ALL #yBoosters. NL #yBoosters applied to this card are applied twice."
+  },
+  {
+    "NAMES": [
       "Framework",
       "framework"
     ],
-    "DESCRIPTION": "An #yUnplayable card that is unfinished. May be converted into a playable card by right clicking and then choosing an appropriate amount of cards in your hand to #yExhaust."
+    "DESCRIPTION": "An #yUnplayable card that is unfinished. May be converted into a playable card by #yRight #yClicking and then choosing an appropriate amount of cards in your hand to #yExhaust."
   },
   {
     "NAMES": [
@@ -47,7 +54,7 @@
       "Recharging",
       "recharging"
     ],
-    "DESCRIPTION": "When out of charges, you may Right Click to spend [E] to restore all charges. Will automatically recharge for free if drawn twice while empty."
+    "DESCRIPTION": "When out of charges, you may #yRight #yClick to spend [E] to restore all charges. Will automatically recharge for free if drawn twice while empty."
   },
   {
     "NAMES": [
@@ -55,6 +62,13 @@
       "recoil"
     ],
     "DESCRIPTION": "Your next attack deals #b50% less damage."
+  },
+  {
+    "NAMES": [
+      "Reciting",
+      "reciting"
+    ],
+    "DESCRIPTION": "Accepts ALL #yBoosters. NL While Equipped: NL Plays the effect of equipped #yBoosters at the beginning of your turn."
   },
   {
     "NAMES": [
@@ -68,7 +82,7 @@
       "Reloading",
       "reloading"
     ],
-    "DESCRIPTION": "When out of ammo, you may Right Click to spend [E] to restore all ammo. Will automatically reload for free if drawn twice while empty."
+    "DESCRIPTION": "When out of ammo, you may #yRight #yClick to spend [E] to restore all ammo. Will automatically reload for free if drawn twice while empty."
   },
   {
     "NAMES": [
@@ -76,6 +90,13 @@
       "repair"
     ],
     "DESCRIPTION": "Increase the amount of #yRepairable #yArmor. Cannot surpass its maximum capacity."
+  },
+  {
+    "NAMES": [
+      "Repeat",
+      "repeat"
+    ],
+    "DESCRIPTION": "Repeat the effect of this card and any equipped #yBoosters as many times as the repeat value."
   },
   {
     "NAMES": [
@@ -105,7 +126,7 @@
       "Retoolable",
       "retoolable"
     ],
-    "DESCRIPTION": "Right Click to swap the effect of this card."
+    "DESCRIPTION": "#yRight #yClick to swap the effect of this card."
   },
   {
     "NAMES": [
@@ -119,7 +140,7 @@
       "Module",
       "module"
     ],
-    "DESCRIPTION": "An #yUnplayable card that has effects active while equipped. May be equipped by right clicking if you have an open slot."
+    "DESCRIPTION": "An #yUnplayable card that modifies the #bplayer. NL May be equipped by #yRight #yClicking if you have an open slot."
   },
   {
     "PROPER_NAME": "Multi-Cost",
@@ -127,7 +148,7 @@
       "Multi-Cost",
       "multi-cost"
     ],
-    "DESCRIPTION": "This card can right clicked in-hand to cycle its cost and effect."
+    "DESCRIPTION": "This card can #yRight #yClicked in-hand to cycle its cost and effect."
   },
   {
     "NAMES": [
