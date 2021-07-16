@@ -142,19 +142,19 @@ public class M10RobotMod implements
     // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
   
     // Card backgrounds - The actual rectangular card.
-    public static final String ATTACK_BASE = "M10RobotResources/images/512/bg_attack.png"; //
-    public static final String SKILL_BASE = "M10RobotResources/images/512/bg_skill.png"; //
-    public static final String POWER_BASE = "M10RobotResources/images/512/bg_power.png"; //
+    public static final String ATTACK_BASE = "M10RobotResources/images/512/bg_attack_hex.png"; //
+    public static final String SKILL_BASE = "M10RobotResources/images/512/bg_skill_hex.png"; //
+    public static final String POWER_BASE = "M10RobotResources/images/512/bg_power_hex.png"; //
 
-    public static final String ENERGY_ORB = "M10RobotResources/images/512/card_orb_green.png"; //
+    public static final String ENERGY_ORB = "M10RobotResources/images/512/card_orb_hex.png"; //
 
-    public static final String CARD_ENERGY_ORB = "M10RobotResources/images/512/card_small_orb_green.png"; //
+    public static final String CARD_ENERGY_ORB = "M10RobotResources/images/512/card_small_orb_hex.png"; //
 
-    public static final String ATTACK_BASE_PORTRAIT = "M10RobotResources/images/1024/bg_attack.png"; //
-    public static final String SKILL_BASE_PORTRAIT = "M10RobotResources/images/1024/bg_skill.png"; //
-    public static final String POWER_BASE_PORTRAIT = "M10RobotResources/images/1024/bg_power.png"; //
+    public static final String ATTACK_BASE_PORTRAIT = "M10RobotResources/images/1024/bg_attack_hex.png"; //
+    public static final String SKILL_BASE_PORTRAIT = "M10RobotResources/images/1024/bg_skill_hex.png"; //
+    public static final String POWER_BASE_PORTRAIT = "M10RobotResources/images/1024/bg_power_hex.png"; //
 
-    public static final String ENERGY_ORB_PORTRAIT = "M10RobotResources/images/1024/card_orb_green.png"; //
+    public static final String ENERGY_ORB_PORTRAIT = "M10RobotResources/images/1024/card_orb_hex.png"; //
     
     // Character assets
     //private static final String THE_DEFAULT_BUTTON = "M10RobotResources/images/charSelect/DefaultCharacterButton.png";
