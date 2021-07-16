@@ -28,6 +28,7 @@ public class TempRefundModifier extends AbstractValueBuffModifier {
         RefundFields.baseRefund.set(card, RefundFields.baseRefund.get(card) + amount);
         RefundFields.refund.set(card, RefundFields.baseRefund.get(card));
         card.applyPowers();
+        card.initializeDescription();
     }
 
     @Override
@@ -35,6 +36,7 @@ public class TempRefundModifier extends AbstractValueBuffModifier {
         RefundFields.baseRefund.set(card, RefundFields.baseRefund.get(card) - amount);
         RefundFields.refund.set(card, RefundFields.baseRefund.get(card));
         card.applyPowers();
+        card.initializeDescription();
     }
 
     @Override
@@ -49,6 +51,7 @@ public class TempRefundModifier extends AbstractValueBuffModifier {
             RefundFields.baseRefund.set(card, RefundFields.baseRefund.get(card) + amount);
             RefundFields.refund.set(card, RefundFields.baseRefund.get(card));
             card.applyPowers();
+            card.initializeDescription();
             return false;
         }
         return true;
@@ -62,6 +65,7 @@ public class TempRefundModifier extends AbstractValueBuffModifier {
             RefundFields.baseRefund.set(card, RefundFields.baseRefund.get(card) - stacksToUnstack);
             RefundFields.refund.set(card, RefundFields.baseRefund.get(card));
             card.applyPowers();
+            card.initializeDescription();
             if (mod.amount <= 0) {
                 CardModifierManager.removeSpecificModifier(card, mod, true);
                 return true;
