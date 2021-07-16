@@ -1,54 +1,38 @@
-# Shadow Siren Mod
+# M10 Robot Mod
 
-_**aka Vivian The Spire**_
+_**aka Even More Orange Juice The Spire**_
 
 
-This mod currently adds Vivian from the game Paper Mario - The Thousand-Year Door.
+This mod currently adds M10 Robot from the game 100% Orange Juice.
 
-Alongside her is a full suite of 80+ cards that are not guaranteed to play well with other mods. I did my best. While I do not yet know of any incompatibilities, please let me know if you find any.
+Alongside them is a full suite of 75+ cards that are not guaranteed to play well with other mods. I did my best. While I do not yet know of any incompatibilities, please let me know if you find any.
 
-All assets are from Paper Mario - TTYD and are property of Nintendo and their respective owners. 
+Character and some card assets are from 100% Orange Juice and are property of Orange_Juice and Fruitbat Factory. The remaining cards were drawn by me in my best attempt to immitate the original art style.
 
-This mod is a work in progress, but it is still a fully playable (if not balanced) experience at the moment.
+This mod is a work in progress, but it is still a fully playable (if not balanced) experience at the moment. Additional relics are planned, and new cards may be added in the future.
 
 Features
 ---
 
-_**Stances:**_ 
-Vivian has 5 different stances to play around. As she only has 40 base HP, utilizing these defensive stances will be paramount to survival in the spire.
+_New Card Types:_ 
+M10 Robot comes with 2 new card classifications. Alongside Attack, Skill, and Power, there are now Boosters and Modules. These 2 card types are unplayable, but may be equipped via Right Clicking them. Modules attach to the player while Boosters attach to cards.
 
-_Veil_ - A purely defensive stance that halves damage taken but also halves damage dealt. You start with access to this stance every run.
+_Boosters:_
+Booster cards come in 2 flavors: Extra Effect, and Value Modification, and can be used to alter how cards perform and function. Extra Effects add additional text and functionality to cards, while Value Modification increases the preexisting values on a card. An example of an Extra Effect would be "Modification: Draw 1 card". Once attached to a Defend, the Defend would now read: "Gain 5 Block. Draw 1 card.". An Example of a Value Modification would be "Modification: +4 Block". Once attached to the same Defend, it would now read "Gain 9 Block. Draw 1 card".". Cards with Boosters equipped will have a unique animation play and will have the card name color changed. Normal cards are White, upgraded cards are Green, boosted cards are Blue, and upgraded boosted cards are Purple. There is no limit to the amount of Boosters that can be applied to a single card.
 
-_Abyss_ - A supportive/defensive stance where you can draw many cards and gain Block at the end of your turn. Debuffs are easier to apply in this stance as well.
+_Modules:_ 
+M10 Robot has few Power cards, but they have many Module cards. Modules may be equipped on the player and act similar to powers, however, there are limitations to how many can be equipped at a time. M10 Robots second starter relic allows them to spawn with 4 Module Slots. Modules can be unequipped, discarding them in the process, if you need to change what Modules you are using on the fly.
 
-_Smoke_ - A defensive stance where all cards retain and damage taken is reduced based on the number of cards in your hand. Reducing damage in this way will discard all of your cards however!
+_Orbs:_ 
+While M10 Robot uses the same Orb system as Defect, they have their own 4 unique Orbs to play with (though Defect Orbs will still work if you use Prismatic Shard). All of M10s Orbs have animations, and will react to various conditions such as attacking or M10 being damaged.
 
-_Huge_ - A purely offensive stace where all Attack cards deal double damage. As a downside, you lose 1 Energy after playing Attack cards, so make sure not to neglect your defences unless you can secure the kill.
+_Searchlight Orb_ - This allows M10 to play a more turtled playstyle. Each time you are attacked (so it triggers multiple times for multihits), this Orbs deals 2 damage back to the attacker, like Thorns. When evoked, it causes ALL enemies to lose HP, directly bypassing Block. Searchlight is effected by Focus, which will increase the recoil and evoke damages accordingly. 
 
-_Hyper_ - A all-rounder stance that has no downsides. You deal additional damage and take less damage in this stance, and leaving this stance gives you charge. This is the hardest stance to get access to.
+_Bit Orb_ - In constract to Searchlight, this Orb is attentive to the player attacking, rather than being attacked. Each time you cause an attack on an enemy (triggering multiple times for AOE and multhits), this orb will do 1 damage to the target. What constitutes you causing an attack on the enemy is fairly encompassing, as things like Searchlight Orbs firing and poison damage activating both count as attacks you perform and will activate Bit Orb. When evoked, it deals damage to a random enemy equal to the total damage it has dealt with it's passive effect. Bit is effected by Focus, which will increase the amount of damage dealt by the passive effect.
 
-_**Buffs / Debuffs:**_
-Vivian has interacting elemental-style debuffs, as well as other debuffs designed to synergize with her stances.
+_Bomb Orb_ - The polar opposite of the Dark Orb. This Orb when evoked deals 20 damage to ALL enemies, however, its passive effect lowers the damage that the evoke will do by 2 each turn. This allows for a different playstyle where trying to Evoke the orbs as quickly as possible will be the most rewarding option. Bomb Orb is effected by Focus, which will lower the damage decrease, eventually cancelling it out. Enough Focus will instead make Bomb Orbs increase in damage each turn!
 
-_Charge - Buff_ - Your next Attack and/or Block is 50% more effective per stack of Charge. Electric Application increased by 1 per stack of Charge.
-
-_Vigor - Buff_ - While part of basegame, it is slightly modified for this mod. Both damage _and_ Burn application is increased by 1 per stack of Vigor.
-
-_Electric - Buff_ - Acts similar to a combination of Thorns and Strength. When attacking, a secondary hit equal to your Electric is made. When attacked, the attacker takes damage equal to your Electric as well.
-
-_Chill/Freeze - Debuff_ - Once enough Chill is applied to a target, said target is Frozen. Frozen targets are invincible, but stunned for a turn (unable to act). Stacking additional Freeze increases the amount of turns the target is unable to act for.
-
-_Burn - Debuff_ - Burn is a turn-based power which causes a target to lose HP equal to the number of debuffs it has at the end of the round.
-
-_Drench - Debuff_ - Has no effect on its own, but interacts with the previous 3 elemental attacks. Applying Burn to a Drenched target causes a Steam Explosion, Drench accelerates Chill application, and Drench increases damage dealt by Electric.
-
-_Hexed - Debuff_ - A Hexed target takes damage equal to their Hex every time they successfully attack. If the target does not attack, Hex is halved. Will activate multiple times for multi-hit attacks.
-
-_Soft - Debuff_ - A Soft target takes 3 additional damage from attacks. Applied after all other modifiers.
-
-_Dizzy - Debuff_ - A Dizzy target has a 50% chance to miss their attack, accomplishing nothing. A missed attack does not count as a successful attack, and will not trigger any "On Attack" effects.
-
-_Confused - Debuff_ - A Confused target has a 50% chance to either attack themselves or an ally. A redirected attack is still a successful attack, assuming it does not also miss.
+_Present Orb_ - An orb that is closer to a factory that has no combat capabilities. When channeled, Presents choose a random Booster card and slowly assmble it. Presents have a 40% assembly rate, and this amount is added to the current progress at the beginning of your turn. Once progress hits 100%, it rolls over (keeping any overflow, so 120% rolls over to 20% progress) and adds the Booster to your hand. It then begins work on a new random Booster. The Booster that will be added to your hand can be previewed by hovering over the Orb. When evoked, assembly finishes immediately, skipping the assembly time. Present is effected by Focus, which increases the assembly rate. Assembly rates greater or equal to 100% guarentee a booster every turn!
 
 ---
 
