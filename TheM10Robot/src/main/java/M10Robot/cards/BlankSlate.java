@@ -26,7 +26,7 @@ public class BlankSlate extends AbstractDynamicCard implements BranchingUpgrades
 
     public static final String ID = M10RobotMod.makeID(BlankSlate.class.getSimpleName());
     public static final String IMG = makeCardPath("BlankSlate.png");
-    private static ArrayList<TooltipInfo> boosterExplanation;
+    //private static ArrayList<TooltipInfo> boosterExplanation;
 
     // /TEXT DECLARATION/
 
@@ -50,6 +50,7 @@ public class BlankSlate extends AbstractDynamicCard implements BranchingUpgrades
         damage = baseDamage = block = baseBlock = magicNumber = baseMagicNumber = 1;
     }
 
+    /*
     @Override
     public List<TooltipInfo> getCustomTooltipsTop() {
         if (boosterExplanation == null)
@@ -60,7 +61,7 @@ public class BlankSlate extends AbstractDynamicCard implements BranchingUpgrades
         List<TooltipInfo> compoundList = new ArrayList<>(boosterExplanation);
         if (super.getCustomTooltipsTop() != null) compoundList.addAll(super.getCustomTooltipsTop());
         return compoundList;
-    }
+    }*/
 
     // Actions the card should do.
     @Override

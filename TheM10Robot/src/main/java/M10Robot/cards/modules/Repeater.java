@@ -18,7 +18,7 @@ public class Repeater extends AbstractModuleCard {
 
     public static final String ID = M10RobotMod.makeID(Repeater.class.getSimpleName());
     public static final String IMG = makeCardPath("Repeater.png");
-    private static ArrayList<TooltipInfo> boosterExplanation;
+    //private static ArrayList<TooltipInfo> boosterExplanation;
 
     // /TEXT DECLARATION/
 
@@ -39,6 +39,7 @@ public class Repeater extends AbstractModuleCard {
         damage = baseDamage = block = baseBlock = magicNumber = baseMagicNumber = 1;
     }
 
+    /*
     @Override
     public List<TooltipInfo> getCustomTooltipsTop() {
         if (boosterExplanation == null)
@@ -49,7 +50,7 @@ public class Repeater extends AbstractModuleCard {
         List<TooltipInfo> compoundList = new ArrayList<>(boosterExplanation);
         if (super.getCustomTooltipsTop() != null) compoundList.addAll(super.getCustomTooltipsTop());
         return compoundList;
-    }
+    }*/
 
     // Actions the card should do.
     @Override
