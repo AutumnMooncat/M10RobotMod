@@ -9,14 +9,14 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import javassist.CtBehavior;
 
-public class RepeatFieldPatches {
+public class EchoFieldPatches {
 
     @SpirePatch(clz = AbstractCard.class, method = "makeStatEquivalentCopy")
     public static class MakeStatEquivalentCopy {
         public static AbstractCard Postfix(AbstractCard result, AbstractCard self) {
-            RepeatFields.repeat.set(result, RepeatFields.repeat.get(self));
-            RepeatFields.baseRepeat.set(result, RepeatFields.baseRepeat.get(self));
-            RepeatFields.isRepeatUpgraded.set(result, RepeatFields.isRepeatUpgraded.get(self));
+            EchoFields.echo.set(result, EchoFields.echo.get(self));
+            EchoFields.baseEcho.set(result, EchoFields.baseEcho.get(self));
+            EchoFields.isEchoUpgraded.set(result, EchoFields.isEchoUpgraded.get(self));
             return result;
         }
     }
@@ -25,8 +25,8 @@ public class RepeatFieldPatches {
     public static class PlayExtraCopies {
         @SpireInsertPatch(locator = Locator.class)
         public static void withoutInfiniteLoopPls(AbstractPlayer __instance, AbstractCard c, AbstractMonster monster, int energyOnUse) {
-            if (RepeatFields.repeat.get(c) > 0) {
-                for (int i = 0 ; i < RepeatFields.repeat.get(c) ; i++) {
+            if (EchoFields.echo.get(c) > 0) {
+                for (int i = 0; i < EchoFields.echo.get(c) ; i++) {
                     AbstractCard tmp = c.makeSameInstanceOf();
                     AbstractDungeon.player.limbo.addToBottom(tmp);
                     tmp.current_x = c.current_x;
@@ -36,15 +36,10 @@ public class RepeatFieldPatches {
                     if (monster != null) {
                         tmp.calculateCardDamage(monster);
                     }
-
                     tmp.purgeOnUse = true;
-                    RepeatFields.repeat.set(tmp, 0);
+                    //Dont loop infinitely, lol
+                    EchoFields.echo.set(tmp, 0);
                     AbstractDungeon.actionManager.addCardQueueItem(new CardQueueItem(tmp, monster, c.energyOnUse, true, true), true);
-                    //Bad solution, do not use
-                    /*c.use(__instance, monster);
-                    if (!c.dontTriggerOnUseCard) {
-                        UseCardAction uca = new UseCardAction(c, monster);
-                    }*/
                 }
             }
         }

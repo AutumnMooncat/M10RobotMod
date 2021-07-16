@@ -93,10 +93,10 @@
   },
   {
     "NAMES": [
-      "Repeat",
-      "repeat"
+      "Echo",
+      "echo"
     ],
-    "DESCRIPTION": "Repeat the effect of this card and any equipped #yBoosters as many times as the repeat value."
+    "DESCRIPTION": "Plays additional copies of this card."
   },
   {
     "NAMES": [

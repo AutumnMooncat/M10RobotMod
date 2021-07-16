@@ -8,8 +8,8 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
         clz = AbstractCard.class,
         method = "<class>"
 )
-public class RepeatFields {
-    public static SpireField<Integer> repeat = new SpireField<>(() -> 0);
-    public static SpireField<Integer> baseRepeat = new SpireField<>(() -> 0);
-    public static SpireField<Boolean> isRepeatUpgraded = new SpireField<>(() -> false);
+public class EchoFields {
+    public static SpireField<Integer> echo = new SpireField<>(() -> 0);
+    public static SpireField<Integer> baseEcho = new SpireField<>(() -> 0);
+    public static SpireField<Boolean> isEchoUpgraded = new SpireField<>(() -> false);
 }

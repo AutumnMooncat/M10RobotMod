@@ -1,15 +1,15 @@
 package M10Robot.cardModifiers;
 
 import M10Robot.M10RobotMod;
-import M10Robot.patches.RepeatFields;
+import M10Robot.patches.EchoFields;
 import basemod.abstracts.AbstractCardModifier;
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 
-public class TempRepeatModifier extends AbstractValueBuffModifier {
-    public static final String ID = M10RobotMod.makeID("TempRepeatModifier");
+public class TempEchoModifier extends AbstractValueBuffModifier {
+    public static final String ID = M10RobotMod.makeID("TempEchoModifier");
 
-    public TempRepeatModifier(int increase) {
+    public TempEchoModifier(int increase) {
         super(ID, increase);
     }
 
@@ -20,21 +20,21 @@ public class TempRepeatModifier extends AbstractValueBuffModifier {
 
     @Override
     public AbstractCardModifier makeCopy() {
-        return new TempRepeatModifier(amount);
+        return new TempEchoModifier(amount);
     }
 
     @Override
     public void onInitialApplication(AbstractCard card) {
-        RepeatFields.baseRepeat.set(card, RepeatFields.baseRepeat.get(card) + amount);
-        RepeatFields.repeat.set(card, RepeatFields.baseRepeat.get(card));
+        EchoFields.baseEcho.set(card, EchoFields.baseEcho.get(card) + amount);
+        EchoFields.echo.set(card, EchoFields.baseEcho.get(card));
         card.applyPowers();
         card.initializeDescription();
     }
 
     @Override
     public void onRemove(AbstractCard card) {
-        RepeatFields.baseRepeat.set(card, RepeatFields.baseRepeat.get(card) - amount);
-        RepeatFields.repeat.set(card, RepeatFields.baseRepeat.get(card));
+        EchoFields.baseEcho.set(card, EchoFields.baseEcho.get(card) - amount);
+        EchoFields.echo.set(card, EchoFields.baseEcho.get(card));
         card.applyPowers();
         card.initializeDescription();
     }
@@ -48,8 +48,8 @@ public class TempRepeatModifier extends AbstractValueBuffModifier {
     public boolean shouldApply(AbstractCard card) {
         if (CardModifierManager.hasModifier(card, ID)) {
             ((AbstractBoosterModifier) CardModifierManager.getModifiers(card, ID).get(0)).amount += amount;
-            RepeatFields.baseRepeat.set(card, RepeatFields.baseRepeat.get(card) + amount);
-            RepeatFields.repeat.set(card, RepeatFields.baseRepeat.get(card));
+            EchoFields.baseEcho.set(card, EchoFields.baseEcho.get(card) + amount);
+            EchoFields.echo.set(card, EchoFields.baseEcho.get(card));
             card.applyPowers();
             card.initializeDescription();
             return false;
@@ -62,8 +62,8 @@ public class TempRepeatModifier extends AbstractValueBuffModifier {
         if (CardModifierManager.hasModifier(card, ID)) {
             AbstractBoosterModifier mod = (AbstractBoosterModifier) CardModifierManager.getModifiers(card, ID).get(0);
             mod.amount -= stacksToUnstack;
-            RepeatFields.baseRepeat.set(card, RepeatFields.baseRepeat.get(card) - stacksToUnstack);
-            RepeatFields.repeat.set(card, RepeatFields.baseRepeat.get(card));
+            EchoFields.baseEcho.set(card, EchoFields.baseEcho.get(card) - stacksToUnstack);
+            EchoFields.echo.set(card, EchoFields.baseEcho.get(card));
             card.applyPowers();
             card.initializeDescription();
             if (mod.amount <= 0) {

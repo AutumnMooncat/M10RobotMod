@@ -2,7 +2,7 @@ package M10Robot.cards.boosters;
 
 import M10Robot.M10RobotMod;
 import M10Robot.cardModifiers.AbstractBoosterModifier;
-import M10Robot.cardModifiers.TempRepeatModifier;
+import M10Robot.cardModifiers.TempEchoModifier;
 import M10Robot.cards.abstractCards.AbstractBoosterCard;
 import M10Robot.characters.M10Robot;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -54,7 +54,7 @@ public class Loopcaster extends AbstractBoosterCard {
 
     @Override
     public ArrayList<AbstractBoosterModifier> getBoosterModifiers() {
-        return new ArrayList<>(Collections.singletonList(new TempRepeatModifier(magicNumber)));
+        return new ArrayList<>(Collections.singletonList(new TempEchoModifier(magicNumber)));
     }
 
     //Upgraded stats.

@@ -159,10 +159,10 @@
       "","r"
     ]
   },
-  "M10Robot:TempRepeatModifier": {
+  "M10Robot:TempEchoModifier": {
     "EXTENDED_DESCRIPTION": [
-      "m10robot:Repeat ",".",
-      "","r"
+      "m10robot:Echo ",".",
+      "","e"
     ]
   },
   "M10Robot:TransmuteSelfEffect": {

@@ -164,12 +164,12 @@
   },
   "M10Robot:Loopcaster": {
     "NAME": "Loopcaster",
-    "DESCRIPTION": "Modifications: NL + !M! m10robot:Repeat NL Requirements: NL Can be played",
-    "UPGRADE_DESCRIPTION": "Retain. NL Modifications: NL + !M! m10robot:Repeat NL Requirements: NL Can be played"
+    "DESCRIPTION": "Modifications: NL + !M! m10robot:Echo NL Requirements: NL Can be played",
+    "UPGRADE_DESCRIPTION": "Retain. NL Modifications: NL + !M! m10robot:Searchlight NL Requirements: NL Can be played"
   },
   "M10Robot:MagicTinkering": {
     "NAME": "Magic Tinkering",
-    "DESCRIPTION": "Modifications: NL + !M! m10robot:Primary NL Requirements: NL Has a m10robot:Primary",
+    "DESCRIPTION": "Modifications: NL + !M! m10robot:Echo NL Requirements: NL Has a m10robot:Primary",
     "UPGRADE_DESCRIPTION": "Retain. NL Modifications: NL + !M! m10robot:Primary NL Requirements: NL Has a m10robot:Primary"
   },
   "M10Robot:Malfunction": {

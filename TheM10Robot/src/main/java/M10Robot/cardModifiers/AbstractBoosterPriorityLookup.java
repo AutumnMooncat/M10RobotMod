@@ -28,7 +28,7 @@ public class AbstractBoosterPriorityLookup {
             GainRecoilEffect.class,
             LoseRecoilEffect.class,
             TempRefundModifier.class,
-            TempRepeatModifier.class));
+            TempEchoModifier.class));
 
     public static int getPriorityIndex(AbstractBoosterModifier mod) {
         int i = 0;
