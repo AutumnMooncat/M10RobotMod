@@ -28,6 +28,7 @@ public class TempRepeatModifier extends AbstractValueBuffModifier {
         RepeatFields.baseRepeat.set(card, RepeatFields.baseRepeat.get(card) + amount);
         RepeatFields.repeat.set(card, RepeatFields.baseRepeat.get(card));
         card.applyPowers();
+        card.initializeDescription();
     }
 
     @Override
@@ -35,6 +36,7 @@ public class TempRepeatModifier extends AbstractValueBuffModifier {
         RepeatFields.baseRepeat.set(card, RepeatFields.baseRepeat.get(card) - amount);
         RepeatFields.repeat.set(card, RepeatFields.baseRepeat.get(card));
         card.applyPowers();
+        card.initializeDescription();
     }
 
     @Override
@@ -49,6 +51,7 @@ public class TempRepeatModifier extends AbstractValueBuffModifier {
             RepeatFields.baseRepeat.set(card, RepeatFields.baseRepeat.get(card) + amount);
             RepeatFields.repeat.set(card, RepeatFields.baseRepeat.get(card));
             card.applyPowers();
+            card.initializeDescription();
             return false;
         }
         return true;
@@ -62,6 +65,7 @@ public class TempRepeatModifier extends AbstractValueBuffModifier {
             RepeatFields.baseRepeat.set(card, RepeatFields.baseRepeat.get(card) - stacksToUnstack);
             RepeatFields.repeat.set(card, RepeatFields.baseRepeat.get(card));
             card.applyPowers();
+            card.initializeDescription();
             if (mod.amount <= 0) {
                 CardModifierManager.removeSpecificModifier(card, mod, true);
                 return true;
