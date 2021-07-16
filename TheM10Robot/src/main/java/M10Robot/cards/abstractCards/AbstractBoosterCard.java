@@ -6,6 +6,7 @@ import M10Robot.actions.SelectCardsForBoosterAction;
 import M10Robot.cardModifiers.AbstractBoosterModifier;
 import M10Robot.cards.modules.Repeater;
 import M10Robot.patches.BoosterFieldPatch;
+import M10Robot.patches.BypassEnergyPatches;
 import M10Robot.patches.HandCardSelectScreenPatches;
 import M10Robot.patches.TypeOverridePatch;
 import M10Robot.predicates.SwappableAttentivePredicate;
@@ -60,22 +61,19 @@ public abstract class AbstractBoosterCard extends AbstractClickableCard {
         if (c instanceof Repeater) {
             return true;
         }
+        boolean backup = BypassEnergyPatches.BypassEnergyCheckField.bypass.get(c);
+        BypassEnergyPatches.BypassEnergyCheckField.bypass.set(c, true);
         for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
             if (!aM.isDeadOrEscaped()) {
-                if (c.cardPlayable(aM)) {
+                if (c.canUse(AbstractDungeon.player, aM)) {
+                    BypassEnergyPatches.BypassEnergyCheckField.bypass.set(c, backup);
                     return true;
                 }
             }
         }
+        BypassEnergyPatches.BypassEnergyCheckField.bypass.set(c, backup);
         return false;
     }
-
-    /*public List<String> getCardDescriptors() {
-        List<String> tags = new ArrayList<>();
-        tags.add(BaseMod.getKeywordTitle("m10robot:booster"));
-        tags.addAll(super.getCardDescriptors());
-        return tags;
-    }*/
 
     @Override
     public List<TooltipInfo> getCustomTooltipsTop() {
@@ -88,12 +86,6 @@ public abstract class AbstractBoosterCard extends AbstractClickableCard {
         if (super.getCustomTooltipsTop() != null) compoundList.addAll(super.getCustomTooltipsTop());
         return compoundList;
     }
-
-    /*@Override
-    public void applyPowers() {}
-
-    @Override
-    public void calculateCardDamage(AbstractMonster mo) {}*/
 
     @Override
     public void onRightClick() {
