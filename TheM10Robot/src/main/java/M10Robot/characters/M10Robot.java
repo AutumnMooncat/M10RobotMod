@@ -126,7 +126,7 @@ public class M10Robot extends CustomPlayer {
     public M10Robot(String name, PlayerClass setClass) {
         //super(name, setClass, orbTextures, "M10RobotResources/images/char/defaultCharacter/orb/vfxm.png", null, idleAnimation);
         super(name, setClass, new DoubleEnergyOrb(orbTextures, "M10RobotResources/images/char/tachy/orb/vfx.png", layerSpeeds), new CustomSpriterAnimation(ANIM_FILE));
-        DoubleEnergyOrb.DoubleOrbField.orb.set(this, true);
+        DoubleEnergyOrb.DoubleOrbField.isDoubleOrb.set(this, true);
         Player.PlayerListener listener = new CustomAnimationListener(this);
         ((CustomSpriterAnimation)this.animation).myPlayer.addListener(listener);
 
