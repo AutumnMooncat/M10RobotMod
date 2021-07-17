@@ -3,11 +3,14 @@ package M10Robot.powers;
 import M10Robot.M10RobotMod;
 import M10Robot.actions.EquipBoosterAction;
 import M10Robot.actions.EvokeSpecificOrbMultipleTimesAction;
+import M10Robot.cardModifiers.AbstractExtraEffectModifier;
 import M10Robot.cardModifiers.DealDamageEffect;
 import M10Robot.cards.abstractCards.AbstractModuleCard;
 import M10Robot.cards.modules.*;
 import M10Robot.cards.tempCards.WeaponPolishBooster;
+import M10Robot.patches.EchoFields;
 import basemod.ClickableUIElement;
+import basemod.abstracts.AbstractCardModifier;
 import basemod.helpers.CardModifierManager;
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.Gdx;
@@ -168,7 +171,14 @@ public class ModulesPower extends AbstractPower implements CloneablePowerInterfa
             }
             if (m instanceof Repeater) {
                 if (CardModifierManager.modifiers(m).size() > 0) {
-                    CardModifierManager.onUseCard(m, AbstractDungeon.getRandomMonster(), null);
+                    int loops = 1 + EchoFields.echo.get(m);
+                    for (int i = 0 ; i < loops ; i++) {
+                        for (AbstractCardModifier mod : CardModifierManager.modifiers(m)) {
+                            if (mod instanceof AbstractExtraEffectModifier) {
+                                ((AbstractExtraEffectModifier) mod).doExtraEffects(m, AbstractDungeon.player, AbstractDungeon.getRandomMonster());
+                            }
+                        }
+                    }
                     flash = true;
                 }
             }
