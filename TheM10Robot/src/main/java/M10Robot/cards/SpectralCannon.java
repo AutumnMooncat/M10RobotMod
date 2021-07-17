@@ -44,8 +44,8 @@ public class SpectralCannon extends AbstractReloadableCard {
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
     private static final int COST = 1;
-    private static final int DAMAGE = 13;
-    private static final int UPGRADE_PLUS_DMG = 4;
+    private static final int DAMAGE = 10;
+    private static final int UPGRADE_PLUS_DMG = 3;
     private static final int SHOTS = 1;
 
     // /STAT DECLARATION/
