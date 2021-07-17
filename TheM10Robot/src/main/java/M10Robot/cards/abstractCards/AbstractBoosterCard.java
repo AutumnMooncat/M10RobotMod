@@ -4,6 +4,7 @@ import M10Robot.M10RobotMod;
 import M10Robot.actions.EquipBoosterAction;
 import M10Robot.actions.SelectCardsForBoosterAction;
 import M10Robot.cardModifiers.AbstractBoosterModifier;
+import M10Robot.cards.BlankSlate;
 import M10Robot.cards.modules.Repeater;
 import M10Robot.patches.BoosterFieldPatch;
 import M10Robot.patches.BypassEnergyPatches;
@@ -35,7 +36,7 @@ public abstract class AbstractBoosterCard extends AbstractClickableCard {
     protected Predicate<AbstractCard> hasBlockValue = c -> (c.baseBlock > 0 && !(c instanceof RitualDagger)) || BoosterFieldPatch.hasBlockGainingBooster(c);
     protected Predicate<AbstractCard> hasDamageValue = c -> c.baseDamage > 0 || BoosterFieldPatch.hasDamageDealingBooster(c);
     protected Predicate<AbstractCard> hasMagicValue = c -> c.baseMagicNumber > 0 || BoosterFieldPatch.hasMagicUtilizingBooster(c);
-    protected Predicate<AbstractCard> isAttack = c -> c.type == CardType.ATTACK;
+    protected Predicate<AbstractCard> isAttack = c -> c.type == CardType.ATTACK || c instanceof Repeater || c instanceof BlankSlate;
     protected Predicate<AbstractCard> isSkill = c -> c.type == CardType.SKILL && !(c instanceof AbstractBoosterCard);
     protected Predicate<AbstractCard> isPower = c -> c.type == CardType.POWER && !(c instanceof AbstractModuleCard);
     protected Predicate<AbstractCard> isModule = c -> c instanceof AbstractModuleCard;

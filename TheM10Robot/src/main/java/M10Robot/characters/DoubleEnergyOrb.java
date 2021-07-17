@@ -1,25 +1,20 @@
 package M10Robot.characters;
 
-import M10Robot.patches.RenderButtonOnCardPatch;
 import basemod.abstracts.CustomEnergyOrb;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.evacipated.cardcrawl.modthespire.lib.SpireField;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePrefixPatch;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.helpers.input.InputHelper;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
-
-import java.util.HashMap;
 
 public class DoubleEnergyOrb extends CustomEnergyOrb {
     private static final int SECOND_ORB_W = 128;
@@ -160,7 +155,7 @@ public class DoubleEnergyOrb extends CustomEnergyOrb {
 
     @SpirePatch(clz = AbstractPlayer.class, method = SpirePatch.CLASS)
     public static class DoubleOrbField {
-        public static SpireField<Boolean> orb = new SpireField<>(() -> false);
+        public static SpireField<Boolean> isDoubleOrb = new SpireField<>(() -> Boolean.FALSE);
     }
 
     @SpirePatch(clz = EnergyPanel.class, method = "renderVfx")
@@ -168,7 +163,7 @@ public class DoubleEnergyOrb extends CustomEnergyOrb {
     {
         @SpirePrefixPatch
         public static void flashSecondOrb(EnergyPanel __instance, SpriteBatch sb, Texture ___gainEnergyImg, Color ___energyVfxColor, float ___energyVfxScale, float ___energyVfxAngle) {
-            if (EnergyPanel.energyVfxTimer != 0.0F && DoubleOrbField.orb.get(AbstractDungeon.player)) {
+            if (EnergyPanel.energyVfxTimer != 0.0F && DoubleOrbField.isDoubleOrb.get(AbstractDungeon.player)) {
                 sb.setBlendFunction(770, 1);
                 sb.setColor(___energyVfxColor);
                 sb.draw(___gainEnergyImg, __instance.current_x + X_OFFSET - SECOND_ORB_W, __instance.current_y + Y_OFFSET - SECOND_ORB_W, SECOND_ORB_W, SECOND_ORB_W, SECOND_ORB_W*2F, SECOND_ORB_W*2F, ___energyVfxScale*SECOND_ORB_IMG_SCALE/PRIMARY_ORB_IMG_SCALE, ___energyVfxScale*SECOND_ORB_IMG_SCALE/PRIMARY_ORB_IMG_SCALE, ___energyVfxAngle - 50.0F, 0, 0, SECOND_ORB_W*2, SECOND_ORB_W*2, true, false);
