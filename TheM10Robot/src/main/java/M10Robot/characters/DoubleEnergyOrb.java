@@ -160,7 +160,7 @@ public class DoubleEnergyOrb extends CustomEnergyOrb {
 
     @SpirePatch(clz = AbstractPlayer.class, method = SpirePatch.CLASS)
     public static class DoubleOrbField {
-        public static SpireField<Boolean> orb = new SpireField<>(() -> null);
+        public static SpireField<Boolean> orb = new SpireField<>(() -> false);
     }
 
     @SpirePatch(clz = EnergyPanel.class, method = "renderVfx")
