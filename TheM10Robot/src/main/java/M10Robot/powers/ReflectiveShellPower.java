@@ -46,11 +46,17 @@ public class ReflectiveShellPower extends AbstractPower implements CloneablePowe
         updateDescription();
     }
 
-    public int onAttackedToChangeDamage(DamageInfo info, int damageAmount) {
-        if (damageAmount > 0 && info.owner != owner && info.owner != null) {
+    @Override
+    public int onAttacked(DamageInfo info, int damageAmount) {
+        if ((info.output > 0 || damageAmount > 0) && info.owner != owner && info.owner != null) {
             flash();
-            this.addToBot(new DamageAction(info.owner, new DamageInfo(owner, damageAmount, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.FIRE, true));
+            int dmg = Math.max(info.output, damageAmount);
+            this.addToTop(new DamageAction(info.owner, new DamageInfo(owner, dmg, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.FIRE, true));
         }
+        return damageAmount;
+    }
+
+    public int onAttackedToChangeDamage(DamageInfo info, int damageAmount) {
         return 0;
     }
 
