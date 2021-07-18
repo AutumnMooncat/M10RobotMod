@@ -37,7 +37,7 @@ public class EvasionDown extends AbstractDynamicCard {
 
     // /STAT DECLARATION/
 
-
+    //TODO make Focus Down last until the end of the round so it affects Bits and Searchlights
     public EvasionDown() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = EFFECT;
