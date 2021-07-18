@@ -1,5 +1,10 @@
 package M10Robot.patches;
 
+import M10Robot.M10RobotMod;
+import M10Robot.cardModifiers.AbstractExtraEffectModifier;
+import SpicyShops.patches.cards.RepeatKeywordPatches;
+import basemod.abstracts.AbstractCardModifier;
+import basemod.helpers.CardModifierManager;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardQueueItem;
@@ -25,6 +30,15 @@ public class EchoFieldPatches {
     public static class PlayExtraCopies {
         @SpireInsertPatch(locator = Locator.class)
         public static void withoutInfiniteLoopPls(AbstractPlayer __instance, AbstractCard c, AbstractMonster monster, int energyOnUse) {
+            if (M10RobotMod.isSpicyShopsLoaded) {
+                if (RepeatKeywordPatches.RepeatField.repeat.get(c)) {
+                    for (AbstractCardModifier mod : CardModifierManager.modifiers(c)) {
+                        if (mod instanceof AbstractExtraEffectModifier) {
+                            ((AbstractExtraEffectModifier) mod).doExtraEffects(c, __instance, monster);
+                        }
+                    }
+                }
+            }
             if (EchoFields.echo.get(c) > 0) {
                 for (int i = 0; i < EchoFields.echo.get(c) ; i++) {
                     AbstractCard tmp = c.makeSameInstanceOf();
