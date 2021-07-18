@@ -102,8 +102,8 @@
   },
   "M10Robot:EmptyBuffer": {
     "NAME": "Empty Buffer",
-    "DESCRIPTION": "Evoke every Orb.",
-    "UPGRADE_DESCRIPTION": "Evoke every Orb. NL Channel each Orb that was just Evoked."
+    "DESCRIPTION": "Evoke all your Orbs.",
+    "UPGRADE_DESCRIPTION": "Evoke all your Orbs. NL Channel each Orb that was just Evoked."
   },
   "M10Robot:EnergyShield": {
     "NAME": "Energy Shield",
@@ -271,7 +271,7 @@
   },
   "M10Robot:Salvo": {
     "NAME": "Salvo",
-    "DESCRIPTION": "Remove all Orbs without Evoking them. NL Deal !D! damage for each Orb removed."
+    "DESCRIPTION": "Remove all your Orbs. NL Deal !D! damage for each Orb removed."
   },
   "M10Robot:ScrambleField": {
     "NAME": "Scramble Field",

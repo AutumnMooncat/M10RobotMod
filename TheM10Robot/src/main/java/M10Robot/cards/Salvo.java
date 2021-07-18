@@ -3,7 +3,9 @@ package M10Robot.cards;
 import M10Robot.M10RobotMod;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
+import M10Robot.orbs.AbstractCustomOrb;
 import M10Robot.patches.LockOrbAnimationPatches;
+import basemod.abstracts.CustomOrb;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -66,12 +68,19 @@ public class Salvo extends AbstractDynamicCard {
             public void update() {
                 if (firstPass) {
                     for (AbstractOrb o : p.orbs) {
-                        vecMap.put(o, new Vector2(m.hb.cX-o.cX, m.hb.cY-o.cY).nor());
-                        offsetMap.put(o, new Vector2(MathUtils.random(2f)-1f, MathUtils.random(2f)-1f).nor());
-                        backupX.put(o, o.cX);
-                        backupY.put(o, o.cY);
-                        isDoneMap.put(o, false);
-                        LockOrbAnimationPatches.StopAnimatingField.stopAnimating.set(o, true);
+                        if (o instanceof EmptyOrbSlot) {
+                            isDoneMap.put(o, true);
+                        } else {
+                            vecMap.put(o, new Vector2(m.hb.cX-o.cX, m.hb.cY-o.cY).nor());
+                            offsetMap.put(o, new Vector2(MathUtils.random(2f)-1f, MathUtils.random(2f)-1f).nor());
+                            backupX.put(o, o.cX);
+                            backupY.put(o, o.cY);
+                            isDoneMap.put(o, false);
+                            if (o instanceof AbstractCustomOrb && ((AbstractCustomOrb) o).attackImage != null) {
+                                ((AbstractCustomOrb) o).playAnimation(((AbstractCustomOrb) o).attackImage, AbstractCustomOrb.MED_ANIM);
+                            }
+                            LockOrbAnimationPatches.StopAnimatingField.stopAnimating.set(o, true);
+                        }
                     }
                     firstPass = false;
                 }
@@ -95,10 +104,12 @@ public class Salvo extends AbstractDynamicCard {
                 }
                 if (this.isDone) {
                     for (AbstractOrb o : p.orbs) {
-                        o.cX = backupX.get(o);
-                        o.cY = backupY.get(o);
-                        LockOrbAnimationPatches.StopAnimatingField.stopAnimating.set(o, false);
-                        //p.removeNextOrb();
+                        if (!(o instanceof EmptyOrbSlot)) {
+                            o.cX = backupX.get(o);
+                            o.cY = backupY.get(o);
+                            LockOrbAnimationPatches.StopAnimatingField.stopAnimating.set(o, false);
+                            //p.removeNextOrb();
+                        }
                         if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
                             AbstractDungeon.actionManager.clearPostCombatActions();
                         }
