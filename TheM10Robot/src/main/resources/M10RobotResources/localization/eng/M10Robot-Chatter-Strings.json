@@ -7,7 +7,7 @@
   "M10Robot:SkillTextContainer": {
     "NAME": "Generic Skill Text",
     "DESCRIPTION": "Extended Description used to hold text that will occasionally appear when playing a skill.",
-    "EXTENDED_DESCRIPTION": ["Utilizing Skill","Technique Executed","Implementing Strategy"]
+    "EXTENDED_DESCRIPTION": ["Utilizing Skill","Technique Executed","Implementing Strategy","Routine Performed"]
   },
   "M10Robot:PowerTextContainer": {
     "NAME": "Generic Power Text",
@@ -22,7 +22,7 @@
   "M10Robot:LowHPBattleStartTextContainer": {
     "NAME": "Low HP Battle Start Text",
     "DESCRIPTION": "Extended Description used to hold text that will occasionally appear at the beginning of combat if you are badly injured.",
-    "EXTENDED_DESCRIPTION": ["Hull Integrity: Low","Battle Unavoidable","Irritation Increasing","Desire For Smokebomb: High"]
+    "EXTENDED_DESCRIPTION": ["Hull Integrity: Low","Battle Unavoidable","Irritation Increasing","Smokebomb: Desirable"]
   },
   "M10Robot:BattleEndTextContainer": {
     "NAME": "Battle End Text",
@@ -42,7 +42,7 @@
   "M10Robot:FieldDamageTextContainer": {
     "NAME": "Field Damage Text",
     "DESCRIPTION": "Extended Description used to hold text that will occasionally appear when taking thorns damage.",
-    "EXTENDED_DESCRIPTION": ["Damage: Annoying"]
+    "EXTENDED_DESCRIPTION": ["Damage: Annoying","Hull: Poked","Feedback: Unappreciated","Cease"]
   },
   "M10Robot:LightDamageTextContainer": {
     "NAME": "Light Damage Text",
