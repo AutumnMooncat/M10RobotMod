@@ -3,6 +3,7 @@ package M10Robot.cards;
 import M10Robot.M10RobotMod;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
+import M10Robot.patches.RestorePositionPatches;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.collision.Ray;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -56,6 +57,7 @@ public class Rushdown extends AbstractDynamicCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        RestorePositionPatches.setBackUp(p, p.drawX, p.drawY, p.hb.cX, p.hb.cY);
         float xB = p.drawX;
         float yB = p.drawY;
         float speed = 150f * Settings.scale;
@@ -99,6 +101,14 @@ public class Rushdown extends AbstractDynamicCard {
                 if (p.drawX == xB) {
                     this.isDone = true;
                 }
+            }
+        });
+
+        this.addToBot(new AbstractGameAction() {
+            @Override
+            public void update() {
+                RestorePositionPatches.removeBackUp(p);
+                this.isDone = true;
             }
         });
     }

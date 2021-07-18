@@ -6,6 +6,7 @@ import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.cards.interfaces.ModularDescription;
 import M10Robot.cards.interfaces.NegativePrimaryEffect;
 import M10Robot.characters.M10Robot;
+import M10Robot.patches.RestorePositionPatches;
 import M10Robot.vfx.BurnToAshEffect;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.math.Vector2;
@@ -68,6 +69,7 @@ public class SelfDestruction extends AbstractDynamicCard implements ModularDescr
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        RestorePositionPatches.setBackUp(p, p.drawX, p.drawY, p.hb.cX, p.hb.cY);
         this.addToBot(new SFXAction("ORB_PLASMA_CHANNEL"));
         this.addToBot(new VFXAction(new IntenseZoomEffect(Settings.WIDTH/2f, Settings.HEIGHT/2f, false)));
         p.tint.changeColor(Color.ORANGE.cpy());
@@ -167,6 +169,14 @@ public class SelfDestruction extends AbstractDynamicCard implements ModularDescr
                 if (p.drawX == xBb) {
                     this.isDone = true;
                 }
+            }
+        });
+
+        this.addToBot(new AbstractGameAction() {
+            @Override
+            public void update() {
+                RestorePositionPatches.removeBackUp(p);
+                this.isDone = true;
             }
         });
     }

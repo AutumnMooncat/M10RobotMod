@@ -3,6 +3,7 @@ package M10Robot.cards;
 import M10Robot.M10RobotMod;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
+import M10Robot.patches.RestorePositionPatches;
 import com.badlogic.gdx.math.Vector2;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -52,6 +53,7 @@ public class PileDriver extends AbstractDynamicCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        RestorePositionPatches.setBackUp(p, p.drawX, p.drawY, p.hb.cX, p.hb.cY);
         //this.addToBot(new SFXAction("ORB_PLASMA_CHANNEL"));
         //this.addToBot(new VFXAction(new IntenseZoomEffect(Settings.WIDTH/2f, Settings.HEIGHT/2f, false)));
         //p.tint.changeColor(Color.ORANGE.cpy());
@@ -197,6 +199,14 @@ public class PileDriver extends AbstractDynamicCard {
                 if (p.drawX == playerDrawXBackup && p.drawY == playerDrawYBackup && m.drawX == targetDrawXBackup && m.drawY == targetDrawYBackup) {
                     this.isDone = true;
                 }
+            }
+        });
+
+        this.addToBot(new AbstractGameAction() {
+            @Override
+            public void update() {
+                RestorePositionPatches.removeBackUp(p);
+                this.isDone = true;
             }
         });
     }
