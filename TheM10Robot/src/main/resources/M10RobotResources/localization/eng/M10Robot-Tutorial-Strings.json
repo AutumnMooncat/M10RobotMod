@@ -1,0 +1,30 @@
+{
+  "M10Robot:SwappablesTutorial": {
+    "TEXT": [
+      "Some #yHydrologist cards are tied to a completely separate card. When a #ySwappable card is in your hand, you can hover or hold it with your mouse and press the #ySwap key (default space, configurable) to switch the card to its #yPaired card."
+    ],
+    "LABEL": [
+      "Swappables"
+    ]
+  },
+  "M10Robot:BoosterTutorial": {
+    "TEXT": [
+      "#yBooster cards are a core mechanic for #yM10 #yRobot that can augment how #bother #bcards function. NL NL To equip a #yBooster card, #yRight #yClick it while it is in your hand.",
+      "There is no limit to the amount of #yBoosters that can be on a card, so have fun experimenting with various combinations!",
+      "Cards which have #yBoosters equipped will have their name change color. NL NL You can #bLeft #bClick on the #yEnergy #yIcon of the card view/unequip the actively equipped #yBosters.",
+      "#yModule cards are similar to #yBoosters but instead augment how the #bplayer functions. NL NL To equip a #yModule card, #yRight #yClick it while it is in your hand while you have a free #yModule #ySlot.",
+      "You may #bLeft #bClick your #yModular #yBody power to view and/or unquip your equipped modules, sending them to your #yDiscard #yPile."
+    ],
+    "LABEL": [
+      "Boosters & Modules"
+    ]
+  },
+  "M10Robot:SubtypesTutorial": {
+    "TEXT": [
+      "Some cards care about another card's #ySubtype. Every #yHydrologist card, except for strikes and defends, have a #ySubtype assigned to them, either #yIce, #yWater, or #ySteam. To tell these subtypes apart, there are unique visual indicators."
+    ],
+    "LABEL": [
+      "Subtypes"
+    ]
+  }
+}
