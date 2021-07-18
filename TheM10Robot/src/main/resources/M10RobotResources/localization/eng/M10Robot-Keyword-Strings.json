@@ -54,7 +54,7 @@
       "Recharging",
       "recharging"
     ],
-    "DESCRIPTION": "When out of charges, you may #yRight #yClick to spend [E] to restore all charges. Will automatically recharge for free if drawn twice while empty."
+    "DESCRIPTION": "When out of charges, you may #yRight #yClick to spend [E] to restore all charges. Will automatically recharge for free if drawn #btwice while empty. NL Charges carry over through combat rooms."
   },
   {
     "NAMES": [
