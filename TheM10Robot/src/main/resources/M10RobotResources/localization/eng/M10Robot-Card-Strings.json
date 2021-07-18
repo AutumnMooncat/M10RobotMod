@@ -239,7 +239,7 @@
   },
   "M10Robot:ReflectiveShell": {
     "NAME": "Reflective Shell",
-    "DESCRIPTION": "This turn, you may not take damage and attacks upon you are reflected onto the attacker.",
+    "DESCRIPTION": "For !M! turn, you may not take damage and attacks upon you are reflected onto the attacker.",
     "UPGRADE_DESCRIPTION": "For !M! turns, you may not take damage and attacks upon you are reflected onto the attacker."
   },
   "M10Robot:Repeater": {
