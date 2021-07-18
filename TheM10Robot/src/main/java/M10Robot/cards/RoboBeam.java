@@ -40,7 +40,7 @@ public class RoboBeam extends AbstractDynamicCard {
     private static final int DAMAGE = 5;
     private static final int UPGRADE_PLUS_DMG = 3;
 
-    private static final int TURNS_PER_EXTRA_HIT = 5;
+    private static final int TURNS_PER_EXTRA_HIT = 3;
 
     // /STAT DECLARATION/
 
