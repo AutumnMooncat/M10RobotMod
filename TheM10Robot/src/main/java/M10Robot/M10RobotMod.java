@@ -27,10 +27,12 @@ import M10Robot.characters.M10Robot;
 import M10Robot.util.IDCheckDontTouchPls;
 import M10Robot.util.TextureLoader;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Properties;
 
 //Done: DON'T MASS RENAME/REFACTOR
@@ -73,51 +75,37 @@ public class M10RobotMod implements
     // Making relics? EditRelicsSubscriber. etc., etc., for a full list and how to make your own, visit the basemod wiki.
     public static final Logger logger = LogManager.getLogger(M10RobotMod.class.getName());
     private static String modID;
+    public static UIStrings uiStrings;
+    public static String[] TEXT;
+    public static String[] EXTRA_TEXT;
+    private static final String AUTHOR = "Mistress Alison";
 
     // Mod-settings settings. This is if you want an on/off savable button
-    public static Properties theShadowSirenDefaultSettings = new Properties();
-    public static Properties normaBackupVars = new Properties();
+    public static SpireConfig m10RobotConfig;
 
     public static final String ENABLE_SELFDAMAGE_SETTING = "enableSelfDamage";
     public static boolean enableSelfDamage = false; // The boolean we'll be setting on/off (true/false)
 
-    public static final String FIVE_STAR_WANTED_SETTING = "enableStrongerWantedEffect";
-    public static boolean enableStrongerWantedEffect = false;
+    public static final String BOOSTER_TUTORIAL_SEEN = "boosterTutorialSeen";
+    public static boolean boosterTutorialSeen = false;
 
-    public static final String DISABLE_GULL_VFX = "disableGullVfx";
-    public static boolean disableGullVfx = false;
-
-    public static final String CARD_BATTLE_TALK_SETTING = "enableCardBattleTalk";
+    public static final String ENABLE_CARD_BATTLE_TALK_SETTING = "enableCardBattleTalk";
     public static boolean enableCardBattleTalkEffect = true;
 
     public static final String CARD_BATTLE_TALK_PROBABILITY_SETTING = "cardTalkProbability";
-    private static final int BASE_CARD_TALK_PROBABILITY = 0;
-    public static int cardTalkProbability = BASE_CARD_TALK_PROBABILITY; //Out of 100
+    public static int cardTalkProbability = 10; //Out of 100
 
-    public static final String DAMAGED_BATTLE_TALK_SETTING = "enableDamagedBattleTalk";
+    public static final String ENABLE_DAMAGED_BATTLE_TALK_SETTING = "enableDamagedBattleTalk";
     public static boolean enableDamagedBattleTalkEffect = true;
 
     public static final String DAMAGED_BATTLE_TALK_PROBABILITY_SETTING = "damagedTalkProbability";
-    private static final int BASE_DAMAGED_TALK_PROBABILITY = 0;
-    public static int damagedTalkProbability = BASE_DAMAGED_TALK_PROBABILITY; //Out of 100
+    public static int damagedTalkProbability = 20; //Out of 100
 
-    public static final String PRE_BATTLE_TALK_SETTING = "enablePreBattleTalk";
+    public static final String ENABLE_PRE_BATTLE_TALK_SETTING = "enablePreBattleTalk";
     public static boolean enablePreBattleTalkEffect = true;
 
     public static final String PRE_BATTLE_TALK_PROBABILITY_SETTING = "preTalkProbability";
-    private static final int BASE_PRE_TALK_PROBABILITY = 0;
-   public static int preTalkProbability = BASE_PRE_TALK_PROBABILITY; //Out of 100
-
-    public static final String NORMA_NUMERATOR = "normaNumerator";
-    public static final String NORMA_DENOMINATOR = "normaDenominator";
-    public static final String NORMA_BASE = "normaBase";
-    public static final String NORMA_SKILLS_ONLY = "normaSkillsOnly";
-
-
-    //This is for the in-game mod settings panel.
-    private static final String MODNAME = "The M10 Robot";
-    private static final String AUTHOR = "Mistress Alison";
-    private static final String DESCRIPTION = "Adds M10 Robot (and cards) from 100% Orange Juice! NL See the Mod Options if you would like to change any configurations!";
+    public static int preTalkProbability = 50; //Out of 100
     
     // =============== INPUT TEXTURE LOCATION =================
     
@@ -167,6 +155,11 @@ public class M10RobotMod implements
     
     //Mod Badge - A small icon that appears in the mod settings menu next to your mod.
     public static final String BADGE_IMAGE = "M10RobotResources/images/Badge.png";
+
+
+//Here we hold onto additional vars we care about
+    public static boolean isSpicyShopsLoaded = false;
+    public static ModLabeledToggleButton showBoosterTutorialButton;
     
     // =============== MAKE IMAGE PATHS =================
     
@@ -246,103 +239,32 @@ public class M10RobotMod implements
         logger.info("Adding mod settings");
         // This loads the mod settings.
         // The actual mod Button is added below in receivePostInitialize()
-        theShadowSirenDefaultSettings.setProperty(ENABLE_SELFDAMAGE_SETTING, "FALSE"); // This is the default setting. It's actually set...
+        Properties m10RobotDefaultSettings = new Properties();
+        m10RobotDefaultSettings.setProperty(ENABLE_SELFDAMAGE_SETTING, Boolean.toString(enableSelfDamage));
+        m10RobotDefaultSettings.setProperty(BOOSTER_TUTORIAL_SEEN, Boolean.toString(boosterTutorialSeen));
+        m10RobotDefaultSettings.setProperty(ENABLE_CARD_BATTLE_TALK_SETTING, Boolean.toString(enableCardBattleTalkEffect));
+        m10RobotDefaultSettings.setProperty(CARD_BATTLE_TALK_PROBABILITY_SETTING, String.valueOf(cardTalkProbability));
+        m10RobotDefaultSettings.setProperty(ENABLE_DAMAGED_BATTLE_TALK_SETTING, Boolean.toString(enableDamagedBattleTalkEffect));
+        m10RobotDefaultSettings.setProperty(DAMAGED_BATTLE_TALK_PROBABILITY_SETTING, String.valueOf(damagedTalkProbability));
+        m10RobotDefaultSettings.setProperty(ENABLE_PRE_BATTLE_TALK_SETTING, Boolean.toString(enablePreBattleTalkEffect));
+        m10RobotDefaultSettings.setProperty(PRE_BATTLE_TALK_PROBABILITY_SETTING, String.valueOf(preTalkProbability));
         try {
-            SpireConfig config = new SpireConfig("M10Robot", "TimeTravellerConfig", theShadowSirenDefaultSettings); // ...right here
-            // the "fileName" parameter is the name of the file MTS will create where it will save our setting.
-            config.load(); // Load the setting and set the boolean to equal it
-            enableSelfDamage = config.getBool(ENABLE_SELFDAMAGE_SETTING);
-            //enableStrongerWantedEffect = config.getBool(FIVE_STAR_WANTED_SETTING);
-        } catch (Exception e) {
+            m10RobotConfig = new SpireConfig("M10Robot", "M10RobotConfig", m10RobotDefaultSettings);
+            enableSelfDamage = m10RobotConfig.getBool(ENABLE_SELFDAMAGE_SETTING);
+            boosterTutorialSeen = m10RobotConfig.getBool(BOOSTER_TUTORIAL_SEEN);
+            enableCardBattleTalkEffect = m10RobotConfig.getBool(ENABLE_CARD_BATTLE_TALK_SETTING);
+            cardTalkProbability = m10RobotConfig.getInt(CARD_BATTLE_TALK_PROBABILITY_SETTING);
+            enableDamagedBattleTalkEffect = m10RobotConfig.getBool(ENABLE_DAMAGED_BATTLE_TALK_SETTING);
+            damagedTalkProbability = m10RobotConfig.getInt(DAMAGED_BATTLE_TALK_PROBABILITY_SETTING);
+            enablePreBattleTalkEffect = m10RobotConfig.getBool(ENABLE_PRE_BATTLE_TALK_SETTING);
+            preTalkProbability = m10RobotConfig.getInt(PRE_BATTLE_TALK_PROBABILITY_SETTING);
+        } catch (IOException e) {
+            logger.error("M10 Robot SpireConfig initialization failed:");
             e.printStackTrace();
         }
-
-        theShadowSirenDefaultSettings.setProperty(FIVE_STAR_WANTED_SETTING, "FALSE");
-        try {
-            SpireConfig config = new SpireConfig("M10Robot", "TimeTravellerConfig", theShadowSirenDefaultSettings);
-            // the "fileName" parameter is the name of the file MTS will create where it will save our setting.
-            config.load(); // Load the setting and set the boolean to equal it
-            enableStrongerWantedEffect = config.getBool(FIVE_STAR_WANTED_SETTING);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        theShadowSirenDefaultSettings.setProperty(DISABLE_GULL_VFX, "FALSE");
-        try {
-            SpireConfig config = new SpireConfig("M10Robot", "TimeTravellerConfig", theShadowSirenDefaultSettings);
-            // the "fileName" parameter is the name of the file MTS will create where it will save our setting.
-            config.load(); // Load the setting and set the boolean to equal it
-            disableGullVfx = config.getBool(DISABLE_GULL_VFX);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        theShadowSirenDefaultSettings.setProperty(CARD_BATTLE_TALK_SETTING, "TRUE");
-        try {
-            SpireConfig config = new SpireConfig("M10Robot", "TimeTravellerConfig", theShadowSirenDefaultSettings);
-            // the "fileName" parameter is the name of the file MTS will create where it will save our setting.
-            config.load(); // Load the setting and set the boolean to equal it
-            enableCardBattleTalkEffect = config.getBool(CARD_BATTLE_TALK_SETTING);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        theShadowSirenDefaultSettings.setProperty(CARD_BATTLE_TALK_PROBABILITY_SETTING, String.valueOf(BASE_CARD_TALK_PROBABILITY));
-        try {
-            SpireConfig config = new SpireConfig("M10Robot", "TimeTravellerConfig", theShadowSirenDefaultSettings);
-            // the "fileName" parameter is the name of the file MTS will create where it will save our setting.
-            config.load(); // Load the setting and set the boolean to equal it
-            cardTalkProbability = config.getInt(CARD_BATTLE_TALK_PROBABILITY_SETTING);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        theShadowSirenDefaultSettings.setProperty(DAMAGED_BATTLE_TALK_SETTING, "TRUE");
-        try {
-            SpireConfig config = new SpireConfig("M10Robot", "TimeTravellerConfig", theShadowSirenDefaultSettings);
-            // the "fileName" parameter is the name of the file MTS will create where it will save our setting.
-            config.load(); // Load the setting and set the boolean to equal it
-            enableDamagedBattleTalkEffect = config.getBool(DAMAGED_BATTLE_TALK_SETTING);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        theShadowSirenDefaultSettings.setProperty(DAMAGED_BATTLE_TALK_PROBABILITY_SETTING, String.valueOf(BASE_DAMAGED_TALK_PROBABILITY));
-        try {
-            SpireConfig config = new SpireConfig("M10Robot", "TimeTravellerConfig", theShadowSirenDefaultSettings);
-            // the "fileName" parameter is the name of the file MTS will create where it will save our setting.
-            config.load(); // Load the setting and set the boolean to equal it
-            damagedTalkProbability = config.getInt(DAMAGED_BATTLE_TALK_PROBABILITY_SETTING);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        theShadowSirenDefaultSettings.setProperty(PRE_BATTLE_TALK_SETTING, "TRUE");
-        try {
-            SpireConfig config = new SpireConfig("M10Robot", "TimeTravellerConfig", theShadowSirenDefaultSettings);
-            // the "fileName" parameter is the name of the file MTS will create where it will save our setting.
-            config.load(); // Load the setting and set the boolean to equal it
-            enablePreBattleTalkEffect = config.getBool(PRE_BATTLE_TALK_SETTING);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        theShadowSirenDefaultSettings.setProperty(PRE_BATTLE_TALK_PROBABILITY_SETTING, String.valueOf(BASE_PRE_TALK_PROBABILITY));
-        try {
-            SpireConfig config = new SpireConfig("M10Robot", "TimeTravellerConfig", theShadowSirenDefaultSettings);
-            // the "fileName" parameter is the name of the file MTS will create where it will save our setting.
-            config.load(); // Load the setting and set the boolean to equal it
-            preTalkProbability = config.getInt(PRE_BATTLE_TALK_PROBABILITY_SETTING);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        logger.info("M10 ROBOT CONFIG OPTIONS LOADED:");
 
         logger.info("Done adding mod settings");
-
-        normaBackupVars.setProperty(NORMA_NUMERATOR, String.valueOf(0));
-        normaBackupVars.setProperty(NORMA_DENOMINATOR, String.valueOf(10));
-        normaBackupVars.setProperty(NORMA_BASE, String.valueOf(0));
-        normaBackupVars.setProperty(NORMA_SKILLS_ONLY, "FALSE");
         
     }
     
@@ -419,6 +341,8 @@ public class M10RobotMod implements
     
     @Override
     public void receivePostInitialize() {
+        //Check for Spicy Shops
+        isSpicyShopsLoaded = Loader.isModLoaded("spicyShops");
         //Add WidePotion Compatibility
         if (Loader.isModLoaded("widepotions")) {
 
@@ -426,7 +350,7 @@ public class M10RobotMod implements
 
             //Simple Potions
 
-            WidePotionsMod.whitelistSimplePotion(BurnPotion.POTION_ID);
+            //WidePotionsMod.whitelistSimplePotion(BurnPotion.POTION_ID);
 
             //Complex Potions
 
@@ -434,198 +358,105 @@ public class M10RobotMod implements
         }
 
         logger.info("Loading badge image and mod options");
+        //Grab the strings
+        uiStrings = CardCrawlGame.languagePack.getUIString(makeID("ModConfigs"));
+        EXTRA_TEXT = uiStrings.EXTRA_TEXT;
+        TEXT = uiStrings.TEXT;
+        // Create the Mod Menu
+        ModPanel settingsPanel = new ModPanel();
         
         // Load the Mod Badge
         Texture badgeTexture = TextureLoader.getTexture(BADGE_IMAGE);
-        
-        // Create the Mod Menu
-        ModPanel settingsPanel = new ModPanel();
+        BaseMod.registerModBadge(badgeTexture, EXTRA_TEXT[0], AUTHOR, EXTRA_TEXT[1], settingsPanel);
 
         //Get the longest slider text for positioning
-        ArrayList<String> labelStrings = new ArrayList<>();
-        labelStrings.add(CardCrawlGame.languagePack.getUIString(M10RobotMod.makeID("ModConfigBattleTalkButton")).TEXT[0]);
-        labelStrings.add(CardCrawlGame.languagePack.getUIString(M10RobotMod.makeID("ModConfigDamagedTalkButton")).TEXT[0]);
-        labelStrings.add(CardCrawlGame.languagePack.getUIString(M10RobotMod.makeID("ModConfigPreBattleTalkButton")).TEXT[0]);
+        ArrayList<String> labelStrings = new ArrayList<>(Arrays.asList(TEXT));
         float sliderOffset = getSliderPosition(labelStrings);
         labelStrings.clear();
         float currentYposition = 740f;
         float spacingY = 55f;
-        
-        // Create the on/off button:
-        ModLabeledToggleButton enableSelfDamageButton = new ModLabeledToggleButton(CardCrawlGame.languagePack.getUIString(M10RobotMod.makeID("ModConfigSeagulls")).TEXT[0],
-                350.0f, currentYposition, Settings.CREAM_COLOR, FontHelper.charDescFont, // Position (trial and error it), color, font
-                enableSelfDamage, // Boolean it uses
-                settingsPanel, // The mod panel in which this button will be in
-                (label) -> {}, // thing??????? idk
-                (button) -> { // The actual button:
-            
-            enableSelfDamage = button.enabled; // The boolean true/false will be whether the button is enabled or not
-            try {
-                // And based on that boolean, set the settings and save them
-                SpireConfig config = new SpireConfig("M10Robot", "TimeTravellerConfig", theShadowSirenDefaultSettings);
-                config.setBool(ENABLE_SELFDAMAGE_SETTING, enableSelfDamage);
-                config.save();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+
+        //Used to set the tutorial setting
+        showBoosterTutorialButton = new ModLabeledToggleButton(TEXT[0],350.0f, currentYposition, Settings.CREAM_COLOR, FontHelper.charDescFont,
+                !m10RobotConfig.getBool(BOOSTER_TUTORIAL_SEEN), settingsPanel, (label) -> {}, (button) -> {
+            m10RobotConfig.setBool(BOOSTER_TUTORIAL_SEEN, !button.enabled);
+            boosterTutorialSeen = !button.enabled;
+            try {m10RobotConfig.save();} catch (IOException e) {e.printStackTrace();}
         });
         currentYposition -= spacingY;
-        ModLabeledToggleButton enableStrongerWantedButton = new ModLabeledToggleButton(CardCrawlGame.languagePack.getUIString(M10RobotMod.makeID("ModConfigWanted")).TEXT[0],
-                350.0f, currentYposition, Settings.CREAM_COLOR, FontHelper.charDescFont, // Position (trial and error it), color, font
-                enableStrongerWantedEffect, // Boolean it uses
-                settingsPanel, // The mod panel in which this button will be in
-                (label) -> {}, // thing??????? idk
-                (button) -> { // The actual button:
 
-                    enableStrongerWantedEffect = button.enabled; // The boolean true/false will be whether the button is enabled or not
-                    try {
-                        // And based on that boolean, set the settings and save them
-                        SpireConfig config = new SpireConfig("M10Robot", "TimeTravellerConfig", theShadowSirenDefaultSettings);
-                        config.setBool(FIVE_STAR_WANTED_SETTING, enableStrongerWantedEffect);
-                        config.save();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                });
+        //Used to set the unused self damage setting.
+        ModLabeledToggleButton enableSelfDamageButton = new ModLabeledToggleButton(TEXT[3],350.0f, currentYposition, Settings.CREAM_COLOR, FontHelper.charDescFont,
+                m10RobotConfig.getBool(ENABLE_SELFDAMAGE_SETTING), settingsPanel, (label) -> {}, (button) -> {
+            m10RobotConfig.setBool(ENABLE_SELFDAMAGE_SETTING, button.enabled);
+            enableSelfDamage = button.enabled;
+            try {m10RobotConfig.save();} catch (IOException e) {e.printStackTrace();}
+        });
         currentYposition -= spacingY;
-        ModLabeledToggleButton disableGullVFXButton = new ModLabeledToggleButton(CardCrawlGame.languagePack.getUIString(M10RobotMod.makeID("ModConfigGullVFXButton")).TEXT[0],
-                350.0f, currentYposition, Settings.CREAM_COLOR, FontHelper.charDescFont, // Position (trial and error it), color, font
-                disableGullVfx, // Boolean it uses
-                settingsPanel, // The mod panel in which this button will be in
-                (label) -> {}, // thing??????? idk
-                (button) -> { // The actual button:
 
-                    disableGullVfx = button.enabled; // The boolean true/false will be whether the button is enabled or not
-                    try {
-                        // And based on that boolean, set the settings and save them
-                        SpireConfig config = new SpireConfig("M10Robot", "TimeTravellerConfig", theShadowSirenDefaultSettings);
-                        config.setBool(DISABLE_GULL_VFX, disableGullVfx);
-                        config.save();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                });
-        currentYposition -= spacingY;
         //Used for randomly talking when playing cards
-        ModLabeledToggleButton enableCardBattleTalkButton = new ModLabeledToggleButton(CardCrawlGame.languagePack.getUIString(M10RobotMod.makeID("ModConfigBattleTalkButton")).TEXT[0],
-                350.0f, currentYposition, Settings.CREAM_COLOR, FontHelper.charDescFont, // Position (trial and error it), color, font
-                enableCardBattleTalkEffect, // Boolean it uses
-                settingsPanel, // The mod panel in which this button will be in
-                (label) -> {}, // thing??????? idk
-                (button) -> { // The actual button:
-
-                    enableCardBattleTalkEffect = button.enabled; // The boolean true/false will be whether the button is enabled or not
-                    try {
-                        // And based on that boolean, set the settings and save them
-                        SpireConfig config = new SpireConfig("M10Robot", "TimeTravellerConfig", theShadowSirenDefaultSettings);
-                        config.setBool(CARD_BATTLE_TALK_SETTING, enableCardBattleTalkEffect);
-                        config.save();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                });
+        ModLabeledToggleButton enableCardBattleTalkButton = new ModLabeledToggleButton(TEXT[4],350.0f, currentYposition, Settings.CREAM_COLOR, FontHelper.charDescFont,
+                m10RobotConfig.getBool(ENABLE_CARD_BATTLE_TALK_SETTING), settingsPanel, (label) -> {}, (button) -> {
+            m10RobotConfig.setBool(ENABLE_CARD_BATTLE_TALK_SETTING, button.enabled);
+            enableCardBattleTalkEffect = button.enabled;
+            try {m10RobotConfig.save();} catch (IOException e) {e.printStackTrace();}
+        });
         ModMinMaxSlider cardBattleTalkSlider = new ModMinMaxSlider("",
                 enableCardBattleTalkButton.getX() + sliderOffset,
                 enableCardBattleTalkButton.getY() + 20f,
-                0, 100, cardTalkProbability, "%.0f",
-                settingsPanel,
-                slider -> {
-                    cardTalkProbability = (int)slider.getValue();
-                    try {
-                        // And based on that boolean, set the settings and save them
-                        SpireConfig config = new SpireConfig("M10Robot", "TimeTravellerConfig", theShadowSirenDefaultSettings);
-                        config.setInt(CARD_BATTLE_TALK_PROBABILITY_SETTING, (int) slider.getValue());
-                        config.save();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                });
+                0, 100, m10RobotConfig.getInt(CARD_BATTLE_TALK_PROBABILITY_SETTING), "%.0f", settingsPanel, slider -> {
+            m10RobotConfig.setInt(CARD_BATTLE_TALK_PROBABILITY_SETTING, (int)slider.getValue());
+            cardTalkProbability = (int)slider.getValue();
+            try {m10RobotConfig.save();} catch (IOException e) {e.printStackTrace();}
+        });
         currentYposition -= spacingY;
-        //Used for randomly talking when taking damage
-        ModLabeledToggleButton enableDamagedBattleTalkButton = new ModLabeledToggleButton(CardCrawlGame.languagePack.getUIString(M10RobotMod.makeID("ModConfigDamagedTalkButton")).TEXT[0],
-                350.0f, currentYposition, Settings.CREAM_COLOR, FontHelper.charDescFont, // Position (trial and error it), color, font
-                enableDamagedBattleTalkEffect, // Boolean it uses
-                settingsPanel, // The mod panel in which this button will be in
-                (label) -> {}, // thing??????? idk
-                (button) -> { // The actual button:
 
-                    enableDamagedBattleTalkEffect = button.enabled; // The boolean true/false will be whether the button is enabled or not
-                    try {
-                        // And based on that boolean, set the settings and save them
-                        SpireConfig config = new SpireConfig("M10Robot", "TimeTravellerConfig", theShadowSirenDefaultSettings);
-                        config.setBool(DAMAGED_BATTLE_TALK_SETTING, enableDamagedBattleTalkEffect);
-                        config.save();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                });
+        //Used for randomly talking when taking damage
+        ModLabeledToggleButton enableDamagedBattleTalkButton = new ModLabeledToggleButton(TEXT[5],350.0f, currentYposition, Settings.CREAM_COLOR, FontHelper.charDescFont,
+                m10RobotConfig.getBool(ENABLE_DAMAGED_BATTLE_TALK_SETTING), settingsPanel, (label) -> {}, (button) -> {
+            m10RobotConfig.setBool(ENABLE_DAMAGED_BATTLE_TALK_SETTING, button.enabled);
+            enableCardBattleTalkEffect = button.enabled;
+            try {m10RobotConfig.save();} catch (IOException e) {e.printStackTrace();}
+        });
         ModMinMaxSlider damagedBattleTalkSlider = new ModMinMaxSlider("",
                 enableDamagedBattleTalkButton.getX() + sliderOffset,
                 enableDamagedBattleTalkButton.getY() + 20f,
-                0, 100, damagedTalkProbability, "%.0f",
-                settingsPanel,
-                slider -> {
-                    damagedTalkProbability = (int)slider.getValue();
-                    try {
-                        // And based on that boolean, set the settings and save them
-                        SpireConfig config = new SpireConfig("M10Robot", "TimeTravellerConfig", theShadowSirenDefaultSettings);
-                        config.setInt(DAMAGED_BATTLE_TALK_PROBABILITY_SETTING, (int) slider.getValue());
-                        config.save();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                });
+                0, 100, m10RobotConfig.getInt(DAMAGED_BATTLE_TALK_PROBABILITY_SETTING), "%.0f", settingsPanel, slider -> {
+            m10RobotConfig.setInt(DAMAGED_BATTLE_TALK_PROBABILITY_SETTING, (int)slider.getValue());
+            damagedTalkProbability = (int)slider.getValue();
+            try {m10RobotConfig.save();} catch (IOException e) {e.printStackTrace();}
+        });
         currentYposition -= spacingY;
-        //Used for randomly talking when combat starts and ends
-        ModLabeledToggleButton enablePreBattleTalkButton = new ModLabeledToggleButton(CardCrawlGame.languagePack.getUIString(M10RobotMod.makeID("ModConfigPreBattleTalkButton")).TEXT[0],
-                350.0f, currentYposition, Settings.CREAM_COLOR, FontHelper.charDescFont, // Position (trial and error it), color, font
-                enablePreBattleTalkEffect, // Boolean it uses
-                settingsPanel, // The mod panel in which this button will be in
-                (label) -> {}, // thing??????? idk
-                (button) -> { // The actual button:
 
-                    enablePreBattleTalkEffect = button.enabled; // The boolean true/false will be whether the button is enabled or not
-                    try {
-                        // And based on that boolean, set the settings and save them
-                        SpireConfig config = new SpireConfig("M10Robot", "TimeTravellerConfig", theShadowSirenDefaultSettings);
-                        config.setBool(PRE_BATTLE_TALK_SETTING, enablePreBattleTalkEffect);
-                        config.save();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                });
+        //Used for randomly talking when combat starts and ends
+        ModLabeledToggleButton enablePreBattleTalkButton = new ModLabeledToggleButton(TEXT[6],350.0f, currentYposition, Settings.CREAM_COLOR, FontHelper.charDescFont,
+                m10RobotConfig.getBool(ENABLE_PRE_BATTLE_TALK_SETTING), settingsPanel, (label) -> {}, (button) -> {
+            m10RobotConfig.setBool(ENABLE_PRE_BATTLE_TALK_SETTING, button.enabled);
+            enablePreBattleTalkEffect = button.enabled;
+            try {m10RobotConfig.save();} catch (IOException e) {e.printStackTrace();}
+        });
         ModMinMaxSlider preBattleTalkSlider = new ModMinMaxSlider("",
                 enablePreBattleTalkButton.getX() + sliderOffset,
                 enablePreBattleTalkButton.getY() + 20f,
-                0, 100, preTalkProbability, "%.0f",
-                settingsPanel,
-                slider -> {
-                    preTalkProbability = (int)slider.getValue();
-                    try {
-                        // And based on that boolean, set the settings and save them
-                        SpireConfig config = new SpireConfig("M10Robot", "TimeTravellerConfig", theShadowSirenDefaultSettings);
-                        config.setInt(PRE_BATTLE_TALK_PROBABILITY_SETTING, (int) slider.getValue());
-                        config.save();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                });
-        //currentYposition -= spacingY;
+                0, 100, m10RobotConfig.getInt(PRE_BATTLE_TALK_PROBABILITY_SETTING), "%.0f", settingsPanel, slider -> {
+            m10RobotConfig.setInt(PRE_BATTLE_TALK_PROBABILITY_SETTING, (int)slider.getValue());
+            preTalkProbability = (int)slider.getValue();
+            try {m10RobotConfig.save();} catch (IOException e) {e.printStackTrace();}
+        });
+        currentYposition -= spacingY;
 
-        settingsPanel.addUIElement(enableSelfDamageButton); // Add the button to the settings panel. Button is a go.
-        settingsPanel.addUIElement(enableStrongerWantedButton); // Add the button to the settings panel. Button is a go.
-        settingsPanel.addUIElement(disableGullVFXButton);
+        settingsPanel.addUIElement(showBoosterTutorialButton);
+        settingsPanel.addUIElement(enableSelfDamageButton);
         settingsPanel.addUIElement(enableCardBattleTalkButton);
         settingsPanel.addUIElement(cardBattleTalkSlider);
         settingsPanel.addUIElement(enableDamagedBattleTalkButton);
         settingsPanel.addUIElement(damagedBattleTalkSlider);
         settingsPanel.addUIElement(enablePreBattleTalkButton);
         settingsPanel.addUIElement(preBattleTalkSlider);
-        
-        BaseMod.registerModBadge(badgeTexture, MODNAME, AUTHOR, DESCRIPTION, settingsPanel);
+
 
         // =============== SAVABLES =================
-        logger.info("Preparing CustomSavables");
+        //logger.info("Preparing CustomSavables");
 
 
 
@@ -649,9 +480,9 @@ public class M10RobotMod implements
     private float getSliderPosition (ArrayList<String> stringsToCompare) {
         float longest = 0;
         for (String s : stringsToCompare) {
-            longest = Math.max(longest, FontHelper.getWidth(FontHelper.charDescFont, s, 1f / Settings.scale));
+            longest = Math.max(longest, FontHelper.getWidth(FontHelper.charDescFont, s, Settings.scale));
         }
-        return longest + 60f;
+        return longest + 60f * Settings.scale;
     }
     
     // =============== / POST-INITIALIZE/ =================
@@ -666,7 +497,7 @@ public class M10RobotMod implements
         // just remove the player class at the end (in this case the "TheDefaultEnum.THE_DEFAULT".
         // Remember, you can press ctrl+P inside parentheses like addPotions)
 
-        BaseMod.addPotion(BurnPotion.class, BURN_POTION_LIQUID, BURN_POTION_HYBRID, BURN_POTION_SPOTS, BurnPotion.POTION_ID, M10Robot.Enums.THE_MIO_ROBOT);
+        //BaseMod.addPotion(BurnPotion.class, BURN_POTION_LIQUID, BURN_POTION_HYBRID, BURN_POTION_SPOTS, BurnPotion.POTION_ID, M10Robot.Enums.THE_MIO_ROBOT);
 
         logger.info("Done editing potions");
     }
@@ -815,6 +646,10 @@ public class M10RobotMod implements
         // Stance Strings
         BaseMod.loadCustomStringsFile(StanceStrings.class,
                 getModID() + "Resources/localization/"+loadLocalizationIfAvailable("M10Robot-Stance-Strings.json"));
+
+        // Tutorial Strings
+        BaseMod.loadCustomStringsFile(TutorialStrings.class,
+                getModID() + "Resources/localization/"+loadLocalizationIfAvailable("M10Robot-Tutorial-Strings.json"));
 
         logger.info("Done editing strings");
     }

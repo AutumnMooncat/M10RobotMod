@@ -17,28 +17,19 @@
             "Viewing equipped boosters. Selected boosters will be unequipped and discarded.",
             "Viewing equipped boosters."]
   },
-  "M10Robot:ChooseMagic": {
-    "TEXT": ["Choose 1 of 3 Magical Memories to add to your Discard Pile."]
-  },
-  "M10Robot:ChooseMemory": {
-    "TEXT": ["Choose up to "," card(s) to turn into Memories."]
-  },
-  "M10Robot:ModConfigSeagulls": {
-    "TEXT": ["Lol it's the same config from my other mod. Default: false."]
-  },
-  "M10Robot:ModConfigWanted": {
-    "TEXT": ["These don't do anything yet. Default: false."]
-  },
-  "M10Robot:ModConfigBattleTalkButton": {
-    "TEXT": ["Enable random card phrases. Defaults: true, 25% chance."]
-  },
-  "M10Robot:ModConfigDamagedTalkButton": {
-    "TEXT": ["Enable random phrases when attacked. Defaults: true, 50% chance."]
-  },
-  "M10Robot:ModConfigPreBattleTalkButton": {
-    "TEXT": ["Enable random pre/post combat phrases. Defaults: true, 75% chance."]
-  },
-  "M10Robot:ModConfigGullVFXButton": {
-    "TEXT": ["Well the phrases do if you turn them on. Default: false."]
+  "M10Robot:ModConfigs": {
+    "TEXT": [
+      "Show Boosters & Modules tutorial",
+      "Show Retoolable tutorial",
+      "",
+      "Enable self damage",
+      "Enable random card phrases. Defaults: true, 10%.",
+      "Enable random phrases when attacked. Defaults: true, 20%.",
+      "Enable random pre/post combat phrases. Defaults: true, 50%."
+    ],
+    "EXTRA_TEXT": [
+      "The M10 Robot",
+      "Adds M10 Robot (and cards) from 100% Orange Juice! NL See the Mod Options if you would like to change any configurations!"
+    ]
   }
 }
