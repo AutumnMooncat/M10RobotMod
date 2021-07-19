@@ -6,10 +6,7 @@ import M10Robot.actions.SelectCardsForBoosterAction;
 import M10Robot.cardModifiers.AbstractBoosterModifier;
 import M10Robot.cards.BlankSlate;
 import M10Robot.cards.modules.Repeater;
-import M10Robot.patches.BoosterFieldPatch;
-import M10Robot.patches.BypassEnergyPatches;
-import M10Robot.patches.HandCardSelectScreenPatches;
-import M10Robot.patches.TypeOverridePatch;
+import M10Robot.patches.*;
 import M10Robot.predicates.SwappableAttentivePredicate;
 import basemod.BaseMod;
 import basemod.helpers.TooltipInfo;
@@ -41,6 +38,7 @@ public abstract class AbstractBoosterCard extends AbstractClickableCard {
     protected Predicate<AbstractCard> isPower = c -> c.type == CardType.POWER && !(c instanceof AbstractModuleCard);
     protected Predicate<AbstractCard> isModule = c -> c instanceof AbstractModuleCard;
     protected Predicate<AbstractCard> nonZeroCost = c -> c.cost > 0 || c.cost == -1;
+    protected Predicate<AbstractCard> greaterThanZeroCost = c -> c.cost > 0 && !CostBypassField.bypassCost.get(c);
 
     public AbstractBoosterCard(String id, String img, CardType type, CardColor color, CardRarity rarity, CardTarget target) {
         super(id, img, -2, type, color, rarity, target);

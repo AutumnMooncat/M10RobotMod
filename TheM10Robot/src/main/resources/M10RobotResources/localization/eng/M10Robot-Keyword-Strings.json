@@ -143,6 +143,13 @@
     "DESCRIPTION": "An #yUnplayable card that modifies the #bplayer. NL May be equipped by #yRight #yClicking if you have an open slot."
   },
   {
+    "NAMES": [
+      "Unrestricted",
+      "unrestricted"
+    ],
+    "DESCRIPTION": "This card ignores playability restrictions."
+  },
+  {
     "PROPER_NAME": "Multi-Cost",
     "NAMES": [
       "Multi-Cost",

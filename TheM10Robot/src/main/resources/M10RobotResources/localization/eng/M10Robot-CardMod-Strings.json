@@ -165,6 +165,12 @@
       "","e"
     ]
   },
+  "M10Robot:TempBypassModifier": {
+    "EXTENDED_DESCRIPTION": [
+      "m10robot:Unrestricted",".",
+      "","u"
+    ]
+  },
   "M10Robot:TransmuteSelfEffect": {
     "EXTENDED_DESCRIPTION": [
       "M10Robot:Transmute this card."

@@ -6,6 +6,7 @@ import M10Robot.RandomChatterHelper;
 import M10Robot.M10RobotMod;
 import M10Robot.cards.*;
 import M10Robot.cards.boosters.PolishingKit;
+import M10Robot.cards.boosters.SecretRootkit;
 import M10Robot.cards.interfaces.SkillAnimationAttack;
 import M10Robot.cards.modules.TargetingSystem;
 import M10Robot.relics.ProtectiveShell;
@@ -263,7 +264,7 @@ public class M10Robot extends CustomPlayer {
     //Which card should be obtainable from the Match and Keep event?
     @Override
     public AbstractCard getStartCardForEvent() {
-        return new Strike();
+        return new SecretRootkit();
     }
 
     // The class name as it appears next to your player name in-game

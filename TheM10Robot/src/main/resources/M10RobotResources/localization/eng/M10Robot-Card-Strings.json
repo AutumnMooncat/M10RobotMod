@@ -281,6 +281,10 @@
     "NAME": "Scrap Booster",
     "DESCRIPTION": "Modifications: NL + !M! Block NL Requirements: NL Has Block"
   },
+  "M10Robot:SecretRootkit": {
+    "NAME": "Secret Rootkit",
+    "DESCRIPTION": "Modifications: NL + m10robot:Unrestricted NL Requirements: NL 1 Cost or greater"
+  },
   "M10Robot:Seeker": {
     "NAME": "Seeker",
     "DESCRIPTION": "Deal !D! damage to a random enemy. NL Channel !M! m10robot:Searchlight."

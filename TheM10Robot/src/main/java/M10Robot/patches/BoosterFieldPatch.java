@@ -20,8 +20,8 @@ import java.util.HashMap;
 
 public class BoosterFieldPatch {
 
-    private static final Color boosterColor = Color.valueOf("65ada1");
-    private static final Color boosterUpgradeColor = Color.valueOf("c26ad4");
+    public static final Color boosterColor = Color.valueOf("65ada1");
+    public static final Color boosterUpgradeColor = Color.valueOf("c26ad4");
     private static final String augmentedKeyword = M10RobotMod.makeID("Augmented");
 
     @SpirePatch(clz = AbstractCard.class, method = SpirePatch.CLASS)
