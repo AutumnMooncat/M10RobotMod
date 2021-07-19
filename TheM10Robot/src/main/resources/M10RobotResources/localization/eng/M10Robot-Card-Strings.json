@@ -133,7 +133,7 @@
   },
   "M10Robot:FullAuto": {
     "NAME": "Full Auto",
-    "DESCRIPTION": "m10robot:Recharging !M10Robot:AmmoCount! / !M10Robot:ThirdMagic!. NL Deal !D! damage !M! times.",
+    "DESCRIPTION": "m10robot:Recharging !M10Robot:AmmoCount! / !M10Robot:ThirdMagic!. NL Deal !D! damage !M! times. NL Gain !M10Robot:SecondMagic! m10robot:Recoil.",
     "EXTENDED_DESCRIPTION": ["Fuller Auto"]
   },
   "M10Robot:HealthDown": {
@@ -239,8 +239,9 @@
   },
   "M10Robot:ReflectiveShell": {
     "NAME": "Reflective Shell",
-    "DESCRIPTION": "For !M! turn, you may not take damage and attacks upon you are reflected onto the attacker.",
-    "UPGRADE_DESCRIPTION": "For !M! turns, you may not take damage and attacks upon you are reflected onto the attacker."
+    "DESCRIPTION": "While Equipped: NL Fully blocked attacks are reflected onto the attacker !M! time.",
+    "UPGRADE_DESCRIPTION": "Innate. NL While Equipped: NL Fully blocked attacks are reflected onto the attacker !M! time.",
+    "EXTENDED_DESCRIPTION": ["While Equipped: NL Fully blocked attacks are reflected onto the attacker !M! times.", "Innate. NL While Equipped: NL Fully blocked attacks are reflected onto the attacker !M! times."]
   },
   "M10Robot:Repeater": {
     "NAME": "Repeater",
@@ -254,7 +255,7 @@
   },
   "M10Robot:RoboBeam": {
     "NAME": "Robo Beam",
-    "DESCRIPTION": "Deal !D! damage to a random enemy. NL Repeat for every 5 turns that has passed this combat."
+    "DESCRIPTION": "Deal !D! damage to a random enemy. NL Repeat for every !M10Robot:SecondMagic! turns that has passed this combat."
   },
   "M10Robot:Rumble": {
     "NAME": "Rumble",

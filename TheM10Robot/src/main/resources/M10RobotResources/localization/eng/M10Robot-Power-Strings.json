@@ -37,8 +37,8 @@
   },
   "M10Robot:ReflectiveShellPower": {
     "NAME": "Reflective Shell",
-    "DESCRIPTIONS": ["This turn, you may not take damage and attacks upon you are reflected onto the attacker.",
-                    "For #b"," turns, you may not take damage and attacks upon you are reflected onto the attacker."]
+    "DESCRIPTIONS": ["Fully blocked attacks are reflected onto the attacker.",
+                    "Fully blocked attacks are reflected onto the attacker #b"," times."]
   },
   "M10Robot:RelayPower": {
     "NAME": "Relay",
