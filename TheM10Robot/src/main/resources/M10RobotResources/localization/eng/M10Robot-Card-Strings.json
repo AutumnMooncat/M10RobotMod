@@ -220,8 +220,8 @@
   },
   "M10Robot:RAMUpgrade": {
     "NAME": "RAM Upgrade",
-    "DESCRIPTION": "Gain !M! m10robot:Module slot.",
-    "UPGRADE_DESCRIPTION": "Gain !M! m10robot:Module slots."
+    "DESCRIPTION": "While Equipped: NL Gain !M! m10robot:Module slot.",
+    "UPGRADE_DESCRIPTION": "While Equipped: NL Gain !M! m10robot:Module slots."
   },
   "M10Robot:RapidAssembly": {
     "NAME": "Rapid Assembly",

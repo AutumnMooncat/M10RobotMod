@@ -300,6 +300,21 @@ public class ModulesPower extends AbstractPower implements CloneablePowerInterfa
         updateDescription();
     }
 
+    public void unequipModule(AbstractModuleCard card) {
+        card.onRemove();
+        modules.moveToDiscardPile(card);
+        AbstractDungeon.player.onCardDrawOrDiscard();
+        updateDescription();
+    }
+
+    @Override
+    public void reducePower(int reduceAmount) {
+        super.reducePower(reduceAmount);
+        while (modules.size() > amount) {
+            unequipModule((AbstractModuleCard) modules.getTopCard());
+        }
+    }
+
     public static String getCantEquipMessage() {
         return DESCRIPTIONS[6];
     }
@@ -359,9 +374,9 @@ public class ModulesPower extends AbstractPower implements CloneablePowerInterfa
                     AbstractDungeon.gridSelectScreen.open(modules, 0, true, DESCRIPTIONS[5]);
                 } else {
                     for (AbstractCard c : AbstractDungeon.gridSelectScreen.selectedCards) {
-                        modules.moveToDiscardPile(c);
-                        if (c instanceof AbstractModuleCard) ((AbstractModuleCard) c).onRemove();
-                        //modules.removeCard(c);
+                        if (c instanceof AbstractModuleCard) {
+                            unequipModule((AbstractModuleCard) c);
+                        }
                     }
                     AbstractDungeon.gridSelectScreen.selectedCards.clear();
                     wasClicked = false;
