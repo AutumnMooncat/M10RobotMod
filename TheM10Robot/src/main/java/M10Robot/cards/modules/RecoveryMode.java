@@ -50,9 +50,7 @@ public class RecoveryMode extends AbstractModuleCard {
 
     // Actions the card should do.
     @Override
-    public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new ApplyPowerAction(p, p, new RecoveryModePower(p, magicNumber)));
-    }
+    public void use(AbstractPlayer p, AbstractMonster m) {}
 
     //Upgraded stats.
     @Override
