@@ -33,7 +33,7 @@
   },
   "M10Robot:Atomize": {
     "NAME": "Atomize",
-    "DESCRIPTION": "Channel !M! m10robot:Bomb. NL Evoke every m10robot:Bomb Orb."
+    "DESCRIPTION": "Channel !M! m10robot:Bomb. NL Evoke every m10robot:Bomb Orb. NL Exhaust."
   },
   "M10Robot:AutoCaster": {
     "NAME": "Auto Caster",
@@ -283,7 +283,8 @@
   },
   "M10Robot:SecretRootkit": {
     "NAME": "Secret Rootkit",
-    "DESCRIPTION": "Modifications: NL + m10robot:Unrestricted NL Requirements: NL 1 Cost or greater"
+    "DESCRIPTION": "Modifications: NL + m10robot:Unrestricted NL Requirements: NL 1 Cost or greater",
+    "UPGRADE_DESCRIPTION": "Retain. NL Modifications: NL + m10robot:Unrestricted NL Requirements: NL 1 Cost or greater"
   },
   "M10Robot:Seeker": {
     "NAME": "Seeker",
