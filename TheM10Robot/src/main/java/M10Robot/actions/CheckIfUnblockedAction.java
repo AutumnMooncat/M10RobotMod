@@ -10,7 +10,7 @@ public class CheckIfUnblockedAction extends AbstractGameAction {
     private final AbstractGameAction action;
 
     public CheckIfUnblockedAction(AbstractCreature target, AbstractCreature source, AbstractGameAction action) {
-        this.actionType = ActionType.HEAL;
+        this.actionType = ActionType.SPECIAL;
         this.target = target;
         this.source = source;
         this.action = action;
