@@ -47,12 +47,13 @@ public class RoboBeam extends AbstractDynamicCard {
     public RoboBeam() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = damage = DAMAGE;
+        secondMagicNumber = baseSecondMagicNumber = TURNS_PER_EXTRA_HIT;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        int hits = 1+Math.max(0, GameActionManager.turn/TURNS_PER_EXTRA_HIT);
+        int hits = 1+Math.max(0, GameActionManager.turn/secondMagicNumber);
         for (int i = 0 ; i < hits ; i++) {
             AbstractMonster mo = AbstractDungeon.getRandomMonster();
             this.addToBot(new SFXAction("ATTACK_MAGIC_BEAM_SHORT", 0.5F));
