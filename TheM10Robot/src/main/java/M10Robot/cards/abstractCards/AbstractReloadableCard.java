@@ -2,6 +2,7 @@ package M10Robot.cards.abstractCards;
 
 import M10Robot.M10RobotMod;
 import M10Robot.cards.modules.AmmoBox;
+import M10Robot.patches.CostBypassField;
 import M10Robot.powers.ModulesPower;
 import basemod.abstracts.CustomSavable;
 import com.google.gson.reflect.TypeToken;
@@ -85,7 +86,7 @@ public abstract class AbstractReloadableCard extends AbstractClickableCard imple
 
     @Override
     public boolean canUse(AbstractPlayer p, AbstractMonster m) {
-        return super.canUse(p, m) && (isInAutoplay || !needsReload);
+        return super.canUse(p, m) && (isInAutoplay || !needsReload || CostBypassField.bypassCost.get(this));
     }
 
     public void useShot() {

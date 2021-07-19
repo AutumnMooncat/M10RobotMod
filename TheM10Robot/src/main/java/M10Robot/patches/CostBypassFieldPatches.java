@@ -36,4 +36,12 @@ public class CostBypassFieldPatches {
             }
         }
     }
+
+    @SpirePatch(clz = AbstractCard.class, method = "makeStatEquivalentCopy")
+    public static class MakeStatEquivalentCopy {
+        public static AbstractCard Postfix(AbstractCard result, AbstractCard self) {
+            CostBypassField.bypassCost.set(result, CostBypassField.bypassCost.get(self));
+            return result;
+        }
+    }
 }

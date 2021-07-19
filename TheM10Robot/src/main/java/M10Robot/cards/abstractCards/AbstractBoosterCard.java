@@ -60,17 +60,17 @@ public abstract class AbstractBoosterCard extends AbstractClickableCard {
         if (c instanceof Repeater) {
             return true;
         }
-        boolean backup = BypassEnergyPatches.BypassEnergyCheckField.bypass.get(c);
-        BypassEnergyPatches.BypassEnergyCheckField.bypass.set(c, true);
+        boolean backup = CostBypassField.bypassCost.get(c);
+        CostBypassField.bypassCost.set(c, true);
         for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
             if (!aM.isDeadOrEscaped()) {
                 if (c.canUse(AbstractDungeon.player, aM)) {
-                    BypassEnergyPatches.BypassEnergyCheckField.bypass.set(c, backup);
+                    CostBypassField.bypassCost.set(c, backup);
                     return true;
                 }
             }
         }
-        BypassEnergyPatches.BypassEnergyCheckField.bypass.set(c, backup);
+        CostBypassField.bypassCost.set(c, backup);
         return false;
     }
 
