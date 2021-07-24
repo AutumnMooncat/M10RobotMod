@@ -4,23 +4,21 @@ import M10Robot.M10RobotMod;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
 import M10Robot.patches.RestorePositionPatches;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.math.collision.Ray;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.GameActionManager;
-import com.megacrit.cardcrawl.actions.animations.VFXAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.Hitbox;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.ThornsPower;
-import com.megacrit.cardcrawl.vfx.combat.SmallLaserEffect;
+import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
@@ -37,8 +35,8 @@ public class Rushdown extends AbstractDynamicCard {
 
     // STAT DECLARATION
 
-    private static final CardRarity RARITY = CardRarity.COMMON;
-    private static final CardTarget TARGET = CardTarget.ENEMY;
+    private static final CardRarity RARITY = CardRarity.UNCOMMON;
+    private static final CardTarget TARGET = CardTarget.ALL_ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
@@ -57,53 +55,96 @@ public class Rushdown extends AbstractDynamicCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        RestorePositionPatches.setBackUp(p, p.drawX, p.drawY, p.hb.cX, p.hb.cY);
-        float xB = p.drawX;
-        float yB = p.drawY;
-        float speed = 150f * Settings.scale;
-        boolean hasThorns = p.hasPower(ThornsPower.POWER_ID);
-        ArrayList<AbstractMonster> hits = findCollisions(p, m);
-        Vector2 tmp = new Vector2(m.hb.cX - p.hb.cX, m.hb.cY - p.hb.cY);
-        if (tmp.len() == 0) {
-            tmp.set(1, 0);
-        }
-        tmp.nor();
         this.addToBot(new AbstractGameAction() {
             @Override
             public void update() {
-                p.drawX += tmp.x*speed;
-                p.drawY += tmp.y*speed;
-                if (!(0 < p.drawX && p.drawX < Settings.WIDTH && 0 < p.drawY && p.drawY < Settings.HEIGHT)) {
-                    this.isDone = true;
-                    p.drawX = -2*xB;
-                    p.drawY = yB;
-                }
+                RestorePositionPatches.setBackUp(p, p.drawX, p.drawY, p.hb.cX, p.hb.cY);
+                this.isDone = true;
             }
         });
-
-        for (AbstractMonster aM : hits) {
-            this.addToBot(new DamageAction(aM, new DamageInfo(p, multiDamage[AbstractDungeon.getMonsters().monsters.indexOf(aM)], damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-            if (hasThorns) {
-                this.addToBot(new AbstractGameAction() {
-                    @Override
-                    public void update() {
-                        p.getPower(ThornsPower.POWER_ID).onAttacked(new DamageInfo(aM, 0, DamageInfo.DamageType.NORMAL), 0);
-                        this.isDone = true;
+        this.addToBot(new AbstractGameAction() {
+            final float xB = p.drawX;
+            final float speed = 100f * Settings.scale;
+            final HashMap<AbstractMonster, Boolean> hitMap = new HashMap<>();
+            final HashMap<AbstractMonster, Boolean> targetToTheRight = new HashMap<>();
+            final boolean hasThorns = p.hasPower(ThornsPower.POWER_ID);
+            final boolean flipped = p.flipHorizontal; //TODO actually change the animation if flipped
+            boolean firstPass = true;
+            boolean firstPhase = true;
+            boolean secondPhase = false;
+            float dx;
+            AbstractPower thornsPower;
+            @Override
+            public void update() {
+                if (firstPass) {
+                    firstPass = false;
+                    for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
+                        if (!aM.isDeadOrEscaped()) {
+                            hitMap.put(aM, false);
+                            targetToTheRight.put(aM, aM.hb.cX >= p.hb.cX);
+                        }
                     }
-                });
-            }
-        }
-        this.addToBot(new AbstractGameAction() {
-            @Override
-            public void update() {
-                p.drawX += Math.min(speed, xB-p.drawX);
-                p.drawY = yB;
-                if (p.drawX == xB) {
-                    this.isDone = true;
+                    if (hasThorns) {
+                        thornsPower = p.getPower(ThornsPower.POWER_ID);
+                    }
+                    if (flipped) {
+                        p.flipHorizontal = false;
+                    }
+                }
+                if (firstPhase) {
+                    dx = speed;
+                    p.drawX += dx;
+                    p.hb.move(p.hb.cX+dx,p.hb.cY);
+                    for (AbstractMonster aM : hitMap.keySet()) {
+                        if (!hitMap.get(aM) && targetToTheRight.get(aM) && p.hb.cX >= aM.hb.cX) {
+                            AbstractDungeon.effectList.add(new FlashAtkImgEffect(aM.hb.cX, aM.hb.cY, AttackEffect.BLUNT_HEAVY));
+                            aM.damage(new DamageInfo(p, multiDamage[AbstractDungeon.getMonsters().monsters.indexOf(aM)], DamageInfo.DamageType.NORMAL));
+                            hitMap.put(aM, true);
+                            if (hasThorns) {
+                                AbstractDungeon.effectList.add(new FlashAtkImgEffect(aM.hb.cX, aM.hb.cY, AttackEffect.SLASH_HORIZONTAL));
+                                aM.damage(new DamageInfo(p, thornsPower.amount, DamageInfo.DamageType.THORNS));
+                                thornsPower.flash();
+                            }
+                        }
+                    }
+                    if (p.drawX > Settings.WIDTH + (2 * speed)) {
+                        firstPhase = false;
+                        secondPhase = true;
+                        p.drawX -= (Settings.WIDTH + (4 * speed));
+                        p.hb.move(p.hb.cX-(Settings.WIDTH + (4 * speed)),p.hb.cY);
+                    }
+                }
+                if (secondPhase) {
+                    dx = limitMovement(speed, xB-p.drawX);
+                    p.drawX += dx;
+                    p.hb.move(p.hb.cX+dx,p.hb.cY);
+                    for (AbstractMonster aM : hitMap.keySet()) {
+                        if (!hitMap.get(aM) && !targetToTheRight.get(aM) && p.hb.cX >= aM.hb.cX) {
+                            AbstractDungeon.effectList.add(new FlashAtkImgEffect(aM.hb.cX, aM.hb.cY, AttackEffect.BLUNT_HEAVY));
+                            aM.damage(new DamageInfo(p, multiDamage[AbstractDungeon.getMonsters().monsters.indexOf(aM)], DamageInfo.DamageType.NORMAL));
+                            hitMap.put(aM, true);
+                            if (hasThorns) {
+                                AbstractDungeon.effectList.add(new FlashAtkImgEffect(aM.hb.cX, aM.hb.cY, AttackEffect.SLASH_HORIZONTAL));
+                                aM.damage(new DamageInfo(p, thornsPower.amount, DamageInfo.DamageType.THORNS));
+                                thornsPower.flash();
+                            }
+                        }
+                    }
+                    if (p.drawX == xB) {
+                        secondPhase = false;
+                        isDone = true;
+                    }
+                }
+                if (isDone) {
+                    if (flipped) {
+                        p.flipHorizontal = true;
+                    }
+                    if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
+                        AbstractDungeon.actionManager.clearPostCombatActions();
+                    }
                 }
             }
         });
-
         this.addToBot(new AbstractGameAction() {
             @Override
             public void update() {
@@ -111,6 +152,10 @@ public class Rushdown extends AbstractDynamicCard {
                 this.isDone = true;
             }
         });
+    }
+
+    public float limitMovement(float desiredSpeed, float maxSpeed) {
+        return (Math.abs(desiredSpeed) > Math.abs(maxSpeed)) ? maxSpeed : desiredSpeed;
     }
 
     private ArrayList<AbstractMonster> findCollisions(AbstractPlayer p, AbstractMonster m) {
