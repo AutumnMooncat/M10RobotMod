@@ -1,4 +1,4 @@
-package M10Robot.powers;
+package M10Robot.patches;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;

@@ -1,7 +1,10 @@
 package M10Robot.orbs;
 
 import M10Robot.M10RobotMod;
+import basemod.BaseMod;
 import basemod.interfaces.CloneablePowerInterface;
+import com.evacipated.cardcrawl.mod.stslib.StSLib;
+import com.evacipated.cardcrawl.mod.stslib.patches.NeutralPowertypePatch;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.InvisiblePower;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.NonStackablePower;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
@@ -17,6 +20,7 @@ public abstract class AbstractLinkedOrbPower extends AbstractPower implements Cl
         this.owner = AbstractDungeon.player;
         this.name = "";
         this.ID = M10RobotMod.makeID("EmptyPower");
+        this.type = NeutralPowertypePatch.NEUTRAL;
         //this.loadRegion("confusion");
         updateDescription();
     }
