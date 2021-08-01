@@ -118,7 +118,7 @@ public abstract class AbstractReloadableCard extends AbstractClickableCard imple
 
     @Override
     public void onRightClick() {
-        if (needsReload && EnergyPanel.totalCount > 0) {
+        if (ammoCount < baseAmmoCount && EnergyPanel.totalCount > 0) {
             this.addToTop(new LoseEnergyAction(1));
             resetAmmo();
         }
