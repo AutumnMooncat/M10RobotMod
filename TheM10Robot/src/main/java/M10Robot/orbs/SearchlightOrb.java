@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.*;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -22,6 +23,7 @@ import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.LockOnPower;
 import com.megacrit.cardcrawl.vfx.combat.DarkOrbActivateEffect;
+import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 import com.megacrit.cardcrawl.vfx.combat.FrostOrbPassiveEffect;
 import com.megacrit.cardcrawl.vfx.combat.OrbFlareEffect;
 
@@ -148,19 +150,26 @@ public class SearchlightOrb extends AbstractCustomOrb {
 
         public int onAttacked(DamageInfo info, int damageAmount) {
             if (info.type != DamageInfo.DamageType.THORNS && info.type != DamageInfo.DamageType.HP_LOSS && info.owner != null && info.owner != this.owner) {
-                int damage = this.linkedOrb.passiveAmount;
-                if (info.owner.hasPower(LockOnPower.POWER_ID)) {
-                    damage = (int)(damage * 1.5F);
-                }
-                this.addToTop(new DamageAction(info.owner, new DamageInfo(this.owner, damage, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true));
+                AbstractCreature ref = owner;
                 this.addToTop(new AbstractGameAction() {
                     @Override
                     public void update() {
-                        linkedOrb.playAnimation(ATTACK_IMG, MED_ANIM);
+                        int damage = linkedOrb.passiveAmount;
+                        if (info.owner.hasPower(LockOnPower.POWER_ID)) {
+                            damage = (int)(damage * 1.5F);
+                        }
+                        if (!info.owner.isDeadOrEscaped()) {
+                            AbstractDungeon.effectList.add(new FlashAtkImgEffect(info.owner.hb.cX, info.owner.hb.cY, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+                            AbstractDungeon.effectList.add(new OrbFlareEffect(linkedOrb, OrbFlareEffect.OrbFlareColor.FROST));
+                            info.owner.damage(new DamageInfo(ref, damage, DamageInfo.DamageType.THORNS));
+                            if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
+                                AbstractDungeon.actionManager.clearPostCombatActions();
+                            }
+                            linkedOrb.playAnimation(ATTACK_IMG, MED_ANIM);
+                        }
                         this.isDone = true;
                     }
                 });
-                linkedOrb.onLinkedPowerTrigger();
             }
             return damageAmount;
         }
