@@ -75,19 +75,19 @@ public class BitOrb extends AbstractCustomOrb {
     }
 
     public void applyFocus() {
-        AbstractPower power = AbstractDungeon.player.getPower("Focus");
+        /*AbstractPower power = AbstractDungeon.player.getPower("Focus");
         if (power != null) {
             this.passiveAmount = this.basePassiveAmount + power.amount;
         } else {
             this.passiveAmount = this.basePassiveAmount;
-        }
+        }*/
     }
 
     @Override
     public void onEvoke() { // 1.On Orb Evoke
         AbstractCreature m = AbstractDungeon.getRandomMonster();
         int damage = this.evokeAmount;
-        if (p.hasPower(LockOnPower.POWER_ID)) {
+        if (m.hasPower(LockOnPower.POWER_ID)) {
             damage = (int)(damage * 1.5F);
         }
         this.addToBot(new AbstractGameAction() {
@@ -97,8 +97,6 @@ public class BitOrb extends AbstractCustomOrb {
                 this.isDone = true;
             }
         });
-        //this.addToBot(new SFXAction("ATTACK_MAGIC_BEAM_SHORT", 0.5F));
-        //this.addToBot(new VFXAction(new SmallLaserEffect(m.hb.cX, m.hb.cY, getXPosition(), getYPosition()), 0.0F));
         this.addToBot(new VFXAction(new ExplosionSmallEffect(m.hb.cX, m.hb.cY), 0.0F));
         this.addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.NONE, true));
         this.addToTop(new RemoveSpecificPowerAction(p, p, linkedPower));
@@ -172,30 +170,29 @@ public class BitOrb extends AbstractCustomOrb {
         }
 
         @Override
-        public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
-            if (!DontLoopcast.orbAttack.get(info) && target != owner) {
-                int damage = this.linkedOrb.passiveAmount;
-                if (this.owner.hasPower(LockOnPower.POWER_ID)) {
-                    damage = (int)(damage * 1.5F);
-                }
-                this.addToBot(new AbstractGameAction() {
+        public void onAttack(DamageInfo info, int damageAmount, AbstractCreature targetAttacked) {
+            if (!DontLoopcast.orbAttack.get(info) && targetAttacked != owner) {
+                AbstractCreature ref = owner;
+                this.addToTop(new AbstractGameAction() {
                     @Override
                     public void update() {
-                        linkedOrb.playAnimation(ATTACK_IMG, MED_ANIM);
-                        this.isDone = true;
-                    }
-                });
-                this.addToBot(new SFXAction("ATTACK_MAGIC_BEAM_SHORT", 0.5F));
-                this.addToBot(new VFXAction(new SmallLaserEffect(target.hb.cX, target.hb.cY, linkedOrb.getXPosition(), linkedOrb.getYPosition()), 0.0F));
-                DamageInfo di = new DamageInfo(owner, damage, DamageInfo.DamageType.THORNS);
-                DontLoopcast.orbAttack.set(di, true);
-                this.addToBot(new DamageAction(target, di, AbstractGameAction.AttackEffect.NONE, true));
-                linkedOrb.onLinkedPowerTrigger();
-                int finalDamage = damage;
-                this.addToBot(new AbstractGameAction() {
-                    @Override
-                    public void update() {
-                        linkedOrb.evokeAmount += finalDamage;
+                        int damage = linkedOrb.passiveAmount;
+                        if (targetAttacked.hasPower(LockOnPower.POWER_ID)) {
+                            damage = (int)(damage * 1.5F);
+                        }
+                        if (!targetAttacked.isDeadOrEscaped()) {
+                            linkedOrb.playAnimation(ATTACK_IMG, MED_ANIM);
+                            CardCrawlGame.sound.play("ATTACK_MAGIC_BEAM_SHORT", 0.5F);
+                            AbstractDungeon.effectList.add(new SmallLaserEffect(targetAttacked.hb.cX, targetAttacked.hb.cY, linkedOrb.getXPosition(), linkedOrb.getYPosition()));
+                            AbstractDungeon.effectList.add(new OrbFlareEffect(linkedOrb, OrbFlareEffect.OrbFlareColor.FROST));
+                            DamageInfo di = new DamageInfo(ref, damage, DamageInfo.DamageType.THORNS);
+                            DontLoopcast.orbAttack.set(di, true);
+                            targetAttacked.damage(di);
+                            if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
+                                AbstractDungeon.actionManager.clearPostCombatActions();
+                            }
+                        }
+                        linkedOrb.evokeAmount += damage;
                         linkedOrb.updateDescription();
                         this.isDone = true;
                     }

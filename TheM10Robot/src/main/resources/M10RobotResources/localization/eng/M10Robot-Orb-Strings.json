@@ -9,7 +9,7 @@
   "M10Robot:BombOrb": {
     "NAME": "Bomb",
     "DESCRIPTION": [
-      "#yPassive: At the end of turn, ","decrease","increase"," this Orb's damage by #b",".",
+      "#yPassive: At the end of turn, ","decrease","increase"," this Orb's damage by #b",". Automatically evokes ","at the end of this turn.","in #r"," turns.",
       " NL #yEvoke: Deal #b"," damage to ALL enemies."
     ]
   },
@@ -31,7 +31,7 @@
     "NAME": "Bit",
     "DESCRIPTION": [
       "#yPassive: Deal #b"," damage to any enemy you damage and increase this Orb's evoke damage by the same amount.",
-      " NL #yEvoke: Deal #b"," damage to a random enemy."
+      " NL #yEvoke: Deal #b"," damage to a random enemy. NL Bit is unaffected by #yFocus."
     ]
   },
   "M10Robot:PresentOrb": {
