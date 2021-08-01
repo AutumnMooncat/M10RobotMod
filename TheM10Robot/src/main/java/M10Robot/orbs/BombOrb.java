@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
+import com.evacipated.cardcrawl.mod.stslib.actions.defect.EvokeSpecificOrbAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -51,6 +52,7 @@ public class BombOrb extends AbstractCustomOrb {
     private static final float PI_4 = 12.566371f;
 
     boolean alreadyRemoved = false;
+    public int turnCount = 3;
 
     public BombOrb() {
 
@@ -61,8 +63,8 @@ public class BombOrb extends AbstractCustomOrb {
 
         linkedPower = new BombOrbPower(this);
 
-        evokeAmount = baseEvokeAmount = 20;
-        passiveAmount = basePassiveAmount = -2;
+        evokeAmount = baseEvokeAmount = 10;
+        passiveAmount = basePassiveAmount = 3;
 
         updateDescription();
 
@@ -78,10 +80,18 @@ public class BombOrb extends AbstractCustomOrb {
     @Override
     public void updateDescription() { // Set the on-hover description of the orb
         applyFocus(); // Apply Focus (Look at the next method)
-        if (passiveAmount < 0) {
-            description = DESC[0] + DESC[1] + DESC[3] + (-passiveAmount) + DESC[4] + DESC[5] + evokeAmount + DESC[6];
+        if (turnCount == 1) {
+            if (passiveAmount < 0) {
+                description = DESC[0] + DESC[1] + DESC[3] + (-passiveAmount) + DESC[4] + DESC[5] + DESC[8] + evokeAmount + DESC[9];
+            } else {
+                description = DESC[0] + DESC[2] + DESC[3] + (passiveAmount) + DESC[4] + DESC[5] + DESC[8] + evokeAmount + DESC[9];
+            }
         } else {
-            description = DESC[0] + DESC[1] + DESC[2] + (passiveAmount) + DESC[4] + DESC[5] + evokeAmount + DESC[6];
+            if (passiveAmount < 0) {
+                description = DESC[0] + DESC[1] + DESC[3] + (-passiveAmount) + DESC[4] + DESC[6] + turnCount + DESC[7] + DESC[8] + evokeAmount + DESC[9];
+            } else {
+                description = DESC[0] + DESC[2] + DESC[3] + (passiveAmount) + DESC[4] + DESC[6] + turnCount + DESC[7] + DESC[8] + evokeAmount + DESC[9];
+            }
         }
     }
 
@@ -110,6 +120,19 @@ public class BombOrb extends AbstractCustomOrb {
     @Override
     public void onEndOfTurn() {
         this.addToBot(new AbstractGameAction() {
+            @Override
+            public void update() {
+                playAnimation(ATTACK_IMG, MED_ANIM);
+                this.isDone = true;
+            }
+        });
+        turnCount--;
+        if (turnCount == 0) {
+            this.addToBot(new EvokeSpecificOrbAction(BombOrb.this));
+            //Hack to make re-channeling an evoked orb work.
+            turnCount = 1;
+        }
+        this.addToTop(new AbstractGameAction() {
             @Override
             public void update() {
                 if (passiveAmount > 0) {
@@ -146,6 +169,7 @@ public class BombOrb extends AbstractCustomOrb {
     }
 
     protected void renderText(SpriteBatch sb) {
+        FontHelper.renderFontCentered(sb, FontHelper.cardEnergyFont_L, Integer.toString(this.turnCount), this.cX + NUM_X_OFFSET + (2.5F * GENERIC_X_OFFSET), this.cY + this.bobEffect.y / 2.0F + NUM_Y_OFFSET + 7.0F * Settings.scale, new Color(1.0F, 0.2F, 0.2F, this.c.a), this.fontScale);
         FontHelper.renderFontCentered(sb, FontHelper.cardEnergyFont_L, Integer.toString(this.evokeAmount), this.cX + NUM_X_OFFSET + GENERIC_X_OFFSET, this.cY + this.bobEffect.y / 2.0F + NUM_Y_OFFSET - 4.0F * Settings.scale, new Color(0.2F, 1.0F, 1.0F, this.c.a), this.fontScale);
         FontHelper.renderFontCentered(sb, FontHelper.cardEnergyFont_L, Integer.toString(this.passiveAmount), this.cX + NUM_X_OFFSET + GENERIC_X_OFFSET, this.cY + this.bobEffect.y / 2.0F + NUM_Y_OFFSET + 20.0F * Settings.scale, this.c, this.fontScale);
     }
@@ -171,6 +195,26 @@ public class BombOrb extends AbstractCustomOrb {
         public BombOrbPower(AbstractCustomOrb linkedOrb) {
             super(linkedOrb);
         }
+
+        /*
+        @Override
+        public void onAttack(DamageInfo info, int damageAmount, AbstractCreature targetHit) {
+            if (targetHit != owner && info.type != DamageInfo.DamageType.HP_LOSS) {
+                this.addToTop(new AbstractGameAction() {
+                    @Override
+                    public void update() {
+                        //int actualDamage = Math.min(targetHit.currentHealth, damageAmount);
+                        if (damageAmount > 0) {
+                            linkedOrb.playAnimation(SUCCESS_IMG, MED_ANIM);
+                            linkedOrb.evokeAmount += Math.max(1,damageAmount/2);
+                        } else {
+                            linkedOrb.playAnimation(FAILURE_IMG, MED_ANIM);
+                        }
+                        this.isDone = true;
+                    }
+                });
+            }
+        }*/
 
         @Override
         public int onAttacked(DamageInfo info, int damageAmount) {
