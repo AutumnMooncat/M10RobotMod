@@ -1,153 +1,68 @@
 [
   {
+    "PROPER_NAME": "Aimed",
     "NAMES": [
-      "Augmented",
-      "augmented"
+      "aimed"
     ],
-    "DESCRIPTION": "This card has #yboosters attached to it. "
+    "DESCRIPTION": "An additional effect triggered if the target has #yLock-On."
   },
   {
+    "PROPER_NAME": "Augmented",
     "NAMES": [
-      "Booster",
+      "augmented"
+    ],
+    "DESCRIPTION": "This card has #yboosters attached to it."
+  },
+  {
+    "PROPER_NAME": "Booster",
+    "NAMES": [
       "booster",
       "boosters"
     ],
     "DESCRIPTION": "An #yUnplayable card that modifies #bother #bcards. NL May be attached by #yRight #yClicking and then choosing a card in your hand that meets the requirements."
   },
   {
+    "PROPER_NAME": "Bound",
     "NAMES": [
-      "Bound",
       "bound"
     ],
     "DESCRIPTION": "May not be removed once equipped."
   },
   {
+    "PROPER_NAME": "Doubling",
     "NAMES": [
-      "Doubling",
       "doubling"
     ],
     "DESCRIPTION": "Accepts ALL #yBoosters. NL #yBoosters applied to this card are applied twice."
   },
   {
+    "PROPER_NAME": "Echo",
     "NAMES": [
-      "Framework",
-      "framework"
-    ],
-    "DESCRIPTION": "An #yUnplayable card that is unfinished. May be converted into a playable card by #yRight #yClicking and then choosing an appropriate amount of cards in your hand to #yExhaust."
-  },
-  {
-    "NAMES": [
-      "Primary",
-      "primary"
-    ],
-    "DESCRIPTION": "The Primary of a card is the card's main non-damage and non-Block related attribute or effect."
-  },
-  {
-    "NAMES": [
-      "Protect",
-      "protect"
-    ],
-    "DESCRIPTION": "Whenever you would lose HP, lose #b2 less and reduce Protect by #b1. NL When depleted, you become #yScrambled and draw #b1 less card next turn."
-  },
-  {
-    "NAMES": [
-      "Recharging",
-      "recharging"
-    ],
-    "DESCRIPTION": "When out of charges, you may #yRight #yClick to spend [E] to restore all charges. Will automatically recharge for free if drawn #btwice while empty. NL Charges carry over through combat rooms."
-  },
-  {
-    "NAMES": [
-      "Recoil",
-      "recoil"
-    ],
-    "DESCRIPTION": "Your next attack deals #b50% less damage."
-  },
-  {
-    "NAMES": [
-      "Reciting",
-      "reciting"
-    ],
-    "DESCRIPTION": "Accepts ALL #yBoosters. NL While Equipped: NL Plays the effect of equipped #yBoosters at the beginning of your turn."
-  },
-  {
-    "NAMES": [
-      "Relay",
-      "relay"
-    ],
-    "DESCRIPTION": "At the beginning of your next turn, add the selected cards to your hand. Will not recover cards which are exhausted or otherwise removed from play."
-  },
-  {
-    "NAMES": [
-      "Reloading",
-      "reloading"
-    ],
-    "DESCRIPTION": "When out of ammo, you may #yRight #yClick to spend [E] to restore all ammo. Will automatically reload for free if drawn twice while empty."
-  },
-  {
-    "NAMES": [
-      "Repair",
-      "repair"
-    ],
-    "DESCRIPTION": "Increase the amount of #yRepairable #yArmor. Cannot surpass its maximum capacity."
-  },
-  {
-    "NAMES": [
-      "Echo",
       "echo"
     ],
     "DESCRIPTION": "Plays additional copies of this card."
   },
   {
+    "PROPER_NAME": "Forcefully Upgrade",
     "NAMES": [
-      "Scrambled",
-      "scrambled"
+      "Forcefully Upgrade",
+      "forcefully_upgrade"
     ],
-    "DESCRIPTION": "Draw #b1 less card next turn."
+    "DESCRIPTION": "#yUpgrades a card, bypassing most upgrade restrictions. Allows upgrading most cards #bany #bnumber of times."
   },
   {
+    "PROPER_NAME": "Framework",
     "NAMES": [
-      "Stasis",
-      "stasis"
+      "framework"
     ],
-    "DESCRIPTION": "Debuffs can not decrease while #yStasis is active."
+    "DESCRIPTION": "An #yUnplayable card that is unfinished. May be converted into a playable card by #yRight #yClicking and then choosing an appropriate amount of cards in your hand to #yExhaust."
   },
   {
-    "PROPER_NAME": "Makeshift Armor",
+    "PROPER_NAME": "Module",
     "NAMES": [
-      "Makeshift Armor",
-      "makeshift_armor",
-      "armor"
-    ],
-    "DESCRIPTION": "At the end of your turn, gain #yBlock. Being attacked reduces Armor by 1."
-  },
-  {
-    "NAMES": [
-      "Retoolable",
-      "retoolable"
-    ],
-    "DESCRIPTION": "#yRight #yClick to swap the effect of this card."
-  },
-  {
-    "NAMES": [
-      "Returning",
-      "returning"
-    ],
-    "DESCRIPTION": "This card returns to your hand when played."
-  },
-  {
-    "NAMES": [
-      "Module",
       "module"
     ],
     "DESCRIPTION": "An #yUnplayable card that modifies the #bplayer. NL May be equipped by #yRight #yClicking if you have an open slot."
-  },
-  {
-    "NAMES": [
-      "Unrestricted",
-      "unrestricted"
-    ],
-    "DESCRIPTION": "This card ignores playability restrictions."
   },
   {
     "PROPER_NAME": "Multi-Cost",
@@ -158,66 +73,108 @@
     "DESCRIPTION": "This card can #yRight #yClicked in-hand to cycle its cost and effect."
   },
   {
+    "PROPER_NAME": "Primary",
     "NAMES": [
-      "Present",
+      "primary"
+    ],
+    "DESCRIPTION": "The Primary of a card is the card's main non-damage and non-Block related attribute or effect."
+  },
+  {
+    "PROPER_NAME": "Protect",
+    "NAMES": [
+      "protect"
+    ],
+    "DESCRIPTION": "Whenever you would lose HP, lose #b2 less and reduce Protect by #b1. NL When depleted, you become #yScrambled and draw #b1 less card next turn."
+  },
+  {
+    "PROPER_NAME": "Recharging",
+    "NAMES": [
+      "recharging"
+    ],
+    "DESCRIPTION": "When out of charges, becomes #yUnplayable. You may #yRight #yClick to spend [E] to restore #ball charges. Will automatically recharge for #bfree if drawn #btwice while empty. NL Charges #bcarry #bover through combat rooms."
+  },
+  {
+    "PROPER_NAME": "Recoil",
+    "NAMES": [
+      "recoil"
+    ],
+    "DESCRIPTION": "Your next attack deals #b50% less damage."
+  },
+  {
+    "PROPER_NAME": "Reciting",
+    "NAMES": [
+      "reciting"
+    ],
+    "DESCRIPTION": "Accepts ALL #yBoosters. NL While Equipped: NL Plays the effect of equipped #yBoosters at the beginning of your turn."
+  },
+  {
+    "PROPER_NAME": "Relay",
+    "NAMES": [
+      "relay"
+    ],
+    "DESCRIPTION": "At the beginning of your next turn, add the selected cards to your hand. Will not recover cards which are exhausted or otherwise removed from play."
+  },
+  {
+    "PROPER_NAME": "Retoolable",
+    "NAMES": [
+      "retoolable"
+    ],
+    "DESCRIPTION": "#yRight #yClick to swap the effect of this card."
+  },
+  {
+    "PROPER_NAME": "Returning",
+    "NAMES": [
+      "returning"
+    ],
+    "DESCRIPTION": "This card returns to your hand when played."
+  },
+  {
+    "PROPER_NAME": "Scrambled",
+    "NAMES": [
+      "scrambled"
+    ],
+    "DESCRIPTION": "Draw #b1 less card next turn."
+  },
+  {
+    "PROPER_NAME": "Stasis",
+    "NAMES": [
+      "stasis"
+    ],
+    "DESCRIPTION": "Debuffs can not decrease while #yStasis is active."
+  },
+  {
+    "PROPER_NAME": "Unrestricted",
+    "NAMES": [
+      "unrestricted"
+    ],
+    "DESCRIPTION": "This card ignores playability restrictions."
+  },
+  {
+    "PROPER_NAME": "Bit",
+    "NAMES": [
+      "bit"
+    ],
+    "DESCRIPTION": "Orb: Deals damage when you deal damage. When #yEvoked, deals damage to a random enemy equal to accumulative damage dealt. NL Bit is unaffected by #yFocus."
+  },
+  {
+    "PROPER_NAME": "Bomb",
+    "NAMES": [
+      "bomb"
+    ],
+    "DESCRIPTION": "Orb: Increases damage every turn then automatically evokes. When #yEvoked, deals damage to ALL enemies."
+  },
+  {
+    "PROPER_NAME": "Present",
+    "NAMES": [
       "present"
     ],
     "DESCRIPTION": "Orb: Assembles random #yBoosters. When #yEvoked, adds a random #yBooster your hand."
   },
   {
+    "PROPER_NAME": "Searchlight",
     "NAMES": [
-      "Searchlight",
       "searchlight"
     ],
     "DESCRIPTION": "Orb: Deals damage when attacked. When #yEvoked, ALL enemies lose HP."
-  },
-  {
-    "NAMES": [
-      "Reactive",
-      "reactive"
-    ],
-    "DESCRIPTION": "Orb: Draws a card when you gain [E] . When #yEvoked, gains [E] . NL Reactive is unaffected by #yFocus."
-  },
-  {
-    "NAMES": [
-      "Bit",
-      "bit"
-    ],
-    "DESCRIPTION": "Orb: Deals damage when you deal damage. When #yEvoked, deals damage to a random enemy equal to accumulative damage dealt."
-  },
-  {
-    "NAMES": [
-      "Ritualist",
-      "ritualist"
-    ],
-    "DESCRIPTION": "Orb: Gains #yStrength. When #yEvoked, doubles #yStrength and removes an Orb Slot. NL Ritualist is unaffected by #yFocus."
-  },
-  {
-    "NAMES": [
-      "Tungsten",
-      "tungsten"
-    ],
-    "DESCRIPTION": "Orb: Reduces damage taken. When #yEvoked, grants #yMetallicize and removes an Orb Slot. NL Tungsten is unaffected by #yFocus."
-  },
-  {
-    "NAMES": [
-      "Toxic",
-      "toxic"
-    ],
-    "DESCRIPTION": "Orb: Applies #yPoison. When #yEvoked, grants #yEnvenom and removes an Orb Slot. NL Toxic is unaffected by #yFocus."
-  },
-  {
-    "NAMES": [
-      "Plating",
-      "plating"
-    ],
-    "DESCRIPTION": "Orb: Increases #yDexterity. When #yEvoked, grants #yMakeshift #yArmor."
-  },
-  {
-    "NAMES": [
-      "Bomb",
-      "bomb"
-    ],
-    "DESCRIPTION": "Orb: Decreases damage every turn. When #yEvoked, deals damage to ALL enemies."
   }
 ]
