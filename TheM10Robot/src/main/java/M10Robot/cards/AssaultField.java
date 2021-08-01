@@ -55,12 +55,16 @@ public class AssaultField extends AbstractDynamicCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         for (int i = 0; i < secondMagicNumber ; i++) {
-            AbstractMonster mo = AbstractDungeon.getRandomMonster();
-            //this.addToBot(new SFXAction("ATTACK_MAGIC_BEAM_SHORT", 0.5F));
-            //this.addToBot(new VFXAction(new SmallLaserEffect(mo.hb.cX, mo.hb.cY, p.hb.cX, p.hb.cY), 0.1F));
-            this.addToBot(new VFXAction(new ExplosionSmallEffect(mo.hb.cX, mo.hb.cY), 0.1F));
-            this.addToBot(new DamageAction(mo, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.NONE, true));
-            this.addToBot(new ApplyPowerAction(mo, p, new WeakPower(mo, magicNumber, false), magicNumber, true));
+            this.addToBot(new AbstractGameAction() {
+                @Override
+                public void update() {
+                    AbstractMonster mo = AbstractDungeon.getRandomMonster();
+                    this.addToTop(new ApplyPowerAction(mo, p, new WeakPower(mo, magicNumber, false), magicNumber, true));
+                    this.addToTop(new DamageAction(mo, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.NONE, true));
+                    this.addToTop(new VFXAction(new ExplosionSmallEffect(mo.hb.cX, mo.hb.cY), 0.1F));
+                    this.isDone = true;
+                }
+            });
         }
     }
 
