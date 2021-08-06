@@ -10,7 +10,6 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
-import com.evacipated.cardcrawl.mod.widepotions.WidePotionsMod;
 import com.evacipated.cardcrawl.modthespire.Loader;
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
@@ -20,6 +19,9 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.*;
+import com.megacrit.cardcrawl.relics.BirdFacedUrn;
+import com.megacrit.cardcrawl.relics.MummifiedHand;
+import com.megacrit.cardcrawl.relics.OrangePellets;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -523,6 +525,11 @@ public class M10RobotMod implements
         //BaseMod.addRelicToCustomPool(new BottledStar(), M10Robot.Enums.GREEN_SPRING_CARD_COLOR);
         BaseMod.addRelicToCustomPool(new ProtectiveShell2(), M10Robot.Enums.GREEN_SPRING_CARD_COLOR);
         BaseMod.addRelicToCustomPool(new ModularBody(), M10Robot.Enums.GREEN_SPRING_CARD_COLOR);
+
+        //TODO this doesnt work. Just patch the relics to work with modules
+        BaseMod.removeRelicFromCustomPool(new MummifiedHand(), M10Robot.Enums.GREEN_SPRING_CARD_COLOR);
+        BaseMod.removeRelicFromCustomPool(new OrangePellets(), M10Robot.Enums.GREEN_SPRING_CARD_COLOR);
+        BaseMod.removeRelicFromCustomPool(new BirdFacedUrn(), M10Robot.Enums.GREEN_SPRING_CARD_COLOR);
 
         // This adds a relic to the Shared pool. Every character can find this relic.
         //BaseMod.addRelic(new PlaceholderRelic2(), RelicType.SHARED);
