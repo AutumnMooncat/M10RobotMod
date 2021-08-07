@@ -417,7 +417,7 @@ public class M10RobotMod implements
         ModLabeledToggleButton enableDamagedBattleTalkButton = new ModLabeledToggleButton(TEXT[5],350.0f, currentYposition, Settings.CREAM_COLOR, FontHelper.charDescFont,
                 m10RobotConfig.getBool(ENABLE_DAMAGED_BATTLE_TALK_SETTING), settingsPanel, (label) -> {}, (button) -> {
             m10RobotConfig.setBool(ENABLE_DAMAGED_BATTLE_TALK_SETTING, button.enabled);
-            enableCardBattleTalkEffect = button.enabled;
+            enableDamagedBattleTalkEffect = button.enabled;
             try {m10RobotConfig.save();} catch (IOException e) {e.printStackTrace();}
         });
         ModMinMaxSlider damagedBattleTalkSlider = new ModMinMaxSlider("",
