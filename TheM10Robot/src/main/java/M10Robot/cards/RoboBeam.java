@@ -1,7 +1,7 @@
 package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
-import M10Robot.cards.abstractCards.AbstractDynamicCard;
+import M10Robot.cards.abstractCards.AbstractReloadableCard;
 import M10Robot.characters.M10Robot;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.GameActionManager;
@@ -10,15 +10,13 @@ import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.localization.CardStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.SmallLaserEffect;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
-public class RoboBeam extends AbstractDynamicCard {
+public class RoboBeam extends AbstractReloadableCard {
 
 
     // TEXT DECLARATION
@@ -37,8 +35,8 @@ public class RoboBeam extends AbstractDynamicCard {
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
     private static final int COST = 1;
-    private static final int DAMAGE = 5;
-    private static final int UPGRADE_PLUS_DMG = 3;
+    private static final int DAMAGE = 8;
+    private static final int UPGRADE_PLUS_DMG = 4;
 
     private static final int TURNS_PER_EXTRA_HIT = 3;
 
@@ -47,18 +45,23 @@ public class RoboBeam extends AbstractDynamicCard {
     public RoboBeam() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = damage = DAMAGE;
-        secondMagicNumber = baseSecondMagicNumber = TURNS_PER_EXTRA_HIT;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        int hits = 1+Math.max(0, GameActionManager.turn/secondMagicNumber);
+        int hits = 1+Math.max(0, GameActionManager.turn/TURNS_PER_EXTRA_HIT);
         for (int i = 0 ; i < hits ; i++) {
-            AbstractMonster mo = AbstractDungeon.getRandomMonster();
-            this.addToBot(new SFXAction("ATTACK_MAGIC_BEAM_SHORT", 0.5F));
-            this.addToBot(new VFXAction(new SmallLaserEffect(mo.hb.cX, mo.hb.cY, p.hb.cX, p.hb.cY), 0.0F));
-            this.addToBot(new DamageAction(mo, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.NONE, true));
+            this.addToBot(new AbstractGameAction() {
+                @Override
+                public void update() {
+                    AbstractMonster mo = AbstractDungeon.getRandomMonster();
+                    this.addToTop(new DamageAction(mo, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.NONE, true));
+                    this.addToTop(new SFXAction("ATTACK_MAGIC_BEAM_SHORT", 0.5F));
+                    this.addToTop(new VFXAction(new SmallLaserEffect(mo.hb.cX, mo.hb.cY, p.hb.cX, p.hb.cY), 0.0F));
+                    this.isDone = true;
+                }
+            });
         }
     }
 
