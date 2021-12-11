@@ -1,24 +1,19 @@
 package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
-import M10Robot.cards.abstractCards.AbstractBoosterCard;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
-import M10Robot.cards.interfaces.ModularDescription;
 import M10Robot.characters.M10Robot;
+import M10Robot.orbs.PresentOrb;
+import M10Robot.powers.ComponentsPower;
 import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.BranchingUpgradesCard;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.defect.ChannelAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
-import java.util.ArrayList;
-import java.util.stream.Collectors;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
-public class RapidAssembly extends AbstractDynamicCard implements ModularDescription, BranchingUpgradesCard {
+public class RapidAssembly extends AbstractDynamicCard {
 
     // TEXT DECLARATION
 
@@ -35,31 +30,28 @@ public class RapidAssembly extends AbstractDynamicCard implements ModularDescrip
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
-    private static final int COST = 1;
-    private static final int UPGRADE_COST = 0;
-    private static final int DRAW = 1;
+    private static final int COST = 0;
+    private static final int ORBS = 1;
+    private static final int COMPONENTS = 6;
+    private static final int UPGRADE_PLUS_COMPONENTS = 3;
 
     // /STAT DECLARATION/
 
 
     public RapidAssembly() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        magicNumber = baseMagicNumber = DRAW;
+        magicNumber = baseMagicNumber = ORBS;
+        secondMagicNumber = baseSecondMagicNumber = COMPONENTS;
         this.exhaust = true;
-        initializeDescription();
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new DrawCardAction(magicNumber));
-        AbstractCard card;
-        ArrayList<AbstractCard> cards = new ArrayList<>();
-        cards.addAll(AbstractDungeon.commonCardPool.group.stream().filter(c -> c instanceof AbstractBoosterCard).collect(Collectors.toCollection(ArrayList::new)));
-        cards.addAll(AbstractDungeon.uncommonCardPool.group.stream().filter(c -> c instanceof AbstractBoosterCard).collect(Collectors.toCollection(ArrayList::new)));
-        cards.addAll(AbstractDungeon.rareCardPool.group.stream().filter(c -> c instanceof AbstractBoosterCard).collect(Collectors.toCollection(ArrayList::new)));
-        card = cards.get(AbstractDungeon.cardRandomRng.random(cards.size()-1));
-        this.addToBot(new MakeTempCardInHandAction(card));
+        for (int i = 0 ; i < magicNumber ; i++) {
+            this.addToBot(new ChannelAction(new PresentOrb()));
+        }
+        this.addToBot(new ApplyPowerAction(p, p, new ComponentsPower(p, secondMagicNumber)));
     }
 
     //Upgraded stats.
@@ -67,39 +59,9 @@ public class RapidAssembly extends AbstractDynamicCard implements ModularDescrip
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            if (isBranchUpgrade()) {
-                branchUpgrade();
-            } else {
-                baseUpgrade();
-            }
+            upgradeSecondMagicNumber(UPGRADE_PLUS_COMPONENTS);
             initializeDescription();
         }
     }
 
-    public void baseUpgrade() {
-        upgradeBaseCost(UPGRADE_COST);
-    }
-
-    public void branchUpgrade() {
-        this.exhaust = false;
-    }
-
-    @Override
-    public void changeDescription() {
-        if (DESCRIPTION != null) {
-            if (magicNumber > 1) {
-                if (!exhaust) {
-                    rawDescription = EXTENDED_DESCRIPTION[1];
-                } else {
-                    rawDescription = EXTENDED_DESCRIPTION[0];
-                }
-            } else {
-                if (!exhaust) {
-                    rawDescription = UPGRADE_DESCRIPTION;
-                } else {
-                    rawDescription = DESCRIPTION;
-                }
-            }
-        }
-    }
 }
