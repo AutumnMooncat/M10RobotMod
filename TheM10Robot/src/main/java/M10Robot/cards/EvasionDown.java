@@ -37,28 +37,19 @@ public class EvasionDown extends AbstractDynamicCard {
 
     // /STAT DECLARATION/
 
-    //TODO make Focus Down last until the end of the round so it affects Bits and Searchlights
     public EvasionDown() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = EFFECT;
-        this.exhaust = true;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        int sum = 0;
         for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
             if (!aM.isDeadOrEscaped()) {
-                this.addToBot(new ApplyPowerAction(aM, p, new LockOnPower(aM, this.magicNumber), this.magicNumber, true, AbstractGameAction.AttackEffect.NONE));
-                if (!aM.hasPower(ArtifactPower.POWER_ID)) {
-                    sum += magicNumber;
-                }
+                this.addToBot(new ApplyPowerAction(aM, p, new VulnerablePower(aM, magicNumber, false), magicNumber, true));
+                this.addToBot(new ApplyPowerAction(aM, p, new LockOnPower(aM, this.magicNumber), this.magicNumber, true));
             }
-        }
-        if (sum > 0) {
-            this.addToBot(new ApplyPowerAction(p, p, new FocusPower(p, sum), sum));
-            this.addToBot(new ApplyPowerAction(p, p, new LoseFocusPower(p, sum), sum));
         }
     }
 
