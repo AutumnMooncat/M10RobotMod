@@ -38,6 +38,7 @@ public class RitualOrb extends AbstractCustomOrb {
     boolean alreadyRemoved = false;
 
     public RitualOrb() {
+        super(orbString.NAME, 1, 1);
 
         ID = ORB_ID;
         name = orbString.NAME;
@@ -50,6 +51,11 @@ public class RitualOrb extends AbstractCustomOrb {
 
         angle = MathUtils.random(360.0f); // More Animation-related Numbers
         channelAnimTimer = 0.5f;
+    }
+
+    @Override
+    public void upgrade() {
+
     }
 
     @Override

@@ -2,6 +2,8 @@ package M10Robot.orbs;
 
 import M10Robot.M10RobotMod;
 import M10Robot.cards.abstractCards.AbstractBoosterCard;
+import M10Robot.powers.ComponentsPower;
+import M10Robot.util.OverclockUtil;
 import M10Robot.util.TextureLoader;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -36,7 +38,6 @@ public class PresentOrb extends AbstractCustomOrb {
     public static final String ORB_ID = M10RobotMod.makeID("PresentOrb");
     private static final OrbStrings orbString = CardCrawlGame.languagePack.getOrbString(ORB_ID);
     public static final String[] DESC = orbString.DESCRIPTION;
-    public static final int CHARGES_PER_BOOSTER = 10;
 
     public static final Texture IDLE_IMG = TextureLoader.getTexture(makeOrbPath("PresentOrb_00.png"));
     public static final Texture ATTACK_IMG = TextureLoader.getTexture(makeOrbPath("PresentOrb_01.png"));
@@ -51,35 +52,36 @@ public class PresentOrb extends AbstractCustomOrb {
     private static final float ORB_WAVY_DIST = 0.04f;
     private static final float PI_4 = 12.566371f;
 
-    int currentAmount;
-    private static final ArrayList<AbstractCard> cards = new ArrayList<>();
-    private AbstractCard cardsToPreview;
-    private static final float drawScaleFactor = 0.85F;
-
-    static {
-        cards.addAll(AbstractDungeon.commonCardPool.group.stream().filter(c -> c instanceof AbstractBoosterCard).collect(Collectors.toCollection(ArrayList::new)));
-        cards.addAll(AbstractDungeon.uncommonCardPool.group.stream().filter(c -> c instanceof AbstractBoosterCard).collect(Collectors.toCollection(ArrayList::new)));
-        cards.addAll(AbstractDungeon.rareCardPool.group.stream().filter(c -> c instanceof AbstractBoosterCard).collect(Collectors.toCollection(ArrayList::new)));
-    }
+    private static final int PASSIVE_AMOUNT = 2;
+    private static final int EVOKE_AMOUNT = 0;
+    private static final int UPGRADE_PLUS_PASSIVE_AMOUNT= 1;
 
     public PresentOrb() {
+        this(0);
+    }
 
-        super(IDLE_IMG, ATTACK_IMG, HURT_IMG, SUCCESS_IMG, FAILURE_IMG, THROW_IMG);
+    public PresentOrb(int timesUpgraded) {
+        super(orbString.NAME, PASSIVE_AMOUNT, EVOKE_AMOUNT, timesUpgraded, IDLE_IMG, ATTACK_IMG, HURT_IMG, SUCCESS_IMG, FAILURE_IMG, THROW_IMG);
         ID = ORB_ID;
-        name = orbString.NAME;
 
         linkedPower = new PresentOrbPower(this);
-
-        evokeAmount = baseEvokeAmount = 2;
-        passiveAmount = basePassiveAmount = 4;
-        currentAmount = 0;
-        chooseNewBooster();
 
         updateDescription();
 
         //angle = MathUtils.random(360.0f); // More Animation-related Numbers
         channelAnimTimer = 0.5f;
 
+    }
+
+    @Override
+    public void upgrade() {
+        if (canUpgrade()) {
+            upgradeEvoke(OverclockUtil.getOverclockCost(this)); //Call this before upgradeName
+            upgradeName(); //Cost will increase once we call upgradeName and increment timesUpgraded
+            upgradePassive(UPGRADE_PLUS_PASSIVE_AMOUNT);
+            CardCrawlGame.sound.play("ORB_LIGHTNING_CHANNEL", 0.1F);
+            updateDescription();
+        }
     }
 
     @Override
@@ -90,38 +92,16 @@ public class PresentOrb extends AbstractCustomOrb {
     @Override
     public void updateDescription() { // Set the on-hover description of the orb
         applyFocus(); // Apply Focus (Look at the next method)
-        description = DESC[0] + (int)(passiveAmount*100f/CHARGES_PER_BOOSTER) + DESC[1] + cardsToPreview + DESC[2] + DESC[3] + cardsToPreview + DESC[4];
-    }
-
-    public void applyFocus() {
-        AbstractPower power = AbstractDungeon.player.getPower("Focus");
-        if (power != null) {
-            this.passiveAmount = Math.max(0, this.basePassiveAmount + power.amount);
-        } else {
-            this.passiveAmount = this.basePassiveAmount;
-        }
+        description =
+                DESC[0] + passiveAmount + DESC[1] + evokeAmount + DESC[2] +
+                UPGRADE_TEXT[0] + OverclockUtil.getOverclockCost(this) + UPGRADE_TEXT[1] +
+                DESC[3] + UPGRADE_PLUS_PASSIVE_AMOUNT + DESC[4];
     }
 
     @Override
     public void onEvoke() { // 1.On Orb Evoke
-        createBooster();
+        this.addToBot(new ApplyPowerAction(p, p, new ComponentsPower(p, evokeAmount)));
         this.addToTop(new RemoveSpecificPowerAction(p, p, linkedPower));
-    }
-
-    private void createBooster() {
-        this.addToBot(new AbstractGameAction() {
-            @Override
-            public void update() {
-                playAnimation(SUCCESS_IMG, MED_ANIM);
-                this.isDone = true;
-            }
-        });
-        this.addToBot(new MakeTempCardInHandAction(cardsToPreview.makeStatEquivalentCopy()));
-        chooseNewBooster();
-    }
-
-    private void chooseNewBooster() {
-        cardsToPreview = cards.get(AbstractDungeon.cardRandomRng.random(cards.size()-1));
     }
 
     @Override
@@ -133,12 +113,7 @@ public class PresentOrb extends AbstractCustomOrb {
                 this.isDone = true;
             }
         });
-        this.currentAmount += passiveAmount;
-        while (currentAmount >= CHARGES_PER_BOOSTER) {
-            createBooster();
-            currentAmount -= CHARGES_PER_BOOSTER;
-            updateDescription();
-        }
+        this.addToBot(new ApplyPowerAction(p, p, new ComponentsPower(p, passiveAmount)));
         updateDescription();
     }
 
@@ -161,28 +136,11 @@ public class PresentOrb extends AbstractCustomOrb {
         sb.draw(img, cX - 48.0f, cY - 48.0f + bobEffect.y, 48.0f, 48.0f, 96.0f, 96.0f, scale + MathUtils.sin(angle / PI_4) * ORB_WAVY_DIST * Settings.scale, scale, angle, 0, 0, 96, 96, false, false);
         renderText(sb);
         hb.render(sb);
-        renderCardPreview(sb);
-    }
-
-    public void renderCardPreview(SpriteBatch sb) {
-        if (AbstractDungeon.player == null || !AbstractDungeon.player.isDraggingCard && cardsToPreview != null && this.hb.hovered) {
-            float tmpScale = drawScaleFactor * 0.8F;
-            /*if (this.hb.cX > (float)Settings.WIDTH * 0.75F) {
-                this.cardsToPreview.current_x = this.hb.cX + (IMG_WIDTH / 2.0F + IMG_WIDTH / 2.0F * 0.8F + 16.0F) * drawScaleFactor;
-            } else {
-                this.cardsToPreview.current_x = this.hb.cX - (IMG_WIDTH / 2.0F + IMG_WIDTH / 2.0F * 0.8F + 16.0F) * drawScaleFactor;
-            }*/
-
-            this.cardsToPreview.current_x = this.hb.cX;
-            this.cardsToPreview.current_y = this.hb.cY + (IMG_HEIGHT / 2.0F) * drawScaleFactor;
-            this.cardsToPreview.drawScale = tmpScale;
-            this.cardsToPreview.render(sb);
-        }
     }
 
     protected void renderText(SpriteBatch sb) {
-        FontHelper.renderFontCentered(sb, FontHelper.cardEnergyFont_L, (int)(this.currentAmount*100f/CHARGES_PER_BOOSTER)+"%", this.cX + NUM_X_OFFSET + GENERIC_X_OFFSET, this.cY + this.bobEffect.y / 2.0F + NUM_Y_OFFSET - 4.0F * Settings.scale, new Color(0.2F, 1.0F, 1.0F, this.c.a), this.fontScale);
-        FontHelper.renderFontCentered(sb, FontHelper.cardEnergyFont_L, "+"+(int)(this.passiveAmount*100f/CHARGES_PER_BOOSTER)+"%", this.cX + NUM_X_OFFSET + GENERIC_X_OFFSET, this.cY + this.bobEffect.y / 2.0F + NUM_Y_OFFSET + 20.0F * Settings.scale, this.c, this.fontScale);
+        FontHelper.renderFontCentered(sb, FontHelper.cardEnergyFont_L, Integer.toString(this.passiveAmount), this.cX + NUM_X_OFFSET + GENERIC_X_OFFSET, this.cY + this.bobEffect.y / 2.0F + NUM_Y_OFFSET + 20.0F * Settings.scale, this.c, this.fontScale);
+        FontHelper.renderFontCentered(sb, FontHelper.cardEnergyFont_L, Integer.toString(this.evokeAmount), this.cX + NUM_X_OFFSET + GENERIC_X_OFFSET, this.cY + this.bobEffect.y / 2.0F + NUM_Y_OFFSET - 4.0F * Settings.scale, new Color(0.2F, 1.0F, 1.0F, this.c.a), this.fontScale);
     }
 
 
@@ -198,7 +156,7 @@ public class PresentOrb extends AbstractCustomOrb {
 
     @Override
     public AbstractOrb makeCopy() {
-        return new PresentOrb();
+        return new PresentOrb(timesUpgraded);
     }
 
     private static class PresentOrbPower extends AbstractLinkedOrbPower {

@@ -37,6 +37,7 @@ public class ReactiveOrb extends AbstractCustomOrb {
     private static final float PI_4 = 12.566371f;
 
     public ReactiveOrb() {
+        super(orbString.NAME, 1, 1);
 
         ID = ORB_ID;
         name = orbString.NAME;
@@ -51,6 +52,11 @@ public class ReactiveOrb extends AbstractCustomOrb {
 
         angle = MathUtils.random(360.0f); // More Animation-related Numbers
         channelAnimTimer = 0.5f;
+    }
+
+    @Override
+    public void upgrade() {
+
     }
 
     @Override

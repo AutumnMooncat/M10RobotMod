@@ -2,6 +2,8 @@ package M10Robot.orbs;
 
 import M10Robot.M10RobotMod;
 import M10Robot.actions.FasterLoseHPAction;
+import M10Robot.powers.SpikesPower;
+import M10Robot.util.OverclockUtil;
 import M10Robot.util.TextureLoader;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -49,16 +51,20 @@ public class SearchlightOrb extends AbstractCustomOrb {
     private static final float ORB_WAVY_DIST = 0.04f;
     private static final float PI_4 = 12.566371f;
 
-    public SearchlightOrb() {
+    private static final int PASSIVE_DAMAGE = 2;
+    private static final int EVOKE_AMOUNT = 2;
+    private static final int UPGRADE_PLUS_PASSIVE_DAMAGE = 1;
+    private static final int UPGRADE_PLUS_EVOKE_AMOUNT = 1;
 
-        super(IDLE_IMG, ATTACK_IMG, HURT_IMG, SUCCESS_IMG, FAILURE_IMG, THROW_IMG);
+    public SearchlightOrb() {
+        this(0);
+    }
+
+    public SearchlightOrb(int timesUpgraded) {
+        super(orbString.NAME, PASSIVE_DAMAGE, EVOKE_AMOUNT, timesUpgraded, IDLE_IMG, ATTACK_IMG, HURT_IMG, SUCCESS_IMG, FAILURE_IMG, THROW_IMG);
         ID = ORB_ID;
-        name = orbString.NAME;
 
         linkedPower = new SearchlightOrbPower(this);
-
-        evokeAmount = baseEvokeAmount = 5;
-        passiveAmount = basePassiveAmount = 2;
 
         updateDescription();
 
@@ -67,9 +73,23 @@ public class SearchlightOrb extends AbstractCustomOrb {
     }
 
     @Override
+    public void upgrade() {
+        if (canUpgrade()) {
+            upgradeName();
+            upgradePassive(UPGRADE_PLUS_PASSIVE_DAMAGE);
+            upgradeEvoke(UPGRADE_PLUS_EVOKE_AMOUNT);
+            CardCrawlGame.sound.play("ORB_LIGHTNING_CHANNEL", 0.1F);
+            updateDescription();
+        }
+    }
+
+    @Override
     public void updateDescription() { // Set the on-hover description of the orb
         applyFocus(); // Apply Focus (Look at the next method)
-        description = DESC[0] + passiveAmount + DESC[1] + DESC[2] + evokeAmount + DESC[3]; // Set the description
+        description =
+                DESC[0] + passiveAmount + DESC[1] + evokeAmount + DESC[2] +
+                UPGRADE_TEXT[0] + OverclockUtil.getOverclockCost(this) + UPGRADE_TEXT[1] +
+                DESC[3] + UPGRADE_PLUS_PASSIVE_DAMAGE + DESC[4] + UPGRADE_PLUS_EVOKE_AMOUNT + DESC[5];
     }
 
     @Override
@@ -81,12 +101,7 @@ public class SearchlightOrb extends AbstractCustomOrb {
                 this.isDone = true;
             }
         });
-        int[] hpLoss = DamageInfo.createDamageMatrix(evokeAmount, true, true);
-        for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
-            if (!aM.isDeadOrEscaped()) {
-                this.addToBot(new FasterLoseHPAction(aM, p, hpLoss[AbstractDungeon.getMonsters().monsters.indexOf(aM)], AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
-            }
-        }
+        this.addToBot(new ApplyPowerAction(p, p, new SpikesPower(p, evokeAmount)));
         //this.addToBot(new DamageAllEnemiesAction(p, DamageInfo.createDamageMatrix(evokeAmount, true, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
         this.addToBot(new RemoveSpecificPowerAction(p, p, linkedPower));
     }
@@ -122,9 +137,9 @@ public class SearchlightOrb extends AbstractCustomOrb {
         hb.render(sb);
     }
 
-    @Override
     protected void renderText(SpriteBatch sb) {
-        FontHelper.renderFontCentered(sb, FontHelper.cardEnergyFont_L, Integer.toString(this.passiveAmount), this.cX + NUM_X_OFFSET + GENERIC_X_OFFSET, this.cY + this.bobEffect.y / 2.0F + NUM_Y_OFFSET, this.c, this.fontScale);
+        FontHelper.renderFontCentered(sb, FontHelper.cardEnergyFont_L, Integer.toString(this.passiveAmount), this.cX + NUM_X_OFFSET + GENERIC_X_OFFSET, this.cY + this.bobEffect.y / 2.0F + NUM_Y_OFFSET + 20.0F * Settings.scale, this.c, this.fontScale);
+        FontHelper.renderFontCentered(sb, FontHelper.cardEnergyFont_L, Integer.toString(this.evokeAmount), this.cX + NUM_X_OFFSET + GENERIC_X_OFFSET, this.cY + this.bobEffect.y / 2.0F + NUM_Y_OFFSET - 4.0F * Settings.scale, new Color(0.2F, 1.0F, 1.0F, this.c.a), this.fontScale);
     }
 
     @Override
@@ -139,7 +154,7 @@ public class SearchlightOrb extends AbstractCustomOrb {
 
     @Override
     public AbstractOrb makeCopy() {
-        return new SearchlightOrb();
+        return new SearchlightOrb(timesUpgraded);
     }
 
     private static class SearchlightOrbPower extends AbstractLinkedOrbPower {

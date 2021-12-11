@@ -1,6 +1,7 @@
 package M10Robot.orbs;
 
 import M10Robot.M10RobotMod;
+import M10Robot.util.OverclockUtil;
 import M10Robot.util.TextureLoader;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -15,6 +16,7 @@ import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -22,6 +24,7 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.OrbStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.LockOnPower;
@@ -51,16 +54,20 @@ public class BitOrb extends AbstractCustomOrb {
     private static final float MOUTH_OFFSET_X = -10f * Settings.scale;
     private static final float MOUTH_OFFSET_Y = -35f * Settings.scale;
 
-    public BitOrb() {
+    private static final int PASSIVE_DAMAGE = 2;
+    private static final int EVOKE_DAMAGE = PASSIVE_DAMAGE * 2;
+    private static final int UPGRADE_PLUS_PASSIVE_DAMAGE = 1;
+    private static final int LOCK_ON = 2;
 
-        super(IDLE_IMG, ATTACK_IMG, HURT_IMG, SUCCESS_IMG, FAILURE_IMG, THROW_IMG);
+    public BitOrb() {
+        this(0);
+    }
+
+    public BitOrb(int timesUpgraded) {
+        super(orbString.NAME, PASSIVE_DAMAGE, EVOKE_DAMAGE, timesUpgraded, IDLE_IMG, ATTACK_IMG, HURT_IMG, SUCCESS_IMG, FAILURE_IMG, THROW_IMG);
         ID = ORB_ID;
-        name = orbString.NAME;
 
         linkedPower = new BitOrbPower(this);
-
-        evokeAmount = baseEvokeAmount = 0;
-        passiveAmount = basePassiveAmount = 1;
 
         updateDescription();
 
@@ -69,36 +76,53 @@ public class BitOrb extends AbstractCustomOrb {
     }
 
     @Override
-    public void updateDescription() { // Set the on-hover description of the orb
-        applyFocus(); // Apply Focus (Look at the next method)
-        description = DESC[0] + passiveAmount + DESC[1] + DESC[2] + evokeAmount + DESC[3]; // Set the description
+    public void upgrade() {
+        if (canUpgrade()) {
+            upgradeName();
+            upgradePassive(UPGRADE_PLUS_PASSIVE_DAMAGE);
+            CardCrawlGame.sound.play("ORB_LIGHTNING_CHANNEL", 0.1F);
+            updateDescription();
+        }
     }
 
+    @Override
     public void applyFocus() {
-        /*AbstractPower power = AbstractDungeon.player.getPower("Focus");
-        if (power != null) {
-            this.passiveAmount = this.basePassiveAmount + power.amount;
-        } else {
-            this.passiveAmount = this.basePassiveAmount;
-        }*/
+        applyFocusToPassiveOnly();
+        this.evokeAmount = this.passiveAmount * 2;
+    }
+
+    @Override
+    public void updateDescription() { // Set the on-hover description of the orb
+        applyFocus();
+        description =
+                DESC[0] + passiveAmount + DESC[1] +
+                UPGRADE_TEXT[0] + OverclockUtil.getOverclockCost(this) + UPGRADE_TEXT[1] +
+                DESC[2] + UPGRADE_PLUS_PASSIVE_DAMAGE + DESC[3];
     }
 
     @Override
     public void onEvoke() { // 1.On Orb Evoke
-        AbstractCreature m = AbstractDungeon.getRandomMonster();
-        int damage = this.evokeAmount;
-        if (m.hasPower(LockOnPower.POWER_ID)) {
-            damage = (int)(damage * 1.5F);
-        }
         this.addToBot(new AbstractGameAction() {
             @Override
             public void update() {
-                playAnimation(ATTACK_IMG, MED_ANIM);
+                AbstractCreature m = AbstractDungeon.getRandomMonster();
+                int damage = evokeAmount;
+                if (m.hasPower(LockOnPower.POWER_ID)) {
+                    damage = (int)(damage * 1.5F);
+                }
+                this.addToBot(new AbstractGameAction() {
+                    @Override
+                    public void update() {
+                        playAnimation(ATTACK_IMG, MED_ANIM);
+                        this.isDone = true;
+                    }
+                });
+                this.addToBot(new VFXAction(new ExplosionSmallEffect(m.hb.cX, m.hb.cY), 0.0F));
+                this.addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.NONE, true));
+                this.addToBot(new ApplyPowerAction(m, p, new LockOnPower(m, LOCK_ON)));
                 this.isDone = true;
             }
         });
-        this.addToBot(new VFXAction(new ExplosionSmallEffect(m.hb.cX, m.hb.cY), 0.0F));
-        this.addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.NONE, true));
         this.addToTop(new RemoveSpecificPowerAction(p, p, linkedPower));
     }
 
@@ -134,8 +158,8 @@ public class BitOrb extends AbstractCustomOrb {
     }
 
     protected void renderText(SpriteBatch sb) {
-        FontHelper.renderFontCentered(sb, FontHelper.cardEnergyFont_L, Integer.toString(this.evokeAmount), this.cX + NUM_X_OFFSET + GENERIC_X_OFFSET, this.cY + this.bobEffect.y / 2.0F + NUM_Y_OFFSET - 4.0F * Settings.scale, new Color(0.2F, 1.0F, 1.0F, this.c.a), this.fontScale);
         FontHelper.renderFontCentered(sb, FontHelper.cardEnergyFont_L, Integer.toString(this.passiveAmount), this.cX + NUM_X_OFFSET + GENERIC_X_OFFSET, this.cY + this.bobEffect.y / 2.0F + NUM_Y_OFFSET + 20.0F * Settings.scale, this.c, this.fontScale);
+        FontHelper.renderFontCentered(sb, FontHelper.cardEnergyFont_L, Integer.toString(this.evokeAmount), this.cX + NUM_X_OFFSET + GENERIC_X_OFFSET, this.cY + this.bobEffect.y / 2.0F + NUM_Y_OFFSET - 4.0F * Settings.scale, new Color(0.2F, 1.0F, 1.0F, this.c.a), this.fontScale);
     }
 
     @Override
@@ -160,7 +184,7 @@ public class BitOrb extends AbstractCustomOrb {
 
     @Override
     public AbstractOrb makeCopy() {
-        return new BitOrb();
+        return new BitOrb(this.timesUpgraded);
     }
 
     private static class BitOrbPower extends AbstractLinkedOrbPower {
@@ -170,30 +194,34 @@ public class BitOrb extends AbstractCustomOrb {
         }
 
         @Override
-        public void onAttack(DamageInfo info, int damageAmount, AbstractCreature targetAttacked) {
-            if (!DontLoopcast.orbAttack.get(info) && targetAttacked != owner) {
-                AbstractCreature ref = owner;
+        public void onPlayCard(AbstractCard card, AbstractMonster m) {
+            if (card.type == AbstractCard.CardType.ATTACK) {
                 this.addToTop(new AbstractGameAction() {
                     @Override
                     public void update() {
-                        int damage = linkedOrb.passiveAmount;
-                        if (targetAttacked.hasPower(LockOnPower.POWER_ID)) {
-                            damage = (int)(damage * 1.5F);
+                        AbstractMonster t = null;
+                        for (AbstractMonster mon : AbstractDungeon.getMonsters().monsters) {
+                            if (!mon.isDeadOrEscaped()) {
+                                if (t == null || mon.currentHealth < t.currentHealth) {
+                                    t = mon;
+                                }
+                            }
                         }
-                        if (!targetAttacked.isDeadOrEscaped()) {
+                        if (t != null) {
+                            int damage = linkedOrb.passiveAmount;
+                            if (t.hasPower(LockOnPower.POWER_ID)) {
+                                damage *= LockOnPower.MULTIPLIER;
+                            }
                             linkedOrb.playAnimation(ATTACK_IMG, MED_ANIM);
                             CardCrawlGame.sound.play("ATTACK_MAGIC_BEAM_SHORT", 0.5F);
-                            AbstractDungeon.effectList.add(new SmallLaserEffect(targetAttacked.hb.cX, targetAttacked.hb.cY, linkedOrb.getXPosition(), linkedOrb.getYPosition()));
+                            AbstractDungeon.effectList.add(new SmallLaserEffect(t.hb.cX, t.hb.cY, linkedOrb.getXPosition(), linkedOrb.getYPosition()));
                             AbstractDungeon.effectList.add(new OrbFlareEffect(linkedOrb, OrbFlareEffect.OrbFlareColor.FROST));
-                            DamageInfo di = new DamageInfo(ref, damage, DamageInfo.DamageType.THORNS);
-                            DontLoopcast.orbAttack.set(di, true);
-                            targetAttacked.damage(di);
+                            DamageInfo di = new DamageInfo(BitOrbPower.this.owner, damage, DamageInfo.DamageType.THORNS);
+                            t.damage(di);
                             if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
                                 AbstractDungeon.actionManager.clearPostCombatActions();
                             }
                         }
-                        linkedOrb.evokeAmount += damage;
-                        linkedOrb.updateDescription();
                         this.isDone = true;
                     }
                 });
@@ -218,10 +246,5 @@ public class BitOrb extends AbstractCustomOrb {
         public AbstractPower makeCopy() {
             return new BitOrbPower(linkedOrb);
         }
-    }
-
-    @SpirePatch(clz = DamageInfo.class, method = SpirePatch.CLASS)
-    public static class DontLoopcast {
-        public static SpireField<Boolean> orbAttack = new SpireField<>(() -> Boolean.FALSE);
     }
 }

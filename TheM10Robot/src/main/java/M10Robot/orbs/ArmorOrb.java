@@ -38,6 +38,7 @@ public class ArmorOrb extends AbstractCustomOrb {
     boolean alreadyRemoved = false;
 
     public ArmorOrb() {
+        super(orbString.NAME, 2, 2);
 
         ID = ORB_ID;
         name = orbString.NAME;
@@ -50,6 +51,11 @@ public class ArmorOrb extends AbstractCustomOrb {
 
         angle = MathUtils.random(360.0f); // More Animation-related Numbers
         channelAnimTimer = 0.5f;
+    }
+
+    @Override
+    public void upgrade() {
+
     }
 
     @Override

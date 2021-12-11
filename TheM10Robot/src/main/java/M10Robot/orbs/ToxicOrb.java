@@ -39,6 +39,7 @@ public class ToxicOrb extends AbstractCustomOrb {
     private static final float PI_4 = 12.566371f;
 
     public ToxicOrb() {
+        super(orbString.NAME, 3, 3);
 
         ID = ORB_ID;
         name = orbString.NAME;
@@ -51,6 +52,11 @@ public class ToxicOrb extends AbstractCustomOrb {
 
         angle = MathUtils.random(360.0f); // More Animation-related Numbers
         channelAnimTimer = 0.5f;
+    }
+
+    @Override
+    public void upgrade() {
+
     }
 
     @Override

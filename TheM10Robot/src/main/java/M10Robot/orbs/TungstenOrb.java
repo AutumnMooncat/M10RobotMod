@@ -41,6 +41,7 @@ public class TungstenOrb extends AbstractCustomOrb {
     private static final float PI_4 = 12.566371f;
 
     public TungstenOrb() {
+        super(orbString.NAME, 3, 2);
 
         ID = ORB_ID;
         name = orbString.NAME;
@@ -55,6 +56,11 @@ public class TungstenOrb extends AbstractCustomOrb {
 
         angle = MathUtils.random(360.0f); // More Animation-related Numbers
         channelAnimTimer = 0.5f;
+    }
+
+    @Override
+    public void upgrade() {
+
     }
 
     @Override
