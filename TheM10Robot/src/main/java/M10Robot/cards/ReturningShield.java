@@ -8,6 +8,7 @@ import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.DrawCardNextTurnPower;
 import com.megacrit.cardcrawl.powers.NextTurnBlockPower;
 
 import static M10Robot.M10RobotMod.makeCardPath;
@@ -46,6 +47,7 @@ public class ReturningShield extends AbstractDynamicCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.addToBot(new GainBlockAction(p, p, block));
         this.addToBot(new ApplyPowerAction(p, p, new NextTurnBlockPower(p, block)));
+        this.addToBot(new ApplyPowerAction(p, p, new DrawCardNextTurnPower(p, 1)));
     }
 
     //Upgraded stats.
