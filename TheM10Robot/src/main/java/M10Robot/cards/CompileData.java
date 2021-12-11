@@ -4,6 +4,8 @@ import M10Robot.M10RobotMod;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.cards.interfaces.ModularDescription;
 import M10Robot.characters.M10Robot;
+import M10Robot.powers.ComponentsPower;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.utility.ScryAction;
@@ -31,6 +33,8 @@ public class CompileData extends AbstractDynamicCard implements ModularDescripti
 
     private static final int COST = 1;
     private static final int UPGRADE_COST = 0;
+    private static final int COMPONENTS = 6;
+    private static final int UPGRADE_PLUS_COMPONENTS = 3;
     private static final int CARDS = 1;
     private static final int UPGRADE_PLUS_CARDS = 1;
 
@@ -39,17 +43,15 @@ public class CompileData extends AbstractDynamicCard implements ModularDescripti
 
     public CompileData() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        magicNumber = baseMagicNumber = CARDS;
+        magicNumber = baseMagicNumber = COMPONENTS;
+        secondMagicNumber = baseSecondMagicNumber = CARDS;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        int relics = p.relics.size();
-        if (relics > 0) {
-            this.addToBot(new ScryAction(relics));
-        }
-        this.addToBot(new DrawCardAction(magicNumber));
+        this.addToBot(new ApplyPowerAction(p, p, new ComponentsPower(p, magicNumber)));
+        this.addToBot(new DrawCardAction(secondMagicNumber));
     }
 
     //Upgraded stats.
@@ -57,7 +59,7 @@ public class CompileData extends AbstractDynamicCard implements ModularDescripti
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeBaseCost(UPGRADE_COST);
+            upgradeMagicNumber(UPGRADE_PLUS_COMPONENTS);
             initializeDescription();
         }
     }
@@ -65,7 +67,7 @@ public class CompileData extends AbstractDynamicCard implements ModularDescripti
     @Override
     public void changeDescription() {
         if (DESCRIPTION != null) {
-            if (magicNumber > 1) {
+            if (secondMagicNumber > 1) {
                 rawDescription = UPGRADE_DESCRIPTION;
             } else {
                 rawDescription = DESCRIPTION;
