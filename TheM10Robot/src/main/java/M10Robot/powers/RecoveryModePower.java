@@ -15,8 +15,6 @@ public class RecoveryModePower extends AbstractPower implements CloneablePowerIn
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-    public static final int MAX_PER_APPLICATION = 5;
-    public int maxTempHP;
 
 
     // We create 2 new textures *Using This Specific Texture Loader* - an 84x84 image and a 32x32 one.
@@ -25,15 +23,10 @@ public class RecoveryModePower extends AbstractPower implements CloneablePowerIn
     //private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power32.png"));
 
     public RecoveryModePower(AbstractCreature owner, int amount) {
-        this(owner, amount, MAX_PER_APPLICATION);
-    }
-
-    public RecoveryModePower(AbstractCreature owner, int amount, int maxTempHP) {
         this.name = NAME;
         this.ID = POWER_ID;
         this.owner = owner;
         this.amount = amount;
-        this.maxTempHP = maxTempHP;
 
         this.type = PowerType.BUFF;
         this.isTurnBased = false;
@@ -48,23 +41,10 @@ public class RecoveryModePower extends AbstractPower implements CloneablePowerIn
         updateDescription();
     }
 
-    @Override
-    public void stackPower(int stackAmount) {
-        super.stackPower(stackAmount);
-        this.maxTempHP += MAX_PER_APPLICATION;
-        updateDescription();
-    }
-
-    @Override
-    public void reducePower(int reduceAmount) {
-        super.reducePower(reduceAmount);
-        this.maxTempHP -= MAX_PER_APPLICATION;
-        updateDescription();;
-    }
 
     @Override
     public void atStartOfTurn() {
-        int amt = Math.min(amount, Math.max(0, maxTempHP - TempHPField.tempHp.get(owner)));
+        int amt = Math.min(amount, Math.max(0, amount - TempHPField.tempHp.get(owner)));
         if (amt > 0) {
             flash();
             this.addToTop(new AddTemporaryHPAction(owner, owner, amt));
@@ -73,12 +53,12 @@ public class RecoveryModePower extends AbstractPower implements CloneablePowerIn
 
     @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1] + maxTempHP + DESCRIPTIONS[2];
+        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1] + amount + DESCRIPTIONS[2];
     }
 
     @Override
     public AbstractPower makeCopy() {
-        return new RecoveryModePower(owner, amount, maxTempHP);
+        return new RecoveryModePower(owner, amount);
     }
 
 }
