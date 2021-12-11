@@ -1,7 +1,7 @@
 package M10Robot.variables;
 
 import M10Robot.M10RobotMod;
-import M10Robot.cardModifiers.AbstractExtraEffectModifier;
+import M10Robot.cutCards.modifiers.AbstractExtraEffectModifier;
 import basemod.BaseMod;
 import basemod.abstracts.DynamicVariable;
 import com.badlogic.gdx.graphics.Color;

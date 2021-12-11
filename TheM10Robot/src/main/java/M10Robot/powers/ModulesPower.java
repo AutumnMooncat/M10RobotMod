@@ -2,7 +2,7 @@ package M10Robot.powers;
 
 import M10Robot.M10RobotMod;
 import M10Robot.actions.EquipBoosterAction;
-import M10Robot.cardModifiers.AbstractExtraEffectModifier;
+import M10Robot.cutCards.modifiers.AbstractExtraEffectModifier;
 import M10Robot.cards.abstractCards.AbstractModuleCard;
 import M10Robot.cutCards.boosters.WeaponPolishBooster;
 import M10Robot.cards.Concentration;

@@ -1,7 +1,7 @@
 package M10Robot.patches;
 
 import M10Robot.M10RobotMod;
-import M10Robot.cardModifiers.AbstractExtraEffectModifier;
+import M10Robot.cutCards.modifiers.AbstractExtraEffectModifier;
 import SpicyShops.patches.cards.RepeatKeywordPatches;
 import basemod.abstracts.AbstractCardModifier;
 import basemod.helpers.CardModifierManager;
