@@ -23,8 +23,8 @@ public class DoubleEnergyOrb extends CustomEnergyOrb {
     private static final float PRIMARY_ORB_IMG_SCALE = 1.15F * Settings.scale;
     private static final float X_OFFSET = 80f * Settings.scale;
     private static final float Y_OFFSET = 40f * Settings.scale;
-    private static final float MAX_LEAN_PER_LAYER = 4f * Settings.scale;
-    private static final float MAX_LEAN_AT_DISTANCE = 500f * Settings.scale;
+    private static final float MAX_LEAN_PER_LAYER = 4f;
+    private static final float MAX_LEAN_AT_DISTANCE = 500f;
     protected Texture secondBaseLayer;
     protected Texture[] secondEnergyLayers;
     protected Texture[] secondNoEnergyLayers;
