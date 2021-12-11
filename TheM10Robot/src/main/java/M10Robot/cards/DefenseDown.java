@@ -2,6 +2,8 @@ package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
+import M10Robot.cards.abstractCards.AbstractSwappableCard;
+import M10Robot.cards.uniqueCards.UniqueCard;
 import M10Robot.characters.M10Robot;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -14,7 +16,7 @@ import com.megacrit.cardcrawl.powers.*;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
-public class DefenseDown extends AbstractDynamicCard {
+public class DefenseDown extends AbstractSwappableCard implements UniqueCard {
 
 
     // TEXT DECLARATION
@@ -38,11 +40,18 @@ public class DefenseDown extends AbstractDynamicCard {
 
     // /STAT DECLARATION/
 
-
     public DefenseDown() {
+        this(null);
+    }
+
+    public DefenseDown(AbstractSwappableCard linkedCard) {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = EFFECT;
-        this.exhaust = true;
+        if (linkedCard == null) {
+            setLinkedCard(new AttackDown(this));
+        } else {
+            setLinkedCard(linkedCard);
+        }
     }
 
     // Actions the card should do.
@@ -58,8 +67,8 @@ public class DefenseDown extends AbstractDynamicCard {
             }
         }
         if (sum > 0) {
-            this.addToBot(new ApplyPowerAction(p, p, new DexterityPower(p, sum), sum));
-            this.addToBot(new ApplyPowerAction(p, p, new LoseDexterityPower(p, sum), sum));
+            //this.addToBot(new ApplyPowerAction(p, p, new DexterityPower(p, sum), sum));
+            //this.addToBot(new ApplyPowerAction(p, p, new LoseDexterityPower(p, sum), sum));
         }
     }
 
@@ -70,6 +79,7 @@ public class DefenseDown extends AbstractDynamicCard {
             upgradeName();
             upgradeMagicNumber(UPGRADE_PLUS_EFFECT);
             initializeDescription();
+            super.upgrade();
         }
     }
 }
