@@ -1,10 +1,7 @@
-package M10Robot.cards.statusCards;
+package M10Robot.cutCards;
 
 import M10Robot.M10RobotMod;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
-import M10Robot.cards.interfaces.ModularDescription;
-import M10Robot.characters.M10Robot;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
