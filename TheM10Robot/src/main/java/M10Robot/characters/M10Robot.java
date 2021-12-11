@@ -5,12 +5,8 @@ import M10Robot.CustomSpriterAnimation;
 import M10Robot.RandomChatterHelper;
 import M10Robot.M10RobotMod;
 import M10Robot.cards.*;
-import M10Robot.cards.boosters.PolishingKit;
-import M10Robot.cards.boosters.SecretRootkit;
 import M10Robot.cards.interfaces.SkillAnimationAttack;
-import M10Robot.cards.modules.TargetingSystem;
 import M10Robot.relics.ProtectiveShell;
-import M10Robot.relics.ModularBody;
 import M10Robot.vfx.StarBreakerVictoryEffect;
 import basemod.ReflectionHacks;
 import basemod.abstracts.CustomPlayer;
@@ -74,8 +70,8 @@ public class M10Robot extends CustomPlayer {
     // =============== BASE STATS =================
 
     public static final int ENERGY_PER_TURN = 3;
-    public static final int STARTING_HP = 60;//Nerfed from 75
-    public static final int MAX_HP = 60;
+    public static final int STARTING_HP = 90;
+    public static final int MAX_HP = 90;
     public static final int STARTING_GOLD = 99;
     public static final int CARD_DRAW = 5;
     public static final int ORB_SLOTS = 3;
@@ -96,7 +92,7 @@ public class M10Robot extends CustomPlayer {
     //private static final SpriterAnimation defaultAnimation = new SpriterAnimation(defaultAnim);
 
     //Use a new Animation rather than the same one so we dont spawn in the dead animation if we lose a run and start a new one, lml
-    //private static final CustomSpriterAnimation ANIM_SET = new CustomSpriterAnimation(ANIM_FILE);
+    //private static final CustomSpriterAnimation ANIM_SET = new CustomSpriterAnimation(ANIM_FILE);+
 
 
     // =============== /STRINGS/ =================
@@ -187,8 +183,9 @@ public class M10Robot extends CustomPlayer {
         retVal.add(Strike.ID);
         retVal.add(Strike.ID);
         retVal.add(Strike.ID);
-        retVal.add(PolishingKit.ID);
-        retVal.add(TargetingSystem.ID);
+        retVal.add(Strike.ID);
+        retVal.add(MagnumStrike.ID);
+        //retVal.add(PolishingKit.ID);
         retVal.add(Defend.ID);
         retVal.add(Defend.ID);
         retVal.add(Defend.ID);
@@ -206,10 +203,10 @@ public class M10Robot extends CustomPlayer {
         ArrayList<String> retVal = new ArrayList<>();
 
         retVal.add(ProtectiveShell.ID);
-        retVal.add(ModularBody.ID);
+        //retVal.add(ModularBody.ID);
 
         UnlockTracker.markRelicAsSeen(ProtectiveShell.ID);
-        UnlockTracker.markRelicAsSeen(ModularBody.ID);
+        //UnlockTracker.markRelicAsSeen(ModularBody.ID);
 
         //logger.info("Starter Relic, crash?");
         return retVal;
@@ -264,7 +261,7 @@ public class M10Robot extends CustomPlayer {
     //Which card should be obtainable from the Match and Keep event?
     @Override
     public AbstractCard getStartCardForEvent() {
-        return new SecretRootkit();
+        return new Surveillance();
     }
 
     // The class name as it appears next to your player name in-game
