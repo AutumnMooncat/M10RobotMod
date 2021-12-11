@@ -1,32 +1,25 @@
 package M10Robot.cards.abstractCards;
 
-import M10Robot.M10RobotMod;
-import M10Robot.cards.modules.AmmoBox;
+import M10Robot.cardModifiers.ReloadingModifier;
+import M10Robot.cards.interfaces.OnDiscardedCard;
 import M10Robot.patches.CostBypassField;
-import M10Robot.powers.ModulesPower;
-import basemod.abstracts.CustomSavable;
-import com.google.gson.reflect.TypeToken;
+import M10Robot.powers.interfaces.OnReloadPower;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.unique.LoseEnergyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
-import java.lang.reflect.Type;
-import java.util.HashMap;
-
-public abstract class AbstractReloadableCard extends AbstractClickableCard implements CustomSavable<HashMap<String, String>> {
-    private static final String AMMO_AMOUNT = M10RobotMod.makeID("AMMO");
-    private static final String DRAWN_ONCE = M10RobotMod.makeID("DRAWN");
-    private static final String NEEDS_RELOAD = M10RobotMod.makeID("RELOAD");
-
+public abstract class AbstractReloadableCard extends AbstractClickableCard implements OnDiscardedCard {
     public boolean needsReload;
-    public boolean drawnOnce;
 
     public AbstractReloadableCard(String id, String img, int cost, CardType type, CardColor color, CardRarity rarity, CardTarget target) {
         super(id, img, cost, type, color, rarity, target);
+        CardModifierManager.addModifier(this, new ReloadingModifier());
     }
 
     @Override
@@ -37,50 +30,9 @@ public abstract class AbstractReloadableCard extends AbstractClickableCard imple
     }
 
     @Override
-    public void applyPowers() {
-        int boost = 0;
-        for (AbstractCard c : ModulesPower.getEquippedModules()) {
-            if (c instanceof AmmoBox) {
-                boost += c.magicNumber;
-            }
-        }
-        baseDamage += boost;
-        super.applyPowers();
-        baseDamage -= boost;
-        isDamageModified = damage != baseDamage;
-    }
-
-    @Override
-    public void calculateCardDamage(AbstractMonster mo) {
-        int boost = 0;
-        for (AbstractCard c : ModulesPower.getEquippedModules()) {
-            if (c instanceof AmmoBox) {
-                boost += c.magicNumber;
-            }
-        }
-        baseDamage += boost;
-        super.calculateCardDamage(mo);
-        baseDamage -= boost;
-        isDamageModified = damage != baseDamage;
-    }
-
-    @Override
-    public void triggerWhenDrawn() {
-        for (AbstractCard c : ModulesPower.getEquippedModules()) {
-            if (c instanceof AmmoBox) {
-                resetAmmo();
-                break;
-            }
-        }
-        if (drawnOnce) {
+    public void onDiscarded(boolean endOfTurn) {
+        if(needsReload) {
             resetAmmo();
-        } else if (needsReload) {
-            drawnOnce = true;
-            for (AbstractCard c :  AbstractDungeon.player.masterDeck.group) {
-                if (c.uuid.equals(this.uuid) && c instanceof AbstractReloadableCard) {
-                    ((AbstractReloadableCard) c).drawnOnce = true;
-                }
-            }
         }
     }
 
@@ -90,35 +42,13 @@ public abstract class AbstractReloadableCard extends AbstractClickableCard imple
     }
 
     public void useShot() {
-        boolean hasAmmoBox = false;
-        for (AbstractCard c : ModulesPower.getEquippedModules()) {
-            if (c instanceof AmmoBox) {
-                hasAmmoBox = true;
-                break;
-            }
-        }
-        if (!hasAmmoBox || this.type != CardType.ATTACK) {
-            if (ammoCount > 0) {
-                ammoCount--;
-            }
-            isAmmoCountModified = ammoCount != baseAmmoCount;
-            if (ammoCount == 0) {
-                needsReload = true;
-            }
-            initializeDescription();
-            for (AbstractCard c :  AbstractDungeon.player.masterDeck.group) {
-                if (c.uuid.equals(this.uuid) && c instanceof AbstractReloadableCard) {
-                    ((AbstractReloadableCard) c).ammoCount = ammoCount;
-                    ((AbstractReloadableCard) c).isAmmoCountModified = isAmmoCountModified;
-                    ((AbstractReloadableCard) c).needsReload = needsReload;
-                }
-            }
-        }
+        needsReload = true;
+        initializeDescription();
     }
 
     @Override
     public void onRightClick() {
-        if (ammoCount < baseAmmoCount && EnergyPanel.totalCount > 0) {
+        if (needsReload) {
             this.addToTop(new LoseEnergyAction(1));
             resetAmmo();
         }
@@ -126,59 +56,18 @@ public abstract class AbstractReloadableCard extends AbstractClickableCard imple
 
     public void resetAmmo() {
         playReloadSFX();
-        ammoCount = baseAmmoCount;
-        isAmmoCountModified = false;
         needsReload = false;
-        drawnOnce = false;
         superFlash();
-        for (AbstractCard c :  AbstractDungeon.player.masterDeck.group) {
-            if (c.uuid.equals(this.uuid) && c instanceof AbstractReloadableCard) {
-                ((AbstractReloadableCard) c).ammoCount = ammoCount;
-                ((AbstractReloadableCard) c).isAmmoCountModified = isAmmoCountModified;
-                ((AbstractReloadableCard) c).needsReload = needsReload;
-                ((AbstractReloadableCard) c).drawnOnce = drawnOnce;
+        initializeDescription();
+        for (AbstractPower p : AbstractDungeon.player.powers) {
+            if (p instanceof OnReloadPower) {
+                ((OnReloadPower) p).onReload(this);
             }
         }
-        initializeDescription();
     }
 
     public void playReloadSFX() {
         CardCrawlGame.sound.play("ATTACK_WHIFF_1", 0.1F);
         CardCrawlGame.sound.play("ORB_LIGHTNING_CHANNEL", 0.1F);
-    }
-
-    @Override
-    public AbstractCard makeStatEquivalentCopy() {
-        AbstractReloadableCard copy = (AbstractReloadableCard) super.makeStatEquivalentCopy();
-        copy.needsReload = this.needsReload;
-        copy.drawnOnce = this.drawnOnce;
-        copy.ammoCount = this.ammoCount;
-        copy.isAmmoCountModified = this.isAmmoCountModified;
-        return copy;
-    }
-
-    @Override
-    public HashMap<String, String> onSave() {
-        HashMap<String, String> map = new HashMap<>();
-        map.put(AMMO_AMOUNT, Integer.toString(ammoCount));
-        map.put(DRAWN_ONCE, Boolean.toString(drawnOnce));
-        map.put(NEEDS_RELOAD, Boolean.toString(needsReload));
-        return map;
-    }
-
-    @Override
-    public void onLoad(HashMap<String, String> stringHashMap) {
-        if (stringHashMap != null) {
-            ammoCount = Integer.parseInt(stringHashMap.get(AMMO_AMOUNT));
-            drawnOnce = Boolean.parseBoolean(stringHashMap.get(DRAWN_ONCE));
-            needsReload = Boolean.parseBoolean(stringHashMap.get(NEEDS_RELOAD));
-            isAmmoCountModified = ammoCount != baseAmmoCount;
-            initializeDescription();
-        }
-    }
-
-    @Override
-    public Type savedType() {
-        return new TypeToken<HashMap<String, String>>(){}.getType();
     }
 }
