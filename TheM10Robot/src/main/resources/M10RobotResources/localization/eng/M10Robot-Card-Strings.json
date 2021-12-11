@@ -7,53 +7,60 @@
   },
   "M10Robot:AirRaid": {
     "NAME": "Air Raid",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies that have Lock-On X times.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage to ALL enemies that have Lock-On X + !M! times."
+    "DESCRIPTION": "Deal !D! damage to ALL enemies X times.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage to ALL enemies X + !M! times."
   },
   "M10Robot:AmmoBox": {
-    "NAME": "Ammo Box",
-    "DESCRIPTION": "While Equipped: NL Attacks with m10robot:Recharging don't consume charges and deal !M! additional damage."
+    "NAME": "Heavy Caliber",
+    "DESCRIPTION": "m10robot:Loaded Attacks apply !M! Vulnerable to their targets."
   },
   "M10Robot:Ascension": {
     "NAME": "Ascension",
-    "DESCRIPTION": "Draw !M! card. NL m10robot:Forcefully_Upgrade a card in your hand for the rest of combat.",
-    "UPGRADE_DESCRIPTION": "Draw !M! cards. NL m10robot:Forcefully_Upgrade a card in your hand for the rest of combat."
+    "DESCRIPTION": "Draw !M! card. NL Upgrade all cards in your hand for the rest of combat.",
+    "UPGRADE_DESCRIPTION": "Draw !M! cards. NL Upgrade all cards in your hand for the rest of combat."
   },
   "M10Robot:AssaultField": {
     "NAME": "Assault Field",
-    "DESCRIPTION": "Deal !D! damage and apply !M! Weak to a random enemy !M10Robot:SecondMagic! times."
+    "DESCRIPTION": "Deal !D! damage to random enemy !M! times. NL Gain !M10Robot:SecondMagic! m10robot:Recoil."
   },
   "M10Robot:AssemblyLine": {
     "NAME": "Assembly Line",
-    "DESCRIPTION": "Channel !M! m10robot:Present. NL Exhaust."
+    "DESCRIPTION": "Channel !M! m10robot:Present. NL Upgrade all your Orbs !M10Robot:SecondMagic! times. NL Exhaust."
   },
   "M10Robot:AttackDown": {
     "NAME": "Attack Down",
-    "DESCRIPTION": "ALL enemies lose !M! Strength this turn. NL Gain Strength this turn equal to amount removed. NL Exhaust."
+    "DESCRIPTION": "m10robot:Swappable. NL Apply !M! Weak to ALL enemies."
+  },
+  "M10Robot:DefenseDown": {
+    "NAME": "Defense Down",
+    "DESCRIPTION": "m10robot:Swappable. NL Apply !M! Vulnerable to ALL enemies."
   },
   "M10Robot:Atomize": {
     "NAME": "Atomize",
-    "DESCRIPTION": "Channel !M! m10robot:Bomb. NL Increase ALL m10robot:Bomb Orb counters by !M10Robot:SecondMagic! turn. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Channel !M! m10robot:Bomb. NL Increase ALL m10robot:Bomb Orb counters by !M10Robot:SecondMagic! turn."
+    "DESCRIPTION": "Apply !M! Lock-On to ALL enemies. NL Channel !M! m10robot:Bomb. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Apply !M! Lock-On to ALL enemies. NL Channel !M! m10robot:Bomb."
   },
   "M10Robot:AutoCaster": {
     "NAME": "Auto Caster",
-    "DESCRIPTION": "While Equipped: NL Whenever you Channel an Orb, Evoke it.",
-    "UPGRADE_DESCRIPTION": "While Equipped: NL Whenever you Channel an Orb, Evoke it !M! times."
+    "DESCRIPTION": "The first Orb you Channel each turn is Evoked.",
+    "UPGRADE_DESCRIPTION": "The first !M! Orbs you Channel each turn are Evoked."
   },
   "M10Robot:BalanceCurrents": {
     "NAME": "Balance Currents",
-    "DESCRIPTION": "ALL enemies lose !M! HP for each power they have but gain !M! Block for each debuff they have."
+    "DESCRIPTION": "Gain !B! Block for each power you have."
   },
   "M10Robot:BatteryPack": {
     "NAME": "Battery Pack",
-    "DESCRIPTION": "Retain. NL Store X charges. NL Right Click to spend a charge to gain [E] . NL Charges: !M10Robot:AmmoCount! / !M!"
+    "DESCRIPTION": "Retain. NL Store X charges. NL Right Click to spend a charge to gain [E] . NL Charges: !M10Robot:CurrentAmmo! / !M!"
   },
   "M10Robot:BlankSlate": {
     "NAME": "Blank Slate",
-    "DESCRIPTION": "m10robot:Doubling.",
-    "UPGRADE_DESCRIPTION": "Retain. NL m10robot:Doubling.",
-    "EXTENDED_DESCRIPTION": ["Blank Slate","Accepts ALL #yBoosters. NL #yBoosters applied to this card are applied twice."]
+    "DESCRIPTION": ".",
+    "UPGRADE_DESCRIPTION": ""
+  },
+  "M10Robot:Bramble": {
+    "NAME": "Bramble",
+    "DESCRIPTION": "Gain !B! Block. NL Gain !M! m10robot:Spikes."
   },
   "M10Robot:BriefRespite": {
     "NAME": "Brief Respite",
@@ -62,7 +69,7 @@
   },
   "M10Robot:BurstFire": {
     "NAME": "Burst Fire",
-    "DESCRIPTION": "m10robot:Recharging !M10Robot:AmmoCount! / !M10Robot:ThirdMagic!. NL Deal !D! damage !M! times."
+    "DESCRIPTION": "Deal !D! damage !M! times."
   },
   "M10Robot:CardSupplier": {
     "NAME": "Card Supplier",
@@ -70,18 +77,18 @@
     "UPGRADE_DESCRIPTION": "m10robot:Relay up to !M! cards.",
     "EXTENDED_DESCRIPTION": ["Relay"]
   },
+  "M10Robot:Compensator": {
+    "NAME": "Compensator",
+    "DESCRIPTION": "At the end of your turn, reduce m10robot:Recoil by !M!."
+  },
   "M10Robot:CompileData": {
     "NAME": "Compile Data",
-    "DESCRIPTION": "Scry 1 for each relic you own. NL Draw !M! card.",
-    "UPGRADE_DESCRIPTION": "Scry 1 for each relic you own. NL Draw !M! cards."
+    "DESCRIPTION": "Gain !M! m10robot:Components. NL Draw !M10Robot:SecondMagic! card.",
+    "UPGRADE_DESCRIPTION": "Gain !M! m10robot:Component. NL Draw !M10Robot:SecondMagic! cards."
   },
   "M10Robot:Concentration": {
-    "NAME": "Concentration",
-    "DESCRIPTION": "When Equipped: NL Gain 1 Focus at the beginning of your turn, to a maximum of !M!. This Focus is lost when this is unequipped."
-  },
-  "M10Robot:DefenseDown": {
-    "NAME": "Defense Down",
-    "DESCRIPTION": "Apply !M! Vulnerable to ALL enemies. NL Gain Dexterity this turn equal to amount applied. NL Exhaust."
+    "NAME": "Sturdy Structure",
+    "DESCRIPTION": "Whenever you gain m10robot:Recoil, gain !M! Block."
   },
   "M10Robot:Defend": {
     "NAME": "Defend",
@@ -89,34 +96,35 @@
   },
   "M10Robot:DividedAttention": {
     "NAME": "Divided Attention",
-    "DESCRIPTION": "Lose !M! Focus. NL Gain !M! Strength. NL Gain !M! Orb slot.",
-    "UPGRADE_DESCRIPTION": "Lose !M! Focus. NL Gain !M! Strength. NL Gain !M! Orb slots."
+    "DESCRIPTION": "Apply !M! Lock-On to ALL enemies. NL Draw !M10Robot:SecondMagic! card.",
+    "UPGRADE_DESCRIPTION": "Apply !M! Lock-On to ALL enemies. NL Draw !M10Robot:SecondMagic! cards."
   },
   "M10Robot:DoubleCaster": {
     "NAME": "Double Caster",
-    "DESCRIPTION": "While Equipped: NL The first Orb you Evoke each turn is Evoked twice.",
-    "UPGRADE_DESCRIPTION": "While Equipped: NL The first !M! Orbs you Evoke each turn are Evoked twice."
+    "DESCRIPTION": "The first Orb you Evoke each turn is Evoked twice.",
+    "UPGRADE_DESCRIPTION": "The first !M! Orbs you Evoke each turn are Evoked twice."
   },
   "M10Robot:EMP": {
     "NAME": "EMP",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL If this attack deals unblocked damage, apply !M! m10robot:Stasis."
+    "DESCRIPTION": "Deal !D! damage and apply !M! m10robot:Stasis to ALL enemies."
   },
   "M10Robot:EmptyBuffer": {
     "NAME": "Empty Buffer",
-    "DESCRIPTION": "Evoke all your Orbs.",
-    "UPGRADE_DESCRIPTION": "Evoke all your Orbs. NL Channel each Orb that was just Evoked."
+    "DESCRIPTION": "Evoke all your Orbs !M! time. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Evoke all your Orbs !M! times. NL Exhaust."
   },
   "M10Robot:EnergyShield": {
     "NAME": "Energy Shield",
-    "DESCRIPTION": "m10robot:Recharging !M10Robot:AmmoCount! / !M10Robot:ThirdMagic!. NL Gain !B! Block."
+    "DESCRIPTION": "Gain !B! Block."
   },
   "M10Robot:Engage": {
     "NAME": "Engage",
-    "DESCRIPTION": "Apply !M! Vulnerable and Lock-On."
+    "DESCRIPTION": "Apply !M! Vulnerable and Lock-On. NL Draw !M10Robot:SecondMagic! card.",
+    "UPGRADE_DESCRIPTION": "Apply !M! Vulnerable and Lock-On. NL Draw !M10Robot:SecondMagic! cards."
   },
   "M10Robot:EvasionDown": {
     "NAME": "Evasion Down",
-    "DESCRIPTION": "Apply !M! Lock-On to ALL enemies. NL Gain Focus this turn equal to Lock-On applied. NL Exhaust."
+    "DESCRIPTION": "Apply !M! Vulnerable and Lock-On to ALL enemies."
   },
   "M10Robot:FeedForward": {
     "NAME": "Feed Forward",
@@ -133,22 +141,22 @@
     "DESCRIPTION": "Gain !B! Block. NL Channel !M! m10robot:Bit."
   },
   "M10Robot:FullAuto": {
-    "NAME": "Full Auto",
-    "DESCRIPTION": "m10robot:Recharging !M10Robot:AmmoCount! / !M10Robot:ThirdMagic!. NL Deal !D! damage !M! times. NL Gain !M10Robot:SecondMagic! m10robot:Recoil.",
+    "NAME": "Full Throttle",
+    "DESCRIPTION": "Deal !D! damage to ALL enemies !M! times. NL Gain !M10Robot:SecondMagic! m10robot:Recoil.",
     "EXTENDED_DESCRIPTION": ["Fuller Auto"]
   },
   "M10Robot:HealthDown": {
     "NAME": "Health Down",
-    "DESCRIPTION": "ALL enemies lose !M! HP. NL Gain Temporary_HP equal to HP removed. NL Exhaust."
+    "DESCRIPTION": "ALL enemies lose !M! HP and Max HP."
   },
   "M10Robot:HomeSweeper": {
     "NAME": "Home Sweeper",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Deals !M! additional damage for each turn passed this combat."
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Deals !M! more damage per turn passed."
   },
   "M10Robot:ImaginaryNumbers": {
     "NAME": "Imaginary Numbers",
-    "DESCRIPTION": "Gain !M! Strength and Dexterity. NL At the end of your turn, lose !M10Robot:SecondMagic! Strength and Dexterity. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Retain. NL Gain !M! Strength and Dexterity. NL At the end of your turn, lose !M10Robot:SecondMagic! Strength and Dexterity. NL Exhaust."
+    "DESCRIPTION": "Gain !M! temporary Strength and temporary Dexterity. NL Exhaust.",
+    "UPGRADE_DESCRIPTION": "Retain. NL Gain !M! temporary Strength and temporary Dexterity. NL Exhaust."
   },
   "M10Robot:ImmovableObject": {
     "NAME": "Immovable Object",
@@ -156,7 +164,7 @@
   },
   "M10Robot:Juggling": {
     "NAME": "Juggling",
-    "DESCRIPTION": "Channel !M! random Orbs. NL Lose !M10Robot:SecondMagic! Focus."
+    "DESCRIPTION": "Draw !M! cards. NL Next turn, draw an additional card."
   },
   "M10Robot:LightShow": {
     "NAME": "Light Show",
@@ -173,21 +181,25 @@
     "DESCRIPTION": "Modifications: NL + !M! m10robot:Primary NL Requirements: NL Has a m10robot:Primary",
     "UPGRADE_DESCRIPTION": "Retain. NL Modifications: NL + !M! m10robot:Primary NL Requirements: NL Has a m10robot:Primary"
   },
+  "M10Robot:MagnumStrike": {
+    "NAME": "Magnum Strike",
+    "DESCRIPTION": "Deal !D! damage. NL Gain !M! m10robot:Recoil."
+  },
   "M10Robot:Malfunction": {
     "NAME": "Malfunction",
     "DESCRIPTION": "Retain. NL Lose !M10Robot:SecondMagic! HP. NL Exhaust."
   },
   "M10Robot:MultiTool": {
     "NAME": "Multi Tool",
-    "DESCRIPTION": "m10robot:Retoolable. NL Deal !D! damage."
+    "DESCRIPTION": "m10robot:Swappable. NL Deal !D! damage."
   },
   "M10Robot:MultiTool2": {
     "NAME": "Multi Tool",
-    "DESCRIPTION": "m10robot:Retoolable. NL Gain !B! Block."
+    "DESCRIPTION": "m10robot:Swappable. NL Gain !B! Block."
   },
   "M10Robot:PerpetualAssembly": {
     "NAME": "Perpetual Assembly",
-    "DESCRIPTION": "Channel !M! m10robot:Present."
+    "DESCRIPTION": "Channel !M! m10robot:Present. NL m10robot:Reshuffle."
   },
   "M10Robot:PileDriver": {
     "NAME": "Pile Driver",
@@ -198,8 +210,8 @@
     "DESCRIPTION": "Modifications: NL + !M! damage NL + !M! Block NL Requirements: NL Has Block or damage"
   },
   "M10Robot:PowerSavings": {
-    "NAME": "Power Saving Mode",
-    "DESCRIPTION": "While Equipped: NL Deal !M10Robot:SecondMagic! % less damage. NL At the start of your turn, gain ",
+    "NAME": "Power Savings",
+    "DESCRIPTION": "Draw one less card for !M10Robot:SecondMagic! turns. NL At the start of your turn, gain ",
     "EXTENDED_DESCRIPTION": [".","[E] "]
   },
   "M10Robot:QuickFix": {
@@ -208,31 +220,29 @@
   },
   "M10Robot:QuickThinking": {
     "NAME": "Quick Thinking",
-    "DESCRIPTION": "Draw !M! card. NL Channel 1 m10robot:Bit.",
-    "UPGRADE_DESCRIPTION": "Draw !M! cards. NL Channel 1 m10robot:Bit."
+    "DESCRIPTION": "Draw !M! card. NL Channel !M10Robot:SecondMagic! m10robot:Bit.",
+    "UPGRADE_DESCRIPTION": "Draw !M! cards. NL Channel !M10Robot:SecondMagic! m10robot:Bit."
   },
   "M10Robot:QuickRepair": {
     "NAME": "Quick Repair",
-    "DESCRIPTION": "Modifications: NL Heal !M! HP NL Requirements: NL Is an Attack"
+    "DESCRIPTION": "Gain !B! Block and half that much Temporary_HP. NL Exhaust."
   },
   "M10Robot:Railgun": {
     "NAME": "Railgun",
-    "DESCRIPTION": "m10robot:Recharging !M10Robot:AmmoCount! / !M10Robot:ThirdMagic!. NL Deal !D! damage."
+    "DESCRIPTION": "Deal !D! damage."
   },
   "M10Robot:RAMUpgrade": {
     "NAME": "RAM Upgrade",
-    "DESCRIPTION": "While Equipped: NL Gain !M! m10robot:Module slot.",
-    "UPGRADE_DESCRIPTION": "While Equipped: NL Gain !M! m10robot:Module slots."
+    "DESCRIPTION": "Whenever you Channel an Orb, Upgrade it !M! time.",
+    "UPGRADE_DESCRIPTION": "Whenever you Channel an Orb, Upgrade it !M! times."
   },
   "M10Robot:RapidAssembly": {
     "NAME": "Rapid Assembly",
-    "DESCRIPTION": "Draw !M! card. NL Add a random m10robot:Booster to your hand. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Draw !M! card. NL Add a random m10robot:Booster to your hand.",
-    "EXTENDED_DESCRIPTION": ["Draw !M! cards. NL Add a random m10robot:Booster to your hand. NL Exhaust.", "Draw !M! cards. NL Add a random m10robot:Booster to your hand."]
+    "DESCRIPTION": "Channel !M! m10robot:Present. NL Gain !M10Robot:SecondMagic! m10robot:Components. NL Exhaust."
   },
   "M10Robot:RecoveryMode": {
     "NAME": "Recovery Mode",
-    "DESCRIPTION": "While Equipped: NL Gain !M! Temporary_HP at the beginning of every turn, up to a maximum of 5."
+    "DESCRIPTION": "At the end of your turn, gain !M! Block."
   },
   "M10Robot:RecklessAttack": {
     "NAME": "Reckless Attack",
@@ -240,9 +250,9 @@
   },
   "M10Robot:ReflectiveShell": {
     "NAME": "Reflective Shell",
-    "DESCRIPTION": "While Equipped: NL Fully blocked attacks are reflected onto the attacker !M! time.",
-    "UPGRADE_DESCRIPTION": "Innate. NL While Equipped: NL Fully blocked attacks are reflected onto the attacker !M! time.",
-    "EXTENDED_DESCRIPTION": ["While Equipped: NL Fully blocked attacks are reflected onto the attacker !M! times.", "Innate. NL While Equipped: NL Fully blocked attacks are reflected onto the attacker !M! times."]
+    "DESCRIPTION": "Fully blocked attacks are reflected onto the attacker !M! time.",
+    "UPGRADE_DESCRIPTION": "Innate. NL Fully blocked attacks are reflected onto the attacker !M! time.",
+    "EXTENDED_DESCRIPTION": ["Fully blocked attacks are reflected onto the attacker !M! times.", "Innate. NL Fully blocked attacks are reflected onto the attacker !M! times."]
   },
   "M10Robot:Repeater": {
     "NAME": "Repeater",
@@ -252,19 +262,19 @@
   },
   "M10Robot:ReturningShield": {
     "NAME": "Returning Shield",
-    "DESCRIPTION": "Gain !B! Block. NL Next turn, gain !B! Block."
+    "DESCRIPTION": "Gain !B! Block. NL Next turn, gain !B! Block and draw an additional card."
   },
   "M10Robot:RoboBeam": {
     "NAME": "Robo Beam",
-    "DESCRIPTION": "Deal !D! damage to a random enemy. NL Repeat for every !M10Robot:SecondMagic! turns that has passed this combat."
+    "DESCRIPTION": "Deal !D! damage to a random enemy. NL Repeat for every three turns that have passed this combat."
   },
   "M10Robot:Rumble": {
     "NAME": "Rumble",
-    "DESCRIPTION": "While Equipped: NL Gain !M! Strength this turn each time you attack."
+    "DESCRIPTION": "Whenever you play a card, gain !M! temporary Strength."
   },
   "M10Robot:Rushdown": {
     "NAME": "Rush Down",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL If you have Thorns, they activate on each hit."
+    "DESCRIPTION": "Deal !D! damage to ALL enemies."
   },
   "M10Robot:SaleTag": {
     "NAME": "Sale Tag",
@@ -273,7 +283,7 @@
   },
   "M10Robot:Salvo": {
     "NAME": "Salvo",
-    "DESCRIPTION": "Remove all your Orbs. NL Deal !D! damage for each Orb removed."
+    "DESCRIPTION": "Deal !D! damage for each Channeled Orb."
   },
   "M10Robot:ScrambleField": {
     "NAME": "Scramble Field",
@@ -283,19 +293,22 @@
     "NAME": "Scrap Booster",
     "DESCRIPTION": "Modifications: NL + !M! Block NL Requirements: NL Has Block"
   },
+  "M10Robot:ScrapeOff": {
+    "NAME": "Scrape Off",
+    "DESCRIPTION": "Deal !D! damage. NL Gain m10robot:Components equal to unblocked damage dealt."
+  },
   "M10Robot:SecretRootkit": {
     "NAME": "Secret Rootkit",
-    "DESCRIPTION": "Modifications: NL + m10robot:Unrestricted NL Requirements: NL 1 Cost or greater",
-    "UPGRADE_DESCRIPTION": "Retain. NL Modifications: NL + m10robot:Unrestricted NL Requirements: NL 1 Cost or greater"
+    "DESCRIPTION": "Modifications: NL + m10robot:Unrestricted NL Requirements: NL one Cost or greater",
+    "UPGRADE_DESCRIPTION": "Retain. NL Modifications: NL + m10robot:Unrestricted NL Requirements: NL one Cost or greater"
   },
   "M10Robot:Seeker": {
     "NAME": "Seeker",
-    "DESCRIPTION": "Deal !D! damage to a random enemy. NL Channel !M! m10robot:Searchlight."
+    "DESCRIPTION": "Deal !D! damage. NL Channel !M! m10robot:Searchlight."
   },
   "M10Robot:SelfDestruction": {
     "NAME": "Self Destruction",
-    "DESCRIPTION": "Deal up to !D! damage to ALL enemies based on proximity.",
-    "EXTENDED_DESCRIPTION": [" NL Lose !M10Robot:SecondMagic! HP.", " NL Gain !M10Robot:SecondMagic! HP."]
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Gain !M! m10robot:Recoil."
   },
   "M10Robot:SlotConversion": {
     "NAME": "Slot Conversion",
@@ -307,15 +320,24 @@
   },
   "M10Robot:SpectralCannon": {
     "NAME": "Spectral Cannon",
-    "DESCRIPTION": "Ethereal. NL m10robot:Recharging !M10Robot:AmmoCount! / !M10Robot:ThirdMagic!. NL Deal !D! damage to ALL enemies."
+    "DESCRIPTION": "Ethereal. NL Deal !D! damage to ALL enemies."
+  },
+  "M10Robot:Speedloader": {
+    "NAME": "Speedloader",
+    "DESCRIPTION": "Whenever you m10robot:Reload, draw !M! card.",
+    "UPGRADE_DESCRIPTION": "Whenever you m10robot:Reload, draw !M! cards."
+  },
+  "M10Robot:SpikeBall": {
+    "NAME": "Spike Shell",
+    "DESCRIPTION": "Deal !D! damage. NL Gain !M! m10robot:Spikes. NL Gain !M10Robot:SecondMagic! m10robot:Recoil."
   },
   "M10Robot:SpikyPlating": {
-    "NAME": "Spiky Plating",
-    "DESCRIPTION": "While Equipped: NL Whenever you are attacked, deal !M! damage back."
+    "NAME": "Spiker Form",
+    "DESCRIPTION": "At the end of your turn, gain !M! m10robot:Spikes."
   },
   "M10Robot:SplitBeam": {
     "NAME": "Split Beam",
-    "DESCRIPTION": "Deal !D! damage to a random enemy !M! times. NL Any enemy hit more than once takes an additional !D! damage."
+    "DESCRIPTION": "Deal !D! damage. NL Deal !D! damage to ALL enemies."
   },
   "M10Robot:Strike": {
     "NAME": "Strike",
@@ -340,16 +362,25 @@
   },
   "M10Robot:TargetingSystem": {
     "NAME": "Targeting System",
-    "DESCRIPTION": "While Equipped: NL At the beginning of your turn, randomly apply !M! Lock-On.",
-    "UPGRADE_DESCRIPTION": "Innate. NL While Equipped: NL At the beginning of your turn, randomly apply !M! Lock-On."
+    "DESCRIPTION": "At the beginning of your turn, apply one Lock-On to a random enemy !M! time.",
+    "UPGRADE_DESCRIPTION": "Innate. NL At the beginning of your turn, apply one Lock-On to a random enemy !M! time.",
+    "EXTENDED_DESCRIPTION": ["At the beginning of your turn, apply one Lock-On to a random enemy !M! times.", "Innate. NL At the beginning of your turn, apply one Lock-On to a random enemy !M! times."]
   },
   "M10Robot:ThermalImaging": {
     "NAME": "Thermal Imaging",
-    "DESCRIPTION": "m10robot:Retoolable. NL Apply !M! Lock-On to ALL enemies."
+    "DESCRIPTION": "m10robot:Swappable. NL Apply !M! Lock-On to ALL enemies. NL Channel !M10Robot:SecondMagic! m10robot:Searchlight."
   },
   "M10Robot:HeatSeekers": {
     "NAME": "Heat Seekers",
-    "DESCRIPTION": "m10robot:Retoolable. NL Deal !D! damage to ALL enemies that have Lock-On."
+    "DESCRIPTION": "m10robot:Swappable. NL Deal !D! damage to ALL enemies. NL Channel !M10Robot:SecondMagic! m10robot:Searchlight."
+  },
+  "M10Robot:ThornField": {
+    "NAME": "Thorn Field",
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Gain !M! m10robot:Spikes."
+  },
+  "M10Robot:ThornWhip": {
+    "NAME": "Thorn Whip",
+    "DESCRIPTION": "Deal !D! damage. NL Gain !M! m10robot:Spikes."
   },
   "M10Robot:TouchUp": {
     "NAME": "Touch Up",
@@ -361,19 +392,20 @@
   },
   "M10Robot:UnstableCompound": {
     "NAME": "Unstable Compound",
-    "DESCRIPTION": "Channel !M! m10robot:Bomb."
+    "DESCRIPTION": "Channel !M! m10robot:Bomb. NL Draw !M! card.",
+    "UPGRADE_DESCRIPTION": "Channel !M! m10robot:Bomb. NL Draw !M! cards."
   },
   "M10Robot:WarForged": {
     "NAME": "War Forged",
-    "DESCRIPTION": "Channel !M! m10robot:Toxic. NL Channel !M! m10robot:Tungsten. NL Channel !M! m10robot:Ritualist. NL Exhaust."
+    "DESCRIPTION": ""
   },
   "M10Robot:WaveGenerator": {
     "NAME": "Wave Generator",
-    "DESCRIPTION": "m10robot:Recharging !M10Robot:AmmoCount! / !M10Robot:ThirdMagic!. NL Deal !D! damage. NL ALL enemies lose !M! HP."
+    "DESCRIPTION": "Deal !D! damage. NL ALL enemies lose !M! HP."
   },
   "M10Robot:WeaponPlatform": {
     "NAME": "Weapon Platform",
-    "DESCRIPTION": "While Equipped: NL At the end of your turn, deal !M! damage to ALL enemies with Lock-On."
+    "DESCRIPTION": "At the end of your turn, deal !M! damage to ALL enemies with Lock-On."
   },
   "M10Robot:WeaponPoison": {
     "NAME": "Weapon Poison",
@@ -393,7 +425,6 @@
   },
   "M10Robot:WindUp": {
     "NAME": "Wind Up",
-    "DESCRIPTION": "Deal !D! damage. NL Permanently increase this cards damage by !M!. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Innate. NL Deal !D! damage. NL Permanently increase this cards damage by !M!. NL Exhaust."
+    "DESCRIPTION": "Deal !D! damage. Increase the damage of ALL *Wind *Up cards by !M! this combat."
   }
 }

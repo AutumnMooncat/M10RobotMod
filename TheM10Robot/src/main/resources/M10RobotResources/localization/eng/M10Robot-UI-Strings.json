@@ -13,9 +13,13 @@
   },
   "M10Robot:Boosters": {
     "TEXT": ["Boost",
-            "No appropriate cards",
-            "Viewing equipped boosters. Selected boosters will be unequipped and discarded.",
-            "Viewing equipped boosters."]
+      "No appropriate cards",
+      "Viewing equipped boosters. Selected boosters will be unequipped and discarded.",
+      "Viewing equipped boosters."]
+  },
+  "M10Robot:Overclocking": {
+    "TEXT": ["Overclocking",
+      "#yLeft #yClick to #yOverclock this card, increasing it's base values. NL Cost: #b"," Components."]
   },
   "M10Robot:ModConfigs": {
     "TEXT": [

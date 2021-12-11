@@ -1,7 +1,10 @@
 package M10Robot;
 
-import M10Robot.potions.*;
-import M10Robot.relics.*;
+import M10Robot.characters.M10Robot;
+import M10Robot.relics.ProtectiveShell;
+import M10Robot.relics.ProtectiveShell2;
+import M10Robot.util.IDCheckDontTouchPls;
+import M10Robot.util.TextureLoader;
 import M10Robot.variables.*;
 import basemod.*;
 import basemod.interfaces.*;
@@ -19,15 +22,9 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.*;
-import com.megacrit.cardcrawl.relics.BirdFacedUrn;
-import com.megacrit.cardcrawl.relics.MummifiedHand;
-import com.megacrit.cardcrawl.relics.OrangePellets;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import M10Robot.characters.M10Robot;
-import M10Robot.util.IDCheckDontTouchPls;
-import M10Robot.util.TextureLoader;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -524,12 +521,12 @@ public class M10RobotMod implements
         BaseMod.addRelicToCustomPool(new ProtectiveShell(), M10Robot.Enums.GREEN_SPRING_CARD_COLOR);
         //BaseMod.addRelicToCustomPool(new BottledStar(), M10Robot.Enums.GREEN_SPRING_CARD_COLOR);
         BaseMod.addRelicToCustomPool(new ProtectiveShell2(), M10Robot.Enums.GREEN_SPRING_CARD_COLOR);
-        BaseMod.addRelicToCustomPool(new ModularBody(), M10Robot.Enums.GREEN_SPRING_CARD_COLOR);
+        //BaseMod.addRelicToCustomPool(new ModularBody(), M10Robot.Enums.GREEN_SPRING_CARD_COLOR);
 
         //TODO this doesnt work. Just patch the relics to work with modules
-        BaseMod.removeRelicFromCustomPool(new MummifiedHand(), M10Robot.Enums.GREEN_SPRING_CARD_COLOR);
-        BaseMod.removeRelicFromCustomPool(new OrangePellets(), M10Robot.Enums.GREEN_SPRING_CARD_COLOR);
-        BaseMod.removeRelicFromCustomPool(new BirdFacedUrn(), M10Robot.Enums.GREEN_SPRING_CARD_COLOR);
+        //BaseMod.removeRelicFromCustomPool(new MummifiedHand(), M10Robot.Enums.GREEN_SPRING_CARD_COLOR);
+        //BaseMod.removeRelicFromCustomPool(new OrangePellets(), M10Robot.Enums.GREEN_SPRING_CARD_COLOR);
+        //BaseMod.removeRelicFromCustomPool(new BirdFacedUrn(), M10Robot.Enums.GREEN_SPRING_CARD_COLOR);
 
         // This adds a relic to the Shared pool. Every character can find this relic.
         //BaseMod.addRelic(new PlaceholderRelic2(), RelicType.SHARED);
@@ -538,7 +535,7 @@ public class M10RobotMod implements
         UnlockTracker.markRelicAsSeen(ProtectiveShell.ID);
         //UnlockTracker.markRelicAsSeen(BottledStar.ID);
         UnlockTracker.markRelicAsSeen(ProtectiveShell2.ID);
-        UnlockTracker.markRelicAsSeen(ModularBody.ID);
+        //UnlockTracker.markRelicAsSeen(ModularBody.ID);
         logger.info("Done adding relics!");
     }
     
@@ -560,7 +557,8 @@ public class M10RobotMod implements
         BaseMod.addDynamicVariable(new ThirdMagicNumber());
         BaseMod.addDynamicVariable(new DefaultInvertedNumber());
         BaseMod.addDynamicVariable(new DynamicDynamicVariableManager());
-        BaseMod.addDynamicVariable(new AmmoVariable());
+        BaseMod.addDynamicVariable(new CurrentAmmoVariable());
+        BaseMod.addDynamicVariable(new MaxAmmoVariable());
 
 
         logger.info("Adding cards");

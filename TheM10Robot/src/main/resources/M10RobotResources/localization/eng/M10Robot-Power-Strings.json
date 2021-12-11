@@ -1,8 +1,32 @@
 {
+  "M10Robot:AmmoBoxPower": {
+    "NAME": "Heavy Caliber",
+    "DESCRIPTIONS": ["#yLoaded Attacks apply #b"," Vulnerable to their targets."]
+  },
+  "M10Robot:AutoCasterPower": {
+    "NAME": "Auto Caster",
+    "DESCRIPTIONS": ["The first #yOrb you #yChannel each turn is #yEvoked.","The first #b"," #yOrbs you #yChannel each turn are #yEvoked."]
+  },
+  "M10Robot:CompensatorPower": {
+    "NAME": "Compensator",
+    "DESCRIPTIONS": ["At the end of turn, reduce #yRecoil by #b","."]
+  },
+  "M10Robot:ComponentsPower": {
+    "NAME": "Components",
+    "DESCRIPTIONS": ["Components are used to #yOverclick cards and #yUpgrade Orbs. NL Current Components: #b","."]
+  },
+  "M10Robot:ConcentrationPower": {
+    "NAME": "Sturdy Structure",
+    "DESCRIPTIONS": ["Whenever you gain #yRecoil, gain #b"," #yBlock."]
+  },
+  "M10Robot:DoubleCasterPower": {
+    "NAME": "Double Caster",
+    "DESCRIPTIONS": ["The first #yOrb you #yEvoke each turn is #yEvoke #btwice.","The first #b"," #yOrbs you #yEvoke each turn are #yEvoke #btwice."]
+  },
   "M10Robot:EMPPower": {
     "NAME": "Stasis",
     "DESCRIPTIONS": ["Debuffs can not decrease this turn",
-                    "Debuffs can not decrease for #b"," turns."]
+      "Debuffs can not decrease for #b"," turns."]
   },
   "M10Robot:LoseFocusPower": {
     "NAME": "Focus Down",
@@ -16,6 +40,10 @@
       "Select any modules to unequip and discard them.",
       "No open module slots."]
   },
+  "M10Robot:PowerSavingsPower": {
+    "NAME": "Power Savings",
+    "DESCRIPTIONS": ["At the start of your turn, gain #b"," #yEnergy."]
+  },
   "M10Robot:ProtectPower": {
     "NAME": "Protect",
     "DESCRIPTIONS": ["Whenever you would lose HP, lose #b"," less and reduce #yProtect by #b1. NL When depleted, you become #yScrambled and draw #b1 less card next turn."]
@@ -23,6 +51,10 @@
   "M10Robot:QuickRepairPower": {
     "NAME": "Quick Repair",
     "DESCRIPTIONS": ["At the start of your turn, #yRepair #b","."]
+  },
+  "M10Robot:RAMUpgradePower": {
+    "NAME": "RAM Upgrade",
+    "DESCRIPTIONS": ["Whenever you #yChannel an #yOrb, #yUpgrade it #b"," time."," times."]
   },
   "M10Robot:RecoilPower": {
     "NAME": "Recoil",
@@ -48,6 +80,10 @@
     "NAME": "Makeshift Armor",
     "DESCRIPTIONS": ["At the end of your turn, gain #b"," #yBlock. When attacked, reduce this amount by #b1."]
   },
+  "M10Robot:RumblePower": {
+    "NAME": "Rumble",
+    "DESCRIPTIONS": ["Whenever you play a card, gain #b"," temporary #yStrength."]
+  },
   "M10Robot:ScrambledPower": {
     "NAME": "Scrambled",
     "DESCRIPTIONS": ["Draw #b1 less card next turn.",
@@ -57,9 +93,33 @@
     "NAME": "Scramble Field",
     "DESCRIPTIONS": ["This turn, this creature is unable to deal over #b"," damage and unable to gain over #b"," #yBlock."]
   },
+  "M10Robot:SpeedloaderPower": {
+    "NAME": "Speedloader",
+    "DESCRIPTIONS": ["Whenever you #yReload, draw #b"," card."," cards."]
+  },
+  "M10Robot:SpikesPower": {
+    "NAME": "Spikes",
+    "DESCRIPTIONS": ["When attacked, deals #b"," damage back and reduces Spikes by #b1."]
+  },
+  "M10Robot:SpikyPlatingPower": {
+    "NAME": "Spiky Plating",
+    "DESCRIPTIONS": ["At the end of your turn, gain #b"," #ySpikes."]
+  },
+  "M10Robot:TargetingSystemPower": {
+    "NAME": "Targeting System",
+    "DESCRIPTIONS": ["At the start of your turn, apply #b1 #yLock-On to a random enemy #b", " time.", " times."]
+  },
+  "M10Robot:TauntPower": {
+    "NAME": "Taunted",
+    "DESCRIPTIONS": ["This creature is forced to attack for #b", " turn.", " turns."]
+  },
   "M10Robot:TurboPower": {
     "NAME": "Turbo Mode",
     "DESCRIPTIONS": ["At the beginning of your next turn, draw an additional card and gain [E] .",
-                    "At the beginning of your next #b"," turns, draw an additional card and gain [E] ."]
+      "At the beginning of your next #b"," turns, draw an additional card and gain [E] ."]
+  },
+  "M10Robot:WeaponPlatformPower": {
+    "NAME": "Weapon Platform",
+    "DESCRIPTIONS": ["At the end of your turn, deal #b"," damage to ALL enemies with #yLock-On."]
   }
 }
