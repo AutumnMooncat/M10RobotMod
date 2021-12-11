@@ -1,8 +1,8 @@
-package M10Robot.cards.boosters;
+package M10Robot.cutCards.boosters;
 
 import M10Robot.M10RobotMod;
 import M10Robot.cardModifiers.AbstractBoosterModifier;
-import M10Robot.cardModifiers.TempRefundModifier;
+import M10Robot.cardModifiers.ApplyPoisonEffect;
 import M10Robot.cards.abstractCards.AbstractBoosterCard;
 import M10Robot.characters.M10Robot;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -15,32 +15,32 @@ import java.util.function.Predicate;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
-public class SaleTag extends AbstractBoosterCard {
-
+public class WeaponPoison extends AbstractBoosterCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = M10RobotMod.makeID(SaleTag.class.getSimpleName());
-    public static final String IMG = makeCardPath("SaleTag.png");
+    public static final String ID = M10RobotMod.makeID(WeaponPoison.class.getSimpleName());
+    public static final String IMG = makeCardPath("WeaponPoison.png");
 
     // /TEXT DECLARATION/
 
 
     // STAT DECLARATION
 
-    private static final CardRarity RARITY = CardRarity.UNCOMMON;
+    private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.NONE;
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
-    private static final int REFUND = 1;
+    private static final int POISON = 3;
+    private static final int UPGRADE_PLUS_POISON = 2;
 
     // /STAT DECLARATION/
 
 
-    public SaleTag() {
+    public WeaponPoison() {
         super(ID, IMG, TYPE, COLOR, RARITY, TARGET);
-        magicNumber = baseMagicNumber = REFUND;
+        magicNumber = baseMagicNumber = POISON;
     }
 
     // Actions the card should do.
@@ -49,12 +49,12 @@ public class SaleTag extends AbstractBoosterCard {
 
     @Override
     public Predicate<AbstractCard> getFilter() {
-        return nonZeroCost;
+        return isAttack;
     }
 
     @Override
     public ArrayList<AbstractBoosterModifier> getBoosterModifiers() {
-        return new ArrayList<>(Collections.singletonList(new TempRefundModifier(magicNumber)));
+        return new ArrayList<>(Collections.singletonList(new ApplyPoisonEffect(this)));
     }
 
     //Upgraded stats.
@@ -62,8 +62,7 @@ public class SaleTag extends AbstractBoosterCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            this.selfRetain = true;
-            rawDescription = UPGRADE_DESCRIPTION;
+            upgradeMagicNumber(UPGRADE_PLUS_POISON);
             initializeDescription();
         }
     }

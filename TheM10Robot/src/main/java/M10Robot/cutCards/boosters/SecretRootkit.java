@@ -1,9 +1,8 @@
-package M10Robot.cards.boosters;
+package M10Robot.cutCards.boosters;
 
 import M10Robot.M10RobotMod;
 import M10Robot.cardModifiers.AbstractBoosterModifier;
 import M10Robot.cardModifiers.TempBypassModifier;
-import M10Robot.cardModifiers.TempEchoModifier;
 import M10Robot.cards.abstractCards.AbstractBoosterCard;
 import M10Robot.cards.uniqueCards.UniqueCard;
 import M10Robot.characters.M10Robot;

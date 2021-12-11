@@ -1,28 +1,27 @@
-package M10Robot.cards.boosters;
+package M10Robot.cutCards.boosters;
 
 import M10Robot.M10RobotMod;
 import M10Robot.cardModifiers.AbstractBoosterModifier;
-import M10Robot.cardModifiers.GainBlockEffect;
+import M10Robot.cardModifiers.TempRefundModifier;
 import M10Robot.cards.abstractCards.AbstractBoosterCard;
 import M10Robot.characters.M10Robot;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.function.Predicate;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
-public class SubroutineDefend extends AbstractBoosterCard {
+public class SaleTag extends AbstractBoosterCard {
+
 
     // TEXT DECLARATION
 
-    public static final String ID = M10RobotMod.makeID(SubroutineDefend.class.getSimpleName());
-    public static final String IMG = makeCardPath("SubroutineDefend.png");
+    public static final String ID = M10RobotMod.makeID(SaleTag.class.getSimpleName());
+    public static final String IMG = makeCardPath("SaleTag.png");
 
     // /TEXT DECLARATION/
 
@@ -34,15 +33,14 @@ public class SubroutineDefend extends AbstractBoosterCard {
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
-    private static final int BLOCK = 4;
-    private static final int UPGRADE_PLUS_BLOCK = 2;
+    private static final int REFUND = 1;
 
     // /STAT DECLARATION/
 
 
-    public SubroutineDefend() {
+    public SaleTag() {
         super(ID, IMG, TYPE, COLOR, RARITY, TARGET);
-        block = baseBlock = BLOCK;
+        magicNumber = baseMagicNumber = REFUND;
     }
 
     // Actions the card should do.
@@ -51,12 +49,12 @@ public class SubroutineDefend extends AbstractBoosterCard {
 
     @Override
     public Predicate<AbstractCard> getFilter() {
-        return isPlayable;
+        return nonZeroCost;
     }
 
     @Override
     public ArrayList<AbstractBoosterModifier> getBoosterModifiers() {
-        return new ArrayList<>(Collections.singletonList(new GainBlockEffect(this, 1)));
+        return new ArrayList<>(Collections.singletonList(new TempRefundModifier(magicNumber)));
     }
 
     //Upgraded stats.
@@ -64,7 +62,8 @@ public class SubroutineDefend extends AbstractBoosterCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeBlock(UPGRADE_PLUS_BLOCK);
+            this.selfRetain = true;
+            rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }
     }

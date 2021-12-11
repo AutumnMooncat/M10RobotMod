@@ -1,10 +1,11 @@
-package M10Robot.cards.boosters;
+package M10Robot.cutCards.boosters;
 
 import M10Robot.M10RobotMod;
 import M10Robot.cardModifiers.AbstractBoosterModifier;
-import M10Robot.cardModifiers.TempBlockModifier;
+import M10Robot.cardModifiers.TempMagicNumberModifier;
 import M10Robot.cards.abstractCards.AbstractBoosterCard;
 import M10Robot.characters.M10Robot;
+import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.BranchingUpgradesCard;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -15,33 +16,39 @@ import java.util.function.Predicate;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
-public class ScrapBooster extends AbstractBoosterCard {
+public class MagicTinkering extends AbstractBoosterCard implements BranchingUpgradesCard {
+
+    /*
+     * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
+     *
+     * Defend Gain 5 (8) block.
+     */
 
 
     // TEXT DECLARATION
 
-    public static final String ID = M10RobotMod.makeID(ScrapBooster.class.getSimpleName());
-    public static final String IMG = makeCardPath("ScrapBooster.png");
+    public static final String ID = M10RobotMod.makeID(MagicTinkering.class.getSimpleName());
+    public static final String IMG = makeCardPath("MagicTinkering.png");
 
     // /TEXT DECLARATION/
 
 
     // STAT DECLARATION
 
-    private static final CardRarity RARITY = CardRarity.COMMON;
+    private static final CardRarity RARITY = CardRarity.UNCOMMON;
     private static final CardTarget TARGET = CardTarget.NONE;
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
-    private static final int BLOCK = 4;
-    private static final int UPGRADE_PLUS_BLOCK = 2;
+    private static final int EFFECT = 1;
+    private static final int UPGRADE_PLUS_EFFECT = 1;
 
     // /STAT DECLARATION/
 
 
-    public ScrapBooster() {
+    public MagicTinkering() {
         super(ID, IMG, TYPE, COLOR, RARITY, TARGET);
-        magicNumber = baseMagicNumber = BLOCK;
+        magicNumber = baseMagicNumber = EFFECT;
     }
 
     // Actions the card should do.
@@ -50,12 +57,12 @@ public class ScrapBooster extends AbstractBoosterCard {
 
     @Override
     public Predicate<AbstractCard> getFilter() {
-        return hasBlockValue;
+        return hasMagicValue;
     }
 
     @Override
     public ArrayList<AbstractBoosterModifier> getBoosterModifiers() {
-        return new ArrayList<>(Collections.singletonList(new TempBlockModifier(magicNumber)));
+        return new ArrayList<>(Collections.singletonList(new TempMagicNumberModifier(magicNumber)));
     }
 
     //Upgraded stats.
@@ -63,8 +70,21 @@ public class ScrapBooster extends AbstractBoosterCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(UPGRADE_PLUS_BLOCK);
+            if (isBranchUpgrade()) {
+                branchUpgrade();
+            } else {
+                baseUpgrade();
+            }
             initializeDescription();
         }
+    }
+
+    public void baseUpgrade() {
+        upgradeMagicNumber(UPGRADE_PLUS_EFFECT);
+    }
+
+    public void branchUpgrade() {
+        this.selfRetain = true;
+        rawDescription = UPGRADE_DESCRIPTION;
     }
 }

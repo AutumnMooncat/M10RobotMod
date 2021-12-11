@@ -1,9 +1,10 @@
-package M10Robot.cards.tempCards;
+package M10Robot.cutCards.boosters;
 
 import M10Robot.M10RobotMod;
 import M10Robot.cardModifiers.AbstractBoosterModifier;
 import M10Robot.cardModifiers.TempDamageModifier;
 import M10Robot.cards.abstractCards.AbstractBoosterCard;
+import M10Robot.cards.tempCards.TempCard;
 import M10Robot.characters.M10Robot;
 import M10Robot.patches.BoundFieldPatch;
 import com.megacrit.cardcrawl.cards.AbstractCard;
