@@ -1,6 +1,7 @@
 package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
+import M10Robot.actions.UpgradeAllOrbsAction;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
 import M10Robot.orbs.PresentOrb;
@@ -30,6 +31,7 @@ public class AssemblyLine extends AbstractDynamicCard {
     private static final int COST = 2;
     private static final int UPGRADE_COST = 1;
     private static final int ORBS = 3;
+    private static final int UPGRADES = 2;
     //private static final int UPGRADE_PLUS_ORBS = 1;
 
     // /STAT DECLARATION/
@@ -38,6 +40,7 @@ public class AssemblyLine extends AbstractDynamicCard {
     public AssemblyLine() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = ORBS;
+        secondMagicNumber = baseSecondMagicNumber = UPGRADES;
         exhaust = true;
     }
 
@@ -47,6 +50,7 @@ public class AssemblyLine extends AbstractDynamicCard {
         for (int i = 0 ; i < magicNumber ; i++) {
             this.addToBot(new ChannelAction(new PresentOrb()));
         }
+        this.addToBot(new UpgradeAllOrbsAction(secondMagicNumber));
     }
 
     //Upgraded stats.
