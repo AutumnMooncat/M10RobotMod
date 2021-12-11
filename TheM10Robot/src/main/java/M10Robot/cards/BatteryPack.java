@@ -5,14 +5,11 @@ import M10Robot.cards.abstractCards.AbstractClickableCard;
 import M10Robot.characters.M10Robot;
 import basemod.interfaces.XCostModifier;
 import basemod.patches.com.megacrit.cardcrawl.cards.AbstractCard.CardModifierPatches;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
-import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.relics.ChemicalX;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
 import java.util.ArrayList;
@@ -48,7 +45,7 @@ public class BatteryPack extends AbstractClickableCard {
     public BatteryPack() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = MAX_CHARGES;
-        ammoCount = baseAmmoCount = 0;
+        currentAmmo = maxAmmo = baseMaxAmmo = 0;
         selfRetain = true;
     }
 
@@ -62,7 +59,7 @@ public class BatteryPack extends AbstractClickableCard {
         }
 
         if (p.hasRelic("Chemical X")) {
-            effect += 2;
+            effect += ChemicalX.BOOST;
             p.getRelic("Chemical X").flash();
         }
 
@@ -84,8 +81,8 @@ public class BatteryPack extends AbstractClickableCard {
             }
         }
 
-        this.ammoCount = Math.min(ammoCount+effect, magicNumber);
-        isAmmoCountModified = ammoCount != baseAmmoCount;
+        this.currentAmmo = Math.min(currentAmmo +effect, magicNumber);
+        isCurrentAmmoModified = currentAmmo != maxAmmo;
 
         if (!this.freeToPlayOnce) {
             p.energy.use(EnergyPanel.totalCount);
@@ -106,9 +103,9 @@ public class BatteryPack extends AbstractClickableCard {
 
     @Override
     public void onRightClick() {
-        if (ammoCount > 0) {
-            ammoCount--;
-            isAmmoCountModified = ammoCount != baseAmmoCount;
+        if (currentAmmo > 0) {
+            currentAmmo--;
+            isCurrentAmmoModified = currentAmmo != maxAmmo;
             this.addToBot(new GainEnergyAction(1));
             superFlash();
         }
