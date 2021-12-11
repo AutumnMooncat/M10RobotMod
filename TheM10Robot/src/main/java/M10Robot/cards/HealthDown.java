@@ -1,10 +1,10 @@
 package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
+import M10Robot.actions.DecreaseMaxHPAction;
 import M10Robot.actions.FasterLoseHPAction;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
-import com.evacipated.cardcrawl.mod.stslib.actions.tempHp.AddTemporaryHPAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -31,8 +31,8 @@ public class HealthDown extends AbstractDynamicCard {
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
     private static final int COST = 1;
-    private static final int EFFECT = 4;
-    private static final int UPGRADE_PLUS_EFFECT = 2;
+    private static final int EFFECT = 6;
+    private static final int UPGRADE_PLUS_EFFECT = 4;
 
     // /STAT DECLARATION/
 
@@ -40,22 +40,16 @@ public class HealthDown extends AbstractDynamicCard {
     public HealthDown() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = EFFECT;
-        this.exhaust = true;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        int sum = 0, reduceAmount;
         for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
             if (!aM.isDeadOrEscaped()) {
-                reduceAmount = Math.min(magicNumber, aM.currentHealth);
-                this.addToBot(new FasterLoseHPAction(aM, p, reduceAmount, AbstractGameAction.AttackEffect.FIRE));
-                sum += reduceAmount;
+                this.addToBot(new FasterLoseHPAction(aM, p, magicNumber, AbstractGameAction.AttackEffect.FIRE));
+                this.addToBot(new DecreaseMaxHPAction(aM, magicNumber));
             }
-        }
-        if (sum > 0) {
-            this.addToBot(new AddTemporaryHPAction(p, p, sum));
         }
     }
 
