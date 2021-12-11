@@ -3,6 +3,7 @@ package M10Robot.cards;
 import M10Robot.M10RobotMod;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
+import M10Robot.powers.RecoilPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -37,35 +38,35 @@ public class AssaultField extends AbstractDynamicCard {
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
     private static final int COST = 1;
-    private static final int DAMAGE = 2;
-    private static final int UPGRADE_PLUS_DMG = 1;
+    private static final int DAMAGE = 4;
+    private static final int UPGRADE_PLUS_DMG = 2;
     private static final int HITS = 3;
-    private static final int WEAK = 1;
+    private static final int RECOIL = 1;
 
     // /STAT DECLARATION/
 
     public AssaultField() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = damage = DAMAGE;
-        magicNumber = baseMagicNumber = WEAK;
-        secondMagicNumber = baseSecondMagicNumber = HITS;
+        magicNumber = baseMagicNumber = HITS;
+        secondMagicNumber = baseSecondMagicNumber = RECOIL;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        for (int i = 0; i < secondMagicNumber ; i++) {
+        for (int i = 0; i < magicNumber ; i++) {
             this.addToBot(new AbstractGameAction() {
                 @Override
                 public void update() {
                     AbstractMonster mo = AbstractDungeon.getRandomMonster();
-                    this.addToTop(new ApplyPowerAction(mo, p, new WeakPower(mo, magicNumber, false), magicNumber, true));
                     this.addToTop(new DamageAction(mo, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.NONE, true));
                     this.addToTop(new VFXAction(new ExplosionSmallEffect(mo.hb.cX, mo.hb.cY), 0.1F));
                     this.isDone = true;
                 }
             });
         }
+        this.addToBot(new ApplyPowerAction(p, p, new RecoilPower(p, secondMagicNumber)));
     }
 
     // Upgraded stats.
