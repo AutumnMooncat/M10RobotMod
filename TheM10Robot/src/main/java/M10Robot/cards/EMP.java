@@ -1,8 +1,7 @@
 package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
-import M10Robot.actions.CheckIfUnblockedAction;
-import M10Robot.cards.abstractCards.AbstractDynamicCard;
+import M10Robot.cards.abstractCards.AbstractReloadableCard;
 import M10Robot.characters.M10Robot;
 import M10Robot.powers.EMPPower;
 import com.badlogic.gdx.graphics.Color;
@@ -19,7 +18,7 @@ import com.megacrit.cardcrawl.vfx.combat.ShockWaveEffect;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
-public class EMP extends AbstractDynamicCard {
+public class EMP extends AbstractReloadableCard {
 
 
     // TEXT DECLARATION
@@ -38,7 +37,7 @@ public class EMP extends AbstractDynamicCard {
     public static final AbstractCard.CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
     private static final int COST = 1;
-    private static final int DAMAGE = 3;
+    private static final int DAMAGE = 6;
     private static final int UPGRADE_PLUS_DMG = 2;
     private static final int STASIS = 1;
     private static final int UPGRADE_PLUS_STASIS = 1;
@@ -68,7 +67,8 @@ public class EMP extends AbstractDynamicCard {
                 //Deal damage
                 this.addToBot(new DamageAction(aM, new DamageInfo(p, this.multiDamage[AbstractDungeon.getMonsters().monsters.indexOf(aM)], damageTypeForTurn), true));
                 //check if unblocked to apply stasis
-                this.addToBot(new CheckIfUnblockedAction(aM, p, new ApplyPowerAction(aM, p, new EMPPower(aM, magicNumber), magicNumber, true)));
+                //this.addToBot(new CheckIfUnblockedAction(aM, p, new ApplyPowerAction(aM, p, new EMPPower(aM, magicNumber), magicNumber, true)));
+                this.addToBot(new ApplyPowerAction(aM, p, new EMPPower(aM, magicNumber), magicNumber, true));
 
             }
         }
