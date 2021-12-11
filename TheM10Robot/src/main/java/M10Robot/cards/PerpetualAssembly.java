@@ -37,6 +37,7 @@ public class PerpetualAssembly extends AbstractDynamicCard {
     public PerpetualAssembly() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = ORBS;
+        this.shuffleBackIntoDrawPile = true;
     }
 
     // Actions the card should do.
