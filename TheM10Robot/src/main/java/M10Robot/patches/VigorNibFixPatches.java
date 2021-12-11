@@ -18,7 +18,7 @@ public class VigorNibFixPatches {
         public static void Postfix(VigorPower __instance, AbstractCard card, UseCardAction action) {
             if (card.type != AbstractCard.CardType.ATTACK && BoosterFieldPatch.hasDamageDealingBooster(card)) {
                 __instance.flash();
-                AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(__instance.owner, __instance.owner, VigorPower.POWER_ID));
+                AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(__instance.owner, __instance.owner, __instance));
             }
         }
     }
@@ -46,7 +46,7 @@ public class VigorNibFixPatches {
     public static class PenNibPowerFix {
         public static void Postfix(PenNibPower __instance, AbstractCard card, UseCardAction action) {
             if (card.type != AbstractCard.CardType.ATTACK && BoosterFieldPatch.hasDamageDealingBooster(card)) {
-                AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(__instance.owner, __instance.owner, PenNibPower.POWER_ID));
+                AbstractDungeon.actionManager.addToBottom(new RemoveSpecificPowerAction(__instance.owner, __instance.owner, __instance));
             }
         }
     }
