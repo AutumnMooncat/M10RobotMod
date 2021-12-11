@@ -1,16 +1,15 @@
 package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
+import M10Robot.cardModifiers.AimedModifier;
 import M10Robot.cards.abstractCards.AbstractReloadableCard;
 import M10Robot.characters.M10Robot;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.vfx.combat.SmallLaserEffect;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
@@ -43,7 +42,6 @@ public class BurstFire extends AbstractReloadableCard {
     private static final int UPGRADE_PLUS_DMG = 2;
     private static final int HITS = 2;
     private static final int UPGRADE_PLUS_HITS = 1;
-    private static final int SHOTS = 3;
 
     // /STAT DECLARATION/
 
@@ -51,7 +49,7 @@ public class BurstFire extends AbstractReloadableCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = damage = DAMAGE;
         magicNumber = baseMagicNumber = HITS;
-        ammoCount = baseAmmoCount = thirdMagicNumber = baseThirdMagicNumber = SHOTS;
+        CardModifierManager.addModifier(this, new AimedModifier());
     }
 
     // Actions the card should do.
