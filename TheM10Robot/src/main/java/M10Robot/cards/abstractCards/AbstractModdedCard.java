@@ -30,10 +30,12 @@ public abstract class AbstractModdedCard extends CustomCard {
     public boolean upgradedInvertedNumber;
     public boolean isInvertedNumberModified;
 
-    public int ammoCount;
-    public int baseAmmoCount;
-    public boolean upgradedAmmoCount;
-    public boolean isAmmoCountModified;
+    public int currentAmmo;
+    public int maxAmmo;
+    public int baseMaxAmmo;
+    public boolean upgradedMaxAmmo;
+    public boolean isCurrentAmmoModified;
+    public boolean isMaxAmmoModified;
 
     public CardStrings cardStrings;
     public String DESCRIPTION; //The main description of the card
@@ -62,7 +64,8 @@ public abstract class AbstractModdedCard extends CustomCard {
         isSecondMagicNumberModified = false;
         isThirdMagicNumberModified = false;
         isInvertedNumberModified = false;
-        isAmmoCountModified = false;
+        isCurrentAmmoModified = false;
+        isMaxAmmoModified = false;
 
         CommonKeywordIconsField.useIcons.set(this, true);
 
@@ -89,9 +92,10 @@ public abstract class AbstractModdedCard extends CustomCard {
             invertedNumber = baseInvertedNumber; // Show how the number changes, as out of combat, the base number of a card is shown.
             isInvertedNumberModified = true; // Modified = true, color it green to highlight that the number is being changed.
         }
-        if (upgradedAmmoCount) { // If we set upgradedDefaultSecondMagicNumber = true in our card.
-            ammoCount = baseAmmoCount; // Show how the number changes, as out of combat, the base number of a card is shown.
-            isAmmoCountModified = true; // Modified = true, color it green to highlight that the number is being changed.
+        if (upgradedMaxAmmo) { // If we set upgradedDefaultSecondMagicNumber = true in our card.
+            maxAmmo = baseMaxAmmo; // Show how the number changes, as out of combat, the base number of a card is shown.
+            isMaxAmmoModified = true; // Modified = true, color it green to highlight that the number is being changed.
+            isCurrentAmmoModified = true;
         }
     }
 
@@ -113,10 +117,11 @@ public abstract class AbstractModdedCard extends CustomCard {
         upgradedInvertedNumber = true; // Upgraded = true - which does what the above method does.
     }
 
-    public void upgradeAmmoCount(int amount) { // If we're upgrading (read: changing) the number. Note "upgrade" and NOT "upgraded" - 2 different things. One is a boolean, and then this one is what you will usually use - change the integer by how much you want to upgrade.
-        baseAmmoCount += amount; // Upgrade the number by the amount you provide in your card.
-        ammoCount += amount; // Set the number to be equal to the base value.
-        upgradedAmmoCount = true; // Upgraded = true - which does what the above method does.
+    public void upgradeMaxAmmo(int amount) { // If we're upgrading (read: changing) the number. Note "upgrade" and NOT "upgraded" - 2 different things. One is a boolean, and then this one is what you will usually use - change the integer by how much you want to upgrade.
+        baseMaxAmmo += amount;
+        maxAmmo = baseMaxAmmo; // Upgrade the number by the amount you provide in your card.
+        currentAmmo += amount; // Increase the current ammo by the same amount
+        upgradedMaxAmmo = true; // Upgraded = true - which does what the above method does.
     }
 
     @Override
@@ -127,7 +132,9 @@ public abstract class AbstractModdedCard extends CustomCard {
         this.isThirdMagicNumberModified = false;
         this.invertedNumber = this.baseInvertedNumber;
         this.isInvertedNumberModified = false;
-        //Don't reset ammo
+        this.maxAmmo = this.baseMaxAmmo;
+        this.isMaxAmmoModified = false;
+        //Don't reset current ammo
         super.resetAttributes();
     }
 
