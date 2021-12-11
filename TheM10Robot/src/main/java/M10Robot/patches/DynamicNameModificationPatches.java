@@ -20,6 +20,7 @@ public class DynamicNameModificationPatches {
                     if (m.getClassName().equals(FontHelper.class.getName()) && m.getMethodName().equals("renderRotatedText")) {
                         m.replace("{" +
                                 //This is usable and refers to the class you#re patching, can be substitued by $0 but that has extra rules
+                                "$3 = M10Robot.util.OverclockUtil.getOverclockPrefix(this) + $3;" +
                                 "if(M10Robot.patches.BoosterFieldPatch.hasBoosterEquipped(this)) {" +
                                 //$1 refers to the first input parameter of the method, in this case the float that Gdx.graphics.getDeltaTime() returns
                                 "$3 = M10Robot.patches.BoosterFieldPatch.getBoosterPrefixes(this) + $3 + M10Robot.patches.BoosterFieldPatch.getBoosterSuffixes(this);" +
