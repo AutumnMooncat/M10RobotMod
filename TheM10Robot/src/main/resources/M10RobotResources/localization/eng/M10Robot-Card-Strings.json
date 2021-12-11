@@ -379,7 +379,7 @@
     "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Gain !M! m10robot:Spikes."
   },
   "M10Robot:ThornWhip": {
-    "NAME": "Thorn Whip",
+    "NAME": "Vine Whip",
     "DESCRIPTION": "Deal !D! damage. NL Gain !M! m10robot:Spikes."
   },
   "M10Robot:TouchUp": {

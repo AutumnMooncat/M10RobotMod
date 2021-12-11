@@ -1,146 +1,12 @@
 {
-  "M10Robot:AbstractExtraEffectModifier": {
-    "EXTENDED_DESCRIPTION": [
-      "M10Robot:Mutable: ",
-      " ",
-      " times.",
-      "."
-    ]
-  },
   "M10Robot:AimedModifier": {
     "EXTENDED_DESCRIPTION": [
       "m10robot:Aimed NL "
     ]
   },
-  "M10Robot:ApplyPoisonEffect": {
+  "M10Robot:HeavyModifier": {
     "EXTENDED_DESCRIPTION": [
-      "Apply ",
-      " Poison.",
-      "Po",""
-    ]
-  },
-  "M10Robot:DealDamageEffect": {
-    "EXTENDED_DESCRIPTION": [
-      "Deal ",
-      " damage",
-      "Da",""
-    ]
-  },
-  "M10Robot:DrawCardEffect": {
-    "EXTENDED_DESCRIPTION": [
-      "Draw ",
-      " card.",
-      " cards.",
-      "Dr",""
-    ]
-  },
-  "M10Robot:GainBlockEffect": {
-    "EXTENDED_DESCRIPTION": [
-      "Gain ",
-      " Block",
-      "Bl",""
-    ]
-  },
-  "M10Robot:GainDexterityEffect": {
-    "EXTENDED_DESCRIPTION": [
-      "Gain ",
-      " Dexterity.",
-      "De",""
-    ]
-  },
-  "M10Robot:GainEnergyEffect": {
-    "EXTENDED_DESCRIPTION": [
-      "Gain [E] .",
-      "Gain [E] ",
-      " times.",
-      "En",""
-    ]
-  },
-  "M10Robot:GainFocusEffect": {
-    "EXTENDED_DESCRIPTION": [
-      "Gain ",
-      " Focus.",
-      "Fo",""
-    ]
-  },
-  "M10Robot:GainOrbSlotEffect": {
-    "EXTENDED_DESCRIPTION": [
-      "Gain ",
-      " Orb Slot.",
-      " Orb Slots.",
-      "Or",""
-    ]
-  },
-  "M10Robot:GainRecoilEffect": {
-    "EXTENDED_DESCRIPTION": [
-      "Gain ",
-      " m10robot:Recoil.",
-      "Re",""
-    ]
-  },
-  "M10Robot:GainStrengthEffect": {
-    "EXTENDED_DESCRIPTION": [
-      "Gain ",
-      " Strength.",
-      "St",""
-    ]
-  },
-  "M10Robot:HealHPEffect": {
-    "EXTENDED_DESCRIPTION": [
-      "Heal ",
-      " HP.",
-      "H",""
-    ]
-  },
-  "M10Robot:LoseDexterityEffect": {
-    "EXTENDED_DESCRIPTION": [
-      "Lose ",
-      " Dexterity.",
-      "De",""
-    ]
-  },
-  "M10Robot:LoseEnergyEffect": {
-    "EXTENDED_DESCRIPTION": [
-      "Lose [E] .",
-      "Lose [E] ",
-      " times.",
-      "L",""
-    ]
-  },
-  "M10Robot:LoseFocusEffect": {
-    "EXTENDED_DESCRIPTION": [
-      "Lose ",
-      " Focus.",
-      "Fo",""
-    ]
-  },
-  "M10Robot:LoseHPEffect": {
-    "EXTENDED_DESCRIPTION": [
-      "Lose ",
-      " HP.",
-      "H",""
-    ]
-  },
-  "M10Robot:LoseOrbSlotEffect": {
-    "EXTENDED_DESCRIPTION": [
-      "Lose ",
-      " Orb Slot.",
-      " Orb Slots.",
-      "Or",""
-    ]
-  },
-  "M10Robot:LoseRecoilEffect": {
-    "EXTENDED_DESCRIPTION": [
-      "Lose ",
-      " m10robot:Recoil.",
-      "Re",""
-    ]
-  },
-  "M10Robot:LoseStrengthEffect": {
-    "EXTENDED_DESCRIPTION": [
-      "Lose ",
-      " Strength.",
-      "St",""
+      "m10robot:Heavy NL "
     ]
   },
   "M10Robot:ReloadingModifier": {
@@ -151,44 +17,6 @@
   "M10Robot:SpikyModifier": {
     "EXTENDED_DESCRIPTION": [
       "m10robot:Spiky NL "
-    ]
-  },
-  "M10Robot:TempBlockModifier": {
-    "EXTENDED_DESCRIPTION": [
-      "","b"
-    ]
-  },
-  "M10Robot:TempDamageModifier": {
-    "EXTENDED_DESCRIPTION": [
-      "","d"
-    ]
-  },
-  "M10Robot:TempMagicNumberModifier": {
-    "EXTENDED_DESCRIPTION": [
-      "","m"
-    ]
-  },
-  "M10Robot:TempRefundModifier": {
-    "EXTENDED_DESCRIPTION": [
-      "Refund ",".",
-      "","r"
-    ]
-  },
-  "M10Robot:TempEchoModifier": {
-    "EXTENDED_DESCRIPTION": [
-      "m10robot:Echo ",".",
-      "","e"
-    ]
-  },
-  "M10Robot:TempBypassModifier": {
-    "EXTENDED_DESCRIPTION": [
-      "m10robot:Unrestricted",".",
-      "","u"
-    ]
-  },
-  "M10Robot:TransmuteSelfEffect": {
-    "EXTENDED_DESCRIPTION": [
-      "M10Robot:Transmute this card."
     ]
   }
 }

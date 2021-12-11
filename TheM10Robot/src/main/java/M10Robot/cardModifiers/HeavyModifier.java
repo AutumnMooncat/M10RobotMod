@@ -1,27 +1,24 @@
 package M10Robot.cardModifiers;
 
 import M10Robot.M10RobotMod;
-import M10Robot.powers.SpikesPower;
+import M10Robot.powers.RecoilPower;
 import basemod.abstracts.AbstractCardModifier;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.CardStrings;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.LockOnPower;
 
-public class SpikyModifier extends AbstractCardModifier {
-    public static final String ID = M10RobotMod.makeID("SpikyModifier");
+public class HeavyModifier extends AbstractCardModifier {
+    public static final String ID = M10RobotMod.makeID("HeavyModifier");
     public static final CardStrings STRINGS = CardCrawlGame.languagePack.getCardStrings(ID);
     private static final String[] TEXT = STRINGS.EXTENDED_DESCRIPTION;
 
     @Override
-    public float modifyDamage(float damage, DamageInfo.DamageType type, AbstractCard card, AbstractMonster target) {
-        if (AbstractDungeon.player.hasPower(SpikesPower.POWER_ID)) {
-            damage += AbstractDungeon.player.getPower(SpikesPower.POWER_ID).amount;
-        }
-        return damage;
+    public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
+        AbstractDungeon.actionManager.addToBottom(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new RecoilPower(AbstractDungeon.player, 1)));
     }
 
     @Override
@@ -32,7 +29,7 @@ public class SpikyModifier extends AbstractCardModifier {
 
     @Override
     public AbstractCardModifier makeCopy() {
-        return new AimedModifier();
+        return new HeavyModifier();
     }
 
     @Override

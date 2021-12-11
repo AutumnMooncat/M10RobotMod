@@ -11,7 +11,157 @@
     "NAMES": [
       "augmented"
     ],
-    "DESCRIPTION": "This card has #yboosters attached to it."
+    "DESCRIPTION": "TBD for Augment mechanic"
+  },
+  {
+    "PROPER_NAME": "Components",
+    "NAMES": [
+      "components"
+    ],
+    "DESCRIPTION": "Resource used to #yUpgrade #yOrbs and #Overclock cards."
+  },
+  {
+    "PROPER_NAME": "Overclock",
+    "NAMES": [
+      "overclock"
+    ],
+    "DESCRIPTION": "Increases the base stats of cards. Has no upper bound but has diminishing returns."
+  },
+  {
+    "PROPER_NAME": "Heavy",
+    "NAMES": [
+      "heavy"
+    ],
+    "DESCRIPTION": "Gain #yRecoil when this card is played, making your next attack deal #b50% less damage."
+  },
+  {
+    "PROPER_NAME": "Protect",
+    "NAMES": [
+      "protect"
+    ],
+    "DESCRIPTION": "Whenever you would lose HP, lose #b4 less and reduce Protect by #b1. NL When depleted, you become #yScrambled and draw #b1 less card next turn."
+  },
+  {
+    "PROPER_NAME": "Recoil",
+    "NAMES": [
+      "recoil"
+    ],
+    "DESCRIPTION": "Your next attack deals #b50% less damage."
+  },
+  {
+    "PROPER_NAME": "Relay",
+    "NAMES": [
+      "relay"
+    ],
+    "DESCRIPTION": "At the beginning of your next turn, add the selected cards to your hand. Will not recover cards which are exhausted or otherwise removed from play."
+  },
+  {
+    "PROPER_NAME": "Reloading",
+    "NAMES": [
+      "reloading",
+      "loaded",
+      "reload"
+    ],
+    "DESCRIPTION": "Loaded cards become Reloading when played. NL Reloading cards are #yUnplayable and become Loaded when #yDiscarded or #yRight #yClicked at the cost of [E]"
+  },
+  {
+    "PROPER_NAME": "Reshuffle",
+    "NAMES": [
+      "reshuffle"
+    ],
+    "DESCRIPTION": "Shuffle this card into your draw pile when it is played."
+  },
+  {
+    "PROPER_NAME": "Returning",
+    "NAMES": [
+      "returning"
+    ],
+    "DESCRIPTION": "This card returns to your hand when played."
+  },
+  {
+    "PROPER_NAME": "Scrambled",
+    "NAMES": [
+      "scrambled"
+    ],
+    "DESCRIPTION": "Draw #b1 less card next turn."
+  },
+  {
+    "PROPER_NAME": "Spikes",
+    "NAMES": [
+      "spikes"
+    ],
+    "DESCRIPTION": "When receiving #yAttack damage, deals damage back and reduces Spikes by #b1."
+  },
+  {
+    "PROPER_NAME": "Spiky",
+    "NAMES": [
+      "spiky"
+    ],
+    "DESCRIPTION": "Damage scales with #ySpikes."
+  },
+  {
+    "PROPER_NAME": "Stasis",
+    "NAMES": [
+      "stasis"
+    ],
+    "DESCRIPTION": "Debuffs can not decrease while #yStasis is active."
+  },
+  {
+    "PROPER_NAME": "Swappable",
+    "NAMES": [
+      "swappable"
+    ],
+    "DESCRIPTION": "#yRight #yClick to swap the effect of this card."
+  },
+  {
+    "PROPER_NAME": "Bit",
+    "NAMES": [
+      "bit"
+    ],
+    "DESCRIPTION": "Orb: Deals damage to the enemy with the lowest HP when you play an Attack. When #yEvoked, deals damage and applies #yLock-On to a random enemy."
+  },
+  {
+    "PROPER_NAME": "Bomb",
+    "NAMES": [
+      "bomb"
+    ],
+    "DESCRIPTION": "Orb: At the end of turn, deals damage to ALL enemies with #yLock-On. When #yEvoked, deals damage to ALL enemies."
+  },
+  {
+    "PROPER_NAME": "Present",
+    "NAMES": [
+      "present"
+    ],
+    "DESCRIPTION": "Orb: Generates #yComponents each turn. When #yEvoked, refunds all #yComponents spent on it's upgrades."
+  },
+  {
+    "PROPER_NAME": "Searchlight",
+    "NAMES": [
+      "searchlight"
+    ],
+    "DESCRIPTION": "Orb: Deals damage when you are attacked. When #yEvoked, grants #ySpikes."
+  },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  {
+    "PROPER_NAME": "Unused Keywords below. Do not translate. Kept for reference and may be reimplemented later",
+    "NAMES": [
+      "blahblahunused"
+    ],
+    "DESCRIPTION": ""
   },
   {
     "PROPER_NAME": "Booster",
@@ -27,13 +177,6 @@
       "bound"
     ],
     "DESCRIPTION": "May not be removed once equipped."
-  },
-  {
-    "PROPER_NAME": "Components",
-    "NAMES": [
-      "components"
-    ],
-    "DESCRIPTION": "Resource used to #yUpgrade #yOrbs and #Overclock cards."
   },
   {
     "PROPER_NAME": "Doubling",
@@ -80,25 +223,11 @@
     "DESCRIPTION": "This card can #yRight #yClicked in-hand to cycle its cost and effect."
   },
   {
-    "PROPER_NAME": "Overclock",
-    "NAMES": [
-      "overclock"
-    ],
-    "DESCRIPTION": "Increases the base stats of cards. Has no upper bound but has diminishing returns."
-  },
-  {
     "PROPER_NAME": "Primary",
     "NAMES": [
       "primary"
     ],
     "DESCRIPTION": "The Primary of a card is the card's main non-damage and non-Block related attribute or effect."
-  },
-  {
-    "PROPER_NAME": "Protect",
-    "NAMES": [
-      "protect"
-    ],
-    "DESCRIPTION": "Whenever you would lose HP, lose #b4 less and reduce Protect by #b1. NL When depleted, you become #yScrambled and draw #b1 less card next turn."
   },
   {
     "PROPER_NAME": "Recharging",
@@ -108,22 +237,6 @@
     "DESCRIPTION": "When out of charges, becomes #yUnplayable. You may #yRight #yClick to spend [E] to restore #ball charges. Will automatically recharge for #bfree if drawn #btwice while empty. NL Charges #bcarry #bover through combat rooms."
   },
   {
-    "PROPER_NAME": "Reloading",
-    "NAMES": [
-      "reloading",
-      "loaded",
-      "reload"
-    ],
-    "DESCRIPTION": "Loaded cards become Reloading when played. NL Reloading cards are #yUnplayable and become Loaded when #yDiscarded or #yRight #yClicked at the cost of [E]"
-  },
-  {
-    "PROPER_NAME": "Recoil",
-    "NAMES": [
-      "recoil"
-    ],
-    "DESCRIPTION": "Your next attack deals #b50% less damage."
-  },
-  {
     "PROPER_NAME": "Reciting",
     "NAMES": [
       "reciting"
@@ -131,95 +244,10 @@
     "DESCRIPTION": "Accepts ALL #yBoosters. NL While Equipped: NL Plays the effect of equipped #yBoosters at the beginning of your turn."
   },
   {
-    "PROPER_NAME": "Relay",
-    "NAMES": [
-      "relay"
-    ],
-    "DESCRIPTION": "At the beginning of your next turn, add the selected cards to your hand. Will not recover cards which are exhausted or otherwise removed from play."
-  },
-  {
-    "PROPER_NAME": "Reshuffle",
-    "NAMES": [
-      "reshuffle"
-    ],
-    "DESCRIPTION": "Shuffle this card into your draw pile when it is played."
-  },
-  {
-    "PROPER_NAME": "Swappable",
-    "NAMES": [
-      "retoolable",
-      "swappable"
-    ],
-    "DESCRIPTION": "#yRight #yClick to swap the effect of this card."
-  },
-  {
-    "PROPER_NAME": "Returning",
-    "NAMES": [
-      "returning"
-    ],
-    "DESCRIPTION": "This card returns to your hand when played."
-  },
-  {
-    "PROPER_NAME": "Scrambled",
-    "NAMES": [
-      "scrambled"
-    ],
-    "DESCRIPTION": "Draw #b1 less card next turn."
-  },
-  {
-    "PROPER_NAME": "Spikes",
-    "NAMES": [
-      "spikes"
-    ],
-    "DESCRIPTION": "When receiving #yAttack damage, deals damage back and reduces Spikes by #b1."
-  },
-  {
-    "PROPER_NAME": "Spiky",
-    "NAMES": [
-      "spiky"
-    ],
-    "DESCRIPTION": "Damage scales with #ySpikes."
-  },
-  {
-    "PROPER_NAME": "Stasis",
-    "NAMES": [
-      "stasis"
-    ],
-    "DESCRIPTION": "Debuffs can not decrease while #yStasis is active."
-  },
-  {
     "PROPER_NAME": "Unrestricted",
     "NAMES": [
       "unrestricted"
     ],
     "DESCRIPTION": "This card ignores playability restrictions."
-  },
-  {
-    "PROPER_NAME": "Bit",
-    "NAMES": [
-      "bit"
-    ],
-    "DESCRIPTION": "Orb: Deals damage to the enemy with the lowest HP when you play an Attack. When #yEvoked, deals damage and applies #yLock-On to a random enemy."
-  },
-  {
-    "PROPER_NAME": "Bomb",
-    "NAMES": [
-      "bomb"
-    ],
-    "DESCRIPTION": "Orb: At the end of turn, deals damage to ALL enemies with #yLock-On. When #yEvoked, deals damage to ALL enemies."
-  },
-  {
-    "PROPER_NAME": "Present",
-    "NAMES": [
-      "present"
-    ],
-    "DESCRIPTION": "Orb: Generates #yComponents each turn. When #yEvoked, refunds all #yComponents spent on it's upgrades."
-  },
-  {
-    "PROPER_NAME": "Searchlight",
-    "NAMES": [
-      "searchlight"
-    ],
-    "DESCRIPTION": "Orb: Deals damage when you are attacked. When #yEvoked, grants #ySpikes."
   }
 ]

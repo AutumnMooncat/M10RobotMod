@@ -33,4 +33,9 @@ public class ReloadingModifier extends AbstractCardModifier {
     public boolean isInherent(AbstractCard card) {
         return true;
     }
+
+    @Override
+    public String identifier(AbstractCard card) {
+        return ID;
+    }
 }
