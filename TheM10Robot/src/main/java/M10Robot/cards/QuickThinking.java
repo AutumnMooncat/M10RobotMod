@@ -39,13 +39,16 @@ public class QuickThinking extends AbstractDynamicCard implements ModularDescrip
     public QuickThinking() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = DRAW;
+        secondMagicNumber = baseSecondMagicNumber = DRAW;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.addToBot(new DrawCardAction(magicNumber));
-        this.addToBot(new ChannelAction(new BitOrb()));
+        for (int i = 0 ; i < secondMagicNumber ; i++) {
+            this.addToBot(new ChannelAction(new BitOrb()));
+        }
     }
 
     //Upgraded stats.
