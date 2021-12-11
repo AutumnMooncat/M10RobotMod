@@ -1,17 +1,17 @@
 package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
+import M10Robot.cardModifiers.AimedModifier;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.cards.interfaces.ModularDescription;
 import M10Robot.characters.M10Robot;
-import M10Robot.orbs.SearchlightOrb;
 import M10Robot.vfx.BurnToAshEffect;
+import basemod.helpers.CardModifierManager;
 import basemod.interfaces.XCostModifier;
 import basemod.patches.com.megacrit.cardcrawl.cards.AbstractCard.CardModifierPatches;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.defect.ChannelAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -19,7 +19,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.LockOnPower;
+import com.megacrit.cardcrawl.relics.ChemicalX;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 import com.megacrit.cardcrawl.vfx.combat.ExplosionSmallEffect;
 import com.megacrit.cardcrawl.vfx.combat.InversionBeamEffect;
@@ -42,12 +42,12 @@ public class AirRaid extends AbstractDynamicCard implements ModularDescription {
     // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.RARE;
-    private static final CardTarget TARGET = CardTarget.SELF;
+    private static final CardTarget TARGET = CardTarget.ALL_ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
     private static final int COST = -1;
-    private static final int DAMAGE = 12;
+    private static final int DAMAGE = 8;
     private static final int BONUS_HITS = 0;
     private static final int UPGRADE_PLUS_BONUS_HITS = 1;
 
@@ -60,6 +60,7 @@ public class AirRaid extends AbstractDynamicCard implements ModularDescription {
         damage = baseDamage = DAMAGE;
         magicNumber = baseMagicNumber = BONUS_HITS;
         isMultiDamage = true;
+        CardModifierManager.addModifier(this, new AimedModifier());
     }
 
     // Actions the card should do.
@@ -72,7 +73,7 @@ public class AirRaid extends AbstractDynamicCard implements ModularDescription {
         }
 
         if (p.hasRelic("Chemical X")) {
-            effect += 2;
+            effect += ChemicalX.BOOST;
             p.getRelic("Chemical X").flash();
         }
 
@@ -98,7 +99,7 @@ public class AirRaid extends AbstractDynamicCard implements ModularDescription {
 
         for (int i = 0 ; i < effect ; i++) {
             for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
-                if (!aM.isDeadOrEscaped() && aM.hasPower(LockOnPower.POWER_ID)) {
+                if (!aM.isDeadOrEscaped() /*&& aM.hasPower(LockOnPower.POWER_ID)*/) {
                     this.addToBot(new VFXAction(new InversionBeamEffect(aM.hb.cX), 0.1f));
                     this.addToBot(new AbstractGameAction() {
                         @Override
