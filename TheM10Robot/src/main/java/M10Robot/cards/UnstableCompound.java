@@ -2,15 +2,17 @@ package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
+import M10Robot.cards.interfaces.ModularDescription;
 import M10Robot.characters.M10Robot;
 import M10Robot.orbs.BombOrb;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.defect.ChannelAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
-public class UnstableCompound extends AbstractDynamicCard {
+public class UnstableCompound extends AbstractDynamicCard implements ModularDescription {
 
     // TEXT DECLARATION
 
@@ -45,9 +47,7 @@ public class UnstableCompound extends AbstractDynamicCard {
         for (int i = 0 ; i < magicNumber ; i++) {
             this.addToBot(new ChannelAction(new BombOrb()));
         }
-        if (this.upgraded) {
-            //this.addToBot(new DarkImpulseAction());
-        }
+        this.addToBot(new DrawCardAction(magicNumber));
     }
 
     //Upgraded stats.
@@ -57,6 +57,17 @@ public class UnstableCompound extends AbstractDynamicCard {
             upgradeName();
             upgradeBaseCost(UPGRADE_COST);
             initializeDescription();
+        }
+    }
+
+    @Override
+    public void changeDescription() {
+        if (DESCRIPTION != null) {
+            if (magicNumber > 1) {
+                rawDescription = UPGRADE_DESCRIPTION;
+            } else {
+                rawDescription = DESCRIPTION;
+            }
         }
     }
 }
