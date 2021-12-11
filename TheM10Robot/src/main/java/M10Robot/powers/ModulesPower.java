@@ -2,12 +2,13 @@ package M10Robot.powers;
 
 import M10Robot.M10RobotMod;
 import M10Robot.actions.EquipBoosterAction;
-import M10Robot.actions.EvokeSpecificOrbMultipleTimesAction;
 import M10Robot.cardModifiers.AbstractExtraEffectModifier;
-import M10Robot.cardModifiers.DealDamageEffect;
 import M10Robot.cards.abstractCards.AbstractModuleCard;
-import M10Robot.cards.modules.*;
-import M10Robot.cards.tempCards.WeaponPolishBooster;
+import M10Robot.cutCards.boosters.WeaponPolishBooster;
+import M10Robot.cards.Concentration;
+import M10Robot.cards.PowerSavings;
+import M10Robot.cutCards.modules.Repeater;
+import M10Robot.cutCards.modules.WeaponPolish;
 import M10Robot.patches.EchoFields;
 import basemod.ClickableUIElement;
 import basemod.abstracts.AbstractCardModifier;
@@ -17,9 +18,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.CardGroup;
@@ -30,9 +29,9 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.PowerStrings;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
-import com.megacrit.cardcrawl.powers.*;
+import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.FocusPower;
 
 import java.util.ArrayList;
 
@@ -85,23 +84,6 @@ public class ModulesPower extends AbstractPower implements CloneablePowerInterfa
     }
 
     @Override
-    public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
-        if (target != owner && info.type == DamageInfo.DamageType.NORMAL) {
-            int str = 0;
-            for (AbstractCard m : modules.group) {
-                if (m instanceof Rumble) {
-                    str += m.magicNumber;
-                }
-            }
-            if (str > 0) {
-                this.addToBot(new ApplyPowerAction(owner, owner, new StrengthPower(owner, str), str, true));
-                this.addToBot(new ApplyPowerAction(owner, owner, new LoseStrengthPower(owner, str), str, true));
-                flash();
-            }
-        }
-    }
-
-    @Override
     public void onAfterCardPlayed(AbstractCard usedCard) {
         if (usedCard.type == AbstractCard.CardType.ATTACK) {
             int increase = 0;
@@ -116,42 +98,6 @@ public class ModulesPower extends AbstractPower implements CloneablePowerInterfa
                 flash();
             }
         }
-    }
-
-    @Override
-    public void onChannel(AbstractOrb orb) {
-        boolean flash = false;
-        int evokes = 0;
-        for (AbstractCard m : modules.group) {
-            if (m instanceof AutoCaster) {
-                evokes += m.magicNumber;
-            }
-        }
-        if (evokes > 0) {
-            this.addToTop(new EvokeSpecificOrbMultipleTimesAction(orb, evokes));
-            flash = true;
-        }
-        if (flash) {
-            flash();
-        }
-        super.onChannel(orb);
-    }
-
-    @Override
-    public void onEvokeOrb(AbstractOrb orb) {
-        int doublers = 0;
-        for (AbstractCard m : modules.group) {
-            if (m instanceof DoubleCaster) {
-                doublers += m.magicNumber;
-            }
-        }
-        if (evokedThisTurn < doublers && !orbsEvokedThisTurn.contains(orb)) {
-            orbsEvokedThisTurn.add(orb);
-            evokedThisTurn++;
-            orb.onEvoke();
-            flash();
-        }
-        super.onEvokeOrb(orb);
     }
 
     public void atStartOfTurn() {
@@ -182,9 +128,6 @@ public class ModulesPower extends AbstractPower implements CloneablePowerInterfa
                     flash = true;
                 }
             }
-            if (m instanceof TargetingSystem) {
-                lockon += m.magicNumber;
-            }
         }
         if (energy > 0) {
             this.addToBot(new GainEnergyAction(energy));
@@ -194,36 +137,10 @@ public class ModulesPower extends AbstractPower implements CloneablePowerInterfa
             this.addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new FocusPower(AbstractDungeon.player, focus)));
             flash = true;
         }
-        if (lockon > 0) {
-            //this.addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new RepairableArmorPower(AbstractDungeon.player, protect)));
-            for (int i = 0 ; i < lockon ; i++) {
-                AbstractMonster aM = AbstractDungeon.getRandomMonster();
-                this.addToBot(new ApplyPowerAction(aM, owner, new LockOnPower(aM, 1), 1, true));
-            }
-            flash = true;
-        }
         if (flash) {
             this.flash();
         }
         evokedThisTurn = 0;
-    }
-
-    @Override
-    public void atEndOfTurn(boolean isPlayer) {
-        boolean flash = false;
-        for (AbstractCard m : modules.group) {
-            if (m instanceof WeaponPlatform) {
-                for (AbstractMonster mon : AbstractDungeon.getMonsters().monsters) {
-                    if (!mon.isDeadOrEscaped() && mon.hasPower(LockOnPower.POWER_ID)) {
-                        this.addToBot(new DamageAction(mon, new DamageInfo(owner, m.magicNumber, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.FIRE, true));
-                    }
-                }
-                flash = true;
-            }
-        }
-        if (flash) {
-            this.flash();
-        }
     }
 
     @Override

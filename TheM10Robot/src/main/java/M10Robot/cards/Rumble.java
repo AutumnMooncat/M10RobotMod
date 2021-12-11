@@ -1,14 +1,17 @@
-package M10Robot.cards.modules;
+package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
+import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.cards.abstractCards.AbstractModuleCard;
 import M10Robot.characters.M10Robot;
+import M10Robot.powers.RumblePower;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
-public class Rumble extends AbstractModuleCard {
+public class Rumble extends AbstractDynamicCard {
 
     // TEXT DECLARATION
 
@@ -25,6 +28,7 @@ public class Rumble extends AbstractModuleCard {
     private static final CardType TYPE = CardType.POWER;
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
+    private static final int COST = 1;
     private static final int STRENGTH = 1;
     private static final int UPGRADE_PLUS_STRENGTH = 1;
 
@@ -32,14 +36,16 @@ public class Rumble extends AbstractModuleCard {
 
 
     public Rumble() {
-        super(ID, IMG, TYPE, COLOR, RARITY, TARGET);
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         //This should ensure the card can take any booster
         magicNumber = baseMagicNumber = STRENGTH;
     }
 
     // Actions the card should do.
     @Override
-    public void use(AbstractPlayer p, AbstractMonster m) {}
+    public void use(AbstractPlayer p, AbstractMonster m) {
+        this.addToBot(new ApplyPowerAction(p, p, new RumblePower(p, magicNumber)));
+    }
 
     //Upgraded stats.
     @Override
@@ -50,10 +56,4 @@ public class Rumble extends AbstractModuleCard {
             initializeDescription();
         }
     }
-
-    @Override
-    public void onEquip() {}
-
-    @Override
-    public void onRemove() {}
 }

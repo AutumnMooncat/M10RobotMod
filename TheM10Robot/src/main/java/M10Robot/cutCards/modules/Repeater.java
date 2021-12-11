@@ -1,14 +1,10 @@
-package M10Robot.cards.modules;
+package M10Robot.cutCards.modules;
 
 import M10Robot.M10RobotMod;
 import M10Robot.cards.abstractCards.AbstractModuleCard;
 import M10Robot.characters.M10Robot;
-import basemod.helpers.TooltipInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 

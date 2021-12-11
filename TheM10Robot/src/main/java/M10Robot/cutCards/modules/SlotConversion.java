@@ -1,15 +1,13 @@
-package M10Robot.cards.modules;
+package M10Robot.cutCards.modules;
 
 import M10Robot.M10RobotMod;
 import M10Robot.cards.abstractCards.AbstractModuleCard;
 import M10Robot.characters.M10Robot;
-import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.defect.DecreaseMaxOrbAction;
 import com.megacrit.cardcrawl.actions.defect.IncreaseMaxOrbAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.FocusPower;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 

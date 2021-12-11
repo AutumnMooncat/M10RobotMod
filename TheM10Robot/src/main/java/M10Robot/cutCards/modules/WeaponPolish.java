@@ -1,4 +1,4 @@
-package M10Robot.cards.modules;
+package M10Robot.cutCards.modules;
 
 import M10Robot.M10RobotMod;
 import M10Robot.cards.abstractCards.AbstractModuleCard;

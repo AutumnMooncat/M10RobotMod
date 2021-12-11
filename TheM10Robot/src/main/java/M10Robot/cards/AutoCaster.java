@@ -1,18 +1,17 @@
-package M10Robot.cards.modules;
+package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
-import M10Robot.cards.abstractCards.AbstractModuleCard;
+import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.cards.interfaces.ModularDescription;
 import M10Robot.characters.M10Robot;
-import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
+import M10Robot.powers.AutoCasterPower;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.FocusPower;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
-public class DoubleCaster extends AbstractModuleCard implements ModularDescription {
+public class AutoCaster extends AbstractDynamicCard implements ModularDescription {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
@@ -23,8 +22,8 @@ public class DoubleCaster extends AbstractModuleCard implements ModularDescripti
 
     // TEXT DECLARATION
 
-    public static final String ID = M10RobotMod.makeID(DoubleCaster.class.getSimpleName());
-    public static final String IMG = makeCardPath("DoubleCaster.png");
+    public static final String ID = M10RobotMod.makeID(AutoCaster.class.getSimpleName());
+    public static final String IMG = makeCardPath("AutoCaster.png");
 
     // /TEXT DECLARATION/
 
@@ -36,27 +35,31 @@ public class DoubleCaster extends AbstractModuleCard implements ModularDescripti
     private static final CardType TYPE = CardType.POWER;
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
+    private static final int COST = 1;
+    private static final int UPGRADE_COST = 0;
     private static final int EVOKES = 1;
     private static final int UPGRADE_PLUS_EVOKES = 1;
 
     // /STAT DECLARATION/
 
 
-    public DoubleCaster() {
-        super(ID, IMG, TYPE, COLOR, RARITY, TARGET);
+    public AutoCaster() {
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = EVOKES;
     }
 
     // Actions the card should do.
     @Override
-    public void use(AbstractPlayer p, AbstractMonster m) {}
+    public void use(AbstractPlayer p, AbstractMonster m) {
+        this.addToBot(new ApplyPowerAction(p, p, new AutoCasterPower(p, magicNumber)));
+    }
 
     //Upgraded stats.
     @Override
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(UPGRADE_PLUS_EVOKES);
+            upgradeBaseCost(UPGRADE_COST);
             initializeDescription();
         }
     }
@@ -71,10 +74,4 @@ public class DoubleCaster extends AbstractModuleCard implements ModularDescripti
             }
         }
     }
-
-    @Override
-    public void onEquip() {}
-
-    @Override
-    public void onRemove() {}
 }

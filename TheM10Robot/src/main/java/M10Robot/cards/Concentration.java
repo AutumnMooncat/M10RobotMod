@@ -1,14 +1,16 @@
-package M10Robot.cards.modules;
+package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
-import M10Robot.cards.abstractCards.AbstractModuleCard;
+import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
+import M10Robot.powers.ConcentrationPower;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
-public class AmmoBox extends AbstractModuleCard {
+public class Concentration extends AbstractDynamicCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
@@ -19,8 +21,8 @@ public class AmmoBox extends AbstractModuleCard {
 
     // TEXT DECLARATION
 
-    public static final String ID = M10RobotMod.makeID(AmmoBox.class.getSimpleName());
-    public static final String IMG = makeCardPath("AmmoBox.png");
+    public static final String ID = M10RobotMod.makeID(Concentration.class.getSimpleName());
+    public static final String IMG = makeCardPath("Concentration.png");
 
     // /TEXT DECLARATION/
 
@@ -32,27 +34,30 @@ public class AmmoBox extends AbstractModuleCard {
     private static final CardType TYPE = CardType.POWER;
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
-    private static final int DMG_BOOST = 3;
-    private static final int UPGRADE_PLUS_BOOST = 2;
+    private static final int COST = 1;
+    private static final int EFFECT = 4;
+    private static final int UPGRADE_PLUS_EFFECT = 2;
 
     // /STAT DECLARATION/
 
 
-    public AmmoBox() {
-        super(ID, IMG, TYPE, COLOR, RARITY, TARGET);
-        magicNumber = baseMagicNumber = DMG_BOOST;
+    public Concentration() {
+        super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        magicNumber = baseMagicNumber = EFFECT;
     }
 
     // Actions the card should do.
     @Override
-    public void use(AbstractPlayer p, AbstractMonster m) {}
+    public void use(AbstractPlayer p, AbstractMonster m) {
+        this.addToBot(new ApplyPowerAction(p, p, new ConcentrationPower(p, magicNumber)));
+    }
 
     //Upgraded stats.
     @Override
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(UPGRADE_PLUS_BOOST);
+            upgradeMagicNumber(UPGRADE_PLUS_EFFECT);
             initializeDescription();
         }
     }
