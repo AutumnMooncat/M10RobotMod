@@ -1,15 +1,14 @@
-package M10Robot.cards;
+package M10Robot.cutCards;
 
 import M10Robot.M10RobotMod;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
-import basemod.helpers.TooltipInfo;
 import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.BranchingUpgradesCard;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.megacrit.cardcrawl.vfx.combat.SanctityEffect;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
@@ -40,32 +39,21 @@ public class BlankSlate extends AbstractDynamicCard implements BranchingUpgrades
 
     private static final int COST = 1;
     private static final int UPGRADE_COST = 0;
+    private static final int DRAW = 5;
 
     // /STAT DECLARATION/
 
 
     public BlankSlate() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        //This should ensure the card can take any booster
-        damage = baseDamage = block = baseBlock = magicNumber = baseMagicNumber = 1;
+        exhaust = true;
     }
-
-    /*
-    @Override
-    public List<TooltipInfo> getCustomTooltipsTop() {
-        if (boosterExplanation == null)
-        {
-            boosterExplanation = new ArrayList<>();
-            boosterExplanation.add(new TooltipInfo(EXTENDED_DESCRIPTION[0], EXTENDED_DESCRIPTION[1]));
-        }
-        List<TooltipInfo> compoundList = new ArrayList<>(boosterExplanation);
-        if (super.getCustomTooltipsTop() != null) compoundList.addAll(super.getCustomTooltipsTop());
-        return compoundList;
-    }*/
 
     // Actions the card should do.
     @Override
-    public void use(AbstractPlayer p, AbstractMonster m) {}
+    public void use(AbstractPlayer p, AbstractMonster m) {
+        this.addToBot(new VFXAction(new SanctityEffect(AbstractDungeon.player.hb.cX, AbstractDungeon.player.hb.cY)));
+    }
 
     //Upgraded stats.
     @Override
