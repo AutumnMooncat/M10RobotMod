@@ -7,7 +7,6 @@ import M10Robot.characters.M10Robot;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.LoseHPAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -48,7 +47,6 @@ public class WaveGenerator extends AbstractReloadableCard {
     private static final int UPGRADE_PLUS_DMG = 4;
     private static final int HP_LOSS = 5;
     private static final int UPGRADE_PLUS_HP_LOSS = 2;
-    private static final int SHOTS = 1;
 
     // /STAT DECLARATION/
 
@@ -56,7 +54,6 @@ public class WaveGenerator extends AbstractReloadableCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = damage = DAMAGE;
         magicNumber = baseMagicNumber = HP_LOSS;
-        ammoCount = baseAmmoCount = thirdMagicNumber = baseThirdMagicNumber = SHOTS;
     }
 
     // Actions the card should do.
