@@ -1,10 +1,10 @@
 package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
+import M10Robot.actions.EvokeSpecificOrbMultipleTimesAction;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
+import M10Robot.cards.interfaces.ModularDescription;
 import M10Robot.characters.M10Robot;
-import com.megacrit.cardcrawl.actions.defect.ChannelAction;
-import com.megacrit.cardcrawl.actions.defect.EvokeOrbAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
@@ -12,7 +12,7 @@ import com.megacrit.cardcrawl.orbs.EmptyOrbSlot;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
-public class EmptyBuffer extends AbstractDynamicCard {
+public class EmptyBuffer extends AbstractDynamicCard implements ModularDescription {
 
     // TEXT DECLARATION
 
@@ -31,13 +31,16 @@ public class EmptyBuffer extends AbstractDynamicCard {
 
     private static final int COST = 1;
     private static final int UPGRADE_COST = 0;
+    private static final int EVOKES = 1;
+    private static final int UPGRADE_PLUS_EVOKES = 1;
 
     // /STAT DECLARATION/
 
 
     public EmptyBuffer() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        //exhaust = true;
+        this.magicNumber = this.baseMagicNumber = EVOKES;
+        exhaust = true;
     }
 
     // Actions the card should do.
@@ -45,10 +48,7 @@ public class EmptyBuffer extends AbstractDynamicCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         for (AbstractOrb o : p.orbs) {
             if (!(o instanceof EmptyOrbSlot)) {
-                if (upgraded) {
-                    this.addToTop(new ChannelAction(o, false));
-                }
-                this.addToTop(new EvokeOrbAction(1));
+                this.addToTop(new EvokeSpecificOrbMultipleTimesAction(o, magicNumber));
             }
         }
     }
@@ -59,8 +59,19 @@ public class EmptyBuffer extends AbstractDynamicCard {
         if (!upgraded) {
             upgradeName();
             //upgradeBaseCost(UPGRADE_COST);
-            rawDescription = UPGRADE_DESCRIPTION;
+            upgradeMagicNumber(UPGRADE_PLUS_EVOKES);
             initializeDescription();
+        }
+    }
+
+    @Override
+    public void changeDescription() {
+        if (DESCRIPTION != null) {
+            if (magicNumber > 1) {
+                rawDescription = UPGRADE_DESCRIPTION;
+            } else {
+                rawDescription = DESCRIPTION;
+            }
         }
     }
 }
