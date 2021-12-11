@@ -10,14 +10,11 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
-import com.megacrit.cardcrawl.actions.utility.WaitAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.*;
-import com.megacrit.cardcrawl.vfx.combat.*;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
@@ -48,14 +45,12 @@ public class Railgun extends AbstractReloadableCard {
     private static final int COST = 1;
     private static final int DAMAGE = 13;
     private static final int UPGRADE_PLUS_DMG = 4;
-    private static final int SHOTS = 1;
 
     // /STAT DECLARATION/
 
     public Railgun() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = damage = DAMAGE;
-        ammoCount = baseAmmoCount = thirdMagicNumber = baseThirdMagicNumber = SHOTS;
     }
 
     // Actions the card should do.
