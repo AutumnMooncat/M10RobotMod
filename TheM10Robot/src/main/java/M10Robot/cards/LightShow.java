@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.actions.defect.ChannelAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.relics.ChemicalX;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
 import java.util.ArrayList;
@@ -57,7 +58,7 @@ public class LightShow extends AbstractDynamicCard implements ModularDescription
         }
 
         if (p.hasRelic("Chemical X")) {
-            effect += 2;
+            effect += ChemicalX.BOOST;
             p.getRelic("Chemical X").flash();
         }
 
