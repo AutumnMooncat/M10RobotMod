@@ -1,6 +1,7 @@
 package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
+import M10Robot.cardModifiers.HeavyModifier;
 import M10Robot.cardModifiers.SpikyModifier;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
@@ -18,6 +19,8 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.ExplosionSmallEffect;
+
+import javax.smartcardio.Card;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
@@ -44,7 +47,6 @@ public class SpikeBall extends AbstractDynamicCard {
     private static final int DAMAGE = 18;
     private static final int UPGRADE_PLUS_DMG = 6;
     private static final int SPIKES = 4;
-    private static final int RECOIL = 1;
 
     // /STAT DECLARATION/
 
@@ -52,8 +54,8 @@ public class SpikeBall extends AbstractDynamicCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = damage = DAMAGE;
         magicNumber = baseMagicNumber = SPIKES;
-        secondMagicNumber = baseSecondMagicNumber = RECOIL;
         isMultiDamage = true;
+        CardModifierManager.addModifier(this, new HeavyModifier());
         CardModifierManager.addModifier(this, new SpikyModifier());
     }
 
@@ -71,7 +73,6 @@ public class SpikeBall extends AbstractDynamicCard {
         this.addToBot(new SFXAction("WATCHER_HEART_PUNCH"));
         this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         this.addToBot(new ApplyPowerAction(p, p, new SpikesPower(p, magicNumber)));
-        this.addToBot(new ApplyPowerAction(p, p, new RecoilPower(p, secondMagicNumber)));
     }
 
     // Upgraded stats.

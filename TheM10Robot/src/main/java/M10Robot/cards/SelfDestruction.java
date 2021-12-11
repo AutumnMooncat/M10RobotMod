@@ -2,6 +2,7 @@ package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
 import M10Robot.actions.SelfDestructAction;
+import M10Robot.cardModifiers.HeavyModifier;
 import M10Robot.cardModifiers.SpikyModifier;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.cards.interfaces.ModularDescription;
@@ -53,17 +54,14 @@ public class SelfDestruction extends AbstractDynamicCard {
     private static final int COST = 2;
     private static final int DAMAGE = 20;
     private static final int UPGRADE_PLUS_DMG = 10;
-    private static final int OFFSET = 1;
-
-    private boolean invertedEffect;
 
     // /STAT DECLARATION/
 
     public SelfDestruction() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = damage = DAMAGE;
-        magicNumber = baseMagicNumber = OFFSET;
         isMultiDamage = true;
+        CardModifierManager.addModifier(this, new HeavyModifier());
         CardModifierManager.addModifier(this, new SpikyModifier());
     }
 
@@ -85,7 +83,6 @@ public class SelfDestruction extends AbstractDynamicCard {
                 this.isDone = true;
             }
         });
-        this.addToBot(new ApplyPowerAction(p, p, new RecoilPower(p, magicNumber)));
     }
 
     // Upgraded stats.

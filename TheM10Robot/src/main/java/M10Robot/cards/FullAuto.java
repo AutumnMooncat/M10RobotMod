@@ -2,9 +2,11 @@ package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
 import M10Robot.actions.SuperFastDamageAllEnemiesAction;
+import M10Robot.cardModifiers.HeavyModifier;
 import M10Robot.cards.abstractCards.AbstractReloadableCard;
 import M10Robot.characters.M10Robot;
 import M10Robot.powers.RecoilPower;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -37,9 +39,6 @@ public class FullAuto extends AbstractReloadableCard {
     private static final int UPGRADE_PLUS_DMG = 1;
     private static final int HITS = 5;
     private static final int UPGRADE_PLUS_HITS = 1;
-    private static final int RECOIL = 1;
-
-    private int lastChecked = HITS;
 
     // /STAT DECLARATION/
 
@@ -47,8 +46,8 @@ public class FullAuto extends AbstractReloadableCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = damage = DAMAGE;
         magicNumber = baseMagicNumber = HITS;
-        secondMagicNumber = baseSecondMagicNumber = RECOIL;
         isMultiDamage = true;
+        CardModifierManager.addModifier(this, new HeavyModifier());
     }
 
     // Actions the card should do.
@@ -60,7 +59,6 @@ public class FullAuto extends AbstractReloadableCard {
             //this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.NONE, true));
             this.addToBot(new SuperFastDamageAllEnemiesAction(p, multiDamage, damageTypeForTurn, AbstractGameAction.AttackEffect.NONE));
         }
-        this.addToBot(new ApplyPowerAction(p, p, new RecoilPower(p, secondMagicNumber)));
     }
 
     // Upgraded stats.

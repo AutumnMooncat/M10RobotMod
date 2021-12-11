@@ -1,9 +1,11 @@
 package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
+import M10Robot.cardModifiers.HeavyModifier;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
 import M10Robot.powers.RecoilPower;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -41,7 +43,6 @@ public class AssaultField extends AbstractDynamicCard {
     private static final int DAMAGE = 4;
     private static final int UPGRADE_PLUS_DMG = 2;
     private static final int HITS = 3;
-    private static final int RECOIL = 1;
 
     // /STAT DECLARATION/
 
@@ -49,7 +50,7 @@ public class AssaultField extends AbstractDynamicCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = damage = DAMAGE;
         magicNumber = baseMagicNumber = HITS;
-        secondMagicNumber = baseSecondMagicNumber = RECOIL;
+        CardModifierManager.addModifier(this, new HeavyModifier());
     }
 
     // Actions the card should do.
@@ -66,7 +67,6 @@ public class AssaultField extends AbstractDynamicCard {
                 }
             });
         }
-        this.addToBot(new ApplyPowerAction(p, p, new RecoilPower(p, secondMagicNumber)));
     }
 
     // Upgraded stats.
