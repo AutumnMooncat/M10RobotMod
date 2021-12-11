@@ -3,15 +3,9 @@ package M10Robot.cards;
 import M10Robot.M10RobotMod;
 import M10Robot.cards.abstractCards.AbstractReloadableCard;
 import M10Robot.characters.M10Robot;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.animations.VFXAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.actions.utility.SFXAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.vfx.combat.SmallLaserEffect;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
@@ -40,16 +34,14 @@ public class EnergyShield extends AbstractReloadableCard {
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
     private static final int COST = 1;
-    private static final int BLOCK = 10;
-    private static final int UPGRADE_PLUS_BLOCK = 3;
-    private static final int USES = 2;
+    private static final int BLOCK = 12;
+    private static final int UPGRADE_PLUS_BLOCK = 4;
 
     // /STAT DECLARATION/
 
     public EnergyShield() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         block = baseBlock = BLOCK;
-        ammoCount = baseAmmoCount = thirdMagicNumber = baseThirdMagicNumber = USES;
     }
 
     // Actions the card should do.
