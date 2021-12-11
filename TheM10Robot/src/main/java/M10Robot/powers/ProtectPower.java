@@ -20,7 +20,7 @@ public class ProtectPower extends AbstractPower implements CloneablePowerInterfa
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
-    public static final int HP_REDUCTION = 2;
+    public static final int HP_REDUCTION = 4;
     public static final int SCRAMBLE_AMOUNT = 1;
 
     // We create 2 new textures *Using This Specific Texture Loader* - an 84x84 image and a 32x32 one.
