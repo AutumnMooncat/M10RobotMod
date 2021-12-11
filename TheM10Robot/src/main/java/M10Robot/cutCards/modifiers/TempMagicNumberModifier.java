@@ -1,34 +1,32 @@
-package M10Robot.cardModifiers;
+package M10Robot.cutCards.modifiers;
 
 import M10Robot.M10RobotMod;
 import basemod.abstracts.AbstractCardModifier;
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.localization.CardStrings;
 
-public class TempBlockModifier extends AbstractValueBuffModifier {
-    public static final String ID = M10RobotMod.makeID("TempBlockModifier");
+public class TempMagicNumberModifier extends AbstractValueBuffModifier {
+    public static final String ID = M10RobotMod.makeID("TempMagicNumberModifier");
 
-    public TempBlockModifier(int increase) {
+    public TempMagicNumberModifier(int increase) {
         super(ID, increase);
     }
 
     @Override
     public AbstractCardModifier makeCopy() {
-        return new TempBlockModifier(amount);
+        return new TempMagicNumberModifier(amount);
     }
 
     @Override
     public void onInitialApplication(AbstractCard card) {
-        card.baseBlock += amount;
-        card.applyPowers();
+        card.baseMagicNumber += amount;
+        card.magicNumber = card.baseMagicNumber;
     }
 
     @Override
     public void onRemove(AbstractCard card) {
-        card.baseBlock -= amount;
-        card.applyPowers();
+        card.baseMagicNumber -= amount;
+        card.magicNumber = card.baseMagicNumber;
     }
 
     @Override
@@ -40,8 +38,10 @@ public class TempBlockModifier extends AbstractValueBuffModifier {
     public boolean shouldApply(AbstractCard card) {
         if (CardModifierManager.hasModifier(card, ID)) {
             ((AbstractBoosterModifier)CardModifierManager.getModifiers(card, ID).get(0)).amount += amount;
-            card.baseBlock += amount;
+            card.baseMagicNumber += amount;
+            card.magicNumber = card.baseMagicNumber;
             card.applyPowers();
+            card.initializeDescription();
             return false;
         }
         return true;
@@ -52,7 +52,7 @@ public class TempBlockModifier extends AbstractValueBuffModifier {
         if (CardModifierManager.hasModifier(card, ID)) {
             AbstractBoosterModifier mod = (AbstractBoosterModifier) CardModifierManager.getModifiers(card, ID).get(0);
             mod.amount -= stacksToUnstack;
-            card.baseBlock -= stacksToUnstack;
+            card.magicNumber = card.baseMagicNumber;
             card.applyPowers();
             if (mod.amount <= 0) {
                 CardModifierManager.removeSpecificModifier(card, mod, true);

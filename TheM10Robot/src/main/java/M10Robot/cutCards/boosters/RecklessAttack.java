@@ -1,9 +1,11 @@
 package M10Robot.cutCards.boosters;
 
 import M10Robot.M10RobotMod;
-import M10Robot.cardModifiers.*;
 import M10Robot.cards.abstractCards.AbstractBoosterCard;
 import M10Robot.characters.M10Robot;
+import M10Robot.cutCards.modifiers.AbstractBoosterModifier;
+import M10Robot.cutCards.modifiers.GainRecoilEffect;
+import M10Robot.cutCards.modifiers.TempDamageModifier;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;

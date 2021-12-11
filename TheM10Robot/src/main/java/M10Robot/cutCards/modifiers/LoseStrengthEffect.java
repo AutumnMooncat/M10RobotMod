@@ -1,28 +1,24 @@
-package M10Robot.cardModifiers;
+package M10Robot.cutCards.modifiers;
 
 import M10Robot.M10RobotMod;
-import M10Robot.powers.RecoilPower;
 import basemod.abstracts.AbstractCardModifier;
-import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.localization.CardStrings;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.StrengthPower;
 
 @AbstractCardModifier.SaveIgnore
-public class LoseRecoilEffect extends AbstractSimpleStackingExtraEffectModifier {
-    private static final String ID = M10RobotMod.makeID("LoseRecoilEffect");
+public class LoseStrengthEffect extends AbstractSimpleStackingExtraEffectModifier {
+    private static final String ID = M10RobotMod.makeID("LoseStrengthEffect");
 
-    public LoseRecoilEffect(AbstractCard card) {
+    public LoseStrengthEffect(AbstractCard card) {
         super(ID, card, VariableType.MAGIC, false);
     }
 
     @Override
     public void doExtraEffects(AbstractCard card, AbstractPlayer p, AbstractCreature m) {
-        addToBot(new ApplyPowerAction(p, p, new RecoilPower(p, -value)));
+        addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, -value)));
     }
 
     @Override
@@ -44,7 +40,7 @@ public class LoseRecoilEffect extends AbstractSimpleStackingExtraEffectModifier 
 
     @Override
     public AbstractCardModifier makeCopy() {
-        return new LoseRecoilEffect(attachedCard.makeStatEquivalentCopy());
+        return new LoseStrengthEffect(attachedCard.makeStatEquivalentCopy());
     }
 
 }

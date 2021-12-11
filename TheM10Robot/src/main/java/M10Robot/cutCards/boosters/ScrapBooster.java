@@ -1,8 +1,8 @@
 package M10Robot.cutCards.boosters;
 
 import M10Robot.M10RobotMod;
-import M10Robot.cardModifiers.AbstractBoosterModifier;
-import M10Robot.cardModifiers.TempBlockModifier;
+import M10Robot.cutCards.modifiers.AbstractBoosterModifier;
+import M10Robot.cutCards.modifiers.TempBlockModifier;
 import M10Robot.cards.abstractCards.AbstractBoosterCard;
 import M10Robot.characters.M10Robot;
 import com.megacrit.cardcrawl.cards.AbstractCard;

@@ -1,4 +1,4 @@
-package M10Robot.cardModifiers;
+package M10Robot.cutCards.modifiers;
 
 import M10Robot.M10RobotMod;
 import M10Robot.variables.DynamicDynamicVariableManager;

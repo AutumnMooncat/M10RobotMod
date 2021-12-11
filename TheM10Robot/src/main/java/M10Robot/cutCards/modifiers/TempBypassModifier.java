@@ -1,36 +1,40 @@
-package M10Robot.cardModifiers;
+package M10Robot.cutCards.modifiers;
 
 import M10Robot.M10RobotMod;
+import M10Robot.patches.CostBypassField;
 import basemod.abstracts.AbstractCardModifier;
 import basemod.helpers.CardModifierManager;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.localization.CardStrings;
 
-public class TempMagicNumberModifier extends AbstractValueBuffModifier {
-    public static final String ID = M10RobotMod.makeID("TempMagicNumberModifier");
+public class TempBypassModifier extends AbstractValueBuffModifier {
+    public static final String ID = M10RobotMod.makeID("TempBypassModifier");
 
-    public TempMagicNumberModifier(int increase) {
+    public TempBypassModifier(int increase) {
         super(ID, increase);
     }
 
     @Override
+    public String modifyDescription(String rawDescription, AbstractCard card) {
+        return rawDescription + " NL " + TEXT[0] + TEXT[1];
+    }
+
+    @Override
     public AbstractCardModifier makeCopy() {
-        return new TempMagicNumberModifier(amount);
+        return new TempBypassModifier(amount);
     }
 
     @Override
     public void onInitialApplication(AbstractCard card) {
-        card.baseMagicNumber += amount;
-        card.magicNumber = card.baseMagicNumber;
+        CostBypassField.bypassCost.set(card, true);
+        card.applyPowers();
+        card.initializeDescription();
     }
 
     @Override
     public void onRemove(AbstractCard card) {
-        card.baseMagicNumber -= amount;
-        card.magicNumber = card.baseMagicNumber;
+        CostBypassField.bypassCost.set(card, false);
+        card.applyPowers();
+        card.initializeDescription();
     }
 
     @Override
@@ -41,9 +45,7 @@ public class TempMagicNumberModifier extends AbstractValueBuffModifier {
     @Override
     public boolean shouldApply(AbstractCard card) {
         if (CardModifierManager.hasModifier(card, ID)) {
-            ((AbstractBoosterModifier)CardModifierManager.getModifiers(card, ID).get(0)).amount += amount;
-            card.baseMagicNumber += amount;
-            card.magicNumber = card.baseMagicNumber;
+            ((AbstractBoosterModifier) CardModifierManager.getModifiers(card, ID).get(0)).amount += amount;
             card.applyPowers();
             card.initializeDescription();
             return false;
@@ -56,9 +58,10 @@ public class TempMagicNumberModifier extends AbstractValueBuffModifier {
         if (CardModifierManager.hasModifier(card, ID)) {
             AbstractBoosterModifier mod = (AbstractBoosterModifier) CardModifierManager.getModifiers(card, ID).get(0);
             mod.amount -= stacksToUnstack;
-            card.magicNumber = card.baseMagicNumber;
             card.applyPowers();
+            card.initializeDescription();
             if (mod.amount <= 0) {
+                CostBypassField.bypassCost.set(card, false);
                 CardModifierManager.removeSpecificModifier(card, mod, true);
                 return true;
             }
@@ -68,11 +71,12 @@ public class TempMagicNumberModifier extends AbstractValueBuffModifier {
 
     @Override
     public String getPrefix() {
-        return TEXT[0];
+        return TEXT[2];
     }
 
     @Override
     public String getSuffix() {
-        return TEXT[1]+amount;
+        return TEXT[3] + amount;
     }
+
 }

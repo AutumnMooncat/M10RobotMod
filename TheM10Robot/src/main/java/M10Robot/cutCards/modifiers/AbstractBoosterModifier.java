@@ -1,4 +1,4 @@
-package M10Robot.cardModifiers;
+package M10Robot.cutCards.modifiers;
 
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.cards.AbstractCard;

@@ -1,4 +1,4 @@
-package M10Robot.cardModifiers;
+package M10Robot.cutCards.modifiers;
 
 import java.util.ArrayList;
 import java.util.Arrays;

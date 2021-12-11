@@ -1,38 +1,40 @@
-package M10Robot.cardModifiers;
+package M10Robot.cutCards.modifiers;
 
 import M10Robot.M10RobotMod;
-import M10Robot.patches.CostBypassField;
 import basemod.abstracts.AbstractCardModifier;
 import basemod.helpers.CardModifierManager;
+import com.evacipated.cardcrawl.mod.stslib.fields.cards.AbstractCard.RefundFields;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 
-public class TempBypassModifier extends AbstractValueBuffModifier {
-    public static final String ID = M10RobotMod.makeID("TempBypassModifier");
+public class TempRefundModifier extends AbstractValueBuffModifier {
+    public static final String ID = M10RobotMod.makeID("TempRefundModifier");
 
-    public TempBypassModifier(int increase) {
+    public TempRefundModifier(int increase) {
         super(ID, increase);
     }
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        return rawDescription + " NL " + TEXT[0] + TEXT[1];
+        return rawDescription + " NL " + TEXT[0] + amount + TEXT[1];
     }
 
     @Override
     public AbstractCardModifier makeCopy() {
-        return new TempBypassModifier(amount);
+        return new TempRefundModifier(amount);
     }
 
     @Override
     public void onInitialApplication(AbstractCard card) {
-        CostBypassField.bypassCost.set(card, true);
+        RefundFields.baseRefund.set(card, RefundFields.baseRefund.get(card) + amount);
+        RefundFields.refund.set(card, RefundFields.baseRefund.get(card));
         card.applyPowers();
         card.initializeDescription();
     }
 
     @Override
     public void onRemove(AbstractCard card) {
-        CostBypassField.bypassCost.set(card, false);
+        RefundFields.baseRefund.set(card, RefundFields.baseRefund.get(card) - amount);
+        RefundFields.refund.set(card, RefundFields.baseRefund.get(card));
         card.applyPowers();
         card.initializeDescription();
     }
@@ -46,6 +48,8 @@ public class TempBypassModifier extends AbstractValueBuffModifier {
     public boolean shouldApply(AbstractCard card) {
         if (CardModifierManager.hasModifier(card, ID)) {
             ((AbstractBoosterModifier) CardModifierManager.getModifiers(card, ID).get(0)).amount += amount;
+            RefundFields.baseRefund.set(card, RefundFields.baseRefund.get(card) + amount);
+            RefundFields.refund.set(card, RefundFields.baseRefund.get(card));
             card.applyPowers();
             card.initializeDescription();
             return false;
@@ -58,10 +62,11 @@ public class TempBypassModifier extends AbstractValueBuffModifier {
         if (CardModifierManager.hasModifier(card, ID)) {
             AbstractBoosterModifier mod = (AbstractBoosterModifier) CardModifierManager.getModifiers(card, ID).get(0);
             mod.amount -= stacksToUnstack;
+            RefundFields.baseRefund.set(card, RefundFields.baseRefund.get(card) - stacksToUnstack);
+            RefundFields.refund.set(card, RefundFields.baseRefund.get(card));
             card.applyPowers();
             card.initializeDescription();
             if (mod.amount <= 0) {
-                CostBypassField.bypassCost.set(card, false);
                 CardModifierManager.removeSpecificModifier(card, mod, true);
                 return true;
             }

@@ -1,4 +1,4 @@
-package M10Robot.cardModifiers;
+package M10Robot.cutCards.modifiers;
 
 public abstract class AbstractValueBuffModifier extends AbstractBoosterModifier {
 

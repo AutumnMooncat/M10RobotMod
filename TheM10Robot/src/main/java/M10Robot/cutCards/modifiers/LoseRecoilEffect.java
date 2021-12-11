@@ -1,27 +1,24 @@
-package M10Robot.cardModifiers;
+package M10Robot.cutCards.modifiers;
 
 import M10Robot.M10RobotMod;
+import M10Robot.powers.RecoilPower;
 import basemod.abstracts.AbstractCardModifier;
-import basemod.helpers.CardModifierManager;
-import com.megacrit.cardcrawl.actions.common.HealAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.localization.CardStrings;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 @AbstractCardModifier.SaveIgnore
-public class HealHPEffect extends AbstractSimpleStackingExtraEffectModifier {
-    private static final String ID = M10RobotMod.makeID("HealHPEffect");
+public class LoseRecoilEffect extends AbstractSimpleStackingExtraEffectModifier {
+    private static final String ID = M10RobotMod.makeID("LoseRecoilEffect");
 
-    public HealHPEffect(AbstractCard card) {
+    public LoseRecoilEffect(AbstractCard card) {
         super(ID, card, VariableType.MAGIC, false);
     }
 
     @Override
     public void doExtraEffects(AbstractCard card, AbstractPlayer p, AbstractCreature m) {
-        addToBot(new HealAction(p, p, value));
+        addToBot(new ApplyPowerAction(p, p, new RecoilPower(p, -value)));
     }
 
     @Override
@@ -43,7 +40,7 @@ public class HealHPEffect extends AbstractSimpleStackingExtraEffectModifier {
 
     @Override
     public AbstractCardModifier makeCopy() {
-        return new HealHPEffect(attachedCard.makeStatEquivalentCopy());
+        return new LoseRecoilEffect(attachedCard.makeStatEquivalentCopy());
     }
 
 }

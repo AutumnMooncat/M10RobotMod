@@ -1,29 +1,24 @@
-package M10Robot.cardModifiers;
+package M10Robot.cutCards.modifiers;
 
 import M10Robot.M10RobotMod;
+import M10Robot.powers.RecoilPower;
 import basemod.abstracts.AbstractCardModifier;
-import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.defect.IncreaseMaxOrbAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.localization.CardStrings;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.FocusPower;
 
 @AbstractCardModifier.SaveIgnore
-public class GainOrbSlotEffect extends AbstractSimpleStackingExtraEffectModifier {
-    private static final String ID = M10RobotMod.makeID("GainOrbSlotEffect");
+public class GainRecoilEffect extends AbstractSimpleStackingExtraEffectModifier {
+    private static final String ID = M10RobotMod.makeID("GainRecoilEffect");
 
-    public GainOrbSlotEffect(AbstractCard card) {
+    public GainRecoilEffect(AbstractCard card) {
         super(ID, card, VariableType.MAGIC, false);
     }
 
     @Override
     public void doExtraEffects(AbstractCard card, AbstractPlayer p, AbstractCreature m) {
-        addToBot(new IncreaseMaxOrbAction(value));
+        addToBot(new ApplyPowerAction(p, p, new RecoilPower(p, value)));
     }
 
     @Override
@@ -34,11 +29,7 @@ public class GainOrbSlotEffect extends AbstractSimpleStackingExtraEffectModifier
     @Override
     public String addExtraText(String rawDescription, AbstractCard card) {
         String s;
-        if (value == 1) {
-            s = TEXT[0] + key + TEXT[1];
-        } else {
-            s = TEXT[0] + key + TEXT[2];
-        }
+        s = TEXT[0] + key + TEXT[1];
         return rawDescription + " NL " + s;
     }
 
@@ -49,7 +40,7 @@ public class GainOrbSlotEffect extends AbstractSimpleStackingExtraEffectModifier
 
     @Override
     public AbstractCardModifier makeCopy() {
-        return new GainOrbSlotEffect(attachedCard.makeStatEquivalentCopy());
+        return new GainRecoilEffect(attachedCard.makeStatEquivalentCopy());
     }
 
 }

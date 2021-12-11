@@ -1,30 +1,27 @@
-package M10Robot.cardModifiers;
+package M10Robot.cutCards.modifiers;
 
 import M10Robot.M10RobotMod;
-import M10Robot.cardModifiers.interfaces.RequiresSingleTargetAimingMode;
 import basemod.abstracts.AbstractCardModifier;
 import basemod.helpers.CardModifierManager;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 
 import java.util.ArrayList;
 
 @AbstractCardModifier.SaveIgnore
-public class DealDamageEffect extends AbstractExtraEffectModifier implements RequiresSingleTargetAimingMode {
-    private static final String ID = M10RobotMod.makeID("DealDamageEffect");
+public class GainBlockEffect extends AbstractExtraEffectModifier {
+    private static final String ID = M10RobotMod.makeID("GainBlockEffect");
 
-    public DealDamageEffect(AbstractCard card, int times) {
-        super(ID, card, VariableType.DAMAGE, false, times);
+    public GainBlockEffect(AbstractCard card, int times) {
+        super(ID, card, VariableType.BLOCK, false, times);
     }
 
     @Override
     public void doExtraEffects(AbstractCard card, AbstractPlayer p, AbstractCreature m) {
-        for (int i = 0 ; i < amount ; i++) {
-            addToBot(new DamageAction(m, new DamageInfo(p, value, DamageInfo.DamageType.NORMAL), AbstractGameAction.AttackEffect.FIRE, true));
+        for (int i = 0; i < amount; ++i) {
+            addToBot(new GainBlockAction(p, p, value, true));
         }
     }
 
@@ -36,19 +33,14 @@ public class DealDamageEffect extends AbstractExtraEffectModifier implements Req
     }
 
     @Override
-    public boolean shouldRenderValue() {
-        return true;
-    }
-
-    @Override
     public boolean shouldApply(AbstractCard card) {
-        //If we already have this modifier
+        //If we already have a GainBlockEffect mod
         if (CardModifierManager.hasModifier(card, ID)) {
             //Grab the base value offset
             int offset = 0;
-            if (CardModifierManager.hasModifier(card, TempDamageModifier.ID)) {
+            if (CardModifierManager.hasModifier(card, TempBlockModifier.ID)) {
                 //Get a list of all the base value effects and loop add to the offset
-                ArrayList<AbstractCardModifier> list = CardModifierManager.getModifiers(card, TempDamageModifier.ID);
+                ArrayList<AbstractCardModifier> list = CardModifierManager.getModifiers(card, TempBlockModifier.ID);
                 for (AbstractCardModifier mod : list) {
                     offset += ((AbstractValueBuffModifier)mod).amount;
                 }
@@ -59,8 +51,8 @@ public class DealDamageEffect extends AbstractExtraEffectModifier implements Req
             for (AbstractCardModifier mod : list) {
                 //Grab the attached card from the mod
                 AbstractCard c = ((AbstractExtraEffectModifier)mod).attachedCard;
-                //If the base damage of the card from the mod is equal to the base damage of our new mod (plus the offset that will get added)
-                if (c.baseDamage == attachedCard.baseDamage+offset) {
+                //If the base block of the card from the mod is equal to the base block of our new mod (plus the offset that will get added)
+                if (c.baseBlock == (attachedCard.baseBlock+offset)) {
                     //Increment the amount instead
                     ((AbstractExtraEffectModifier)mod).amount++;
                     card.applyPowers();
@@ -79,9 +71,9 @@ public class DealDamageEffect extends AbstractExtraEffectModifier implements Req
         if (CardModifierManager.hasModifier(card, ID)) {
             //Grab the base value offset
             int offset = 0;
-            if (CardModifierManager.hasModifier(card, TempDamageModifier.ID)) {
+            if (CardModifierManager.hasModifier(card, TempBlockModifier.ID)) {
                 //Get a list of all the base value effects and loop add to the offset
-                ArrayList<AbstractCardModifier> list = CardModifierManager.getModifiers(card, TempDamageModifier.ID);
+                ArrayList<AbstractCardModifier> list = CardModifierManager.getModifiers(card, TempBlockModifier.ID);
                 for (AbstractCardModifier mod : list) {
                     offset += ((AbstractValueBuffModifier)mod).amount;
                 }
@@ -93,7 +85,7 @@ public class DealDamageEffect extends AbstractExtraEffectModifier implements Req
                 //Grab the attached card from the mod
                 AbstractCard c = ((AbstractExtraEffectModifier)mod).attachedCard;
                 //If the base block of the card from the mod is equal to the base block of our mod (plus the offset that will get added)
-                if (c.baseDamage == (attachedCard.baseDamage+offset)) {
+                if (c.baseBlock == (attachedCard.baseBlock+offset)) {
                     //Reduce the amount
                     ((AbstractExtraEffectModifier)mod).amount -= stacksToUnstack;
                     card.applyPowers();
@@ -117,7 +109,25 @@ public class DealDamageEffect extends AbstractExtraEffectModifier implements Req
     }
 
     @Override
+    public boolean shouldRenderValue() {
+        return true;
+    }
+
+    @Override
     public AbstractCardModifier makeCopy() {
-        return new DealDamageEffect(attachedCard.makeStatEquivalentCopy(), amount);
+        return new GainBlockEffect(attachedCard.makeStatEquivalentCopy(), amount);
+    }
+
+    @Override
+    public String getPrefix() {
+        if (amount > 1) {
+            return TEXT[2]+amount;
+        }
+        return TEXT[2];
+    }
+
+    @Override
+    public String getSuffix() {
+        return TEXT[3];
     }
 }

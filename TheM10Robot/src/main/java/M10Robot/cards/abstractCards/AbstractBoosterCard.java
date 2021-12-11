@@ -3,7 +3,7 @@ package M10Robot.cards.abstractCards;
 import M10Robot.M10RobotMod;
 import M10Robot.actions.EquipBoosterAction;
 import M10Robot.actions.SelectCardsForBoosterAction;
-import M10Robot.cardModifiers.AbstractBoosterModifier;
+import M10Robot.cutCards.modifiers.AbstractBoosterModifier;
 import M10Robot.cutCards.BlankSlate;
 import M10Robot.cutCards.modules.Repeater;
 import M10Robot.patches.*;
