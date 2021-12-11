@@ -4,13 +4,9 @@ import M10Robot.M10RobotMod;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.InvisiblePower;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
@@ -41,45 +37,16 @@ public class BalanceCurrents extends AbstractDynamicCard {
 
     public BalanceCurrents() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        magicNumber = baseMagicNumber = EFFECT;
+        block = baseBlock = EFFECT;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new AbstractGameAction() {
-            @Override
-            public void update() {
-                for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
-                    if (!aM.isDeadOrEscaped()) {
-                        int total = 0, debuff = 0;
-                        for (AbstractPower pow : aM.powers) {
-                            //Don't count invisible powers
-                            if (!(pow instanceof InvisiblePower)) {
-                                total++;
-                                if (pow.type == AbstractPower.PowerType.DEBUFF) {
-                                    debuff++;
-                                }
-                            }
-                        }
-                        if (total > 0) {
-                            AbstractDungeon.effectList.add(new FlashAtkImgEffect(aM.hb.cX, aM.hb.cY, AttackEffect.FIRE));
-                            aM.damage(new DamageInfo(p, magicNumber*total, DamageInfo.DamageType.HP_LOSS));
-
-                        }
-                        if (debuff > 0) {
-                            AbstractDungeon.effectList.add(new FlashAtkImgEffect(aM.hb.cX, aM.hb.cY, AttackEffect.SHIELD));
-                            aM.addBlock(magicNumber*debuff);
-                        }
-                    }
-                }
-                if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
-                    AbstractDungeon.actionManager.clearPostCombatActions();
-                }
-                this.isDone = true;
-            }
-        });
-
+        int powers = (int) p.powers.stream().filter(pow -> !(pow instanceof InvisiblePower)).count();
+        if (powers > 0) {
+            this.addToBot(new GainBlockAction(p, block * powers));
+        }
     }
 
     //Upgraded stats.
@@ -87,7 +54,7 @@ public class BalanceCurrents extends AbstractDynamicCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(UPGRADE_PLUS_EFFECT);
+            upgradeBlock(UPGRADE_PLUS_EFFECT);
             initializeDescription();
         }
     }
