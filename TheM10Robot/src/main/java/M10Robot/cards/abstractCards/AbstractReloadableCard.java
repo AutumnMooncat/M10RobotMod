@@ -2,7 +2,6 @@ package M10Robot.cards.abstractCards;
 
 import M10Robot.cardModifiers.ReloadingModifier;
 import M10Robot.cards.interfaces.OnDiscardedCard;
-import M10Robot.patches.CostBypassField;
 import M10Robot.powers.interfaces.OnReloadPower;
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.unique.LoseEnergyAction;
@@ -12,7 +11,6 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
 public abstract class AbstractReloadableCard extends AbstractClickableCard implements OnDiscardedCard {
     public boolean needsReload;
@@ -38,7 +36,7 @@ public abstract class AbstractReloadableCard extends AbstractClickableCard imple
 
     @Override
     public boolean canUse(AbstractPlayer p, AbstractMonster m) {
-        return super.canUse(p, m) && (isInAutoplay || !needsReload || CostBypassField.bypassCost.get(this));
+        return super.canUse(p, m) && (isInAutoplay || !needsReload);
     }
 
     public void useShot() {

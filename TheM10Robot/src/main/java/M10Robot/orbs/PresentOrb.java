@@ -1,7 +1,6 @@
 package M10Robot.orbs;
 
 import M10Robot.M10RobotMod;
-import M10Robot.cards.abstractCards.AbstractBoosterCard;
 import M10Robot.powers.ComponentsPower;
 import M10Robot.util.OverclockUtil;
 import M10Robot.util.TextureLoader;
@@ -12,9 +11,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
@@ -26,11 +23,7 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.vfx.combat.PlasmaOrbActivateEffect;
 import com.megacrit.cardcrawl.vfx.combat.PlasmaOrbPassiveEffect;
 
-import java.util.ArrayList;
-import java.util.stream.Collectors;
-
 import static M10Robot.M10RobotMod.makeOrbPath;
-import static com.megacrit.cardcrawl.cards.AbstractCard.IMG_HEIGHT;
 
 public class PresentOrb extends AbstractCustomOrb {
 

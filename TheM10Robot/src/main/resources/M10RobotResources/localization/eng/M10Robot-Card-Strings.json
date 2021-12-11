@@ -21,7 +21,7 @@
   },
   "M10Robot:AssaultField": {
     "NAME": "Assault Field",
-    "DESCRIPTION": "Deal !D! damage to random enemy !M! times. NL Gain !M10Robot:SecondMagic! m10robot:Recoil."
+    "DESCRIPTION": "Deal !D! damage to random enemy !M! times."
   },
   "M10Robot:AssemblyLine": {
     "NAME": "Assembly Line",
@@ -79,7 +79,7 @@
   },
   "M10Robot:Compensator": {
     "NAME": "Compensator",
-    "DESCRIPTION": "At the end of your turn, reduce m10robot:Recoil by !M!."
+    "DESCRIPTION": "REWORK! NL At the end of your turn, reduce m10robot:Recoil by !M!."
   },
   "M10Robot:CompileData": {
     "NAME": "Compile Data",
@@ -88,7 +88,7 @@
   },
   "M10Robot:Concentration": {
     "NAME": "Sturdy Structure",
-    "DESCRIPTION": "Whenever you gain m10robot:Recoil, gain !M! Block."
+    "DESCRIPTION": "REWORK! NL Whenever you gain m10robot:Recoil, gain !M! Block."
   },
   "M10Robot:Defend": {
     "NAME": "Defend",
@@ -142,7 +142,7 @@
   },
   "M10Robot:FullAuto": {
     "NAME": "Full Throttle",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies !M! times. NL Gain !M10Robot:SecondMagic! m10robot:Recoil.",
+    "DESCRIPTION": "Deal !D! damage to ALL enemies !M! times.",
     "EXTENDED_DESCRIPTION": ["Fuller Auto"]
   },
   "M10Robot:HealthDown": {
@@ -183,7 +183,7 @@
   },
   "M10Robot:MagnumStrike": {
     "NAME": "Magnum Strike",
-    "DESCRIPTION": "Deal !D! damage. NL Gain !M! m10robot:Recoil."
+    "DESCRIPTION": "Deal !D! damage."
   },
   "M10Robot:Malfunction": {
     "NAME": "Malfunction",
@@ -246,7 +246,7 @@
   },
   "M10Robot:RecklessAttack": {
     "NAME": "Reckless Attack",
-    "DESCRIPTION": "Modifications: NL + !D! Damage NL Gain !M! m10robot:Recoil Requirements: NL Deals damage"
+    "DESCRIPTION": ""
   },
   "M10Robot:ReflectiveShell": {
     "NAME": "Reflective Shell",
@@ -308,7 +308,7 @@
   },
   "M10Robot:SelfDestruction": {
     "NAME": "Self Destruction",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Gain !M! m10robot:Recoil."
+    "DESCRIPTION": "Deal !D! damage to ALL enemies."
   },
   "M10Robot:SlotConversion": {
     "NAME": "Slot Conversion",
@@ -329,7 +329,7 @@
   },
   "M10Robot:SpikeBall": {
     "NAME": "Spike Shell",
-    "DESCRIPTION": "Deal !D! damage. NL Gain !M! m10robot:Spikes. NL Gain !M10Robot:SecondMagic! m10robot:Recoil."
+    "DESCRIPTION": "Deal !D! damage. NL Gain !M! m10robot:Spikes."
   },
   "M10Robot:SpikyPlating": {
     "NAME": "Spiker Form",

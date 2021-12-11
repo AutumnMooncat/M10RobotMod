@@ -2,9 +2,9 @@ package M10Robot.tutorials;
 
 import M10Robot.M10RobotMod;
 import M10Robot.cards.Defend;
-import M10Robot.cutCards.boosters.PolishingKit;
-import M10Robot.cutCards.boosters.ScrapBooster;
-import M10Robot.cutCards.boosters.SubroutineDraw;
+import M10Robot.cutStuff.boosters.PolishingKit;
+import M10Robot.cutStuff.boosters.ScrapBooster;
+import M10Robot.cutStuff.boosters.SubroutineDraw;
 import M10Robot.cards.TargetingSystem;
 import M10Robot.characters.M10Robot;
 import M10Robot.patches.BoosterFieldPatch;

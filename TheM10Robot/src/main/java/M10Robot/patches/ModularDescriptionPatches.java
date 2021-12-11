@@ -1,14 +1,8 @@
 package M10Robot.patches;
 
 import M10Robot.cards.interfaces.ModularDescription;
-import M10Robot.stances.OnGainBlockStance;
-import basemod.abstracts.AbstractCardModifier;
-import basemod.helpers.CardModifierManager;
-import com.badlogic.gdx.math.MathUtils;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import javassist.CtBehavior;
 
 public class ModularDescriptionPatches {
     //CardModifiers all call initDesc when a mod is added or removed. We care about the description when this happens

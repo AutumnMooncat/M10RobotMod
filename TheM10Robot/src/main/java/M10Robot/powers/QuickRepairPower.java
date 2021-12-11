@@ -1,7 +1,7 @@
 package M10Robot.powers;
 
 import M10Robot.M10RobotMod;
-import M10Robot.actions.RepairArmorAction;
+import M10Robot.cutStuff.actions.RepairArmorAction;
 import basemod.interfaces.CloneablePowerInterface;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
