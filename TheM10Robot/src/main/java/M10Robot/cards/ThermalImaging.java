@@ -3,7 +3,9 @@ package M10Robot.cards;
 import M10Robot.M10RobotMod;
 import M10Robot.cards.abstractCards.AbstractSwappableCard;
 import M10Robot.characters.M10Robot;
+import M10Robot.orbs.SearchlightOrb;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.defect.ChannelAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -31,6 +33,7 @@ public class ThermalImaging extends AbstractSwappableCard {
     private static final int COST = 1;
     private static final int EFFECT = 2;
     private static final int UPGRADE_PLUS_EFFECT = 1;
+    private static final int ORBS = 1;
 
     // /STAT DECLARATION/
 
@@ -41,6 +44,7 @@ public class ThermalImaging extends AbstractSwappableCard {
     public ThermalImaging(AbstractSwappableCard linkedCard) {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = EFFECT;
+        secondMagicNumber = baseSecondMagicNumber = ORBS;
         if (linkedCard == null) {
             setLinkedCard(new HeatSeekers(this));
         } else {
@@ -53,6 +57,9 @@ public class ThermalImaging extends AbstractSwappableCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
             this.addToBot(new ApplyPowerAction(aM, p, new LockOnPower(aM, magicNumber)));
+        }
+        for (int i = 0 ; i < secondMagicNumber ; i++) {
+            this.addToBot(new ChannelAction(new SearchlightOrb()));
         }
     }
 

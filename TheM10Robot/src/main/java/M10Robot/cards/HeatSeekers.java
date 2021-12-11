@@ -1,12 +1,17 @@
 package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
+import M10Robot.cardModifiers.AimedModifier;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.cards.abstractCards.AbstractSwappableCard;
 import M10Robot.cards.uniqueCards.UniqueCard;
 import M10Robot.characters.M10Robot;
+import M10Robot.orbs.SearchlightOrb;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
+import com.megacrit.cardcrawl.actions.defect.ChannelAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -36,6 +41,7 @@ public class HeatSeekers extends AbstractSwappableCard implements UniqueCard {
     private static final int COST = 0;
     private static final int DAMAGE = 4;
     private static final int UPGRADE_PLUS_DMG = 2;
+    private static final int ORBS = 1;
 
     // /STAT DECLARATION/
 
@@ -46,21 +52,22 @@ public class HeatSeekers extends AbstractSwappableCard implements UniqueCard {
     public HeatSeekers(AbstractSwappableCard linkedCard) {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = damage = DAMAGE;
+        secondMagicNumber = baseSecondMagicNumber = ORBS;
         this.isMultiDamage = true;
         if (linkedCard == null) {
             setLinkedCard(new ThermalImaging(this));
         } else {
             setLinkedCard(linkedCard);
         }
+        CardModifierManager.addModifier(this, new AimedModifier());
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
-            if (!aM.isDeadOrEscaped() && aM.hasPower(LockOnPower.POWER_ID)) {
-                this.addToBot(new DamageAction(aM, new DamageInfo(p, multiDamage[AbstractDungeon.getMonsters().monsters.indexOf(aM)], damageTypeForTurn), AbstractGameAction.AttackEffect.FIRE, true));
-            }
+        this.addToBot(new DamageAllEnemiesAction(p, multiDamage, damageTypeForTurn, AbstractGameAction.AttackEffect.FIRE));
+        for (int i = 0 ; i < secondMagicNumber ; i++) {
+            this.addToBot(new ChannelAction(new SearchlightOrb()));
         }
     }
 
