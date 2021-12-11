@@ -1,12 +1,12 @@
 package M10Robot.patches;
 
 import M10Robot.M10RobotMod;
-import M10Robot.cardModifiers.*;
 import M10Robot.cardModifiers.interfaces.RequiresSingleTargetAimingMode;
-import M10Robot.cards.BlankSlate;
+import M10Robot.cutCards.BlankSlate;
 import M10Robot.cards.abstractCards.AbstractBoosterCard;
 import M10Robot.cards.abstractCards.AbstractFrameworkCard;
 import M10Robot.cards.abstractCards.AbstractSwappableCard;
+import M10Robot.cutCards.modifiers.*;
 import basemod.abstracts.AbstractCardModifier;
 import basemod.helpers.CardModifierManager;
 import com.badlogic.gdx.graphics.Color;
