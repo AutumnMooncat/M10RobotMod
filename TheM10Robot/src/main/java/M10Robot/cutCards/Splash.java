@@ -1,7 +1,8 @@
-package M10Robot.cards.tempCards;
+package M10Robot.cutCards;
 
 import M10Robot.M10RobotMod;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
+import M10Robot.cards.tempCards.TempCard;
 import M10Robot.characters.M10Robot;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
