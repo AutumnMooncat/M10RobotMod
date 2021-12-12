@@ -34,7 +34,7 @@ public class WideAnglePower  extends AbstractPower implements CloneablePowerInte
 
         // We load those txtures here.
         //this.loadRegion("cExplosion");
-        this.loadRegion("thorns");
+        this.loadRegion("loop");
         //this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
         //this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
 
