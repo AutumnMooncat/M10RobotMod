@@ -1,12 +1,12 @@
 package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
+import M10Robot.actions.MultichannelAction;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.cards.interfaces.ModularDescription;
 import M10Robot.characters.M10Robot;
 import M10Robot.orbs.BombOrb;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.actions.defect.ChannelAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
@@ -44,9 +44,7 @@ public class UnstableCompound extends AbstractDynamicCard implements ModularDesc
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        for (int i = 0 ; i < magicNumber ; i++) {
-            this.addToBot(new ChannelAction(new BombOrb()));
-        }
+        this.addToBot(new MultichannelAction(new BombOrb(), magicNumber));
         this.addToBot(new DrawCardAction(magicNumber));
     }
 

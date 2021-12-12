@@ -1,13 +1,12 @@
 package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
+import M10Robot.actions.MultichannelAction;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
 import M10Robot.orbs.PresentOrb;
 import M10Robot.powers.ComponentsPower;
-import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.BranchingUpgradesCard;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.defect.ChannelAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
@@ -48,9 +47,7 @@ public class RapidAssembly extends AbstractDynamicCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        for (int i = 0 ; i < magicNumber ; i++) {
-            this.addToBot(new ChannelAction(new PresentOrb()));
-        }
+        this.addToBot(new MultichannelAction(new PresentOrb(), magicNumber));
         this.addToBot(new ApplyPowerAction(p, p, new ComponentsPower(p, secondMagicNumber)));
     }
 

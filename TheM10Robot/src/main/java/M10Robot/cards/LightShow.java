@@ -1,13 +1,13 @@
 package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
+import M10Robot.actions.MultichannelAction;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.cards.interfaces.ModularDescription;
 import M10Robot.characters.M10Robot;
 import M10Robot.orbs.SearchlightOrb;
 import basemod.interfaces.XCostModifier;
 import basemod.patches.com.megacrit.cardcrawl.cards.AbstractCard.CardModifierPatches;
-import com.megacrit.cardcrawl.actions.defect.ChannelAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -82,9 +82,7 @@ public class LightShow extends AbstractDynamicCard implements ModularDescription
 
         effect += magicNumber;
 
-        for (int i = 0 ; i < effect ; i++) {
-            this.addToBot(new ChannelAction(new SearchlightOrb()));
-        }
+        this.addToBot(new MultichannelAction(new SearchlightOrb(), effect));
 
         if (!this.freeToPlayOnce) {
             p.energy.use(EnergyPanel.totalCount);

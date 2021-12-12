@@ -1,12 +1,12 @@
 package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
+import M10Robot.actions.MultichannelAction;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.cards.interfaces.ModularDescription;
 import M10Robot.characters.M10Robot;
 import M10Robot.orbs.BitOrb;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
-import com.megacrit.cardcrawl.actions.defect.ChannelAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
@@ -46,9 +46,7 @@ public class QuickThinking extends AbstractDynamicCard implements ModularDescrip
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.addToBot(new DrawCardAction(magicNumber));
-        for (int i = 0 ; i < secondMagicNumber ; i++) {
-            this.addToBot(new ChannelAction(new BitOrb()));
-        }
+        this.addToBot(new MultichannelAction(new BitOrb(), secondMagicNumber));
     }
 
     //Upgraded stats.

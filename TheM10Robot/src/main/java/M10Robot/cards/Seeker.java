@@ -1,6 +1,7 @@
 package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
+import M10Robot.actions.MultichannelAction;
 import M10Robot.cardModifiers.AimedModifier;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
@@ -8,7 +9,6 @@ import M10Robot.orbs.SearchlightOrb;
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.defect.ChannelAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -53,9 +53,7 @@ public class Seeker extends AbstractDynamicCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         //this.addToBot(new AttackDamageRandomEnemyAction(this, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
-        for (int i = 0 ; i < magicNumber ; i++) {
-            this.addToBot(new ChannelAction(new SearchlightOrb()));
-        }
+        this.addToBot(new MultichannelAction(new SearchlightOrb(), magicNumber));
     }
 
     // Upgraded stats.

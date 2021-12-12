@@ -1,17 +1,15 @@
 package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
+import M10Robot.actions.MultichannelAction;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
 import M10Robot.orbs.BombOrb;
 import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.BranchingUpgradesCard;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.defect.ChannelAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.powers.LockOnPower;
 
 import static M10Robot.M10RobotMod.makeCardPath;
@@ -55,9 +53,7 @@ public class Atomize extends AbstractDynamicCard implements BranchingUpgradesCar
         for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
             this.addToBot(new ApplyPowerAction(aM, p, new LockOnPower(aM, magicNumber)));
         }
-        for (int i = 0 ; i < magicNumber ; i++) {
-            this.addToBot(new ChannelAction(new BombOrb()));
-        }
+        this.addToBot(new MultichannelAction(new BombOrb(), magicNumber));
     }
 
     //Upgraded stats.
