@@ -121,5 +121,9 @@
   "M10Robot:WeaponPlatformPower": {
     "NAME": "Weapon Platform",
     "DESCRIPTIONS": ["At the end of your turn, deal #b"," damage to ALL enemies with #yLock-On."]
+  },
+  "M10Robot:WideAnglePower": {
+    "NAME": "Wide Angle",
+    "DESCRIPTIONS": ["#tBits attack #b"," additional time."," additional times."]
   }
 }

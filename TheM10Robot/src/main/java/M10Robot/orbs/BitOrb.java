@@ -1,6 +1,8 @@
 package M10Robot.orbs;
 
 import M10Robot.M10RobotMod;
+import M10Robot.actions.BitAttackAction;
+import M10Robot.powers.WideAnglePower;
 import M10Robot.util.OverclockUtil;
 import M10Robot.util.TextureLoader;
 import com.badlogic.gdx.Gdx;
@@ -189,42 +191,20 @@ public class BitOrb extends AbstractCustomOrb {
 
     private static class BitOrbPower extends AbstractLinkedOrbPower {
 
-        public BitOrbPower(AbstractCustomOrb linkedOrb) {
+        public BitOrbPower(BitOrb linkedOrb) {
             super(linkedOrb);
         }
 
         @Override
         public void onPlayCard(AbstractCard card, AbstractMonster m) {
             if (card.type == AbstractCard.CardType.ATTACK) {
-                this.addToTop(new AbstractGameAction() {
-                    @Override
-                    public void update() {
-                        AbstractMonster t = null;
-                        for (AbstractMonster mon : AbstractDungeon.getMonsters().monsters) {
-                            if (!mon.isDeadOrEscaped()) {
-                                if (t == null || mon.currentHealth < t.currentHealth) {
-                                    t = mon;
-                                }
-                            }
-                        }
-                        if (t != null) {
-                            int damage = linkedOrb.passiveAmount;
-                            if (t.hasPower(LockOnPower.POWER_ID)) {
-                                damage *= LockOnPower.MULTIPLIER;
-                            }
-                            linkedOrb.playAnimation(ATTACK_IMG, MED_ANIM);
-                            CardCrawlGame.sound.play("ATTACK_MAGIC_BEAM_SHORT", 0.5F);
-                            AbstractDungeon.effectList.add(new SmallLaserEffect(t.hb.cX, t.hb.cY, linkedOrb.getXPosition(), linkedOrb.getYPosition()));
-                            AbstractDungeon.effectList.add(new OrbFlareEffect(linkedOrb, OrbFlareEffect.OrbFlareColor.FROST));
-                            DamageInfo di = new DamageInfo(BitOrbPower.this.owner, damage, DamageInfo.DamageType.THORNS);
-                            t.damage(di);
-                            if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
-                                AbstractDungeon.actionManager.clearPostCombatActions();
-                            }
-                        }
-                        this.isDone = true;
-                    }
-                });
+                int hits = 1;
+                if (owner.hasPower(WideAnglePower.POWER_ID)) {
+                    hits += owner.getPower(WideAnglePower.POWER_ID).amount;
+                }
+                for (int i = 0 ; i < hits ; i++) {
+                    this.addToTop(new BitAttackAction((BitOrb) linkedOrb, owner));
+                }
             }
         }
 
@@ -244,7 +224,7 @@ public class BitOrb extends AbstractCustomOrb {
 
         @Override
         public AbstractPower makeCopy() {
-            return new BitOrbPower(linkedOrb);
+            return new BitOrbPower((BitOrb) linkedOrb);
         }
     }
 }
