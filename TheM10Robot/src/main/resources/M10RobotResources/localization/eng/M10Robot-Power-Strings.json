@@ -124,6 +124,6 @@
   },
   "M10Robot:WideAnglePower": {
     "NAME": "Wide Angle",
-    "DESCRIPTIONS": ["#tBits attack #b"," additional time."," additional times."]
+    "DESCRIPTIONS": ["#yBits attack #b"," additional time."," additional times."]
   }
 }
