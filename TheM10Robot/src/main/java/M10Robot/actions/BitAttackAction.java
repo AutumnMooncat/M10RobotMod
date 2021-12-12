@@ -15,36 +15,39 @@ import static M10Robot.orbs.AbstractCustomOrb.MED_ANIM;
 
 public class BitAttackAction extends AbstractGameAction {
     private final BitOrb linkedOrb;
+    private static final float DURATION = 0.1f;
 
     public BitAttackAction(BitOrb linkedOrb, AbstractCreature source) {
         this.linkedOrb = linkedOrb;
         this.source = source;
-        this.duration = 0.1f;
+        this.duration = DURATION;
     }
 
     @Override
     public void update() {
-        AbstractMonster t = null;
-        for (AbstractMonster mon : AbstractDungeon.getMonsters().monsters) {
-            if (!mon.isDeadOrEscaped()) {
-                if (t == null || mon.currentHealth < t.currentHealth) {
-                    t = mon;
+        if (duration == DURATION) {
+            AbstractMonster t = null;
+            for (AbstractMonster mon : AbstractDungeon.getMonsters().monsters) {
+                if (!mon.isDeadOrEscaped()) {
+                    if (t == null || mon.currentHealth < t.currentHealth) {
+                        t = mon;
+                    }
                 }
             }
-        }
-        if (t != null) {
-            int damage = linkedOrb.passiveAmount;
-            if (t.hasPower(LockOnPower.POWER_ID)) {
-                damage *= LockOnPower.MULTIPLIER;
-            }
-            linkedOrb.playAnimation(BitOrb.ATTACK_IMG, MED_ANIM);
-            CardCrawlGame.sound.play("ATTACK_MAGIC_BEAM_SHORT", 0.5F);
-            AbstractDungeon.effectList.add(new SmallLaserEffect(t.hb.cX, t.hb.cY, linkedOrb.getXPosition(), linkedOrb.getYPosition()));
-            AbstractDungeon.effectList.add(new OrbFlareEffect(linkedOrb, OrbFlareEffect.OrbFlareColor.FROST));
-            DamageInfo di = new DamageInfo(source, damage, DamageInfo.DamageType.THORNS);
-            t.damage(di);
-            if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
-                AbstractDungeon.actionManager.clearPostCombatActions();
+            if (t != null) {
+                int damage = linkedOrb.passiveAmount;
+                if (t.hasPower(LockOnPower.POWER_ID)) {
+                    damage *= LockOnPower.MULTIPLIER;
+                }
+                linkedOrb.playAnimation(BitOrb.ATTACK_IMG, MED_ANIM);
+                CardCrawlGame.sound.play("ATTACK_MAGIC_BEAM_SHORT", 0.5F);
+                AbstractDungeon.effectList.add(new SmallLaserEffect(t.hb.cX, t.hb.cY, linkedOrb.getXPosition(), linkedOrb.getYPosition()));
+                AbstractDungeon.effectList.add(new OrbFlareEffect(linkedOrb, OrbFlareEffect.OrbFlareColor.FROST));
+                DamageInfo di = new DamageInfo(source, damage, DamageInfo.DamageType.THORNS);
+                t.damage(di);
+                if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
+                    AbstractDungeon.actionManager.clearPostCombatActions();
+                }
             }
         }
         tickDuration();
