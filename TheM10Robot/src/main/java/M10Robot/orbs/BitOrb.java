@@ -104,27 +104,33 @@ public class BitOrb extends AbstractCustomOrb {
 
     @Override
     public void onEvoke() { // 1.On Orb Evoke
-        this.addToBot(new AbstractGameAction() {
-            @Override
-            public void update() {
-                AbstractCreature m = AbstractDungeon.getRandomMonster();
-                int damage = evokeAmount;
-                if (m.hasPower(LockOnPower.POWER_ID)) {
-                    damage = (int)(damage * 1.5F);
-                }
-                this.addToBot(new AbstractGameAction() {
-                    @Override
-                    public void update() {
-                        playAnimation(ATTACK_IMG, MED_ANIM);
-                        this.isDone = true;
+        int hits = 1;
+        if (p.hasPower(WideAnglePower.POWER_ID)) {
+            hits += p.getPower(WideAnglePower.POWER_ID).amount;
+        }
+        for (int i = 0 ; i < hits ; i++) {
+            this.addToBot(new AbstractGameAction() {
+                @Override
+                public void update() {
+                    AbstractCreature m = AbstractDungeon.getRandomMonster();
+                    int damage = evokeAmount;
+                    if (m.hasPower(LockOnPower.POWER_ID)) {
+                        damage = (int)(damage * 1.5F);
                     }
-                });
-                this.addToBot(new VFXAction(new ExplosionSmallEffect(m.hb.cX, m.hb.cY), 0.0F));
-                this.addToBot(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.NONE, true));
-                this.addToBot(new ApplyPowerAction(m, p, new LockOnPower(m, LOCK_ON)));
-                this.isDone = true;
-            }
-        });
+                    this.addToBot(new AbstractGameAction() {
+                        @Override
+                        public void update() {
+                            playAnimation(ATTACK_IMG, MED_ANIM);
+                            this.isDone = true;
+                        }
+                    });
+                    this.addToTop(new ApplyPowerAction(m, p, new LockOnPower(m, LOCK_ON)));
+                    this.addToTop(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.NONE, true));
+                    this.addToTop(new VFXAction(new ExplosionSmallEffect(m.hb.cX, m.hb.cY), 0.0F));
+                    this.isDone = true;
+                }
+            });
+        }
         this.addToTop(new RemoveSpecificPowerAction(p, p, linkedPower));
     }
 

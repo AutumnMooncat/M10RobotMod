@@ -421,8 +421,8 @@
   },
   "M10Robot:WideAngle": {
     "NAME": "Wide Angle",
-    "DESCRIPTION": "m10robot:Bit now hits !M! additional time. NL Channel !M10Robot:SecondMagic! m10robot:Bit.",
-    "UPGRADE_DESCRIPTION": "m10robot:Bit now hits !M! additional times. NL Channel !M10Robot:SecondMagic! m10robot:Bit."
+    "DESCRIPTION": "m10robot:Bits now hit !M! additional time. NL Channel !M10Robot:SecondMagic! m10robot:Bit.",
+    "UPGRADE_DESCRIPTION": "m10robot:Bits now hit !M! additional times. NL Channel !M10Robot:SecondMagic! m10robot:Bit."
   },
   "M10Robot:WindUp": {
     "NAME": "Wind Up",

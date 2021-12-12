@@ -116,7 +116,8 @@
   {
     "PROPER_NAME": "Bit",
     "NAMES": [
-      "bit"
+      "bit",
+      "bits"
     ],
     "DESCRIPTION": "Orb: Deals damage to the enemy with the lowest HP when you play an Attack. When #yEvoked, deals damage and applies #yLock-On to a random enemy."
   },
