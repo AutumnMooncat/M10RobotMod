@@ -2,6 +2,7 @@ package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
 import M10Robot.actions.MultichannelAction;
+import M10Robot.actions.QuickThinkingAction;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.cards.interfaces.ModularDescription;
 import M10Robot.characters.M10Robot;
@@ -45,7 +46,7 @@ public class QuickThinking extends AbstractDynamicCard implements ModularDescrip
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new DrawCardAction(magicNumber));
+        this.addToBot(new DrawCardAction(magicNumber, new QuickThinkingAction()));
         this.addToBot(new MultichannelAction(new BitOrb(), secondMagicNumber));
     }
 

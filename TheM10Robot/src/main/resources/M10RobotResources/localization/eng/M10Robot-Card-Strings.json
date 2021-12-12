@@ -220,8 +220,8 @@
   },
   "M10Robot:QuickThinking": {
     "NAME": "Quick Thinking",
-    "DESCRIPTION": "Draw !M! card. NL Channel !M10Robot:SecondMagic! m10robot:Bit.",
-    "UPGRADE_DESCRIPTION": "Draw !M! cards. NL Channel !M10Robot:SecondMagic! m10robot:Bit."
+    "DESCRIPTION": "Channel !M10Robot:SecondMagic! m10robot:Bit. NL Draw !M! card. NL If you draw an Attack, it costs 0 this turn.",
+    "UPGRADE_DESCRIPTION": "Channel !M10Robot:SecondMagic! m10robot:Bit. NL Draw !M! cards. NL If you draw an Attack, it costs 0 this turn."
   },
   "M10Robot:QuickRepair": {
     "NAME": "Quick Repair",
