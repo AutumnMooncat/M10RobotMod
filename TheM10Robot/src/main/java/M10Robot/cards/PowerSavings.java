@@ -12,7 +12,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
-public class PowerSavings extends AbstractDynamicCard implements ModularDescription {
+public class PowerSavings extends AbstractDynamicCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
@@ -75,17 +75,17 @@ public class PowerSavings extends AbstractDynamicCard implements ModularDescript
         }
     }
 
-    @Override
-    public void changeDescription() {
-        if (lastChecked != magicNumber && DESCRIPTION != null) {
-            StringBuilder sb = new StringBuilder();
-            sb.append(DESCRIPTION);
-            for (int i = 0 ; i < magicNumber ; i++) {
-                sb.append(EXTENDED_DESCRIPTION[1]);
-            }
-            sb.append(EXTENDED_DESCRIPTION[0]);
-            rawDescription = sb.toString();
-            lastChecked = magicNumber;
-        }
-    }
+//    @Override
+//    public void changeDescription() {
+//        if (lastChecked != magicNumber && DESCRIPTION != null) {
+//            StringBuilder sb = new StringBuilder();
+//            sb.append(DESCRIPTION);
+//            for (int i = 0 ; i < magicNumber ; i++) {
+//                sb.append(EXTENDED_DESCRIPTION[1]);
+//            }
+//            sb.append(EXTENDED_DESCRIPTION[0]);
+//            rawDescription = sb.toString();
+//            lastChecked = magicNumber;
+//        }
+//    }
 }
