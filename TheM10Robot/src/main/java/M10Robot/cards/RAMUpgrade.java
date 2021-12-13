@@ -35,7 +35,7 @@ public class RAMUpgrade extends AbstractDynamicCard implements ModularDescriptio
     private static final CardType TYPE = CardType.POWER;
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
-    private static final int COST = 1;
+    private static final int COST = 2;
     private static final int EFFECT = 1;
     private static final int UPGRADE_PLUS_EFFECT = 1;
 

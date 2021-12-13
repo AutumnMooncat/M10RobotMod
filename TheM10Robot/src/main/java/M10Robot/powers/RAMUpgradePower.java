@@ -1,6 +1,7 @@
 package M10Robot.powers;
 
 import M10Robot.M10RobotMod;
+import M10Robot.actions.UpgradeAllOrbsAction;
 import M10Robot.orbs.AbstractCustomOrb;
 import basemod.interfaces.CloneablePowerInterface;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -48,16 +49,21 @@ public class RAMUpgradePower extends AbstractPower implements CloneablePowerInte
     }
 
     @Override
-    public void onChannel(AbstractOrb orb) {
-        if (orb instanceof AbstractCustomOrb) {
-            flash();
-            for (int i = 0 ; i < amount ; i++) {
-                if (((AbstractCustomOrb) orb).canUpgrade()) {
-                    ((AbstractCustomOrb) orb).upgrade();
-                }
-            }
-        }
+    public void atEndOfTurn(boolean isPlayer) {
+        this.addToBot(new UpgradeAllOrbsAction(amount));
     }
+
+//    @Override
+//    public void onChannel(AbstractOrb orb) {
+//        if (orb instanceof AbstractCustomOrb) {
+//            flash();
+//            for (int i = 0 ; i < amount ; i++) {
+//                if (((AbstractCustomOrb) orb).canUpgrade()) {
+//                    ((AbstractCustomOrb) orb).upgrade();
+//                }
+//            }
+//        }
+//    }
 
     @Override
     public AbstractPower makeCopy() {
