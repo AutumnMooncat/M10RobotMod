@@ -1,6 +1,7 @@
 package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
+import M10Robot.actions.OverclockCardAction;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.cards.interfaces.ModularDescription;
 import M10Robot.characters.M10Robot;
@@ -44,7 +45,8 @@ public class Ascension extends AbstractDynamicCard implements ModularDescription
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.addToBot(new DrawCardAction(magicNumber));
-        this.addToBot(new ArmamentsAction(true));
+        //this.addToBot(new ArmamentsAction(true));
+        this.addToBot(new OverclockCardAction(true));
     }
 
     //Upgraded stats.
