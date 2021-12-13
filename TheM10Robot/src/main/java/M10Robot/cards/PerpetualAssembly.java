@@ -3,14 +3,17 @@ package M10Robot.cards;
 import M10Robot.M10RobotMod;
 import M10Robot.actions.MultichannelAction;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
+import M10Robot.cards.interfaces.ModularDescription;
 import M10Robot.characters.M10Robot;
 import M10Robot.orbs.PresentOrb;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.DrawCardNextTurnPower;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
-public class PerpetualAssembly extends AbstractDynamicCard {
+public class PerpetualAssembly extends AbstractDynamicCard implements ModularDescription {
 
     // TEXT DECLARATION
 
@@ -30,6 +33,8 @@ public class PerpetualAssembly extends AbstractDynamicCard {
     private static final int COST = 1;
     private static final int UPGRADE_COST = 0;
     private static final int ORBS = 1;
+    private static final int CARDS = 1;
+    private static final int UPGRADE_PLUS_CARDS = 1;
 
     // /STAT DECLARATION/
 
@@ -37,6 +42,7 @@ public class PerpetualAssembly extends AbstractDynamicCard {
     public PerpetualAssembly() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = ORBS;
+        secondMagicNumber = baseSecondMagicNumber = CARDS;
         this.shuffleBackIntoDrawPile = true;
     }
 
@@ -44,6 +50,7 @@ public class PerpetualAssembly extends AbstractDynamicCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.addToBot(new MultichannelAction(new PresentOrb(), magicNumber));
+        this.addToBot(new ApplyPowerAction(p, p, new DrawCardNextTurnPower(p, secondMagicNumber)));
     }
 
     //Upgraded stats.
@@ -51,8 +58,20 @@ public class PerpetualAssembly extends AbstractDynamicCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeBaseCost(UPGRADE_COST);
+            //upgradeBaseCost(UPGRADE_COST);
+            upgradeSecondMagicNumber(UPGRADE_PLUS_CARDS);
             initializeDescription();
+        }
+    }
+
+    @Override
+    public void changeDescription() {
+        if (DESCRIPTION != null) {
+            if (secondMagicNumber > 1) {
+                rawDescription = UPGRADE_DESCRIPTION;
+            } else {
+                rawDescription = DESCRIPTION;
+            }
         }
     }
 }

@@ -6,7 +6,9 @@ import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
 import M10Robot.orbs.PresentOrb;
 import M10Robot.powers.ComponentsPower;
+import M10Robot.powers.ScrambledPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
@@ -31,8 +33,8 @@ public class RapidAssembly extends AbstractDynamicCard {
 
     private static final int COST = 0;
     private static final int ORBS = 1;
-    private static final int COMPONENTS = 6;
-    private static final int UPGRADE_PLUS_COMPONENTS = 3;
+    private static final int DRAW = 2;
+    private static final int UPGRADE_PLUS_DRAW = 1;
 
     // /STAT DECLARATION/
 
@@ -40,15 +42,16 @@ public class RapidAssembly extends AbstractDynamicCard {
     public RapidAssembly() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = ORBS;
-        secondMagicNumber = baseSecondMagicNumber = COMPONENTS;
-        this.exhaust = true;
+        secondMagicNumber = baseSecondMagicNumber = DRAW;
+        //this.exhaust = true;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        this.addToBot(new ApplyPowerAction(p, p, new ScrambledPower(p, magicNumber)));
         this.addToBot(new MultichannelAction(new PresentOrb(), magicNumber));
-        this.addToBot(new ApplyPowerAction(p, p, new ComponentsPower(p, secondMagicNumber)));
+        this.addToBot(new DrawCardAction(secondMagicNumber));
     }
 
     //Upgraded stats.
@@ -56,7 +59,7 @@ public class RapidAssembly extends AbstractDynamicCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeSecondMagicNumber(UPGRADE_PLUS_COMPONENTS);
+            upgradeSecondMagicNumber(UPGRADE_PLUS_DRAW);
             initializeDescription();
         }
     }
