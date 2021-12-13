@@ -61,8 +61,8 @@ public class SelfDestruction extends AbstractDynamicCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = damage = DAMAGE;
         isMultiDamage = true;
-        CardModifierManager.addModifier(this, new HeavyModifier());
         CardModifierManager.addModifier(this, new SpikyModifier());
+        CardModifierManager.addModifier(this, new HeavyModifier());
     }
 
     // Actions the card should do.

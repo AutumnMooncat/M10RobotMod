@@ -55,8 +55,8 @@ public class SpikeBall extends AbstractDynamicCard {
         baseDamage = damage = DAMAGE;
         magicNumber = baseMagicNumber = SPIKES;
         isMultiDamage = true;
-        CardModifierManager.addModifier(this, new HeavyModifier());
         CardModifierManager.addModifier(this, new SpikyModifier());
+        CardModifierManager.addModifier(this, new HeavyModifier());
     }
 
     // Actions the card should do.
