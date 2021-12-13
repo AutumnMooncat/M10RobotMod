@@ -4,9 +4,12 @@ import M10Robot.M10RobotMod;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.InvisiblePower;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.WeakPower;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
@@ -28,25 +31,25 @@ public class BalanceCurrents extends AbstractDynamicCard {
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
-    private static final int COST = 1;
-    private static final int EFFECT = 4;
-    private static final int UPGRADE_PLUS_EFFECT = 2;
+    private static final int COST = 0;
+    private static final int WEAK = 1;
+    private static final int EFFECT = 2;
+    private static final int UPGRADE_PLUS_EFFECT = 1;
 
     // /STAT DECLARATION/
 
 
     public BalanceCurrents() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        block = baseBlock = EFFECT;
+        magicNumber = baseMagicNumber = EFFECT;
+        secondMagicNumber = baseSecondMagicNumber = WEAK;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        int powers = (int) p.powers.stream().filter(pow -> !(pow instanceof InvisiblePower)).count();
-        if (powers > 0) {
-            this.addToBot(new GainBlockAction(p, block * powers));
-        }
+        this.addToBot(new ApplyPowerAction(p, p, new WeakPower(p, secondMagicNumber, false)));
+        this.addToBot(new GainEnergyAction(magicNumber));
     }
 
     //Upgraded stats.
@@ -54,7 +57,7 @@ public class BalanceCurrents extends AbstractDynamicCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeBlock(UPGRADE_PLUS_EFFECT);
+            upgradeMagicNumber(UPGRADE_PLUS_EFFECT);
             initializeDescription();
         }
     }
