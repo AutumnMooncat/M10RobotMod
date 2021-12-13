@@ -1,30 +1,9 @@
 {
-  "M10Robot:ArmorOrb": {
-    "NAME": "Plating Orb",
-    "DESCRIPTION": [
-      "#yPassive: #yDexterity increased by #b",".",
-      " NL #yEvoke: Gain #b"," #yMakeshift #yArmor."
-    ]
-  },
   "M10Robot:BombOrb": {
     "NAME": "Bomb",
     "DESCRIPTION": [
       "#yPassive: At the end of turn, deal #b"," damage to ALL enemies with #yLock-On. NL #yEvoke: Deal #b"," damage to ALL enemies.",
       "Passive damage #b+", ". Evoke damage #b+","."
-    ]
-  },
-  "M10Robot:ReactiveOrb": {
-    "NAME": "Reactive Orb",
-    "DESCRIPTION": [
-      "#yPassive: Upon gaining #yEnergy, draw #b"," card.",
-      " NL #yEvoke: Gain #b"," [E] . NL Reactive is unaffected by #yFocus."
-    ]
-  },
-  "M10Robot:RitualOrb": {
-    "NAME": "Ritual Orb",
-    "DESCRIPTION": [
-      "#yPassive: At the end of turn, gain #b"," #yStrength.",
-      " NL #yEvoke: Double your #yStrength and lose an Orb Slot. NL Ritual is unaffected by #yFocus."
     ]
   },
   "M10Robot:BitOrb": {
@@ -37,8 +16,8 @@
   "M10Robot:PresentOrb": {
     "NAME": "Present",
     "DESCRIPTION": [
-      "#yPassive: At the start of turn, gain #b"," Components. NL #yEvoke: Return all #yComponents spent upgrading this Orb. NL (Gain #b"," #yComponents)",
-      " NL #b+", " #yComponents per turn."
+      "#yPassive: At the start of turn, #yOverclock a random card #b"," time. NL #yEvoke: #yOverclock all cards in your hand."," times. NL #yEvoke: #yOverclock all cards in your hand.",
+      " NL #b+", " #yOverclock per turn."
     ]
   },
   "M10Robot:SearchlightOrb": {
@@ -48,23 +27,9 @@
       " NL Damage #b+", ", #ySpikes #b+","."
     ]
   },
-  "M10Robot:TungstenOrb": {
-    "NAME": "Tungsten Orb",
-    "DESCRIPTION": [
-      "#yPassive: Take #b"," less damage when attacked.",
-      " NL #yEvoke: Gain #b"," #yMetallicize and lose an Orb Slot. NL Tungsten is unaffected by #yFocus."
-    ]
-  },
-  "M10Robot:ToxicOrb": {
-    "NAME": "Toxic Orb",
-    "DESCRIPTION": [
-      "#yPassive: At the end of turn, apply #b"," #yPoison to ALL enemies.",
-      " NL #yEvoke: Gain #b"," #yEnvenom and lose an Orb Slot. NL Toxic is unaffected by #yFocus."
-    ]
-  },
   "M10Robot:UpgradeText": {
     "DESCRIPTION": [
-      " NL  NL #yRight #yClick to upgrade. NL Cost: #b", " #yComponents."
+      " NL  NL #yRight #yClick to upgrade. NL Cost: #b1 #yComponent."
     ]
   }
 }

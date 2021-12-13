@@ -13,7 +13,7 @@
   },
   "M10Robot:ComponentsPower": {
     "NAME": "Components",
-    "DESCRIPTIONS": ["Components are used to #yOverclick cards and #yUpgrade Orbs. NL Current Components: #b","."]
+    "DESCRIPTIONS": ["Components are used to #yOverclock cards and #yUpgrade Orbs. NL Current Components: #b","."]
   },
   "M10Robot:ConcentrationPower": {
     "NAME": "Sturdy Structure",

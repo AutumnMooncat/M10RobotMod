@@ -16,9 +16,10 @@
   {
     "PROPER_NAME": "Components",
     "NAMES": [
-      "components"
+      "components",
+      "component"
     ],
-    "DESCRIPTION": "Resource used to #yUpgrade #yOrbs and #Overclock cards."
+    "DESCRIPTION": "Resource used to #yUpgrade #yOrbs and #yOverclock cards."
   },
   {
     "PROPER_NAME": "Overclock",
@@ -133,7 +134,7 @@
     "NAMES": [
       "present"
     ],
-    "DESCRIPTION": "Orb: Generates #yComponents each turn. When #yEvoked, refunds all #yComponents spent on it's upgrades."
+    "DESCRIPTION": "Orb: #yOverclocks cards each turn. When #yEvoked, #yOverclocks all cards in your hand."
   },
   {
     "PROPER_NAME": "Searchlight",

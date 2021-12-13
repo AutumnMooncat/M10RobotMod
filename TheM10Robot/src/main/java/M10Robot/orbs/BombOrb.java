@@ -57,9 +57,9 @@ public class BombOrb extends AbstractCustomOrb {
     private static final float PI_4 = 12.566371f;
 
     private static final int PASSIVE_DAMAGE = 5;
-    private static final int EVOKE_DAMAGE = 10;
-    private static final int UPGRADE_PLUS_PASSIVE_DAMAGE = 2;
-    private static final int UPGRADE_PLUS_EVOKE_DAMAGE = 4;
+    private static final int EVOKE_DAMAGE = 8;
+    private static final int UPGRADE_PLUS_PASSIVE_DAMAGE = 5;
+    private static final int UPGRADE_PLUS_EVOKE_DAMAGE = 8;
     private static final int RECOIL = 1;
 
     public BombOrb() {
@@ -99,7 +99,7 @@ public class BombOrb extends AbstractCustomOrb {
         applyFocus(); // Apply Focus (Look at the next method)
         description =
                 DESC[0] + passiveAmount + DESC[1] + evokeAmount + DESC[2] +
-                UPGRADE_TEXT[0] + OverclockUtil.getOverclockCost(this) + UPGRADE_TEXT[1] +
+                UPGRADE_TEXT[0] +
                 DESC[3] + UPGRADE_PLUS_PASSIVE_DAMAGE + DESC[4] + UPGRADE_PLUS_EVOKE_DAMAGE + DESC[5];
     }
 

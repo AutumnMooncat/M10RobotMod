@@ -28,6 +28,7 @@ public class OverclockModifier extends AbstractCardModifier {
     @Override
     public void onInitialApplication(AbstractCard card) {
         card.applyPowers();
+        card.initializeDescription();
     }
 
     public int getOverclocks() {
@@ -55,6 +56,7 @@ public class OverclockModifier extends AbstractCardModifier {
             mod.count += this.count;
             mod.rawPercent = mod.getRawPercent();
             card.applyPowers();
+            card.initializeDescription();
             return false;
         }
         return true;

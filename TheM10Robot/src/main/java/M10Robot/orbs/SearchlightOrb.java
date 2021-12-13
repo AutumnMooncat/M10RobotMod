@@ -53,8 +53,8 @@ public class SearchlightOrb extends AbstractCustomOrb {
 
     private static final int PASSIVE_DAMAGE = 2;
     private static final int EVOKE_AMOUNT = 2;
-    private static final int UPGRADE_PLUS_PASSIVE_DAMAGE = 1;
-    private static final int UPGRADE_PLUS_EVOKE_AMOUNT = 1;
+    private static final int UPGRADE_PLUS_PASSIVE_DAMAGE = 2;
+    private static final int UPGRADE_PLUS_EVOKE_AMOUNT = 2;
 
     public SearchlightOrb() {
         this(0);
@@ -88,7 +88,7 @@ public class SearchlightOrb extends AbstractCustomOrb {
         applyFocus(); // Apply Focus (Look at the next method)
         description =
                 DESC[0] + passiveAmount + DESC[1] + evokeAmount + DESC[2] +
-                UPGRADE_TEXT[0] + OverclockUtil.getOverclockCost(this) + UPGRADE_TEXT[1] +
+                UPGRADE_TEXT[0] +
                 DESC[3] + UPGRADE_PLUS_PASSIVE_DAMAGE + DESC[4] + UPGRADE_PLUS_EVOKE_AMOUNT + DESC[5];
     }
 

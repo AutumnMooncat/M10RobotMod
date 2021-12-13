@@ -11,13 +11,13 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
 public class OverclockUtil {
-    public static final int BASE_COST = 3;
-    public static final int COST_PER_OVERCLOCK = 2;
+    public static final int BASE_COST = 1;
+//    public static final int COST_PER_OVERCLOCK = 0;
 
     public static int getOverclockCost(AbstractCard c) {
-        if (CardModifierManager.hasModifier(c, OverclockModifier.ID)) {
-            return BASE_COST + ((OverclockModifier)CardModifierManager.getModifiers(c, OverclockModifier.ID).get(0)).getOverclocks() * COST_PER_OVERCLOCK;
-        }
+//        if (CardModifierManager.hasModifier(c, OverclockModifier.ID)) {
+//            return BASE_COST + ((OverclockModifier)CardModifierManager.getModifiers(c, OverclockModifier.ID).get(0)).getOverclocks() * COST_PER_OVERCLOCK;
+//        }
         return BASE_COST;
     }
 
@@ -30,7 +30,7 @@ public class OverclockUtil {
     }
 
     public static int getOverclockCost(AbstractCustomOrb o) {
-        return BASE_COST + o.timesUpgraded * COST_PER_OVERCLOCK;
+        return BASE_COST /*+ o.timesUpgraded * COST_PER_OVERCLOCK*/;
     }
 
     private static boolean hasComponentsPower() {
@@ -46,7 +46,7 @@ public class OverclockUtil {
     }
 
     public static boolean canOverclock(AbstractCard c) {
-        return !(c instanceof CannotOverclock) && c.type != AbstractCard.CardType.STATUS && c.type != AbstractCard.CardType.CURSE && getComponentsAmount() >= getOverclockCost(c);
+        return !(c instanceof CannotOverclock) && c.type != AbstractCard.CardType.STATUS && c.type != AbstractCard.CardType.CURSE;
     }
 
     public static boolean canOverclock(AbstractCustomOrb o) {

@@ -58,7 +58,7 @@ public class BitOrb extends AbstractCustomOrb {
 
     private static final int PASSIVE_DAMAGE = 2;
     private static final int EVOKE_DAMAGE = PASSIVE_DAMAGE * 2;
-    private static final int UPGRADE_PLUS_PASSIVE_DAMAGE = 1;
+    private static final int UPGRADE_PLUS_PASSIVE_DAMAGE = 2;
     private static final int LOCK_ON = 2;
 
     public BitOrb() {
@@ -98,7 +98,7 @@ public class BitOrb extends AbstractCustomOrb {
         applyFocus();
         description =
                 DESC[0] + passiveAmount + DESC[1] +
-                UPGRADE_TEXT[0] + OverclockUtil.getOverclockCost(this) + UPGRADE_TEXT[1] +
+                UPGRADE_TEXT[0] +
                 DESC[2] + UPGRADE_PLUS_PASSIVE_DAMAGE + DESC[3];
     }
 
