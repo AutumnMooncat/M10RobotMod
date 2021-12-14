@@ -19,6 +19,7 @@ public class UpgradeAllOrbsAction extends AbstractGameAction {
                 for (int i = 0 ; i < amount ; i++) {
                     ((AbstractCustomOrb) o).upgrade();
                 }
+                ((AbstractCustomOrb) o).playAnimation(((AbstractCustomOrb) o).successImage, AbstractCustomOrb.LONG_ANIM);
             } else {
                 ReflectionHacks.setPrivate(o, AbstractOrb.class, "basePassiveAmount", ReflectionHacks.<Integer>getPrivate(o, AbstractOrb.class, "basePassiveAmount") + 1);
                 ReflectionHacks.setPrivate(o, AbstractOrb.class, "baseEvokeAmount", ReflectionHacks.<Integer>getPrivate(o, AbstractOrb.class, "baseEvokeAmount") + 1);
