@@ -36,6 +36,7 @@ public class RAMUpgrade extends AbstractDynamicCard implements ModularDescriptio
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
     private static final int COST = 2;
+    private static final int UPGRADE_COST = 1;
     private static final int EFFECT = 1;
     private static final int UPGRADE_PLUS_EFFECT = 1;
 
@@ -58,7 +59,8 @@ public class RAMUpgrade extends AbstractDynamicCard implements ModularDescriptio
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(UPGRADE_PLUS_EFFECT);
+            upgradeBaseCost(UPGRADE_COST);
+            //upgradeMagicNumber(UPGRADE_PLUS_EFFECT);
             initializeDescription();
         }
     }
