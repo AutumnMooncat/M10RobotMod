@@ -31,7 +31,7 @@ public class HealthDown extends AbstractDynamicCard {
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
     private static final int COST = 1;
-    private static final int EFFECT = 6;
+    private static final int EFFECT = 8;
     private static final int UPGRADE_PLUS_EFFECT = 4;
 
     // /STAT DECLARATION/
