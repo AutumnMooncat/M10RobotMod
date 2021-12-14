@@ -2,15 +2,17 @@ package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
+import M10Robot.cards.interfaces.ModularDescription;
 import M10Robot.characters.M10Robot;
-import M10Robot.powers.ConcentrationPower;
+import M10Robot.powers.ScrambledPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.DrawPower;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
-public class Concentration extends AbstractDynamicCard {
+public class Concentration extends AbstractDynamicCard implements ModularDescription {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
@@ -35,8 +37,8 @@ public class Concentration extends AbstractDynamicCard {
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
     private static final int COST = 1;
-    private static final int EFFECT = 4;
-    private static final int UPGRADE_PLUS_EFFECT = 2;
+    private static final int EFFECT = 1;
+    private static final int SCRAMBLE = 2;
 
     // /STAT DECLARATION/
 
@@ -44,12 +46,14 @@ public class Concentration extends AbstractDynamicCard {
     public Concentration() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = EFFECT;
+        secondMagicNumber = baseSecondMagicNumber = SCRAMBLE;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new ApplyPowerAction(p, p, new ConcentrationPower(p, magicNumber)));
+        this.addToBot(new ApplyPowerAction(p, p, new ScrambledPower(p, secondMagicNumber)));
+        this.addToBot(new ApplyPowerAction(p, p, new DrawPower(p, magicNumber)));
     }
 
     //Upgraded stats.
@@ -57,8 +61,19 @@ public class Concentration extends AbstractDynamicCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(UPGRADE_PLUS_EFFECT);
+            this.isInnate = true;
             initializeDescription();
+        }
+    }
+
+    @Override
+    public void changeDescription() {
+        if (DESCRIPTION != null) {
+            if (magicNumber > 1) {
+                rawDescription = UPGRADE_DESCRIPTION;
+            } else {
+                rawDescription = DESCRIPTION;
+            }
         }
     }
 }
