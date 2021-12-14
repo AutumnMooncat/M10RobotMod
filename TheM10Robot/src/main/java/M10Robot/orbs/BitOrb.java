@@ -105,9 +105,9 @@ public class BitOrb extends AbstractCustomOrb {
     @Override
     public void onEvoke() { // 1.On Orb Evoke
         int hits = 1;
-        if (p.hasPower(WideAnglePower.POWER_ID)) {
-            hits += p.getPower(WideAnglePower.POWER_ID).amount;
-        }
+//        if (p.hasPower(WideAnglePower.POWER_ID)) {
+//            hits += p.getPower(WideAnglePower.POWER_ID).amount;
+//        }
         for (int i = 0 ; i < hits ; i++) {
             this.addToBot(new AbstractGameAction() {
                 @Override
@@ -209,7 +209,7 @@ public class BitOrb extends AbstractCustomOrb {
                     hits += owner.getPower(WideAnglePower.POWER_ID).amount;
                 }
                 for (int i = 0 ; i < hits ; i++) {
-                    this.addToTop(new BitAttackAction((BitOrb) linkedOrb, owner));
+                    this.addToBot(new BitAttackAction((BitOrb) linkedOrb, owner));
                 }
             }
         }
