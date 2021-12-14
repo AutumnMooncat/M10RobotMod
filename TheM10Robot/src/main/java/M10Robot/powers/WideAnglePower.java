@@ -41,16 +41,6 @@ public class WideAnglePower  extends AbstractPower implements CloneablePowerInte
         updateDescription();
     }
 
-    public int onAttacked(DamageInfo info, int damageAmount) {
-        if (info.type != DamageInfo.DamageType.THORNS && info.type != DamageInfo.DamageType.HP_LOSS && info.owner != null && info.owner != this.owner) {
-            this.flash();
-            this.addToTop(new ReducePowerAction(owner, owner, this, 1));
-            this.addToTop(new DamageAction(info.owner, new DamageInfo(this.owner, this.amount, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true));
-        }
-
-        return damageAmount;
-    }
-
     public void updateDescription() {
         if (amount == 1) {
             this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
