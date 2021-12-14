@@ -52,7 +52,6 @@ public class ReflectiveShell extends AbstractDynamicCard implements ModularDescr
         if (!upgraded) {
             upgradeName();
             this.isInnate = true;
-            rawDescription = UPGRADE_DESCRIPTION;
             initializeDescription();
         }
     }
@@ -61,17 +60,9 @@ public class ReflectiveShell extends AbstractDynamicCard implements ModularDescr
     public void changeDescription() {
         if (DESCRIPTION != null) {
             if (magicNumber > 1) {
-                if (upgraded) {
-                    rawDescription = EXTENDED_DESCRIPTION[1];
-                } else {
-                    rawDescription = EXTENDED_DESCRIPTION[0];
-                }
+                rawDescription = UPGRADE_DESCRIPTION;
             } else {
-                if (upgraded) {
-                    rawDescription = UPGRADE_DESCRIPTION;
-                } else {
-                    rawDescription = DESCRIPTION;
-                }
+                rawDescription = DESCRIPTION;
             }
         }
     }

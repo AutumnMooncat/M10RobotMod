@@ -75,8 +75,6 @@ public class Atomize extends AbstractDynamicCard implements BranchingUpgradesCar
     }
 
     public void branchUpgrade() {
-        //upgradeSecondMagicNumber(UPGRADE_PLUS_TURN_INCREASE);
         this.exhaust = false;
-        rawDescription = UPGRADE_DESCRIPTION;
     }
 }

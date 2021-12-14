@@ -25,7 +25,7 @@
   },
   "M10Robot:AssemblyLine": {
     "NAME": "Assembly Line",
-    "DESCRIPTION": "Channel !M! m10robot:Present. NL Upgrade all your Orbs !M10Robot:SecondMagic! times. NL Exhaust."
+    "DESCRIPTION": "Channel !M! m10robot:Present. NL Upgrade all your Orbs !M10Robot:SecondMagic! times."
   },
   "M10Robot:AttackDown": {
     "NAME": "Attack Down",
@@ -37,8 +37,7 @@
   },
   "M10Robot:Atomize": {
     "NAME": "Atomize",
-    "DESCRIPTION": "Apply !M! Lock-On to ALL enemies. NL Channel !M! m10robot:Bomb. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Apply !M! Lock-On to ALL enemies. NL Channel !M! m10robot:Bomb."
+    "DESCRIPTION": "Apply !M! Lock-On to ALL enemies. NL Channel !M! m10robot:Bomb."
   },
   "M10Robot:AutoCaster": {
     "NAME": "Auto Caster",
@@ -51,11 +50,11 @@
   },
   "M10Robot:BatteryPack": {
     "NAME": "Battery Pack",
-    "DESCRIPTION": "Retain. NL Store X charges. NL Right Click to spend a charge to gain [E] . NL Charges: !M10Robot:CurrentAmmo! / !M!"
+    "DESCRIPTION": "Gain !M10Robot:SecondMagic! [E] . NL When Retained, increase energy gained by one until played to a max of !M!."
   },
   "M10Robot:BitMask": {
     "NAME": "Bitmask",
-    "DESCRIPTION": "Deal !D! damage. NL Channel !M! m10robot:Bit for each Attack played this turn. NL Exhaust."
+    "DESCRIPTION": "Deal !D! damage. NL Channel !M! m10robot:Bit for each Attack played this turn."
   },
   "M10Robot:BlankSlate": {
     "NAME": "Blank Slate",
@@ -68,8 +67,8 @@
   },
   "M10Robot:BriefRespite": {
     "NAME": "Brief Respite",
-    "DESCRIPTION": "Retain. NL Gain !B! Block. NL Draw !M! card.",
-    "UPGRADE_DESCRIPTION": "Retain. NL Gain !B! Block. NL Draw !M! cards."
+    "DESCRIPTION": "Gain !B! Block. NL Draw !M! card.",
+    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL Draw !M! cards."
   },
   "M10Robot:BurstFire": {
     "NAME": "Burst Fire",
@@ -96,7 +95,8 @@
   },
   "M10Robot:Concentration": {
     "NAME": "Deadlock",
-    "DESCRIPTION": "REWORK!"
+    "DESCRIPTION": "Gain !M10Robot:SecondMagic! m10robot:Scrambled. NL At the start of your turn, draw !M! additional card.",
+    "UPGRADE_DESCRIPTION": "Gain !M10Robot:SecondMagic! m10robot:Scrambled. NL At the start of your turn, draw !M! additional cards."
   },
   "M10Robot:Defend": {
     "NAME": "Defend",
@@ -104,8 +104,7 @@
   },
   "M10Robot:DividedAttention": {
     "NAME": "Divided Attention",
-    "DESCRIPTION": "Apply !M! Lock-On to ALL enemies. NL Draw !M10Robot:SecondMagic! card.",
-    "UPGRADE_DESCRIPTION": "Apply !M! Lock-On to ALL enemies. NL Draw !M10Robot:SecondMagic! cards."
+    "DESCRIPTION": "Gain !M10Robot:SecondMagic! m10robot:Scrambled. NL Draw !M! cards."
   },
   "M10Robot:DoubleCaster": {
     "NAME": "Double Caster",
@@ -118,8 +117,8 @@
   },
   "M10Robot:EmptyBuffer": {
     "NAME": "Empty Buffer",
-    "DESCRIPTION": "Evoke all your Orbs !M! time. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Evoke all your Orbs !M! times. NL Exhaust."
+    "DESCRIPTION": "Evoke all your Orbs !M! time.",
+    "UPGRADE_DESCRIPTION": "Evoke all your Orbs !M! times."
   },
   "M10Robot:EnergyShield": {
     "NAME": "Energy Shield",
@@ -141,7 +140,6 @@
   "M10Robot:Filter": {
     "NAME": "Filter",
     "DESCRIPTION": "Exhaust any number of cards. NL Gain [E] for each card exhausted this way.",
-    "UPGRADE_DESCRIPTION": "Retain. NL Exhaust any number of cards. NL Gain [E] for each card exhausted this way.",
     "EXTENDED_DESCRIPTION": ["Exhaust"]
   },
   "M10Robot:Fortify": {
@@ -163,8 +161,7 @@
   },
   "M10Robot:ImaginaryNumbers": {
     "NAME": "Imaginary Numbers",
-    "DESCRIPTION": "Gain !M! temporary Strength and temporary Dexterity. NL Exhaust.",
-    "UPGRADE_DESCRIPTION": "Retain. NL Gain !M! temporary Strength and temporary Dexterity. NL Exhaust."
+    "DESCRIPTION": "Gain !M! temporary Strength and temporary Dexterity."
   },
   "M10Robot:ImmovableObject": {
     "NAME": "Immovable Object",
@@ -179,31 +176,21 @@
     "DESCRIPTION": "Channel X m10robot:Searchlight.",
     "UPGRADE_DESCRIPTION": "Channel X + !M! m10robot:Searchlight."
   },
-  "M10Robot:Loopcaster": {
-    "NAME": "Loopcaster",
-    "DESCRIPTION": "Modifications: NL + !M! m10robot:Echo NL Requirements: NL Can be played",
-    "UPGRADE_DESCRIPTION": "Retain. NL Modifications: NL + !M! m10robot:Echo NL Requirements: NL Can be played"
-  },
-  "M10Robot:MagicTinkering": {
-    "NAME": "Magic Tinkering",
-    "DESCRIPTION": "Modifications: NL + !M! m10robot:Primary NL Requirements: NL Has a m10robot:Primary",
-    "UPGRADE_DESCRIPTION": "Retain. NL Modifications: NL + !M! m10robot:Primary NL Requirements: NL Has a m10robot:Primary"
-  },
   "M10Robot:MagnumStrike": {
     "NAME": "Magnum Strike",
     "DESCRIPTION": "Deal !D! damage."
   },
   "M10Robot:Malfunction": {
     "NAME": "Malfunction",
-    "DESCRIPTION": "Retain. NL Lose !M10Robot:SecondMagic! HP. NL Exhaust."
+    "DESCRIPTION": ""
   },
   "M10Robot:MultiTool": {
     "NAME": "Multi Tool",
-    "DESCRIPTION": "m10robot:Swappable. NL Deal !D! damage."
+    "DESCRIPTION": ""
   },
   "M10Robot:MultiTool2": {
     "NAME": "Multi Tool",
-    "DESCRIPTION": "m10robot:Swappable. NL Gain !B! Block."
+    "DESCRIPTION": ""
   },
   "M10Robot:Nibble": {
     "NAME": "Nibble",
@@ -238,7 +225,7 @@
   },
   "M10Robot:QuickRepair": {
     "NAME": "Quick Repair",
-    "DESCRIPTION": "Gain !B! Block and half that much Temporary_HP. NL Exhaust."
+    "DESCRIPTION": "Gain !B! Block and half that much Temporary_HP."
   },
   "M10Robot:Railgun": {
     "NAME": "Railgun",
@@ -251,7 +238,7 @@
   },
   "M10Robot:RapidAssembly": {
     "NAME": "Rapid Assembly",
-    "DESCRIPTION": "Gain !M! m10robot:Scrambled. NL Channel !M! m10robot:Present. NL Draw !M10Robot:SecondMagic! cards."
+    "DESCRIPTION": "Channel !M! m10robot:Present. NL Draw !M10Robot:SecondMagic! cards."
   },
   "M10Robot:RecoveryMode": {
     "NAME": "Recovery Mode",
@@ -264,14 +251,7 @@
   "M10Robot:ReflectiveShell": {
     "NAME": "Reflective Shell",
     "DESCRIPTION": "Fully blocked attacks are reflected onto the attacker !M! time.",
-    "UPGRADE_DESCRIPTION": "Innate. NL Fully blocked attacks are reflected onto the attacker !M! time.",
-    "EXTENDED_DESCRIPTION": ["Fully blocked attacks are reflected onto the attacker !M! times.", "Innate. NL Fully blocked attacks are reflected onto the attacker !M! times."]
-  },
-  "M10Robot:Repeater": {
-    "NAME": "Repeater",
-    "DESCRIPTION": "m10robot:Reciting.",
-    "UPGRADE_DESCRIPTION": "Retain. NL m10robot:Reciting.",
-    "EXTENDED_DESCRIPTION": ["Repeater","Accepts ALL #yBoosters. NL While Equipped: NL Plays the effect of equipped #yBoosters at the beginning of your turn."]
+    "UPGRADE_DESCRIPTION": "Fully blocked attacks are reflected onto the attacker !M! times."
   },
   "M10Robot:ReturningShield": {
     "NAME": "Returning Shield",
@@ -289,18 +269,13 @@
     "NAME": "Rush Down",
     "DESCRIPTION": "Deal !D! damage to ALL enemies."
   },
-  "M10Robot:SaleTag": {
-    "NAME": "Sale Tag",
-    "DESCRIPTION": "Modifications: NL + !M! Refund NL Requirements: NL Non-zero cost",
-    "UPGRADE_DESCRIPTION": "Retain. NL Modifications: NL + !M! Refund NL Requirements: NL Non-zero cost"
-  },
   "M10Robot:Salvo": {
     "NAME": "Salvo",
     "DESCRIPTION": "Deal !D! damage for each Channeled Orb."
   },
   "M10Robot:ScrambleField": {
     "NAME": "Scramble Field",
-    "DESCRIPTION": "This turn, the target is unable to deal over !M10Robot:SecondMagic! damage and unable to gain over !M10Robot:SecondMagic! Block."
+    "DESCRIPTION": "This turn, whenever you would lose HP, lose !M! less."
   },
   "M10Robot:ScrapBooster": {
     "NAME": "Scrap Booster",
@@ -308,12 +283,7 @@
   },
   "M10Robot:ScrapeOff": {
     "NAME": "Scrape Off",
-    "DESCRIPTION": "Deal !D! damage. NL Gain m10robot:Components equal to unblocked damage dealt."
-  },
-  "M10Robot:SecretRootkit": {
-    "NAME": "Secret Rootkit",
-    "DESCRIPTION": "Modifications: NL + m10robot:Unrestricted NL Requirements: NL one Cost or greater",
-    "UPGRADE_DESCRIPTION": "Retain. NL Modifications: NL + m10robot:Unrestricted NL Requirements: NL one Cost or greater"
+    "DESCRIPTION": "Deal !D! damage. NL Gain Block equal to unblocked damage dealt."
   },
   "M10Robot:Seeker": {
     "NAME": "Seeker",
@@ -329,7 +299,7 @@
   },
   "M10Robot:SolidWitch": {
     "NAME": "Solid Witch",
-    "DESCRIPTION": "Gain !M! Intangible. NL Exhaust."
+    "DESCRIPTION": "Gain !M! Intangible."
   },
   "M10Robot:SpectralCannon": {
     "NAME": "Spectral Cannon",
@@ -376,8 +346,7 @@
   "M10Robot:TargetingSystem": {
     "NAME": "Targeting System",
     "DESCRIPTION": "At the beginning of your turn, apply one Lock-On to a random enemy !M! time.",
-    "UPGRADE_DESCRIPTION": "Innate. NL At the beginning of your turn, apply one Lock-On to a random enemy !M! time.",
-    "EXTENDED_DESCRIPTION": ["At the beginning of your turn, apply one Lock-On to a random enemy !M! times.", "Innate. NL At the beginning of your turn, apply one Lock-On to a random enemy !M! times."]
+    "UPGRADE_DESCRIPTION": "At the beginning of your turn, apply one Lock-On to a random enemy !M! times."
   },
   "M10Robot:ThermalImaging": {
     "NAME": "Thermal Imaging",
@@ -401,7 +370,7 @@
   },
   "M10Robot:Turbo": {
     "NAME": "Turbo",
-    "DESCRIPTION": "At the start of your next !M! turns, draw an additional card and gain [E] . NL Exhaust."
+    "DESCRIPTION": "At the start of your next !M! turns, draw an additional card and gain [E] ."
   },
   "M10Robot:UnstableCompound": {
     "NAME": "Unstable Compound",
@@ -434,8 +403,8 @@
   },
   "M10Robot:WideAngle": {
     "NAME": "Wide Angle",
-    "DESCRIPTION": "m10robot:Bit now hits !M! additional time. NL Channel !M10Robot:SecondMagic! m10robot:Bit.",
-    "UPGRADE_DESCRIPTION": "m10robot:Bit now hits !M! additional times. NL Channel !M10Robot:SecondMagic! m10robot:Bit."
+    "DESCRIPTION": "When you play an Attack, m10robot:Bit Orbs now hit !M! additional time. NL Channel !M10Robot:SecondMagic! m10robot:Bit.",
+    "UPGRADE_DESCRIPTION": "When you play an Attack, m10robot:Bit Orbs now hit !M! additional times. NL Channel !M10Robot:SecondMagic! m10robot:Bit."
   },
   "M10Robot:WindUp": {
     "NAME": "Wind Up",

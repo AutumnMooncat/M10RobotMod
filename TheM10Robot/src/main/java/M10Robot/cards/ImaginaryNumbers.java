@@ -75,6 +75,5 @@ public class ImaginaryNumbers extends AbstractDynamicCard implements BranchingUp
 
     public void branchUpgrade() {
         this.selfRetain = true;
-        rawDescription = UPGRADE_DESCRIPTION;
     }
 }

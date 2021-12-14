@@ -73,17 +73,9 @@ public class TargetingSystem extends AbstractDynamicCard implements BranchingUpg
     public void changeDescription() {
         if (DESCRIPTION != null) {
             if (magicNumber > 1) {
-                if (isInnate) {
-                    rawDescription = EXTENDED_DESCRIPTION[1];
-                } else {
-                    rawDescription = EXTENDED_DESCRIPTION[0];
-                }
+                rawDescription = UPGRADE_DESCRIPTION;
             } else {
-                if (isInnate) {
-                    rawDescription = UPGRADE_DESCRIPTION;
-                } else {
-                    rawDescription = DESCRIPTION;
-                }
+                rawDescription = DESCRIPTION;
             }
         }
     }

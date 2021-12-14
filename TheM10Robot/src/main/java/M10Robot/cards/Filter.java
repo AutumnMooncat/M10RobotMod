@@ -86,6 +86,5 @@ public class Filter extends AbstractDynamicCard implements BranchingUpgradesCard
 
     public void branchUpgrade() {
         this.selfRetain = true;
-        rawDescription = UPGRADE_DESCRIPTION;
     }
 }
