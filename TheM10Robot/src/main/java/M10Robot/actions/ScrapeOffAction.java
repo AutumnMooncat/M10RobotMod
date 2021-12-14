@@ -35,7 +35,8 @@ public class ScrapeOffAction extends AbstractGameAction {
                 AbstractDungeon.effectList.add(new FlashAtkImgEffect(this.target.hb.cX, this.target.hb.cY, AttackEffect.SLASH_VERTICAL, false));
                 this.target.damage(this.info);
                 if (this.target.lastDamageTaken > 0) {
-                    this.addToTop(new ApplyPowerAction(this.source, this.source, new ComponentsPower(this.source, this.target.lastDamageTaken)));
+                    //this.addToTop(new ApplyPowerAction(this.source, this.source, new ComponentsPower(this.source, this.target.lastDamageTaken)));
+                    this.addToTop(new GainBlockAction(this.source, this.target.lastDamageTaken));
                 }
 
                 if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
