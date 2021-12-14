@@ -32,7 +32,7 @@ public class BalanceCurrents extends AbstractDynamicCard {
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
     private static final int COST = 0;
-    private static final int WEAK = 1;
+    private static final int WEAK = 2;
     private static final int EFFECT = 2;
     private static final int UPGRADE_PLUS_EFFECT = 1;
 
