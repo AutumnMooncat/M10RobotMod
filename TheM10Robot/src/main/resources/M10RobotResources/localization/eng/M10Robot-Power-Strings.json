@@ -91,7 +91,7 @@
   },
   "M10Robot:ScrambleFieldPower": {
     "NAME": "Scramble Field",
-    "DESCRIPTIONS": ["This turn, this creature is unable to deal over #b"," damage and unable to gain over #b"," #yBlock."]
+    "DESCRIPTIONS": ["This turn, whenever you would lose HP, lose #b"," less."]
   },
   "M10Robot:SpeedloaderPower": {
     "NAME": "Speedloader",
@@ -124,6 +124,6 @@
   },
   "M10Robot:WideAnglePower": {
     "NAME": "Wide Angle",
-    "DESCRIPTIONS": ["#yBits attack #b"," additional time."," additional times."]
+    "DESCRIPTIONS": ["When you play an Attack, #yBits attack #b"," additional time."," additional times."]
   }
 }
