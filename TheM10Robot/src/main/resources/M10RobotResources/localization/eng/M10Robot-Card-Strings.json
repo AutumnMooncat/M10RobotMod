@@ -207,7 +207,7 @@
   },
   "M10Robot:PolishingKit": {
     "NAME": "Polishing Kit",
-    "DESCRIPTION": "Modifications: NL + !M! damage NL + !M! Block NL Requirements: NL Has Block or damage"
+    "DESCRIPTION": ""
   },
   "M10Robot:PowerSavings": {
     "NAME": "Power Savings",
@@ -279,7 +279,7 @@
   },
   "M10Robot:ScrapBooster": {
     "NAME": "Scrap Booster",
-    "DESCRIPTION": "Modifications: NL + !M! Block NL Requirements: NL Has Block"
+    "DESCRIPTION": ""
   },
   "M10Robot:ScrapeOff": {
     "NAME": "Scrape Off",
@@ -328,16 +328,16 @@
   },
   "M10Robot:SubroutineDefend": {
     "NAME": "Subroutine: Defend",
-    "DESCRIPTION": "Modifications: NL Gain !B! Block NL Requirements: NL Can be played"
+    "DESCRIPTION": ""
   },
   "M10Robot:SubroutineDraw": {
     "NAME": "Subroutine: Draw",
-    "DESCRIPTION": "Modifications: NL Draw !M! card NL Requirements: NL Can be played",
-    "UPGRADE_DESCRIPTION": "Modifications: NL Draw !M! cards NL Requirements: NL Can be played"
+    "DESCRIPTION": "",
+    "UPGRADE_DESCRIPTION": ""
   },
   "M10Robot:SubroutineStrike": {
     "NAME": "Subroutine: Strike",
-    "DESCRIPTION": "Modifications: NL Deal !D! damage NL Requirements: NL Can be played"
+    "DESCRIPTION": ""
   },
   "M10Robot:Surveillance": {
     "NAME": "Surveillance",
@@ -391,7 +391,7 @@
   },
   "M10Robot:WeaponPoison": {
     "NAME": "Weapon Poison",
-    "DESCRIPTION": "Modifications: NL Apply !M! Poison NL Requirements: NL Is an Attack"
+    "DESCRIPTION": ""
   },
   "M10Robot:WeaponPolish": {
     "NAME": "Weapon Polish",
@@ -399,7 +399,7 @@
   },
   "M10Robot:WeaponPolishBooster": {
     "NAME": "Weapon Polish",
-    "DESCRIPTION": "Modifications: NL + !D! Damage NL m10robot:Bound."
+    "DESCRIPTION": ""
   },
   "M10Robot:WideAngle": {
     "NAME": "Wide Angle",
