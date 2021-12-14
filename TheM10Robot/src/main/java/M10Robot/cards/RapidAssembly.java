@@ -43,13 +43,12 @@ public class RapidAssembly extends AbstractDynamicCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = ORBS;
         secondMagicNumber = baseSecondMagicNumber = DRAW;
-        //this.exhaust = true;
+        this.exhaust = true;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new ApplyPowerAction(p, p, new ScrambledPower(p, magicNumber)));
         this.addToBot(new MultichannelAction(new PresentOrb(), magicNumber));
         this.addToBot(new DrawCardAction(secondMagicNumber));
     }
