@@ -30,7 +30,7 @@ public class ScrambleFieldPower extends AbstractPower implements CloneablePowerI
 
         this.priority = Integer.MAX_VALUE;
         this.type = PowerType.BUFF;
-        this.isTurnBased = false;
+        this.isTurnBased = true;
 
         // We load those txtures here.
         //this.loadRegion("cExplosion");
@@ -43,12 +43,9 @@ public class ScrambleFieldPower extends AbstractPower implements CloneablePowerI
     }
 
     @Override
-    public void stackPower(int stackAmount) {
-        if (stackAmount < amount) {
-            amount = stackAmount;
-            updateDescription();
-            flashWithoutSound();
-        }
+    public int onAttackedToChangeDamage(DamageInfo info, int damageAmount) {
+        flash();
+        return damageAmount > amount ? damageAmount - amount : 0;
     }
 
     public void atEndOfRound() {
@@ -56,18 +53,8 @@ public class ScrambleFieldPower extends AbstractPower implements CloneablePowerI
     }
 
     @Override
-    public float atDamageFinalGive(float damage, DamageInfo.DamageType type) {
-        return Math.min(damage, amount);
-    }
-
-    @Override
-    public float modifyBlockLast(float blockAmount) {
-        return Math.min(blockAmount, amount);
-    }
-
-    @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1] + amount + DESCRIPTIONS[2];
+        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
     }
 
     @Override
