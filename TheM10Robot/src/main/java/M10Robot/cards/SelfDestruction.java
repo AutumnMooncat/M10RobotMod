@@ -5,31 +5,12 @@ import M10Robot.actions.SelfDestructAction;
 import M10Robot.cardModifiers.HeavyModifier;
 import M10Robot.cardModifiers.SpikyModifier;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
-import M10Robot.cards.interfaces.ModularDescription;
-import M10Robot.cards.interfaces.NegativePrimaryEffect;
 import M10Robot.characters.M10Robot;
 import M10Robot.patches.RestorePositionPatches;
-import M10Robot.powers.RecoilPower;
-import M10Robot.vfx.BurnToAshEffect;
 import basemod.helpers.CardModifierManager;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.math.Vector2;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.core.Settings;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.vfx.combat.ExplosionSmallEffect;
-import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
-import com.megacrit.cardcrawl.vfx.combat.IntenseZoomEffect;
-import com.megacrit.cardcrawl.vfx.combat.ShockWaveEffect;
-
-import java.util.ArrayList;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 

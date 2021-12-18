@@ -1,6 +1,5 @@
 package M10Robot.actions;
 
-import M10Robot.cards.interfaces.ModularDescription;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -52,8 +51,8 @@ public class IntensifyAction extends AbstractGameAction {
                 break;
         }
         c.applyPowers();
-        if (c instanceof ModularDescription) {
-            c.initializeDescription();
-        }
+//        if (c instanceof ModularDescription) {
+//            c.initializeDescription();
+//        }
     }
 }
