@@ -1,4 +1,4 @@
-package M10Robot.cards;
+package M10Robot.cutStuff;
 
 import M10Robot.M10RobotMod;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
