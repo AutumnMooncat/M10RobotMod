@@ -26,7 +26,7 @@
     "NAMES": [
       "overclock"
     ],
-    "DESCRIPTION": "Increases the base stats of cards. Has no upper bound but has diminishing returns."
+    "DESCRIPTION": "Increases the base stats of cards and is removed when played."
   },
   {
     "PROPER_NAME": "Heavy",

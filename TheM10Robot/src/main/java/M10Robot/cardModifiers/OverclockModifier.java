@@ -11,8 +11,8 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 public class OverclockModifier extends AbstractCardModifier {
     public static final String ID = M10RobotMod.makeID("Overclock");
     private static final int EARLY_PERCENT = 25;
-    private static final int MID_PERCENT = 20;
-    private static final int LATE_PERCENT = 15;
+    private static final int MID_PERCENT = 25;
+    private static final int LATE_PERCENT = 25;
 
     int rawPercent;
     int count;
@@ -23,6 +23,11 @@ public class OverclockModifier extends AbstractCardModifier {
     public OverclockModifier(int count) {
         this.count = count;
         rawPercent = getRawPercent();
+    }
+
+    @Override
+    public boolean removeOnCardPlayed(AbstractCard card) {
+        return true;
     }
 
     @Override

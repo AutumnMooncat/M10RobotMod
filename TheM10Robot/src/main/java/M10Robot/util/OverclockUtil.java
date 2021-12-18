@@ -26,7 +26,7 @@ public class OverclockUtil {
     }
 
     public static int getOverClockPercent(AbstractCard c) {
-        return 100 + ((OverclockModifier) CardModifierManager.getModifiers(c, OverclockModifier.ID).get(0)).getRawPercent();
+        return ((OverclockModifier) CardModifierManager.getModifiers(c, OverclockModifier.ID).get(0)).getRawPercent();
     }
 
     public static int getOverclockCost(AbstractCustomOrb o) {
@@ -61,8 +61,12 @@ public class OverclockUtil {
     }
 
     public static String getOverclockPrefix(AbstractCard c) {
+        return "";
+    }
+
+    public static String getOverclockSuffix(AbstractCard c) {
         if (hasOverclock(c)) {
-            return getOverClockPercent(c)+"% ";
+            return " +"+getOverClockPercent(c)+"% ";
         }
         return "";
     }
