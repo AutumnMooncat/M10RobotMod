@@ -3,12 +3,10 @@ package M10Robot.cards;
 import M10Robot.M10RobotMod;
 import M10Robot.actions.RelayCardsAction;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
-import M10Robot.cards.interfaces.ModularDescription;
 import M10Robot.characters.M10Robot;
 import com.evacipated.cardcrawl.mod.stslib.actions.common.SelectCardsInHandAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import java.util.List;
@@ -17,7 +15,7 @@ import java.util.function.Consumer;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
-public class CardSupplier extends AbstractDynamicCard implements ModularDescription {
+public class CardSupplier extends AbstractDynamicCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
@@ -67,17 +65,6 @@ public class CardSupplier extends AbstractDynamicCard implements ModularDescript
             upgradeName();
             upgradeMagicNumber(UPGRADE_PLUS_CARDS);
             initializeDescription();
-        }
-    }
-
-    @Override
-    public void changeDescription() {
-        if (DESCRIPTION != null) {
-            if (magicNumber > 1) {
-                rawDescription = UPGRADE_DESCRIPTION;
-            } else {
-                rawDescription = DESCRIPTION;
-            }
         }
     }
 }

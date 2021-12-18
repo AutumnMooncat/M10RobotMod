@@ -2,7 +2,6 @@ package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
-import M10Robot.cards.interfaces.ModularDescription;
 import M10Robot.characters.M10Robot;
 import M10Robot.powers.PowerSavingsPower;
 import M10Robot.powers.ScrambledPower;
@@ -74,18 +73,4 @@ public class PowerSavings extends AbstractDynamicCard {
             initializeDescription();
         }
     }
-
-//    @Override
-//    public void changeDescription() {
-//        if (lastChecked != magicNumber && DESCRIPTION != null) {
-//            StringBuilder sb = new StringBuilder();
-//            sb.append(DESCRIPTION);
-//            for (int i = 0 ; i < magicNumber ; i++) {
-//                sb.append(EXTENDED_DESCRIPTION[1]);
-//            }
-//            sb.append(EXTENDED_DESCRIPTION[0]);
-//            rawDescription = sb.toString();
-//            lastChecked = magicNumber;
-//        }
-//    }
 }

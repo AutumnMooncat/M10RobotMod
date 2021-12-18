@@ -7,8 +7,7 @@
   },
   "M10Robot:AirRaid": {
     "NAME": "Air Raid",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies X times.",
-    "UPGRADE_DESCRIPTION": "Deal !D! damage to ALL enemies X + !M! times."
+    "DESCRIPTION": "Deal !D! damage to ALL enemies [!M!|@=X|>0=X + !M!|] times."
   },
   "M10Robot:AmmoBox": {
     "NAME": "Heavy Caliber",
@@ -16,8 +15,8 @@
   },
   "M10Robot:Ascension": {
     "NAME": "Ascension",
-    "DESCRIPTION": "Draw !M! card. NL m10robot:Overclock all cards in your hand for the rest of combat.",
-    "UPGRADE_DESCRIPTION": "Draw !M! cards. NL m10robot:Overclock all cards in your hand for the rest of combat."
+    "DESCRIPTION": "Draw !M! [!M!|@=card.|>1=cards.|] NL m10robot:Overclock all cards in your hand.",
+    "UPGRADE_DESCRIPTION": "Draw !M! cards. NL m10robot:Overclock all cards in your hand."
   },
   "M10Robot:AssaultField": {
     "NAME": "Assault Field",
@@ -41,12 +40,11 @@
   },
   "M10Robot:AutoCaster": {
     "NAME": "Auto Caster",
-    "DESCRIPTION": "The first Orb you Channel each turn is Evoked.",
-    "UPGRADE_DESCRIPTION": "The first !M! Orbs you Channel each turn are Evoked."
+    "DESCRIPTION": "The first [!M!|@=Orb|>1=!M! Orbs|] you Channel each turn is Evoked."
   },
   "M10Robot:BalanceCurrents": {
     "NAME": "Balance Currents",
-    "DESCRIPTION": "Gain !M10Robot:SecondMagic! Weak. NL Gain !M! [E] ."
+    "DESCRIPTION": "Whenever a debuff is applied to you, gain !M! Block."
   },
   "M10Robot:BatteryPack": {
     "NAME": "Battery Pack",
@@ -67,8 +65,7 @@
   },
   "M10Robot:BriefRespite": {
     "NAME": "Brief Respite",
-    "DESCRIPTION": "Gain !B! Block. NL Draw !M! card.",
-    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL Draw !M! cards."
+    "DESCRIPTION": "Gain !B! Block. NL Draw !M! [!M!|@=card.|>1=cards.|]"
   },
   "M10Robot:BurstFire": {
     "NAME": "Burst Fire",
@@ -80,8 +77,7 @@
   },
   "M10Robot:CardSupplier": {
     "NAME": "Card Supplier",
-    "DESCRIPTION": "m10robot:Relay !M! card.",
-    "UPGRADE_DESCRIPTION": "m10robot:Relay up to !M! cards.",
+    "DESCRIPTION": "m10robot:Relay !M! [!M!|@=card.|>1=cards.|]",
     "EXTENDED_DESCRIPTION": ["Relay"]
   },
   "M10Robot:Compensator": {
@@ -90,13 +86,11 @@
   },
   "M10Robot:CompileData": {
     "NAME": "Compile Data",
-    "DESCRIPTION": "Channel !M! m10robot:Present. NL Draw !M! card. NL Next turn, draw !M10Robot:SecondMagic! additional cards.",
-    "UPGRADE_DESCRIPTION": "Channel !M! m10robot:Present. NL Draw !M! cards. NL Next turn, draw !M10Robot:SecondMagic! additional cards."
+    "DESCRIPTION": "Channel !M! m10robot:Present. NL Draw !M! [!M!|@=card.|>1=cards.|]. NL Next turn, draw !M10Robot:SecondMagic! additional cards."
   },
   "M10Robot:Concentration": {
     "NAME": "Deadlock",
-    "DESCRIPTION": "Gain !M10Robot:SecondMagic! m10robot:Scrambled. NL At the start of your turn, draw !M! additional card.",
-    "UPGRADE_DESCRIPTION": "Gain !M10Robot:SecondMagic! m10robot:Scrambled. NL At the start of your turn, draw !M! additional cards."
+    "DESCRIPTION": "Gain !M10Robot:SecondMagic! m10robot:Scrambled. NL At the start of your turn, draw !M! additional [!M!|@=card.|>1=cards.|]"
   },
   "M10Robot:Defend": {
     "NAME": "Defend",
@@ -108,8 +102,7 @@
   },
   "M10Robot:DoubleCaster": {
     "NAME": "Double Caster",
-    "DESCRIPTION": "The first Orb you Evoke each turn is Evoked twice.",
-    "UPGRADE_DESCRIPTION": "The first !M! Orbs you Evoke each turn are Evoked twice."
+    "DESCRIPTION": "The first [!M!|@=Orb|>1=!M! Orbs|] you Evoke each turn is Evoked twice."
   },
   "M10Robot:EMP": {
     "NAME": "EMP",
@@ -117,8 +110,7 @@
   },
   "M10Robot:EmptyBuffer": {
     "NAME": "Empty Buffer",
-    "DESCRIPTION": "Evoke all your Orbs !M! time.",
-    "UPGRADE_DESCRIPTION": "Evoke all your Orbs !M! times."
+    "DESCRIPTION": "Evoke all your Orbs !M! [!M!|@=time.|>1=times.|]."
   },
   "M10Robot:EnergyShield": {
     "NAME": "Energy Shield",
@@ -126,7 +118,7 @@
   },
   "M10Robot:Engage": {
     "NAME": "Engage",
-    "DESCRIPTION": "Apply !M! Vulnerable and Lock-On. NL Draw !M10Robot:SecondMagic! card.",
+    "DESCRIPTION": "Apply !M! Vulnerable and Lock-On. NL Draw !M10Robot:SecondMagic! [!M10Robot:SecondMagic!|@=card.|>1=cards.|]",
     "UPGRADE_DESCRIPTION": "Apply !M! Vulnerable and Lock-On. NL Draw !M10Robot:SecondMagic! cards."
   },
   "M10Robot:EvasionDown": {
@@ -173,8 +165,7 @@
   },
   "M10Robot:LightShow": {
     "NAME": "Light Show",
-    "DESCRIPTION": "Channel X m10robot:Searchlight.",
-    "UPGRADE_DESCRIPTION": "Channel X + !M! m10robot:Searchlight."
+    "DESCRIPTION": "Channel [!M!|@=X|>0=X + !M!|] m10robot:Searchlight."
   },
   "M10Robot:MagnumStrike": {
     "NAME": "Magnum Strike",
@@ -198,8 +189,7 @@
   },
   "M10Robot:PerpetualAssembly": {
     "NAME": "Perpetual Assembly",
-    "DESCRIPTION": "Channel !M! m10robot:Present. NL Draw !M10Robot:SecondMagic! additional card next turn. NL m10robot:Reshuffle.",
-    "UPGRADE_DESCRIPTION": "Channel !M! m10robot:Present. NL Draw !M10Robot:SecondMagic! additional cards next turn. NL m10robot:Reshuffle."
+    "DESCRIPTION": "Channel !M! m10robot:Present. NL Draw !M10Robot:SecondMagic! additional [!M10Robot:SecondMagic!|@=card.|>1=cards.|] next turn. NL m10robot:Reshuffle."
   },
   "M10Robot:PileDriver": {
     "NAME": "Pile Driver",
@@ -220,8 +210,7 @@
   },
   "M10Robot:QuickThinking": {
     "NAME": "Quick Thinking",
-    "DESCRIPTION": "Draw !M! card. NL If you draw an Attack, it costs 0 this turn.",
-    "UPGRADE_DESCRIPTION": "Draw !M! cards. NL If you draw an Attack, it costs 0 this turn."
+    "DESCRIPTION": "Draw !M! [!M!|@=card.|>1=cards.|] NL If you draw an Attack, it costs 0 this turn."
   },
   "M10Robot:QuickRepair": {
     "NAME": "Quick Repair",
@@ -233,8 +222,7 @@
   },
   "M10Robot:RAMUpgrade": {
     "NAME": "RAM Upgrade",
-    "DESCRIPTION": "At the end of your turn, Upgrade all your Orbs !M! time.",
-    "UPGRADE_DESCRIPTION": "At the end of your turn, Upgrade all your Orbs !M! times."
+    "DESCRIPTION": "At the end of your turn, Upgrade all your Orbs !M! [!M!|@=time.|>1=times.|]"
   },
   "M10Robot:RapidAssembly": {
     "NAME": "Rapid Assembly",
@@ -250,8 +238,7 @@
   },
   "M10Robot:ReflectiveShell": {
     "NAME": "Reflective Shell",
-    "DESCRIPTION": "Fully blocked attacks are reflected onto the attacker !M! time.",
-    "UPGRADE_DESCRIPTION": "Fully blocked attacks are reflected onto the attacker !M! times."
+    "DESCRIPTION": "Fully blocked attacks are reflected onto the attacker !M! [!M!|@=time.|>1=times.|]"
   },
   "M10Robot:ReturningShield": {
     "NAME": "Returning Shield",
@@ -307,8 +294,7 @@
   },
   "M10Robot:Speedloader": {
     "NAME": "Speedloader",
-    "DESCRIPTION": "Whenever you m10robot:Reload, draw !M! card.",
-    "UPGRADE_DESCRIPTION": "Whenever you m10robot:Reload, draw !M! cards."
+    "DESCRIPTION": "Whenever you m10robot:Reload, draw !M! [!M!|@=card.|>1=cards.|]"
   },
   "M10Robot:SpikeBall": {
     "NAME": "Spike Shell",
@@ -345,16 +331,15 @@
   },
   "M10Robot:TargetingSystem": {
     "NAME": "Targeting System",
-    "DESCRIPTION": "At the beginning of your turn, apply one Lock-On to a random enemy !M! time.",
-    "UPGRADE_DESCRIPTION": "At the beginning of your turn, apply one Lock-On to a random enemy !M! times."
+    "DESCRIPTION": "At the beginning of your turn, apply one Lock-On to a random enemy !M! [!M!|@=time.|>1=times.|]"
   },
   "M10Robot:ThermalImaging": {
     "NAME": "Thermal Imaging",
-    "DESCRIPTION": "m10robot:Swappable. NL Apply !M! Lock-On to ALL enemies. NL Channel !M10Robot:SecondMagic! m10robot:Searchlight."
+    "DESCRIPTION": "m10robot:Swappable. NL Apply !M! Lock-On to ALL enemies."
   },
   "M10Robot:HeatSeekers": {
     "NAME": "Heat Seekers",
-    "DESCRIPTION": "m10robot:Swappable. NL Deal !D! damage to ALL enemies. NL Channel !M! m10robot:Searchlight."
+    "DESCRIPTION": "m10robot:Swappable. NL Deal !D! damage to ALL enemies."
   },
   "M10Robot:ThornField": {
     "NAME": "Thorn Field",
@@ -374,8 +359,7 @@
   },
   "M10Robot:UnstableCompound": {
     "NAME": "Unstable Compound",
-    "DESCRIPTION": "Channel !M! m10robot:Bomb. NL Draw !M! card.",
-    "UPGRADE_DESCRIPTION": "Channel !M! m10robot:Bomb. NL Draw !M! cards."
+    "DESCRIPTION": "Channel !M! m10robot:Bomb. NL Draw !M! [!M!|@=card.|>1=cards.|]"
   },
   "M10Robot:WarForged": {
     "NAME": "War Forged",
@@ -403,8 +387,7 @@
   },
   "M10Robot:WideAngle": {
     "NAME": "Wide Angle",
-    "DESCRIPTION": "When you play an Attack, m10robot:Bit Orbs now hit !M! additional time. NL Channel !M10Robot:SecondMagic! m10robot:Bit.",
-    "UPGRADE_DESCRIPTION": "When you play an Attack, m10robot:Bit Orbs now hit !M! additional times. NL Channel !M10Robot:SecondMagic! m10robot:Bit."
+    "DESCRIPTION": "When you play an Attack, m10robot:Bit Orbs now hit !M! additional [!M!|@=time.|>1=times.|] NL Channel !M10Robot:SecondMagic! m10robot:Bit."
   },
   "M10Robot:WindUp": {
     "NAME": "Wind Up",

@@ -3,7 +3,6 @@ package M10Robot.cards;
 import M10Robot.M10RobotMod;
 import M10Robot.actions.EvokeSpecificOrbMultipleTimesAction;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
-import M10Robot.cards.interfaces.ModularDescription;
 import M10Robot.characters.M10Robot;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -12,7 +11,7 @@ import com.megacrit.cardcrawl.orbs.EmptyOrbSlot;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
-public class EmptyBuffer extends AbstractDynamicCard implements ModularDescription {
+public class EmptyBuffer extends AbstractDynamicCard {
 
     // TEXT DECLARATION
 
@@ -61,17 +60,6 @@ public class EmptyBuffer extends AbstractDynamicCard implements ModularDescripti
             //upgradeBaseCost(UPGRADE_COST);
             upgradeMagicNumber(UPGRADE_PLUS_EVOKES);
             initializeDescription();
-        }
-    }
-
-    @Override
-    public void changeDescription() {
-        if (DESCRIPTION != null) {
-            if (magicNumber > 1) {
-                rawDescription = UPGRADE_DESCRIPTION;
-            } else {
-                rawDescription = DESCRIPTION;
-            }
         }
     }
 }

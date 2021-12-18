@@ -7,6 +7,10 @@
     "NAME": "Auto Caster",
     "DESCRIPTIONS": ["The first #yOrb you #yChannel each turn is #yEvoked.","The first #b"," #yOrbs you #yChannel each turn are #yEvoked."]
   },
+  "M10Robot:BalanceCurrentsPower": {
+    "NAME": "Balance Currents",
+    "DESCRIPTIONS": ["Whenever a debuff is applied to you, gain #b"," #yBlock."]
+  },
   "M10Robot:CompensatorPower": {
     "NAME": "Compensator",
     "DESCRIPTIONS": ["At the end of turn, reduce #yRecoil by #b","."]

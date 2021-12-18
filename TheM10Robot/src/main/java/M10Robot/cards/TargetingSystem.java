@@ -2,7 +2,6 @@ package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
-import M10Robot.cards.interfaces.ModularDescription;
 import M10Robot.characters.M10Robot;
 import M10Robot.powers.TargetingSystemPower;
 import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.BranchingUpgradesCard;
@@ -12,7 +11,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
-public class TargetingSystem extends AbstractDynamicCard implements BranchingUpgradesCard, ModularDescription {
+public class TargetingSystem extends AbstractDynamicCard implements BranchingUpgradesCard {
 
     // TEXT DECLARATION
 
@@ -69,14 +68,4 @@ public class TargetingSystem extends AbstractDynamicCard implements BranchingUpg
         this.isInnate = true;
     }
 
-    @Override
-    public void changeDescription() {
-        if (DESCRIPTION != null) {
-            if (magicNumber > 1) {
-                rawDescription = UPGRADE_DESCRIPTION;
-            } else {
-                rawDescription = DESCRIPTION;
-            }
-        }
-    }
 }

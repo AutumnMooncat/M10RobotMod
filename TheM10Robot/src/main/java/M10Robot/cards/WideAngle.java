@@ -3,18 +3,16 @@ package M10Robot.cards;
 import M10Robot.M10RobotMod;
 import M10Robot.actions.MultichannelAction;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
-import M10Robot.cards.interfaces.ModularDescription;
 import M10Robot.characters.M10Robot;
 import M10Robot.orbs.BitOrb;
 import M10Robot.powers.WideAnglePower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.defect.ChannelAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
-public class WideAngle extends AbstractDynamicCard implements ModularDescription {
+public class WideAngle extends AbstractDynamicCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
@@ -68,17 +66,6 @@ public class WideAngle extends AbstractDynamicCard implements ModularDescription
             //upgradeMagicNumber(UPGRADE_PLUS_EFFECT);
             upgradeSecondMagicNumber(UPGRADE_PLUS_ORBS);
             initializeDescription();
-        }
-    }
-
-    @Override
-    public void changeDescription() {
-        if (DESCRIPTION != null) {
-            if (magicNumber > 1) {
-                rawDescription = UPGRADE_DESCRIPTION;
-            } else {
-                rawDescription = DESCRIPTION;
-            }
         }
     }
 }

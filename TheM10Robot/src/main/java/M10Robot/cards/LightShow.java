@@ -3,7 +3,6 @@ package M10Robot.cards;
 import M10Robot.M10RobotMod;
 import M10Robot.actions.MultichannelAction;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
-import M10Robot.cards.interfaces.ModularDescription;
 import M10Robot.characters.M10Robot;
 import M10Robot.orbs.SearchlightOrb;
 import basemod.interfaces.XCostModifier;
@@ -19,7 +18,7 @@ import java.util.List;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
-public class LightShow extends AbstractDynamicCard implements ModularDescription {
+public class LightShow extends AbstractDynamicCard {
 
     // TEXT DECLARATION
 
@@ -97,17 +96,6 @@ public class LightShow extends AbstractDynamicCard implements ModularDescription
             upgradeName();
             upgradeMagicNumber(UPGRADE_PLUS_ORBS);
             initializeDescription();
-        }
-    }
-
-    @Override
-    public void changeDescription() {
-        if (DESCRIPTION != null) {
-            if (magicNumber > 0) {
-                rawDescription = UPGRADE_DESCRIPTION;
-            } else {
-                rawDescription = DESCRIPTION;
-            }
         }
     }
 }

@@ -2,7 +2,6 @@ package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
-import M10Robot.cards.interfaces.ModularDescription;
 import M10Robot.characters.M10Robot;
 import M10Robot.powers.ScrambledPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -12,7 +11,7 @@ import com.megacrit.cardcrawl.powers.DrawPower;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
-public class Concentration extends AbstractDynamicCard implements ModularDescription {
+public class Concentration extends AbstractDynamicCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
@@ -63,17 +62,6 @@ public class Concentration extends AbstractDynamicCard implements ModularDescrip
             upgradeName();
             this.isInnate = true;
             initializeDescription();
-        }
-    }
-
-    @Override
-    public void changeDescription() {
-        if (DESCRIPTION != null) {
-            if (magicNumber > 1) {
-                rawDescription = UPGRADE_DESCRIPTION;
-            } else {
-                rawDescription = DESCRIPTION;
-            }
         }
     }
 }

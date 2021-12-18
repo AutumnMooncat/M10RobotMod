@@ -2,7 +2,6 @@ package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
-import M10Robot.cards.interfaces.ModularDescription;
 import M10Robot.characters.M10Robot;
 import M10Robot.powers.RAMUpgradePower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -11,7 +10,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
-public class RAMUpgrade extends AbstractDynamicCard implements ModularDescription {
+public class RAMUpgrade extends AbstractDynamicCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
@@ -62,17 +61,6 @@ public class RAMUpgrade extends AbstractDynamicCard implements ModularDescriptio
             upgradeBaseCost(UPGRADE_COST);
             //upgradeMagicNumber(UPGRADE_PLUS_EFFECT);
             initializeDescription();
-        }
-    }
-
-    @Override
-    public void changeDescription() {
-        if (DESCRIPTION != null) {
-            if (magicNumber > 1) {
-                rawDescription = UPGRADE_DESCRIPTION;
-            } else {
-                rawDescription = DESCRIPTION;
-            }
         }
     }
 }
