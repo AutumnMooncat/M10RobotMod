@@ -36,7 +36,6 @@ public class HeatSeekers extends AbstractSwappableCard implements UniqueCard {
     private static final int COST = 0;
     private static final int DAMAGE = 4;
     private static final int UPGRADE_PLUS_DMG = 2;
-    private static final int ORBS = 1;
 
     // /STAT DECLARATION/
 
@@ -47,7 +46,6 @@ public class HeatSeekers extends AbstractSwappableCard implements UniqueCard {
     public HeatSeekers(AbstractSwappableCard linkedCard) {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = damage = DAMAGE;
-        magicNumber = baseMagicNumber = ORBS;
         this.isMultiDamage = true;
         if (linkedCard == null) {
             setLinkedCard(new ThermalImaging(this));
@@ -61,7 +59,6 @@ public class HeatSeekers extends AbstractSwappableCard implements UniqueCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.addToBot(new DamageAllEnemiesAction(p, multiDamage, damageTypeForTurn, AbstractGameAction.AttackEffect.FIRE));
-        this.addToBot(new MultichannelAction(new SearchlightOrb(), magicNumber));
     }
 
     // Upgraded stats.

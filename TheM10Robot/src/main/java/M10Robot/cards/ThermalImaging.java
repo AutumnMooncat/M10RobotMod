@@ -33,7 +33,6 @@ public class ThermalImaging extends AbstractSwappableCard {
     private static final int COST = 1;
     private static final int EFFECT = 2;
     private static final int UPGRADE_PLUS_EFFECT = 1;
-    private static final int ORBS = 1;
 
     // /STAT DECLARATION/
 
@@ -44,7 +43,6 @@ public class ThermalImaging extends AbstractSwappableCard {
     public ThermalImaging(AbstractSwappableCard linkedCard) {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = EFFECT;
-        secondMagicNumber = baseSecondMagicNumber = ORBS;
         if (linkedCard == null) {
             setLinkedCard(new HeatSeekers(this));
         } else {
@@ -58,7 +56,6 @@ public class ThermalImaging extends AbstractSwappableCard {
         for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
             this.addToBot(new ApplyPowerAction(aM, p, new LockOnPower(aM, magicNumber)));
         }
-        this.addToBot(new MultichannelAction(new SearchlightOrb(), secondMagicNumber));
     }
 
     //Upgraded stats.
