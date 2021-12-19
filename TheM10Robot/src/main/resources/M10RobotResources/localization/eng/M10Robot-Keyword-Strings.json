@@ -105,7 +105,7 @@
     "NAMES": [
       "stasis"
     ],
-    "DESCRIPTION": "Debuffs can not decrease while #yStasis is active."
+    "DESCRIPTION": "Other debuffs can not decrease while #yStasis is active."
   },
   {
     "PROPER_NAME": "Swappable",

@@ -29,8 +29,8 @@
   },
   "M10Robot:EMPPower": {
     "NAME": "Stasis",
-    "DESCRIPTIONS": ["Debuffs can not decrease this turn",
-      "Debuffs can not decrease for #b"," turns."]
+    "DESCRIPTIONS": ["Other debuffs can not decrease this turn",
+      "Other debuffs can not decrease for #b"," turns."]
   },
   "M10Robot:LoseFocusPower": {
     "NAME": "Focus Down",
