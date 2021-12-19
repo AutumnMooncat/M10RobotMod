@@ -32,32 +32,42 @@ public class CompileData extends AbstractDynamicCard {
 
     private static final int COST = 1;
     private static final int ORBS = 1;
-    private static final int CARDS = 2;
-    private static final int UPGRADE_PLUS_CARDS = 1;
+    private static final int UPGRADES = 1;
+    private static final int UPGRADE_PLUS_UPGRADES = 1;
 
     // /STAT DECLARATION/
 
 
     public CompileData() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        magicNumber = baseMagicNumber = ORBS;
-        secondMagicNumber = baseSecondMagicNumber = CARDS;
+        magicNumber = baseMagicNumber = UPGRADES;
+        secondMagicNumber = baseSecondMagicNumber = ORBS;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new MultichannelAction(new PresentOrb(), magicNumber));
-        this.addToBot(new DrawCardAction(magicNumber));
-        this.addToBot(new ApplyPowerAction(p, p, new DrawCardNextTurnPower(p, secondMagicNumber)));
+        PresentOrb o = new PresentOrb();
+        for (int i = 0 ; i < magicNumber ; i++) {
+            o.upgrade();
+        }
+        this.addToBot(new MultichannelAction(o, secondMagicNumber));
+    }
+
+    @Override
+    public boolean canUpgrade() {
+        return true;
     }
 
     //Upgraded stats.
     @Override
     public void upgrade() {
         if (!upgraded) {
-            upgradeName();
-            upgradeSecondMagicNumber(UPGRADE_PLUS_CARDS);
+            upgradeMagicNumber(UPGRADE_PLUS_UPGRADES);
+            ++this.timesUpgraded;
+            this.upgraded = true;
+            this.name = cardStrings.NAME + "+" + this.timesUpgraded;
+            this.initializeTitle();
             initializeDescription();
         }
     }
