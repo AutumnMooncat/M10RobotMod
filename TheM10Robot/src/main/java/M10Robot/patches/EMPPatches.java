@@ -12,11 +12,20 @@ public class EMPPatches {
     @SpirePatch(clz = RemoveSpecificPowerAction.class, method = "update")
     public static class DontRemovePower {
         @SpirePrefixPatch
-        public static SpireReturn<?> dontRemove(RemoveSpecificPowerAction __instance, AbstractPower ___powerInstance) {
-            if (___powerInstance != null && __instance.target != null && ___powerInstance.type == AbstractPower.PowerType.DEBUFF && __instance.target.hasPower(EMPPower.POWER_ID) && !(___powerInstance instanceof EMPPower)) {
-                __instance.target.getPower(EMPPower.POWER_ID).flash();
-                __instance.isDone = true;
-                return SpireReturn.Return();
+        public static SpireReturn<?> dontRemove(RemoveSpecificPowerAction __instance, AbstractPower ___powerInstance, String ___powerToRemove) {
+            if (__instance.target != null && __instance.target.hasPower(EMPPower.POWER_ID)) {
+                if (___powerInstance != null && ___powerInstance.type == AbstractPower.PowerType.DEBUFF  && !(___powerInstance instanceof EMPPower)) {
+                    __instance.target.getPower(EMPPower.POWER_ID).flash();
+                    __instance.isDone = true;
+                    return SpireReturn.Return();
+                } else if (___powerToRemove != null){
+                    AbstractPower p = __instance.target.getPower(___powerToRemove);
+                    if (p != null && p.type == AbstractPower.PowerType.DEBUFF && !(p instanceof EMPPower)) {
+                        __instance.target.getPower(EMPPower.POWER_ID).flash();
+                        __instance.isDone = true;
+                        return SpireReturn.Return();
+                    }
+                }
             }
             return SpireReturn.Continue();
         }
@@ -25,11 +34,20 @@ public class EMPPatches {
     @SpirePatch(clz = ReducePowerAction.class, method = "update")
     public static class DontReducePower {
         @SpirePrefixPatch
-        public static SpireReturn<?> dontReduce(ReducePowerAction __instance, AbstractPower ___powerInstance) {
-            if (___powerInstance != null && __instance.target != null && ___powerInstance.type == AbstractPower.PowerType.DEBUFF && __instance.target.hasPower(EMPPower.POWER_ID) && !(___powerInstance instanceof EMPPower)) {
-                __instance.target.getPower(EMPPower.POWER_ID).flash();
-                __instance.isDone = true;
-                return SpireReturn.Return();
+        public static SpireReturn<?> dontReduce(ReducePowerAction __instance, AbstractPower ___powerInstance, String ___powerID) {
+            if (__instance.target != null && __instance.target.hasPower(EMPPower.POWER_ID)) {
+                if (___powerInstance != null && ___powerInstance.type == AbstractPower.PowerType.DEBUFF  && !(___powerInstance instanceof EMPPower)) {
+                    __instance.target.getPower(EMPPower.POWER_ID).flash();
+                    __instance.isDone = true;
+                    return SpireReturn.Return();
+                } else if (___powerID != null){
+                    AbstractPower p = __instance.target.getPower(___powerID);
+                    if (p != null && p.type == AbstractPower.PowerType.DEBUFF && !(p instanceof EMPPower)) {
+                        __instance.target.getPower(EMPPower.POWER_ID).flash();
+                        __instance.isDone = true;
+                        return SpireReturn.Return();
+                    }
+                }
             }
             return SpireReturn.Continue();
         }
