@@ -95,7 +95,7 @@ public class PresentOrb extends AbstractCustomOrb {
     @Override
     public void onEvoke() { // 1.On Orb Evoke
         this.addToBot(new OverclockCardAction(true));
-        this.addToTop(new RemoveSpecificPowerAction(p, p, linkedPower));
+        this.addToBot(new RemoveSpecificPowerAction(p, p, linkedPower));
     }
 
     @Override

@@ -131,7 +131,7 @@ public class BitOrb extends AbstractCustomOrb {
                 }
             });
         }
-        this.addToTop(new RemoveSpecificPowerAction(p, p, linkedPower));
+        this.addToBot(new RemoveSpecificPowerAction(p, p, linkedPower));
     }
 
     @Override

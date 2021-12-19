@@ -114,7 +114,7 @@ public class BombOrb extends AbstractCustomOrb {
         });
         this.addToBot(new DamageAllEnemiesAction(p, DamageInfo.createDamageMatrix(evokeAmount, true, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.FIRE));
         //this.addToBot(new ApplyPowerAction(p, p, new RecoilPower(p, RECOIL)));
-        this.addToTop(new RemoveSpecificPowerAction(p, p, linkedPower));
+        this.addToBot(new RemoveSpecificPowerAction(p, p, linkedPower));
     }
 
     @Override
