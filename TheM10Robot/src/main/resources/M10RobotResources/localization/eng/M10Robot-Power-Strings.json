@@ -44,6 +44,10 @@
       "Select any modules to unequip and discard them.",
       "No open module slots."]
   },
+  "M10Robot:OverdrivePower": {
+    "NAME": "Overdrive",
+    "DESCRIPTIONS": ["At the start of your turn, #yOverclock all cards in your hand #b"," times."]
+  },
   "M10Robot:PowerSavingsPower": {
     "NAME": "Power Savings",
     "DESCRIPTIONS": ["At the start of your turn, gain #b"," #yEnergy."]
