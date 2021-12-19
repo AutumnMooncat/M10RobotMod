@@ -62,13 +62,11 @@ public class CompileData extends AbstractDynamicCard {
     //Upgraded stats.
     @Override
     public void upgrade() {
-        if (!upgraded) {
-            upgradeMagicNumber(UPGRADE_PLUS_UPGRADES);
-            ++this.timesUpgraded;
-            this.upgraded = true;
-            this.name = cardStrings.NAME + "+" + this.timesUpgraded;
-            this.initializeTitle();
-            initializeDescription();
-        }
+        upgradeMagicNumber(UPGRADE_PLUS_UPGRADES);
+        ++this.timesUpgraded;
+        this.upgraded = true;
+        this.name = cardStrings.NAME + "+" + this.timesUpgraded;
+        this.initializeTitle();
+        initializeDescription();
     }
 }
