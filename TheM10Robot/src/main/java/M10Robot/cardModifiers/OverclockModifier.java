@@ -2,10 +2,13 @@ package M10Robot.cardModifiers;
 
 import M10Robot.M10RobotMod;
 import M10Robot.cards.abstractCards.AbstractModdedCard;
+import M10Robot.cards.abstractCards.AbstractSwappableCard;
 import basemod.abstracts.AbstractCardModifier;
 import basemod.helpers.CardModifierManager;
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 public class OverclockModifier extends AbstractCardModifier {
@@ -28,6 +31,13 @@ public class OverclockModifier extends AbstractCardModifier {
     @Override
     public boolean removeOnCardPlayed(AbstractCard card) {
         return true;
+    }
+
+    @Override
+    public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
+        if (card instanceof AbstractSwappableCard && card.cardsToPreview != null) {
+            CardModifierManager.removeWhenPlayedModifiers(card.cardsToPreview);
+        }
     }
 
     @Override
