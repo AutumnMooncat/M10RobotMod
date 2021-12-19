@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
 public abstract class AbstractReloadableCard extends AbstractClickableCard implements OnDiscardedCard {
     public boolean needsReload;
@@ -46,7 +47,7 @@ public abstract class AbstractReloadableCard extends AbstractClickableCard imple
 
     @Override
     public void onRightClick() {
-        if (needsReload) {
+        if (needsReload && EnergyPanel.getCurrentEnergy() > 0) {
             this.addToTop(new LoseEnergyAction(1));
             resetAmmo();
         }
