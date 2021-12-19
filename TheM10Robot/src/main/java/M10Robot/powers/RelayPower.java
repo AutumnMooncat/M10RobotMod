@@ -1,6 +1,7 @@
 package M10Robot.powers;
 
 import M10Robot.M10RobotMod;
+import M10Robot.cards.abstractCards.AbstractSwappableCard;
 import basemod.interfaces.CloneablePowerInterface;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.NonStackablePower;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
@@ -92,10 +93,16 @@ public class RelayPower extends AbstractPower implements CloneablePowerInterface
             if (AbstractDungeon.player.discardPile.contains(card)) {
                 AbstractDungeon.player.discardPile.moveToHand(card);
             }
-            /*if (AbstractDungeon.player.exhaustPile.contains(card)) {
-                card.unfadeOut();
-                AbstractDungeon.player.exhaustPile.moveToHand(card);
-            }*/
+            if (card instanceof AbstractSwappableCard) {
+                card.cardsToPreview.unfadeOut();
+                card.cardsToPreview.unhover();
+                if (AbstractDungeon.player.drawPile.contains(card.cardsToPreview)) {
+                    AbstractDungeon.player.drawPile.moveToHand(card.cardsToPreview);
+                }
+                if (AbstractDungeon.player.discardPile.contains(card.cardsToPreview)) {
+                    AbstractDungeon.player.discardPile.moveToHand(card.cardsToPreview);
+                }
+            }
         }
         relayCards.clear();
         updateDescription();
