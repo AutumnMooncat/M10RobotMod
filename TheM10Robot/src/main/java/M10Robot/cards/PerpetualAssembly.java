@@ -2,7 +2,7 @@ package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
 import M10Robot.actions.MultichannelAction;
-import M10Robot.cards.abstractCards.AbstractDynamicCard;
+import M10Robot.cards.abstractCards.AbstractSwappableCard;
 import M10Robot.characters.M10Robot;
 import M10Robot.orbs.PresentOrb;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -12,7 +12,7 @@ import com.megacrit.cardcrawl.powers.DrawCardNextTurnPower;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
-public class PerpetualAssembly extends AbstractDynamicCard {
+public class PerpetualAssembly extends AbstractSwappableCard {
 
     // TEXT DECLARATION
 
@@ -37,12 +37,19 @@ public class PerpetualAssembly extends AbstractDynamicCard {
 
     // /STAT DECLARATION/
 
-
     public PerpetualAssembly() {
+        this(null);
+    }
+
+    public PerpetualAssembly(AbstractSwappableCard linkedCard) {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = ORBS;
         secondMagicNumber = baseSecondMagicNumber = CARDS;
-        this.shuffleBackIntoDrawPile = true;
+        if (linkedCard == null) {
+            setLinkedCard(new RapidAssembly(this));
+        } else {
+            setLinkedCard(linkedCard);
+        }
     }
 
     // Actions the card should do.
@@ -60,6 +67,7 @@ public class PerpetualAssembly extends AbstractDynamicCard {
             //upgradeBaseCost(UPGRADE_COST);
             upgradeSecondMagicNumber(UPGRADE_PLUS_CARDS);
             initializeDescription();
+            super.upgrade();
         }
     }
 }
