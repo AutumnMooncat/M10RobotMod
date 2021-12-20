@@ -34,7 +34,7 @@ public class FullAuto extends AbstractReloadableCard {
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
-    private static final int COST = 1;
+    private static final int COST = 2;
     private static final int DAMAGE = 3;
     private static final int UPGRADE_PLUS_DMG = 1;
     private static final int HITS = 5;
