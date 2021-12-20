@@ -27,7 +27,7 @@ public class SpikeBall extends AbstractDynamicCard {
     // TEXT DECLARATION
 
     public static final String ID = M10RobotMod.makeID(SpikeBall.class.getSimpleName());
-    public static final String IMG = makeCardPath("SpikeBall3.png");
+    public static final String IMG = makeCardPath("SpikeBall.png");
     // Setting the image as as easy as can possibly be now. You just need to provide the image name
 
     // /TEXT DECLARATION/
