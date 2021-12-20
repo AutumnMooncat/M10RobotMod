@@ -39,7 +39,7 @@
   },
   "M10Robot:AutoCaster": {
     "NAME": "Auto Caster",
-    "DESCRIPTION": "{@@}The first {!M!|@=Orb|>1=!M! Orbs} you Channel each turn is Evoked."
+    "DESCRIPTION": "{@@}The first {!M!|@=Orb|>1=!M! Orbs} you Channel each turn {!M!|@=is|>1=are} Evoked."
   },
   "M10Robot:BalanceCurrents": {
     "NAME": "Balance Currents",
@@ -101,7 +101,7 @@
   },
   "M10Robot:DoubleCaster": {
     "NAME": "Double Caster",
-    "DESCRIPTION": "{@@}The first {!M!|@=Orb|>1=!M! Orbs} you Evoke each turn is Evoked twice."
+    "DESCRIPTION": "{@@}The first {!M!|@=Orb|>1=!M! Orbs} you Evoke each turn {!M!|@=is|>1=are} Evoked twice."
   },
   "M10Robot:EMP": {
     "NAME": "EMP",
@@ -138,7 +138,7 @@
   },
   "M10Robot:FullAuto": {
     "NAME": "Full Throttle",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies !M! times.",
+    "DESCRIPTION": "Deal !D! damage to ALL enemies !M! times. NL Add !M10Robot:SecondMagic! *Burns into your hand.",
     "EXTENDED_DESCRIPTION": ["Fuller Auto"]
   },
   "M10Robot:HealthDown": {
@@ -163,7 +163,7 @@
   },
   "M10Robot:LightShow": {
     "NAME": "Light Show",
-    "DESCRIPTION": "{@@}Channel X{!M!|>0= + !M!} m10robot:Searchlights."
+    "DESCRIPTION": "{@@}Channel !M! m10robot:Searchlight{!M!|>1=s} for each Skill played this turn."
   },
   "M10Robot:MagnumStrike": {
     "NAME": "Magnum Strike",
@@ -191,7 +191,7 @@
   },
   "M10Robot:PerpetualAssembly": {
     "NAME": "Perpetual Assembly",
-    "DESCRIPTION": "{@@}m10robot:Swappable. NL Channel !M! m10robot:Present{!M!|>1=s}. NL Draw !M10Robot:SecondMagic! additional card{!M10Robot:SecondMagic!|>1=s}. next turn."
+    "DESCRIPTION": "{@@}m10robot:Swappable. NL Channel !M! m10robot:Present{!M!|>1=s}. NL Draw !M10Robot:SecondMagic! additional card{!M10Robot:SecondMagic!|>1=s} next turn."
   },
   "M10Robot:RapidAssembly": {
     "NAME": "Rapid Assembly",
@@ -300,7 +300,7 @@
   },
   "M10Robot:SpikeBall": {
     "NAME": "Spike Shell",
-    "DESCRIPTION": "Deal !D! damage. NL Gain !M! m10robot:Spikes."
+    "DESCRIPTION": "Gain !B! Block. NL Gain !M! m10robot:Spikes."
   },
   "M10Robot:SpikyPlating": {
     "NAME": "Spiker Form",
@@ -309,6 +309,10 @@
   "M10Robot:SplitBeam": {
     "NAME": "Split Beam",
     "DESCRIPTION": "Deal !D! damage. NL Deal !D! damage to ALL enemies."
+  },
+  "M10Robot:SteelWall": {
+    "NAME": "Steel Wall",
+    "DESCRIPTION": "{@@}Gain !B! Block. NL Channel !M! m10robot:Searchlight{!M!|>1=s}."
   },
   "M10Robot:Strike": {
     "NAME": "Strike",
