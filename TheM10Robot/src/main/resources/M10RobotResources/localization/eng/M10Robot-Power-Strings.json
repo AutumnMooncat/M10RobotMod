@@ -36,13 +36,9 @@
     "NAME": "Focus Down",
     "DESCRIPTIONS": ["At the end of this turn, lose #b", " #yFocus."]
   },
-  "M10Robot:ModulesPower": {
-    "NAME": "Modular Body",
-    "DESCRIPTIONS": ["Modules may be equipped to increase your effectiveness or to change certain mechanics.",
-      " NL Module Slots: ", "Empty", "Slot ",
-      " NL Left Click to view or unequip modules.",
-      "Select any modules to unequip and discard them.",
-      "No open module slots."]
+  "M10Robot:MomentumPower": {
+    "NAME": "Momentum",
+    "DESCRIPTIONS": ["Increases attack damage, #yBlock gained from cards, and cards drawn next turn by #b",". At the start of your turn, reduce Momentum by #1."]
   },
   "M10Robot:OverdrivePower": {
     "NAME": "Overdrive",
