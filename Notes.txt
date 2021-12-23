@@ -1,53 +1,25 @@
 Rework Ideas
 
+Overclocking needs an improvement to how its calculated and applied
 
-Recycle - Exhaust/Purge a card and gain Scrap and Components
-Scrap - Resource obtained from Recycling, used for Synthesis
-Components - Extra Effects (Boosters), used for Synthesis
+Present Orbs are silly and need to be reworked
 
-Synthesis (Campfire Option if Recycled cards are purged, else Combat Action) - Combine Scrap and Components to make new cards. Will need an entirely new screen most likely...
-Assembly (Combat Action if Recycled cards are purged) - Combine Scrap and Components mid to make new card mid-combat. Resources used are returned at the end of combat.
+Bomb Orb - Stores damage when you are attacked, evokes to deal damage?
 
-Deck Control Ideas - Targeted Draw, Reorganize
-Targeted Draw - Draw a card of the specified type, if possible, else draw normally.
-Reorganize - Move cards of a certain type in the draw pile to the top
+Momentum - See how it feels
 
-Retool - Convert card into Booster/Module
+If Momentum is implemented, rework Scrambled to be stackable in cards reduced as well as turns
 
-Reforge - Increase the base values of a card for that combat
+Aimed modifier vs Spiky Modifier - Are they balanced against each other? Aimed is a free +50% damage; Spiky can scale infinitely, but drops off when attacked due to losing Spikes
 
-Orb Ideas: Rework Orbs to be upgradeable and modular. Also, assemble them into their own mechanic to not interact with basegame orbs and focus?
-Bit - Passive: When you play an attack, deal 2 damage to a random enemy / ALL enemies with Lock-On. +1 damage per level. Evoke: Double damage and 2 Lock-On to a random enemy
-Present - Passive: At the start of your turn, gain 2 Components. +1 per level. Evoke: Gain all invested components
-Searchlight - Passive: Deals 2 damage when you are attacked. +1 damage per level. Evoke: Gain 2 Spikes. +1 Spikes per level
-Bomb - Passive: Increase this Orbs damage by ?. Automatically evoke in 2/3 turns. + ? damage per level. Evoke: Deal ? damage to ALL enemies and gain 1 Recoil? + ? damage per level.
+Upgrading Orbs is probably too strong
 
-Orb Adjustment:
-Bit - Passive: When you play an attack, deal 2 damage to ALL enemies. +1 damage per level. Evoke: ?
-Bomb - Passive: At the end of your turn, deal ? damage to ALL enemies with Lock-On. +? damage per level. Evoke: ?
+There's no Orb Slot increase and no Focus, is this okay though?
 
-
-
-Main mechanics:
-
-Orbs converted to a new mechanic? (which can be upgraded and have modules put on them?)
-Boosters (can be equipped to cards to add extra effects)
-Boosters are draftable and more of them need to add new effects and not just stat boosting. When a booster is drawn, draw another card?
-Modules can now be put on orbs?
-Components can be obtained from multiple sources. Components are used to upgrade cards and orbs mid-combat
-
-Overclocking:
-Certain cards can Overclock other cards?
-Render an icon on cards like boosters that you can click to overclock
-
-Recharging Overhaul:
-Use a cardmod?
-Cycle between Loaded vs Reloading, can spend energy to reload right away. Dont carry between combat.
-
+Orbs are maybe too strong in general. Bit being base 2 damage means that it deals 3 damage per attack with Lock-On. Bomb being base 5 damage means it deals 7 damage per turn to ALL enemies with Lock-On.
 
 Archetypes:
 Lock-On
 Components
-Boosters
 Turtle (Thorns/Spikes, Reflection)
 Heavy Assault (Recoil, Reloading, Multihits)
