@@ -3,7 +3,7 @@ package M10Robot.cutStuff;
 import M10Robot.M10RobotMod;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
-import M10Robot.powers.AmmoBoxPower;
+import M10Robot.cutStuff.powers.AmmoBoxPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;

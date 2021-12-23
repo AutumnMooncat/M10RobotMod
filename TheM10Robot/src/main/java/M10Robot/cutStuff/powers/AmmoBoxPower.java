@@ -1,4 +1,4 @@
-package M10Robot.powers;
+package M10Robot.cutStuff.powers;
 
 import M10Robot.M10RobotMod;
 import M10Robot.cards.abstractCards.AbstractReloadableCard;
