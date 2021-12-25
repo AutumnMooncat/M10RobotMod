@@ -40,9 +40,7 @@ public class OverdrivePower extends AbstractPower implements CloneablePowerInter
 
     @Override
     public void atStartOfTurnPostDraw() {
-        for (int i = 0 ; i < amount ; i++) {
-            this.addToBot(new OverclockCardAction(true));
-        }
+        this.addToBot(new OverclockCardAction(true, amount));
     }
 
     public void updateDescription() {

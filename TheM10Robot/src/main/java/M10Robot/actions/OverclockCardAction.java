@@ -16,12 +16,14 @@ public class OverclockCardAction extends AbstractGameAction {
     private AbstractCard card;
     private boolean allCards;
 
-    public OverclockCardAction(AbstractCard card) {
+    public OverclockCardAction(AbstractCard card, int rawPercent) {
         this.card = card;
+        this.amount = rawPercent;
     }
 
-    public OverclockCardAction(boolean allCards) {
+    public OverclockCardAction(boolean allCards, int rawPercent) {
         this.allCards = allCards;
+        this.amount = rawPercent;
     }
 
     @Override
@@ -30,10 +32,10 @@ public class OverclockCardAction extends AbstractGameAction {
             CardCrawlGame.sound.play("GHOST_ORB_IGNITE_1", 0.1F);
             for (AbstractCard c : AbstractDungeon.player.hand.group) {
                 if (OverclockUtil.canOverclock(c)) {
-                    CardModifierManager.addModifier(c, new OverclockModifier());
+                    CardModifierManager.addModifier(c, new OverclockModifier(amount));
                     c.superFlash();
                     if (c instanceof AbstractSwappableCard) {
-                        CardModifierManager.addModifier(c.cardsToPreview, new OverclockModifier());
+                        CardModifierManager.addModifier(c.cardsToPreview, new OverclockModifier(amount));
                     }
                 }
             }
@@ -52,10 +54,10 @@ public class OverclockCardAction extends AbstractGameAction {
                 card = validCards.getRandomCard(true);
             }
             CardCrawlGame.sound.play("GHOST_ORB_IGNITE_1", 0.1F);
-            CardModifierManager.addModifier(card, new OverclockModifier());
+            CardModifierManager.addModifier(card, new OverclockModifier(amount));
             card.superFlash();
             if (card instanceof AbstractSwappableCard) {
-                CardModifierManager.addModifier(card.cardsToPreview, new OverclockModifier());
+                CardModifierManager.addModifier(card.cardsToPreview, new OverclockModifier(amount));
             }
         }
 

@@ -13,19 +13,15 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 public class OverclockModifier extends AbstractCardModifier {
     public static final String ID = M10RobotMod.makeID("Overclock");
-    private static final int EARLY_PERCENT = 25;
-    private static final int MID_PERCENT = 25;
-    private static final int LATE_PERCENT = 25;
+    private static final int DEFAULT_PERCENT = 25;
 
     int rawPercent;
-    int count;
 
     public OverclockModifier() {
-        this(1);
+        this(DEFAULT_PERCENT);
     }
-    public OverclockModifier(int count) {
-        this.count = count;
-        rawPercent = getRawPercent();
+    public OverclockModifier(int rawPercent) {
+        this.rawPercent = rawPercent;
     }
 
     @Override
@@ -46,30 +42,15 @@ public class OverclockModifier extends AbstractCardModifier {
         card.initializeDescription();
     }
 
-    public int getOverclocks() {
-        return count;
-    }
-
     public int getRawPercent() {
-        int percent = 0;
-        for (int i = 0 ; i < count ; i++) {
-            if (i < 4) {
-                percent += EARLY_PERCENT;
-            } else if (i < 9) {
-                percent += MID_PERCENT;
-            } else {
-                percent += LATE_PERCENT;
-            }
-        }
-        return percent;
+        return rawPercent;
     }
 
     @Override
     public boolean shouldApply(AbstractCard card) {
         if (CardModifierManager.hasModifier(card, identifier(card))) {
             OverclockModifier mod = ((OverclockModifier)CardModifierManager.getModifiers(card, identifier(card)).get(0));
-            mod.count += this.count;
-            mod.rawPercent = mod.getRawPercent();
+            mod.rawPercent += this.rawPercent;
             card.applyPowers();
             card.initializeDescription();
             return false;
@@ -106,6 +87,6 @@ public class OverclockModifier extends AbstractCardModifier {
 
     @Override
     public AbstractCardModifier makeCopy() {
-        return new OverclockModifier(count);
+        return new OverclockModifier(rawPercent);
     }
 }

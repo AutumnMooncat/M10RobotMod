@@ -30,6 +30,7 @@ public class Ascension extends AbstractDynamicCard {
     private static final int COST = 1;
     private static final int DRAW = 1;
     private static final int UPGRADE_PLUS_DRAW = 1;
+    private static final int PERCENT = 25;
 
     // /STAT DECLARATION/
 
@@ -37,6 +38,7 @@ public class Ascension extends AbstractDynamicCard {
     public Ascension() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = DRAW;
+        secondMagicNumber = baseSecondMagicNumber = PERCENT;
     }
 
     // Actions the card should do.
@@ -44,7 +46,7 @@ public class Ascension extends AbstractDynamicCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.addToBot(new DrawCardAction(magicNumber));
         //this.addToBot(new ArmamentsAction(true));
-        this.addToBot(new OverclockCardAction(true));
+        this.addToBot(new OverclockCardAction(true, secondMagicNumber));
     }
 
     //Upgraded stats.
