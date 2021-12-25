@@ -46,9 +46,10 @@ public class PresentOrb extends AbstractCustomOrb {
     private static final float ORB_WAVY_DIST = 0.04f;
     private static final float PI_4 = 12.566371f;
 
-    private static final int PASSIVE_AMOUNT = 1;
-    private static final int EVOKE_AMOUNT = 0;
-    private static final int UPGRADE_PLUS_PASSIVE_AMOUNT= 1;
+    private static final int PASSIVE_AMOUNT = 10;
+    private static final int EVOKE_AMOUNT = 20;
+    private static final int UPGRADE_PLUS_PASSIVE_AMOUNT= 5;
+    private static final int UPGRADE_PLUS_EVOKE_AMOUNT = 10;
 
     public PresentOrb() {
         this(0);
@@ -70,9 +71,9 @@ public class PresentOrb extends AbstractCustomOrb {
     @Override
     public void upgrade() {
         if (canUpgrade()) {
-            upgradeEvoke(OverclockUtil.getOverclockCost(this)); //Call this before upgradeName
             upgradeName(); //Cost will increase once we call upgradeName and increment timesUpgraded
             upgradePassive(UPGRADE_PLUS_PASSIVE_AMOUNT);
+            upgradeEvoke(UPGRADE_PLUS_EVOKE_AMOUNT);
             CardCrawlGame.sound.play("ORB_LIGHTNING_CHANNEL", 0.1F);
             updateDescription();
         }
@@ -87,14 +88,14 @@ public class PresentOrb extends AbstractCustomOrb {
     public void updateDescription() { // Set the on-hover description of the orb
         applyFocus(); // Apply Focus (Look at the next method)
         description =
-                DESC[0] + passiveAmount + (passiveAmount == 1 ? DESC[1] : DESC[2]) +
+                DESC[0] + passiveAmount + DESC[1] + evokeAmount + DESC[2] +
                 UPGRADE_TEXT[0] +
                 DESC[3] + UPGRADE_PLUS_PASSIVE_AMOUNT + DESC[4];
     }
 
     @Override
     public void onEvoke() { // 1.On Orb Evoke
-        this.addToBot(new OverclockCardAction(true));
+        this.addToBot(new OverclockCardAction(true, evokeAmount));
         this.addToBot(new RemoveSpecificPowerAction(p, p, linkedPower));
     }
 
@@ -120,8 +121,8 @@ public class PresentOrb extends AbstractCustomOrb {
     }
 
     protected void renderText(SpriteBatch sb) {
-        FontHelper.renderFontCentered(sb, FontHelper.cardEnergyFont_L, Integer.toString(this.passiveAmount), this.cX + NUM_X_OFFSET + GENERIC_X_OFFSET, this.cY + this.bobEffect.y / 2.0F + NUM_Y_OFFSET + 20.0F * Settings.scale, this.c, this.fontScale);
-        //FontHelper.renderFontCentered(sb, FontHelper.cardEnergyFont_L, Integer.toString(this.evokeAmount), this.cX + NUM_X_OFFSET + GENERIC_X_OFFSET, this.cY + this.bobEffect.y / 2.0F + NUM_Y_OFFSET - 4.0F * Settings.scale, new Color(0.2F, 1.0F, 1.0F, this.c.a), this.fontScale);
+        FontHelper.renderFontCentered(sb, FontHelper.cardEnergyFont_L, this.passiveAmount +"%", this.cX + NUM_X_OFFSET + GENERIC_X_OFFSET, this.cY + this.bobEffect.y / 2.0F + NUM_Y_OFFSET + 20.0F * Settings.scale, this.c, this.fontScale);
+        FontHelper.renderFontCentered(sb, FontHelper.cardEnergyFont_L, this.evokeAmount +"%", this.cX + NUM_X_OFFSET + GENERIC_X_OFFSET, this.cY + this.bobEffect.y / 2.0F + NUM_Y_OFFSET - 4.0F * Settings.scale, new Color(0.2F, 1.0F, 1.0F, this.c.a), this.fontScale);
     }
 
 
@@ -152,9 +153,7 @@ public class PresentOrb extends AbstractCustomOrb {
                 @Override
                 public void update() {
                     linkedOrb.playAnimation(THROW_IMG, SHORT_ANIM);
-                    for (int i = 0 ; i < linkedOrb.passiveAmount ; i++) {
-                        this.addToBot(new OverclockCardAction(false));
-                    }
+                    this.addToBot(new OverclockCardAction(true, linkedOrb.passiveAmount));
                     this.isDone = true;
                 }
             });
