@@ -56,11 +56,10 @@ public class BombOrb extends AbstractCustomOrb {
     private static final float ORB_WAVY_DIST = 0.04f;
     private static final float PI_4 = 12.566371f;
 
-    private static final int PASSIVE_DAMAGE = 5;
-    private static final int EVOKE_DAMAGE = 8;
-    private static final int UPGRADE_PLUS_PASSIVE_DAMAGE = 5;
-    private static final int UPGRADE_PLUS_EVOKE_DAMAGE = 8;
-    private static final int RECOIL = 1;
+    private static final int PASSIVE_DAMAGE = 50;
+    private static final int EVOKE_DAMAGE = 6;
+    private static final int UPGRADE_PLUS_PASSIVE_DAMAGE = 25;
+    //private static final int UPGRADE_PLUS_EVOKE_DAMAGE = 4;
 
     public BombOrb() {
         this(0);
@@ -84,7 +83,7 @@ public class BombOrb extends AbstractCustomOrb {
         if (canUpgrade()) {
             upgradeName();
             upgradePassive(UPGRADE_PLUS_PASSIVE_DAMAGE);
-            upgradeEvoke(UPGRADE_PLUS_EVOKE_DAMAGE);
+            //upgradeEvoke(UPGRADE_PLUS_EVOKE_DAMAGE);
             updateDescription();
         }
     }
@@ -96,11 +95,11 @@ public class BombOrb extends AbstractCustomOrb {
 
     @Override
     public void updateDescription() { // Set the on-hover description of the orb
-        applyFocus(); // Apply Focus (Look at the next method)
+        applyFocusToPassiveOnly();
         description =
                 DESC[0] + passiveAmount + DESC[1] + evokeAmount + DESC[2] +
                 UPGRADE_TEXT[0] +
-                DESC[3] + UPGRADE_PLUS_PASSIVE_DAMAGE + DESC[4] + UPGRADE_PLUS_EVOKE_DAMAGE + DESC[5];
+                DESC[3] + UPGRADE_PLUS_PASSIVE_DAMAGE + DESC[4];
     }
 
     @Override
@@ -112,38 +111,53 @@ public class BombOrb extends AbstractCustomOrb {
                 this.isDone = true;
             }
         });
-        this.addToBot(new DamageAllEnemiesAction(p, DamageInfo.createDamageMatrix(evokeAmount, true, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.FIRE));
+        AbstractMonster t = null;
+        for (AbstractMonster mon : AbstractDungeon.getMonsters().monsters) {
+            if (!mon.isDeadOrEscaped()) {
+                if (t == null || mon.currentHealth > t.currentHealth) {
+                    t = mon;
+                }
+            }
+        }
+        if (t != null) {
+            int damage = evokeAmount;
+            if (t.hasPower(LockOnPower.POWER_ID)) {
+                damage *= LockOnPower.MULTIPLIER;
+            }
+            this.addToBot(new DamageAction(t, new DamageInfo(p, damage, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.FIRE));
+        }
+
         //this.addToBot(new ApplyPowerAction(p, p, new RecoilPower(p, RECOIL)));
         this.addToBot(new RemoveSpecificPowerAction(p, p, linkedPower));
     }
 
-    @Override
-    public void onEndOfTurn() {
-        boolean didSomething = false;
-        for (AbstractMonster mon : AbstractDungeon.getMonsters().monsters) {
-            if (!mon.isDeadOrEscaped() && mon.hasPower(LockOnPower.POWER_ID)) {
-                didSomething = true;
-                this.addToBot(new DamageAction(mon, new DamageInfo(p, (int) (passiveAmount * LockOnPower.MULTIPLIER), DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.FIRE, true));
-            }
-        }
-        if (didSomething) {
-            this.addToTop(new AbstractGameAction() {
-                @Override
-                public void update() {
-                    playAnimation(ATTACK_IMG, MED_ANIM);
-                    this.isDone = true;
-                }
-            });
-        } else {
-            this.addToTop(new AbstractGameAction() {
-                @Override
-                public void update() {
-                    playAnimation(FAILURE_IMG, MED_ANIM);
-                    this.isDone = true;
-                }
-            });
-        }
-    }
+//    @Override
+//    public void onEndOfTurn() {
+//        boolean didSomething = false;
+//        for (AbstractMonster mon : AbstractDungeon.getMonsters().monsters) {
+//            if (!mon.isDeadOrEscaped() && mon.hasPower(LockOnPower.POWER_ID)) {
+//                didSomething = true;
+//                this.addToBot(new DamageAction(mon, new DamageInfo(p, (int) (passiveAmount * LockOnPower.MULTIPLIER), DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.FIRE, true));
+//            }
+//        }
+//        if (didSomething) {
+//            this.addToTop(new AbstractGameAction() {
+//                @Override
+//                public void update() {
+//                    playAnimation(ATTACK_IMG, MED_ANIM);
+//                    this.isDone = true;
+//                }
+//            });
+//        } else {
+//            this.addToTop(new AbstractGameAction() {
+//                @Override
+//                public void update() {
+//                    playAnimation(FAILURE_IMG, MED_ANIM);
+//                    this.isDone = true;
+//                }
+//            });
+//        }
+//    }
 
     @Override
     public void updateAnimation() {// You can totally leave this as is.
@@ -169,7 +183,7 @@ public class BombOrb extends AbstractCustomOrb {
     protected void renderText(SpriteBatch sb) {
         //FontHelper.renderFontCentered(sb, FontHelper.cardEnergyFont_L, Integer.toString(this.turnCount), this.cX + NUM_X_OFFSET + (2.5F * GENERIC_X_OFFSET), this.cY + this.bobEffect.y / 2.0F + NUM_Y_OFFSET + 7.0F * Settings.scale, new Color(1.0F, 0.2F, 0.2F, this.c.a), this.fontScale);
         FontHelper.renderFontCentered(sb, FontHelper.cardEnergyFont_L, Integer.toString(this.evokeAmount), this.cX + NUM_X_OFFSET + GENERIC_X_OFFSET, this.cY + this.bobEffect.y / 2.0F + NUM_Y_OFFSET - 4.0F * Settings.scale, new Color(0.2F, 1.0F, 1.0F, this.c.a), this.fontScale);
-        FontHelper.renderFontCentered(sb, FontHelper.cardEnergyFont_L, Integer.toString(this.passiveAmount), this.cX + NUM_X_OFFSET + GENERIC_X_OFFSET, this.cY + this.bobEffect.y / 2.0F + NUM_Y_OFFSET + 20.0F * Settings.scale, this.c, this.fontScale);
+        FontHelper.renderFontCentered(sb, FontHelper.cardEnergyFont_L, this.passiveAmount + "%", this.cX + NUM_X_OFFSET + GENERIC_X_OFFSET, this.cY + this.bobEffect.y / 2.0F + NUM_Y_OFFSET + 20.0F * Settings.scale, this.c, this.fontScale);
     }
 
 
@@ -189,6 +203,8 @@ public class BombOrb extends AbstractCustomOrb {
     }
 
     private static class BombOrbPower extends AbstractLinkedOrbPower {
+
+        private boolean attacked = false;
 
         public BombOrbPower(AbstractCustomOrb linkedOrb) {
             super(linkedOrb);
@@ -226,15 +242,32 @@ public class BombOrb extends AbstractCustomOrb {
         @Override
         public int onAttacked(DamageInfo info, int damageAmount) {
             if (info.type != DamageInfo.DamageType.THORNS && info.type != DamageInfo.DamageType.HP_LOSS) {
+                attacked = true;
                 this.addToTop(new AbstractGameAction() {
                     @Override
                     public void update() {
-                        linkedOrb.playAnimation(HURT_IMG, MED_ANIM);
+                        linkedOrb.playAnimation(SUCCESS_IMG, MED_ANIM);
+                        linkedOrb.evokeAmount += Math.max(1, info.output * (linkedOrb.passiveAmount / 100F));
                         this.isDone = true;
                     }
                 });
             }
             return damageAmount;
+        }
+
+        @Override
+        public void atStartOfTurn() {
+            if (attacked) {
+                attacked = false;
+            } else {
+                this.addToTop(new AbstractGameAction() {
+                    @Override
+                    public void update() {
+                        linkedOrb.playAnimation(FAILURE_IMG, MED_ANIM);
+                        this.isDone = true;
+                    }
+                });
+            }
         }
 
         @Override
