@@ -2,8 +2,8 @@
   "M10Robot:BombOrb": {
     "NAME": "Bomb",
     "DESCRIPTION": [
-      "#yPassive: At the end of turn, deal #b"," damage to ALL enemies with #yLock-On. NL #yEvoke: Deal #b"," damage to ALL enemies.",
-      "Passive damage #b+", ". Evoke damage #b+","."
+      "#yPassive: When receiving attack damage, increase this Orb's damage by #b","% of the damage. NL #yEvoke: Deal #b"," damage to the enemy with the highest HP.",
+      " NL Absorption #b+", "%."
     ]
   },
   "M10Robot:BitOrb": {
@@ -16,7 +16,7 @@
   "M10Robot:PresentOrb": {
     "NAME": "Present",
     "DESCRIPTION": [
-      "#yPassive: At the start of turn, #yOverclock a random card #b"," time. NL #yEvoke: #yOverclock all cards in your hand."," times. NL #yEvoke: #yOverclock all cards in your hand.",
+      "#yPassive: At the start of turn, #yOverclock all cards in your hand by #b","%. NL #yEvoke: #yOverclock all cards in your hand by #b","%.",
       " NL #b+", " #yOverclock per turn."
     ]
   },

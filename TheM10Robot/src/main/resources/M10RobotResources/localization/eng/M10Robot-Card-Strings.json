@@ -15,7 +15,7 @@
   },
   "M10Robot:Ascension": {
     "NAME": "Ascension",
-    "DESCRIPTION": "{@@}Draw !M! card{!M!|>1=s}. NL m10robot:Overclock all cards in your hand."
+    "DESCRIPTION": "{@@}Draw !M! card{!M!|>1=s}. NL m10robot:Overclock all cards in your hand by !M10Robot:SecondMagic! %."
   },
   "M10Robot:AssaultField": {
     "NAME": "Assault Field",
@@ -187,7 +187,7 @@
   },
   "M10Robot:Overdrive": {
     "NAME": "Overdrive Form",
-    "DESCRIPTION": "At the start of our turn, m10robot:Overclock all cards in your hand !M! times."
+    "DESCRIPTION": "At the start of our turn, m10robot:Overclock all cards in your hand by !M! %."
   },
   "M10Robot:PerpetualAssembly": {
     "NAME": "Perpetual Assembly",
@@ -393,7 +393,7 @@
   },
   "M10Robot:WideAngle": {
     "NAME": "Wide Angle",
-    "DESCRIPTION": "{@@}When you play an Attack, m10robot:Bits now hit !M! additional time{!M!|>1=s}. NL Channel !M10Robot:SecondMagic! m10robot:Bit{!M10Robot:SecondMagic!|>1=s}."
+    "DESCRIPTION": "{@@}When you play an Attack, m10robot:Bits now hit !M! additional time{!M!|>1=s}. NL Channel !M10Robot:SecondMagic! m10robot:Bits."
   },
   "M10Robot:WindUp": {
     "NAME": "Wind Up",

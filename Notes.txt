@@ -1,16 +1,22 @@
 Rework Ideas
 
-Overclocking needs an improvement to how its calculated and applied
+Overclocking needs an improvement to how its calculated and applied. Overclock applying cards can give weird % values, which isnt great.
+
+Form card doing overclocks isnt a great idea. Maybe replace with a different idea?
 
 Present Orbs are silly and need to be reworked
 
 Bomb Orb - Stores damage when you are attacked, evokes to deal damage?
 
-Momentum - See how it feels
+Momentum - See how it feels?
+
+Riposte - See how it feels?
 
 If Momentum is implemented, rework Scrambled to be stackable in cards reduced as well as turns
 
 Aimed modifier vs Spiky Modifier - Are they balanced against each other? Aimed is a free +50% damage; Spiky can scale infinitely, but drops off when attacked due to losing Spikes
+
+Spikes are probably too strong
 
 Upgrading Orbs is probably too strong
 

@@ -42,7 +42,7 @@
   },
   "M10Robot:OverdrivePower": {
     "NAME": "Overdrive",
-    "DESCRIPTIONS": ["At the start of your turn, #yOverclock all cards in your hand #b"," times."]
+    "DESCRIPTIONS": ["At the start of your turn, #yOverclock all cards in your hand by #b","%."]
   },
   "M10Robot:PowerSavingsPower": {
     "NAME": "Power Savings",
@@ -80,9 +80,9 @@
     "NAME": "Relay",
     "DESCRIPTIONS": ["At the beginning of your next turn, add the following cards to your hand if they are still in play: "]
   },
-  "M10Robot:RepairableArmorPower": {
-    "NAME": "Makeshift Armor",
-    "DESCRIPTIONS": ["At the end of your turn, gain #b"," #yBlock. When attacked, reduce this amount by #b1."]
+  "M10Robot:RipostePower": {
+    "NAME": "Riposte",
+    "DESCRIPTIONS": ["The next time you are attacked, the attacker takes an equal amount of damage.","The next #b"," times you are attacked, the attacker takes an equal amount of damage."]
   },
   "M10Robot:RumblePower": {
     "NAME": "Rumble",

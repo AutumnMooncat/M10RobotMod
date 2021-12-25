@@ -26,7 +26,7 @@
     "NAMES": [
       "overclock"
     ],
-    "DESCRIPTION": "Increases the base stats of cards by #b25% per Overclock until played."
+    "DESCRIPTION": "Increases the base stats of cards until played."
   },
   {
     "PROPER_NAME": "Heavy",
@@ -128,7 +128,7 @@
       "bomb",
       "bombs"
     ],
-    "DESCRIPTION": "Orb: At the end of turn, deals damage to ALL enemies with #yLock-On. When #yEvoked, deals damage to ALL enemies."
+    "DESCRIPTION": "Orb: Stores damage when attacked. When #yEvoked, deals damage to the enemy with the highest HP."
   },
   {
     "PROPER_NAME": "Present",
