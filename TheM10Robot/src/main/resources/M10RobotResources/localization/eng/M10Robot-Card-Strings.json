@@ -228,7 +228,7 @@
   },
   "M10Robot:RAMUpgrade": {
     "NAME": "RAM Upgrade",
-    "DESCRIPTION": "{@@}At the end of your turn, Upgrade all your Orbs !M! time{!M!|>1=s}."
+    "DESCRIPTION": "{@@}Whenever you Channel an Orb, Upgrade it !M! time{!M!|>1=s}."
   },
   "M10Robot:RecoveryMode": {
     "NAME": "Recovery Mode",
