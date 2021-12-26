@@ -6,8 +6,6 @@ Form card doing overclocks isnt a great idea. Maybe replace with a different ide
 
 Present Orbs are silly and need to be reworked
 
-Bomb Orb - Stores damage when you are attacked, evokes to deal damage?
-
 Momentum - See how it feels?
 
 Riposte - See how it feels?
@@ -22,10 +20,11 @@ Upgrading Orbs is probably too strong
 
 There's no Orb Slot increase and no Focus, is this okay though?
 
-Orbs are maybe too strong in general. Bit being base 2 damage means that it deals 3 damage per attack with Lock-On. Bomb being base 5 damage means it deals 7 damage per turn to ALL enemies with Lock-On.
+Orbs are maybe too strong in general?
+
+Present Orb rework into Block or defensive style? Ideas: Block on Card Play. Plated Armor shenanigans?
 
 Archetypes:
 Lock-On
-Components
 Turtle (Thorns/Spikes, Reflection)
 Heavy Assault (Recoil, Reloading, Multihits)
