@@ -39,7 +39,7 @@ public class ReactiveOrb extends AbstractCustomOrb {
     private static final float PI_4 = 12.566371f;
 
     public ReactiveOrb() {
-        super(orbString.NAME, 1, 1);
+        super(ORB_ID, orbString.NAME, 1, 1);
 
         ID = ORB_ID;
         name = orbString.NAME;

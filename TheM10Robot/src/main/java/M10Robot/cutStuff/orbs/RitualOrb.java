@@ -40,7 +40,7 @@ public class RitualOrb extends AbstractCustomOrb {
     boolean alreadyRemoved = false;
 
     public RitualOrb() {
-        super(orbString.NAME, 1, 1);
+        super(ORB_ID, orbString.NAME, 1, 1);
 
         ID = ORB_ID;
         name = orbString.NAME;

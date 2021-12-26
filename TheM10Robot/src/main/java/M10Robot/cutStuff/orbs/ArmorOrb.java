@@ -39,7 +39,7 @@ public class ArmorOrb extends AbstractCustomOrb {
     boolean alreadyRemoved = false;
 
     public ArmorOrb() {
-        super(orbString.NAME, 2, 2);
+        super(ORB_ID, orbString.NAME, 2, 2);
 
         ID = ORB_ID;
         name = orbString.NAME;

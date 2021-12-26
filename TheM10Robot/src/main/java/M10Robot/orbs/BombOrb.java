@@ -66,8 +66,7 @@ public class BombOrb extends AbstractCustomOrb {
     }
 
     public BombOrb(int timesUpgraded) {
-        super(orbString.NAME, PASSIVE_DAMAGE, EVOKE_DAMAGE, timesUpgraded, IDLE_IMG, ATTACK_IMG, HURT_IMG, SUCCESS_IMG, FAILURE_IMG, THROW_IMG);
-        ID = ORB_ID;
+        super(ORB_ID, orbString.NAME, PASSIVE_DAMAGE, EVOKE_DAMAGE, timesUpgraded, IDLE_IMG, ATTACK_IMG, HURT_IMG, SUCCESS_IMG, FAILURE_IMG, THROW_IMG);
         scale = 1.2f;
 
         linkedPower = new BombOrbPower(this);

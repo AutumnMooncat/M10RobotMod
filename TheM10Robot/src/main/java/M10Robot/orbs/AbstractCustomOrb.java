@@ -38,19 +38,20 @@ public abstract class AbstractCustomOrb extends AbstractOrb {
     public static float LONG_ANIM = 0.7f;
     protected static final float GENERIC_X_OFFSET = 20f * Settings.scale;
 
-    public AbstractCustomOrb(String baseName, int passiveAmount, int evokeAmount) {
-        this(baseName, passiveAmount, evokeAmount, 0);
+    public AbstractCustomOrb(String ID, String baseName, int passiveAmount, int evokeAmount) {
+        this(ID, baseName, passiveAmount, evokeAmount, 0);
     }
 
-    public AbstractCustomOrb(String baseName, int passiveAmount, int evokeAmount, int timesUpgraded) {
-        this(baseName, passiveAmount, evokeAmount, timesUpgraded, null, null, null, null, null, null);
+    public AbstractCustomOrb(String ID, String baseName, int passiveAmount, int evokeAmount, int timesUpgraded) {
+        this(ID, baseName, passiveAmount, evokeAmount, timesUpgraded, null, null, null, null, null, null);
     }
 
-    public AbstractCustomOrb(String baseName, int passiveAmount, int evokeAmount, Texture idleImage, Texture attackImage, Texture hurtImage, Texture successImage, Texture failureImage, Texture throwImage) {
-        this(baseName, passiveAmount, evokeAmount, 0, idleImage, attackImage, hurtImage, successImage, failureImage, throwImage);
+    public AbstractCustomOrb(String ID, String baseName, int passiveAmount, int evokeAmount, Texture idleImage, Texture attackImage, Texture hurtImage, Texture successImage, Texture failureImage, Texture throwImage) {
+        this(ID, baseName, passiveAmount, evokeAmount, 0, idleImage, attackImage, hurtImage, successImage, failureImage, throwImage);
     }
 
-    public AbstractCustomOrb(String baseName, int passiveAmount, int evokeAmount, int timesUpgraded, Texture idleImage, Texture attackImage, Texture hurtImage, Texture successImage, Texture failureImage, Texture throwImage) {
+    public AbstractCustomOrb(String ID, String baseName, int passiveAmount, int evokeAmount, int timesUpgraded, Texture idleImage, Texture attackImage, Texture hurtImage, Texture successImage, Texture failureImage, Texture throwImage) {
+        this.ID = ID;
         this.baseName = this.name = baseName;
         this.passiveAmount = this.basePassiveAmount = passiveAmount;
         this.evokeAmount = this.baseEvokeAmount = evokeAmount;

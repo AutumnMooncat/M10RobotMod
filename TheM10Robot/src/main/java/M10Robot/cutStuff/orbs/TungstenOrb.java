@@ -43,7 +43,7 @@ public class TungstenOrb extends AbstractCustomOrb {
     private static final float PI_4 = 12.566371f;
 
     public TungstenOrb() {
-        super(orbString.NAME, 3, 2);
+        super(ORB_ID, orbString.NAME, 3, 2);
 
         ID = ORB_ID;
         name = orbString.NAME;

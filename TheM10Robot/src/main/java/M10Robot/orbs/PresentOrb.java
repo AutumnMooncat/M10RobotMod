@@ -12,15 +12,19 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.OrbStrings;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.PlatedArmorPower;
 import com.megacrit.cardcrawl.vfx.combat.PlasmaOrbActivateEffect;
 import com.megacrit.cardcrawl.vfx.combat.PlasmaOrbPassiveEffect;
 
@@ -46,18 +50,17 @@ public class PresentOrb extends AbstractCustomOrb {
     private static final float ORB_WAVY_DIST = 0.04f;
     private static final float PI_4 = 12.566371f;
 
-    private static final int PASSIVE_AMOUNT = 10;
-    private static final int EVOKE_AMOUNT = 20;
-    private static final int UPGRADE_PLUS_PASSIVE_AMOUNT= 5;
-    private static final int UPGRADE_PLUS_EVOKE_AMOUNT = 10;
+    private static final int PASSIVE_AMOUNT = 1;
+    private static final int EVOKE_AMOUNT = 1;
+    private static final int UPGRADE_PLUS_PASSIVE_AMOUNT= 1;
+    private static final int UPGRADE_PLUS_EVOKE_AMOUNT = 1;
 
     public PresentOrb() {
         this(0);
     }
 
     public PresentOrb(int timesUpgraded) {
-        super(orbString.NAME, PASSIVE_AMOUNT, EVOKE_AMOUNT, timesUpgraded, IDLE_IMG, ATTACK_IMG, HURT_IMG, SUCCESS_IMG, FAILURE_IMG, THROW_IMG);
-        ID = ORB_ID;
+        super(ORB_ID, orbString.NAME, PASSIVE_AMOUNT, EVOKE_AMOUNT, timesUpgraded, IDLE_IMG, ATTACK_IMG, HURT_IMG, SUCCESS_IMG, FAILURE_IMG, THROW_IMG);
 
         linkedPower = new PresentOrbPower(this);
 
