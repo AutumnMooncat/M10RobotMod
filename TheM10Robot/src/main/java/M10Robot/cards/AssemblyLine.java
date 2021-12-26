@@ -2,7 +2,7 @@ package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
 import M10Robot.actions.MultichannelAction;
-import M10Robot.actions.UpgradeAllOrbsAction;
+import M10Robot.actions.UpgradeOrbsAction;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
 import M10Robot.orbs.PresentOrb;
@@ -48,7 +48,7 @@ public class AssemblyLine extends AbstractDynamicCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.addToBot(new MultichannelAction(new PresentOrb(), magicNumber));
-        this.addToBot(new UpgradeAllOrbsAction(secondMagicNumber));
+        this.addToBot(new UpgradeOrbsAction(secondMagicNumber));
     }
 
     //Upgraded stats.
