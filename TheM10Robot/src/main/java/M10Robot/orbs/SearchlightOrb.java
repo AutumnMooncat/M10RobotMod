@@ -61,8 +61,7 @@ public class SearchlightOrb extends AbstractCustomOrb {
     }
 
     public SearchlightOrb(int timesUpgraded) {
-        super(orbString.NAME, PASSIVE_DAMAGE, EVOKE_AMOUNT, timesUpgraded, IDLE_IMG, ATTACK_IMG, HURT_IMG, SUCCESS_IMG, FAILURE_IMG, THROW_IMG);
-        ID = ORB_ID;
+        super(ORB_ID, orbString.NAME, PASSIVE_DAMAGE, EVOKE_AMOUNT, timesUpgraded, IDLE_IMG, ATTACK_IMG, HURT_IMG, SUCCESS_IMG, FAILURE_IMG, THROW_IMG);
 
         linkedPower = new SearchlightOrbPower(this);
 
