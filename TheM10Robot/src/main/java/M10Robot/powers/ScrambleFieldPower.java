@@ -28,13 +28,13 @@ public class ScrambleFieldPower extends AbstractPower implements CloneablePowerI
         this.owner = owner;
         this.amount = amount;
 
-        this.priority = Integer.MAX_VALUE;
+        this.priority = Short.MAX_VALUE;
         this.type = PowerType.BUFF;
         this.isTurnBased = true;
 
         // We load those txtures here.
         //this.loadRegion("cExplosion");
-        this.loadRegion("confusion");
+        this.loadRegion("modeShift");
         //logger.info("Blasting Fuse?");
         //this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
         //this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
