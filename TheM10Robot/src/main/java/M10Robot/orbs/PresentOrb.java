@@ -98,7 +98,8 @@ public class PresentOrb extends AbstractCustomOrb {
 
     @Override
     public void onEvoke() { // 1.On Orb Evoke
-        this.addToBot(new OverclockCardAction(true, evokeAmount));
+        //this.addToBot(new OverclockCardAction(true, evokeAmount));
+        this.addToBot(new ApplyPowerAction(p, p, new PlatedArmorPower(p, evokeAmount)));
         this.addToBot(new RemoveSpecificPowerAction(p, p, linkedPower));
     }
 
@@ -124,8 +125,8 @@ public class PresentOrb extends AbstractCustomOrb {
     }
 
     protected void renderText(SpriteBatch sb) {
-        FontHelper.renderFontCentered(sb, FontHelper.cardEnergyFont_L, this.passiveAmount +"%", this.cX + NUM_X_OFFSET + GENERIC_X_OFFSET, this.cY + this.bobEffect.y / 2.0F + NUM_Y_OFFSET + 20.0F * Settings.scale, this.c, this.fontScale);
-        FontHelper.renderFontCentered(sb, FontHelper.cardEnergyFont_L, this.evokeAmount +"%", this.cX + NUM_X_OFFSET + GENERIC_X_OFFSET, this.cY + this.bobEffect.y / 2.0F + NUM_Y_OFFSET - 4.0F * Settings.scale, new Color(0.2F, 1.0F, 1.0F, this.c.a), this.fontScale);
+        FontHelper.renderFontCentered(sb, FontHelper.cardEnergyFont_L, String.valueOf(this.passiveAmount), this.cX + NUM_X_OFFSET + GENERIC_X_OFFSET, this.cY + this.bobEffect.y / 2.0F + NUM_Y_OFFSET + 20.0F * Settings.scale, this.c, this.fontScale);
+        FontHelper.renderFontCentered(sb, FontHelper.cardEnergyFont_L, String.valueOf(this.evokeAmount), this.cX + NUM_X_OFFSET + GENERIC_X_OFFSET, this.cY + this.bobEffect.y / 2.0F + NUM_Y_OFFSET - 4.0F * Settings.scale, new Color(0.2F, 1.0F, 1.0F, this.c.a), this.fontScale);
     }
 
 
@@ -151,16 +152,22 @@ public class PresentOrb extends AbstractCustomOrb {
         }
 
         @Override
-        public void atStartOfTurnPostDraw() {
-            this.addToBot(new AbstractGameAction() {
-                @Override
-                public void update() {
-                    linkedOrb.playAnimation(THROW_IMG, SHORT_ANIM);
-                    this.addToBot(new OverclockCardAction(true, linkedOrb.passiveAmount));
-                    this.isDone = true;
-                }
-            });
+        public void onPlayCard(AbstractCard card, AbstractMonster m) {
+            linkedOrb.playAnimation(SUCCESS_IMG, SHORT_ANIM);
+            this.addToBot(new GainBlockAction(owner, owner, linkedOrb.passiveAmount, true));
         }
+
+//        @Override
+//        public void atStartOfTurnPostDraw() {
+//            this.addToBot(new AbstractGameAction() {
+//                @Override
+//                public void update() {
+//                    linkedOrb.playAnimation(THROW_IMG, SHORT_ANIM);
+//                    this.addToBot(new OverclockCardAction(true, linkedOrb.passiveAmount));
+//                    this.isDone = true;
+//                }
+//            });
+//        }
 
         @Override
         public int onAttacked(DamageInfo info, int damageAmount) {
