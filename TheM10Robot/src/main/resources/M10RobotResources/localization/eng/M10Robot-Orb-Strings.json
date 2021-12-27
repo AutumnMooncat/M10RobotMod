@@ -16,8 +16,8 @@
   "M10Robot:PresentOrb": {
     "NAME": "Present",
     "DESCRIPTION": [
-      "#yPassive: At the start of turn, #yOverclock all cards in your hand by #b","%. NL #yEvoke: #yOverclock all cards in your hand by #b","%.",
-      " NL #b+", " #yOverclock per turn."
+      "#yPassive: Whenever you play an #yAttack, gain #b"," #yBlock. NL #yEvoke: Gain #b"," #yBlock.",
+      " NL #b+", " #yBlock per Attack. #b+", " #yBlock when #yEvoked."
     ]
   },
   "M10Robot:SearchlightOrb": {

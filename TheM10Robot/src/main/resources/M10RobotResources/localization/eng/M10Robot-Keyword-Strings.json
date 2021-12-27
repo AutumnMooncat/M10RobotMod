@@ -136,7 +136,7 @@
       "present",
       "presents"
     ],
-    "DESCRIPTION": "Orb: #yOverclocks cards each turn. When #yEvoked, #yOverclocks all cards in your hand."
+    "DESCRIPTION": "Orb: Grants #yBlock when #yEvoked and when you play an Attack."
   },
   {
     "PROPER_NAME": "Searchlight",

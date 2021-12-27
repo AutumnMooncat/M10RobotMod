@@ -51,9 +51,9 @@ public class PresentOrb extends AbstractCustomOrb {
     private static final float PI_4 = 12.566371f;
 
     private static final int PASSIVE_AMOUNT = 1;
-    private static final int EVOKE_AMOUNT = 1;
+    private static final int EVOKE_AMOUNT = 4;
     private static final int UPGRADE_PLUS_PASSIVE_AMOUNT= 1;
-    private static final int UPGRADE_PLUS_EVOKE_AMOUNT = 1;
+    private static final int UPGRADE_PLUS_EVOKE_AMOUNT = 2;
 
     public PresentOrb() {
         this(0);
@@ -93,13 +93,14 @@ public class PresentOrb extends AbstractCustomOrb {
         description =
                 DESC[0] + passiveAmount + DESC[1] + evokeAmount + DESC[2] +
                 UPGRADE_TEXT[0] +
-                DESC[3] + UPGRADE_PLUS_PASSIVE_AMOUNT + DESC[4];
+                DESC[3] + UPGRADE_PLUS_PASSIVE_AMOUNT + DESC[4] + UPGRADE_PLUS_EVOKE_AMOUNT + DESC[5];
     }
 
     @Override
     public void onEvoke() { // 1.On Orb Evoke
         //this.addToBot(new OverclockCardAction(true, evokeAmount));
-        this.addToBot(new ApplyPowerAction(p, p, new PlatedArmorPower(p, evokeAmount)));
+        //this.addToBot(new ApplyPowerAction(p, p, new PlatedArmorPower(p, evokeAmount)));
+        this.addToBot(new GainBlockAction(p, evokeAmount));
         this.addToBot(new RemoveSpecificPowerAction(p, p, linkedPower));
     }
 
@@ -153,8 +154,10 @@ public class PresentOrb extends AbstractCustomOrb {
 
         @Override
         public void onPlayCard(AbstractCard card, AbstractMonster m) {
-            linkedOrb.playAnimation(SUCCESS_IMG, SHORT_ANIM);
-            this.addToBot(new GainBlockAction(owner, owner, linkedOrb.passiveAmount, true));
+            if (card.type == AbstractCard.CardType.ATTACK) {
+                linkedOrb.playAnimation(ATTACK_IMG, SHORT_ANIM);
+                this.addToBot(new GainBlockAction(owner, owner, linkedOrb.passiveAmount, true));
+            }
         }
 
 //        @Override
