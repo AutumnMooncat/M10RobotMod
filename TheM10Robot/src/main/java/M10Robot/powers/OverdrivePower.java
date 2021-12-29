@@ -2,6 +2,7 @@ package M10Robot.powers;
 
 import M10Robot.M10RobotMod;
 import M10Robot.actions.OverclockCardAction;
+import M10Robot.cardModifiers.OverclockModifier;
 import basemod.interfaces.CloneablePowerInterface;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -40,11 +41,12 @@ public class OverdrivePower extends AbstractPower implements CloneablePowerInter
 
     @Override
     public void atStartOfTurnPostDraw() {
+        flash();
         this.addToBot(new OverclockCardAction(true, amount));
     }
 
     public void updateDescription() {
-        this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
+        this.description = DESCRIPTIONS[0] + (OverclockModifier.PERCENT_PER_AMOUNT*this.amount) + DESCRIPTIONS[1];
     }
 
     @Override
