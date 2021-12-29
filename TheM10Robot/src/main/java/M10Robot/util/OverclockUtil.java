@@ -5,9 +5,15 @@ import M10Robot.cards.interfaces.CannotOverclock;
 import M10Robot.orbs.AbstractCustomOrb;
 import M10Robot.powers.ComponentsPower;
 import basemod.helpers.CardModifierManager;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
+import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
 public class OverclockUtil {
@@ -70,4 +76,15 @@ public class OverclockUtil {
 //        }
 //        return "";
 //    }
+    @SpirePatch(clz = AbstractCard.class, method = "renderTitle")
+    public static class renderOverclockPercent {
+        @SpirePostfixPatch
+        public static void renderPlz(AbstractCard __instance, SpriteBatch sb, Color ___renderColor) {
+            if (AbstractDungeon.player != null && hasOverclock(__instance)) {
+                Color color = Settings.GREEN_TEXT_COLOR.cpy();
+                color.a = ___renderColor.a;
+                FontHelper.renderRotatedText(sb, FontHelper.cardTitleFont, "+"+getOverClockPercent(__instance)+"%", __instance.current_x, __instance.current_y, 0.0F, 195.0F * __instance.drawScale * Settings.scale, __instance.angle, false, color);
+            }
+        }
+    }
 }
