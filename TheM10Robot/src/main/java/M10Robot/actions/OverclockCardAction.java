@@ -10,20 +10,18 @@ import com.megacrit.cardcrawl.cards.CardGroup;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 
-import java.util.ArrayList;
-
 public class OverclockCardAction extends AbstractGameAction {
     private AbstractCard card;
     private boolean allCards;
 
-    public OverclockCardAction(AbstractCard card, int rawPercent) {
+    public OverclockCardAction(AbstractCard card, int amount) {
         this.card = card;
-        this.amount = rawPercent;
+        this.amount = amount;
     }
 
-    public OverclockCardAction(boolean allCards, int rawPercent) {
+    public OverclockCardAction(boolean allCards, int amount) {
         this.allCards = allCards;
-        this.amount = rawPercent;
+        this.amount = amount;
     }
 
     @Override
