@@ -60,14 +60,14 @@ public class OverclockUtil {
         }
     }
 
-    public static String getOverclockPrefix(AbstractCard c) {
-        return "";
-    }
-
-    public static String getOverclockSuffix(AbstractCard c) {
-        if (hasOverclock(c)) {
-            return " +"+getOverClockPercent(c)+"% ";
-        }
-        return "";
-    }
+//    public static String getOverclockPrefix(AbstractCard c) {
+//        return "";
+//    }
+//
+//    public static String getOverclockSuffix(AbstractCard c) {
+//        if (hasOverclock(c)) {
+//            return " +"+getOverClockPercent(c)+"% ";
+//        }
+//        return "";
+//    }
 }
