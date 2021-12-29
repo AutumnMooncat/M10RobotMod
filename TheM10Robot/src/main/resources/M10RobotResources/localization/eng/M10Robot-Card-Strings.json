@@ -15,7 +15,7 @@
   },
   "M10Robot:Ascension": {
     "NAME": "Ascension",
-    "DESCRIPTION": "{@@}Draw !M! card{!M!|>1=s}. NL m10robot:Overclock all cards in your hand by !M10Robot:SecondMagic! %."
+    "DESCRIPTION": "{@@}Draw !M! card{!M!|>1=s}. NL m10robot:Overclock all cards in your hand !M10Robot:SecondMagic! time{!M10Robot:SecondMagic!|>1=s}."
   },
   "M10Robot:AssaultField": {
     "NAME": "Assault Field",
@@ -187,7 +187,7 @@
   },
   "M10Robot:Overdrive": {
     "NAME": "Overdrive Form",
-    "DESCRIPTION": "At the start of our turn, m10robot:Overclock all cards in your hand by !M! %."
+    "DESCRIPTION": "At the start of our turn, m10robot:Overclock all cards in your hand !M! times."
   },
   "M10Robot:PerpetualAssembly": {
     "NAME": "Perpetual Assembly",

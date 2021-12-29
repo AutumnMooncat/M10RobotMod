@@ -1,4 +1,4 @@
-package M10Robot.cutAndRework;
+package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
@@ -30,8 +30,8 @@ public class Overdrive extends AbstractDynamicCard {
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
     private static final int COST = 3;
-    private static final int AMOUNT = 50;
-    private static final int UPGRADE_PLUS_AMOUNT = 25;
+    private static final int AMOUNT = 2;
+    private static final int UPGRADE_PLUS_AMOUNT = 1;
 
     // /STAT DECLARATION/
 

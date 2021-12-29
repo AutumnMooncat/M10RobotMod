@@ -1,4 +1,4 @@
-package M10Robot.cutAndRework;
+package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
 import M10Robot.actions.OverclockCardAction;
@@ -30,7 +30,7 @@ public class Ascension extends AbstractDynamicCard {
     private static final int COST = 1;
     private static final int DRAW = 1;
     private static final int UPGRADE_PLUS_DRAW = 1;
-    private static final int PERCENT = 25;
+    private static final int OVERCLOCK = 1;
 
     // /STAT DECLARATION/
 
@@ -38,7 +38,7 @@ public class Ascension extends AbstractDynamicCard {
     public Ascension() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = DRAW;
-        secondMagicNumber = baseSecondMagicNumber = PERCENT;
+        secondMagicNumber = baseSecondMagicNumber = OVERCLOCK;
     }
 
     // Actions the card should do.

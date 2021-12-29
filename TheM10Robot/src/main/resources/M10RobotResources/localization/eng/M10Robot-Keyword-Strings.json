@@ -26,7 +26,7 @@
     "NAMES": [
       "overclock"
     ],
-    "DESCRIPTION": "Increases the base stats of cards until played."
+    "DESCRIPTION": "Increases the base stats of cards by #b25% until played."
   },
   {
     "PROPER_NAME": "Heavy",
