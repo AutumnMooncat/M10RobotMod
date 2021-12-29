@@ -30,8 +30,8 @@ public class BatteryPack extends AbstractDynamicCard {
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
     private static final int COST = 0;
-    private static final int MAX_CHARGES = 3;
-    private static final int UPGRADE_PLUS_MAX_CHARGES = 2;
+    private static final int MAX_CHARGES = 2;
+    private static final int UPGRADE_PLUS_MAX_CHARGES = 1;
 
     // /STAT DECLARATION/
 
