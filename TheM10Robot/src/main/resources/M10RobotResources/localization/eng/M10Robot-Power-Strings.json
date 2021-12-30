@@ -80,6 +80,10 @@
     "NAME": "Relay",
     "DESCRIPTIONS": ["At the beginning of your next turn, add the following cards to your hand if they are still in play: "]
   },
+  "M10Robot:ReshufflePower": {
+    "NAME": "Reshuffle",
+    "DESCRIPTIONS": ["Shuffle the next card you play into your draw pile.","Shuffle the next #b"," cards you play into your draw pile."]
+  },
   "M10Robot:RipostePower": {
     "NAME": "Riposte",
     "DESCRIPTIONS": ["The next time you are attacked, the attacker takes an equal amount of damage.","The next #b"," times you are attacked, the attacker takes an equal amount of damage."]
