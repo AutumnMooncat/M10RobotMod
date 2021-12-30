@@ -218,9 +218,9 @@
     "DESCRIPTION": "Gain !M10Robot:SecondMagic! m10robot:Scrambled. NL At the start of your turn, gain !M! [E] .",
     "EXTENDED_DESCRIPTION": [".","[E] "]
   },
-  "M10Robot:QuickFix": {
-    "NAME": "Quick Fix",
-    "DESCRIPTION": ""
+  "M10Robot:QuickBoot": {
+    "NAME": "Quick Boot",
+    "DESCRIPTION": "Channel !M! random Orbs."
   },
   "M10Robot:QuickThinking": {
     "NAME": "Quick Thinking",
