@@ -359,9 +359,9 @@
     "NAME": "Vine Whip",
     "DESCRIPTION": "Deal !D! damage. NL Gain !M! m10robot:Spikes."
   },
-  "M10Robot:TouchUp": {
-    "NAME": "Touch Up",
-    "DESCRIPTION": ""
+  "M10Robot:Tinker": {
+    "NAME": "Tinker",
+    "DESCRIPTION": "{@@}Gain !B! Block. NL Upgrade the next {!M!|@=Orb|>1=!M! Orbs} you Channel."
   },
   "M10Robot:Turbo": {
     "NAME": "Turbo",

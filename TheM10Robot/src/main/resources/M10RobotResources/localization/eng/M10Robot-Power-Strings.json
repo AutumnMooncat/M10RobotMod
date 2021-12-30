@@ -117,6 +117,10 @@
     "NAME": "Taunted",
     "DESCRIPTIONS": ["This creature is forced to attack for #b", " turn.", " turns."]
   },
+  "M10Robot:TinkerPower": {
+    "NAME": "Tinkering",
+    "DESCRIPTIONS": ["#yUpgrade the next #yOrb you #yChannel.","#yUpgrade the next #b"," #yOrbs you #yChannel."]
+  },
   "M10Robot:TurboPower": {
     "NAME": "Turbo Mode",
     "DESCRIPTIONS": ["At the beginning of your next turn, draw an additional card and gain [E] .",
