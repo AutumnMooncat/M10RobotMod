@@ -36,6 +36,14 @@
     "DESCRIPTION": "Gain #yRecoil when this card is played, making your next attack deal #b50% less damage."
   },
   {
+    "PROPER_NAME": "Plated Armor",
+    "NAMES": [
+      "Plated Armor",
+      "plated_armor"
+    ],
+    "DESCRIPTION": "Provides #yBlock at the end of your turn. Receiving unblocked attack damage reduces Plated Armor by #b1."
+  },
+  {
     "PROPER_NAME": "Protect",
     "NAMES": [
       "protect"

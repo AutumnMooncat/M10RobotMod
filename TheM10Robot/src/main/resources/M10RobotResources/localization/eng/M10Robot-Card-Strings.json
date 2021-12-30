@@ -227,7 +227,7 @@
   },
   "M10Robot:QuickRepair": {
     "NAME": "Quick Repair",
-    "DESCRIPTION": "Gain !B! Block and half that much Temporary_HP."
+    "DESCRIPTION": "Gain !B! Block and !M! m10robot:Plated_Armor."
   },
   "M10Robot:Railgun": {
     "NAME": "Railgun",
