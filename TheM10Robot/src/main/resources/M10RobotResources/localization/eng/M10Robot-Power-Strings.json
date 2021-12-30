@@ -36,6 +36,10 @@
     "NAME": "Next Card Overclock",
     "DESCRIPTIONS": ["#yOverclock the next card you play #b"," time."," times.","#yOverclock the next #b"," cards you play #b"]
   },
+  "M10Robot:LoseFocusPower": {
+    "NAME": "Focus Down",
+    "DESCRIPTIONS": ["At the end of this turn, lose #b", " #yFocus."]
+  },
   "M10Robot:MomentumPower": {
     "NAME": "Momentum",
     "DESCRIPTIONS": ["Increases attack damage, #yBlock gained from cards, and cards drawn next turn by #b",". At the start of your turn, reduce Momentum by #1."]
