@@ -54,6 +54,7 @@ public class RAMUpgradePower extends AbstractPower implements CloneablePowerInte
 
     @Override
     public void onChannel(AbstractOrb orb) {
+        flash();
         this.addToBot(new UpgradeOrbsAction(orb, amount));
     }
 
