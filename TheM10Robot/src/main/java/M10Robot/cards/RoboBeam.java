@@ -35,10 +35,8 @@ public class RoboBeam extends AbstractReloadableCard {
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
     private static final int COST = 1;
-    private static final int DAMAGE = 8;
-    private static final int UPGRADE_PLUS_DMG = 4;
-
-    private static final int TURNS_PER_EXTRA_HIT = 3;
+    private static final int DAMAGE = 3;
+    private static final int UPGRADE_PLUS_DMG = 1;
 
     // /STAT DECLARATION/
 
@@ -50,8 +48,7 @@ public class RoboBeam extends AbstractReloadableCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        int hits = 1+Math.max(0, GameActionManager.turn/TURNS_PER_EXTRA_HIT);
-        for (int i = 0 ; i < hits ; i++) {
+        for (int i = 0 ; i < GameActionManager.turn ; i++) {
             this.addToBot(new AbstractGameAction() {
                 @Override
                 public void update() {

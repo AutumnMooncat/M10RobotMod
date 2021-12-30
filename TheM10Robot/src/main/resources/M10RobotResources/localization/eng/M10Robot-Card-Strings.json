@@ -255,7 +255,7 @@
   },
   "M10Robot:RoboBeam": {
     "NAME": "Robo Beam",
-    "DESCRIPTION": "Deal !D! damage to a random enemy. NL Repeat for every three turns that have passed this combat."
+    "DESCRIPTION": "Deal !D! damage to a random enemy. NL Repeat for every turn passed this combat."
   },
   "M10Robot:Rumble": {
     "NAME": "Rumble",
