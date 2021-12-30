@@ -132,6 +132,10 @@
     "DESCRIPTION": "Exhaust any number of cards. NL Gain [E] for each card exhausted this way.",
     "EXTENDED_DESCRIPTION": ["Exhaust"]
   },
+  "M10Robot:Followup": {
+    "NAME": "Followup",
+    "DESCRIPTION": "{@@}m10robot:Overclock the next {!M!|@=card|>1=!M! cards} you play !M10Robot:SecondMagic! times."
+  },
   "M10Robot:Fortify": {
     "NAME": "Fortify",
     "DESCRIPTION": "Gain !B! Block."

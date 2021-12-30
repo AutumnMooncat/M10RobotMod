@@ -32,9 +32,9 @@
     "DESCRIPTIONS": ["Other debuffs can not decrease this turn",
       "Other debuffs can not decrease for #b"," turns."]
   },
-  "M10Robot:LoseFocusPower": {
-    "NAME": "Focus Down",
-    "DESCRIPTIONS": ["At the end of this turn, lose #b", " #yFocus."]
+  "M10Robot:FollowupPower": {
+    "NAME": "Next Card Overclock",
+    "DESCRIPTIONS": ["#yOverclock the next card you play #b"," time."," times.","#yOverclock the next #b"," cards you play #b"]
   },
   "M10Robot:MomentumPower": {
     "NAME": "Momentum",
