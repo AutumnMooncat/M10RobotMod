@@ -82,6 +82,7 @@ public class SalvoAction extends AbstractGameAction {
                 if (!(o instanceof EmptyOrbSlot)) {
                     o.cX = backupX.get(o);
                     o.cY = backupY.get(o);
+                    o.hb.move(o.cX, o.cY);
                     LockOrbAnimationPatches.StopAnimatingField.stopAnimating.set(o, false);
                     //p.removeNextOrb();
                 }
