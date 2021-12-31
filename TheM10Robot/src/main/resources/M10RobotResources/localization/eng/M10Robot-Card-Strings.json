@@ -253,6 +253,10 @@
     "NAME": "Returning Shield",
     "DESCRIPTION": "Gain !B! Block. NL Next turn, gain !B! Block and draw an additional card."
   },
+  "M10Robot:Rewind": {
+    "NAME": "Rewind",
+    "DESCRIPTION": "{@@}The first {!M!|@=time|>1=!M! times} you lose Block each turn, gain that much Block next turn."
+  },
   "M10Robot:RoboBeam": {
     "NAME": "Robo Beam",
     "DESCRIPTION": "Deal !D! damage to a random enemy. NL Repeat for every turn passed this combat."
