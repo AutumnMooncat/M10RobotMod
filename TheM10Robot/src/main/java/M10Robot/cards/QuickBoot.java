@@ -22,7 +22,7 @@ public class QuickBoot extends AbstractDynamicCard {
     // TEXT DECLARATION
 
     public static final String ID = M10RobotMod.makeID(QuickBoot.class.getSimpleName());
-    public static final String IMG = makeCardPath("Boot.png");
+    public static final String IMG = makeCardPath("Boot2.png");
 
     // /TEXT DECLARATION/
 
