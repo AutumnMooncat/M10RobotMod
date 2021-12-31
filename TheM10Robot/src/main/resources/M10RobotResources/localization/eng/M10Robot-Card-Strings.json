@@ -194,7 +194,7 @@
   },
   "M10Robot:Overdrive": {
     "NAME": "Overdrive Form",
-    "DESCRIPTION": "At the start of our turn, m10robot:Overclock all cards in your hand !M! times."
+    "DESCRIPTION": "At the start of your turn, m10robot:Overclock all cards in your hand !M! times."
   },
   "M10Robot:PerpetualAssembly": {
     "NAME": "Perpetual Assembly",
