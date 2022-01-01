@@ -13,9 +13,9 @@
     "NAME": "Air Raid",
     "DESCRIPTION": "{@@}Deal !D! damage to ALL enemies X{!M!|>0= + !M!} times."
   },
-  "M10Robot:AmmoBox": {
-    "NAME": "Ammo Box",
-    "DESCRIPTION": ""
+  "M10Robot:AllIn": {
+    "NAME": "All In",
+    "DESCRIPTION": "{@@}m10robot:Overclock all cards in your hand X{!M!|>0= + !M!} times."
   },
   "M10Robot:Ascension": {
     "NAME": "Ascension",
