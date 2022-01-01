@@ -319,7 +319,7 @@
   },
   "M10Robot:SplitBeam": {
     "NAME": "Split Beam",
-    "DESCRIPTION": "Deal !D! damage. NL Deal !D! damage to ALL enemies."
+    "DESCRIPTION": "Deal !D! damage to ALL enemies !M! times."
   },
   "M10Robot:SteelWall": {
     "NAME": "Steel Wall",

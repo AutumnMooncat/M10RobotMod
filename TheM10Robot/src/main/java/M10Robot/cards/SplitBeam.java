@@ -8,6 +8,7 @@ import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -31,36 +32,43 @@ public class SplitBeam extends AbstractDynamicCard {
     // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.UNCOMMON;
-    private static final CardTarget TARGET = CardTarget.ENEMY;
+    private static final CardTarget TARGET = CardTarget.ALL_ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
     private static final int COST = 1;
     private static final int DAMAGE = 4;
     private static final int UPGRADE_PLUS_DMG = 2;
-    private static final int HITS = 4;
-    private static final int UPGRADE_PLUS_HITS = 2;
+    private static final int HITS = 2;
+    private static final int UPGRADE_PLUS_HITS = 1;
 
     // /STAT DECLARATION/
 
     public SplitBeam() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = damage = DAMAGE;
+        magicNumber = baseMagicNumber = HITS;
+        isMultiDamage = true;
         CardModifierManager.addModifier(this, new AimedModifier());
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new SFXAction("ATTACK_MAGIC_BEAM_SHORT", 0.5F));
-        this.addToBot(new VFXAction(new SmallLaserEffect(m.hb.cX, m.hb.cY, p.hb.cX, p.hb.cY), 0.1F));
-        this.addToBot(new DamageAction(m, new DamageInfo(p, damage)));
-        for (AbstractMonster mo : AbstractDungeon.getMonsters().monsters) {
-            if (!mo.isDeadOrEscaped()) {
-                this.addToBot(new SFXAction("ATTACK_MAGIC_BEAM_SHORT", 0.5F));
-                this.addToBot(new VFXAction(new SmallLaserEffect(mo.hb.cX, mo.hb.cY, p.hb.cX, p.hb.cY), 0.0F));
-                this.addToBot(new DamageAction(mo, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.NONE, true));
-            }
+        for (int i = 0 ; i < magicNumber ; i++) {
+            this.addToBot(new SFXAction("ATTACK_MAGIC_BEAM_SHORT", 0.5F));
+            this.addToBot(new AbstractGameAction() {
+                @Override
+                public void update() {
+                    for (AbstractMonster mo : AbstractDungeon.getMonsters().monsters) {
+                        if (!mo.isDeadOrEscaped()) {
+                            AbstractDungeon.effectList.add(new SmallLaserEffect(mo.hb.cX, mo.hb.cY, p.hb.cX, p.hb.cY));
+                        }
+                    }
+                    this.isDone = true;
+                }
+            });
+            this.addToBot(new DamageAllEnemiesAction(p, multiDamage, damageTypeForTurn, AbstractGameAction.AttackEffect.NONE));
         }
     }
 
