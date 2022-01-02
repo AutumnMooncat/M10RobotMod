@@ -36,6 +36,10 @@
     "NAME": "Next Card Overclock",
     "DESCRIPTIONS": ["#yOverclock the next card you play #b"," time."," times.","#yOverclock the next #b"," cards you play #b"]
   },
+  "M10Robot:HighExplosivePower": {
+    "NAME": "High Explosives",
+    "DESCRIPTIONS": ["#yBombs now hits ALL enemies #b"," time."," times."]
+  },
   "M10Robot:LoseFocusPower": {
     "NAME": "Focus Down",
     "DESCRIPTIONS": ["At the end of this turn, lose #b", " #yFocus."]
