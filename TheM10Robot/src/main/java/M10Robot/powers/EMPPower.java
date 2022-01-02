@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
-public class EMPPower extends AbstractPower implements CloneablePowerInterface, PostEnergyRechargeSubscriber {
+public class EMPPower extends AbstractPower implements CloneablePowerInterface {
 
     public static final String POWER_ID = M10RobotMod.makeID("EMPPower");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
@@ -51,13 +51,8 @@ public class EMPPower extends AbstractPower implements CloneablePowerInterface, 
     }
 
     @Override
-    public void onInitialApplication() {
-        BaseMod.subscribe(this);
-    }
-
-    @Override
-    public void onRemove() {
-        BaseMod.unsubscribe(this);
+    public void onEnergyRecharge() {
+        this.addToBot(new ReducePowerAction(this.owner, this.owner, this, 1));
     }
 
     @Override
@@ -65,9 +60,5 @@ public class EMPPower extends AbstractPower implements CloneablePowerInterface, 
         return new EMPPower(owner, amount);
     }
 
-    @Override
-    public void receivePostEnergyRecharge() {
-        this.addToBot(new ReducePowerAction(this.owner, this.owner, this, 1));
-    }
 }
 
