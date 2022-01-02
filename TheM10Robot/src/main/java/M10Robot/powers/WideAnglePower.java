@@ -2,16 +2,12 @@ package M10Robot.powers;
 
 import M10Robot.M10RobotMod;
 import basemod.interfaces.CloneablePowerInterface;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
-public class WideAnglePower  extends AbstractPower implements CloneablePowerInterface {
+public class WideAnglePower extends AbstractPower implements CloneablePowerInterface {
 
     public static final String POWER_ID = M10RobotMod.makeID("WideAnglePower");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
