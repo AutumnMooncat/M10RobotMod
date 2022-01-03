@@ -46,7 +46,8 @@
   },
   "M10Robot:MomentumPower": {
     "NAME": "Momentum",
-    "DESCRIPTIONS": ["Increases attack damage, #yBlock gained from cards, and cards drawn next turn by #b",". At the start of your turn, reduce Momentum by #1."]
+    "DESCRIPTIONS": ["Increases attack damage, #yBlock gained from cards, and cards drawn next turn by #b",". At the start of your turn, reduce Momentum by #b1.",
+      "Decreases attack damage, #yBlock gained from cards, and cards drawn next turn by #b",". At the start of your turn, increase Momentum by #b1."]
   },
   "M10Robot:OverdrivePower": {
     "NAME": "Overdrive",
