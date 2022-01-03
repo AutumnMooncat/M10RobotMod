@@ -42,7 +42,7 @@ public class Juggling extends AbstractDynamicCard {
     private static final int COST = 1;
     private static final int CARDS = 2;
     private static final int UPGRADE_PLUS_CARDS = 1;
-    private static final int FOCUS_LOST = 1;
+    private static final int NTD = 1;
 
     // /STAT DECLARATION/
 
@@ -50,13 +50,14 @@ public class Juggling extends AbstractDynamicCard {
     public Juggling() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = CARDS;
+        secondMagicNumber = baseSecondMagicNumber = NTD;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.addToBot(new DrawCardAction(magicNumber));
-        this.addToBot(new ApplyPowerAction(p, p, new DrawCardNextTurnPower(p, 1)));
+        this.addToBot(new ApplyPowerAction(p, p, new DrawCardNextTurnPower(p, secondMagicNumber)));
     }
 
     //Upgraded stats.

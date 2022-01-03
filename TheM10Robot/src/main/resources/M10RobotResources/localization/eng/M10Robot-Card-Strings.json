@@ -166,7 +166,7 @@
   },
   "M10Robot:Juggling": {
     "NAME": "Juggling",
-    "DESCRIPTION": "Draw !M! cards. NL Next turn, draw an additional card."
+    "DESCRIPTION": "{@@}Draw !M! cards. NL Next turn, draw !M10Robot:SecondMagic! additional card{!M10Robot:SecondMagic!|>1=s}."
   },
   "M10Robot:LightShow": {
     "NAME": "Light Show",
@@ -198,7 +198,7 @@
   },
   "M10Robot:PerpetualAssembly": {
     "NAME": "Perpetual Assembly",
-    "DESCRIPTION": "{@@}m10robot:Swappable. NL Channel !M! m10robot:Present{!M!|>1=s}. NL Draw !M10Robot:SecondMagic! additional card{!M10Robot:SecondMagic!|>1=s} next turn."
+    "DESCRIPTION": "{@@}m10robot:Swappable. NL Channel !M! m10robot:Present{!M!|>1=s}. NL Next turn, draw !M10Robot:SecondMagic! additional card{!M10Robot:SecondMagic!|>1=s}."
   },
   "M10Robot:RapidAssembly": {
     "NAME": "Rapid Assembly",
@@ -251,7 +251,7 @@
   },
   "M10Robot:ReturningShield": {
     "NAME": "Returning Shield",
-    "DESCRIPTION": "Gain !B! Block. NL Next turn, gain !B! Block and draw an additional card."
+    "DESCRIPTION": "{@@}Gain !B! Block. NL Next turn, gain !B! Block and draw draw !M! additional card{!M!|>1=s}."
   },
   "M10Robot:Rewind": {
     "NAME": "Rewind",

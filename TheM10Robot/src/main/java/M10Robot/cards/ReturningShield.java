@@ -33,6 +33,7 @@ public class ReturningShield extends AbstractDynamicCard {
     private static final int COST = 2;
     private static final int BLOCK = 8;
     private static final int UPGRADE_PLUS_BLOCK = 3;
+    private static final int DRAW = 1;
 
     // /STAT DECLARATION/
 
@@ -40,6 +41,7 @@ public class ReturningShield extends AbstractDynamicCard {
     public ReturningShield() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         block = baseBlock = BLOCK;
+        magicNumber = baseMagicNumber = DRAW;
     }
 
     // Actions the card should do.
@@ -47,7 +49,7 @@ public class ReturningShield extends AbstractDynamicCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.addToBot(new GainBlockAction(p, p, block));
         this.addToBot(new ApplyPowerAction(p, p, new NextTurnBlockPower(p, block)));
-        this.addToBot(new ApplyPowerAction(p, p, new DrawCardNextTurnPower(p, 1)));
+        this.addToBot(new ApplyPowerAction(p, p, new DrawCardNextTurnPower(p, magicNumber)));
     }
 
     //Upgraded stats.
