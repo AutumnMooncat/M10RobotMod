@@ -3,6 +3,7 @@ package M10Robot.cards;
 import M10Robot.M10RobotMod;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
+import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.BranchingUpgradesCard;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -13,7 +14,7 @@ import com.megacrit.cardcrawl.powers.NextTurnBlockPower;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
-public class ReturningShield extends AbstractDynamicCard {
+public class ReturningShield extends AbstractDynamicCard implements BranchingUpgradesCard {
 
     // TEXT DECLARATION
 
@@ -34,6 +35,7 @@ public class ReturningShield extends AbstractDynamicCard {
     private static final int BLOCK = 8;
     private static final int UPGRADE_PLUS_BLOCK = 3;
     private static final int DRAW = 1;
+    private static final int UPGRADE_PLUS_DRAW = 1;
 
     // /STAT DECLARATION/
 
@@ -57,8 +59,20 @@ public class ReturningShield extends AbstractDynamicCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeBlock(UPGRADE_PLUS_BLOCK);
+            if (isBranchUpgrade()) {
+                branchUpgrade();
+            } else {
+                baseUpgrade();
+            }
             initializeDescription();
         }
+    }
+
+    public void baseUpgrade() {
+        upgradeBlock(UPGRADE_PLUS_BLOCK);
+    }
+
+    public void branchUpgrade() {
+        upgradeMagicNumber(UPGRADE_PLUS_DRAW);
     }
 }

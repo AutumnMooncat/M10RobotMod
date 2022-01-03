@@ -7,6 +7,7 @@ import M10Robot.orbs.BitOrb;
 import M10Robot.orbs.BombOrb;
 import M10Robot.orbs.PresentOrb;
 import M10Robot.orbs.SearchlightOrb;
+import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.BranchingUpgradesCard;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.defect.ChannelAction;
@@ -22,7 +23,7 @@ import java.util.ArrayList;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
-public class Juggling extends AbstractDynamicCard {
+public class Juggling extends AbstractDynamicCard implements BranchingUpgradesCard {
 
     // TEXT DECLARATION
 
@@ -60,13 +61,24 @@ public class Juggling extends AbstractDynamicCard {
         this.addToBot(new ApplyPowerAction(p, p, new DrawCardNextTurnPower(p, secondMagicNumber)));
     }
 
-    //Upgraded stats.
     @Override
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(UPGRADE_PLUS_CARDS);
+            if (isBranchUpgrade()) {
+                branchUpgrade();
+            } else {
+                baseUpgrade();
+            }
             initializeDescription();
         }
+    }
+
+    public void baseUpgrade() {
+        upgradeMagicNumber(UPGRADE_PLUS_CARDS);
+    }
+
+    public void branchUpgrade() {
+        upgradeSecondMagicNumber(UPGRADE_PLUS_CARDS);
     }
 }
