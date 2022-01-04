@@ -376,7 +376,7 @@
   },
   "M10Robot:UnstableCompound": {
     "NAME": "Unstable Compound",
-    "DESCRIPTION": "{@@}Channel !M! m10robot:Bomb{!M!|>1=s}. NL Draw !M! card{!M!|>1=s}."
+    "DESCRIPTION": "{@@}Channel !M! m10robot:Bomb{!M!|>1=s}. NL m10robot:Overclock a card in your hand !M10Robot:SecondMagic! times."
   },
   "M10Robot:WarForged": {
     "NAME": "War Forged",

@@ -2,10 +2,10 @@ package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
 import M10Robot.actions.MultichannelAction;
+import M10Robot.actions.OverclockCardAction;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
 import M10Robot.orbs.BombOrb;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
@@ -16,7 +16,7 @@ public class UnstableCompound extends AbstractDynamicCard {
     // TEXT DECLARATION
 
     public static final String ID = M10RobotMod.makeID(UnstableCompound.class.getSimpleName());
-    public static final String IMG = makeCardPath("UnstableCompound.png");
+    public static final String IMG = makeCardPath("UnstableCompound2.png");
 
     // /TEXT DECLARATION/
 
@@ -31,6 +31,8 @@ public class UnstableCompound extends AbstractDynamicCard {
     private static final int COST = 1;
     private static final int UPGRADE_COST = 0;
     private static final int ORBS = 1;
+    private static final int EFFECT = 2;
+    private static final int UPGRADE_PLUS_EFFECT = 1;
 
     // /STAT DECLARATION/
 
@@ -38,13 +40,14 @@ public class UnstableCompound extends AbstractDynamicCard {
     public UnstableCompound() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = ORBS;
+        secondMagicNumber = baseSecondMagicNumber = EFFECT;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.addToBot(new MultichannelAction(new BombOrb(), magicNumber));
-        this.addToBot(new DrawCardAction(magicNumber));
+        this.addToBot(new OverclockCardAction(false, secondMagicNumber));
     }
 
     //Upgraded stats.
