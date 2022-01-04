@@ -2,6 +2,7 @@ package M10Robot.orbs;
 
 import M10Robot.M10RobotMod;
 import M10Robot.actions.BitAttackAction;
+import M10Robot.actions.BitEvokeAction;
 import M10Robot.powers.WideAnglePower;
 import M10Robot.util.OverclockUtil;
 import M10Robot.util.TextureLoader;
@@ -103,35 +104,7 @@ public class BitOrb extends AbstractCustomOrb {
 
     @Override
     public void onEvoke() { // 1.On Orb Evoke
-        int hits = 1;
-//        if (p.hasPower(WideAnglePower.POWER_ID)) {
-//            hits += p.getPower(WideAnglePower.POWER_ID).amount;
-//        }
-        for (int i = 0 ; i < hits ; i++) {
-            this.addToBot(new AbstractGameAction() {
-                @Override
-                public void update() {
-                    AbstractCreature m = AbstractDungeon.getRandomMonster();
-                    if (m != null) {
-                        int damage = evokeAmount;
-                        if (m.hasPower(LockOnPower.POWER_ID)) {
-                            damage = (int)(damage * 1.5F);
-                        }
-                        this.addToBot(new AbstractGameAction() {
-                            @Override
-                            public void update() {
-                                playAnimation(ATTACK_IMG, MED_ANIM);
-                                this.isDone = true;
-                            }
-                        });
-                        this.addToTop(new ApplyPowerAction(m, p, new LockOnPower(m, LOCK_ON)));
-                        this.addToTop(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.NONE, true));
-                        this.addToTop(new VFXAction(new ExplosionSmallEffect(m.hb.cX, m.hb.cY), 0.0F));
-                    }
-                    this.isDone = true;
-                }
-            });
-        }
+        this.addToBot(new BitEvokeAction(this, p, LOCK_ON));
         this.addToBot(new RemoveSpecificPowerAction(p, p, linkedPower));
     }
 
@@ -218,13 +191,7 @@ public class BitOrb extends AbstractCustomOrb {
         @Override
         public int onAttacked(DamageInfo info, int damageAmount) {
             if (info.type != DamageInfo.DamageType.THORNS && info.type != DamageInfo.DamageType.HP_LOSS) {
-                this.addToTop(new AbstractGameAction() {
-                    @Override
-                    public void update() {
-                        linkedOrb.playAnimation(HURT_IMG, MED_ANIM);
-                        this.isDone = true;
-                    }
-                });
+                linkedOrb.playAnimation(HURT_IMG, MED_ANIM);
             }
             return damageAmount;
         }
