@@ -38,11 +38,9 @@ public class FullAuto extends AbstractDynamicCard {
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
     private static final int COST = 1;
-    private static final int DAMAGE = 3;
+    private static final int DAMAGE = 2;
     private static final int UPGRADE_PLUS_DMG = 1;
     private static final int HITS = 5;
-    private static final int UPGRADE_PLUS_HITS = 1;
-    private static final int BURN = 2;
 
     // /STAT DECLARATION/
 
@@ -50,10 +48,8 @@ public class FullAuto extends AbstractDynamicCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = damage = DAMAGE;
         magicNumber = baseMagicNumber = HITS;
-        secondMagicNumber = baseSecondMagicNumber = BURN;
         isMultiDamage = true;
         exhaust = true;
-        cardsToPreview = new Burn();
         CardModifierManager.addModifier(this, new HeavyModifier());
     }
 
@@ -63,10 +59,8 @@ public class FullAuto extends AbstractDynamicCard {
         this.addToBot(new SFXAction("ATTACK_FIRE"));
         this.addToBot(new VFXAction(p, new MindblastEffect(p.dialogX, p.dialogY, p.flipHorizontal), 0.1F));
         for (int i = 0 ; i < magicNumber ; i++) {
-            //this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.NONE, true));
             this.addToBot(new SuperFastDamageAllEnemiesAction(p, multiDamage, damageTypeForTurn, AbstractGameAction.AttackEffect.NONE));
         }
-        this.addToBot(new MakeTempCardInHandAction(new Burn(), secondMagicNumber));
     }
 
     // Upgraded stats.
@@ -79,19 +73,4 @@ public class FullAuto extends AbstractDynamicCard {
         }
     }
 
-//    @Override
-//    public void changeDescription() {
-//        if (lastChecked != magicNumber && cardStrings != null) {
-//            lastChecked = magicNumber;
-//            if (magicNumber > HITS) {
-//                this.name = EXTENDED_DESCRIPTION[0];
-//            } else {
-//                this.name = NAME;
-//            }
-//            for (int i = 0 ; i < timesUpgraded ; i++) {
-//                upgradeName();
-//                --timesUpgraded;
-//            }
-//        }
-//    }
 }

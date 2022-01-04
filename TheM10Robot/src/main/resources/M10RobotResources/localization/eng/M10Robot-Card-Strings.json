@@ -145,8 +145,7 @@
   },
   "M10Robot:FullAuto": {
     "NAME": "Full Throttle",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies !M! times. NL Add !M10Robot:SecondMagic! *Burns into your hand.",
-    "EXTENDED_DESCRIPTION": ["Fuller Auto"]
+    "DESCRIPTION": "Deal !D! damage to ALL enemies !M! times."
   },
   "M10Robot:HealthDown": {
     "NAME": "Health Down",
