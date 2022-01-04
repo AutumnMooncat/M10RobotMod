@@ -27,7 +27,7 @@
   },
   "M10Robot:AssemblyLine": {
     "NAME": "Assembly Line",
-    "DESCRIPTION": "Channel !M! m10robot:Presents. NL Upgrade all your Orbs !M10Robot:SecondMagic! times."
+    "DESCRIPTION": "Channel !M! m10robot:Presents. NL m10robot:Upgrade all your Orbs !M10Robot:SecondMagic! times."
   },
   "M10Robot:AttackDown": {
     "NAME": "Attack Down",
@@ -59,7 +59,7 @@
   },
   "M10Robot:BoosterShot": {
     "NAME": "Booster Shot",
-    "DESCRIPTION": "Deal !D! damage. NL Upgrade all your Orbs !M! times."
+    "DESCRIPTION": "Deal !D! damage. NL m10robot:Upgrade all your Orbs !M! times."
   },
   "M10Robot:Bramble": {
     "NAME": "Bramble",
@@ -88,7 +88,7 @@
   },
   "M10Robot:CompileData": {
     "NAME": "Compile Data",
-    "DESCRIPTION": "{@@}Channel !M10Robot:SecondMagic! m10robot:Present{!M10Robot:SecondMagic!|>1=s}. NL Upgrade {!M10Robot:SecondMagic!|@=it|>1=them} !M! time{!M!|>1=s}. NL Can be upgraded any number of times."
+    "DESCRIPTION": "{@@}Channel !M10Robot:SecondMagic! m10robot:Present{!M10Robot:SecondMagic!|>1=s}. NL m10robot:Upgrade {!M10Robot:SecondMagic!|@=it|>1=them} !M! time{!M!|>1=s}. NL Can be upgraded any number of times."
   },
   "M10Robot:Concentration": {
     "NAME": "Deadlock",
@@ -234,7 +234,7 @@
   },
   "M10Robot:RAMUpgrade": {
     "NAME": "RAM Upgrade",
-    "DESCRIPTION": "{@@}Whenever you Channel an Orb, Upgrade it !M! time{!M!|>1=s}."
+    "DESCRIPTION": "{@@}Whenever you Channel an Orb, m10robot:Upgrade it !M! time{!M!|>1=s}."
   },
   "M10Robot:RecoveryMode": {
     "NAME": "Recovery Mode",
@@ -367,7 +367,7 @@
   },
   "M10Robot:Tinker": {
     "NAME": "Tinker",
-    "DESCRIPTION": "{@@}Gain !B! Block. NL Upgrade the next {!M!|@=Orb|>1=!M! Orbs} you Channel."
+    "DESCRIPTION": "{@@}Gain !B! Block. NL m10robot:Upgrade the next {!M!|@=Orb|>1=!M! Orbs} you Channel."
   },
   "M10Robot:Turbo": {
     "NAME": "Turbo",

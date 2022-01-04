@@ -123,6 +123,13 @@
     "DESCRIPTION": "#yRight #yClick to swap the effect of this card."
   },
   {
+    "PROPER_NAME": "Upgrade",
+    "NAMES": [
+      "upgrade"
+    ],
+    "DESCRIPTION": "Upgrading Orbs makes them more powerful. Orbs can be upgraded any number of times."
+  },
+  {
     "PROPER_NAME": "Bit",
     "NAMES": [
       "bit",
