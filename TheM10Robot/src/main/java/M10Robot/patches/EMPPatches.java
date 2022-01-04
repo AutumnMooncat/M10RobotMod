@@ -14,13 +14,13 @@ public class EMPPatches {
         @SpirePrefixPatch
         public static SpireReturn<?> dontRemove(RemoveSpecificPowerAction __instance, AbstractPower ___powerInstance, String ___powerToRemove) {
             if (__instance.target != null && __instance.target.hasPower(EMPPower.POWER_ID)) {
-                if (___powerInstance != null && ___powerInstance.type == AbstractPower.PowerType.DEBUFF  && !(___powerInstance instanceof EMPPower)) {
+                if (___powerInstance != null && ___powerInstance.type == AbstractPower.PowerType.DEBUFF  && !(___powerInstance instanceof EMPPower) && !(___powerInstance.canGoNegative && ___powerInstance.amount == 0)) {
                     __instance.target.getPower(EMPPower.POWER_ID).flash();
                     __instance.isDone = true;
                     return SpireReturn.Return();
                 } else if (___powerToRemove != null){
                     AbstractPower p = __instance.target.getPower(___powerToRemove);
-                    if (p != null && p.type == AbstractPower.PowerType.DEBUFF && !(p instanceof EMPPower)) {
+                    if (p != null && p.type == AbstractPower.PowerType.DEBUFF && !(p instanceof EMPPower) && !(p.canGoNegative && p.amount == 0)) {
                         __instance.target.getPower(EMPPower.POWER_ID).flash();
                         __instance.isDone = true;
                         return SpireReturn.Return();
