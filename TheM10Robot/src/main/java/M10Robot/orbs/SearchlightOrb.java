@@ -62,12 +62,7 @@ public class SearchlightOrb extends AbstractCustomOrb {
 
     public SearchlightOrb(int timesUpgraded) {
         super(ORB_ID, orbString.NAME, PASSIVE_DAMAGE, EVOKE_AMOUNT, timesUpgraded, IDLE_IMG, ATTACK_IMG, HURT_IMG, SUCCESS_IMG, FAILURE_IMG, THROW_IMG);
-
-        linkedPower = new SearchlightOrbPower(this);
-
         updateDescription();
-
-        //angle = MathUtils.random(360.0f); // More Animation-related Numbers
         channelAnimTimer = 0.5f;
     }
 
@@ -101,18 +96,31 @@ public class SearchlightOrb extends AbstractCustomOrb {
             }
         });
         this.addToBot(new ApplyPowerAction(p, p, new SpikesPower(p, evokeAmount)));
-        //this.addToBot(new DamageAllEnemiesAction(p, DamageInfo.createDamageMatrix(evokeAmount, true, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
-        this.addToBot(new RemoveSpecificPowerAction(p, p, linkedPower));
     }
 
     @Override
-    public void onChannel() {
-        this.addToBot(new ApplyPowerAction(p, p, linkedPower));
-    }
-
-    @Override
-    public void onLinkedPowerTrigger() {
-        this.addToTop(new VFXAction(new OrbFlareEffect(this, OrbFlareEffect.OrbFlareColor.FROST), 0.0f));
+    public void onAttacked(DamageInfo info) {
+        if (info.type != DamageInfo.DamageType.THORNS && info.type != DamageInfo.DamageType.HP_LOSS && info.owner != null && info.owner != p) {
+            this.addToTop(new AbstractGameAction() {
+                @Override
+                public void update() {
+                    int damage = passiveAmount;
+                    if (info.owner.hasPower(LockOnPower.POWER_ID)) {
+                        damage = (int)(damage * 1.5F);
+                    }
+                    if (!info.owner.isDeadOrEscaped()) {
+                        AbstractDungeon.effectList.add(new FlashAtkImgEffect(info.owner.hb.cX, info.owner.hb.cY, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+                        AbstractDungeon.effectList.add(new OrbFlareEffect(SearchlightOrb.this, OrbFlareEffect.OrbFlareColor.FROST));
+                        info.owner.damage(new DamageInfo(p, damage, DamageInfo.DamageType.THORNS));
+                        if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
+                            AbstractDungeon.actionManager.clearPostCombatActions();
+                        }
+                        playAnimation(ATTACK_IMG, MED_ANIM);
+                    }
+                    this.isDone = true;
+                }
+            });
+        }
     }
 
     @Override
@@ -156,41 +164,4 @@ public class SearchlightOrb extends AbstractCustomOrb {
         return new SearchlightOrb(timesUpgraded);
     }
 
-    private static class SearchlightOrbPower extends AbstractLinkedOrbPower {
-
-        public SearchlightOrbPower(AbstractCustomOrb linkedOrb) {
-            super(linkedOrb);
-        }
-
-        public int onAttacked(DamageInfo info, int damageAmount) {
-            if (info.type != DamageInfo.DamageType.THORNS && info.type != DamageInfo.DamageType.HP_LOSS && info.owner != null && info.owner != this.owner) {
-                AbstractCreature ref = owner;
-                this.addToTop(new AbstractGameAction() {
-                    @Override
-                    public void update() {
-                        int damage = linkedOrb.passiveAmount;
-                        if (info.owner.hasPower(LockOnPower.POWER_ID)) {
-                            damage = (int)(damage * 1.5F);
-                        }
-                        if (!info.owner.isDeadOrEscaped()) {
-                            AbstractDungeon.effectList.add(new FlashAtkImgEffect(info.owner.hb.cX, info.owner.hb.cY, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
-                            AbstractDungeon.effectList.add(new OrbFlareEffect(linkedOrb, OrbFlareEffect.OrbFlareColor.FROST));
-                            info.owner.damage(new DamageInfo(ref, damage, DamageInfo.DamageType.THORNS));
-                            if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
-                                AbstractDungeon.actionManager.clearPostCombatActions();
-                            }
-                            linkedOrb.playAnimation(ATTACK_IMG, MED_ANIM);
-                        }
-                        this.isDone = true;
-                    }
-                });
-            }
-            return damageAmount;
-        }
-
-        @Override
-        public AbstractPower makeCopy() {
-            return new SearchlightOrbPower(linkedOrb);
-        }
-    }
 }

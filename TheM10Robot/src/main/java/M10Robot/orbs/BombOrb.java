@@ -61,6 +61,8 @@ public class BombOrb extends AbstractCustomOrb {
     private static final int UPGRADE_PLUS_PASSIVE_DAMAGE = 25;
     //private static final int UPGRADE_PLUS_EVOKE_DAMAGE = 4;
 
+    private boolean attacked;
+
     public BombOrb() {
         this(0);
     }
@@ -68,12 +70,7 @@ public class BombOrb extends AbstractCustomOrb {
     public BombOrb(int timesUpgraded) {
         super(ORB_ID, orbString.NAME, PASSIVE_DAMAGE, EVOKE_DAMAGE, timesUpgraded, IDLE_IMG, ATTACK_IMG, HURT_IMG, SUCCESS_IMG, FAILURE_IMG, THROW_IMG);
         scale = 1.2f;
-
-        linkedPower = new BombOrbPower(this);
-
         updateDescription();
-
-        //angle = MathUtils.random(360.0f); // More Animation-related Numbers
         channelAnimTimer = 0.5f;
     }
 
@@ -85,11 +82,6 @@ public class BombOrb extends AbstractCustomOrb {
             //upgradeEvoke(UPGRADE_PLUS_EVOKE_DAMAGE);
             updateDescription();
         }
-    }
-
-    @Override
-    public void onChannel() {
-        this.addToBot(new ApplyPowerAction(p, p, linkedPower));
     }
 
     @Override
@@ -125,38 +117,31 @@ public class BombOrb extends AbstractCustomOrb {
             }
             this.addToBot(new DamageAction(t, new DamageInfo(p, damage, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.FIRE));
         }
-
-        //this.addToBot(new ApplyPowerAction(p, p, new RecoilPower(p, RECOIL)));
-        this.addToBot(new RemoveSpecificPowerAction(p, p, linkedPower));
     }
 
-//    @Override
-//    public void onEndOfTurn() {
-//        boolean didSomething = false;
-//        for (AbstractMonster mon : AbstractDungeon.getMonsters().monsters) {
-//            if (!mon.isDeadOrEscaped() && mon.hasPower(LockOnPower.POWER_ID)) {
-//                didSomething = true;
-//                this.addToBot(new DamageAction(mon, new DamageInfo(p, (int) (passiveAmount * LockOnPower.MULTIPLIER), DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.FIRE, true));
-//            }
-//        }
-//        if (didSomething) {
-//            this.addToTop(new AbstractGameAction() {
-//                @Override
-//                public void update() {
-//                    playAnimation(ATTACK_IMG, MED_ANIM);
-//                    this.isDone = true;
-//                }
-//            });
-//        } else {
-//            this.addToTop(new AbstractGameAction() {
-//                @Override
-//                public void update() {
-//                    playAnimation(FAILURE_IMG, MED_ANIM);
-//                    this.isDone = true;
-//                }
-//            });
-//        }
-//    }
+    @Override
+    public void onAttacked(DamageInfo info) {
+        if (info.type != DamageInfo.DamageType.THORNS && info.type != DamageInfo.DamageType.HP_LOSS && info.output > 0) {
+            attacked = true;
+            this.addToTop(new AbstractGameAction() {
+                @Override
+                public void update() {
+                    playAnimation(SUCCESS_IMG, MED_ANIM);
+                    evokeAmount += Math.max(1, info.output * (passiveAmount / 100F));
+                    this.isDone = true;
+                }
+            });
+        }
+    }
+
+    @Override
+    public void onStartOfTurn() {
+        if (attacked) {
+            attacked = false;
+        } else {
+            playAnimation(FAILURE_IMG, MED_ANIM);
+        }
+    }
 
     @Override
     public void updateAnimation() {// You can totally leave this as is.
@@ -201,77 +186,4 @@ public class BombOrb extends AbstractCustomOrb {
         return new BombOrb(timesUpgraded);
     }
 
-    private static class BombOrbPower extends AbstractLinkedOrbPower {
-
-        private boolean attacked = false;
-
-        public BombOrbPower(AbstractCustomOrb linkedOrb) {
-            super(linkedOrb);
-        }
-
-//        @Override
-//        public void onPlayCard(AbstractCard card, AbstractMonster m) {
-//            if (card.type == AbstractCard.CardType.ATTACK) {
-//                AbstractCreature ref = owner;
-//                for (AbstractMonster mon : AbstractDungeon.getMonsters().monsters) {
-//                    if (mon.hasPower(LockOnPower.POWER_ID)) {
-//                        this.addToTop(new AbstractGameAction() {
-//                            @Override
-//                            public void update() {
-//                                int damage = (int) (linkedOrb.passiveAmount * 1.5F);
-//                                if (!mon.isDeadOrEscaped()) {
-//                                    linkedOrb.playAnimation(ATTACK_IMG, MED_ANIM);
-//                                    CardCrawlGame.sound.play("ATTACK_MAGIC_BEAM_SHORT", 0.5F);
-//                                    AbstractDungeon.effectList.add(new SmallLaserEffect(mon.hb.cX, mon.hb.cY, linkedOrb.getXPosition(), linkedOrb.getYPosition()));
-//                                    AbstractDungeon.effectList.add(new OrbFlareEffect(linkedOrb, OrbFlareEffect.OrbFlareColor.FROST));
-//                                    DamageInfo di = new DamageInfo(ref, damage, DamageInfo.DamageType.THORNS);
-//                                    mon.damage(di);
-//                                    if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
-//                                        AbstractDungeon.actionManager.clearPostCombatActions();
-//                                    }
-//                                }
-//                                this.isDone = true;
-//                            }
-//                        });
-//                    }
-//                }
-//            }
-//        }
-
-        @Override
-        public int onAttacked(DamageInfo info, int damageAmount) {
-            if (info.type != DamageInfo.DamageType.THORNS && info.type != DamageInfo.DamageType.HP_LOSS) {
-                attacked = true;
-                this.addToTop(new AbstractGameAction() {
-                    @Override
-                    public void update() {
-                        linkedOrb.playAnimation(SUCCESS_IMG, MED_ANIM);
-                        linkedOrb.evokeAmount += Math.max(1, info.output * (linkedOrb.passiveAmount / 100F));
-                        this.isDone = true;
-                    }
-                });
-            }
-            return damageAmount;
-        }
-
-        @Override
-        public void atStartOfTurn() {
-            if (attacked) {
-                attacked = false;
-            } else {
-                this.addToTop(new AbstractGameAction() {
-                    @Override
-                    public void update() {
-                        linkedOrb.playAnimation(FAILURE_IMG, MED_ANIM);
-                        this.isDone = true;
-                    }
-                });
-            }
-        }
-
-        @Override
-        public AbstractPower makeCopy() {
-            return new BombOrbPower(linkedOrb);
-        }
-    }
 }

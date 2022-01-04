@@ -68,12 +68,7 @@ public class BitOrb extends AbstractCustomOrb {
 
     public BitOrb(int timesUpgraded) {
         super(ORB_ID, orbString.NAME, PASSIVE_DAMAGE, EVOKE_DAMAGE, timesUpgraded, IDLE_IMG, ATTACK_IMG, HURT_IMG, SUCCESS_IMG, FAILURE_IMG, THROW_IMG);
-
-        linkedPower = new BitOrbPower(this);
-
         updateDescription();
-
-        //angle = MathUtils.random(360.0f); // More Animation-related Numbers
         channelAnimTimer = 0.5f;
     }
 
@@ -105,17 +100,26 @@ public class BitOrb extends AbstractCustomOrb {
     @Override
     public void onEvoke() { // 1.On Orb Evoke
         this.addToBot(new BitEvokeAction(this, p, LOCK_ON));
-        this.addToBot(new RemoveSpecificPowerAction(p, p, linkedPower));
     }
 
     @Override
-    public void onChannel() {
-        this.addToBot(new ApplyPowerAction(p, p, linkedPower));
+    public void onPlayCard(AbstractCard card) {
+        if (card.type == AbstractCard.CardType.ATTACK) {
+            int hits = 1;
+            if (p.hasPower(WideAnglePower.POWER_ID)) {
+                hits += p.getPower(WideAnglePower.POWER_ID).amount;
+            }
+            for (int i = 0 ; i < hits ; i++) {
+                this.addToBot(new BitAttackAction(this, p));
+            }
+        }
     }
 
     @Override
-    public void onLinkedPowerTrigger() {
-        this.addToBot(new VFXAction(new OrbFlareEffect(this, OrbFlareEffect.OrbFlareColor.FROST), 0.0f));
+    public void onAttacked(DamageInfo info) {
+        if (info.type != DamageInfo.DamageType.THORNS && info.type != DamageInfo.DamageType.HP_LOSS) {
+            playAnimation(HURT_IMG, MED_ANIM);
+        }
     }
 
     @Override
@@ -169,36 +173,4 @@ public class BitOrb extends AbstractCustomOrb {
         return new BitOrb(this.timesUpgraded);
     }
 
-    private static class BitOrbPower extends AbstractLinkedOrbPower {
-
-        public BitOrbPower(BitOrb linkedOrb) {
-            super(linkedOrb);
-        }
-
-        @Override
-        public void onPlayCard(AbstractCard card, AbstractMonster m) {
-            if (card.type == AbstractCard.CardType.ATTACK) {
-                int hits = 1;
-                if (owner.hasPower(WideAnglePower.POWER_ID)) {
-                    hits += owner.getPower(WideAnglePower.POWER_ID).amount;
-                }
-                for (int i = 0 ; i < hits ; i++) {
-                    this.addToBot(new BitAttackAction((BitOrb) linkedOrb, owner));
-                }
-            }
-        }
-
-        @Override
-        public int onAttacked(DamageInfo info, int damageAmount) {
-            if (info.type != DamageInfo.DamageType.THORNS && info.type != DamageInfo.DamageType.HP_LOSS) {
-                linkedOrb.playAnimation(HURT_IMG, MED_ANIM);
-            }
-            return damageAmount;
-        }
-
-        @Override
-        public AbstractPower makeCopy() {
-            return new BitOrbPower((BitOrb) linkedOrb);
-        }
-    }
 }

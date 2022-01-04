@@ -61,12 +61,7 @@ public class PresentOrb extends AbstractCustomOrb {
 
     public PresentOrb(int timesUpgraded) {
         super(ORB_ID, orbString.NAME, PASSIVE_AMOUNT, EVOKE_AMOUNT, timesUpgraded, IDLE_IMG, ATTACK_IMG, HURT_IMG, SUCCESS_IMG, FAILURE_IMG, THROW_IMG);
-
-        linkedPower = new PresentOrbPower(this);
-
         updateDescription();
-
-        //angle = MathUtils.random(360.0f); // More Animation-related Numbers
         channelAnimTimer = 0.5f;
 
     }
@@ -83,11 +78,6 @@ public class PresentOrb extends AbstractCustomOrb {
     }
 
     @Override
-    public void onChannel() {
-        this.addToBot(new ApplyPowerAction(p, p, linkedPower));
-    }
-
-    @Override
     public void updateDescription() { // Set the on-hover description of the orb
         applyFocus(); // Apply Focus (Look at the next method)
         description =
@@ -98,10 +88,20 @@ public class PresentOrb extends AbstractCustomOrb {
 
     @Override
     public void onEvoke() { // 1.On Orb Evoke
-        //this.addToBot(new OverclockCardAction(true, evokeAmount));
-        //this.addToBot(new ApplyPowerAction(p, p, new PlatedArmorPower(p, evokeAmount)));
         this.addToBot(new GainBlockAction(p, evokeAmount));
-        this.addToBot(new RemoveSpecificPowerAction(p, p, linkedPower));
+    }
+
+    @Override
+    public void onPlayCard(AbstractCard card) {
+        if (card.type == AbstractCard.CardType.ATTACK) {
+            playAnimation(ATTACK_IMG, SHORT_ANIM);
+            this.addToBot(new GainBlockAction(p, p, passiveAmount, true));
+        }
+    }
+
+    @Override
+    public void onAttacked(DamageInfo info) {
+        playAnimation(HURT_IMG, MED_ANIM);
     }
 
     @Override
@@ -130,7 +130,6 @@ public class PresentOrb extends AbstractCustomOrb {
         FontHelper.renderFontCentered(sb, FontHelper.cardEnergyFont_L, String.valueOf(this.evokeAmount), this.cX + NUM_X_OFFSET + GENERIC_X_OFFSET, this.cY + this.bobEffect.y / 2.0F + NUM_Y_OFFSET - 4.0F * Settings.scale, new Color(0.2F, 1.0F, 1.0F, this.c.a), this.fontScale);
     }
 
-
     @Override
     public void triggerEvokeAnimation() { // The evoke animation of this orb is the dark-orb activation effect.
         AbstractDungeon.effectsQueue.add(new PlasmaOrbActivateEffect(cX, cY));
@@ -146,49 +145,4 @@ public class PresentOrb extends AbstractCustomOrb {
         return new PresentOrb(timesUpgraded);
     }
 
-    private static class PresentOrbPower extends AbstractLinkedOrbPower {
-
-        public PresentOrbPower(AbstractCustomOrb linkedOrb) {
-            super(linkedOrb);
-        }
-
-        @Override
-        public void onPlayCard(AbstractCard card, AbstractMonster m) {
-            if (card.type == AbstractCard.CardType.ATTACK) {
-                linkedOrb.playAnimation(ATTACK_IMG, SHORT_ANIM);
-                this.addToBot(new GainBlockAction(owner, owner, linkedOrb.passiveAmount, true));
-            }
-        }
-
-//        @Override
-//        public void atStartOfTurnPostDraw() {
-//            this.addToBot(new AbstractGameAction() {
-//                @Override
-//                public void update() {
-//                    linkedOrb.playAnimation(THROW_IMG, SHORT_ANIM);
-//                    this.addToBot(new OverclockCardAction(true, linkedOrb.passiveAmount));
-//                    this.isDone = true;
-//                }
-//            });
-//        }
-
-        @Override
-        public int onAttacked(DamageInfo info, int damageAmount) {
-            if (info.type != DamageInfo.DamageType.THORNS && info.type != DamageInfo.DamageType.HP_LOSS) {
-                this.addToTop(new AbstractGameAction() {
-                    @Override
-                    public void update() {
-                        linkedOrb.playAnimation(HURT_IMG, MED_ANIM);
-                        this.isDone = true;
-                    }
-                });
-            }
-            return damageAmount;
-        }
-
-        @Override
-        public AbstractPower makeCopy() {
-            return new PresentOrbPower(linkedOrb);
-        }
-    }
 }

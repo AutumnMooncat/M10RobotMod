@@ -7,6 +7,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.patches.HitboxRightClick;
 import com.evacipated.cardcrawl.modthespire.lib.*;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
@@ -144,11 +146,9 @@ public abstract class AbstractCustomOrb extends AbstractOrb {
         AbstractDungeon.actionManager.addToTop(action);
     }
 
-    public void onChannel() {
-    }
+    public void onChannel() {}
 
-    public void onLinkedPowerTrigger() {
-    }
+    public void onLinkedPowerTrigger() {}
 
     public void playAnimation(Texture newImage, float time) {
         this.img = newImage;
@@ -166,6 +166,10 @@ public abstract class AbstractCustomOrb extends AbstractOrb {
             }
         }
     }
+
+    public void onPlayCard(AbstractCard card) {}
+
+    public void onAttacked(DamageInfo info) {}
 
     public float getXPosition() {
         return this.hb.cX;

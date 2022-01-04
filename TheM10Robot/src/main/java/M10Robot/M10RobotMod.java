@@ -2,6 +2,7 @@ package M10Robot;
 
 import M10Robot.cards.EMP;
 import M10Robot.characters.M10Robot;
+import M10Robot.orbs.AbstractCustomOrb;
 import M10Robot.powers.EMPPower;
 import M10Robot.relics.ProtectiveShell;
 import M10Robot.relics.ProtectiveShell2;
@@ -19,6 +20,8 @@ import com.evacipated.cardcrawl.modthespire.Loader;
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -26,6 +29,7 @@ import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.*;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -74,7 +78,9 @@ public class M10RobotMod implements
         EditKeywordsSubscriber,
         EditCharactersSubscriber,
         PostInitializeSubscriber,
-        PostEnergyRechargeSubscriber {
+        PostEnergyRechargeSubscriber,
+        OnCardUseSubscriber,
+        OnPlayerDamagedSubscriber {
     // Make sure to implement the subscribers *you* are using (read basemod wiki). Editing cards? EditCardsSubscriber.
     // Making relics? EditRelicsSubscriber. etc., etc., for a full list and how to make your own, visit the basemod wiki.
     public static final Logger logger = LogManager.getLogger(M10RobotMod.class.getName());
@@ -708,5 +714,24 @@ public class M10RobotMod implements
                 aM.getPower(EMPPower.POWER_ID).onSpecificTrigger();
             }
         }
+    }
+
+    @Override
+    public void receiveCardUsed(AbstractCard abstractCard) {
+        for (AbstractOrb o : AbstractDungeon.player.orbs) {
+            if (o instanceof AbstractCustomOrb) {
+                ((AbstractCustomOrb) o).onPlayCard(abstractCard);
+            }
+        }
+    }
+
+    @Override
+    public int receiveOnPlayerDamaged(int i, DamageInfo damageInfo) {
+        for (AbstractOrb o : AbstractDungeon.player.orbs) {
+            if (o instanceof AbstractCustomOrb) {
+                ((AbstractCustomOrb) o).onAttacked(damageInfo);
+            }
+        }
+        return i;
     }
 }
