@@ -48,7 +48,7 @@ public class HomeSweeper extends AbstractDynamicCard {
         baseDamage = damage = DAMAGE;
         magicNumber = baseMagicNumber = DAMAGE_PER_TURN_SCALING;
         isMultiDamage = true;
-        CardModifierManager.addModifier(this, new AimedModifier());
+//        CardModifierManager.addModifier(this, new AimedModifier());
     }
 
     // Actions the card should do.
