@@ -11,7 +11,7 @@
   },
   "M10Robot:AirRaid": {
     "NAME": "Air Raid",
-    "DESCRIPTION": "{@@}Deal !D! damage to ALL enemies X{!M!|>0= + !M!} times."
+    "DESCRIPTION": "{@@}Deal !D! damage X{!M!|>0= + !M!} times."
   },
   "M10Robot:AllIn": {
     "NAME": "All In",

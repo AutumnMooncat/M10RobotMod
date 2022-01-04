@@ -41,7 +41,7 @@ public class AirRaid extends AbstractDynamicCard {
     // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.RARE;
-    private static final CardTarget TARGET = CardTarget.ALL_ENEMY;
+    private static final CardTarget TARGET = CardTarget.ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
@@ -52,13 +52,10 @@ public class AirRaid extends AbstractDynamicCard {
 
     // /STAT DECLARATION/
 
-
-    //TODO buff or rework
     public AirRaid() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = DAMAGE;
         magicNumber = baseMagicNumber = BONUS_HITS;
-        isMultiDamage = true;
         CardModifierManager.addModifier(this, new AimedModifier());
     }
 
@@ -97,22 +94,34 @@ public class AirRaid extends AbstractDynamicCard {
         effect += magicNumber;
 
         for (int i = 0 ; i < effect ; i++) {
-            for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
-                if (!aM.isDeadOrEscaped() /*&& aM.hasPower(LockOnPower.POWER_ID)*/) {
-                    this.addToBot(new VFXAction(new InversionBeamEffect(aM.hb.cX), 0.1f));
-                    this.addToBot(new AbstractGameAction() {
-                        @Override
-                        public void update() {
-                            AbstractDungeon.effectsQueue.add(new ExplosionSmallEffect(aM.hb.cX, aM.hb.cY));
-                            AbstractDungeon.effectsQueue.add(new BurnToAshEffect(aM.hb.cX, aM.hb.cY));
-                            CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.HIGH, ScreenShake.ShakeDur.MED, false);
-                            this.isDone = true;
-                        }
-                    });
-                    this.addToBot(new SFXAction("WATCHER_HEART_PUNCH"));
-                    this.addToBot(new DamageAction(aM, new DamageInfo(p, multiDamage[AbstractDungeon.getMonsters().monsters.indexOf(aM)], damageTypeForTurn), AbstractGameAction.AttackEffect.NONE, true));
+//            for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
+//                if (!aM.isDeadOrEscaped() /*&& aM.hasPower(LockOnPower.POWER_ID)*/) {
+//                    this.addToBot(new VFXAction(new InversionBeamEffect(aM.hb.cX), 0.1f));
+//                    this.addToBot(new AbstractGameAction() {
+//                        @Override
+//                        public void update() {
+//                            AbstractDungeon.effectsQueue.add(new ExplosionSmallEffect(aM.hb.cX, aM.hb.cY));
+//                            AbstractDungeon.effectsQueue.add(new BurnToAshEffect(aM.hb.cX, aM.hb.cY));
+//                            CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.HIGH, ScreenShake.ShakeDur.MED, false);
+//                            this.isDone = true;
+//                        }
+//                    });
+//                    this.addToBot(new SFXAction("WATCHER_HEART_PUNCH"));
+//                    this.addToBot(new DamageAction(aM, new DamageInfo(p, multiDamage[AbstractDungeon.getMonsters().monsters.indexOf(aM)], damageTypeForTurn), AbstractGameAction.AttackEffect.NONE, true));
+//                }
+//            }
+            this.addToBot(new VFXAction(new InversionBeamEffect(m.hb.cX), 0.1f));
+            this.addToBot(new AbstractGameAction() {
+                @Override
+                public void update() {
+                    AbstractDungeon.effectsQueue.add(new ExplosionSmallEffect(m.hb.cX, m.hb.cY));
+                    AbstractDungeon.effectsQueue.add(new BurnToAshEffect(m.hb.cX, m.hb.cY));
+                    CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.HIGH, ScreenShake.ShakeDur.MED, false);
+                    this.isDone = true;
                 }
-            }
+            });
+            this.addToBot(new SFXAction("WATCHER_HEART_PUNCH"));
+            this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.NONE, true));
         }
 
         if (!this.freeToPlayOnce) {
