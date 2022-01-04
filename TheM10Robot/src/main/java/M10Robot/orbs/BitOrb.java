@@ -112,20 +112,22 @@ public class BitOrb extends AbstractCustomOrb {
                 @Override
                 public void update() {
                     AbstractCreature m = AbstractDungeon.getRandomMonster();
-                    int damage = evokeAmount;
-                    if (m.hasPower(LockOnPower.POWER_ID)) {
-                        damage = (int)(damage * 1.5F);
-                    }
-                    this.addToBot(new AbstractGameAction() {
-                        @Override
-                        public void update() {
-                            playAnimation(ATTACK_IMG, MED_ANIM);
-                            this.isDone = true;
+                    if (m != null) {
+                        int damage = evokeAmount;
+                        if (m.hasPower(LockOnPower.POWER_ID)) {
+                            damage = (int)(damage * 1.5F);
                         }
-                    });
-                    this.addToTop(new ApplyPowerAction(m, p, new LockOnPower(m, LOCK_ON)));
-                    this.addToTop(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.NONE, true));
-                    this.addToTop(new VFXAction(new ExplosionSmallEffect(m.hb.cX, m.hb.cY), 0.0F));
+                        this.addToBot(new AbstractGameAction() {
+                            @Override
+                            public void update() {
+                                playAnimation(ATTACK_IMG, MED_ANIM);
+                                this.isDone = true;
+                            }
+                        });
+                        this.addToTop(new ApplyPowerAction(m, p, new LockOnPower(m, LOCK_ON)));
+                        this.addToTop(new DamageAction(m, new DamageInfo(p, damage, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.NONE, true));
+                        this.addToTop(new VFXAction(new ExplosionSmallEffect(m.hb.cX, m.hb.cY), 0.0F));
+                    }
                     this.isDone = true;
                 }
             });
