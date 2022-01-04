@@ -1,17 +1,20 @@
 package M10Robot.powers;
 
 import M10Robot.M10RobotMod;
+import M10Robot.cards.abstractCards.AbstractSwappableCard;
 import basemod.interfaces.CloneablePowerInterface;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
-public class ScrambleFieldPower extends AbstractPower implements CloneablePowerInterface {
+public class ImaginaryPower extends AbstractPower implements CloneablePowerInterface {
 
-    public static final String POWER_ID = M10RobotMod.makeID("ScrambleFieldPower");
+    public static final String POWER_ID = M10RobotMod.makeID("ImaginaryPower");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
@@ -22,7 +25,7 @@ public class ScrambleFieldPower extends AbstractPower implements CloneablePowerI
     //private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power84.png"));
     //private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power32.png"));
 
-    public ScrambleFieldPower(AbstractCreature owner, int amount) {
+    public ImaginaryPower(AbstractCreature owner, int amount) {
         this.name = NAME;
         this.ID = POWER_ID;
         this.owner = owner;
@@ -42,24 +45,36 @@ public class ScrambleFieldPower extends AbstractPower implements CloneablePowerI
         updateDescription();
     }
 
-    @Override
-    public int onAttackedToChangeDamage(DamageInfo info, int damageAmount) {
-        flash();
-        return damageAmount > amount ? damageAmount - amount : 0;
+    public void playApplyPowerSfx() {
+        CardCrawlGame.sound.play("POWER_CONFUSION", 0.05F);
+    }
+
+    public void onCardDraw(AbstractCard card) {
+        if (card.cost >= 0) {
+            card.setCostForTurn(AbstractDungeon.cardRandomRng.random(1));
+            if (card instanceof AbstractSwappableCard) {
+                card.cardsToPreview.setCostForTurn(card.costForTurn);
+            }
+        }
     }
 
     public void atEndOfRound() {
-        this.addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
+        this.addToBot(new ReducePowerAction(this.owner, this.owner, this, 1));
     }
 
     @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
+        if (amount == 1) {
+            description = DESCRIPTIONS[0];
+        } else {
+            description = DESCRIPTIONS[1] + amount + DESCRIPTIONS[2];
+        }
+
     }
 
     @Override
     public AbstractPower makeCopy() {
-        return new ScrambleFieldPower(owner, amount);
+        return new ImaginaryPower(owner, amount);
     }
 
 }

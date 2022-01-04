@@ -158,7 +158,7 @@
   },
   "M10Robot:ImaginaryNumbers": {
     "NAME": "Imaginary Numbers",
-    "DESCRIPTION": "Gain !M! temporary Strength and temporary Dexterity."
+    "DESCRIPTION": "{@@}For !M! turn{!M!|>1=s}, cards randomly cost zero or one."
   },
   "M10Robot:ImmovableObject": {
     "NAME": "Immovable Object",

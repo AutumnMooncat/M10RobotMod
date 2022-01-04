@@ -40,6 +40,11 @@
     "NAME": "High Explosives",
     "DESCRIPTIONS": ["#yBombs now hits ALL enemies #b"," time."," times."]
   },
+  "M10Robot:ImaginaryPower": {
+    "NAME": "Imaginary Numbers",
+    "DESCRIPTIONS": ["This turn, whenever you draw a card, randomize its cost between #b0 and #b1.",
+      "For #b"," turns, whenever you draw a card, randomize its cost between #b0 and #b1."]
+  },
   "M10Robot:LoseFocusPower": {
     "NAME": "Focus Down",
     "DESCRIPTIONS": ["At the end of this turn, lose #b", " #yFocus."]
@@ -109,10 +114,6 @@
     "NAME": "Scrambled",
     "DESCRIPTIONS": ["Draw #b1 less card next turn.",
                     "Draw #b1 less card for #b", " turns."]
-  },
-  "M10Robot:ScrambleFieldPower": {
-    "NAME": "Scramble Field",
-    "DESCRIPTIONS": ["This turn, whenever you would lose HP, lose #b"," less."]
   },
   "M10Robot:SpeedloaderPower": {
     "NAME": "Speedloader",
