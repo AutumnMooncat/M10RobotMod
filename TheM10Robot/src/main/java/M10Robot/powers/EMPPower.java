@@ -51,7 +51,7 @@ public class EMPPower extends AbstractPower implements CloneablePowerInterface {
     }
 
     @Override
-    public void onEnergyRecharge() {
+    public void onSpecificTrigger() {
         this.addToBot(new ReducePowerAction(this.owner, this.owner, this, 1));
     }
 

@@ -1,6 +1,8 @@
 package M10Robot;
 
+import M10Robot.cards.EMP;
 import M10Robot.characters.M10Robot;
+import M10Robot.powers.EMPPower;
 import M10Robot.relics.ProtectiveShell;
 import M10Robot.relics.ProtectiveShell2;
 import M10Robot.util.IDCheckDontTouchPls;
@@ -19,9 +21,11 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.*;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -69,7 +73,8 @@ public class M10RobotMod implements
         EditStringsSubscriber,
         EditKeywordsSubscriber,
         EditCharactersSubscriber,
-        PostInitializeSubscriber {
+        PostInitializeSubscriber,
+        PostEnergyRechargeSubscriber {
     // Make sure to implement the subscribers *you* are using (read basemod wiki). Editing cards? EditCardsSubscriber.
     // Making relics? EditRelicsSubscriber. etc., etc., for a full list and how to make your own, visit the basemod wiki.
     public static final Logger logger = LogManager.getLogger(M10RobotMod.class.getName());
@@ -691,5 +696,17 @@ public class M10RobotMod implements
     // in order to avoid conflicts if any other mod uses the same ID.
     public static String makeID(String idText) {
         return getModID() + ":" + idText;
+    }
+
+    @Override
+    public void receivePostEnergyRecharge() {
+        if (AbstractDungeon.player.hasPower(EMPPower.POWER_ID)) {
+            AbstractDungeon.player.getPower(EMPPower.POWER_ID).onSpecificTrigger();
+        }
+        for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
+            if (aM.hasPower(EMPPower.POWER_ID)) {
+                aM.getPower(EMPPower.POWER_ID).onSpecificTrigger();
+            }
+        }
     }
 }
