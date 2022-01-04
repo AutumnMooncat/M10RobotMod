@@ -554,7 +554,7 @@ public class M10RobotMod implements
         // Add the Custom Dynamic variables
         BaseMod.addDynamicVariable(new DefaultCustomVariable());
         BaseMod.addDynamicVariable(new SecondMagicNumber());
-        BaseMod.addDynamicVariable(new ThirdMagicNumber());
+        BaseMod.addDynamicVariable(new Info());
         BaseMod.addDynamicVariable(new DefaultInvertedNumber());
         BaseMod.addDynamicVariable(new DynamicDynamicVariableManager());
         BaseMod.addDynamicVariable(new CurrentAmmoVariable());

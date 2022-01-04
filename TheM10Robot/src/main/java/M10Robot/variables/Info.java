@@ -6,14 +6,14 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 
 import static M10Robot.M10RobotMod.makeID;
 
-public class ThirdMagicNumber extends DynamicVariable {
+public class Info extends DynamicVariable {
 
     //For in-depth comments, check the other variable(DefaultCustomVariable). It's nearly identical.
     //public static boolean invertColor = false;
 
     @Override
     public String key() {
-        return makeID("ThirdMagic");
+        return makeID("Info");
         // This is what you put between "!!" in your card strings to actually display the number.
         // You can name this anything (no spaces), but please pre-phase it with your mod name as otherwise mod conflicts can occur.
         // Remember, we're using makeID so it automatically puts "theDefault:" (or, your id) before the name.
@@ -21,23 +21,23 @@ public class ThirdMagicNumber extends DynamicVariable {
 
     @Override
     public boolean isModified(AbstractCard card) {
-        return ((AbstractModdedCard) card).isThirdMagicNumberModified;
+        return ((AbstractModdedCard) card).isInfoModified;
 
     }
 
     @Override
     public int value(AbstractCard card) {
-        return ((AbstractModdedCard) card).thirdMagicNumber;
+        return ((AbstractModdedCard) card).info;
     }
 
     @Override
     public int baseValue(AbstractCard card) {
-        return ((AbstractModdedCard) card).baseThirdMagicNumber;
+        return ((AbstractModdedCard) card).baseInfo;
     }
 
     @Override
     public boolean upgraded(AbstractCard card) {
-        return ((AbstractModdedCard) card).upgradedThirdMagicNumber;
+        return ((AbstractModdedCard) card).upgradedInfo;
     }
 
 }

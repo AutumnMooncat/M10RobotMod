@@ -20,10 +20,10 @@ public abstract class AbstractModdedCard extends CustomCard {
     public boolean upgradedSecondMagicNumber; // A boolean to check whether the number has been upgraded or not.
     public boolean isSecondMagicNumberModified; // A boolean to check whether the number has been modified or not, for coloring purposes. (red/green)
 
-    public int thirdMagicNumber;
-    public int baseThirdMagicNumber;
-    public boolean upgradedThirdMagicNumber;
-    public boolean isThirdMagicNumberModified;
+    public int info;
+    public int baseInfo;
+    public boolean upgradedInfo;
+    public boolean isInfoModified;
 
     public int invertedNumber;
     public int baseInvertedNumber;
@@ -62,7 +62,7 @@ public abstract class AbstractModdedCard extends CustomCard {
         isBlockModified = false;
         isMagicNumberModified = false;
         isSecondMagicNumberModified = false;
-        isThirdMagicNumberModified = false;
+        isInfoModified = false;
         isInvertedNumberModified = false;
         isCurrentAmmoModified = false;
         isMaxAmmoModified = false;
@@ -84,9 +84,9 @@ public abstract class AbstractModdedCard extends CustomCard {
             secondMagicNumber = baseSecondMagicNumber; // Show how the number changes, as out of combat, the base number of a card is shown.
             isSecondMagicNumberModified = true; // Modified = true, color it green to highlight that the number is being changed.
         }
-        if (upgradedThirdMagicNumber) { // If we set upgradedDefaultSecondMagicNumber = true in our card.
-            thirdMagicNumber = baseThirdMagicNumber; // Show how the number changes, as out of combat, the base number of a card is shown.
-            isThirdMagicNumberModified = true; // Modified = true, color it green to highlight that the number is being changed.
+        if (upgradedInfo) { // If we set upgradedDefaultSecondMagicNumber = true in our card.
+            info = baseInfo; // Show how the number changes, as out of combat, the base number of a card is shown.
+            isInfoModified = true; // Modified = true, color it green to highlight that the number is being changed.
         }
         if (upgradedInvertedNumber) { // If we set upgradedDefaultSecondMagicNumber = true in our card.
             invertedNumber = baseInvertedNumber; // Show how the number changes, as out of combat, the base number of a card is shown.
@@ -105,10 +105,10 @@ public abstract class AbstractModdedCard extends CustomCard {
         upgradedSecondMagicNumber = true; // Upgraded = true - which does what the above method does.
     }
 
-    public void upgradeThirdMagicNumber(int amount) { // If we're upgrading (read: changing) the number. Note "upgrade" and NOT "upgraded" - 2 different things. One is a boolean, and then this one is what you will usually use - change the integer by how much you want to upgrade.
-        baseThirdMagicNumber += amount; // Upgrade the number by the amount you provide in your card.
-        thirdMagicNumber = baseThirdMagicNumber; // Set the number to be equal to the base value.
-        upgradedThirdMagicNumber = true; // Upgraded = true - which does what the above method does.
+    public void upgradeInfo(int amount) { // If we're upgrading (read: changing) the number. Note "upgrade" and NOT "upgraded" - 2 different things. One is a boolean, and then this one is what you will usually use - change the integer by how much you want to upgrade.
+        baseInfo += amount; // Upgrade the number by the amount you provide in your card.
+        info = baseInfo; // Set the number to be equal to the base value.
+        upgradedInfo = true; // Upgraded = true - which does what the above method does.
     }
 
     public void upgradeInvertedNumber(int amount) { // If we're upgrading (read: changing) the number. Note "upgrade" and NOT "upgraded" - 2 different things. One is a boolean, and then this one is what you will usually use - change the integer by how much you want to upgrade.
@@ -128,8 +128,8 @@ public abstract class AbstractModdedCard extends CustomCard {
     public void resetAttributes() {
         this.secondMagicNumber = this.baseSecondMagicNumber;
         this.isSecondMagicNumberModified = false;
-        this.thirdMagicNumber = this.baseThirdMagicNumber;
-        this.isThirdMagicNumberModified = false;
+        this.info = this.baseInfo;
+        this.isInfoModified = false;
         this.invertedNumber = this.baseInvertedNumber;
         this.isInvertedNumberModified = false;
         this.maxAmmo = this.baseMaxAmmo;

@@ -65,8 +65,8 @@ public class OverclockModifier extends AbstractCardModifier {
         if (card instanceof AbstractModdedCard) {
             ((AbstractModdedCard) card).secondMagicNumber = (int) (((AbstractModdedCard) card).baseSecondMagicNumber * (100F + rawPercent) / 100F);
             ((AbstractModdedCard) card).isSecondMagicNumberModified = ((AbstractModdedCard) card).secondMagicNumber != ((AbstractModdedCard) card).baseSecondMagicNumber;
-            ((AbstractModdedCard) card).thirdMagicNumber = (int) (((AbstractModdedCard) card).baseThirdMagicNumber * (100F + rawPercent) / 100F);
-            ((AbstractModdedCard) card).isThirdMagicNumberModified = ((AbstractModdedCard) card).thirdMagicNumber != ((AbstractModdedCard) card).baseThirdMagicNumber;
+            //((AbstractModdedCard) card).thirdMagicNumber = (int) (((AbstractModdedCard) card).baseThirdMagicNumber * (100F + rawPercent) / 100F);
+            //((AbstractModdedCard) card).isThirdMagicNumberModified = ((AbstractModdedCard) card).thirdMagicNumber != ((AbstractModdedCard) card).baseThirdMagicNumber;
         }
     }
 
