@@ -275,7 +275,7 @@
   },
   "M10Robot:ScrambleField": {
     "NAME": "Scramble Field",
-    "DESCRIPTION": "This turn, whenever you would lose HP, lose !M! less."
+    "DESCRIPTION": "{@@}ALL enemies lose !M10Robot:SecondMagic! Strength at the end of their turn. NL Apply X{!M!|>0= + !M!} m10robot:Stasis to ALL enemies."
   },
   "M10Robot:ScrapBooster": {
     "NAME": "Scrap Booster",

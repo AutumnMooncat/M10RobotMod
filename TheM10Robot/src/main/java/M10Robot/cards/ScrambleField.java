@@ -1,14 +1,25 @@
 package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
+import M10Robot.actions.OverclockCardAction;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.cards.interfaces.NegativePrimaryEffect;
 import M10Robot.characters.M10Robot;
+import M10Robot.powers.EMPPower;
 import M10Robot.powers.ScrambleFieldPower;
+import basemod.interfaces.XCostModifier;
+import basemod.patches.com.megacrit.cardcrawl.cards.AbstractCard.CardModifierPatches;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.LoseStrengthPower;
+import com.megacrit.cardcrawl.powers.StasisPower;
+import com.megacrit.cardcrawl.relics.ChemicalX;
+import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
@@ -36,21 +47,65 @@ public class ScrambleField extends AbstractDynamicCard {
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
-    private static final int COST = 2;
-    private static final int EFFECT = 7;
-    private static final int UPGRADE_PLUS_EFFECT = 2;
+    private static final int COST = -1;
+    private static final int EFFECT = 0;
+    private static final int UPGRADE_PLUS_EFFECT = 1;
+    private static final int STR_DOWN = 1;
     // /STAT DECLARATION/
 
 
     public ScrambleField() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = EFFECT;
+        secondMagicNumber = baseSecondMagicNumber = STR_DOWN;
+        exhaust = true;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new ApplyPowerAction(p, p, new ScrambleFieldPower(p, magicNumber)));
+        int effect = EnergyPanel.totalCount;
+
+        if (this.energyOnUse != -1) {
+            effect = this.energyOnUse;
+        }
+
+        if (p.hasRelic("Chemical X")) {
+            effect += ChemicalX.BOOST;
+            p.getRelic("Chemical X").flash();
+        }
+
+        ArrayList<List<?>> lists = new ArrayList<>();
+        lists.add(AbstractDungeon.player.hand.group);
+        lists.add(AbstractDungeon.player.drawPile.group);
+        lists.add(AbstractDungeon.player.discardPile.group);
+        lists.add(AbstractDungeon.player.powers);
+        lists.add(AbstractDungeon.player.relics);
+        lists.add(CardModifierPatches.CardModifierFields.cardModifiers.get(this));
+        for (List<?> list : lists) {
+            for (Object item : list) {
+                if (item instanceof XCostModifier) {
+                    XCostModifier mod = (XCostModifier)item;
+                    if (mod.xCostModifierActive(this)) {
+                        effect += mod.modifyX(this);
+                    }
+                }
+            }
+        }
+
+        effect += magicNumber;
+
+        if (effect > 0) {
+            for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
+                this.addToBot(new ApplyPowerAction(aM, p, new LoseStrengthPower(aM, secondMagicNumber)));
+                this.addToBot(new ApplyPowerAction(aM, p, new EMPPower(aM, effect)));
+            }
+        }
+
+        if (!this.freeToPlayOnce) {
+            p.energy.use(EnergyPanel.totalCount);
+        }
+
     }
 
     //Upgraded stats.
@@ -59,7 +114,6 @@ public class ScrambleField extends AbstractDynamicCard {
         if (!upgraded) {
             upgradeName();
             upgradeMagicNumber(UPGRADE_PLUS_EFFECT);
-            upgradeSecondMagicNumber(UPGRADE_PLUS_EFFECT);
             initializeDescription();
         }
     }
