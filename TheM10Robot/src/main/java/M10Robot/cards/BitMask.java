@@ -46,6 +46,7 @@ public class BitMask extends AbstractDynamicCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = damage = DAMAGE;
         magicNumber = baseMagicNumber = ORBS;
+        info = baseInfo = 0;
         CardModifierManager.addModifier(this, new AimedModifier());
         exhaust = true;
     }
@@ -57,6 +58,12 @@ public class BitMask extends AbstractDynamicCard {
         //this.addToBot(new AttackDamageRandomEnemyAction(this, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         this.addToBot(new MultichannelAction(new BitOrb(), magicNumber*attacks));
+    }
+
+    @Override
+    public void applyPowers() {
+        super.applyPowers();
+        this.info = this.baseInfo = (int) AbstractDungeon.actionManager.cardsPlayedThisTurn.stream().filter(c -> c.type == CardType.ATTACK).count();
     }
 
     // Upgraded stats.

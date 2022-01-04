@@ -54,6 +54,12 @@ public class LightShow extends AbstractDynamicCard {
         this.addToBot(new MultichannelAction(new SearchlightOrb(), magicNumber*skills));
     }
 
+    @Override
+    public void applyPowers() {
+        super.applyPowers();
+        this.info = this.baseInfo = (int) AbstractDungeon.actionManager.cardsPlayedThisTurn.stream().filter(c -> c.type == CardType.SKILL).count();
+    }
+
     //Upgraded stats.
     @Override
     public void upgrade() {
