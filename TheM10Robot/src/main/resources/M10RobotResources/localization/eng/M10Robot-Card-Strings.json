@@ -190,7 +190,7 @@
   },
   "M10Robot:Nibble": {
     "NAME": "Nibble",
-    "DESCRIPTION": "{@@}Deal !D! damage. NL Channel !M! m10robot:Bit{!M!|>1=m10robot:s}."
+    "DESCRIPTION": "{@@}Deal !D! damage. NL Channel !M! m10robot:Bit{!M!|>1=s}."
   },
   "M10Robot:Overdrive": {
     "NAME": "Overdrive Form",
