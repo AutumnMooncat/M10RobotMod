@@ -9,6 +9,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.RemoveAllBlockAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -43,8 +44,8 @@ public class Railgun extends AbstractReloadableCard {
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
     private static final int COST = 1;
-    private static final int DAMAGE = 13;
-    private static final int UPGRADE_PLUS_DMG = 4;
+    private static final int DAMAGE = 15;
+    private static final int UPGRADE_PLUS_DMG = 5;
 
     // /STAT DECLARATION/
 
@@ -95,6 +96,7 @@ public class Railgun extends AbstractReloadableCard {
                 if (shootCoin.isDone) {
                     this.addToTop(new SFXAction("WATCHER_HEART_PUNCH"));
                     this.addToTop(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.NONE));
+                    this.addToTop(new RemoveAllBlockAction(m, p));
                     this.isDone = true;
                 }
             }
