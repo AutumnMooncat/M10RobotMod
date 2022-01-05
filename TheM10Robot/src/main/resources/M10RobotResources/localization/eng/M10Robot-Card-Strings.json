@@ -75,7 +75,7 @@
   },
   "M10Robot:Byte": {
     "NAME": "Byte",
-    "DESCRIPTION": "Deal !D! damage. NL Apply !M! Vulnerable. NL Channel !M! m10robot:Bits."
+    "DESCRIPTION": "Deal !D! damage. NL Channel !M! m10robot:Bits."
   },
   "M10Robot:CardSupplier": {
     "NAME": "Card Supplier",

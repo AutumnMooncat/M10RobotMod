@@ -52,7 +52,7 @@ public class Byte extends AbstractReloadableCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.FIRE));
-        this.addToBot(new ApplyPowerAction(m, p, new VulnerablePower(m, magicNumber, false)));
+//        this.addToBot(new ApplyPowerAction(m, p, new VulnerablePower(m, magicNumber, false)));
         this.addToBot(new MultichannelAction(new BitOrb(), magicNumber));
     }
 
