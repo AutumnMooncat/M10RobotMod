@@ -116,6 +116,13 @@
     "DESCRIPTION": "Other debuffs can not decrease while #yStasis is active."
   },
   {
+    "PROPER_NAME": "Stun",
+    "NAMES": [
+      "stun"
+    ],
+    "DESCRIPTION": "A stunned enemy does nothing this turn."
+  },
+  {
     "PROPER_NAME": "Swappable",
     "NAMES": [
       "swappable"

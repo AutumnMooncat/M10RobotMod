@@ -289,7 +289,7 @@
   },
   "M10Robot:SelfDestruction": {
     "NAME": "Self Destruction",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies."
+    "DESCRIPTION": "Deal !D! damage. NL m10robot:Stun the enemy."
   },
   "M10Robot:SlotConversion": {
     "NAME": "Slot Conversion",
