@@ -30,7 +30,7 @@ public class Overdrive extends AbstractDynamicCard {
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
     private static final int COST = 3;
-    private static final int AMOUNT = 2;
+    private static final int AMOUNT = 1;
     private static final int UPGRADE_PLUS_AMOUNT = 1;
 
     // /STAT DECLARATION/
