@@ -213,8 +213,7 @@
   },
   "M10Robot:PowerSavings": {
     "NAME": "Power Savings",
-    "DESCRIPTION": "Gain !M10Robot:SecondMagic! m10robot:Scrambled. NL At the start of your turn, gain !M! [E] .",
-    "EXTENDED_DESCRIPTION": [".","[E] "]
+    "DESCRIPTION": "Gain !M10Robot:SecondMagic! Weak. NL At the start of your turn, gain !M! [E] ."
   },
   "M10Robot:QuickBoot": {
     "NAME": "Quick Boot",
