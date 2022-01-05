@@ -62,54 +62,16 @@ public class AirRaid extends AbstractDynamicCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        int effect = EnergyPanel.totalCount;
-
-        if (this.energyOnUse != -1) {
-            effect = this.energyOnUse;
-        }
+        int effect = this.energyOnUse;
 
         if (p.hasRelic("Chemical X")) {
             effect += ChemicalX.BOOST;
             p.getRelic("Chemical X").flash();
         }
 
-        ArrayList<List<?>> lists = new ArrayList<>();
-        lists.add(AbstractDungeon.player.hand.group);
-        lists.add(AbstractDungeon.player.drawPile.group);
-        lists.add(AbstractDungeon.player.discardPile.group);
-        lists.add(AbstractDungeon.player.powers);
-        lists.add(AbstractDungeon.player.relics);
-        lists.add(CardModifierPatches.CardModifierFields.cardModifiers.get(this));
-        for (List<?> list : lists) {
-            for (Object item : list) {
-                if (item instanceof XCostModifier) {
-                    XCostModifier mod = (XCostModifier)item;
-                    if (mod.xCostModifierActive(this)) {
-                        effect += mod.modifyX(this);
-                    }
-                }
-            }
-        }
-
         effect += magicNumber;
 
         for (int i = 0 ; i < effect ; i++) {
-//            for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
-//                if (!aM.isDeadOrEscaped() /*&& aM.hasPower(LockOnPower.POWER_ID)*/) {
-//                    this.addToBot(new VFXAction(new InversionBeamEffect(aM.hb.cX), 0.1f));
-//                    this.addToBot(new AbstractGameAction() {
-//                        @Override
-//                        public void update() {
-//                            AbstractDungeon.effectsQueue.add(new ExplosionSmallEffect(aM.hb.cX, aM.hb.cY));
-//                            AbstractDungeon.effectsQueue.add(new BurnToAshEffect(aM.hb.cX, aM.hb.cY));
-//                            CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.HIGH, ScreenShake.ShakeDur.MED, false);
-//                            this.isDone = true;
-//                        }
-//                    });
-//                    this.addToBot(new SFXAction("WATCHER_HEART_PUNCH"));
-//                    this.addToBot(new DamageAction(aM, new DamageInfo(p, multiDamage[AbstractDungeon.getMonsters().monsters.indexOf(aM)], damageTypeForTurn), AbstractGameAction.AttackEffect.NONE, true));
-//                }
-//            }
             this.addToBot(new VFXAction(new InversionBeamEffect(m.hb.cX), 0.1f));
             this.addToBot(new AbstractGameAction() {
                 @Override

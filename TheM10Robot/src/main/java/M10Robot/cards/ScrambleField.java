@@ -60,33 +60,11 @@ public class ScrambleField extends AbstractDynamicCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        int effect = EnergyPanel.totalCount;
-
-        if (this.energyOnUse != -1) {
-            effect = this.energyOnUse;
-        }
+        int effect = this.energyOnUse;
 
         if (p.hasRelic("Chemical X")) {
             effect += ChemicalX.BOOST;
             p.getRelic("Chemical X").flash();
-        }
-
-        ArrayList<List<?>> lists = new ArrayList<>();
-        lists.add(AbstractDungeon.player.hand.group);
-        lists.add(AbstractDungeon.player.drawPile.group);
-        lists.add(AbstractDungeon.player.discardPile.group);
-        lists.add(AbstractDungeon.player.powers);
-        lists.add(AbstractDungeon.player.relics);
-        lists.add(CardModifierPatches.CardModifierFields.cardModifiers.get(this));
-        for (List<?> list : lists) {
-            for (Object item : list) {
-                if (item instanceof XCostModifier) {
-                    XCostModifier mod = (XCostModifier)item;
-                    if (mod.xCostModifierActive(this)) {
-                        effect += mod.modifyX(this);
-                    }
-                }
-            }
         }
 
         effect += magicNumber;
