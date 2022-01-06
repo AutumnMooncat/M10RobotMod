@@ -3,9 +3,11 @@ package M10Robot.cards;
 import M10Robot.M10RobotMod;
 import M10Robot.cards.abstractCards.AbstractReloadableCard;
 import M10Robot.characters.M10Robot;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.EnergizedBluePower;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
@@ -36,18 +38,21 @@ public class EnergyShield extends AbstractReloadableCard {
     private static final int COST = 1;
     private static final int BLOCK = 12;
     private static final int UPGRADE_PLUS_BLOCK = 4;
+    private static final int NRG = 1;
 
     // /STAT DECLARATION/
 
     public EnergyShield() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         block = baseBlock = BLOCK;
+        magicNumber = baseMagicNumber = NRG;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.addToBot(new GainBlockAction(p, p, block));
+        this.addToBot(new ApplyPowerAction(p, p, new EnergizedBluePower(p, magicNumber)));
     }
 
     // Upgraded stats.

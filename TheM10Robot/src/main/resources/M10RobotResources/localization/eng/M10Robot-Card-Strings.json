@@ -120,7 +120,7 @@
   },
   "M10Robot:EnergyShield": {
     "NAME": "Energy Shield",
-    "DESCRIPTION": "Gain !B! Block."
+    "DESCRIPTION": "Gain !B! Block. NL Next turn, gain !M! [E] ."
   },
   "M10Robot:Engage": {
     "NAME": "Engage",
