@@ -59,7 +59,7 @@
   },
   "M10Robot:BoosterShot": {
     "NAME": "Booster Shot",
-    "DESCRIPTION": "Deal !D! damage. NL m10robot:Upgrade all your Orbs !M! times."
+    "DESCRIPTION": "{@@}Deal !D! damage. NL m10robot:Upgrade all your Orbs !M! time{!M!|>1=s}."
   },
   "M10Robot:Bramble": {
     "NAME": "Bramble",

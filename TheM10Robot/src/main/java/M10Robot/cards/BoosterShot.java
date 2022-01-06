@@ -36,7 +36,8 @@ public class BoosterShot extends AbstractDynamicCard {
     private static final int COST = 2;
     private static final int DAMAGE = 10;
     private static final int UPGRADE_PLUS_DMG = 4;
-    private static final int UPGRADES = 2;
+    private static final int UPGRADES = 1;
+    private static final int UPGRADE_PLUS_UPGRADES = 1;
 
     // /STAT DECLARATION/
 
@@ -59,7 +60,8 @@ public class BoosterShot extends AbstractDynamicCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeDamage(UPGRADE_PLUS_DMG);
+            //upgradeDamage(UPGRADE_PLUS_DMG);
+            upgradeMagicNumber(UPGRADE_PLUS_UPGRADES);
             initializeDescription();
         }
     }
