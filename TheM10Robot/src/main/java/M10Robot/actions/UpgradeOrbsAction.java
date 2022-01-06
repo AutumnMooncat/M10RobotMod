@@ -5,6 +5,7 @@ import basemod.ReflectionHacks;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
+import com.megacrit.cardcrawl.orbs.EmptyOrbSlot;
 
 public class UpgradeOrbsAction extends AbstractGameAction {
     private final AbstractOrb orb;
@@ -36,7 +37,7 @@ public class UpgradeOrbsAction extends AbstractGameAction {
                 ((AbstractCustomOrb) o).upgrade();
             }
             ((AbstractCustomOrb) o).playAnimation(((AbstractCustomOrb) o).successImage, AbstractCustomOrb.LONG_ANIM);
-        } else {
+        } else if (!(o instanceof EmptyOrbSlot)) {
             ReflectionHacks.setPrivate(o, AbstractOrb.class, "basePassiveAmount", ReflectionHacks.<Integer>getPrivate(o, AbstractOrb.class, "basePassiveAmount") + 1);
             ReflectionHacks.setPrivate(o, AbstractOrb.class, "baseEvokeAmount", ReflectionHacks.<Integer>getPrivate(o, AbstractOrb.class, "baseEvokeAmount") + 1);
             o.passiveAmount++;
