@@ -39,7 +39,6 @@ public class BatteryPack extends AbstractDynamicCard {
     public BatteryPack() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = ENERGY;
-        selfRetain = true;
         exhaust = true;
     }
 
@@ -54,7 +53,8 @@ public class BatteryPack extends AbstractDynamicCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(UPGRADE_PLUS_ENERGY);
+            //upgradeMagicNumber(UPGRADE_PLUS_ENERGY);
+            selfRetain = true;
             initializeDescription();
         }
     }
