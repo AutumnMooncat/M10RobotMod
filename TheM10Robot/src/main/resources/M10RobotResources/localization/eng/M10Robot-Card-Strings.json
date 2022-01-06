@@ -82,6 +82,10 @@
     "DESCRIPTION": "{@@}m10robot:Relay !M! card{!M!|>1=s}.",
     "EXTENDED_DESCRIPTION": ["Relay"]
   },
+  "M10Robot:Cloaking": {
+    "NAME": "Cloaking",
+    "DESCRIPTION": "Gain !B! Block. NL Your next Attack deals !M! additional damage."
+  },
   "M10Robot:Compensator": {
     "NAME": "Compensator",
     "DESCRIPTION": "REWORK! NL At the end of your turn, reduce m10robot:Recoil by !M!."
