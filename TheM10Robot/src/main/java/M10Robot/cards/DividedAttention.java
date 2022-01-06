@@ -1,9 +1,11 @@
 package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
+import M10Robot.cardModifiers.HeavyModifier;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
 import M10Robot.powers.ScrambledPower;
+import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -31,7 +33,6 @@ public class DividedAttention extends AbstractDynamicCard {
     private static final int COST = 0;
     private static final int DRAW = 2;
     private static final int UPGRADE_PLUS_DRAW = 1;
-    private static final int EFFECT = 1;
 
     // /STAT DECLARATION/
 
@@ -39,13 +40,12 @@ public class DividedAttention extends AbstractDynamicCard {
     public DividedAttention() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = DRAW;
-        secondMagicNumber = baseSecondMagicNumber = EFFECT;
+        CardModifierManager.addModifier(this, new HeavyModifier());
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new ApplyPowerAction(p, p, new ScrambledPower(p, secondMagicNumber)));
         this.addToBot(new DrawCardAction(magicNumber));
     }
 
