@@ -3,6 +3,7 @@ package M10Robot.cards;
 import M10Robot.M10RobotMod;
 import M10Robot.actions.MultichannelAction;
 import M10Robot.actions.OverclockCardAction;
+import M10Robot.actions.UpgradeOrbsAction;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
 import M10Robot.orbs.BombOrb;
@@ -47,7 +48,7 @@ public class UnstableCompound extends AbstractDynamicCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.addToBot(new MultichannelAction(new BombOrb(), magicNumber));
-        this.addToBot(new OverclockCardAction(false, secondMagicNumber));
+        this.addToBot(new UpgradeOrbsAction(false, secondMagicNumber));
     }
 
     //Upgraded stats.
