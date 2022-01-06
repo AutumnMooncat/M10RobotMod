@@ -51,7 +51,7 @@
   },
   "M10Robot:BatteryPack": {
     "NAME": "Battery Pack",
-    "DESCRIPTION": "Gain !M! [E] ."
+    "DESCRIPTION": "{@@}Gain {!M!|1=[E]|-1,2=[E] [E]|3=[E] [E] [E]|4=[E] [E] [E] [E]|5=[E] [E] [E] [E] [E]|@==!M! [E]} ."
   },
   "M10Robot:BitMask": {
     "NAME": "Bitmask",
@@ -104,7 +104,7 @@
   },
   "M10Robot:DividedAttention": {
     "NAME": "Divided Attention",
-    "DESCRIPTION": "Gain !M10Robot:SecondMagic! m10robot:Scrambled. NL Draw !M! cards."
+    "DESCRIPTION": "Draw !M! cards."
   },
   "M10Robot:DoubleCaster": {
     "NAME": "Double Caster",
@@ -120,7 +120,7 @@
   },
   "M10Robot:EnergyShield": {
     "NAME": "Energy Shield",
-    "DESCRIPTION": "Gain !B! Block. NL Next turn, gain !M! [E] ."
+    "DESCRIPTION": "{@@}Gain !B! Block. NL Next turn, gain {!M!|-1,1=[E]|2=[E] [E]|3=[E] [E] [E]|4=[E] [E] [E] [E]|5=[E] [E] [E] [E] [E]|@==!M! [E]} ."
   },
   "M10Robot:Engage": {
     "NAME": "Engage",
@@ -212,7 +212,7 @@
   },
   "M10Robot:PowerSavings": {
     "NAME": "Power Savings",
-    "DESCRIPTION": "Gain !M10Robot:SecondMagic! Weak. NL At the start of your turn, gain !M! [E] ."
+    "DESCRIPTION": "{@@}Gain !M10Robot:SecondMagic! Weak. NL At the start of your turn, gain {!M!|-1,1=[E]|2=[E] [E]|3=[E] [E] [E]|4=[E] [E] [E] [E]|5=[E] [E] [E] [E] [E]|@==!M! [E]} ."
   },
   "M10Robot:QuickBoot": {
     "NAME": "Quick Boot",
@@ -377,7 +377,7 @@
   },
   "M10Robot:Turbo": {
     "NAME": "Turbo",
-    "DESCRIPTION": "{@@}Next turn, gain !M10Robot:SecondMagic! [E] and draw !M! card{!M!|>1=s}."
+    "DESCRIPTION": "{@@}Next turn, gain {!M10Robot:SecondMagic!|-1,1=[E]|2=[E] [E]|3=[E] [E] [E]|4=[E] [E] [E] [E]|5=[E] [E] [E] [E] [E]|@=!M10Robot:SecondMagic! [E]} and draw !M! card{!M!|>1=s}."
   },
   "M10Robot:UnstableCompound": {
     "NAME": "Unstable Compound",
