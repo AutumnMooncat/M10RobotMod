@@ -51,7 +51,7 @@
   },
   "M10Robot:BatteryPack": {
     "NAME": "Battery Pack",
-    "DESCRIPTION": "Gain !M10Robot:SecondMagic! [E] . NL When Retained, increase energy gained by one until played to a max of !M!."
+    "DESCRIPTION": "Gain !M! [E] ."
   },
   "M10Robot:BitMask": {
     "NAME": "Bitmask",

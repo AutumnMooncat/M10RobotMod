@@ -30,43 +30,23 @@ public class BatteryPack extends AbstractDynamicCard {
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
     private static final int COST = 0;
-    private static final int MAX_CHARGES = 2;
-    private static final int UPGRADE_PLUS_MAX_CHARGES = 1;
+    private static final int ENERGY = 2;
+    private static final int UPGRADE_PLUS_ENERGY = 1;
 
     // /STAT DECLARATION/
 
 
     public BatteryPack() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        magicNumber = baseMagicNumber = MAX_CHARGES;
-        secondMagicNumber = baseSecondMagicNumber = 0;
+        magicNumber = baseMagicNumber = ENERGY;
         selfRetain = true;
+        exhaust = true;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        if (secondMagicNumber > 0) {
-            this.addToBot(new GainEnergyAction(secondMagicNumber));
-            this.addToBot(new AbstractGameAction() {
-                @Override
-                public void update() {
-                    secondMagicNumber = baseSecondMagicNumber = 0;
-                    initializeDescription();
-                    this.isDone = true;
-                }
-            });
-        }
-    }
-
-    @Override
-    public void onRetained() {
-        if (secondMagicNumber < magicNumber) {
-            CardCrawlGame.sound.play("ORB_LIGHTNING_CHANNEL", 0.1F);
-            upgradeSecondMagicNumber(1);
-            superFlash();
-            initializeDescription();
-        }
+        this.addToBot(new GainEnergyAction(magicNumber));
     }
 
     //Upgraded stats.
@@ -74,7 +54,7 @@ public class BatteryPack extends AbstractDynamicCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(UPGRADE_PLUS_MAX_CHARGES);
+            upgradeMagicNumber(UPGRADE_PLUS_ENERGY);
             initializeDescription();
         }
     }
