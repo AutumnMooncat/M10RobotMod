@@ -287,6 +287,10 @@
     "NAME": "Scrape Off",
     "DESCRIPTION": "Deal !D! damage. NL Gain Block equal to unblocked damage dealt."
   },
+  "M10Robot:SecretRootkit": {
+    "NAME": "Rootkit",
+    "DESCRIPTION": "Draw !M! cards. NL Cards drawn this way cost 0 this turn."
+  },
   "M10Robot:Seeker": {
     "NAME": "Seeker",
     "DESCRIPTION": "{@@}Deal !D! damage. NL Channel !M! m10robot:Searchlight{!M!|>1=s}."
