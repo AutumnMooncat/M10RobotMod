@@ -6,6 +6,7 @@ import M10Robot.cards.abstractCards.AbstractReloadableCard;
 import M10Robot.characters.M10Robot;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -13,6 +14,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.WeakPower;
 import com.megacrit.cardcrawl.vfx.combat.ShockWaveEffect;
 import com.megacrit.cardcrawl.vfx.combat.SmallLaserEffect;
 
@@ -45,6 +47,7 @@ public class WaveGenerator extends AbstractReloadableCard {
     private static final int COST = 1;
     private static final int DAMAGE = 10;
     private static final int UPGRADE_PLUS_DMG = 4;
+    private static final int WEAK = 1;
     private static final int HP_LOSS = 5;
     private static final int UPGRADE_PLUS_HP_LOSS = 2;
 
@@ -53,7 +56,8 @@ public class WaveGenerator extends AbstractReloadableCard {
     public WaveGenerator() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = damage = DAMAGE;
-        magicNumber = baseMagicNumber = HP_LOSS;
+        magicNumber = baseMagicNumber = WEAK;
+        secondMagicNumber = baseSecondMagicNumber = HP_LOSS;
     }
 
     // Actions the card should do.
@@ -64,9 +68,10 @@ public class WaveGenerator extends AbstractReloadableCard {
         this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.NONE));
         this.addToBot(new SFXAction("ATTACK_PIERCING_WAIL"));
         this.addToBot(new VFXAction(p, new ShockWaveEffect(m.hb.cX, m.hb.cY, Settings.GREEN_TEXT_COLOR, ShockWaveEffect.ShockWaveType.CHAOTIC), 0.3F));
+        this.addToBot(new ApplyPowerAction(m, p, new WeakPower(m, magicNumber, false)));
         for (AbstractMonster aM: AbstractDungeon.getMonsters().monsters) {
             if (!aM.isDeadOrEscaped()) {
-                this.addToBot(new FasterLoseHPAction(aM, p, magicNumber, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+                this.addToBot(new FasterLoseHPAction(aM, p, secondMagicNumber, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
             }
         }
     }
@@ -77,7 +82,7 @@ public class WaveGenerator extends AbstractReloadableCard {
         if (!upgraded) {
             upgradeName();
             upgradeDamage(UPGRADE_PLUS_DMG);
-            upgradeMagicNumber(UPGRADE_PLUS_HP_LOSS);
+            upgradeSecondMagicNumber(UPGRADE_PLUS_HP_LOSS);
             initializeDescription();
         }
     }

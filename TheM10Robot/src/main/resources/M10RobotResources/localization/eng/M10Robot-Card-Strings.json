@@ -382,7 +382,7 @@
   },
   "M10Robot:WaveGenerator": {
     "NAME": "Wave Generator",
-    "DESCRIPTION": "Deal !D! damage. NL ALL enemies lose !M! HP."
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! Weak. NL ALL enemies lose !M10Robot:SecondMagic! HP."
   },
   "M10Robot:WeaponPlatform": {
     "NAME": "Weapon Platform",
