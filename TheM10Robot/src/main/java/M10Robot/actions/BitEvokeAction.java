@@ -22,6 +22,8 @@ public class BitEvokeAction extends AbstractGameAction {
     public BitEvokeAction(BitOrb linkedOrb, AbstractCreature source, int lockOn) {
         this.linkedOrb = linkedOrb;
         this.amount = lockOn;
+        this.source = source;
+        this.duration = DURATION;
     }
 
     @Override
