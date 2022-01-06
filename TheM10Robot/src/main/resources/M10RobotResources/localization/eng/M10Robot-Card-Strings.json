@@ -136,8 +136,7 @@
   },
   "M10Robot:Filter": {
     "NAME": "Filter",
-    "DESCRIPTION": "Exhaust any number of cards. NL Gain [E] for each card exhausted this way.",
-    "EXTENDED_DESCRIPTION": ["Exhaust"]
+    "DESCRIPTION": "{@@}Draw !M! card{!M!|>1=s}. NL Discard all non-Attack cards in your hand. NL Gain [E] for each card discarded this way."
   },
   "M10Robot:Followup": {
     "NAME": "Followup",
