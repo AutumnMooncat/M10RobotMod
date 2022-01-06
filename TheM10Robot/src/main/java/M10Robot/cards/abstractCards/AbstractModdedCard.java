@@ -15,24 +15,24 @@ public abstract class AbstractModdedCard extends CustomCard {
     // simply use that in our cards, so long as we put "extends AbstractDynamicCard" instead of "extends CustomCard" at the start.
     // In simple terms, it's for things that we don't want to define again and again in every single card we make.
 
-    public int secondMagicNumber;        // Just like magic number, or any number for that matter, we want our regular, modifiable stat
-    public int baseSecondMagicNumber;    // And our base stat - the number in it's base state. It will reset to that by default.
+    public int secondMagicNumber = -1;        // Just like magic number, or any number for that matter, we want our regular, modifiable stat
+    public int baseSecondMagicNumber = -1;    // And our base stat - the number in it's base state. It will reset to that by default.
     public boolean upgradedSecondMagicNumber; // A boolean to check whether the number has been upgraded or not.
     public boolean isSecondMagicNumberModified; // A boolean to check whether the number has been modified or not, for coloring purposes. (red/green)
 
-    public int info;
-    public int baseInfo;
+    public int info = -1;
+    public int baseInfo = -1;
     public boolean upgradedInfo;
     public boolean isInfoModified;
 
-    public int invertedNumber;
-    public int baseInvertedNumber;
+    public int invertedNumber = -1;
+    public int baseInvertedNumber = -1;
     public boolean upgradedInvertedNumber;
     public boolean isInvertedNumberModified;
 
-    public int currentAmmo;
-    public int maxAmmo;
-    public int baseMaxAmmo;
+    public int currentAmmo = -1;
+    public int maxAmmo = -1;
+    public int baseMaxAmmo = -1;
     public boolean upgradedMaxAmmo;
     public boolean isCurrentAmmoModified;
     public boolean isMaxAmmoModified;
