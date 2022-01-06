@@ -8,6 +8,8 @@ import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.BranchingUpgradesCar
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.DrawCardNextTurnPower;
+import com.megacrit.cardcrawl.powers.EnergizedBluePower;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
@@ -28,24 +30,27 @@ public class Turbo extends AbstractDynamicCard implements BranchingUpgradesCard 
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
-    private static final int COST = 1;
+    private static final int COST = 0;
     private static final int UPGRADE_COST = 0;
-    private static final int TURNS = 2;
-    private static final int UPGRADE_PLUS_TURNS = 1;
+    private static final int DRAW = 1;
+    private static final int UPGRADE_PLUS_DRAW = 1;
+    private static final int NRG = 1;
+    private static final int UPGRADE_PLUS_NRG = 1;
 
     // /STAT DECLARATION/
 
 
     public Turbo() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        magicNumber = baseMagicNumber = TURNS;
-        this.exhaust = true;
+        magicNumber = baseMagicNumber = DRAW;
+        secondMagicNumber = baseSecondMagicNumber = NRG;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new ApplyPowerAction(p, p, new TurboPower(p, magicNumber)));
+        this.addToBot(new ApplyPowerAction(p, p, new DrawCardNextTurnPower(p, magicNumber)));
+        this.addToBot(new ApplyPowerAction(p, p, new EnergizedBluePower(p, secondMagicNumber)));
     }
 
     //Upgraded stats.
@@ -63,10 +68,10 @@ public class Turbo extends AbstractDynamicCard implements BranchingUpgradesCard 
     }
 
     public void baseUpgrade() {
-        upgradeBaseCost(UPGRADE_COST);
+        upgradeMagicNumber(UPGRADE_PLUS_DRAW);
     }
 
     public void branchUpgrade() {
-        upgradeMagicNumber(UPGRADE_PLUS_TURNS);
+        upgradeSecondMagicNumber(UPGRADE_PLUS_NRG);
     }
 }

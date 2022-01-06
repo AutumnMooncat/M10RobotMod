@@ -377,7 +377,7 @@
   },
   "M10Robot:Turbo": {
     "NAME": "Turbo",
-    "DESCRIPTION": "At the start of your next !M! turns, draw an additional card and gain [E] ."
+    "DESCRIPTION": "{@@}Next turn, gain !M10Robot:SecondMagic! [E] and draw !M! card{!M!|>1=s}."
   },
   "M10Robot:UnstableCompound": {
     "NAME": "Unstable Compound",
