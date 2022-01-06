@@ -1,10 +1,9 @@
-package M10Robot.cutStuff;
+package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
 import M10Robot.cutStuff.powers.SpikyPlatingPower;
-import basemod.helpers.BaseModCardTags;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -29,9 +28,10 @@ public class SpikyPlating extends AbstractDynamicCard {
     private static final CardType TYPE = CardType.POWER;
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
-    private static final int COST = 3;
-    private static final int THORNS = 4;
-    private static final int UPGRADE_PLUS_THORNS = 2;
+    private static final int COST = 2;
+    private static final int UPGRADE_COST = 1;
+    private static final int THORNS = 2;
+    private static final int UPGRADE_PLUS_THORNS = 1;
 
     // /STAT DECLARATION/
 
@@ -39,7 +39,6 @@ public class SpikyPlating extends AbstractDynamicCard {
     public SpikyPlating() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = THORNS;
-        this.tags.add(BaseModCardTags.FORM);
     }
 
     // Actions the card should do.
@@ -53,7 +52,7 @@ public class SpikyPlating extends AbstractDynamicCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(UPGRADE_PLUS_THORNS);
+            upgradeBaseCost(UPGRADE_COST);
             initializeDescription();
         }
     }

@@ -312,7 +312,7 @@
     "DESCRIPTION": "Gain !B! Block. NL Gain !M! m10robot:Spikes."
   },
   "M10Robot:SpikyPlating": {
-    "NAME": "Spiker Form",
+    "NAME": "Spiky Plating",
     "DESCRIPTION": "At the end of your turn, gain !M! m10robot:Spikes."
   },
   "M10Robot:SplitBeam": {
