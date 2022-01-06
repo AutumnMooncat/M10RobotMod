@@ -81,9 +81,9 @@ public class PresentOrb extends AbstractCustomOrb {
     public void updateDescription() { // Set the on-hover description of the orb
         applyFocus(); // Apply Focus (Look at the next method)
         description =
-                DESC[0] + passiveAmount + DESC[1] + evokeAmount + DESC[2] +
+                DESC[0] + passiveAmount + DESC[1] + evokeAmount + DESC[2]/* +
                 UPGRADE_TEXT[0] +
-                DESC[3] + UPGRADE_PLUS_PASSIVE_AMOUNT + DESC[4] + UPGRADE_PLUS_EVOKE_AMOUNT + DESC[5];
+                DESC[3] + UPGRADE_PLUS_PASSIVE_AMOUNT + DESC[4] + UPGRADE_PLUS_EVOKE_AMOUNT + DESC[5]*/;
     }
 
     @Override

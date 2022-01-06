@@ -92,7 +92,7 @@ public abstract class AbstractCustomOrb extends AbstractOrb {
         evokeAmount = baseEvokeAmount;
     }
 
-    @Override
+/*    @Override
     public void update() {
         super.update();
         if (AbstractDungeon.player != null) {
@@ -118,7 +118,7 @@ public abstract class AbstractCustomOrb extends AbstractOrb {
                 this.isDone = true;
             }
         });
-    }
+    }*/
 
     protected void applyFocusToPassiveOnly() {
         AbstractPower power = AbstractDungeon.player.getPower("Focus");

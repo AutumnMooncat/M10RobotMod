@@ -88,9 +88,9 @@ public class BombOrb extends AbstractCustomOrb {
     public void updateDescription() { // Set the on-hover description of the orb
         applyFocusToPassiveOnly();
         description =
-                DESC[0] + passiveAmount + DESC[1] + evokeAmount + DESC[2] +
+                DESC[0] + passiveAmount + DESC[1] + evokeAmount + DESC[2]/* +
                 UPGRADE_TEXT[0] +
-                DESC[3] + UPGRADE_PLUS_PASSIVE_DAMAGE + DESC[4];
+                DESC[3] + UPGRADE_PLUS_PASSIVE_DAMAGE + DESC[4]*/;
     }
 
     @Override
@@ -128,6 +128,7 @@ public class BombOrb extends AbstractCustomOrb {
                 public void update() {
                     playAnimation(SUCCESS_IMG, MED_ANIM);
                     evokeAmount += Math.max(1, info.output * (passiveAmount / 100F));
+                    updateDescription();
                     this.isDone = true;
                 }
             });
