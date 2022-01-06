@@ -199,10 +199,6 @@
     "NAME": "Perpetual Assembly",
     "DESCRIPTION": "{@@}m10robot:Swappable. NL Channel !M! m10robot:Present{!M!|>1=s}. NL Next turn, draw !M10Robot:SecondMagic! additional card{!M10Robot:SecondMagic!|>1=s}."
   },
-  "M10Robot:RapidAssembly": {
-    "NAME": "Rapid Assembly",
-    "DESCRIPTION": "m10robot:Swappable. NL Draw !M! cards. NL Gain !M10Robot:SecondMagic! [E] ."
-  },
   "M10Robot:PileDriver": {
     "NAME": "Pile Driver",
     "DESCRIPTION": "Deal !D! damage. NL Deal !D! damage to a random other enemy."
@@ -234,6 +230,10 @@
   "M10Robot:RAMUpgrade": {
     "NAME": "RAM Upgrade",
     "DESCRIPTION": "{@@}Whenever you Channel an Orb, m10robot:Upgrade it !M! time{!M!|>1=s}."
+  },
+  "M10Robot:RapidAssembly": {
+    "NAME": "Rapid Assembly",
+    "DESCRIPTION": "m10robot:Overclock all cards in your hand !M! times."
   },
   "M10Robot:RecoveryMode": {
     "NAME": "Recovery Mode",
