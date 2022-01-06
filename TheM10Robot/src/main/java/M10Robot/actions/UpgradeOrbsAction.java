@@ -7,11 +7,15 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.orbs.EmptyOrbSlot;
 
-public class UpgradeOrbsAction extends AbstractGameAction {
-    private final AbstractOrb orb;
+import java.util.ArrayList;
 
-    public UpgradeOrbsAction(int upgrades) {
-        this(null, upgrades);
+public class UpgradeOrbsAction extends AbstractGameAction {
+    private AbstractOrb orb;
+    private boolean allOrbs;
+
+    public UpgradeOrbsAction(boolean allOrbs, int upgrades) {
+        this.allOrbs = allOrbs;
+        this.amount = upgrades;
     }
 
     public UpgradeOrbsAction(AbstractOrb orb, int upgrades) {
@@ -22,8 +26,20 @@ public class UpgradeOrbsAction extends AbstractGameAction {
     @Override
     public void update() {
         if (orb == null) {
-            for (AbstractOrb o : AbstractDungeon.player.orbs) {
-                upgrade(o);
+            if (allOrbs) {
+                for (AbstractOrb o : AbstractDungeon.player.orbs) {
+                    upgrade(o);
+                }
+            } else {
+                ArrayList<AbstractOrb> validOrbs = new ArrayList<>();
+                for (AbstractOrb o : AbstractDungeon.player.orbs) {
+                    if (!(o instanceof EmptyOrbSlot)) {
+                        validOrbs.add(o);
+                    }
+                }
+                if (!validOrbs.isEmpty()) {
+                    upgrade(validOrbs.get(AbstractDungeon.cardRng.random(validOrbs.size() - 1)));
+                }
             }
         } else {
             upgrade(orb);

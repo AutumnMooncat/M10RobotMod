@@ -48,7 +48,7 @@ public class AssemblyLine extends AbstractDynamicCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.addToBot(new MultichannelAction(new PresentOrb(), magicNumber));
-        this.addToBot(new UpgradeOrbsAction(secondMagicNumber));
+        this.addToBot(new UpgradeOrbsAction(true, secondMagicNumber));
     }
 
     //Upgraded stats.

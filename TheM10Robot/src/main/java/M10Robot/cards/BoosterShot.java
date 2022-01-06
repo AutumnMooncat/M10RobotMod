@@ -51,7 +51,7 @@ public class BoosterShot extends AbstractDynamicCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
-        this.addToBot(new UpgradeOrbsAction(magicNumber));
+        this.addToBot(new UpgradeOrbsAction(true, magicNumber));
     }
 
     // Upgraded stats.
