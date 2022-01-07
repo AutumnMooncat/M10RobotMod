@@ -3,6 +3,7 @@ package M10Robot.cards;
 import M10Robot.M10RobotMod;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
+import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.BranchingUpgradesCard;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -12,7 +13,7 @@ import com.megacrit.cardcrawl.powers.watcher.VigorPower;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
-public class Cloaking extends AbstractDynamicCard {
+public class Cloaking extends AbstractDynamicCard implements BranchingUpgradesCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
@@ -36,9 +37,9 @@ public class Cloaking extends AbstractDynamicCard {
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
-    private static final int COST = 2;
-    private static final int BLOCK = 8;
-    private static final int UPGRADE_PLUS_BLOCK = 4;
+    private static final int COST = 1;
+    private static final int BLOCK = 6;
+    private static final int UPGRADE_PLUS_BLOCK = 2;
     private static final int VIGOR = 5;
     private static final int UPGRADE_PLUS_VIGOR = 2;
 
@@ -58,14 +59,26 @@ public class Cloaking extends AbstractDynamicCard {
         this.addToBot(new ApplyPowerAction(p, p, new VigorPower(p, magicNumber)));
     }
 
-    //Upgraded stats.
     @Override
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeBlock(UPGRADE_PLUS_BLOCK);
-            upgradeMagicNumber(UPGRADE_PLUS_VIGOR);
+            if (isBranchUpgrade()) {
+                branchUpgrade();
+            } else {
+                baseUpgrade();
+            }
             initializeDescription();
         }
     }
+
+    public void baseUpgrade() {
+        upgradeBlock(UPGRADE_PLUS_BLOCK);
+        upgradeMagicNumber(UPGRADE_PLUS_VIGOR);
+    }
+
+    public void branchUpgrade() {
+        selfRetain = true;
+    }
+
 }
