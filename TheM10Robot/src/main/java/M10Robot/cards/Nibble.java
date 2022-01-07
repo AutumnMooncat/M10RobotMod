@@ -32,9 +32,9 @@ public class Nibble extends AbstractDynamicCard {
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
-    private static final int COST = 0;
-    private static final int DAMAGE = 4;
-    private static final int UPGRADE_PLUS_DMG = 2;
+    private static final int COST = 1;
+    private static final int DAMAGE = 5;
+    private static final int UPGRADE_PLUS_DMG = 3;
     private static final int ORBS = 1;
 
     // /STAT DECLARATION/
