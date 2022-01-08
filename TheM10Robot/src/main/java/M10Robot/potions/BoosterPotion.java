@@ -1,12 +1,11 @@
 package M10Robot.potions;
 
 import M10Robot.M10RobotMod;
-import M10Robot.actions.OverclockCardAction;
+import M10Robot.actions.UpgradeOrbsAction;
 import basemod.BaseMod;
 import basemod.abstracts.CustomPotion;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 import com.megacrit.cardcrawl.localization.PotionStrings;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
@@ -32,7 +31,7 @@ public class BoosterPotion extends CustomPotion {
 
     @Override
     public void use(AbstractCreature target) {
-        this.addToBot(new OverclockCardAction(true, potency));
+        this.addToBot(new UpgradeOrbsAction(true, potency));
     }
 
     // This is your potency.
