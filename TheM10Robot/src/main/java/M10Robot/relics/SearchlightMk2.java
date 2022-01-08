@@ -48,6 +48,7 @@ public class SearchlightMk2 extends CustomRelic {
 
     @Override
     public void onTrigger() {
+        flash();
         stats.put(UPGRADES_STAT, stats.get(UPGRADES_STAT) + UPGRADES);
     }
 
