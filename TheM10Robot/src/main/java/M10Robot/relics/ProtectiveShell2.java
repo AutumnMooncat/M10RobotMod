@@ -25,8 +25,8 @@ public class ProtectiveShell2 extends CustomRelic {
     // ID, images, text.
     public static final String ID = M10RobotMod.makeID("ProtectiveShell2");
 
-    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("ArmorModule2.png"));
-    private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("ArmorModule2.png"));
+    private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("M102.png"));
+    private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("M10.png"));
 
     public static final int STACKS = 5;
 
@@ -39,13 +39,13 @@ public class ProtectiveShell2 extends CustomRelic {
         resetStats();
     }
 
-    @Override //Should replace default relic. Thanks kiooeht#3584 10/25/2020, #modding-technical
+    @Override //Should replace default relic. Big thanks papa kio
     public void obtain() {
         //Grab the player
         AbstractPlayer p = AbstractDungeon.player;
         //If we have the starter relic...
         if (p.hasRelic(ProtectiveShell.ID)) {
-            //Grab its data
+            //Grab its data for relic stats if you want to carry the stats over to the boss relic
             ProtectiveShell r = (ProtectiveShell) p.getRelic(ProtectiveShell.ID);
             stats.put(DAMAGE_MITIGATED, r.getMitigation());
             stats.put(SCRAMBLES, r.getScrambles());
@@ -62,7 +62,7 @@ public class ProtectiveShell2 extends CustomRelic {
         }
     }
 
-    //Only spawn if we have Boo Sheet
+    //Only spawn if we have the starter relic
     public boolean canSpawn() {
         return AbstractDungeon.player.hasRelic(ProtectiveShell.ID);
     }

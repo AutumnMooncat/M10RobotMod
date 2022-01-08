@@ -3,6 +3,7 @@ package M10Robot.orbs;
 import M10Robot.M10RobotMod;
 import M10Robot.actions.FasterLoseHPAction;
 import M10Robot.powers.SpikesPower;
+import M10Robot.relics.SearchlightMk2;
 import M10Robot.util.OverclockUtil;
 import M10Robot.util.TextureLoader;
 import com.badlogic.gdx.Gdx;
@@ -74,6 +75,16 @@ public class SearchlightOrb extends AbstractCustomOrb {
             upgradeEvoke(UPGRADE_PLUS_EVOKE_AMOUNT);
             CardCrawlGame.sound.play("ORB_LIGHTNING_CHANNEL", 0.1F);
             updateDescription();
+        }
+    }
+
+    @Override
+    public void onChannel() {
+        if (p.hasRelic(SearchlightMk2.ID)) {
+            p.getRelic(SearchlightMk2.ID).onTrigger();
+            for (int i = 0 ; i < SearchlightMk2.UPGRADES ; i++) {
+                upgrade();
+            }
         }
     }
 

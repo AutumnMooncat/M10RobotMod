@@ -1,12 +1,10 @@
 package M10Robot;
 
-import M10Robot.cards.EMP;
 import M10Robot.characters.M10Robot;
 import M10Robot.orbs.AbstractCustomOrb;
 import M10Robot.potions.*;
 import M10Robot.powers.EMPPower;
-import M10Robot.relics.ProtectiveShell;
-import M10Robot.relics.ProtectiveShell2;
+import M10Robot.relics.*;
 import M10Robot.util.IDCheckDontTouchPls;
 import M10Robot.util.TextureLoader;
 import M10Robot.variables.*;
@@ -553,23 +551,21 @@ public class M10RobotMod implements
 
         // This adds a character specific relic. Only when you play with the mentioned color, will you get this relic.
         BaseMod.addRelicToCustomPool(new ProtectiveShell(), M10Robot.Enums.GREEN_SPRING_CARD_COLOR);
-        //BaseMod.addRelicToCustomPool(new BottledStar(), M10Robot.Enums.GREEN_SPRING_CARD_COLOR);
         BaseMod.addRelicToCustomPool(new ProtectiveShell2(), M10Robot.Enums.GREEN_SPRING_CARD_COLOR);
-        //BaseMod.addRelicToCustomPool(new ModularBody(), M10Robot.Enums.GREEN_SPRING_CARD_COLOR);
-
-        //TODO this doesnt work. Just patch the relics to work with modules
-        //BaseMod.removeRelicFromCustomPool(new MummifiedHand(), M10Robot.Enums.GREEN_SPRING_CARD_COLOR);
-        //BaseMod.removeRelicFromCustomPool(new OrangePellets(), M10Robot.Enums.GREEN_SPRING_CARD_COLOR);
-        //BaseMod.removeRelicFromCustomPool(new BirdFacedUrn(), M10Robot.Enums.GREEN_SPRING_CARD_COLOR);
-
+        BaseMod.addRelicToCustomPool(new Pufferfish(), M10Robot.Enums.GREEN_SPRING_CARD_COLOR);
+        BaseMod.addRelicToCustomPool(new SearchlightMk2(), M10Robot.Enums.GREEN_SPRING_CARD_COLOR);
+        BaseMod.addRelicToCustomPool(new Eye(), M10Robot.Enums.GREEN_SPRING_CARD_COLOR);
+        BaseMod.addRelicToCustomPool(new Ufo(), M10Robot.Enums.GREEN_SPRING_CARD_COLOR);
         // This adds a relic to the Shared pool. Every character can find this relic.
         //BaseMod.addRelic(new PlaceholderRelic2(), RelicType.SHARED);
 
         // Mark relics as seen (the others are all starters so they're marked as seen in the character file
         UnlockTracker.markRelicAsSeen(ProtectiveShell.ID);
-        //UnlockTracker.markRelicAsSeen(BottledStar.ID);
         UnlockTracker.markRelicAsSeen(ProtectiveShell2.ID);
-        //UnlockTracker.markRelicAsSeen(ModularBody.ID);
+        UnlockTracker.markRelicAsSeen(Pufferfish.ID);
+        UnlockTracker.markRelicAsSeen(SearchlightMk2.ID);
+        UnlockTracker.markRelicAsSeen(Eye.ID);
+        UnlockTracker.markRelicAsSeen(Ufo.ID);
         logger.info("Done adding relics!");
     }
     

@@ -1,20 +1,4 @@
 {
-  "M10Robot:ProtectiveShell": {
-    "NAME": "Protective Shell",
-    "FLAVOR": "Not to be confused with Reflective Shell",
-    "DESCRIPTIONS": [
-      "At the start of each combat, gain #b"," #ym10robot:Protect.",
-      "Damage mitigated: "," NL Scrambles: "
-    ]
-  },
-  "M10Robot:ProtectiveShell2": {
-    "NAME": "ProtectiveShell 2.0",
-    "FLAVOR": "The upgraded shell can withstand additional hits over its predecessor.",
-    "DESCRIPTIONS": [
-      "At the start of each combat, gain #b"," #ym10robot:Protect.",
-      "Damage mitigated: "," NL Scrambles: "
-    ]
-  },
   "M10Robot:BottledStar": {
     "NAME": "Bottled Star",
     "FLAVOR": "Now you can watch for shooting stars whenever you wish.",
@@ -25,11 +9,60 @@
       "Damage dealt: "," NL Per combat: "," NL Per turn: "
     ]
   },
-  "M10Robot:ModularBody": {
-    "NAME": "Modular Body",
-    "FLAVOR": "So much room for customization!",
+  "M10Robot:Eye": {
+    "NAME": "Third Eye",
+    "FLAVOR": "It's watching you.",
     "DESCRIPTIONS": [
-      "Start each combat with #b"," #ym10robot:Module slots."
+      "At the start of each combat, apply #b"," #yLock-On to ALL enemies.",
+      "#yLock-On applied: "
+    ]
+  },
+  "M10Robot:ProtectiveShell": {
+    "NAME": "Protective Shell",
+    "FLAVOR": "You were built to last.",
+    "DESCRIPTIONS": [
+      "At the start of each combat, gain #b"," #ym10robot:Protect.",
+      "Damage mitigated: "," NL Scrambles: "
+    ]
+  },
+  "M10Robot:ProtectiveShell2": {
+    "NAME": "Protective Shell Mk2",
+    "FLAVOR": "Your upgraded shell can withstand additional hits over its predecessor. New paint sold separately.",
+    "DESCRIPTIONS": [
+      "Replaces [#b9c5b4]Protective [#b9c5b4]Shell. At the start of each combat, gain #b"," #ym10robot:Protect.",
+      "Damage mitigated: "," NL Scrambles: "
+    ]
+  },
+  "M10Robot:Pufferfish": {
+    "NAME": "Puffer Fish",
+    "FLAVOR": "It looks very spiky.",
+    "DESCRIPTIONS": [
+      "Start each combat with #b"," #ym10robot:Spikes.",
+      "Damage dealt: "," NL Per combat: "," NL Per turn: "
+    ]
+  },
+  "M10Robot:RoboBall": {
+    "NAME": "Robo Ball",
+    "FLAVOR": "\"Energy detected. Destroying.\" - Robo Ball",
+    "DESCRIPTIONS": [
+      "The first time you are attacked each combat, the attacker takes an equal amount of damage.",
+      "Damage dealt: "," NL Per combat: "," NL Per turn: "
+    ]
+  },
+  "M10Robot:SearchlightMk2": {
+    "NAME": "Searchlight Mk2",
+    "FLAVOR": "Upgraded Model! Same great taste!",
+    "DESCRIPTIONS": [
+      "At the start of each combat, #yChannel #b1 #ySearchlight. Whenever you #yChannel a #ym10robot:Searchlight, #ym10robot:Upgrade it #b"," time.",
+      "Orbs upgraded: "," NL Per combat: "," NL Per turn: "
+    ]
+  },
+  "M10Robot:Ufo": {
+    "NAME": "UFO",
+    "FLAVOR": "It got lost on it's way to the jungle dance party.",
+    "DESCRIPTIONS": [
+      "Whenever you play a #yPower card, apply #b"," #ym10robot:Stasis to ALL enemies.",
+      "#yStasis applied: "," NL Per combat: "," NL Per turn: "
     ]
   }
 }
