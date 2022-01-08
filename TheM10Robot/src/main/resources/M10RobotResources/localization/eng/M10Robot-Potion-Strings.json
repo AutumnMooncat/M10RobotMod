@@ -1,6 +1,22 @@
 {
-  "M10Robot:BurnPotion": {
-    "NAME": "Burn Potion",
-    "DESCRIPTIONS": ["Apply #b"," #yBurn to ALL enemies."]
+  "M10Robot:BoosterPotion": {
+    "NAME": "Booster Potion",
+    "DESCRIPTIONS": ["#yUpgrade all your Orbs #b"," times."]
+  },
+  "M10Robot:LockingPotion": {
+    "NAME": "Locking Potion",
+    "DESCRIPTIONS": ["Apply #b"," #yStasis to ALL enemies."]
+  },
+  "M10Robot:NullPotion": {
+    "NAME": "Nullifier",
+    "DESCRIPTIONS": ["Draw #b"," card."," cards."," All cards in your hand cost 0 until played."]
+  },
+  "M10Robot:OverclockPotion": {
+    "NAME": "Overclock Potion",
+    "DESCRIPTIONS": ["#yOverclock all cards in your hand #b"," times."]
+  },
+  "M10Robot:SpikyPotion": {
+    "NAME": "Spiky Potion",
+    "DESCRIPTIONS": ["Gain #b"," #ySpikes."]
   }
 }

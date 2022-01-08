@@ -3,6 +3,7 @@ package M10Robot;
 import M10Robot.cards.EMP;
 import M10Robot.characters.M10Robot;
 import M10Robot.orbs.AbstractCustomOrb;
+import M10Robot.potions.*;
 import M10Robot.powers.EMPPower;
 import M10Robot.relics.ProtectiveShell;
 import M10Robot.relics.ProtectiveShell2;
@@ -16,6 +17,7 @@ import com.badlogic.gdx.files.FileHandle;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.mod.stslib.Keyword;
+import com.evacipated.cardcrawl.mod.widepotions.WidePotionsMod;
 import com.evacipated.cardcrawl.modthespire.Loader;
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
@@ -128,9 +130,21 @@ public class M10RobotMod implements
     
     // Potion Colors in RGB
 
-    public static final Color BURN_POTION_LIQUID = CardHelper.getColor(168, 56, 50); // Dark Red
-    public static final Color BURN_POTION_HYBRID = CardHelper.getColor(207, 118, 35); // Lighter Orange
-    public static final Color BURN_POTION_SPOTS = CardHelper.getColor(255, 102, 0); // Lighter Orange/Red
+    public static final Color OVERCLOCK_POTION_LIQUID = CardHelper.getColor(222, 22, 22); // Dark Red
+    public static final Color OVERCLOCK_POTION_HYBRID = CardHelper.getColor(207, 118, 35); // Lighter Orange
+    public static final Color OVERCLOCK_POTION_SPOTS = CardHelper.getColor(255, 102, 0); // Lighter Orange/Red
+    public static final Color LOCKING_POTION_LIQUID = CardHelper.getColor(22, 222, 222); // Cyan
+    public static final Color LOCKING_POTION_HYBRID = CardHelper.getColor(222, 222, 22); // Ugly Yellow
+    public static final Color LOCKING_POTION_SPOTS = CardHelper.getColor(22, 22, 22); // Dark Gray
+    public static final Color BOOSTER_POTION_LIQUID = CardHelper.getColor(22, 222, 22); // Green
+    public static final Color BOOSTER_POTION_HYBRID = CardHelper.getColor(11, 111, 11); // Dark Green
+    public static final Color BOOSTER_POTION_SPOTS = CardHelper.getColor(22, 22, 22); // Dark Gray
+    public static final Color NULL_POTION_LIQUID = CardHelper.getColor(22, 22, 22); // Dark Gray
+    public static final Color NULL_POTION_HYBRID = CardHelper.getColor(11, 11, 11); // Darker Gray
+    public static final Color NULL_POTION_SPOTS = CardHelper.getColor(22, 22, 22); // Dark Gray
+    public static final Color SPIKY_POTION_LIQUID = CardHelper.getColor(55, 55, 55); // Dark Gray
+    public static final Color SPIKY_POTION_HYBRID = CardHelper.getColor(33, 33, 33); // Darker Gray
+    public static final Color SPIKY_POTION_SPOTS = CardHelper.getColor(22, 22, 22); // Dark Gray
 
     // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
     // ONCE YOU CHANGE YOUR MOD ID (BELOW, YOU CAN'T MISS IT) CHANGE THESE PATHS!!!!!!!!!!!
@@ -360,7 +374,11 @@ public class M10RobotMod implements
 
             //Simple Potions
 
-            //WidePotionsMod.whitelistSimplePotion(BurnPotion.POTION_ID);
+            WidePotionsMod.whitelistSimplePotion(BoosterPotion.POTION_ID);
+            WidePotionsMod.whitelistSimplePotion(LockingPotion.POTION_ID);
+            WidePotionsMod.whitelistSimplePotion(NullPotion.POTION_ID);
+            WidePotionsMod.whitelistSimplePotion(OverclockPotion.POTION_ID);
+            WidePotionsMod.whitelistSimplePotion(SpikyPotion.POTION_ID);
 
             //Complex Potions
 
@@ -508,6 +526,11 @@ public class M10RobotMod implements
         // Remember, you can press ctrl+P inside parentheses like addPotions)
 
         //BaseMod.addPotion(BurnPotion.class, BURN_POTION_LIQUID, BURN_POTION_HYBRID, BURN_POTION_SPOTS, BurnPotion.POTION_ID, M10Robot.Enums.THE_MIO_ROBOT);
+        BaseMod.addPotion(OverclockPotion.class, OVERCLOCK_POTION_LIQUID, OVERCLOCK_POTION_HYBRID, null, OverclockPotion.POTION_ID, M10Robot.Enums.THE_MIO_ROBOT);
+        BaseMod.addPotion(LockingPotion.class, LOCKING_POTION_LIQUID, LOCKING_POTION_HYBRID, null, LockingPotion.POTION_ID, M10Robot.Enums.THE_MIO_ROBOT);
+        BaseMod.addPotion(BoosterPotion.class, BOOSTER_POTION_LIQUID, BOOSTER_POTION_HYBRID, null, BoosterPotion.POTION_ID, M10Robot.Enums.THE_MIO_ROBOT);
+        BaseMod.addPotion(NullPotion.class, NULL_POTION_LIQUID, NULL_POTION_HYBRID, null, NullPotion.POTION_ID, M10Robot.Enums.THE_MIO_ROBOT);
+        BaseMod.addPotion(SpikyPotion.class, SPIKY_POTION_LIQUID, SPIKY_POTION_HYBRID, null, SpikyPotion.POTION_ID, M10Robot.Enums.THE_MIO_ROBOT);
 
         logger.info("Done editing potions");
     }
