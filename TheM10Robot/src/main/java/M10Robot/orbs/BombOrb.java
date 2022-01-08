@@ -1,38 +1,26 @@
 package M10Robot.orbs;
 
 import M10Robot.M10RobotMod;
-import M10Robot.powers.RecoilPower;
-import M10Robot.util.OverclockUtil;
 import M10Robot.util.TextureLoader;
+import M10Robot.vfx.BigExplosionEffect;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
-import com.evacipated.cardcrawl.mod.stslib.actions.defect.EvokeSpecificOrbAction;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.animations.VFXAction;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
-import com.megacrit.cardcrawl.actions.utility.SFXAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.FontHelper;
+import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.OrbStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
-import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.LockOnPower;
-import com.megacrit.cardcrawl.vfx.combat.LightningOrbPassiveEffect;
-import com.megacrit.cardcrawl.vfx.combat.OrbFlareEffect;
-import com.megacrit.cardcrawl.vfx.combat.PlasmaOrbActivateEffect;
-import com.megacrit.cardcrawl.vfx.combat.SmallLaserEffect;
+import com.megacrit.cardcrawl.vfx.combat.*;
 
 import static M10Robot.M10RobotMod.makeOrbPath;
 
@@ -115,6 +103,7 @@ public class BombOrb extends AbstractCustomOrb {
             if (t.hasPower(LockOnPower.POWER_ID)) {
                 damage *= LockOnPower.MULTIPLIER;
             }
+            this.addToBot(new BigExplosionEffect(t, ScreenShake.ShakeIntensity.LOW, ScreenShake.ShakeDur.SHORT));
             this.addToBot(new DamageAction(t, new DamageInfo(p, damage, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.FIRE));
         }
     }

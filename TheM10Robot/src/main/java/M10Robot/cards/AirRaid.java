@@ -4,6 +4,7 @@ import M10Robot.M10RobotMod;
 import M10Robot.cardModifiers.AimedModifier;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
+import M10Robot.vfx.BigExplosionEffect;
 import M10Robot.vfx.BurnToAshEffect;
 import basemod.helpers.CardModifierManager;
 import basemod.interfaces.XCostModifier;
@@ -73,15 +74,7 @@ public class AirRaid extends AbstractDynamicCard {
 
         for (int i = 0 ; i < effect ; i++) {
             this.addToBot(new VFXAction(new InversionBeamEffect(m.hb.cX), 0.1f));
-            this.addToBot(new AbstractGameAction() {
-                @Override
-                public void update() {
-                    AbstractDungeon.effectsQueue.add(new ExplosionSmallEffect(m.hb.cX, m.hb.cY));
-                    AbstractDungeon.effectsQueue.add(new BurnToAshEffect(m.hb.cX, m.hb.cY));
-                    CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.HIGH, ScreenShake.ShakeDur.MED, false);
-                    this.isDone = true;
-                }
-            });
+            this.addToBot(new BigExplosionEffect(m));
             this.addToBot(new SFXAction("WATCHER_HEART_PUNCH"));
             this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.NONE, true));
         }
