@@ -10,6 +10,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
@@ -48,15 +49,17 @@ public class RoboBall extends CustomRelic {
     @Override
     public void atBattleStart() {
         grayscale = false;
+        beginLongPulse();
     }
 
     @Override
-    public int onAttacked(DamageInfo info, int damageAmount) {
+    public int onAttackedToChangeDamage(DamageInfo info, int damageAmount) {
         if (!grayscale) {
             if (info.output >= 0 && info.type != DamageInfo.DamageType.THORNS && info.type != DamageInfo.DamageType.HP_LOSS && info.owner != null && info.owner != AbstractDungeon.player) {
                 this.flash();
                 stats.put(DAMAGE_STAT, stats.get(DAMAGE_STAT) + info.output);
                 this.addToTop(new DamageAction(info.owner, new DamageInfo(AbstractDungeon.player, info.output, DamageInfo.DamageType.THORNS), info.output > 10 ? AbstractGameAction.AttackEffect.BLUNT_HEAVY : AbstractGameAction.AttackEffect.BLUNT_LIGHT, true));
+                this.addToTop(new RelicAboveCreatureAction(AbstractDungeon.player, this));
                 if (AbstractDungeon.player instanceof M10Robot) {
                     this.addToTop(new AbstractGameAction() {
                         @Override
@@ -66,10 +69,11 @@ public class RoboBall extends CustomRelic {
                         }
                     });
                 }
+                grayscale = true;
+                stopPulse();
             }
-            grayscale = true;
         }
-        return damageAmount;
+        return 0;
     }
 
     public String getStatsDescription() {

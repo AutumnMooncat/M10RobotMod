@@ -45,7 +45,7 @@
     "NAME": "Robo Ball",
     "FLAVOR": "\"Energy detected. Destroying.\" - Robo Ball",
     "DESCRIPTIONS": [
-      "The first time you are attacked each combat, the attacker takes an equal amount of damage.",
+      "The first time you are attacked each combat, take no damage. The attacker takes the full damage instead.",
       "Damage dealt: "," NL Per combat: "," NL Per turn: "
     ]
   },
