@@ -1,6 +1,7 @@
 package M10Robot.powers;
 
 import M10Robot.M10RobotMod;
+import M10Robot.relics.Pufferfish;
 import basemod.interfaces.CloneablePowerInterface;
 import com.evacipated.cardcrawl.mod.stslib.patches.NeutralPowertypePatch;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -9,6 +10,7 @@ import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
@@ -47,8 +49,10 @@ public class SpikesPower extends AbstractPower implements CloneablePowerInterfac
             this.flash();
             this.addToTop(new ReducePowerAction(owner, owner, this, 1));
             this.addToTop(new DamageAction(info.owner, new DamageInfo(this.owner, this.amount, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true));
+            if (owner == AbstractDungeon.player && AbstractDungeon.player.hasRelic(Pufferfish.ID)) {
+                AbstractDungeon.player.getRelic(Pufferfish.ID).onTrigger();
+            }
         }
-
         return damageAmount;
     }
 
