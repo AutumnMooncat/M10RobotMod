@@ -556,6 +556,7 @@ public class M10RobotMod implements
         BaseMod.addRelicToCustomPool(new SearchlightMk2(), M10Robot.Enums.GREEN_SPRING_CARD_COLOR);
         BaseMod.addRelicToCustomPool(new Eye(), M10Robot.Enums.GREEN_SPRING_CARD_COLOR);
         BaseMod.addRelicToCustomPool(new Ufo(), M10Robot.Enums.GREEN_SPRING_CARD_COLOR);
+        BaseMod.addRelicToCustomPool(new RoboBall(), M10Robot.Enums.GREEN_SPRING_CARD_COLOR);
         // This adds a relic to the Shared pool. Every character can find this relic.
         //BaseMod.addRelic(new PlaceholderRelic2(), RelicType.SHARED);
 
@@ -566,6 +567,7 @@ public class M10RobotMod implements
         UnlockTracker.markRelicAsSeen(SearchlightMk2.ID);
         UnlockTracker.markRelicAsSeen(Eye.ID);
         UnlockTracker.markRelicAsSeen(Ufo.ID);
+        UnlockTracker.markRelicAsSeen(RoboBall.ID);
         logger.info("Done adding relics!");
     }
     
