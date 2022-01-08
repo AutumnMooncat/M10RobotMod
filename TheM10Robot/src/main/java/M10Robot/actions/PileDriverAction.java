@@ -13,6 +13,9 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.ExplosionSmallEffect;
 
 public class PileDriverAction extends AbstractGameAction {
+    static final float SPEED = 150f * Settings.scale;
+    static final float CLOSE_ENOUGH = 50f * Settings.scale;
+    static final float TAKING_TOO_LONG = 1f;
     final float playerDrawXBackup;
     final float playerDrawYBackup;
     final float playerHitboxXBackup;
@@ -23,21 +26,19 @@ public class PileDriverAction extends AbstractGameAction {
     final float targetHitboxYBackup;
     final AbstractMonster targetMonster;
     final AbstractMonster collisionMonster;
-    final float speed = 150f * Settings.scale;
-    final float closeEnough = 50f * Settings.scale;
-    float currentSpeed = speed;
+    float currentSpeed = SPEED;
     float collisionX, collisionY;
     float dst1;
     float dx, dy, dxM, dyM;
-    int actionPhase;
     final Vector2 grabVector;
     Vector2 downVector;
     Vector2 playerVector;
     Vector2 monsterVector;
     boolean firstPass = true;
-    boolean targetDied = false;
+    float skipTimer = 0F;
     float waitTimer = 0f;
     int[] damages;
+    int actionPhase;
     DamageInfo.DamageType damageType;
     
     public PileDriverAction(AbstractPlayer source, AbstractMonster target, int[] damages, DamageInfo.DamageType damageType) {
@@ -86,19 +87,22 @@ public class PileDriverAction extends AbstractGameAction {
             source.drawY += dy;
             source.hb.move(source.hb.cX+dx,source.hb.cY+dy);
             float dst2 = new Vector2(targetHitboxXBackup - source.hb.cX, targetHitboxYBackup - source.hb.cY).len();
-            currentSpeed = speed*(dst2/dst1);
-            if (dst2 < closeEnough) {
+            currentSpeed = SPEED *(dst2/dst1);
+            skipTimer += Gdx.graphics.getDeltaTime();
+            if (dst2 <= CLOSE_ENOUGH || skipTimer >= TAKING_TOO_LONG) {
                 //Close enough to grab, next phase
                 actionPhase++;
+                skipTimer = 0f;
             }
         } else if (actionPhase == 1) {
             //Lift the target up off the screen
-            dy = speed;
+            dy = SPEED;
             source.drawY += dy;
             source.hb.move(source.hb.cX,source.hb.cY+dy);
             targetMonster.drawY += dy;
             targetMonster.hb.move(targetMonster.hb.cX,targetMonster.hb.cY+dy);
-            if (source.hb.cY > Settings.HEIGHT+source.hb.height && targetMonster.hb.cY > Settings.HEIGHT+targetMonster.hb.height) {
+            skipTimer += Gdx.graphics.getDeltaTime();
+            if ((source.hb.cY > Settings.HEIGHT+source.hb.height && targetMonster.hb.cY > Settings.HEIGHT+targetMonster.hb.height) || skipTimer >= TAKING_TOO_LONG) {
                 //Up high enough, next phase
                 actionPhase++;
                 //Teleport above the target monster so we can move straight down next phase
@@ -111,20 +115,23 @@ public class PileDriverAction extends AbstractGameAction {
                 downVector = new Vector2(collisionX-targetMonster.hb.cX, collisionY-targetMonster.hb.cY).nor();
                 //add a pause
                 waitTimer = 0.3f;
+                skipTimer = 0f;
             }
         } else if (actionPhase == 2) {
             //Move down onto the target monster
-            dx = limitMovement(speed* downVector.x, collisionX-targetMonster.hb.cX);
-            dy = limitMovement(speed* downVector.y, collisionY-targetMonster.hb.cY);
+            dx = limitMovement(SPEED * downVector.x, collisionX-targetMonster.hb.cX);
+            dy = limitMovement(SPEED * downVector.y, collisionY-targetMonster.hb.cY);
             source.drawX += dx;
             source.drawY += dy;
             source.hb.move(source.hb.cX+dx,source.hb.cY+dy);
             targetMonster.drawX += dx;
             targetMonster.drawY += dy;
             targetMonster.hb.move(targetMonster.hb.cX+dx,targetMonster.hb.cY+dy);
-            if ((targetMonster.hb.cY-collisionY) < closeEnough) {
+            skipTimer += Gdx.graphics.getDeltaTime();
+            if ((targetMonster.hb.cY-collisionY) <= CLOSE_ENOUGH || skipTimer >= TAKING_TOO_LONG) {
                 //Close enough
                 actionPhase++;
+                skipTimer = 0f;
             }
         } else if (actionPhase == 3) {
             //Deal damage to appropriate targets and play sfx/vfx
@@ -136,30 +143,29 @@ public class PileDriverAction extends AbstractGameAction {
             if (collisionMonster != null && collisionMonster != targetMonster) {
                 collisionMonster.damage(new DamageInfo(source, damages[AbstractDungeon.getMonsters().monsters.indexOf(collisionMonster)], damageType));
             }
-            //Check if the target died so we dont need to move it
-            if (targetMonster.isDeadOrEscaped()) {
-                targetDied = true;
-            }
             //Move the the next phase and set up our vectors also slight pause
             actionPhase++;
             playerVector = new Vector2(playerDrawXBackup-source.drawX, playerDrawYBackup-source.drawY).nor();
             monsterVector = new Vector2(targetDrawXBackup-targetMonster.drawX, targetDrawYBackup-targetMonster.drawY).nor();
             waitTimer = 0.1f;
         } else if (actionPhase == 4) {
+            skipTimer += Gdx.graphics.getDeltaTime();
             //Move the player (and monster if its alive) back to the original positions
-            dx = limitMovement(speed*playerVector.x, playerDrawXBackup-source.drawX);
-            dy = limitMovement(speed*playerVector.y, playerDrawYBackup-source.drawY);
+            dx = limitMovement(SPEED *playerVector.x, playerDrawXBackup-source.drawX);
+            dy = limitMovement(SPEED *playerVector.y, playerDrawYBackup-source.drawY);
             source.drawX += dx;
             source.drawY += dy;
             source.hb.move(source.hb.cX+dx,source.hb.cY+dy);
-            if (!targetDied) {
-                dxM = limitMovement(speed*monsterVector.x, targetDrawXBackup-targetMonster.drawX);
-                dyM = limitMovement(speed*monsterVector.y, targetDrawYBackup-targetMonster.drawY);
-                targetMonster.drawX += dxM;
-                targetMonster.drawY += dyM;
-                targetMonster.hb.move(targetMonster.hb.cX+dxM,targetMonster.hb.cY+dyM);
+            dxM = limitMovement(SPEED *monsterVector.x, targetDrawXBackup-targetMonster.drawX);
+            dyM = limitMovement(SPEED *monsterVector.y, targetDrawYBackup-targetMonster.drawY);
+            targetMonster.drawX += dxM;
+            targetMonster.drawY += dyM;
+            targetMonster.hb.move(targetMonster.hb.cX+dxM,targetMonster.hb.cY+dyM);
+            if (skipTimer >= TAKING_TOO_LONG) {
+                fixTheCoordinates();
+                this.isDone = true;
             }
-            if (source.drawX == playerDrawXBackup && source.drawY == playerDrawYBackup && (targetDied || (targetMonster.drawX == targetDrawXBackup && targetMonster.drawY == targetDrawYBackup))) {
+            if (source.drawX == playerDrawXBackup && source.drawY == playerDrawYBackup && targetMonster.drawX == targetDrawXBackup && targetMonster.drawY == targetDrawYBackup) {
                 this.isDone = true;
             }
         }
@@ -172,5 +178,14 @@ public class PileDriverAction extends AbstractGameAction {
 
     public float limitMovement(float desiredSpeed, float maxSpeed) {
         return (Math.abs(desiredSpeed) > Math.abs(maxSpeed)) ? maxSpeed : desiredSpeed;
+    }
+
+    public void fixTheCoordinates() {
+        source.drawX = playerDrawXBackup;
+        source.drawY = playerDrawYBackup;
+        source.hb.move(playerHitboxXBackup, playerHitboxYBackup);
+        targetMonster.drawX = targetDrawXBackup;
+        targetMonster.drawY = targetDrawYBackup;
+        targetMonster.hb.move(targetHitboxXBackup, targetHitboxYBackup);
     }
 }
