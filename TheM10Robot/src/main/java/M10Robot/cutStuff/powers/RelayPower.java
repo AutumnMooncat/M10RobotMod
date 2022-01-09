@@ -1,4 +1,4 @@
-package M10Robot.powers;
+package M10Robot.cutStuff.powers;
 
 import M10Robot.M10RobotMod;
 import M10Robot.cards.abstractCards.AbstractSwappableCard;
@@ -13,7 +13,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RelayPower extends AbstractPower implements CloneablePowerInterface, NonStackablePower {

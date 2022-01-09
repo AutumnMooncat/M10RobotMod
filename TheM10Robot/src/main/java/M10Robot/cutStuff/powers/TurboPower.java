@@ -1,17 +1,17 @@
-package M10Robot.powers;
+package M10Robot.cutStuff.powers;
 
 import M10Robot.M10RobotMod;
 import basemod.interfaces.CloneablePowerInterface;
-import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
-public class ConcentrationPower extends AbstractPower implements CloneablePowerInterface, OnReceivePowerPower {
+public class TurboPower extends AbstractPower implements CloneablePowerInterface {
 
-    public static final String POWER_ID = M10RobotMod.makeID("ConcentrationPower");
+    public static final String POWER_ID = M10RobotMod.makeID("TurboPower");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
@@ -21,39 +21,50 @@ public class ConcentrationPower extends AbstractPower implements CloneablePowerI
     //private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power84.png"));
     //private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power32.png"));
 
-    public ConcentrationPower(AbstractCreature owner, int amount) {
+    public TurboPower(AbstractCreature owner, int amount) {
         this.name = NAME;
         this.ID = POWER_ID;
         this.owner = owner;
         this.amount = amount;
 
         this.type = PowerType.BUFF;
-        this.isTurnBased = false;
+        this.isTurnBased = true;
 
         // We load those txtures here.
         //this.loadRegion("cExplosion");
-        this.loadRegion("juggernaut");
+        this.loadRegion("draw");
         //this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
         //this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
 
         updateDescription();
     }
 
+    public void onInitialApplication() {
+        ++AbstractDungeon.player.gameHandSize;
+    }
+
+    public void onEnergyRecharge() {
+        this.flash();
+        AbstractDungeon.player.gainEnergy(1);
+        this.addToBot(new ReducePowerAction(this.owner, this.owner, this, 1));
+    }
+
+    public void onRemove() {
+        --AbstractDungeon.player.gameHandSize;
+    }
+
     public void updateDescription() {
-        this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
+        if (this.amount == 1) {
+            this.description = DESCRIPTIONS[0];
+        } else {
+            this.description = DESCRIPTIONS[1] + this.amount + DESCRIPTIONS[2];
+        }
+
     }
 
     @Override
     public AbstractPower makeCopy() {
-        return new ConcentrationPower(owner, amount);
+        return new TurboPower(owner, amount);
     }
 
-    @Override
-    public boolean onReceivePower(AbstractPower abstractPower, AbstractCreature abstractCreature, AbstractCreature abstractCreature1) {
-        if (abstractPower instanceof RecoilPower && abstractPower.amount > 1) {
-            flash();
-            this.addToBot(new GainBlockAction(owner, amount));
-        }
-        return true;
-    }
 }
