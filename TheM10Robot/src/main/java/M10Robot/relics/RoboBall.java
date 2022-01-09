@@ -135,9 +135,11 @@ public class RoboBall extends CustomRelic implements OnBlockDamagePower {
 
     @Override
     public void onFullyBlock(DamageInfo info, int initialDamageAmount, int initialBlock) {
-        int min = Math.min(initialDamageAmount, initialBlock);
-        if (min > 0) {
-            this.addToTop(new GainBlockAction(AbstractDungeon.player, min, true));
+        if (!grayscale) {
+            int min = Math.min(initialDamageAmount, initialBlock);
+            if (min > 0) {
+                this.addToTop(new GainBlockAction(AbstractDungeon.player, min, true));
+            }
         }
     }
 }
