@@ -115,18 +115,18 @@ public class SearchlightOrb extends AbstractCustomOrb {
             this.addToTop(new AbstractGameAction() {
                 @Override
                 public void update() {
+                    playAnimation(ATTACK_IMG, MED_ANIM);
+                    AbstractDungeon.effectList.add(new FlashAtkImgEffect(info.owner.hb.cX, info.owner.hb.cY, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
+                    AbstractDungeon.effectList.add(new OrbFlareEffect(SearchlightOrb.this, OrbFlareEffect.OrbFlareColor.FROST));
                     int damage = passiveAmount;
                     if (info.owner.hasPower(LockOnPower.POWER_ID)) {
                         damage = (int)(damage * 1.5F);
                     }
                     if (!info.owner.isDeadOrEscaped()) {
-                        AbstractDungeon.effectList.add(new FlashAtkImgEffect(info.owner.hb.cX, info.owner.hb.cY, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
-                        AbstractDungeon.effectList.add(new OrbFlareEffect(SearchlightOrb.this, OrbFlareEffect.OrbFlareColor.FROST));
                         info.owner.damage(new DamageInfo(p, damage, DamageInfo.DamageType.THORNS));
                         if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
                             AbstractDungeon.actionManager.clearPostCombatActions();
                         }
-                        playAnimation(ATTACK_IMG, MED_ANIM);
                     }
                     this.isDone = true;
                 }
