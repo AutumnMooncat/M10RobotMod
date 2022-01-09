@@ -1,6 +1,6 @@
 package M10Robot.actions;
 
-import M10Robot.powers.RelayPower;
+import M10Robot.cutStuff.powers.RelayPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
