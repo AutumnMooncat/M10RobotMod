@@ -27,7 +27,7 @@
   },
   "M10Robot:AssemblyLine": {
     "NAME": "Assembly Line",
-    "DESCRIPTION": "Channel !M! m10robot:Presents. NL m10robot:Upgrade all your Orbs !M10Robot:SecondMagic! times."
+    "DESCRIPTION": "{@@}Channel !M! m10robot:Presents. NL m10robot:Upgrade all your Orbs !M10Robot:SecondMagic! time{!M10Robot:SecondMagic!|>1=s}."
   },
   "M10Robot:AttackDown": {
     "NAME": "Attack Down",

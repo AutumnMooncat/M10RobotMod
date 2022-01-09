@@ -6,12 +6,13 @@ import M10Robot.actions.UpgradeOrbsAction;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
 import M10Robot.orbs.PresentOrb;
+import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.BranchingUpgradesCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
-public class AssemblyLine extends AbstractDynamicCard {
+public class AssemblyLine extends AbstractDynamicCard implements BranchingUpgradesCard {
 
     // TEXT DECLARATION
 
@@ -31,8 +32,8 @@ public class AssemblyLine extends AbstractDynamicCard {
     private static final int COST = 2;
     private static final int UPGRADE_COST = 1;
     private static final int ORBS = 3;
-    private static final int UPGRADES = 2;
-    //private static final int UPGRADE_PLUS_ORBS = 1;
+    private static final int UPGRADES = 1;
+    private static final int UPGRADE_PLUS_UPGRADES = 1;
 
     // /STAT DECLARATION/
 
@@ -56,9 +57,20 @@ public class AssemblyLine extends AbstractDynamicCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeBaseCost(UPGRADE_COST);
-            //upgradeMagicNumber(UPGRADE_PLUS_ORBS);
+            if (isBranchUpgrade()) {
+                branchUpgrade();
+            } else {
+                baseUpgrade();
+            }
             initializeDescription();
         }
+    }
+
+    public void baseUpgrade() {
+        upgradeBaseCost(UPGRADE_COST);
+    }
+
+    public void branchUpgrade() {
+        upgradeSecondMagicNumber(UPGRADE_PLUS_UPGRADES);
     }
 }
