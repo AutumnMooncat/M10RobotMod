@@ -1,8 +1,6 @@
 package M10Robot.relics;
 
 import M10Robot.M10RobotMod;
-import M10Robot.characters.M10Robot;
-import M10Robot.powers.interfaces.OnBlockDamagePower;
 import M10Robot.util.TextureLoader;
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
@@ -11,11 +9,9 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -24,7 +20,7 @@ import java.util.HashMap;
 import static M10Robot.M10RobotMod.makeRelicOutlinePath;
 import static M10Robot.M10RobotMod.makeRelicPath;
 
-public class RoboBall extends CustomRelic implements OnBlockDamagePower {
+public class RoboBall extends CustomRelic {
 
     // ID, images, text.
     public static final String ID = M10RobotMod.makeID("RoboBall");
@@ -60,18 +56,8 @@ public class RoboBall extends CustomRelic implements OnBlockDamagePower {
             if (info.output >= 0 && info.type != DamageInfo.DamageType.THORNS && info.type != DamageInfo.DamageType.HP_LOSS && info.owner != null && info.owner != AbstractDungeon.player) {
                 this.flash();
                 stats.put(DAMAGE_STAT, stats.get(DAMAGE_STAT) + info.output);
-                this.addToTop(new DamageAction(info.owner, new DamageInfo(AbstractDungeon.player, info.output, DamageInfo.DamageType.THORNS), info.output > 10 ? AbstractGameAction.AttackEffect.BLUNT_HEAVY : AbstractGameAction.AttackEffect.BLUNT_LIGHT, true));
+                this.addToTop(new DamageAction(info.owner, new DamageInfo(AbstractDungeon.player, info.output, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.FIRE, true));
                 this.addToTop(new RelicAboveCreatureAction(info.owner, this));
-                this.addToTop(new RelicAboveCreatureAction(AbstractDungeon.player, this));
-                if (AbstractDungeon.player instanceof M10Robot) {
-                    this.addToTop(new AbstractGameAction() {
-                        @Override
-                        public void update() {
-                            ((M10Robot) AbstractDungeon.player).playAnimation("attack");
-                            this.isDone = true;
-                        }
-                    });
-                }
                 grayscale = true;
                 stopPulse();
                 return 0;
@@ -116,30 +102,6 @@ public class RoboBall extends CustomRelic implements OnBlockDamagePower {
             stats.put(DAMAGE_STAT, jsonArray.get(0).getAsInt());
         } else {
             resetStats();
-        }
-    }
-
-    @Override
-    public AbstractRelic makeCopy() {
-        // Relic Stats will always query the stats from the instance passed to BaseMod.addRelic()
-        // Therefore, we make sure all copies share the same stats by copying the HashMap.
-        RoboBall newRelic = new RoboBall();
-        newRelic.stats = this.stats;
-        return newRelic;
-    }
-
-    @Override
-    public void onPartialBlock(DamageInfo info, int initialDamageAmount, int initialBlock) {
-        onFullyBlock(info, initialDamageAmount, initialBlock);
-    }
-
-    @Override
-    public void onFullyBlock(DamageInfo info, int initialDamageAmount, int initialBlock) {
-        if (!grayscale) {
-            int min = Math.min(initialDamageAmount, initialBlock);
-            if (min > 0) {
-                this.addToTop(new GainBlockAction(AbstractDungeon.player, min, true));
-            }
         }
     }
 }
