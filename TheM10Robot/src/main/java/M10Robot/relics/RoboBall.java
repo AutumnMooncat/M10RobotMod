@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -103,5 +104,14 @@ public class RoboBall extends CustomRelic {
         } else {
             resetStats();
         }
+    }
+
+    @Override
+    public AbstractRelic makeCopy() {
+        // Relic Stats will always query the stats from the instance passed to BaseMod.addRelic()
+        // Therefore, we make sure all copies share the same stats by copying the HashMap.
+        RoboBall newRelic = new RoboBall();
+        newRelic.stats = this.stats;
+        return newRelic;
     }
 }
