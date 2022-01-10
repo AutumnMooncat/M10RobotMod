@@ -5,7 +5,7 @@
 //import M10Robot.cutStuff.modifiers.AbstractExtraEffectModifier;
 //import M10Robot.cutStuff.AbstractModuleCard;
 //import M10Robot.cutStuff.boosters.WeaponPolishBooster;
-//import M10Robot.cards.Concentration;
+//import M10Robot.cutAndRework.Concentration;
 //import M10Robot.cards.PowerSavings;
 //import M10Robot.cutStuff.modules.Repeater;
 //import M10Robot.cutStuff.modules.WeaponPolish;
