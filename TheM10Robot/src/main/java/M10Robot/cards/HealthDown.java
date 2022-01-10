@@ -1,11 +1,10 @@
 package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
-import M10Robot.actions.DecreaseMaxHPAction;
-import M10Robot.actions.FasterLoseHPAction;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import M10Robot.powers.HealthLossPower;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -26,13 +25,13 @@ public class HealthDown extends AbstractDynamicCard {
     // STAT DECLARATION
 
     private static final CardRarity RARITY = CardRarity.RARE;
-    private static final CardTarget TARGET = CardTarget.ALL;
+    private static final CardTarget TARGET = CardTarget.ALL_ENEMY;
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
     private static final int COST = 1;
     private static final int EFFECT = 8;
-    private static final int UPGRADE_PLUS_EFFECT = 4;
+    private static final int UPGRADE_PLUS_EFFECT = 2;
 
     // /STAT DECLARATION/
 
@@ -47,8 +46,7 @@ public class HealthDown extends AbstractDynamicCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
             if (!aM.isDeadOrEscaped()) {
-                this.addToBot(new FasterLoseHPAction(aM, p, magicNumber, AbstractGameAction.AttackEffect.FIRE));
-                this.addToBot(new DecreaseMaxHPAction(aM, magicNumber));
+                this.addToBot(new ApplyPowerAction(aM, p, new HealthLossPower(aM, p, magicNumber)));
             }
         }
     }

@@ -38,7 +38,7 @@
   },
   "M10Robot:HealthLossPower": {
     "NAME": "Heath Loss",
-    "DESCRIPTIONS": ["At the start of its turn, loses #b", " HP."]
+    "DESCRIPTIONS": ["Creature loses #b"," HP and Max HP at the end of this turn."]
   },
   "M10Robot:HighExplosivePower": {
     "NAME": "High Explosives",
