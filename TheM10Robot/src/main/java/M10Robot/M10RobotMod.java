@@ -179,8 +179,7 @@ public class M10RobotMod implements
     public static final String BADGE_IMAGE = "M10RobotResources/images/Badge.png";
 
 
-//Here we hold onto additional vars we care about
-    public static boolean isSpicyShopsLoaded = false;
+    //Here we hold onto additional vars we care about
     public static ModLabeledToggleButton showBoosterTutorialButton;
     
     // =============== MAKE IMAGE PATHS =================
@@ -363,8 +362,6 @@ public class M10RobotMod implements
     
     @Override
     public void receivePostInitialize() {
-        //Check for Spicy Shops
-        isSpicyShopsLoaded = Loader.isModLoaded("spicyShops");
         //Add WidePotion Compatibility
         if (Loader.isModLoaded("widepotions")) {
 

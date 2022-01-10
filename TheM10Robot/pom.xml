@@ -6,7 +6,7 @@
     <groupId>M10Robot</groupId>
     <artifactId>M10Robot</artifactId> <!--Keep a note of this one: this is the ID used in the "auto add cards" method-->
     <name>The M10 Robot</name>
-    <version>0.1.0</version>
+    <version>0.1.1</version>
     <description>Adds M10 Robot from 100% Orange Juice.</description>
 
     <properties>
@@ -58,14 +58,6 @@
             <version>1.1.2</version>
             <scope>system</scope>
             <systemPath>${Steam.path}/workshop/content/646570/2368513093/WidePotions.jar</systemPath>
-            <!--<systemPath>${basedir}/../lib/StSLib.jar</systemPath>-->
-        </dependency>
-        <dependency>
-            <groupId>UpdateBodyText</groupId>
-            <artifactId>spicyShops</artifactId>
-            <version>3.8.0</version>
-            <scope>system</scope>
-            <systemPath>${Steam.path}/workshop/content/646570/2176103737/SpicyShops.jar</systemPath>
             <!--<systemPath>${basedir}/../lib/StSLib.jar</systemPath>-->
         </dependency>
     </dependencies>
