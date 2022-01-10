@@ -49,10 +49,10 @@ public class Disable extends AbstractDynamicCard implements BranchingUpgradesCar
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new ApplyPowerAction(p, p, new EMPPower(p, magicNumber)));
-        this.addToBot(new ApplyPowerAction(p, p, new WeakPower(p, secondMagicNumber, false)));
+        this.addToBot(new ApplyPowerAction(m, p, new EMPPower(m, magicNumber)));
+        this.addToBot(new ApplyPowerAction(m, p, new WeakPower(m, secondMagicNumber, false)));
         if (upgraded && info > 0) {
-            this.addToBot(new ApplyPowerAction(p, p, new VulnerablePower(p, secondMagicNumber, false)));
+            this.addToBot(new ApplyPowerAction(m, p, new VulnerablePower(m, secondMagicNumber, false)));
         }
     }
 
