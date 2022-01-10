@@ -34,9 +34,8 @@ public class LockingPotion extends CustomPotion {
 
     @Override
     public void use(AbstractCreature target) {
-        int amount = getPotency(AbstractDungeon.ascensionLevel);
         for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
-            this.addToBot(new ApplyPowerAction(aM, AbstractDungeon.player, new EMPPower(aM, amount)));
+            this.addToBot(new ApplyPowerAction(aM, AbstractDungeon.player, new EMPPower(aM, potency)));
         }
     }
 
