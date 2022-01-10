@@ -338,19 +338,6 @@
     "NAME": "Strike",
     "DESCRIPTION": "Deal !D! damage."
   },
-  "M10Robot:SubroutineDefend": {
-    "NAME": "Subroutine: Defend",
-    "DESCRIPTION": ""
-  },
-  "M10Robot:SubroutineDraw": {
-    "NAME": "Subroutine: Draw",
-    "DESCRIPTION": "",
-    "UPGRADE_DESCRIPTION": ""
-  },
-  "M10Robot:SubroutineStrike": {
-    "NAME": "Subroutine: Strike",
-    "DESCRIPTION": ""
-  },
   "M10Robot:Surveillance": {
     "NAME": "Surveillance",
     "DESCRIPTION": "{@@}Channel !M! m10robot:Searchlight{!M!|>1=s}."
