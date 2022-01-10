@@ -34,7 +34,7 @@ public class AirRaid extends AbstractDynamicCard {
     // TEXT DECLARATION
 
     public static final String ID = M10RobotMod.makeID(AirRaid.class.getSimpleName());
-    public static final String IMG = makeCardPath("AirRaid.png");
+    public static final String IMG = makeCardPath("AirRaid2.png");
 
     // /TEXT DECLARATION/
 
@@ -58,6 +58,7 @@ public class AirRaid extends AbstractDynamicCard {
         damage = baseDamage = DAMAGE;
         magicNumber = baseMagicNumber = BONUS_HITS;
         CardModifierManager.addModifier(this, new AimedModifier());
+        this.tags.add(CardTags.STRIKE);
     }
 
     // Actions the card should do.
