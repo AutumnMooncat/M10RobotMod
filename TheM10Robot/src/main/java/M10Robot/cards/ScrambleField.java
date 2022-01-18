@@ -69,9 +69,9 @@ public class ScrambleField extends AbstractDynamicCard {
 
         effect += magicNumber;
 
-        if (effect > 0) {
-            for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
-                this.addToBot(new ApplyPowerAction(aM, p, new LoseStrengthPower(aM, secondMagicNumber)));
+        for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
+            this.addToBot(new ApplyPowerAction(aM, p, new LoseStrengthPower(aM, secondMagicNumber)));
+            if (effect > 0) {
                 this.addToBot(new ApplyPowerAction(aM, p, new EMPPower(aM, effect)));
             }
         }
