@@ -468,8 +468,8 @@ public class M10RobotMod implements
         });
         currentYposition -= spacingY;
 
-        settingsPanel.addUIElement(showBoosterTutorialButton);
-        settingsPanel.addUIElement(enableSelfDamageButton);
+        //settingsPanel.addUIElement(showBoosterTutorialButton);
+        //settingsPanel.addUIElement(enableSelfDamageButton);
         settingsPanel.addUIElement(enableCardBattleTalkButton);
         settingsPanel.addUIElement(cardBattleTalkSlider);
         settingsPanel.addUIElement(enableDamagedBattleTalkButton);
