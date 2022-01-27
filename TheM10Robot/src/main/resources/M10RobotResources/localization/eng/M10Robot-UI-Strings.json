@@ -21,6 +21,9 @@
     "TEXT": ["Overclocking",
       "#yLeft #yClick to #yOverclock this card, increasing it's base values. NL Cost: #b"," Components."]
   },
+  "M10Robot:Reloadable": {
+    "TEXT": ["This card needs to be Reloaded."]
+  },
   "M10Robot:ModConfigs": {
     "TEXT": [
       "Show Boosters & Modules tutorial",
