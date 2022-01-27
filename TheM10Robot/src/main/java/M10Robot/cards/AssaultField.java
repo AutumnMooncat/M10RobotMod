@@ -61,8 +61,10 @@ public class AssaultField extends AbstractDynamicCard {
                 @Override
                 public void update() {
                     AbstractMonster mo = AbstractDungeon.getRandomMonster();
-                    this.addToTop(new DamageAction(mo, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.NONE, true));
-                    this.addToTop(new VFXAction(new ExplosionSmallEffect(mo.hb.cX, mo.hb.cY), 0.1F));
+                    if (mo != null) {
+                        this.addToTop(new DamageAction(mo, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.NONE, true));
+                        this.addToTop(new VFXAction(new ExplosionSmallEffect(mo.hb.cX, mo.hb.cY), 0.1F));
+                    }
                     this.isDone = true;
                 }
             });
