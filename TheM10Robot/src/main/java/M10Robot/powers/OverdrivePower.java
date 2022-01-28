@@ -26,7 +26,7 @@ public class OverdrivePower extends AbstractPower implements CloneablePowerInter
         this.ID = POWER_ID;
         this.owner = owner;
         this.amount = amount;
-
+        this.priority = Short.MAX_VALUE;
         this.type = PowerType.BUFF;
         this.isTurnBased = false;
 
