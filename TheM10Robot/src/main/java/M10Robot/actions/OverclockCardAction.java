@@ -51,11 +51,13 @@ public class OverclockCardAction extends AbstractGameAction {
                 }
                 card = validCards.getRandomCard(true);
             }
-            CardCrawlGame.sound.play("GHOST_ORB_IGNITE_1", 0.1F);
-            CardModifierManager.addModifier(card, new OverclockModifier(amount));
-            card.superFlash();
-            if (card instanceof AbstractSwappableCard) {
-                CardModifierManager.addModifier(card.cardsToPreview, new OverclockModifier(amount));
+            if (card != null && OverclockUtil.canOverclock(card)) {
+                CardCrawlGame.sound.play("GHOST_ORB_IGNITE_1", 0.1F);
+                CardModifierManager.addModifier(card, new OverclockModifier(amount));
+                card.superFlash();
+                if (card instanceof AbstractSwappableCard) {
+                    CardModifierManager.addModifier(card.cardsToPreview, new OverclockModifier(amount));
+                }
             }
         }
 
