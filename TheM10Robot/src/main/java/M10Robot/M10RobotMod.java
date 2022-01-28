@@ -547,8 +547,10 @@ public class M10RobotMod implements
         // in order to automatically differentiate which pool to add the relic too.
 
         // This adds a character specific relic. Only when you play with the mentioned color, will you get this relic.
-        BaseMod.addRelicToCustomPool(new ProtectiveShell(), M10Robot.Enums.GREEN_SPRING_CARD_COLOR);
-        BaseMod.addRelicToCustomPool(new ProtectiveShell2(), M10Robot.Enums.GREEN_SPRING_CARD_COLOR);
+        BaseMod.addRelicToCustomPool(new DualCore(), M10Robot.Enums.GREEN_SPRING_CARD_COLOR);
+        BaseMod.addRelicToCustomPool(new AwakenedCore(), M10Robot.Enums.GREEN_SPRING_CARD_COLOR);
+        //BaseMod.addRelicToCustomPool(new ProtectiveShell(), M10Robot.Enums.GREEN_SPRING_CARD_COLOR);
+        //BaseMod.addRelicToCustomPool(new ProtectiveShell2(), M10Robot.Enums.GREEN_SPRING_CARD_COLOR);
         BaseMod.addRelicToCustomPool(new Pufferfish(), M10Robot.Enums.GREEN_SPRING_CARD_COLOR);
         BaseMod.addRelicToCustomPool(new SearchlightMk2(), M10Robot.Enums.GREEN_SPRING_CARD_COLOR);
         BaseMod.addRelicToCustomPool(new Eye(), M10Robot.Enums.GREEN_SPRING_CARD_COLOR);
@@ -558,8 +560,10 @@ public class M10RobotMod implements
         //BaseMod.addRelic(new PlaceholderRelic2(), RelicType.SHARED);
 
         // Mark relics as seen (the others are all starters so they're marked as seen in the character file
-        UnlockTracker.markRelicAsSeen(ProtectiveShell.ID);
-        UnlockTracker.markRelicAsSeen(ProtectiveShell2.ID);
+        UnlockTracker.markRelicAsSeen(DualCore.ID);
+        UnlockTracker.markRelicAsSeen(AwakenedCore.ID);
+        //UnlockTracker.markRelicAsSeen(ProtectiveShell.ID);
+        //UnlockTracker.markRelicAsSeen(ProtectiveShell2.ID);
         UnlockTracker.markRelicAsSeen(Pufferfish.ID);
         UnlockTracker.markRelicAsSeen(SearchlightMk2.ID);
         UnlockTracker.markRelicAsSeen(Eye.ID);

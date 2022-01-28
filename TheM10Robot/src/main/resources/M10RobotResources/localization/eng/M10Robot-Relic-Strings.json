@@ -33,6 +33,22 @@
       "Damage mitigated: "," NL Scrambles: "
     ]
   },
+  "M10Robot:DualCore": {
+    "NAME": "Dual Core",
+    "FLAVOR": "So much processing power!",
+    "DESCRIPTIONS": [
+      "#ym10robot:Overclock the first card you play each combat #b"," times.",
+      "Attacks Overclocked: "," NL Skills Overclocked: "," NL Powers Overclocked: "
+    ]
+  },
+  "M10Robot:AwakenedCore": {
+    "NAME": "Awakened Core",
+    "FLAVOR": "Overclocked and ready.",
+    "DESCRIPTIONS": [
+      "#ym10robot:Overclock the first card you play each turn #b"," time.",
+      "Attacks Overclocked: "," NL Skills Overclocked: "," NL Powers Overclocked: "
+    ]
+  },
   "M10Robot:Pufferfish": {
     "NAME": "Puffer Fish",
     "FLAVOR": "It looks very spiky.",

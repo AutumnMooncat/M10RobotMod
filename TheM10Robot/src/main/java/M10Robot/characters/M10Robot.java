@@ -2,11 +2,14 @@ package M10Robot.characters;
 
 import M10Robot.CustomAnimationListener;
 import M10Robot.CustomSpriterAnimation;
-import M10Robot.RandomChatterHelper;
 import M10Robot.M10RobotMod;
-import M10Robot.cards.*;
+import M10Robot.RandomChatterHelper;
+import M10Robot.cards.Defend;
+import M10Robot.cards.MagnumStrike;
+import M10Robot.cards.Strike;
+import M10Robot.cards.Surveillance;
 import M10Robot.cards.interfaces.SkillAnimationAttack;
-import M10Robot.relics.ProtectiveShell;
+import M10Robot.relics.DualCore;
 import M10Robot.vfx.StarBreakerVictoryEffect;
 import basemod.ReflectionHacks;
 import basemod.abstracts.CustomPlayer;
@@ -26,7 +29,10 @@ import com.megacrit.cardcrawl.core.EnergyManager;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.cutscenes.CutscenePanel;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.*;
+import com.megacrit.cardcrawl.helpers.CardLibrary;
+import com.megacrit.cardcrawl.helpers.FontHelper;
+import com.megacrit.cardcrawl.helpers.ImageMaster;
+import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
@@ -202,10 +208,12 @@ public class M10Robot extends CustomPlayer {
     public ArrayList<String> getStartingRelics() {
         ArrayList<String> retVal = new ArrayList<>();
 
-        retVal.add(ProtectiveShell.ID);
+        retVal.add(DualCore.ID);
+        //retVal.add(ProtectiveShell.ID);
         //retVal.add(ModularBody.ID);
 
-        UnlockTracker.markRelicAsSeen(ProtectiveShell.ID);
+        UnlockTracker.markRelicAsSeen(DualCore.ID);
+        //UnlockTracker.markRelicAsSeen(ProtectiveShell.ID);
         //UnlockTracker.markRelicAsSeen(ModularBody.ID);
 
         //logger.info("Starter Relic, crash?");
