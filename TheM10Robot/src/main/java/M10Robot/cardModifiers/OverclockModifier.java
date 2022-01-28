@@ -13,7 +13,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 public class OverclockModifier extends AbstractCardModifier {
     public static final String ID = M10RobotMod.makeID("Overclock");
-    public  static final int PERCENT_PER_AMOUNT = 25;
+    public static final int PERCENT_PER_AMOUNT = 25;
 
     int rawPercent;
 
