@@ -44,6 +44,7 @@ public class SpikeBall extends AbstractDynamicCard {
     private static final int AMOUNT = 16;
     private static final int UPGRADE_PLUS_AMOUNT = 4;
     private static final int SPIKES = 4;
+    private static final int UPGRADE_PLUS_SPIKES = 1;
 
     // /STAT DECLARATION/
 
@@ -57,16 +58,6 @@ public class SpikeBall extends AbstractDynamicCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-//        this.addToBot(new AbstractGameAction() {
-//            @Override
-//            public void update() {
-//                AbstractDungeon.effectsQueue.add(new ExplosionSmallEffect(m.hb.cX, m.hb.cY));
-//                CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.HIGH, ScreenShake.ShakeDur.MED, false);
-//                this.isDone = true;
-//            }
-//        });
-//        this.addToBot(new SFXAction("WATCHER_HEART_PUNCH"));
-//        this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         this.addToBot(new GainBlockAction(p, block));
         this.addToBot(new ApplyPowerAction(p, p, new SpikesPower(p, magicNumber)));
     }
@@ -77,6 +68,7 @@ public class SpikeBall extends AbstractDynamicCard {
         if (!upgraded) {
             upgradeName();
             upgradeBlock(UPGRADE_PLUS_AMOUNT);
+            upgradeMagicNumber(UPGRADE_PLUS_SPIKES);
             initializeDescription();
         }
     }
