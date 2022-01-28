@@ -2,6 +2,7 @@ package M10Robot.powers;
 
 import M10Robot.M10RobotMod;
 import M10Robot.actions.OverclockCardAction;
+import M10Robot.util.interfaces.OverclockBeforePlayItem;
 import M10Robot.util.OverclockUtil;
 import basemod.interfaces.CloneablePowerInterface;
 import com.evacipated.cardcrawl.mod.stslib.powers.abstracts.TwoAmountPower;
@@ -14,7 +15,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
-public class FollowupPower extends TwoAmountPower implements CloneablePowerInterface, NonStackablePower {
+public class FollowupPower extends TwoAmountPower implements CloneablePowerInterface, NonStackablePower, OverclockBeforePlayItem {
 
     public static final String POWER_ID = M10RobotMod.makeID("FollowupPower");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
@@ -45,7 +46,7 @@ public class FollowupPower extends TwoAmountPower implements CloneablePowerInter
         updateDescription();
     }
 
-    public void onUseCard(AbstractCard card, UseCardAction action) {
+/*    public void onUseCard(AbstractCard card, UseCardAction action) {
         if (!card.purgeOnUse && this.amount > 0 && OverclockUtil.canOverclock(card)) {
             this.flash();
             this.addToBot(new OverclockCardAction(card, amount2));
@@ -57,7 +58,7 @@ public class FollowupPower extends TwoAmountPower implements CloneablePowerInter
             }
         }
 
-    }
+    }*/
 
     public void updateDescription() {
         if (amount == 1) {
@@ -80,4 +81,14 @@ public class FollowupPower extends TwoAmountPower implements CloneablePowerInter
         return new FollowupPower(owner, amount, amount2);
     }
 
+    @Override
+    public int overclockAmount(AbstractCard card) {
+        return amount2;
+    }
+
+    @Override
+    public void onOverclock(AbstractCard card) {
+        flash();
+        this.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this));
+    }
 }
