@@ -2,18 +2,13 @@ package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
 import M10Robot.actions.SuperFastDamageAllEnemiesAction;
-import M10Robot.cardModifiers.HeavyModifier;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
-import M10Robot.cards.abstractCards.AbstractReloadableCard;
 import M10Robot.characters.M10Robot;
 import M10Robot.powers.RecoilPower;
-import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
-import com.megacrit.cardcrawl.cards.status.Burn;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.MindblastEffect;
@@ -50,7 +45,6 @@ public class FullAuto extends AbstractDynamicCard {
         magicNumber = baseMagicNumber = HITS;
         isMultiDamage = true;
         exhaust = true;
-        CardModifierManager.addModifier(this, new HeavyModifier());
     }
 
     // Actions the card should do.
@@ -61,6 +55,7 @@ public class FullAuto extends AbstractDynamicCard {
         for (int i = 0 ; i < magicNumber ; i++) {
             this.addToBot(new SuperFastDamageAllEnemiesAction(p, multiDamage, damageTypeForTurn, AbstractGameAction.AttackEffect.NONE));
         }
+        this.addToBot(new ApplyPowerAction(p, p, new RecoilPower(p, 1)));
     }
 
     // Upgraded stats.

@@ -1,15 +1,11 @@
 package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
-import M10Robot.actions.SelfDestructAction2;
-import M10Robot.cardModifiers.HeavyModifier;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
-import M10Robot.patches.RestorePositionPatches;
+import M10Robot.powers.RecoilPower;
 import M10Robot.vfx.BurnToAshEffect;
-import basemod.helpers.CardModifierManager;
 import com.badlogic.gdx.graphics.Color;
-import com.evacipated.cardcrawl.mod.stslib.actions.common.StunMonsterAction;
 import com.evacipated.cardcrawl.mod.stslib.patches.NeutralPowertypePatch;
 import com.evacipated.cardcrawl.mod.stslib.powers.StunMonsterPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -22,7 +18,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.combat.ExplosionSmallEffect;
-import com.megacrit.cardcrawl.vfx.combat.FlashAtkImgEffect;
 import com.megacrit.cardcrawl.vfx.combat.ShockWaveEffect;
 
 import static M10Robot.M10RobotMod.makeCardPath;
@@ -55,7 +50,7 @@ public class SelfDestruction extends AbstractDynamicCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = DAMAGE;
         exhaust = true;
-        CardModifierManager.addModifier(this, new HeavyModifier());
+        //CardModifierManager.addModifier(this, new HeavyModifier());
     }
 
     // Actions the card should do.
@@ -79,6 +74,7 @@ public class SelfDestruction extends AbstractDynamicCard {
         StunMonsterPower pow = new StunMonsterPower(m, 1);
         pow.type = NeutralPowertypePatch.NEUTRAL;
         this.addToBot(new ApplyPowerAction(m, p, pow, 1));
+        this.addToBot(new ApplyPowerAction(p, p, new RecoilPower(p, 1)));
     }
 
     // Upgraded stats.

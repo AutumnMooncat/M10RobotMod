@@ -1,23 +1,14 @@
 package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
-import M10Robot.cardModifiers.HeavyModifier;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
+import M10Robot.powers.RecoilPower;
 import M10Robot.powers.SpikesPower;
-import basemod.helpers.CardModifierManager;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.actions.utility.SFXAction;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.vfx.combat.ExplosionSmallEffect;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
@@ -52,7 +43,7 @@ public class SpikeBall extends AbstractDynamicCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         block = baseBlock = AMOUNT;
         magicNumber = baseMagicNumber = SPIKES;
-        CardModifierManager.addModifier(this, new HeavyModifier());
+        //CardModifierManager.addModifier(this, new HeavyModifier());
     }
 
     // Actions the card should do.
@@ -60,6 +51,7 @@ public class SpikeBall extends AbstractDynamicCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.addToBot(new GainBlockAction(p, block));
         this.addToBot(new ApplyPowerAction(p, p, new SpikesPower(p, magicNumber)));
+        this.addToBot(new ApplyPowerAction(p, p, new RecoilPower(p, 1)));
     }
 
     // Upgraded stats.

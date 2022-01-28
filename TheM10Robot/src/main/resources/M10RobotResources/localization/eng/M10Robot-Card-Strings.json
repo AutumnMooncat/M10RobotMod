@@ -23,7 +23,7 @@
   },
   "M10Robot:AssaultField": {
     "NAME": "Assault Field",
-    "DESCRIPTION": "Deal !D! damage to random enemy !M! times."
+    "DESCRIPTION": "Deal !D! damage to random enemy !M! times. NL m10robot:Recoil."
   },
   "M10Robot:AssemblyLine": {
     "NAME": "Assembly Line",
@@ -108,7 +108,7 @@
   },
   "M10Robot:DividedAttention": {
     "NAME": "Divided Attention",
-    "DESCRIPTION": "Draw !M! cards."
+    "DESCRIPTION": "Draw !M! cards. NL m10robot:Recoil."
   },
   "M10Robot:DoubleCaster": {
     "NAME": "Double Caster",
@@ -152,7 +152,7 @@
   },
   "M10Robot:FullAuto": {
     "NAME": "Full Throttle",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies !M! times."
+    "DESCRIPTION": "Deal !D! damage to ALL enemies !M! times. NL m10robot:Recoil."
   },
   "M10Robot:HealthDown": {
     "NAME": "Health Down",
@@ -180,7 +180,7 @@
   },
   "M10Robot:MagnumStrike": {
     "NAME": "Magnum Strike",
-    "DESCRIPTION": "Deal !D! damage."
+    "DESCRIPTION": "Deal !D! damage. NL m10robot:Recoil."
   },
   "M10Robot:Malfunction": {
     "NAME": "Malfunction",
@@ -300,7 +300,7 @@
   },
   "M10Robot:SelfDestruction": {
     "NAME": "Self Destruction",
-    "DESCRIPTION": "Deal !D! damage. NL m10robot:Stun the enemy."
+    "DESCRIPTION": "Deal !D! damage. NL m10robot:Stun the enemy. NL m10robot:Recoil."
   },
   "M10Robot:SlotConversion": {
     "NAME": "Slot Conversion",
@@ -320,7 +320,7 @@
   },
   "M10Robot:SpikeBall": {
     "NAME": "Spike Shell",
-    "DESCRIPTION": "Gain !B! Block. NL Gain !M! m10robot:Spikes."
+    "DESCRIPTION": "Gain !B! Block. NL Gain !M! m10robot:Spikes. NL m10robot:Recoil."
   },
   "M10Robot:SpikyPlating": {
     "NAME": "Spiky Plating",

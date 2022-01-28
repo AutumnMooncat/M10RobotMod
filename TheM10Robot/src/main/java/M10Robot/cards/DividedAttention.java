@@ -1,11 +1,9 @@
 package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
-import M10Robot.cardModifiers.HeavyModifier;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
-import M10Robot.powers.ScrambledPower;
-import basemod.helpers.CardModifierManager;
+import M10Robot.powers.RecoilPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -40,13 +38,13 @@ public class DividedAttention extends AbstractDynamicCard {
     public DividedAttention() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = DRAW;
-        CardModifierManager.addModifier(this, new HeavyModifier());
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.addToBot(new DrawCardAction(magicNumber));
+        this.addToBot(new ApplyPowerAction(p, p, new RecoilPower(p, 1)));
     }
 
     //Upgraded stats.
