@@ -47,11 +47,7 @@ public class CompileData extends AbstractDynamicCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        PresentOrb o = new PresentOrb();
-        for (int i = 0 ; i < magicNumber ; i++) {
-            o.upgrade();
-        }
-        this.addToBot(new MultichannelAction(o, secondMagicNumber));
+        this.addToBot(new MultichannelAction(new PresentOrb(magicNumber), secondMagicNumber));
     }
 
     @Override
