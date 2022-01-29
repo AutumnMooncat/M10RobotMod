@@ -1,14 +1,11 @@
 package M10Robot.powers;
 
 import M10Robot.M10RobotMod;
-import M10Robot.actions.OverclockCardAction;
 import M10Robot.util.interfaces.OverclockBeforePlayItem;
-import M10Robot.util.OverclockUtil;
 import basemod.interfaces.CloneablePowerInterface;
 import com.evacipated.cardcrawl.mod.stslib.powers.abstracts.TwoAmountPower;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.NonStackablePower;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
-import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -83,12 +80,23 @@ public class FollowupPower extends TwoAmountPower implements CloneablePowerInter
 
     @Override
     public int overclockAmount(AbstractCard card) {
-        return amount2;
+        if (amount > 0) {
+            return amount2;
+        }
+        return 0;
     }
 
     @Override
     public void onOverclock(AbstractCard card) {
         flash();
-        this.addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this));
+        --this.amount;
+        if (this.amount == 0) {
+            this.addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
+        } else {
+            if (this.amount < 0) {
+                this.amount = 0;
+            }
+            updateDescription();
+        }
     }
 }
