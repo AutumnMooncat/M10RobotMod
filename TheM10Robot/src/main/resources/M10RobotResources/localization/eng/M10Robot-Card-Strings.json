@@ -364,7 +364,7 @@
   },
   "M10Robot:Tinker": {
     "NAME": "Tinker",
-    "DESCRIPTION": "{@@}Gain !B! Block. NL m10robot:Upgrade the next {!M!|@=Orb|>1=!M! Orbs} you Channel."
+    "DESCRIPTION": "{@@}Gain !B! Block. NL m10robot:Upgrade the next Orb you Channel !M! time{!M!|>1=s}."
   },
   "M10Robot:Turbo": {
     "NAME": "Turbo",

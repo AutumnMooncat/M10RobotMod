@@ -4,6 +4,7 @@ import M10Robot.M10RobotMod;
 import M10Robot.actions.UpgradeOrbsAction;
 import basemod.interfaces.CloneablePowerInterface;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
@@ -42,17 +43,17 @@ public class TinkerPower extends AbstractPower implements CloneablePowerInterfac
 
     public void updateDescription() {
         if (amount == 1) {
-            this.description = DESCRIPTIONS[0];
+            this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
         } else {
-            this.description = DESCRIPTIONS[1] + this.amount + DESCRIPTIONS[2];
+            this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[2];
         }
     }
 
     @Override
     public void onChannel(AbstractOrb orb) {
         flash();
-        this.addToBot(new UpgradeOrbsAction(orb, 1));
-        this.addToTop(new ReducePowerAction(owner, owner, this, 1));
+        this.addToBot(new UpgradeOrbsAction(orb, amount));
+        this.addToTop(new RemoveSpecificPowerAction(owner, owner, this));
     }
 
     @Override

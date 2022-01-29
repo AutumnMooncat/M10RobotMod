@@ -141,7 +141,7 @@
   },
   "M10Robot:TinkerPower": {
     "NAME": "Tinkering",
-    "DESCRIPTIONS": ["#yUpgrade the next #yOrb you #yChannel.","#yUpgrade the next #b"," #yOrbs you #yChannel."]
+    "DESCRIPTIONS": ["#yUpgrade the next #yOrb you #yChannel #b"," time"," times."]
   },
   "M10Robot:TurboPower": {
     "NAME": "Turbo Mode",
