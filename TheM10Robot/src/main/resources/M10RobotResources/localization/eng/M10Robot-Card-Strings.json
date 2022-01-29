@@ -204,7 +204,7 @@
   },
   "M10Robot:PerpetualAssembly": {
     "NAME": "Perpetual Assembly",
-    "DESCRIPTION": "{@@}m10robot:Swappable. NL Channel !M! m10robot:Present{!M!|>1=s}. NL Next turn, draw !M10Robot:SecondMagic! additional card{!M10Robot:SecondMagic!|>1=s}."
+    "DESCRIPTION": ""
   },
   "M10Robot:PileDriver": {
     "NAME": "Pile Driver",
