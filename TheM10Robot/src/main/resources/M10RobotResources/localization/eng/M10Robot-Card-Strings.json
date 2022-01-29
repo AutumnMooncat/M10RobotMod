@@ -7,7 +7,7 @@
   },
   "M10Robot:Acceleration": {
     "NAME": "Acceleration",
-    "DESCRIPTION": "m10robot:Overclock the next !M! cards you play !M10Robot:SecondMagic! times and reshuffle them into your draw pile."
+    "DESCRIPTION": "m10robot:Inert. NL m10robot:Overclock the next !M! cards you play !M10Robot:SecondMagic! times and reshuffle them into your draw pile."
   },
   "M10Robot:AirRaid": {
     "NAME": "Air Strike",
@@ -15,7 +15,7 @@
   },
   "M10Robot:AllIn": {
     "NAME": "All In",
-    "DESCRIPTION": "{@@}m10robot:Overclock all cards in your hand X{!M!|>0= + !M!} times."
+    "DESCRIPTION": "{@@}m10robot:Inert. NL m10robot:Overclock all cards in your hand X{!M!|>0= + !M!} times."
   },
   "M10Robot:Ascension": {
     "NAME": "Ascension",
@@ -144,7 +144,7 @@
   },
   "M10Robot:Followup": {
     "NAME": "Followup",
-    "DESCRIPTION": "{@@}m10robot:Overclock the next {!M!|@=card|>1=!M! cards} you play !M10Robot:SecondMagic! times."
+    "DESCRIPTION": "{@@}m10robot:Inert. NL m10robot:Overclock the next {!M!|@=card|>1=!M! cards} you play !M10Robot:SecondMagic! times."
   },
   "M10Robot:Fortify": {
     "NAME": "Fortify",
@@ -200,7 +200,7 @@
   },
   "M10Robot:Overdrive": {
     "NAME": "Overdrive Form",
-    "DESCRIPTION": "{@@}At the start of your turn, m10robot:Overclock all cards in your hand !M! time{!M!|>1=s}."
+    "DESCRIPTION": "{@@}m10robot:Inert. NL At the start of your turn, m10robot:Overclock all cards in your hand !M! time{!M!|>1=s}."
   },
   "M10Robot:PerpetualAssembly": {
     "NAME": "Perpetual Assembly",
@@ -240,7 +240,7 @@
   },
   "M10Robot:RapidAssembly": {
     "NAME": "Rapid Assembly",
-    "DESCRIPTION": "m10robot:Overclock all cards in your hand !M! times."
+    "DESCRIPTION": "m10robot:Inert. NL m10robot:Overclock all cards in your hand !M! times."
   },
   "M10Robot:RecoveryMode": {
     "NAME": "Recovery Mode",

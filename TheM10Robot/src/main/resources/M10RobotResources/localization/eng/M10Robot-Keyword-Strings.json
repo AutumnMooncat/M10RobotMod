@@ -36,6 +36,13 @@
     "DESCRIPTION": "Gain #yRecoil when this card is played, making your next attack deal #b50% less damage."
   },
   {
+    "PROPER_NAME": "Inert",
+    "NAMES": [
+      "inert"
+    ],
+    "DESCRIPTION": "This card cannot be #yOverclocked."
+  },
+  {
     "PROPER_NAME": "Plated Armor",
     "NAMES": [
       "Plated Armor",

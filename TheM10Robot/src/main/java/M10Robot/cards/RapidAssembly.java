@@ -4,6 +4,7 @@ import M10Robot.M10RobotMod;
 import M10Robot.actions.OverclockCardAction;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.cards.abstractCards.AbstractSwappableCard;
+import M10Robot.cards.interfaces.CannotOverclock;
 import M10Robot.characters.M10Robot;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
@@ -12,7 +13,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
-public class RapidAssembly extends AbstractDynamicCard {
+public class RapidAssembly extends AbstractDynamicCard implements CannotOverclock {
 
     // TEXT DECLARATION
 

@@ -3,6 +3,7 @@ package M10Robot.cards;
 import M10Robot.M10RobotMod;
 import M10Robot.actions.OverclockCardAction;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
+import M10Robot.cards.interfaces.CannotOverclock;
 import M10Robot.characters.M10Robot;
 import basemod.interfaces.XCostModifier;
 import basemod.patches.com.megacrit.cardcrawl.cards.AbstractCard.CardModifierPatches;
@@ -17,7 +18,7 @@ import java.util.List;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
-public class AllIn extends AbstractDynamicCard {
+public class AllIn extends AbstractDynamicCard implements CannotOverclock {
 
     // TEXT DECLARATION
 

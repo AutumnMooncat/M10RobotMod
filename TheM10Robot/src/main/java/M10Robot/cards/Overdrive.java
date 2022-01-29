@@ -2,6 +2,7 @@ package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
+import M10Robot.cards.interfaces.CannotOverclock;
 import M10Robot.characters.M10Robot;
 import M10Robot.powers.OverdrivePower;
 import basemod.helpers.BaseModCardTags;
@@ -11,7 +12,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
-public class Overdrive extends AbstractDynamicCard {
+public class Overdrive extends AbstractDynamicCard implements CannotOverclock {
 
 
     // TEXT DECLARATION
