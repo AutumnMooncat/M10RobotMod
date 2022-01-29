@@ -39,7 +39,7 @@
   },
   "M10Robot:Atomize": {
     "NAME": "Atomize",
-    "DESCRIPTION": "Apply !M! Lock-On to ALL enemies. NL Channel !M! m10robot:Bombs."
+    "DESCRIPTION": "{@@}Channel !M! m10robot:Bombs. NL m10robot:Upgrade them !M10Robot:SecondMagic! time{!M10Robot:SecondMagic!|>1=s}."
   },
   "M10Robot:AutoCaster": {
     "NAME": "Auto Caster",

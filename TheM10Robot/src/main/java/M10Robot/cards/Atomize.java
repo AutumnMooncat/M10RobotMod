@@ -6,11 +6,8 @@ import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
 import M10Robot.orbs.BombOrb;
 import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.BranchingUpgradesCard;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.LockOnPower;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
@@ -34,9 +31,7 @@ public class Atomize extends AbstractDynamicCard implements BranchingUpgradesCar
     private static final int COST = 2;
     private static final int UPGRADE_COST = 1;
     private static final int ORBS = 2;
-    //private static final int TURN_INCREASE = 1;
-    //private static final int UPGRADE_PLUS_ORBS = 1;
-    //private static final int UPGRADE_PLUS_TURN_INCREASE = 1;
+    private static final int UPGRADES = 1;
 
     // /STAT DECLARATION/
 
@@ -44,16 +39,14 @@ public class Atomize extends AbstractDynamicCard implements BranchingUpgradesCar
     public Atomize() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = ORBS;
+        secondMagicNumber = baseSecondMagicNumber = UPGRADES;
         exhaust = true;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
-            this.addToBot(new ApplyPowerAction(aM, p, new LockOnPower(aM, magicNumber)));
-        }
-        this.addToBot(new MultichannelAction(new BombOrb(), magicNumber));
+        this.addToBot(new MultichannelAction(new BombOrb(secondMagicNumber), magicNumber));
     }
 
     //Upgraded stats.
