@@ -27,8 +27,8 @@ public class QuickThinking extends AbstractDynamicCard {
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
-    private static final int COST = 0;
-    private static final int DRAW = 1;
+    private static final int COST = 1;
+    private static final int DRAW = 2;
     private static final int UPGRADE_PLUS_DRAW = 1;
 
     // /STAT DECLARATION/

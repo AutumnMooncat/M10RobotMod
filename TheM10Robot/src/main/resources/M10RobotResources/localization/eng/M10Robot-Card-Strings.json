@@ -224,7 +224,7 @@
   },
   "M10Robot:QuickThinking": {
     "NAME": "Quick Thinking",
-    "DESCRIPTION": "{@@}Draw !M! card{!M!|>1=s}. NL Attacks drawn this way cost 0 this turn."
+    "DESCRIPTION": "Draw !M! cards. NL Attacks drawn this way cost 0 this turn."
   },
   "M10Robot:QuickRepair": {
     "NAME": "Quick Repair",
