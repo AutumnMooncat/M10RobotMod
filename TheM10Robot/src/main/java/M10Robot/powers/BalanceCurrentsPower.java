@@ -3,13 +3,16 @@ package M10Robot.powers;
 import M10Robot.M10RobotMod;
 import basemod.interfaces.CloneablePowerInterface;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.OnReceivePowerPower;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
-public class BalanceCurrentsPower extends AbstractPower implements CloneablePowerInterface, OnReceivePowerPower {
+public class BalanceCurrentsPower extends AbstractPower implements CloneablePowerInterface {
 
     public static final String POWER_ID = M10RobotMod.makeID("BalanceCurrentsPower");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
@@ -39,6 +42,13 @@ public class BalanceCurrentsPower extends AbstractPower implements CloneablePowe
         updateDescription();
     }
 
+    public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
+        if (power.type == PowerType.DEBUFF && !power.ID.equals("Shackled") && source == this.owner && !target.hasPower("Artifact")) {
+            this.flash();
+            this.addToBot(new GainBlockAction(owner, owner, amount));
+        }
+    }
+
     public void updateDescription() {
         this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
     }
@@ -46,14 +56,5 @@ public class BalanceCurrentsPower extends AbstractPower implements CloneablePowe
     @Override
     public AbstractPower makeCopy() {
         return new BalanceCurrentsPower(owner, amount);
-    }
-
-    @Override
-    public boolean onReceivePower(AbstractPower abstractPower, AbstractCreature abstractCreature, AbstractCreature abstractCreature1) {
-        if (abstractPower.type == PowerType.DEBUFF && abstractCreature == owner) {
-            flash();
-            this.addToBot(new GainBlockAction(owner, amount));
-        }
-        return true;
     }
 }

@@ -47,7 +47,7 @@
   },
   "M10Robot:BalanceCurrents": {
     "NAME": "Balance Currents",
-    "DESCRIPTION": "Whenever a debuff is applied to you, gain !M! Block."
+    "DESCRIPTION": "Whenever you apply a debuff, gain !M! Block."
   },
   "M10Robot:BatteryPack": {
     "NAME": "Battery Pack",
