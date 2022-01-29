@@ -88,10 +88,11 @@ public class ModifyHeldCardPatches {
                         CardModifierManager.addModifier(__instance.hoveredCard, new OverclockModifier(-ModifiedField.modAmount.get(__instance.hoveredCard)));
                     } else {
                         CardModifierManager.removeSpecificModifier(__instance.hoveredCard, mod, true);
-                        __instance.hoveredCard.applyPowers();
-                        __instance.hoveredCard.initializeDescription();
                     }
                 }
+                __instance.hoveredCard.resetAttributes();
+                __instance.hoveredCard.applyPowers();
+                __instance.hoveredCard.initializeDescription();
                 ModifiedField.didModification.set(__instance.hoveredCard, false);
                 ModifiedField.modAmount.set(__instance.hoveredCard, 0);
             }
