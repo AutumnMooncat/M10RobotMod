@@ -7,6 +7,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireReturn;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.GainStrengthPower;
 
 public class EMPPatches {
     @SpirePatch(clz = RemoveSpecificPowerAction.class, method = "update")
@@ -14,7 +15,7 @@ public class EMPPatches {
         @SpirePrefixPatch
         public static SpireReturn<?> dontRemove(RemoveSpecificPowerAction __instance, AbstractPower ___powerInstance, String ___powerToRemove) {
             if (__instance.target != null && __instance.target.hasPower(EMPPower.POWER_ID)) {
-                if (___powerInstance != null && ___powerInstance.type == AbstractPower.PowerType.DEBUFF  && !(___powerInstance instanceof EMPPower) && !(___powerInstance.canGoNegative && ___powerInstance.amount == 0)) {
+                if (___powerInstance != null && ___powerInstance.type == AbstractPower.PowerType.DEBUFF  && !(___powerInstance instanceof EMPPower) && !(___powerInstance instanceof GainStrengthPower) && !(___powerInstance.canGoNegative && ___powerInstance.amount == 0)) {
                     __instance.target.getPower(EMPPower.POWER_ID).flash();
                     __instance.isDone = true;
                     return SpireReturn.Return();
@@ -36,7 +37,7 @@ public class EMPPatches {
         @SpirePrefixPatch
         public static SpireReturn<?> dontReduce(ReducePowerAction __instance, AbstractPower ___powerInstance, String ___powerID) {
             if (__instance.target != null && __instance.target.hasPower(EMPPower.POWER_ID)) {
-                if (___powerInstance != null && ___powerInstance.type == AbstractPower.PowerType.DEBUFF  && !(___powerInstance instanceof EMPPower)) {
+                if (___powerInstance != null && ___powerInstance.type == AbstractPower.PowerType.DEBUFF  && !(___powerInstance instanceof EMPPower) && !(___powerInstance instanceof GainStrengthPower)) {
                     __instance.target.getPower(EMPPower.POWER_ID).flash();
                     __instance.isDone = true;
                     return SpireReturn.Return();
