@@ -66,9 +66,6 @@ public class ModifyHeldCardPatches {
                         CardCrawlGame.sound.play("GHOST_ORB_IGNITE_1", 0.1F);
                         CardModifierManager.addModifier(__instance.hoveredCard, new OverclockModifier(amount));
                         __instance.hoveredCard.superFlash();
-                        if (__instance.hoveredCard instanceof AbstractSwappableCard) {
-                            CardModifierManager.addModifier(__instance.hoveredCard.cardsToPreview, new OverclockModifier(amount));
-                        }
                         ModifiedField.didModification.set(__instance.hoveredCard, true);
                         ModifiedField.modAmount.set(__instance.hoveredCard, amount);
                     }
