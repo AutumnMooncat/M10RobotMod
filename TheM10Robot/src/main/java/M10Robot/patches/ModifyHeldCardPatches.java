@@ -87,7 +87,6 @@ public class ModifyHeldCardPatches {
                         CardModifierManager.removeSpecificModifier(__instance.hoveredCard, mod, true);
                     }
                 }
-                __instance.hoveredCard.resetAttributes();
                 __instance.hoveredCard.applyPowers();
                 __instance.hoveredCard.initializeDescription();
                 ModifiedField.didModification.set(__instance.hoveredCard, false);
