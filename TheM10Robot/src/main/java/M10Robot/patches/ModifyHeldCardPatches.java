@@ -126,9 +126,6 @@ public class ModifyHeldCardPatches {
                     CardCrawlGame.sound.play("GHOST_ORB_IGNITE_1", 0.1F);
                     CardModifierManager.addModifier(card, new OverclockModifier(amount));
                     card.superFlash();
-                    if (card instanceof AbstractSwappableCard) {
-                        CardModifierManager.addModifier(card.cardsToPreview, new OverclockModifier(amount));
-                    }
                 }
                 triggerOverclockers(card);
             }
