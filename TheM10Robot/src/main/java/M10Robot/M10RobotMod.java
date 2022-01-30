@@ -20,6 +20,8 @@ import com.evacipated.cardcrawl.modthespire.Loader;
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.GameActionManager;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
@@ -740,11 +742,17 @@ public class M10RobotMod implements
 
     @Override
     public void receiveCardUsed(AbstractCard abstractCard) {
-        for (AbstractOrb o : AbstractDungeon.player.orbs) {
-            if (o instanceof AbstractCustomOrb) {
-                ((AbstractCustomOrb) o).onPlayCard(abstractCard);
+        AbstractDungeon.actionManager.addToBottom(new AbstractGameAction() {
+            @Override
+            public void update() {
+                for (AbstractOrb o : AbstractDungeon.player.orbs) {
+                    if (o instanceof AbstractCustomOrb) {
+                        ((AbstractCustomOrb) o).onPlayCard(abstractCard);
+                    }
+                }
+                this.isDone = true;
             }
-        }
+        });
     }
 
     @Override
