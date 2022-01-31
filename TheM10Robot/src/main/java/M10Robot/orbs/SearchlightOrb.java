@@ -2,6 +2,7 @@ package M10Robot.orbs;
 
 import M10Robot.M10RobotMod;
 import M10Robot.actions.FasterLoseHPAction;
+import M10Robot.actions.SearchLightAttackAction;
 import M10Robot.powers.SpikesPower;
 import M10Robot.relics.SearchlightMk2;
 import M10Robot.util.OverclockUtil;
@@ -112,25 +113,7 @@ public class SearchlightOrb extends AbstractCustomOrb {
     @Override
     public void onAttacked(DamageInfo info) {
         if (info.type != DamageInfo.DamageType.THORNS && info.type != DamageInfo.DamageType.HP_LOSS && info.owner != null && info.owner != p) {
-            this.addToTop(new AbstractGameAction() {
-                @Override
-                public void update() {
-                    playAnimation(ATTACK_IMG, MED_ANIM);
-                    AbstractDungeon.effectList.add(new FlashAtkImgEffect(info.owner.hb.cX, info.owner.hb.cY, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
-                    AbstractDungeon.effectList.add(new OrbFlareEffect(SearchlightOrb.this, OrbFlareEffect.OrbFlareColor.FROST));
-                    int damage = passiveAmount;
-                    if (info.owner.hasPower(LockOnPower.POWER_ID)) {
-                        damage = (int)(damage * 1.5F);
-                    }
-                    if (!info.owner.isDeadOrEscaped()) {
-                        info.owner.damage(new DamageInfo(p, damage, DamageInfo.DamageType.THORNS));
-                        if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
-                            AbstractDungeon.actionManager.clearPostCombatActions();
-                        }
-                    }
-                    this.isDone = true;
-                }
-            });
+            this.addToTop(new SearchLightAttackAction(this, p, info.owner));
         }
     }
 
