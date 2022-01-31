@@ -300,7 +300,7 @@
   },
   "M10Robot:SelfDestruction": {
     "NAME": "Self Destruction",
-    "DESCRIPTION": "Deal !D! damage. NL m10robot:Stun the enemy. NL m10robot:Recoil."
+    "DESCRIPTION": "m10robot:Inert. NL Lose !M10Robot:SecondMagic! HP. NL Deal !D! damage. NL m10robot:Stun the enemy."
   },
   "M10Robot:SlotConversion": {
     "NAME": "Slot Conversion",

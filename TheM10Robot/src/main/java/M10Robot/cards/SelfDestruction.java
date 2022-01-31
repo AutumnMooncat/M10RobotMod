@@ -1,7 +1,9 @@
 package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
+import M10Robot.actions.SelfDestructAction2;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
+import M10Robot.cards.interfaces.CannotOverclock;
 import M10Robot.characters.M10Robot;
 import M10Robot.powers.RecoilPower;
 import M10Robot.vfx.BurnToAshEffect;
@@ -22,7 +24,7 @@ import com.megacrit.cardcrawl.vfx.combat.ShockWaveEffect;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
-public class SelfDestruction extends AbstractDynamicCard {
+public class SelfDestruction extends AbstractDynamicCard implements CannotOverclock {
 
 
     // TEXT DECLARATION
@@ -43,12 +45,14 @@ public class SelfDestruction extends AbstractDynamicCard {
     private static final int COST = 3;
     private static final int DAMAGE = 20;
     private static final int UPGRADE_PLUS_DAMAGE = 8;
+    private static final int SELF_DAMAGE = 6;
 
     // /STAT DECLARATION/
 
     public SelfDestruction() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = DAMAGE;
+        secondMagicNumber = baseSecondMagicNumber = SELF_DAMAGE;
         exhaust = true;
         //CardModifierManager.addModifier(this, new HeavyModifier());
     }
@@ -56,7 +60,7 @@ public class SelfDestruction extends AbstractDynamicCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new AbstractGameAction() {
+        /*this.addToBot(new AbstractGameAction() {
             @Override
             public void update() {
                 AbstractDungeon.effectsQueue.add(new ExplosionSmallEffect(m.hb.cX, m.hb.cY));
@@ -69,12 +73,13 @@ public class SelfDestruction extends AbstractDynamicCard {
                 this.isDone = true;
             }
         });
-        this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.NONE, true));
+        this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.NONE, true));*/
+        this.addToBot(new SelfDestructAction2(p, m, new DamageInfo(p, damage, damageTypeForTurn), secondMagicNumber));
         //We really don't want this to interact with Stasis
         StunMonsterPower pow = new StunMonsterPower(m, 1);
         pow.type = NeutralPowertypePatch.NEUTRAL;
         this.addToBot(new ApplyPowerAction(m, p, pow, 1));
-        this.addToBot(new ApplyPowerAction(p, p, new RecoilPower(p, 1)));
+        //this.addToBot(new ApplyPowerAction(p, p, new RecoilPower(p, 1)));
     }
 
     // Upgraded stats.
