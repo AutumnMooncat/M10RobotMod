@@ -116,7 +116,7 @@
   },
   "M10Robot:EMP": {
     "NAME": "EMP",
-    "DESCRIPTION": "Deal !D! damage and apply !M! m10robot:Stasis to ALL enemies."
+    "DESCRIPTION": "ALL enemies lose !M! Strength this turn. NL Deal !D! damage to ALL enemies."
   },
   "M10Robot:EmptyBuffer": {
     "NAME": "Empty Buffer",
