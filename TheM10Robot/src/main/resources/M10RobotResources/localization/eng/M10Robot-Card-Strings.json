@@ -256,7 +256,7 @@
   },
   "M10Robot:ReturningShield": {
     "NAME": "Returning Shield",
-    "DESCRIPTION": "{@@}Gain !B! Block. NL Next turn, gain !B! Block and draw draw !M! additional card{!M!|>1=s}."
+    "DESCRIPTION": "{@@}Gain !B! Block. NL Next turn, gain !B! Block{!M!|@=.|>0= and draw !M! additional }{!M!|1=card.|>1=cards.}"
   },
   "M10Robot:Rewind": {
     "NAME": "Rewind",
