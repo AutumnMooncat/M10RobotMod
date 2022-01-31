@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.LoseStrengthPower;
+import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.relics.ChemicalX;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
@@ -70,9 +71,8 @@ public class ScrambleField extends AbstractDynamicCard {
         effect += magicNumber;
 
         for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
-            this.addToBot(new ApplyPowerAction(aM, p, new LoseStrengthPower(aM, secondMagicNumber)));
             if (effect > 0) {
-                this.addToBot(new ApplyPowerAction(aM, p, new EMPPower(aM, effect)));
+                this.addToBot(new ApplyPowerAction(aM, p, new StrengthPower(aM, -effect), -effect));
             }
         }
 
