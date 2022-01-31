@@ -3,6 +3,7 @@ package M10Robot.cards;
 import M10Robot.M10RobotMod;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
+import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.BranchingUpgradesCard;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -12,7 +13,7 @@ import com.megacrit.cardcrawl.powers.VulnerablePower;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
-public class Engage extends AbstractDynamicCard {
+public class Engage extends AbstractDynamicCard implements BranchingUpgradesCard {
 
     // TEXT DECLARATION
 
@@ -32,12 +33,15 @@ public class Engage extends AbstractDynamicCard {
     private static final int COST = 0;
     private static final int EFFECT = 1;
     private static final int UPGRADE_PLUS_EFFECT = 1;
+    private static final int DRAW = 0;
+    private static final int UPGRADE_PLUS_DRAW = 1;
 
     // /STAT DECLARATION/
 
     public Engage() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        magicNumber = baseMagicNumber = secondMagicNumber = baseSecondMagicNumber = EFFECT;
+        magicNumber = baseMagicNumber = EFFECT;
+        secondMagicNumber = baseSecondMagicNumber = DRAW;
     }
 
     // Actions the card should do.
@@ -45,7 +49,9 @@ public class Engage extends AbstractDynamicCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.addToBot(new ApplyPowerAction(m, p, new VulnerablePower(m, magicNumber, false)));
         this.addToBot(new ApplyPowerAction(m, p, new LockOnPower(m, magicNumber)));
-        this.addToBot(new DrawCardAction(secondMagicNumber));
+        if (secondMagicNumber > 0) {
+            this.addToBot(new DrawCardAction(secondMagicNumber));
+        }
     }
 
     //Upgraded stats.
@@ -53,8 +59,20 @@ public class Engage extends AbstractDynamicCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(UPGRADE_PLUS_EFFECT);
+            if (isBranchUpgrade()) {
+                branchUpgrade();
+            } else {
+                baseUpgrade();
+            }
             initializeDescription();
         }
+    }
+
+    public void baseUpgrade() {
+        upgradeMagicNumber(UPGRADE_PLUS_EFFECT);
+    }
+
+    public void branchUpgrade() {
+        upgradeSecondMagicNumber(UPGRADE_PLUS_DRAW);
     }
 }

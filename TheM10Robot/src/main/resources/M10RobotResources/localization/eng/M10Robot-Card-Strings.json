@@ -128,7 +128,7 @@
   },
   "M10Robot:Engage": {
     "NAME": "Engage",
-    "DESCRIPTION": "{@@}Apply !M! Vulnerable and Lock-On. NL Draw !M10Robot:SecondMagic! card{!M10Robot:SecondMagic!|>1=s}."
+    "DESCRIPTION": "{@@}Apply !M! Vulnerable and Lock-On.{!M10Robot:SecondMagic!|>0= NL Draw !M10Robot:SecondMagic! }{!M10Robot:SecondMagic!|1=card.|>1=cards.}"
   },
   "M10Robot:EvasionDown": {
     "NAME": "Evasion Down",
