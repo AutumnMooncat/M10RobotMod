@@ -216,7 +216,7 @@
   },
   "M10Robot:PowerSavings": {
     "NAME": "Power Savings",
-    "DESCRIPTION": "{@@}Gain !M10Robot:SecondMagic! Weak. NL At the start of your turn, gain {!M!|-1,1=[E]|2=[E] [E]|3=[E] [E] [E]|4=[E] [E] [E] [E]|5=[E] [E] [E] [E] [E]|@=!M! [E]} ."
+    "DESCRIPTION": "{@@}m10robot:Inert. NL Gain !M10Robot:SecondMagic! Weak. NL At the start of your turn, gain {!M!|-1,1=[E]|2=[E] [E]|3=[E] [E] [E]|4=[E] [E] [E] [E]|5=[E] [E] [E] [E] [E]|@=!M! [E]} ."
   },
   "M10Robot:QuickBoot": {
     "NAME": "Quick Boot",

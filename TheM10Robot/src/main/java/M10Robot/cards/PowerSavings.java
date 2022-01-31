@@ -2,6 +2,7 @@ package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
+import M10Robot.cards.interfaces.CannotOverclock;
 import M10Robot.characters.M10Robot;
 import M10Robot.powers.PowerSavingsPower;
 import M10Robot.powers.ScrambledPower;
@@ -12,7 +13,7 @@ import com.megacrit.cardcrawl.powers.WeakPower;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
-public class PowerSavings extends AbstractDynamicCard {
+public class PowerSavings extends AbstractDynamicCard implements CannotOverclock {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
