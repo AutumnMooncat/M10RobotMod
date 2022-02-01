@@ -36,9 +36,7 @@ public class HealthLossPower extends AbstractPower implements CloneablePowerInte
         this.owner = owner;
         this.amount = amount;
         this.source = source;
-
         this.type = PowerType.DEBUFF;
-        this.isTurnBased = true;
 
         // We load those txtures here.
         //this.loadRegion("cExplosion");
@@ -55,7 +53,7 @@ public class HealthLossPower extends AbstractPower implements CloneablePowerInte
             this.flash();
             this.addToBot(new FasterLoseHPAction(owner, source, amount, AbstractGameAction.AttackEffect.FIRE));
             this.addToBot(new DecreaseMaxHPAction(owner, amount));
-            this.addToBot(new RemoveSpecificPowerAction(owner, owner, this));
+            //this.addToBot(new RemoveSpecificPowerAction(owner, owner, this));
         }
     }
 

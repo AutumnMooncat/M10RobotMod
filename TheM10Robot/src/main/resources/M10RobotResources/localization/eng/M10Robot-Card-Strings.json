@@ -156,7 +156,7 @@
   },
   "M10Robot:HealthDown": {
     "NAME": "Health Down",
-    "DESCRIPTION": "ALL enemies lose !M! HP and Max HP at the start of their next turn."
+    "DESCRIPTION": "ALL enemies lose !M! HP and Max HP each turn."
   },
   "M10Robot:HomeSweeper": {
     "NAME": "Home Sweeper",
