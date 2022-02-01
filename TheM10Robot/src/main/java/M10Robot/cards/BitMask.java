@@ -47,7 +47,7 @@ public class BitMask extends AbstractDynamicCard {
         baseDamage = damage = DAMAGE;
         magicNumber = baseMagicNumber = ORBS;
         info = baseInfo = 0;
-        CardModifierManager.addModifier(this, new AimedModifier());
+        //CardModifierManager.addModifier(this, new AimedModifier());
         exhaust = true;
     }
 
