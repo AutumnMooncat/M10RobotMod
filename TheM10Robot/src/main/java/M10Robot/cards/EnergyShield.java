@@ -1,17 +1,23 @@
 package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
+import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.cards.abstractCards.AbstractReloadableCard;
 import M10Robot.characters.M10Robot;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
+import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.EnergizedBluePower;
 
+import java.util.Iterator;
+
 import static M10Robot.M10RobotMod.makeCardPath;
 
-public class EnergyShield extends AbstractReloadableCard {
+public class EnergyShield extends AbstractDynamicCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
@@ -36,9 +42,9 @@ public class EnergyShield extends AbstractReloadableCard {
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
     private static final int COST = 1;
-    private static final int BLOCK = 12;
-    private static final int UPGRADE_PLUS_BLOCK = 4;
-    private static final int NRG = 1;
+    private static final int BLOCK = 8;
+    private static final int UPGRADE_PLUS_BLOCK = 3;
+    private static final int NRG = 2;
 
     // /STAT DECLARATION/
 
@@ -51,8 +57,17 @@ public class EnergyShield extends AbstractReloadableCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        if (AbstractDungeon.player.currentBlock == 0) {
+            this.addToBot(new GainEnergyAction(magicNumber));
+        }
         this.addToBot(new GainBlockAction(p, p, block));
-        this.addToBot(new ApplyPowerAction(p, p, new EnergizedBluePower(p, magicNumber)));
+    }
+
+    public void triggerOnGlowCheck() {
+        this.glowColor = AbstractCard.BLUE_BORDER_GLOW_COLOR.cpy();
+        if (AbstractDungeon.player.currentBlock == 0) {
+            this.glowColor = AbstractCard.GOLD_BORDER_GLOW_COLOR.cpy();
+        }
     }
 
     // Upgraded stats.
