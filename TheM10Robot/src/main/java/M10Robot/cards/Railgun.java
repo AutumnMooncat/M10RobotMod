@@ -1,7 +1,7 @@
 package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
-import M10Robot.cards.abstractCards.AbstractReloadableCard;
+import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
 import basemod.helpers.VfxBuilder;
 import com.badlogic.gdx.graphics.Color;
@@ -9,17 +9,17 @@ import com.badlogic.gdx.math.Vector2;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.RemoveAllBlockAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.vfx.*;
+import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
+import com.megacrit.cardcrawl.vfx.ShineSparkleEffect;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
-public class Railgun extends AbstractReloadableCard {
+public class Railgun extends AbstractDynamicCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
@@ -44,8 +44,8 @@ public class Railgun extends AbstractReloadableCard {
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
     private static final int COST = 1;
-    private static final int DAMAGE = 15;
-    private static final int UPGRADE_PLUS_DMG = 5;
+    private static final int DAMAGE = 14;
+    private static final int UPGRADE_PLUS_DMG = 4;
 
     // /STAT DECLARATION/
 
@@ -94,9 +94,8 @@ public class Railgun extends AbstractReloadableCard {
             @Override
             public void update() {
                 if (shootCoin.isDone) {
+                    this.addToTop(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.NONE, true));
                     this.addToTop(new SFXAction("WATCHER_HEART_PUNCH"));
-                    this.addToTop(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.NONE));
-                    this.addToTop(new RemoveAllBlockAction(m, p));
                     this.isDone = true;
                 }
             }

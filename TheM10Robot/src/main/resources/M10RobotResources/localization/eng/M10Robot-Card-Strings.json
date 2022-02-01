@@ -232,7 +232,7 @@
   },
   "M10Robot:Railgun": {
     "NAME": "Railgun",
-    "DESCRIPTION": "Remove all Block from the enemy. NL Deal !D! damage."
+    "DESCRIPTION": "Deal !D! damage."
   },
   "M10Robot:RAMUpgrade": {
     "NAME": "RAM Upgrade",
