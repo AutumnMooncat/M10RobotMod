@@ -1,6 +1,7 @@
 package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
+import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.cards.abstractCards.AbstractReloadableCard;
 import M10Robot.characters.M10Robot;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -16,7 +17,7 @@ import com.megacrit.cardcrawl.vfx.combat.SmallLaserEffect;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
-public class RoboBeam extends AbstractReloadableCard {
+public class RoboBeam extends AbstractDynamicCard {
 
 
     // TEXT DECLARATION
