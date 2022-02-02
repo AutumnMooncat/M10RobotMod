@@ -4,13 +4,14 @@ import M10Robot.M10RobotMod;
 import M10Robot.actions.OverclockCardAction;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
+import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.BranchingUpgradesCard;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
-public class Ascension extends AbstractDynamicCard {
+public class Ascension extends AbstractDynamicCard implements BranchingUpgradesCard {
 
     // TEXT DECLARATION
 
@@ -54,8 +55,20 @@ public class Ascension extends AbstractDynamicCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(UPGRADE_PLUS_DRAW);
+            if (isBranchUpgrade()) {
+                branchUpgrade();
+            } else {
+                baseUpgrade();
+            }
             initializeDescription();
         }
+    }
+
+    public void baseUpgrade() {
+        upgradeMagicNumber(UPGRADE_PLUS_DRAW);
+    }
+
+    public void branchUpgrade() {
+        this.selfRetain = true;
     }
 }
