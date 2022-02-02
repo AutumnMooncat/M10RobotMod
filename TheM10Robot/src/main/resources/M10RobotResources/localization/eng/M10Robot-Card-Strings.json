@@ -180,7 +180,7 @@
   },
   "M10Robot:MagnumStrike": {
     "NAME": "Magnum Strike",
-    "DESCRIPTION": "Deal !D! damage. NL Your next Attack deals half damage."
+    "DESCRIPTION": "Deal !D! damage. NL m10robot:Recoil."
   },
   "M10Robot:Malfunction": {
     "NAME": "Malfunction",
