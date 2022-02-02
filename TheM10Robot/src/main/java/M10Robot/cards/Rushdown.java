@@ -8,6 +8,7 @@ import M10Robot.characters.M10Robot;
 import M10Robot.patches.RestorePositionPatches;
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
@@ -32,14 +33,17 @@ public class Rushdown extends AbstractDynamicCard {
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
     private static final int COST = 1;
-    private static final int DAMAGE = 8;
-    private static final int UPGRADE_PLUS_DMG = 3;
+    private static final int DAMAGE = 6;
+    private static final int UPGRADE_PLUS_DMG = 2;
+    private static final int BLOCK = 6;
+    private static final int UPGRADE_PLUS_BLOCK = 2;
 
     // /STAT DECLARATION/
 
     public Rushdown() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = damage = DAMAGE;
+        block = baseBlock = BLOCK;
         isMultiDamage = true;
         CardModifierManager.addModifier(this, new SpikyModifier());
     }
@@ -54,6 +58,7 @@ public class Rushdown extends AbstractDynamicCard {
                 this.isDone = true;
             }
         });
+        this.addToBot(new GainBlockAction(p, p, block));
         this.addToBot(new RushdownAction(p, multiDamage, damageTypeForTurn));
         this.addToBot(new AbstractGameAction() {
             @Override
@@ -92,6 +97,7 @@ public class Rushdown extends AbstractDynamicCard {
         if (!upgraded) {
             upgradeName();
             upgradeDamage(UPGRADE_PLUS_DMG);
+            upgradeBlock(UPGRADE_PLUS_BLOCK);
             initializeDescription();
         }
     }

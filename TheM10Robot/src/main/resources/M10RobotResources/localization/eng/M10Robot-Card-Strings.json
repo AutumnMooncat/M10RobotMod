@@ -75,7 +75,7 @@
   },
   "M10Robot:Byte": {
     "NAME": "Byte",
-    "DESCRIPTION": "Deal !D! damage. NL Channel !M! m10robot:Bits."
+    "DESCRIPTION": "Apply !M! Vulnerable. NL Channel !M! m10robot:Bits."
   },
   "M10Robot:CardSupplier": {
     "NAME": "Card Supplier",
@@ -180,7 +180,7 @@
   },
   "M10Robot:MagnumStrike": {
     "NAME": "Magnum Strike",
-    "DESCRIPTION": "Deal !D! damage. NL m10robot:Recoil."
+    "DESCRIPTION": "Deal !D! damage. NL Your next Attack deals half damage."
   },
   "M10Robot:Malfunction": {
     "NAME": "Malfunction",
@@ -272,7 +272,7 @@
   },
   "M10Robot:Rushdown": {
     "NAME": "Rush Down",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies."
+    "DESCRIPTION": "Gain !B! Block. NL Deal !D! damage to ALL enemies."
   },
   "M10Robot:Salvo": {
     "NAME": "Salvo",
