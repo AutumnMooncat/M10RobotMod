@@ -40,8 +40,8 @@ public class EMP extends AbstractDynamicCard {
     private static final int COST = 1;
     private static final int DAMAGE = 6;
     private static final int UPGRADE_PLUS_DMG = 2;
-    private static final int STR_DOWN = 3;
-    private static final int UPGRADE_PLUS_STR_DOWN = 2;
+    private static final int STR_DOWN = 2;
+    private static final int UPGRADE_PLUS_STR_DOWN = 1;
 
     // /STAT DECLARATION/
 
@@ -67,7 +67,7 @@ public class EMP extends AbstractDynamicCard {
                 this.addToBot(new SFXAction("ORB_PLASMA_CHANNEL"));
                 this.addToBot(new ApplyPowerAction(aM, p, new StrengthPower(aM, -this.magicNumber), -this.magicNumber));
                 if (!aM.hasPower("Artifact")) {
-                    this.addToBot(new ApplyPowerAction(m, p, new GainStrengthPower(aM, this.magicNumber), this.magicNumber));
+                    this.addToBot(new ApplyPowerAction(aM, p, new GainStrengthPower(aM, this.magicNumber), this.magicNumber));
                 }
                 this.addToBot(new DamageAction(aM, new DamageInfo(p, this.multiDamage[AbstractDungeon.getMonsters().monsters.indexOf(aM)], damageTypeForTurn), true));
             }
