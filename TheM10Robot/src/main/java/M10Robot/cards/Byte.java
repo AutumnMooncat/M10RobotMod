@@ -18,7 +18,7 @@ import com.megacrit.cardcrawl.powers.VulnerablePower;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
-public class Byte extends AbstractReloadableCard {
+public class Byte extends AbstractDynamicCard {
 
     // TEXT DECLARATION
 
