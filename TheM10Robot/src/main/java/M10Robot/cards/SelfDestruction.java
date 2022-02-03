@@ -74,7 +74,8 @@ public class SelfDestruction extends AbstractDynamicCard implements CannotOvercl
             }
         });
         this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.NONE, true));*/
-        this.addToBot(new SelfDestructAction2(p, m, new DamageInfo(p, damage, damageTypeForTurn), secondMagicNumber));
+        this.addToBot(new SelfDestructAction2(p, m, new DamageInfo(p, damage, damageTypeForTurn), 0));
+        this.addToBot(new DamageAction(p, new DamageInfo(p, secondMagicNumber, DamageInfo.DamageType.THORNS), true));
         //We really don't want this to interact with Stasis
         StunMonsterPower pow = new StunMonsterPower(m, 1);
         pow.type = NeutralPowertypePatch.NEUTRAL;
