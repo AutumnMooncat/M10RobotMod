@@ -78,7 +78,7 @@ public class ModifyHeldCardPatches {
     public static class ResetDroppedCard {
         @SpirePrefixPatch
         public static void reset(AbstractPlayer __instance) {
-            if (__instance.hoveredCard != null) {
+            if (__instance.hoveredCard != null && ModifiedField.didModification.get(__instance.hoveredCard)) {
                 if (CardModifierManager.hasModifier(__instance.hoveredCard, OverclockModifier.ID)) {
                     OverclockModifier mod = ((OverclockModifier)CardModifierManager.getModifiers(__instance.hoveredCard, OverclockModifier.ID).get(0));
                     if (mod.getRawPercent() > (ModifiedField.modAmount.get(__instance.hoveredCard) * OverclockModifier.PERCENT_PER_AMOUNT)) {
@@ -116,7 +116,7 @@ public class ModifyHeldCardPatches {
         }
     }
 
-    @SpirePatch(clz = CardQueueItem.class, method = "<ctor>", paramtypez = {AbstractCard.class, AbstractMonster.class, int.class, boolean.class, boolean.class})
+    @SpirePatch(clz = CardQueueItem.class, method = SpirePatch.CONSTRUCTOR, paramtypez = {AbstractCard.class, AbstractMonster.class, int.class, boolean.class, boolean.class})
     private static class BindObjectToDamageInfo {
         @SpirePostfixPatch()
         public static void overClockBeforeUsing(CardQueueItem __instance, AbstractCard card, AbstractMonster monster, int setEnergyOnUse, boolean ignoreEnergyTotal, boolean autoplayCard) {
