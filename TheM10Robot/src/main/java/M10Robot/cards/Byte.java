@@ -15,6 +15,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
+import org.omg.CORBA.ORB;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
@@ -36,24 +37,27 @@ public class Byte extends AbstractDynamicCard {
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
     private static final int COST = 2;
-    private static final int DAMAGE = 12;
+    private static final int DAMAGE = 8;
     private static final int UPGRADE_PLUS_DMG = 4;
-    private static final int ORBS = 2;
+    private static final int ORBS = 1;
+    private static final int VULN = 1;
+    private static final int UPGRADE_PLUS_VULN = 1;
 
     // /STAT DECLARATION/
 
     public Byte() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = damage = DAMAGE;
-        magicNumber = baseMagicNumber = ORBS;
+        secondMagicNumber = baseSecondMagicNumber = ORBS;
+        magicNumber = baseMagicNumber = VULN;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.FIRE));
-//        this.addToBot(new ApplyPowerAction(m, p, new VulnerablePower(m, magicNumber, false)));
-        this.addToBot(new MultichannelAction(new BitOrb(), magicNumber));
+        this.addToBot(new ApplyPowerAction(m, p, new VulnerablePower(m, magicNumber, false)));
+        this.addToBot(new MultichannelAction(new BitOrb(), secondMagicNumber));
     }
 
     // Upgraded stats.
@@ -61,7 +65,8 @@ public class Byte extends AbstractDynamicCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeDamage(UPGRADE_PLUS_DMG);
+            //upgradeDamage(UPGRADE_PLUS_DMG);
+            upgradeMagicNumber(UPGRADE_PLUS_VULN);
             initializeDescription();
         }
     }
