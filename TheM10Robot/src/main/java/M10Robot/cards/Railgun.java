@@ -2,10 +2,10 @@ package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
+import M10Robot.cards.interfaces.SkillAnimationAttack;
 import M10Robot.characters.M10Robot;
 import basemod.helpers.VfxBuilder;
 import com.badlogic.gdx.graphics.Color;
-import com.badlogic.gdx.math.Vector2;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
@@ -16,10 +16,11 @@ import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.ShineSparkleEffect;
+import com.megacrit.cardcrawl.vfx.combat.FlickCoinEffect;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
-public class Railgun extends AbstractDynamicCard {
+public class Railgun extends AbstractDynamicCard implements SkillAnimationAttack {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
@@ -44,7 +45,7 @@ public class Railgun extends AbstractDynamicCard {
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
     private static final int COST = 1;
-    private static final int DAMAGE = 14;
+    private static final int DAMAGE = 12;
     private static final int UPGRADE_PLUS_DMG = 4;
 
     // /STAT DECLARATION/
@@ -57,6 +58,7 @@ public class Railgun extends AbstractDynamicCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        this.addToBot(new VFXAction(new FlickCoinEffect(p.hb.cX, p.hb.cY, p.hb.cX, p.hb.cY), 0.4F));
         this.addToBot(new SFXAction("ORB_PLASMA_CHANNEL"));
         //this.addToBot(new SFXAction("ATTACK_MAGIC_BEAM_SHORT", 0.5F)); //pew oew laser
         //this.addToBot(new VFXAction(new SmallLaserEffect(m.hb.cX, m.hb.cY, p.hb.cX, p.hb.cY), 0.1F)); //aimed laser shot
@@ -79,8 +81,16 @@ public class Railgun extends AbstractDynamicCard {
         //this.addToBot(new VFXAction(new WaterSplashParticleEffect(m.hb.cX, m.hb.cY))); //does nothing?
         //this.addToBot(new VFXAction(new WarningSignEffect(m.hb.cX, m.hb.cY))); //flashes a red ! triangle
         //this.addToBot(new VFXAction(new BlockedWordEffect(m, p.hb.cX, p.hb.cY, "stuff"))); //Displays the message above the x/y? seems to ignore target input
-        Vector2 vec = new Vector2(m.hb.cX-p.hb.cX, m.hb.cY-p.hb.cY);
 
+        this.addToBot(new AbstractGameAction() {
+            @Override
+            public void update() {
+                if (p instanceof M10Robot) {
+                    ((M10Robot) p).playAnimation("attack");
+                }
+                this.isDone = true;
+            }
+        });
         AbstractGameEffect shootCoin = new VfxBuilder(ImageMaster.vfxAtlas.findRegion("combat/empowerCircle1"), p.hb.cX, p.hb.cY, 0.1f)
                 .setScale(0.5f)
                 .setColor(Color.GOLD)
@@ -94,12 +104,24 @@ public class Railgun extends AbstractDynamicCard {
             @Override
             public void update() {
                 if (shootCoin.isDone) {
-                    this.addToTop(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.NONE, true));
-                    this.addToTop(new SFXAction("WATCHER_HEART_PUNCH"));
+                    p.loseGold(1);
                     this.isDone = true;
                 }
             }
         });
+        this.addToBot(new SFXAction("WATCHER_HEART_PUNCH"));
+        this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.NONE, true));
+    }
+
+    public boolean canUse(AbstractPlayer p, AbstractMonster m) {
+        boolean canUse = super.canUse(p, m);
+        if (!canUse) {
+            return false;
+        } else if (p.gold <= 0) {
+            canUse = false;
+            this.cantUseMessage = EXTENDED_DESCRIPTION[0];
+        }
+        return canUse;
     }
 
     // Upgraded stats.

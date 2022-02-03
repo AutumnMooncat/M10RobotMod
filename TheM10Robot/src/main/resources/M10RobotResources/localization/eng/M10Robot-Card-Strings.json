@@ -232,7 +232,8 @@
   },
   "M10Robot:Railgun": {
     "NAME": "Railgun",
-    "DESCRIPTION": "Deal !D! damage."
+    "DESCRIPTION": "Lose 1 Gold. NL Deal !D! damage.",
+    "EXTENDED_DESCRIPTION": ["I have no gold."]
   },
   "M10Robot:RAMUpgrade": {
     "NAME": "RAM Upgrade",
