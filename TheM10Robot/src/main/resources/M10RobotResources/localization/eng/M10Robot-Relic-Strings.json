@@ -45,7 +45,7 @@
     "NAME": "Awakened Core",
     "FLAVOR": "Overclocked and ready.",
     "DESCRIPTIONS": [
-      "#ym10robot:Overclock the first card you play each turn #b"," time.",
+      "Replaces [#b9c5b4]Dual [#b9c5b4]Core. #ym10robot:Overclock the first card you play each turn #b"," time.",
       "Attacks Overclocked: "," NL Skills Overclocked: "," NL Powers Overclocked: "
     ]
   },
