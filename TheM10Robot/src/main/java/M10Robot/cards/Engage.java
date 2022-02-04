@@ -33,7 +33,7 @@ public class Engage extends AbstractDynamicCard implements BranchingUpgradesCard
     private static final int COST = 0;
     private static final int EFFECT = 1;
     private static final int UPGRADE_PLUS_EFFECT = 1;
-    private static final int DRAW = 0;
+    private static final int DRAW = 1;
     private static final int UPGRADE_PLUS_DRAW = 1;
 
     // /STAT DECLARATION/
@@ -42,6 +42,7 @@ public class Engage extends AbstractDynamicCard implements BranchingUpgradesCard
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = EFFECT;
         secondMagicNumber = baseSecondMagicNumber = DRAW;
+        info = baseInfo = 0;
     }
 
     // Actions the card should do.
@@ -49,7 +50,7 @@ public class Engage extends AbstractDynamicCard implements BranchingUpgradesCard
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.addToBot(new ApplyPowerAction(m, p, new VulnerablePower(m, magicNumber, false)));
         this.addToBot(new ApplyPowerAction(m, p, new LockOnPower(m, magicNumber)));
-        if (secondMagicNumber > 0) {
+        if ((m != null && m.getIntentBaseDmg() >= 0) || info > 0) {
             this.addToBot(new DrawCardAction(secondMagicNumber));
         }
     }
@@ -73,6 +74,6 @@ public class Engage extends AbstractDynamicCard implements BranchingUpgradesCard
     }
 
     public void branchUpgrade() {
-        upgradeSecondMagicNumber(UPGRADE_PLUS_DRAW);
+        upgradeInfo(1);
     }
 }
