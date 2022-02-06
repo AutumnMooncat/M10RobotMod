@@ -1,8 +1,10 @@
 package M10Robot.orbs;
 
 import M10Robot.M10RobotMod;
+import M10Robot.actions.BombEvokeAction;
 import M10Robot.util.TextureLoader;
 import M10Robot.vfx.BigExplosionEffect;
+import M10Robot.vfx.BurnToAshEffect;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
@@ -83,29 +85,7 @@ public class BombOrb extends AbstractCustomOrb {
 
     @Override
     public void onEvoke() { // 1.On Orb Evoke
-        this.addToBot(new AbstractGameAction() {
-            @Override
-            public void update() {
-                playAnimation(ATTACK_IMG, MED_ANIM);
-                this.isDone = true;
-            }
-        });
-        AbstractMonster t = null;
-        for (AbstractMonster mon : AbstractDungeon.getMonsters().monsters) {
-            if (!mon.isDeadOrEscaped()) {
-                if (t == null || mon.currentHealth > t.currentHealth) {
-                    t = mon;
-                }
-            }
-        }
-        if (t != null) {
-            int damage = evokeAmount;
-            if (t.hasPower(LockOnPower.POWER_ID)) {
-                damage *= LockOnPower.MULTIPLIER;
-            }
-            this.addToBot(new BigExplosionEffect(t, ScreenShake.ShakeIntensity.LOW, ScreenShake.ShakeDur.SHORT));
-            this.addToBot(new DamageAction(t, new DamageInfo(p, damage, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.FIRE));
-        }
+        this.addToBot(new BombEvokeAction(p, this));
     }
 
     @Override
