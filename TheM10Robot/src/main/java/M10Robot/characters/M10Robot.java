@@ -38,6 +38,8 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
+import com.megacrit.cardcrawl.vfx.scene.DefectVictoryEyesEffect;
+import com.megacrit.cardcrawl.vfx.scene.DefectVictoryNumberEffect;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -313,21 +315,22 @@ public class M10Robot extends CustomPlayer {
 
     @Override
     public Texture getCutsceneBg() {
-        return ImageMaster.loadImage("M10RobotResources/images/scene/greyBg.jpg");
+        return ImageMaster.loadImage("M10RobotResources/images/scene/m10_bkg.png");
     }
 
     @Override
     public List<CutscenePanel> getCutscenePanels() {
         List<CutscenePanel> panels = new ArrayList<>();
-        panels.add(new CutscenePanel("M10RobotResources/images/scene/starbreaker1.png", "ATTACK_MAGIC_FAST_3"));
-        panels.add(new CutscenePanel("M10RobotResources/images/scene/starbreaker2.png", "TURN_EFFECT"));
-        panels.add(new CutscenePanel("M10RobotResources/images/scene/starbreaker3.png", "CEILING_BOOM_3"));
+        panels.add(new CutscenePanel("M10RobotResources/images/scene/m10_panel1.png", "BLUNT_HEAVY"));
+        panels.add(new CutscenePanel("M10RobotResources/images/scene/m10_panel2.png", "ATTACK_MAGIC_FAST_1"));
+        panels.add(new CutscenePanel("M10RobotResources/images/scene/m10_panel3.png", "ATTACK_MAGIC_FAST_3"));
+        panels.add(new CutscenePanel("M10RobotResources/images/scene/m10_panel4.png", "ATTACK_MAGIC_SLOW_2"));
         return panels;
     }
 
     @Override
     public void updateVictoryVfx(ArrayList<AbstractGameEffect> effects) {
-        effects.add(new StarBreakerVictoryEffect());
+        effects.add(new DefectVictoryNumberEffect());
     }
 
     // Should return a string containing what text is shown when your character is
