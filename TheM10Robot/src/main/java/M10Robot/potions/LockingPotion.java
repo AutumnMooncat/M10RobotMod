@@ -1,17 +1,19 @@
 package M10Robot.potions;
 
 import M10Robot.M10RobotMod;
-import M10Robot.powers.EMPPower;
-import basemod.BaseMod;
 import basemod.abstracts.CustomPotion;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.GameDictionary;
 import com.megacrit.cardcrawl.helpers.PowerTip;
+import com.megacrit.cardcrawl.helpers.TipHelper;
 import com.megacrit.cardcrawl.localization.PotionStrings;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
+import com.megacrit.cardcrawl.powers.GainStrengthPower;
+import com.megacrit.cardcrawl.powers.StrengthPower;
 
 public class LockingPotion extends CustomPotion {
 
@@ -21,7 +23,7 @@ public class LockingPotion extends CustomPotion {
 
     public static final String NAME = potionStrings.NAME;
     public static final String[] DESCRIPTIONS = potionStrings.DESCRIPTIONS;
-    public static final int EFFECT = 3;
+    public static final int EFFECT = 9;
 
     public LockingPotion() {
         // The bottle shape and inside is determined by potion size and color. The actual colors are the main DefaultMod.java
@@ -35,7 +37,11 @@ public class LockingPotion extends CustomPotion {
     @Override
     public void use(AbstractCreature target) {
         for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
-            this.addToBot(new ApplyPowerAction(aM, AbstractDungeon.player, new EMPPower(aM, potency)));
+            //this.addToBot(new ApplyPowerAction(aM, AbstractDungeon.player, new EMPPower(aM, potency)));
+            this.addToBot(new ApplyPowerAction(aM, AbstractDungeon.player, new StrengthPower(aM, -potency), -potency));
+            if (!aM.hasPower("Artifact")) {
+                this.addToBot(new ApplyPowerAction(aM, AbstractDungeon.player, new GainStrengthPower(aM, potency), potency));
+            }
         }
     }
 
@@ -51,9 +57,13 @@ public class LockingPotion extends CustomPotion {
         description = potionStrings.DESCRIPTIONS[0] + potency + potionStrings.DESCRIPTIONS[1];
         tips.clear();
         tips.add(new PowerTip(name, description));
-        tips.add(new PowerTip(
+        /*tips.add(new PowerTip(
                 BaseMod.getKeywordTitle("m10robot:stasis"),
                 BaseMod.getKeywordDescription("m10robot:stasis")
+        ));*/
+        tips.add(new PowerTip(
+                TipHelper.capitalize(GameDictionary.STRENGTH.NAMES[0]),
+                GameDictionary.keywords.get(GameDictionary.STRENGTH.NAMES[0])
         ));
     }
 

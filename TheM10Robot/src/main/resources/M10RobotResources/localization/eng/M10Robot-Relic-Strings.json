@@ -77,8 +77,8 @@
     "NAME": "UFO",
     "FLAVOR": "It got lost on it's way to the jungle dance party.",
     "DESCRIPTIONS": [
-      "Whenever you play a #yPower card, apply #b"," #ym10robot:Stasis to ALL enemies.",
-      "#yStasis applied: "," NL Per combat: "," NL Per turn: "
+      "Whenever you play a #yPower card, ALL enemies lose #b"," #yStrength for the turn.",
+      "#yStrength reduced: "," NL Per combat: "," NL Per turn: "
     ]
   }
 }

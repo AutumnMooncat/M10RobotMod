@@ -1,7 +1,6 @@
 package M10Robot.relics;
 
 import M10Robot.M10RobotMod;
-import M10Robot.powers.EMPPower;
 import M10Robot.util.TextureLoader;
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
@@ -13,8 +12,8 @@ import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.LockOnPower;
-import com.megacrit.cardcrawl.powers.StasisPower;
+import com.megacrit.cardcrawl.powers.GainStrengthPower;
+import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 
 import java.text.DecimalFormat;
@@ -32,7 +31,7 @@ public class Ufo extends CustomRelic {
     private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("Ufo.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("Ufo.png"));
 
-    public static final int STACKS = 1;
+    public static final int STACKS = 2;
 
     HashMap<String, Integer> stats = new HashMap<>();
     private final String APPLIED_STAT = DESCRIPTIONS[2];
@@ -56,8 +55,12 @@ public class Ufo extends CustomRelic {
             flash();
             for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
                 this.addToBot(new RelicAboveCreatureAction(aM, this));
-                this.addToBot(new ApplyPowerAction(aM, AbstractDungeon.player, new EMPPower(aM, STACKS)));
-                stats.put(APPLIED_STAT, stats.get(APPLIED_STAT) + STACKS);
+                //this.addToBot(new ApplyPowerAction(aM, AbstractDungeon.player, new EMPPower(aM, STACKS)));
+                this.addToBot(new ApplyPowerAction(aM, AbstractDungeon.player, new StrengthPower(aM, -STACKS), -STACKS));
+                if (!aM.hasPower("Artifact")) {
+                    stats.put(APPLIED_STAT, stats.get(APPLIED_STAT) + STACKS);
+                    this.addToBot(new ApplyPowerAction(aM, AbstractDungeon.player, new GainStrengthPower(aM, STACKS), STACKS));
+                }
             }
         }
     }
