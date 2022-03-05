@@ -6,6 +6,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 
 public abstract class AbstractSwappableCard extends AbstractClickableCard {
     private AbstractGameAction action;
+    private static boolean looping;
 
     public AbstractSwappableCard(String id, String img, int cost, CardType type, CardColor color, CardRarity rarity, CardTarget target) {
         super(id, img, cost, type, color, rarity, target);
@@ -18,8 +19,10 @@ public abstract class AbstractSwappableCard extends AbstractClickableCard {
 
     @Override
     public void upgrade() {
-        if (cardsToPreview != null) {
+        if (cardsToPreview != null && !looping) {
+            looping = true;
             cardsToPreview.upgrade();
+            looping = false;
         }
     }
 
