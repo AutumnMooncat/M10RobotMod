@@ -36,10 +36,10 @@ public class BombEvokeAction extends AbstractGameAction {
             if (t.hasPower(LockOnPower.POWER_ID)) {
                 damage *= LockOnPower.MULTIPLIER;
             }
-            AbstractDungeon.effectsQueue.add(new ExplosionSmallEffect(target.hb.cX, target.hb.cY));
-            AbstractDungeon.effectsQueue.add(new BurnToAshEffect(target.hb.cX, target.hb.cY));
+            AbstractDungeon.effectsQueue.add(new ExplosionSmallEffect(t.hb.cX, t.hb.cY));
+            AbstractDungeon.effectsQueue.add(new BurnToAshEffect(t.hb.cX, t.hb.cY));
             CardCrawlGame.screenShake.shake(ScreenShake.ShakeIntensity.LOW, ScreenShake.ShakeDur.SHORT, false);
-            this.target.damage(new DamageInfo(source, damage, DamageInfo.DamageType.THORNS));
+            t.damage(new DamageInfo(source, damage, DamageInfo.DamageType.THORNS));
             if (AbstractDungeon.getCurrRoom().monsters.areMonstersBasicallyDead()) {
                 AbstractDungeon.actionManager.clearPostCombatActions();
             }
