@@ -1,11 +1,19 @@
 {
-  "M10Robot:ExampleMod": {
+  "M10Robot:Example": {
     "TEXT": ["Prefix", "Suffix", "Description stuff"]
+  },
+  "M10Robot:BitMod": {
+    "TEXT": ["", "", " NL Channel %d m10robot:Bit."]
   },
   "M10Robot:RecoilMod": {
     "TEXT": ["Magnum ", "", " NL m10robot:Recoil."]
   },
+  "M10Robot:SearchMod": {
+    "TEXT": ["Search and ", "", " NL Channel %d m10robot:Searchlight."]
+  },
   "M10Robot:SpikesMod": {
-    "TEXT": ["Spiked ", "", " NL Gain %s m10robot:Spikes."]
+    "TEXT": ["Spiked ", "", " NL Gain %s m10robot:Spikes.",
+    "Translator note: The following is used to find cards that already give Spikes",
+      "Gain !M! m10robot:Spikes"]
   }
 }
