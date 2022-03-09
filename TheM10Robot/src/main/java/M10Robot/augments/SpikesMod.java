@@ -16,6 +16,7 @@ public class SpikesMod extends AbstractAugment {
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
 
     private int amount = 0;
+    private boolean setBaseVar;
 
     @Override
     public void onInitialApplication(AbstractCard card) {
@@ -28,6 +29,10 @@ public class SpikesMod extends AbstractAugment {
             amount += card.baseBlock;
             modifyBaseStat(card, BuffType.BLOCK, BuffScale.MINOR_DEBUFF);
             amount -= card.baseBlock;
+        }
+        if (card.rawDescription.contains(TEXT[4])) {
+            card.baseMagicNumber += amount;
+            setBaseVar = true;
         }
     }
 
@@ -43,12 +48,17 @@ public class SpikesMod extends AbstractAugment {
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
+        if (setBaseVar) {
+            return rawDescription;
+        }
         return rawDescription + String.format(TEXT[2], amount);
     }
 
     @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
-        this.addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new SpikesPower(AbstractDungeon.player, amount)));
+        if (!setBaseVar) {
+            this.addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new SpikesPower(AbstractDungeon.player, amount)));
+        }
     }
 
     @Override
