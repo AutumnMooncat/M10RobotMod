@@ -3,7 +3,7 @@
     "TEXT": ["Prefix", "Suffix", "Description stuff"]
   },
   "M10Robot:BitMod": {
-    "TEXT": ["", "", " NL Channel %d m10robot:Bit."]
+    "TEXT": ["Bitey ", "", " NL Channel %d m10robot:Bit."]
   },
   "M10Robot:RecoilMod": {
     "TEXT": ["Magnum ", "", " NL m10robot:Recoil."]
