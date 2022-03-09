@@ -1,5 +1,7 @@
 package M10Robot;
 
+import CardAugments.CardAugmentsMod;
+import CardAugments.cardmods.AbstractAugment;
 import M10Robot.characters.M10Robot;
 import M10Robot.orbs.AbstractCustomOrb;
 import M10Robot.potions.*;
@@ -24,6 +26,7 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.GameActionManager;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
+import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -382,6 +385,14 @@ public class M10RobotMod implements
             //WidePotionsMod.whitelistComplexPotion(MyOtherPotion.POTION_ID, new WideMyOtherPotion());
         }
 
+        if (Loader.isModLoaded("CardAugments")) {
+            new AutoAdd(modID)
+                    .packageFilter("M10Robot.augments")
+                    .any(AbstractAugment.class, (info, abstractAugment) -> {
+                        CardAugmentsMod.registerAugment(abstractAugment);});
+            CardAugmentsMod.registerOrbCharacter(M10Robot.Enums.THE_MIO_ROBOT);
+        }
+
         logger.info("Loading badge image and mod options");
         //Grab the strings
         uiStrings = CardCrawlGame.languagePack.getUIString(makeID("ModConfigs"));
@@ -690,6 +701,10 @@ public class M10RobotMod implements
         // Tutorial Strings
         BaseMod.loadCustomStringsFile(TutorialStrings.class,
                 getModID() + "Resources/localization/"+loadLocalizationIfAvailable("M10Robot-Tutorial-Strings.json"));
+
+        // Augment Strings
+        BaseMod.loadCustomStringsFile(UIStrings.class,
+                getModID() + "Resources/localization/"+loadLocalizationIfAvailable("M10Robot-Augment-Strings.json"));
 
         logger.info("Done editing strings");
     }

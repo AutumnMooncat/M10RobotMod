@@ -1,0 +1,11 @@
+{
+  "M10Robot:ExampleMod": {
+    "TEXT": ["Prefix", "Suffix", "Description stuff"]
+  },
+  "M10Robot:RecoilMod": {
+    "TEXT": ["Magnum ", "", " NL m10robot:Recoil."]
+  },
+  "M10Robot:SpikesMod": {
+    "TEXT": ["Spiked ", "", " NL Gain %s m10robot:Spikes."]
+  }
+}
