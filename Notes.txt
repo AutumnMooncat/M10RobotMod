@@ -20,6 +20,11 @@ Orbs are maybe too strong in general?
 
 Present Orb implementation too strong as both cards give them upgrades out of the box.
 
+Spikes should decay more when hit?
+
+Bomb should automatically evoke when attacked? Makes it both easier and harder to use...
+Searchlight Mk2 - Hits all enemies?
+
 Cards to make:
 
 -Orb Upgrades-
@@ -41,45 +46,37 @@ Check List -  C    U    R
 Block      :  8    8    3
 Mitigation : 10    9    5
 Damage     : 14   15    7
-Draw       :  3    5    1
+Draw       :  3    4    1
 AOE        :  2    4    4
 Energy     :  0    3    1
 Cost Down  :  0    1    2
 
 Missing Slots: 0
 Missing 3 Swappable
-Missing 2 Stasis Synergy
 Missing 2 Retain
 Missing 1 Rare card that Draws
 Missing many Branching Upgrades
 
 Reworks:
-Atomize?
+Byte - Move to uncommon and give additional effect?
 Compile Data nerf?
-Deadlock - Draw?
-Evasion Down
-Quick Repair, remove plated?
 Assembly Line nerf?
-Full Throttle
-Health Down
-
+Present Orb nerf?
+Air Strike - Bad art. Too strong?
+Full Throttle - Bad Art. Too strong.
+Health Down - Just Bad. Doesn't line up with any other cards/themes.
 
 Prototypes:
 ? - Rare ? ? - Draw ? cards. Do something.
-? - Uncommon Skill 1 - Apply 2 Stasis. Do something.
 
 Relics & Potions:
 Preparation Potion (?) - Upgrade the next ? Orbs you Channel.
 Reshuffle Potion (?) - Reshuffle the next ? cards you play.
 
 
-? (Starter) - At the start of each combat, gain 3 Protect.
-? (Boss Swap) - At the start of each combat, gain 5 Protect.
 ? (?) - Whenever you Upgrade an Orb...
 ? (?) - Whenever you Overclock a card...
 ? (?) - Whenever you Channel an Orb...
 ? (?) - Whenever you Evoke an Orb...
-? (Common) - Start each combat with 5+ Spikes.
 ? (?) - Upgrade the first ? Orbs you Channel each combat.
 Bottled ? (Uncommon) - Choose a card. Whenever you play it... (Spikes, Channel, Overclock, Upgrade)
-UFO (Uncommon / Rare) - Stasis?
