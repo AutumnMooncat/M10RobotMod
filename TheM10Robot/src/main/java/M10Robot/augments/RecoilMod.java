@@ -24,7 +24,7 @@ public class RecoilMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return card.cost != -2 && card.type == AbstractCard.CardType.ATTACK && card.baseDamage > 0;
+        return M10RobotMod.enableChimeraCrossover && card.cost != -2 && card.type == AbstractCard.CardType.ATTACK && card.baseDamage > 0;
     }
 
     @Override

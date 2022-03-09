@@ -23,10 +23,8 @@ import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer;
 import com.google.gson.Gson;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.GameActionManager;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -98,8 +96,8 @@ public class M10RobotMod implements
     // Mod-settings settings. This is if you want an on/off savable button
     public static SpireConfig m10RobotConfig;
 
-    public static final String ENABLE_SELFDAMAGE_SETTING = "enableSelfDamage";
-    public static boolean enableSelfDamage = false; // The boolean we'll be setting on/off (true/false)
+    public static final String ENABLE_CHIMERA_CROSSOVER = "enableChimeraCrossover";
+    public static boolean enableChimeraCrossover = true; // The boolean we'll be setting on/off (true/false)
 
     public static final String BOOSTER_TUTORIAL_SEEN = "boosterTutorialSeen";
     public static boolean boosterTutorialSeen = false;
@@ -266,7 +264,7 @@ public class M10RobotMod implements
         // This loads the mod settings.
         // The actual mod Button is added below in receivePostInitialize()
         Properties m10RobotDefaultSettings = new Properties();
-        m10RobotDefaultSettings.setProperty(ENABLE_SELFDAMAGE_SETTING, Boolean.toString(enableSelfDamage));
+        m10RobotDefaultSettings.setProperty(ENABLE_CHIMERA_CROSSOVER, Boolean.toString(enableChimeraCrossover));
         m10RobotDefaultSettings.setProperty(BOOSTER_TUTORIAL_SEEN, Boolean.toString(boosterTutorialSeen));
         m10RobotDefaultSettings.setProperty(ENABLE_CARD_BATTLE_TALK_SETTING, Boolean.toString(enableCardBattleTalkEffect));
         m10RobotDefaultSettings.setProperty(CARD_BATTLE_TALK_PROBABILITY_SETTING, String.valueOf(cardTalkProbability));
@@ -276,7 +274,7 @@ public class M10RobotMod implements
         m10RobotDefaultSettings.setProperty(PRE_BATTLE_TALK_PROBABILITY_SETTING, String.valueOf(preTalkProbability));
         try {
             m10RobotConfig = new SpireConfig("M10Robot", "M10RobotConfig", m10RobotDefaultSettings);
-            enableSelfDamage = m10RobotConfig.getBool(ENABLE_SELFDAMAGE_SETTING);
+            enableChimeraCrossover = m10RobotConfig.getBool(ENABLE_CHIMERA_CROSSOVER);
             boosterTutorialSeen = m10RobotConfig.getBool(BOOSTER_TUTORIAL_SEEN);
             enableCardBattleTalkEffect = m10RobotConfig.getBool(ENABLE_CARD_BATTLE_TALK_SETTING);
             cardTalkProbability = m10RobotConfig.getInt(CARD_BATTLE_TALK_PROBABILITY_SETTING);
@@ -422,10 +420,10 @@ public class M10RobotMod implements
         currentYposition -= spacingY;
 
         //Used to set the unused self damage setting.
-        ModLabeledToggleButton enableSelfDamageButton = new ModLabeledToggleButton(TEXT[3],350.0f, currentYposition, Settings.CREAM_COLOR, FontHelper.charDescFont,
-                m10RobotConfig.getBool(ENABLE_SELFDAMAGE_SETTING), settingsPanel, (label) -> {}, (button) -> {
-            m10RobotConfig.setBool(ENABLE_SELFDAMAGE_SETTING, button.enabled);
-            enableSelfDamage = button.enabled;
+        ModLabeledToggleButton enableChimeraCrossoverButton = new ModLabeledToggleButton(TEXT[3],350.0f, currentYposition, Settings.CREAM_COLOR, FontHelper.charDescFont,
+                m10RobotConfig.getBool(ENABLE_CHIMERA_CROSSOVER), settingsPanel, (label) -> {}, (button) -> {
+            m10RobotConfig.setBool(ENABLE_CHIMERA_CROSSOVER, button.enabled);
+            enableChimeraCrossover = button.enabled;
             try {m10RobotConfig.save();} catch (IOException e) {e.printStackTrace();}
         });
         currentYposition -= spacingY;
@@ -482,7 +480,7 @@ public class M10RobotMod implements
         currentYposition -= spacingY;
 
         //settingsPanel.addUIElement(showBoosterTutorialButton);
-        //settingsPanel.addUIElement(enableSelfDamageButton);
+        settingsPanel.addUIElement(enableChimeraCrossoverButton);
         settingsPanel.addUIElement(enableCardBattleTalkButton);
         settingsPanel.addUIElement(cardBattleTalkSlider);
         settingsPanel.addUIElement(enableDamagedBattleTalkButton);

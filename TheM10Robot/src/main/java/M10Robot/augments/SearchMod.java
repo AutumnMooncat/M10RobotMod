@@ -27,7 +27,7 @@ public class SearchMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return card.cost != -2 && allowOrbMods() && card.baseBlock > 1;
+        return M10RobotMod.enableChimeraCrossover && card.cost != -2 && allowOrbMods() && card.baseBlock > 1;
     }
 
     @Override

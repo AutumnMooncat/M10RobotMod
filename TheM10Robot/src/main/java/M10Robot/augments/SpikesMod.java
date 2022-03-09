@@ -38,7 +38,7 @@ public class SpikesMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return card.cost != -2 && (card.baseDamage > 1 || card.baseBlock > 1);
+        return M10RobotMod.enableChimeraCrossover && card.cost != -2 && (card.baseDamage > 1 || card.baseBlock > 1);
     }
 
     @Override
