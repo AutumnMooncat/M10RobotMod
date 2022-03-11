@@ -1,6 +1,7 @@
 package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
+import M10Robot.actions.SplitBeamAction;
 import M10Robot.cardModifiers.AimedModifier;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
@@ -36,8 +37,8 @@ public class SplitBeam extends AbstractDynamicCard {
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
-    private static final int COST = 1;
-    private static final int DAMAGE = 4;
+    private static final int COST = 0;
+    private static final int DAMAGE = 3;
     private static final int UPGRADE_PLUS_DMG = 2;
     private static final int HITS = 2;
     private static final int UPGRADE_PLUS_HITS = 1;
@@ -48,7 +49,6 @@ public class SplitBeam extends AbstractDynamicCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = damage = DAMAGE;
         magicNumber = baseMagicNumber = HITS;
-        isMultiDamage = true;
         //CardModifierManager.addModifier(this, new AimedModifier());
     }
 
@@ -56,19 +56,7 @@ public class SplitBeam extends AbstractDynamicCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         for (int i = 0 ; i < magicNumber ; i++) {
-            this.addToBot(new SFXAction("ATTACK_MAGIC_BEAM_SHORT", 0.5F));
-            this.addToBot(new AbstractGameAction() {
-                @Override
-                public void update() {
-                    for (AbstractMonster mo : AbstractDungeon.getMonsters().monsters) {
-                        if (!mo.isDeadOrEscaped()) {
-                            AbstractDungeon.effectList.add(new SmallLaserEffect(mo.hb.cX, mo.hb.cY, p.hb.cX, p.hb.cY));
-                        }
-                    }
-                    this.isDone = true;
-                }
-            });
-            this.addToBot(new DamageAllEnemiesAction(p, multiDamage, damageTypeForTurn, AbstractGameAction.AttackEffect.NONE));
+            this.addToBot(new SplitBeamAction(this));
         }
     }
 
@@ -77,7 +65,8 @@ public class SplitBeam extends AbstractDynamicCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeDamage(UPGRADE_PLUS_DMG);
+            //upgradeDamage(UPGRADE_PLUS_DMG);
+            upgradeMagicNumber(UPGRADE_PLUS_HITS);
             initializeDescription();
         }
     }

@@ -333,7 +333,7 @@
   },
   "M10Robot:SplitBeam": {
     "NAME": "Split Beam",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies !M! times."
+    "DESCRIPTION": "Deal !D! damage to a random enemy !M! times."
   },
   "M10Robot:SteelWall": {
     "NAME": "Steel Wall",
