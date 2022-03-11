@@ -11,11 +11,11 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
-public class Followup extends AbstractDynamicCard implements CannotOverclock {
+public class Prelude extends AbstractDynamicCard implements CannotOverclock {
 
     // TEXT DECLARATION
 
-    public static final String ID = M10RobotMod.makeID(Followup.class.getSimpleName());
+    public static final String ID = M10RobotMod.makeID(Prelude.class.getSimpleName());
     public static final String IMG = makeCardPath("Followup.png");
 
     // /TEXT DECLARATION/
@@ -37,7 +37,7 @@ public class Followup extends AbstractDynamicCard implements CannotOverclock {
     // /STAT DECLARATION/
 
 
-    public Followup() {
+    public Prelude() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = STACKS;
         secondMagicNumber = baseSecondMagicNumber = EFFECT;
@@ -54,7 +54,8 @@ public class Followup extends AbstractDynamicCard implements CannotOverclock {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(UPGRADE_PLUS_STACKS);
+            //upgradeMagicNumber(UPGRADE_PLUS_STACKS);
+            this.selfRetain = true;
             initializeDescription();
         }
     }
