@@ -23,7 +23,11 @@
   },
   "M10Robot:AssaultField": {
     "NAME": "Assault Field",
-    "DESCRIPTION": "Deal !D! damage to random enemy !M! times. NL m10robot:Recoil."
+    "DESCRIPTION": "{@@}Deal !D! damage to ALL enemies. NL Shuffle !M! *Assault{!Upgrades!|>0=+} into your draw pile."
+  },
+  "M10Robot:Assault": {
+    "NAME": "Assault",
+    "DESCRIPTION": "{@@}Deal !D! damage to ALL enemies. NL Draw !M! card{!M!|>1=s}."
   },
   "M10Robot:AssemblyLine": {
     "NAME": "Assembly Line",
