@@ -349,7 +349,7 @@
   },
   "M10Robot:ThermalImaging": {
     "NAME": "Thermal Imaging",
-    "DESCRIPTION": "m10robot:Swappable. NL Apply !M! Lock-On to ALL enemies."
+    "DESCRIPTION": "m10robot:Swappable. NL Apply !M! Lock-On. NL Increase the damage of *Heat *Seekers by !M10Robot:SecondMagic!."
   },
   "M10Robot:HeatSeekers": {
     "NAME": "Heat Seekers",

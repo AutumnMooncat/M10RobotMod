@@ -34,7 +34,7 @@ public class HeatSeekers extends AbstractSwappableCard implements UniqueCard {
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
     private static final int COST = 0;
-    private static final int DAMAGE = 4;
+    private static final int DAMAGE = 2;
     private static final int UPGRADE_PLUS_DMG = 2;
 
     // /STAT DECLARATION/
@@ -52,7 +52,7 @@ public class HeatSeekers extends AbstractSwappableCard implements UniqueCard {
         } else {
             setLinkedCard(linkedCard);
         }
-        CardModifierManager.addModifier(this, new AimedModifier());
+        //CardModifierManager.addModifier(this, new AimedModifier());
     }
 
     // Actions the card should do.
