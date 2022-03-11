@@ -18,19 +18,26 @@ public class BitAttackAction extends AbstractGameAction {
     private static final float DURATION = 0.1f;
 
     public BitAttackAction(BitOrb linkedOrb, AbstractCreature source) {
+        this(linkedOrb, source, null);
+    }
+
+    public BitAttackAction(BitOrb linkedOrb, AbstractCreature source, AbstractCreature target) {
         this.linkedOrb = linkedOrb;
         this.source = source;
+        this.target = target;
         this.duration = DURATION;
     }
 
     @Override
     public void update() {
         if (duration == DURATION) {
-            AbstractMonster t = null;
-            for (AbstractMonster mon : AbstractDungeon.getMonsters().monsters) {
-                if (!mon.isDeadOrEscaped()) {
-                    if (t == null || mon.currentHealth < t.currentHealth) {
-                        t = mon;
+            AbstractCreature t = target;
+            if (t == null) {
+                for (AbstractMonster mon : AbstractDungeon.getMonsters().monsters) {
+                    if (!mon.isDeadOrEscaped()) {
+                        if (t == null || mon.currentHealth < t.currentHealth) {
+                            t = mon;
+                        }
                     }
                 }
             }

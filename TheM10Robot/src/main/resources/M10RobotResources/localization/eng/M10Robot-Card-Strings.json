@@ -75,7 +75,7 @@
   },
   "M10Robot:Byte": {
     "NAME": "Byte",
-    "DESCRIPTION": "{@@}Deal !D! damage. NL Apply !M! Vulnerable. NL Channel !M10Robot:SecondMagic! m10robot:Bit{!M10Robot:SecondMagic!|>1=s}."
+    "DESCRIPTION": "{@@}Deal !D! damage. NL Apply !M! Vulnerable. NL All m10robot:Bits will attack this target !M10Robot:SecondMagic! time{!M10Robot:SecondMagic!|>1=s}."
   },
   "M10Robot:CardSupplier": {
     "NAME": "Card Supplier",
