@@ -24,14 +24,14 @@ public class SplitBeam extends AbstractDynamicCard {
     // TEXT DECLARATION
 
     public static final String ID = M10RobotMod.makeID(SplitBeam.class.getSimpleName());
-    public static final String IMG = makeCardPath("SplitBeam.png");
+    public static final String IMG = makeCardPath("SplitBeam2.png");
 
     // /TEXT DECLARATION/
 
 
     // STAT DECLARATION
 
-    private static final CardRarity RARITY = CardRarity.UNCOMMON;
+    private static final CardRarity RARITY = CardRarity.COMMON;
     private static final CardTarget TARGET = CardTarget.ALL_ENEMY;
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
@@ -49,7 +49,7 @@ public class SplitBeam extends AbstractDynamicCard {
         baseDamage = damage = DAMAGE;
         magicNumber = baseMagicNumber = HITS;
         isMultiDamage = true;
-        CardModifierManager.addModifier(this, new AimedModifier());
+        //CardModifierManager.addModifier(this, new AimedModifier());
     }
 
     // Actions the card should do.
