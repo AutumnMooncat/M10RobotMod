@@ -7,6 +7,7 @@ import M10Robot.powers.SpikesPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.NextTurnBlockPower;
 
@@ -40,15 +41,24 @@ public class Bramble extends AbstractDynamicCard {
 
     public Bramble() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        block = baseBlock = BLOCK;
+        block = baseBlock = 0;
         magicNumber = baseMagicNumber = SPIKES;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new GainBlockAction(p, p, block));
         this.addToBot(new ApplyPowerAction(p, p, new SpikesPower(p, magicNumber)));
+        this.addToBot(new GainBlockAction(p, p, block));
+    }
+
+    @Override
+    public void applyPowers() {
+        this.baseBlock = magicNumber;
+        if (AbstractDungeon.player.hasPower(SpikesPower.POWER_ID)) {
+            baseBlock += AbstractDungeon.player.getPower(SpikesPower.POWER_ID).amount;
+        }
+        super.applyPowers();
     }
 
     //Upgraded stats.
@@ -56,7 +66,7 @@ public class Bramble extends AbstractDynamicCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeBlock(UPGRADE_PLUS_BLOCK);
+            //upgradeBlock(UPGRADE_PLUS_BLOCK);
             upgradeMagicNumber(UPGRADE_PLUS_SPIKES);
             initializeDescription();
         }
