@@ -28,9 +28,10 @@ public class Fortify extends AbstractDynamicCard {
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
-    private static final int COST = 0;
-    private static final int BLOCK = 5;
-    private static final int UPGRADE_PLUS_BLOCK = 3;
+    private static final int COST = 1;
+    private static final int BLOCK = 6;
+    private static final int UPGRADE_PLUS_BLOCK = 2;
+    private static final int ORBS = 1;
 
     // /STAT DECLARATION/
 
@@ -38,12 +39,14 @@ public class Fortify extends AbstractDynamicCard {
     public Fortify() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         block = baseBlock = BLOCK;
+        magicNumber = baseMagicNumber = ORBS;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.addToBot(new GainBlockAction(p, p, block));
+        this.addToBot(new MultichannelAction(new BitOrb(), magicNumber));
     }
 
     //Upgraded stats.

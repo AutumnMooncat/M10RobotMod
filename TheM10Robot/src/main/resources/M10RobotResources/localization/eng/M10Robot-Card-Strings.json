@@ -148,7 +148,7 @@
   },
   "M10Robot:Fortify": {
     "NAME": "Fortify",
-    "DESCRIPTION": "Gain !B! Block."
+    "DESCRIPTION": "{@@}Gain !B! Block. NL Channel !M! m10robot:Bit{!M!|>1=s}."
   },
   "M10Robot:FullAuto": {
     "NAME": "Full Throttle",
