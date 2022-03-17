@@ -34,7 +34,7 @@ public class Bramble extends AbstractDynamicCard {
     private static final int BLOCK = 5;
     private static final int UPGRADE_PLUS_BLOCK = 3;
     private static final int SPIKES = 2;
-    private static final int UPGRADE_PLUS_SPIKES = 1;
+    private static final int UPGRADE_PLUS_SPIKES = 2;
 
     // /STAT DECLARATION/
 
