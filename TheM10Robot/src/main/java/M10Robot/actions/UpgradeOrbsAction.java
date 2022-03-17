@@ -1,6 +1,7 @@
 package M10Robot.actions;
 
 import M10Robot.orbs.AbstractCustomOrb;
+import M10Robot.orbs.OrbUpgradeField;
 import basemod.ReflectionHacks;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -54,10 +55,11 @@ public class UpgradeOrbsAction extends AbstractGameAction {
             }
             ((AbstractCustomOrb) o).playAnimation(((AbstractCustomOrb) o).successImage, AbstractCustomOrb.LONG_ANIM);
         } else if (!(o instanceof EmptyOrbSlot)) {
-            ReflectionHacks.setPrivate(o, AbstractOrb.class, "basePassiveAmount", ReflectionHacks.<Integer>getPrivate(o, AbstractOrb.class, "basePassiveAmount") + 1);
-            ReflectionHacks.setPrivate(o, AbstractOrb.class, "baseEvokeAmount", ReflectionHacks.<Integer>getPrivate(o, AbstractOrb.class, "baseEvokeAmount") + 1);
-            o.passiveAmount++;
-            o.evokeAmount++;
+            ReflectionHacks.setPrivate(o, AbstractOrb.class, "basePassiveAmount", ReflectionHacks.<Integer>getPrivate(o, AbstractOrb.class, "basePassiveAmount") + amount);
+            ReflectionHacks.setPrivate(o, AbstractOrb.class, "baseEvokeAmount", ReflectionHacks.<Integer>getPrivate(o, AbstractOrb.class, "baseEvokeAmount") + amount);
+            o.passiveAmount += amount;
+            o.evokeAmount += amount;
+            OrbUpgradeField.upgradeCount(o, amount);
             o.updateDescription();
         }
     }
