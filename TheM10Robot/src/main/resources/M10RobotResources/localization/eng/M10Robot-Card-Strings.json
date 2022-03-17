@@ -365,11 +365,11 @@
   },
   "M10Robot:ThornField": {
     "NAME": "Thorn Field",
-    "DESCRIPTION": "m10robot:Spiky. NL Deal !D! damage to ALL enemies. NL Gain !M! m10robot:Spikes for each enemy in combat."
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Gain !M! m10robot:Spikes for each enemy in combat."
   },
   "M10Robot:ThornWhip": {
     "NAME": "Vine Whip",
-    "DESCRIPTION": "m10robot:Spiky. NL Deal !D! damage. NL Gain !M! m10robot:Spikes."
+    "DESCRIPTION": "Deal !D! damage. NL Gain !M! m10robot:Spikes."
   },
   "M10Robot:Tinker": {
     "NAME": "Tinker",

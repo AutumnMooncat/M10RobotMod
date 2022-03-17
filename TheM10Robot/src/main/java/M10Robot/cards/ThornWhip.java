@@ -45,7 +45,7 @@ public class ThornWhip extends AbstractDynamicCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = damage = DAMAGE;
         magicNumber = baseMagicNumber = SPIKES;
-        CardModifierManager.addModifier(this, new SpikyModifier());
+        //CardModifierManager.addModifier(this, new SpikyModifier());
     }
 
     // Actions the card should do.

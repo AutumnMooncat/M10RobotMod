@@ -46,7 +46,7 @@ public class ThornField extends AbstractDynamicCard {
         baseDamage = damage = DAMAGE;
         magicNumber = baseMagicNumber = SPIKES;
         isMultiDamage = true;
-        CardModifierManager.addModifier(this, new SpikyModifier());
+        //CardModifierManager.addModifier(this, new SpikyModifier());
     }
 
     // Actions the card should do.
