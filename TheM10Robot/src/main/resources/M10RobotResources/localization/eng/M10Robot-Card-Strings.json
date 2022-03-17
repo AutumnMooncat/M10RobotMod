@@ -389,11 +389,11 @@
   },
   "M10Robot:WaveGenerator": {
     "NAME": "Wave Generator",
-    "DESCRIPTION": "m10robot:Swappable. NL Deal !D! damage and apply !M! Weak to ALL enemies."
+    "DESCRIPTION": "m10robot:Swappable. NL Deal !D! damage to ALL enemies. NL Increase the Block of *Wave *Analyzer by !M!."
   },
   "M10Robot:WaveAnalyzer": {
     "NAME": "Wave Analyzer",
-    "DESCRIPTION": "{@@}m10robot:Swappable. NL Gain !B! Block for each enemy in combat."
+    "DESCRIPTION": "{@@}m10robot:Swappable. NL Gain !B! Block. NL Increase the damage of *Wave *Generator by !M!."
   },
   "M10Robot:WeaponPlatform": {
     "NAME": "Weapon Platform",

@@ -1,6 +1,7 @@
 package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
+import M10Robot.actions.BuffCardAction;
 import M10Robot.cards.abstractCards.AbstractSwappableCard;
 import M10Robot.cards.uniqueCards.UniqueCard;
 import M10Robot.characters.M10Robot;
@@ -36,7 +37,7 @@ public class WaveAnalyzer extends AbstractSwappableCard implements UniqueCard {
     private static final int COST = 1;
     private static final int BLOCK = 5;
     private static final int UPGRADE_PLUS_BLOCK = 2;
-    private static final int DRAW = 1;
+    private static final int BOOST = 2;
 
     // /STAT DECLARATION/
 
@@ -47,6 +48,7 @@ public class WaveAnalyzer extends AbstractSwappableCard implements UniqueCard {
     public WaveAnalyzer(AbstractSwappableCard linkedCard) {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         block = baseBlock = BLOCK;
+        magicNumber = baseMagicNumber = BOOST;
         if (linkedCard == null) {
             setLinkedCard(new WaveGenerator(this));
         } else {
@@ -63,11 +65,13 @@ public class WaveAnalyzer extends AbstractSwappableCard implements UniqueCard {
                 this.addToBot(new VFXAction(p, new ShockWaveEffect(aM.hb.cX, aM.hb.cY, Settings.GOLD_COLOR, ShockWaveEffect.ShockWaveType.CHAOTIC), 0.1F));
             }
         }
-        for (AbstractMonster aM: AbstractDungeon.getMonsters().monsters) {
+        this.addToBot(new GainBlockAction(p, p, block));
+        this.addToBot(new BuffCardAction(cardsToPreview, BuffCardAction.BUFF_TYPE.DAMAGE, magicNumber));
+        /*for (AbstractMonster aM: AbstractDungeon.getMonsters().monsters) {
             if (!aM.isDeadOrEscaped()) {
                 this.addToBot(new GainBlockAction(p, p, block));
             }
-        }
+        }*/
     }
 
     // Upgraded stats.

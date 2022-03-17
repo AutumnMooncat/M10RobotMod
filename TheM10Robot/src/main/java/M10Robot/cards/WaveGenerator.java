@@ -1,8 +1,7 @@
 package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
-import M10Robot.actions.FasterLoseHPAction;
-import M10Robot.cards.abstractCards.AbstractReloadableCard;
+import M10Robot.actions.BuffCardAction;
 import M10Robot.cards.abstractCards.AbstractSwappableCard;
 import M10Robot.characters.M10Robot;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -17,7 +16,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.WeakPower;
 import com.megacrit.cardcrawl.vfx.combat.ShockWaveEffect;
-import com.megacrit.cardcrawl.vfx.combat.SmallLaserEffect;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
@@ -49,6 +47,7 @@ public class WaveGenerator extends AbstractSwappableCard {
     private static final int DAMAGE = 7;
     private static final int UPGRADE_PLUS_DAMAGE = 3;
     private static final int WEAK = 1;
+    private static final int BOOST = 2;
 
     // /STAT DECLARATION/
 
@@ -59,7 +58,7 @@ public class WaveGenerator extends AbstractSwappableCard {
     public WaveGenerator(AbstractSwappableCard linkedCard) {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = DAMAGE;
-        magicNumber = baseMagicNumber = WEAK;
+        magicNumber = baseMagicNumber = BOOST;
         isMultiDamage = true;
         if (linkedCard == null) {
             setLinkedCard(new WaveAnalyzer(this));
@@ -75,10 +74,11 @@ public class WaveGenerator extends AbstractSwappableCard {
         this.addToBot(new VFXAction(p, new ShockWaveEffect(p.hb.cX, p.hb.cY, Settings.GREEN_TEXT_COLOR, ShockWaveEffect.ShockWaveType.CHAOTIC), 0.3F));
         for (AbstractMonster aM: AbstractDungeon.getMonsters().monsters) {
             if (!aM.isDeadOrEscaped()) {
-                this.addToBot(new ApplyPowerAction(aM, p, new WeakPower(aM, magicNumber, false), magicNumber, true));
+                //this.addToBot(new ApplyPowerAction(aM, p, new WeakPower(aM, magicNumber, false), magicNumber, true));
                 this.addToBot(new DamageAction(aM, new DamageInfo(p, multiDamage[AbstractDungeon.getMonsters().monsters.indexOf(aM)], damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
             }
         }
+        this.addToBot(new BuffCardAction(cardsToPreview, BuffCardAction.BUFF_TYPE.BLOCK, magicNumber));
     }
 
     // Upgraded stats.
