@@ -13,8 +13,8 @@ import com.megacrit.cardcrawl.powers.LockOnPower;
 
 public class SpikyModifier extends AbstractCardModifier {
     public static final String ID = M10RobotMod.makeID("SpikyModifier");
-    public static final CardStrings STRINGS = CardCrawlGame.languagePack.getCardStrings(ID);
-    private static final String[] TEXT = STRINGS.EXTENDED_DESCRIPTION;
+    /*public static final CardStrings STRINGS = CardCrawlGame.languagePack.getCardStrings(ID);
+    private static final String[] TEXT = STRINGS.EXTENDED_DESCRIPTION;*/
 
     @Override
     public float modifyDamage(float damage, DamageInfo.DamageType type, AbstractCard card, AbstractMonster target) {
@@ -24,11 +24,11 @@ public class SpikyModifier extends AbstractCardModifier {
         return damage;
     }
 
-    @Override
+    /*@Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
         rawDescription = TEXT[0] + rawDescription;
         return rawDescription;
-    }
+    }*/
 
     @Override
     public AbstractCardModifier makeCopy() {
