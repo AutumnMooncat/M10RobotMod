@@ -106,7 +106,7 @@
     "NAMES": [
       "spikes"
     ],
-    "DESCRIPTION": "When receiving #yAttack damage, deals damage back and reduces Spikes by #b1."
+    "DESCRIPTION": "When receiving #yAttack damage, deals damage back. NL At the start of your turn, lose Spikes if you were attacked."
   },
   {
     "PROPER_NAME": "Spiky",

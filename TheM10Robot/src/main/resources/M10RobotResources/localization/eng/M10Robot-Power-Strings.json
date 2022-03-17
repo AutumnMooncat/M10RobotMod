@@ -125,7 +125,7 @@
   },
   "M10Robot:SpikesPower": {
     "NAME": "Spikes",
-    "DESCRIPTIONS": ["When attacked, deals #b"," damage back and reduces Spikes by #b1."]
+    "DESCRIPTIONS": ["When attacked, deals #b"," damage back. At the start of your turn, lose Spikes if you were attacked last turn."]
   },
   "M10Robot:SpikyPlatingPower": {
     "NAME": "Spiky Plating",

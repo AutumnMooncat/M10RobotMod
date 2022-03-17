@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.evacipated.cardcrawl.mod.stslib.patches.NeutralPowertypePatch;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -30,6 +31,7 @@ public class SpikesPower extends AbstractPower implements CloneablePowerInterfac
     // There's a fallback "missing texture" image, so the game shouldn't crash if you accidentally put a non-existent file.
     private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("Spikes84.png"));
     private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("Spikes32.png"));
+    boolean attacked;
 
     public SpikesPower(AbstractCreature owner, int amount) {
         this.name = NAME;
@@ -52,13 +54,22 @@ public class SpikesPower extends AbstractPower implements CloneablePowerInterfac
     public int onAttacked(DamageInfo info, int damageAmount) {
         if (info.type != DamageInfo.DamageType.THORNS && info.type != DamageInfo.DamageType.HP_LOSS && info.owner != null && info.owner != this.owner) {
             this.flash();
-            this.addToTop(new ReducePowerAction(owner, owner, this, 1));
+            attacked = true;
+            //this.addToTop(new ReducePowerAction(owner, owner, this, 1));
             this.addToTop(new DamageAction(info.owner, new DamageInfo(this.owner, this.amount, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL, true));
             if (owner == AbstractDungeon.player && AbstractDungeon.player.hasRelic(Pufferfish.ID)) {
                 AbstractDungeon.player.getRelic(Pufferfish.ID).onTrigger();
             }
         }
         return damageAmount;
+    }
+
+    @Override
+    public void atStartOfTurn() {
+        if (attacked) {
+            this.addToBot(new ReducePowerAction(owner, owner, this, amount));
+            attacked = false;
+        }
     }
 
     public void updateDescription() {
