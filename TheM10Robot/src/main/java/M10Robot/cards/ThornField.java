@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static M10Robot.M10RobotMod.makeCardPath;
@@ -53,7 +54,11 @@ public class ThornField extends AbstractDynamicCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         //this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
         this.addToBot(new DamageAllEnemiesAction(p, multiDamage, damageTypeForTurn, AbstractGameAction.AttackEffect.SLASH_DIAGONAL));
-        this.addToBot(new ApplyPowerAction(p, p, new SpikesPower(p, magicNumber)));
+        for (AbstractMonster mo : AbstractDungeon.getMonsters().monsters) {
+            if (!mo.isDeadOrEscaped()) {
+                this.addToBot(new ApplyPowerAction(p, p, new SpikesPower(p, magicNumber)));
+            }
+        }
     }
 
     // Upgraded stats.
@@ -62,7 +67,7 @@ public class ThornField extends AbstractDynamicCard {
         if (!upgraded) {
             upgradeName();
             upgradeDamage(UPGRADE_PLUS_DMG);
-            upgradeMagicNumber(UPGRADE_PLUS_SPIKES);
+            //upgradeMagicNumber(UPGRADE_PLUS_SPIKES);
             initializeDescription();
         }
     }
