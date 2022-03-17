@@ -129,7 +129,7 @@
   },
   "M10Robot:SpikyPlatingPower": {
     "NAME": "Spiky Plating",
-    "DESCRIPTIONS": ["At the end of your turn, gain #b"," #ySpikes."]
+    "DESCRIPTIONS": ["Whenever you play a card, gain #b"," #ySpikes."]
   },
   "M10Robot:TargetingSystemPower": {
     "NAME": "Targeting System",

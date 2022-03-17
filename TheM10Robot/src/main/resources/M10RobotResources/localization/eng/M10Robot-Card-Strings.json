@@ -333,7 +333,7 @@
   },
   "M10Robot:SpikyPlating": {
     "NAME": "Spiky Plating",
-    "DESCRIPTION": "At the end of your turn, gain !M! m10robot:Spikes."
+    "DESCRIPTION": "Whenever you play a card, gain !M! m10robot:Spikes."
   },
   "M10Robot:SplitBeam": {
     "NAME": "Split Beam",

@@ -4,6 +4,8 @@ import M10Robot.M10RobotMod;
 import M10Robot.powers.SpikesPower;
 import basemod.interfaces.CloneablePowerInterface;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.utility.UseCardAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
@@ -40,7 +42,7 @@ public class SpikyPlatingPower extends AbstractPower implements CloneablePowerIn
     }
 
     @Override
-    public void atEndOfTurn(boolean isPlayer) {
+    public void onUseCard(AbstractCard card, UseCardAction action) {
         this.addToBot(new ApplyPowerAction(owner, owner, new SpikesPower(owner, amount)));
         flash();
     }
