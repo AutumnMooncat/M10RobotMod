@@ -71,7 +71,7 @@ public class ReflectiveShellPower extends AbstractPower implements CloneablePowe
     @Override
     public void onFullyBlock(DamageInfo info, int initialDamageAmount, int initialBlock) {
         if (info.type != DamageInfo.DamageType.THORNS && info.type != DamageInfo.DamageType.HP_LOSS
-                && info.owner != null && info.owner != this.owner) {
+                && info.owner != null && info.owner != this.owner && info.output > 0) {
             this.flash();
             for (int i = 0 ; i < amount ; i++) {
                 this.addToTop(new DamageAction(info.owner, new DamageInfo(this.owner, info.output, DamageInfo.DamageType.THORNS), AbstractGameAction.AttackEffect.FIRE, true));
