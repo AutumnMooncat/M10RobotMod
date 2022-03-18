@@ -139,7 +139,9 @@
   {
     "PROPER_NAME": "Upgrade",
     "NAMES": [
-      "upgrade"
+      "upgrade",
+      "upgrades",
+      "upgraded"
     ],
     "DESCRIPTION": "Upgrading Orbs makes them more powerful. Orbs can be upgraded any number of times."
   },

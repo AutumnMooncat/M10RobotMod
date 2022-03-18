@@ -5,10 +5,14 @@ import M10Robot.actions.SalvoAction;
 import M10Robot.cardModifiers.AimedModifier;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
+import M10Robot.orbs.AbstractCustomOrb;
+import M10Robot.orbs.OrbUpgradeField;
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.orbs.AbstractOrb;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
@@ -32,13 +36,16 @@ public class Salvo extends AbstractDynamicCard {
     private static final int COST = 1;
     private static final int DAMAGE = 6;
     private static final int UPGRADE_PLUS_DMG = 2;
+    private static final int BONUS = 1;
+    private static final int UPGRADE_PLUS_BONUS = 1;
 
     // /STAT DECLARATION/
 
     public Salvo() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = damage = DAMAGE;
-        CardModifierManager.addModifier(this, new AimedModifier());
+        baseMagicNumber = magicNumber = BONUS;
+        //CardModifierManager.addModifier(this, new AimedModifier());
     }
 
     // Actions the card should do.
@@ -47,12 +54,39 @@ public class Salvo extends AbstractDynamicCard {
         this.addToBot(new SalvoAction(p, m, new DamageInfo(p, damage, damageTypeForTurn), false));
     }
 
+    @Override
+    public void applyPowers() {
+        int base = baseDamage;
+        for (AbstractOrb orb : AbstractDungeon.player.orbs) {
+            if (OrbUpgradeField.UpgradeCount.timesUpgraded.get(orb) > 0 || (orb instanceof AbstractCustomOrb && ((AbstractCustomOrb) orb).timesUpgraded > 0)) {
+                baseDamage += magicNumber;
+            }
+        }
+        super.applyPowers();
+        baseDamage = base;
+        isDamageModified = damage != baseDamage;
+    }
+
+    @Override
+    public void calculateCardDamage(AbstractMonster mo) {
+        int base = baseDamage;
+        for (AbstractOrb orb : AbstractDungeon.player.orbs) {
+            if (OrbUpgradeField.UpgradeCount.timesUpgraded.get(orb) > 0 || (orb instanceof AbstractCustomOrb && ((AbstractCustomOrb) orb).timesUpgraded > 0)) {
+                baseDamage += magicNumber;
+            }
+        }
+        super.calculateCardDamage(mo);
+        baseDamage = base;
+        isDamageModified = damage != baseDamage;
+    }
+
     // Upgraded stats.
     @Override
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeDamage(UPGRADE_PLUS_DMG);
+            //upgradeDamage(UPGRADE_PLUS_DMG);
+            upgradeMagicNumber(UPGRADE_PLUS_BONUS);
             initializeDescription();
         }
     }

@@ -281,7 +281,7 @@
   },
   "M10Robot:Salvo": {
     "NAME": "Salvo",
-    "DESCRIPTION": "m10robot:Aimed. NL Deal !D! damage for each Channeled Orb."
+    "DESCRIPTION": "Deal !D! damage for each Channeled Orb. NL Deals !M! additional damage for each m10robot:Upgraded Orb."
   },
   "M10Robot:ScrambleField": {
     "NAME": "Scramble Field",
