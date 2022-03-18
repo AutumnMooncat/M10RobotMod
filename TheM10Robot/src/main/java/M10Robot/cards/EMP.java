@@ -1,6 +1,8 @@
 package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
+import M10Robot.actions.ApplyPowerActionWithFollowup;
+import M10Robot.actions.DoIfPowerAppliedAction;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
 import com.badlogic.gdx.graphics.Color;
@@ -65,10 +67,7 @@ public class EMP extends AbstractDynamicCard {
             if (!aM.isDeadOrEscaped()) {
                 //play Shock sfx on hit
                 this.addToBot(new SFXAction("ORB_PLASMA_CHANNEL"));
-                this.addToBot(new ApplyPowerAction(aM, p, new StrengthPower(aM, -this.magicNumber), -this.magicNumber));
-                if (!aM.hasPower("Artifact")) {
-                    this.addToBot(new ApplyPowerAction(aM, p, new GainStrengthPower(aM, this.magicNumber), this.magicNumber));
-                }
+                this.addToBot(new ApplyPowerActionWithFollowup(new ApplyPowerAction(aM, p, new StrengthPower(aM, -this.magicNumber), -this.magicNumber), new ApplyPowerAction(aM, p, new GainStrengthPower(aM, this.magicNumber), this.magicNumber)));
                 this.addToBot(new DamageAction(aM, new DamageInfo(p, this.multiDamage[AbstractDungeon.getMonsters().monsters.indexOf(aM)], damageTypeForTurn), true));
             }
         }

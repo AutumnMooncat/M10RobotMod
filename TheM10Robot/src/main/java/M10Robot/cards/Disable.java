@@ -1,6 +1,7 @@
 package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
+import M10Robot.actions.ApplyPowerActionWithFollowup;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
 import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.BranchingUpgradesCard;
@@ -50,10 +51,7 @@ public class Disable extends AbstractDynamicCard implements BranchingUpgradesCar
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new ApplyPowerAction(m, p, new StrengthPower(m, -this.magicNumber), -this.magicNumber));
-        if (m != null && !m.hasPower("Artifact")) {
-            this.addToBot(new ApplyPowerAction(m, p, new GainStrengthPower(m, this.magicNumber), this.magicNumber));
-        }
+        this.addToBot(new ApplyPowerActionWithFollowup(new ApplyPowerAction(m, p, new StrengthPower(m, -this.magicNumber), -this.magicNumber), new ApplyPowerAction(m, p, new GainStrengthPower(m, this.magicNumber), this.magicNumber)));
         this.addToBot(new ApplyPowerAction(m, p, new WeakPower(m, secondMagicNumber, false)));
         if (info > 0) {
             this.addToBot(new ApplyPowerAction(m, p, new VulnerablePower(m, secondMagicNumber, false)));

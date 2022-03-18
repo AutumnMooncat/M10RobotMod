@@ -1,6 +1,7 @@
 package M10Robot.potions;
 
 import M10Robot.M10RobotMod;
+import M10Robot.actions.ApplyPowerActionWithFollowup;
 import basemod.abstracts.CustomPotion;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -23,7 +24,7 @@ public class LockingPotion extends CustomPotion {
 
     public static final String NAME = potionStrings.NAME;
     public static final String[] DESCRIPTIONS = potionStrings.DESCRIPTIONS;
-    public static final int EFFECT = 9;
+    public static final int EFFECT = 5;
 
     public LockingPotion() {
         // The bottle shape and inside is determined by potion size and color. The actual colors are the main DefaultMod.java
@@ -38,10 +39,7 @@ public class LockingPotion extends CustomPotion {
     public void use(AbstractCreature target) {
         for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
             //this.addToBot(new ApplyPowerAction(aM, AbstractDungeon.player, new EMPPower(aM, potency)));
-            this.addToBot(new ApplyPowerAction(aM, AbstractDungeon.player, new StrengthPower(aM, -potency), -potency));
-            if (!aM.hasPower("Artifact")) {
-                this.addToBot(new ApplyPowerAction(aM, AbstractDungeon.player, new GainStrengthPower(aM, potency), potency));
-            }
+            this.addToBot(new ApplyPowerActionWithFollowup(new ApplyPowerAction(aM, AbstractDungeon.player, new StrengthPower(aM, -potency), -potency), new ApplyPowerAction(aM, AbstractDungeon.player, new GainStrengthPower(aM, potency), potency)));
         }
     }
 
