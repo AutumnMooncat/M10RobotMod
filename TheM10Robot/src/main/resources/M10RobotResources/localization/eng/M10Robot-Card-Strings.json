@@ -151,8 +151,8 @@
     "DESCRIPTION": "{@@}Gain !B! Block. NL Channel !M! m10robot:Bit{!M!|>1=s}."
   },
   "M10Robot:FullAuto": {
-    "NAME": "Full Throttle",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies !M! times. NL m10robot:Recoil."
+    "NAME": "Inversion Beam",
+    "DESCRIPTION": "Deal !D! damage to ALL enemies !M! times. NL Targets lose Strength this turn equal to unblocked damage taken."
   },
   "M10Robot:HealthDown": {
     "NAME": "Health Down",
