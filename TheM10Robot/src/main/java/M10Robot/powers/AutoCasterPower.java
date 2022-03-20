@@ -1,10 +1,10 @@
 package M10Robot.powers;
 
 import M10Robot.M10RobotMod;
+import M10Robot.actions.EvokelessEvocationAction;
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.evacipated.cardcrawl.mod.stslib.actions.defect.EvokeSpecificOrbAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.FontHelper;
@@ -33,6 +33,7 @@ public class AutoCasterPower extends AbstractPower implements CloneablePowerInte
         this.ID = POWER_ID;
         this.owner = owner;
         this.amount = amount;
+        this.priority = Short.MAX_VALUE;
 
         this.type = PowerType.BUFF;
         this.isTurnBased = false;
@@ -55,7 +56,7 @@ public class AutoCasterPower extends AbstractPower implements CloneablePowerInte
     public void onChannel(AbstractOrb orb) {
         if (evokedThisTurn < amount) {
             evokedThisTurn++;
-            this.addToTop(new EvokeSpecificOrbAction(orb));
+            this.addToBot(new EvokelessEvocationAction(orb));
             flash();
         }
     }

@@ -47,7 +47,7 @@
   },
   "M10Robot:AutoCaster": {
     "NAME": "Auto Caster",
-    "DESCRIPTION": "{@@}The first {!M!|@=Orb|>1=!M! Orbs} you Channel each turn {!M!|@=is|>1=are} Evoked."
+    "DESCRIPTION": "{@@}Trigger the active ability of the first {!M!|@=Orb|>1=!M! Orbs} you Channel each turn."
   },
   "M10Robot:BalanceCurrents": {
     "NAME": "Balance Currents",
