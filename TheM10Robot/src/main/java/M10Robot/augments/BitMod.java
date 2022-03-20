@@ -30,6 +30,7 @@ public class BitMod extends AbstractAugment {
             ((Byte)card).baseSecondMagicNumber += ORBS;
             setBaseVar = true;
         }
+        card.showEvokeValue = true;
     }
 
     @Override

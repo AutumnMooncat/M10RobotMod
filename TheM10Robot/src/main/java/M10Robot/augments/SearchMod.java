@@ -23,6 +23,7 @@ public class SearchMod extends AbstractAugment {
         if (card instanceof SteelWall) {
             card.baseMagicNumber += ORBS;
         }
+        card.showEvokeValue = true;
     }
 
     @Override
