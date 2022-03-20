@@ -42,6 +42,7 @@ public class UnstableCompound extends AbstractDynamicCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = ORBS;
         secondMagicNumber = baseSecondMagicNumber = EFFECT;
+        showEvokeValue = true;
     }
 
     // Actions the card should do.

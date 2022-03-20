@@ -37,6 +37,7 @@ public class Scrapper extends AbstractDynamicCard {
     public Scrapper() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = SPIKES;
+        showEvokeValue = true;
     }
 
     // Actions the card should do.

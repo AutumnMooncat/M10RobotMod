@@ -42,6 +42,7 @@ public class CompileData extends AbstractDynamicCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = UPGRADES;
         secondMagicNumber = baseSecondMagicNumber = ORBS;
+        showEvokeValue = true;
     }
 
     // Actions the card should do.

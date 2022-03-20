@@ -43,6 +43,7 @@ public class AssemblyLine extends AbstractDynamicCard implements BranchingUpgrad
         magicNumber = baseMagicNumber = ORBS;
         secondMagicNumber = baseSecondMagicNumber = UPGRADES;
         exhaust = true;
+        showEvokeValue = true;
     }
 
     // Actions the card should do.

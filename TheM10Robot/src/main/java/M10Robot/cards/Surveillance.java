@@ -37,6 +37,7 @@ public class Surveillance extends AbstractDynamicCard {
     public Surveillance() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = ORBS;
+        showEvokeValue = true;
     }
 
     // Actions the card should do.

@@ -41,6 +41,7 @@ public class Atomize extends AbstractDynamicCard implements BranchingUpgradesCar
         magicNumber = baseMagicNumber = ORBS;
         secondMagicNumber = baseSecondMagicNumber = UPGRADES;
         exhaust = true;
+        showEvokeValue = true;
     }
 
     // Actions the card should do.

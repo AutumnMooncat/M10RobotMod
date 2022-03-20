@@ -40,6 +40,7 @@ public class EmptyBuffer extends AbstractDynamicCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         this.magicNumber = this.baseMagicNumber = EVOKES;
         exhaust = true;
+        showEvokeValue = true;
     }
 
     // Actions the card should do.

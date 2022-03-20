@@ -49,6 +49,7 @@ public class WideAngle extends AbstractDynamicCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = EFFECT;
         secondMagicNumber = baseSecondMagicNumber = ORBS;
+        showEvokeValue = true;
     }
 
     // Actions the card should do.

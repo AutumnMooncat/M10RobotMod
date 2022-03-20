@@ -40,6 +40,7 @@ public class SteelWall extends AbstractDynamicCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         block = baseBlock = BLOCK;
         magicNumber = baseMagicNumber = ORBS;
+        showEvokeValue = true;
     }
 
     // Actions the card should do.

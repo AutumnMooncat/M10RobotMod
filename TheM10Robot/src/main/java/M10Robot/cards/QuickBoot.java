@@ -45,6 +45,7 @@ public class QuickBoot extends AbstractDynamicCard {
         magicNumber = baseMagicNumber = ORBS;
         isInnate = true;
         exhaust = true;
+        showEvokeValue = true;
     }
 
     // Actions the card should do.

@@ -49,6 +49,7 @@ public class BitMask extends AbstractDynamicCard {
         info = baseInfo = 0;
         //CardModifierManager.addModifier(this, new AimedModifier());
         exhaust = true;
+        showEvokeValue = true;
     }
 
     // Actions the card should do.

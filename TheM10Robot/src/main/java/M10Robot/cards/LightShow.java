@@ -45,6 +45,7 @@ public class LightShow extends AbstractDynamicCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = ORBS;
         exhaust = true;
+        showEvokeValue = true;
     }
 
     // Actions the card should do.
