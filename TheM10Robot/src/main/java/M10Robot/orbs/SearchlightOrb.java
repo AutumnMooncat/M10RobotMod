@@ -54,7 +54,7 @@ public class SearchlightOrb extends AbstractCustomOrb {
     private static final float PI_4 = 12.566371f;
 
     private static final int PASSIVE_DAMAGE = 2;
-    private static final int EVOKE_AMOUNT = 2;
+    private static final int EVOKE_AMOUNT = 3;
     private static final int UPGRADE_PLUS_PASSIVE_DAMAGE = 1;
     private static final int UPGRADE_PLUS_EVOKE_AMOUNT = 1;
 
