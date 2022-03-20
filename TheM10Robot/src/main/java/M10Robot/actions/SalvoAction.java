@@ -2,6 +2,7 @@ package M10Robot.actions;
 
 import M10Robot.orbs.AbstractCustomOrb;
 import M10Robot.patches.LockOrbAnimationPatches;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Vector2;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -31,6 +32,7 @@ public class SalvoAction extends AbstractGameAction {
     AbstractPlayer p;
     DamageInfo info;
     boolean removeOrbs;
+    float waitingTooLong;
 
     public SalvoAction(AbstractPlayer player, AbstractMonster monster, DamageInfo info, boolean removeOrbs) {
         this.p = player;
@@ -60,6 +62,7 @@ public class SalvoAction extends AbstractGameAction {
             firstPass = false;
         }
         this.isDone = true;
+        waitingTooLong += Gdx.graphics.getDeltaTime();
         for (AbstractOrb o : p.orbs) {
             if (!isDoneMap.get(o)) {
                 this.isDone = false;
@@ -69,7 +72,7 @@ public class SalvoAction extends AbstractGameAction {
                 o.cX += dx;
                 o.cY += dy;
                 o.hb.move(o.hb.cX+dx,o.hb.cY+dy);
-                if (o.cX == m.hb.cX && o.cY == m.hb.cY) {
+                if (waitingTooLong >= 1f || (o.cX == m.hb.cX && o.cY == m.hb.cY)) {
                     CardCrawlGame.sound.play("GHOST_ORB_IGNITE_2", 0.1f);
                     AbstractDungeon.effectsQueue.add(new ExplosionSmallEffect(m.hb.cX, m.hb.cY));
                     isDoneMap.put(o, true);
