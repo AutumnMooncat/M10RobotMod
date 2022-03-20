@@ -38,6 +38,7 @@ public class DoubleCasterPower extends AbstractPower implements CloneablePowerIn
 
         this.type = PowerType.BUFF;
         this.isTurnBased = false;
+        this.priority = Short.MAX_VALUE + 1;
 
         // We load those txtures here.
         //this.loadRegion("cExplosion");
