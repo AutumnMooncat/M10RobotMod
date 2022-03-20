@@ -1,16 +1,26 @@
 package M10Robot.actions;
 
 import M10Robot.orbs.AbstractCustomOrb;
-import M10Robot.orbs.OrbUpgradeField;
+import M10Robot.orbs.ExtraOrbFields;
 import basemod.ReflectionHacks;
+import com.evacipated.cardcrawl.modthespire.Loader;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
+import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.orbs.EmptyOrbSlot;
+import com.megacrit.cardcrawl.vfx.ExhaustEmberEffect;
+import com.megacrit.cardcrawl.vfx.combat.FlameParticleEffect;
+import javassist.ClassPool;
+import javassist.CtMethod;
+import javassist.expr.ExprEditor;
+import javassist.expr.FieldAccess;
 
 import java.util.ArrayList;
 
 public class UpgradeOrbsAction extends AbstractGameAction {
+    private static final float PASSIVE_INCREASE = 0.25f;
+    private static final float EVOKE_INCREASE = 0.25f;
     private AbstractOrb orb;
     private boolean allOrbs;
 
@@ -48,19 +58,86 @@ public class UpgradeOrbsAction extends AbstractGameAction {
         this.isDone = true;
     }
 
+    private static boolean usePassive, useEvoke;
     private void upgrade(AbstractOrb o) {
         if (o instanceof AbstractCustomOrb) {
             for (int i = 0 ; i < amount ; i++) {
                 ((AbstractCustomOrb) o).upgrade();
             }
             ((AbstractCustomOrb) o).playAnimation(((AbstractCustomOrb) o).successImage, AbstractCustomOrb.LONG_ANIM);
+            CardCrawlGame.sound.play("ATTACK_FIRE");
+
+            int i;
+            for(i = 0; i < 15; ++i) { //75
+                AbstractDungeon.effectsQueue.add(new FlameParticleEffect(o.cX, o.cY));
+            }
+
+            for(i = 0; i < 4; ++i) { //20
+                AbstractDungeon.effectsQueue.add(new ExhaustEmberEffect(o.cX, o.cY));
+            }
         } else if (!(o instanceof EmptyOrbSlot)) {
-            ReflectionHacks.setPrivate(o, AbstractOrb.class, "basePassiveAmount", ReflectionHacks.<Integer>getPrivate(o, AbstractOrb.class, "basePassiveAmount") + amount);
-            ReflectionHacks.setPrivate(o, AbstractOrb.class, "baseEvokeAmount", ReflectionHacks.<Integer>getPrivate(o, AbstractOrb.class, "baseEvokeAmount") + amount);
-            o.passiveAmount += amount;
-            o.evokeAmount += amount;
-            OrbUpgradeField.upgradeCount(o, amount);
-            o.updateDescription();
+            usePassive = useEvoke = false;
+            try {
+                ClassPool pool = Loader.getClassPool();
+                CtMethod ctUD = pool.get(o.getClass().getName()).getDeclaredMethod("updateDescription");
+                ctUD.instrument(new ExprEditor() {
+                    @Override
+                    public void edit(FieldAccess f) {
+                        if (f.getFieldName().equals("passiveAmount") && !f.isWriter()) {
+                            usePassive = true;
+                        }
+                        if (f.getFieldName().equals("evokeAmount") && !f.isWriter()) {
+                            useEvoke = true;
+                        }
+                    }
+                });
+                /*CtMethod ctRT = pool.get(o.getClass().getName()).getDeclaredMethod("renderText");
+                ctRT.instrument(new ExprEditor() {
+                    @Override
+                    public void edit(FieldAccess f) {
+                        if (f.getFieldName().equals("passiveAmount") && !f.isWriter()) {
+                            usePassive = true;
+                        }
+                        if (f.getFieldName().equals("evokeAmount") && !f.isWriter()) {
+                            useEvoke = true;
+                        }
+                    }
+                });*/
+            } catch (Exception ignored) {}
+            if (usePassive || useEvoke) {
+                if (usePassive) {
+                    int p = ReflectionHacks.<Integer>getPrivate(o, AbstractOrb.class, "basePassiveAmount");
+                    if (ExtraOrbFields.ExtraFields.passiveIncrease.get(o) == -1) {
+                        ExtraOrbFields.ExtraFields.passiveIncrease.set(o, (int) Math.ceil(p * PASSIVE_INCREASE));
+                    }
+                    ReflectionHacks.setPrivate(o, AbstractOrb.class, "basePassiveAmount", p + (ExtraOrbFields.ExtraFields.passiveIncrease.get(o) * amount));
+                    o.passiveAmount += ExtraOrbFields.ExtraFields.passiveIncrease.get(o) * amount;
+                }
+                if (useEvoke) {
+                    int e = ReflectionHacks.<Integer>getPrivate(o, AbstractOrb.class, "baseEvokeAmount");
+                    if (ExtraOrbFields.ExtraFields.evokeIncrease.get(o) == -1) {
+                        ExtraOrbFields.ExtraFields.evokeIncrease.set(o, (int) Math.ceil(e * EVOKE_INCREASE));
+                    }
+                    ReflectionHacks.setPrivate(o, AbstractOrb.class, "baseEvokeAmount", e + (ExtraOrbFields.ExtraFields.evokeIncrease.get(o) * amount));
+                    o.evokeAmount += ExtraOrbFields.ExtraFields.evokeIncrease.get(o) * amount;
+                }
+                if (ExtraOrbFields.ExtraFields.baseName.get(o).equals("")) {
+                    ExtraOrbFields.ExtraFields.baseName.set(o, o.name);
+                }
+                ExtraOrbFields.upgradeCount(o, amount);
+                o.name = ExtraOrbFields.ExtraFields.baseName.get(o) + "+" + ExtraOrbFields.ExtraFields.timesUpgraded.get(o);
+                o.updateDescription();
+                CardCrawlGame.sound.play("ATTACK_FIRE");
+
+                int i;
+                for(i = 0; i < 15; ++i) { //75
+                    AbstractDungeon.effectsQueue.add(new FlameParticleEffect(o.cX, o.cY));
+                }
+
+                for(i = 0; i < 4; ++i) { //20
+                    AbstractDungeon.effectsQueue.add(new ExhaustEmberEffect(o.cX, o.cY));
+                }
+            }
         }
     }
 
