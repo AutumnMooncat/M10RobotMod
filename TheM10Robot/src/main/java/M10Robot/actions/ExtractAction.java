@@ -22,7 +22,6 @@ public class ExtractAction extends AbstractGameAction {
     }
 
     public ExtractAction(int amount, boolean random) {
-        this.amount = amount;
         this.random = random;
         this.actionType = ActionType.CARD_MANIPULATION;
         this.duration = DURATION;
@@ -37,6 +36,7 @@ public class ExtractAction extends AbstractGameAction {
                 amount = ((OnExtractRelic) r).modifyExtractAmount(amount);
             }
         }
+        this.amount = amount;
     }
 
     public ExtractAction(int amount, int newCost) {
