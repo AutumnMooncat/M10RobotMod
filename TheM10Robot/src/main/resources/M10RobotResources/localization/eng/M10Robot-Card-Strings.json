@@ -182,9 +182,9 @@
     "NAME": "Magnum Strike",
     "DESCRIPTION": "Deal !D! damage. NL m10robot:Recoil."
   },
-  "M10Robot:Malfunction": {
-    "NAME": "Malfunction",
-    "DESCRIPTION": ""
+  "M10Robot:Merge": {
+    "NAME": "Merge",
+    "DESCRIPTION": "{@@}Draw !M! card{!M!|>1=s}. NL m10robot:Extract !M! card{!M!|>1=s}."
   },
   "M10Robot:MultiTool": {
     "NAME": "Multi Tool",

@@ -43,6 +43,13 @@
     "DESCRIPTION": "This card cannot be #yOverclocked."
   },
   {
+    "PROPER_NAME": "Extract",
+    "NAMES": [
+      "extract"
+    ],
+    "DESCRIPTION": "Move the most recent cards in your discard pile to your hand."
+  },
+  {
     "PROPER_NAME": "Plated Armor",
     "NAMES": [
       "Plated Armor",
@@ -176,114 +183,5 @@
       "searchlights"
     ],
     "DESCRIPTION": "Orb: Deals damage when you are attacked. When #yEvoked, grants #ySpikes."
-  },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  {
-    "PROPER_NAME": "Unused Keywords below. Do not translate. Kept for reference and may be reimplemented later",
-    "NAMES": [
-      "blahblahunused"
-    ],
-    "DESCRIPTION": ""
-  },
-  {
-    "PROPER_NAME": "Booster",
-    "NAMES": [
-      "booster",
-      "boosters"
-    ],
-    "DESCRIPTION": "An #yUnplayable card that modifies #bother #bcards. NL May be attached by #yRight #yClicking and then choosing a card in your hand that meets the requirements."
-  },
-  {
-    "PROPER_NAME": "Bound",
-    "NAMES": [
-      "bound"
-    ],
-    "DESCRIPTION": "May not be removed once equipped."
-  },
-  {
-    "PROPER_NAME": "Doubling",
-    "NAMES": [
-      "doubling"
-    ],
-    "DESCRIPTION": "Accepts ALL #yBoosters. NL #yBoosters applied to this card are applied twice."
-  },
-  {
-    "PROPER_NAME": "Echo",
-    "NAMES": [
-      "echo"
-    ],
-    "DESCRIPTION": "Plays additional copies of this card."
-  },
-  {
-    "PROPER_NAME": "Forcefully Upgrade",
-    "NAMES": [
-      "Forcefully Upgrade",
-      "forcefully_upgrade"
-    ],
-    "DESCRIPTION": "#yUpgrades a card, bypassing most upgrade restrictions. Allows upgrading most cards #bany #bnumber of times."
-  },
-  {
-    "PROPER_NAME": "Framework",
-    "NAMES": [
-      "framework"
-    ],
-    "DESCRIPTION": "An #yUnplayable card that is unfinished. May be converted into a playable card by #yRight #yClicking and then choosing an appropriate amount of cards in your hand to #yExhaust."
-  },
-  {
-    "PROPER_NAME": "Module",
-    "NAMES": [
-      "module"
-    ],
-    "DESCRIPTION": "An #yUnplayable card that modifies the #bplayer. NL May be equipped by #yRight #yClicking if you have an open slot."
-  },
-  {
-    "PROPER_NAME": "Multi-Cost",
-    "NAMES": [
-      "Multi-Cost",
-      "multi-cost"
-    ],
-    "DESCRIPTION": "This card can #yRight #yClicked in-hand to cycle its cost and effect."
-  },
-  {
-    "PROPER_NAME": "Primary",
-    "NAMES": [
-      "primary"
-    ],
-    "DESCRIPTION": "The Primary of a card is the card's main non-damage and non-Block related attribute or effect."
-  },
-  {
-    "PROPER_NAME": "Recharging",
-    "NAMES": [
-      "recharging"
-    ],
-    "DESCRIPTION": "When out of charges, becomes #yUnplayable. You may #yRight #yClick to spend [E] to restore #ball charges. Will automatically recharge for #bfree if drawn #btwice while empty. NL Charges #bcarry #bover through combat rooms."
-  },
-  {
-    "PROPER_NAME": "Reciting",
-    "NAMES": [
-      "reciting"
-    ],
-    "DESCRIPTION": "Accepts ALL #yBoosters. NL While Equipped: NL Plays the effect of equipped #yBoosters at the beginning of your turn."
-  },
-  {
-    "PROPER_NAME": "Unrestricted",
-    "NAMES": [
-      "unrestricted"
-    ],
-    "DESCRIPTION": "This card ignores playability restrictions."
   }
 ]
