@@ -49,6 +49,14 @@
       "Attacks Overclocked: "," NL Skills Overclocked: "," NL Powers Overclocked: "
     ]
   },
+  "M10Robot:Froggy": {
+    "NAME": "Froggy",
+    "FLAVOR": "It has a very sticky tongue.",
+    "DESCRIPTIONS": [
+      "Whenever you #ym10robot:Extract, #yExtract #b"," additional card.",
+      "Extra cards extracted: "," NL Per combat: "," NL Per turn: "
+    ]
+  },
   "M10Robot:Pufferfish": {
     "NAME": "Puffer Fish",
     "FLAVOR": "It looks very spiky.",
