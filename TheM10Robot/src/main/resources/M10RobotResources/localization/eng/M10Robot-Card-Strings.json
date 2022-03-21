@@ -112,7 +112,7 @@
   },
   "M10Robot:DividedAttention": {
     "NAME": "Divided Attention",
-    "DESCRIPTION": "Draw !M! cards. NL m10robot:Recoil."
+    "DESCRIPTION": "{@@}Discard !M10Robot:SecondMagic! card{!M10Robot:SecondMagic!|>1=s}{!M10Robot:Info!|<1= at random}. NL m10robot:Extract !M! card{!M!|-1,>1=s} at random."
   },
   "M10Robot:DoubleCaster": {
     "NAME": "Double Caster",

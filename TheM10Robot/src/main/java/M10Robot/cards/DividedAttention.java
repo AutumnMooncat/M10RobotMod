@@ -1,17 +1,17 @@
 package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
+import M10Robot.actions.ExtractAction;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
-import M10Robot.powers.RecoilPower;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
+import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.BranchingUpgradesCard;
+import com.megacrit.cardcrawl.actions.common.DiscardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
-public class DividedAttention extends AbstractDynamicCard {
+public class DividedAttention extends AbstractDynamicCard implements BranchingUpgradesCard {
 
     // TEXT DECLARATION
 
@@ -28,23 +28,26 @@ public class DividedAttention extends AbstractDynamicCard {
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
-    private static final int COST = 0;
-    private static final int DRAW = 2;
-    private static final int UPGRADE_PLUS_DRAW = 1;
+    private static final int COST = 1;
+    private static final int YOINK = 3;
+    private static final int UPGRADE_PLUS_YOINK = 1;
+    private static final int YEET = 1;
 
     // /STAT DECLARATION/
 
 
     public DividedAttention() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        magicNumber = baseMagicNumber = DRAW;
+        magicNumber = baseMagicNumber = YOINK;
+        secondMagicNumber = baseSecondMagicNumber = YEET;
+        info = baseInfo = 0;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new DrawCardAction(magicNumber));
-        this.addToBot(new ApplyPowerAction(p, p, new RecoilPower(p, 1)));
+        this.addToBot(new DiscardAction(p, p, secondMagicNumber, info == 0));
+        this.addToBot(new ExtractAction(magicNumber, true));
     }
 
     //Upgraded stats.
@@ -52,8 +55,20 @@ public class DividedAttention extends AbstractDynamicCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(UPGRADE_PLUS_DRAW);
+            if (isBranchUpgrade()) {
+                branchUpgrade();
+            } else {
+                baseUpgrade();
+            }
             initializeDescription();
         }
+    }
+
+    public void baseUpgrade() {
+        upgradeMagicNumber(UPGRADE_PLUS_YOINK);
+    }
+
+    public void branchUpgrade() {
+        upgradeInfo(1);
     }
 }
