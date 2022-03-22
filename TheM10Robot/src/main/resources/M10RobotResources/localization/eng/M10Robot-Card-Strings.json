@@ -144,7 +144,7 @@
   },
   "M10Robot:Filter": {
     "NAME": "Filter",
-    "DESCRIPTION": "{@@}Draw !M! card{!M!|>1=s}. NL Discard all non-Attack cards in your hand. NL Gain [E] for each card discarded this way."
+    "DESCRIPTION": "{@@}Swap your draw and discard piles. NL m10robot:Extract !M! card{!M!|>1=s}."
   },
   "M10Robot:Fortify": {
     "NAME": "Fortify",
