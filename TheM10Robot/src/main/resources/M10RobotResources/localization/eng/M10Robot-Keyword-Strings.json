@@ -45,7 +45,8 @@
   {
     "PROPER_NAME": "Extract",
     "NAMES": [
-      "extract"
+      "extract",
+      "extracted"
     ],
     "DESCRIPTION": "Move the most recent cards in your discard pile to your hand."
   },
