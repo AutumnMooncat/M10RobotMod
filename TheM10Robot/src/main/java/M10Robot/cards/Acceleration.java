@@ -1,6 +1,7 @@
 package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
+import M10Robot.actions.ExtractAction;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.cards.interfaces.CannotOverclock;
 import M10Robot.characters.M10Robot;
@@ -48,8 +49,9 @@ public class Acceleration extends AbstractDynamicCard implements CannotOverclock
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        this.addToBot(new ExtractAction(magicNumber));
         this.addToBot(new ApplyPowerAction(p, p, new FollowupPower(p, magicNumber, secondMagicNumber)));
-        this.addToBot(new ApplyPowerAction(p, p, new ReshufflePower(p, magicNumber)));
+        //this.addToBot(new ApplyPowerAction(p, p, new ReshufflePower(p, magicNumber)));
     }
 
     //Upgraded stats.
