@@ -232,7 +232,7 @@
   },
   "M10Robot:QuickRepair": {
     "NAME": "Quick Repair",
-    "DESCRIPTION": "Gain !B! Block and !M! m10robot:Plated_Armor."
+    "DESCRIPTION": "Gain !B! Block. NL If this card is m10robot:Extracted, gain !B! Block."
   },
   "M10Robot:Railgun": {
     "NAME": "Railgun",
