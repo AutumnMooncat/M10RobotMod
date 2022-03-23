@@ -1,7 +1,6 @@
 package M10Robot;
 
-import CardAugments.CardAugmentsMod;
-import CardAugments.cardmods.AbstractAugment;
+import M10Robot.augments.AugmentHelper;
 import M10Robot.characters.M10Robot;
 import M10Robot.orbs.AbstractCustomOrb;
 import M10Robot.potions.*;
@@ -384,11 +383,7 @@ public class M10RobotMod implements
         }
 
         if (Loader.isModLoaded("CardAugments")) {
-            new AutoAdd(modID)
-                    .packageFilter("M10Robot.augments")
-                    .any(AbstractAugment.class, (info, abstractAugment) -> {
-                        CardAugmentsMod.registerAugment(abstractAugment);});
-            CardAugmentsMod.registerOrbCharacter(M10Robot.Enums.THE_MIO_ROBOT);
+            AugmentHelper.register();
         }
 
         logger.info("Loading badge image and mod options");
