@@ -1,6 +1,6 @@
 package M10Robot.patches;
 
-import M10Robot.cards.tempCards.TempCard;
+import M10Robot.cards.tokenCards.TokenCard;
 import M10Robot.cards.uniqueCards.UniqueCard;
 import basemod.patches.com.megacrit.cardcrawl.screens.compendium.CardLibraryScreen.EverythingFix;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
@@ -22,7 +22,7 @@ public class HideCardsPatch {
             for (AbstractCard.CardColor color : EverythingFix.Fields.cardGroupMap.keySet()) {
                 ArrayList<AbstractCard> remove = new ArrayList<>();
                 for (AbstractCard card : EverythingFix.Fields.cardGroupMap.get(color).group) {
-                    if (card instanceof UniqueCard || card instanceof TempCard) {
+                    if (card instanceof UniqueCard || card instanceof TokenCard) {
                         remove.add(card);
                     }
                 }
@@ -41,7 +41,7 @@ public class HideCardsPatch {
             for (CardGroup group : groups) {
                 ArrayList<AbstractCard> remove = new ArrayList<>();
                 for (AbstractCard card : group.group) {
-                    if (card instanceof UniqueCard || card instanceof TempCard) {
+                    if (card instanceof UniqueCard || card instanceof TokenCard) {
                         remove.add(card);
                     }
                 }

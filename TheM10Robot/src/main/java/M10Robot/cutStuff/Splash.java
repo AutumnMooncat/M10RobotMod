@@ -2,7 +2,7 @@ package M10Robot.cutStuff;
 
 import M10Robot.M10RobotMod;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
-import M10Robot.cards.tempCards.TempCard;
+import M10Robot.cards.tokenCards.TokenCard;
 import M10Robot.characters.M10Robot;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
-public class Splash extends AbstractDynamicCard implements TempCard {
+public class Splash extends AbstractDynamicCard implements TokenCard {
 
     // TEXT DECLARATION
 

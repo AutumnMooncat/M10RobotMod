@@ -4,7 +4,7 @@
 //import M10Robot.cutStuff.modifiers.AbstractBoosterModifier;
 //import M10Robot.cutStuff.modifiers.TempDamageModifier;
 //import M10Robot.cutStuff.AbstractBoosterCard;
-//import M10Robot.cards.tempCards.TempCard;
+//import M10Robot.cards.tokenCards.TempCard;
 //import M10Robot.characters.M10Robot;
 //import M10Robot.cutStuff.patches.BoundFieldPatch;
 //import com.megacrit.cardcrawl.cards.AbstractCard;
