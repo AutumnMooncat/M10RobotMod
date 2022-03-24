@@ -168,7 +168,7 @@
   },
   "M10Robot:ImaginaryNumbers": {
     "NAME": "Imaginary Numbers",
-    "DESCRIPTION": "{@@}For !M! turn{!M!|>1=s}, cards randomly cost zero or one."
+    "DESCRIPTION": "{@@}For !M! turn{!M!|>1=s}, cards randomly cost 0 or 1."
   },
   "M10Robot:ImmovableObject": {
     "NAME": "Immovable Object",
@@ -353,7 +353,7 @@
   },
   "M10Robot:TargetingSystem": {
     "NAME": "Targeting System",
-    "DESCRIPTION": "{@@}At the beginning of your turn, apply one Lock-On to a random enemy !M! time{!M!|>1=s}."
+    "DESCRIPTION": ""
   },
   "M10Robot:ThermalImaging": {
     "NAME": "Thermal Imaging",
@@ -397,7 +397,7 @@
   },
   "M10Robot:WeaponPlatform": {
     "NAME": "Weapon Platform",
-    "DESCRIPTION": "At the end of your turn, deal !M! damage to ALL enemies with Lock-On."
+    "DESCRIPTION": ""
   },
   "M10Robot:WeaponPoison": {
     "NAME": "Weapon Poison",
