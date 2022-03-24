@@ -59,7 +59,7 @@
   },
   "M10Robot:BitMask": {
     "NAME": "Bitmask",
-    "DESCRIPTION": "{@@}Deal !D! damage. NL Channel !M! m10robot:Bit{!M!|>1=s} plus !M! additional m10robot:Bit{!M!|>1=s} for each Attack played this turn.{!Location!|0= NL (Attacks played: !M10Robot:Info!)}"
+    "DESCRIPTION": "{@@}Deal !D! damage. NL Channel !M! m10robot:Bit{!M!|>1=s} for each Attack played this turn.{!Location!|0= NL (Attacks played: !M10Robot:Info!)}"
   },
   "M10Robot:BoosterShot": {
     "NAME": "Booster Shot",
@@ -176,7 +176,7 @@
   },
   "M10Robot:LightShow": {
     "NAME": "Light Show",
-    "DESCRIPTION": "{@@}Channel !M! m10robot:Searchlight{!M!|>1=s} plus !M! additional m10robot:Searchlight{!M!|>1=s} for each Skill played this turn.{!Location!|0= NL (Skills played: !M10Robot:Info!)}"
+    "DESCRIPTION": "{@@}Channel !M! m10robot:Searchlight{!M!|>1=s} for each Skill played this turn.{!Location!|0= NL (Skills played: !M10Robot:Info!)}"
   },
   "M10Robot:MagnumStrike": {
     "NAME": "Magnum Strike",

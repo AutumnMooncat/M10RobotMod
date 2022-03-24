@@ -51,7 +51,7 @@ public class LightShow extends AbstractDynamicCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        int skills = (int) AbstractDungeon.actionManager.cardsPlayedThisTurn.stream().filter(c -> c.type == CardType.SKILL).count();
+        int skills = (int) AbstractDungeon.actionManager.cardsPlayedThisTurn.stream().filter(c -> c.type == CardType.SKILL).count() - 1;
         this.addToBot(new MultichannelAction(new SearchlightOrb(), magicNumber*skills));
     }
 
