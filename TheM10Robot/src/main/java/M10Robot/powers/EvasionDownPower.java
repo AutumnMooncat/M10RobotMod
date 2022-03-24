@@ -1,16 +1,20 @@
 package M10Robot.powers;
 
 import M10Robot.M10RobotMod;
+import M10Robot.powers.interfaces.BonusDamagePower;
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Color;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.BindingHelper;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
-public class EvasionDownPower extends AbstractPower implements CloneablePowerInterface {
+public class EvasionDownPower extends AbstractPower implements CloneablePowerInterface, BonusDamagePower {
 
     public static final String POWER_ID = M10RobotMod.makeID("EvasionDownPower");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
@@ -43,15 +47,6 @@ public class EvasionDownPower extends AbstractPower implements CloneablePowerInt
     }
 
     @Override
-    public int onAttackedToChangeDamage(DamageInfo info, int damageAmount) {
-        flashWithoutSound();
-        if (info.type == DamageInfo.DamageType.NORMAL) {
-            return damageAmount;
-        }
-        return damageAmount + amount;
-    }
-
-    @Override
     public float atDamageFinalReceive(float damage, DamageInfo.DamageType type) {
         if (type == DamageInfo.DamageType.NORMAL) {
             return damage + amount;
@@ -71,5 +66,14 @@ public class EvasionDownPower extends AbstractPower implements CloneablePowerInt
     @Override
     public AbstractPower makeCopy() {
         return new EvasionDownPower(owner, source, amount);
+    }
+
+    @Override
+    public int modifyDamageBeforeBlock(AbstractCreature target, DamageInfo info, int damage) {
+        flashWithoutSound();
+        if (info.type == DamageInfo.DamageType.NORMAL) {
+            return damage;
+        }
+        return damage + amount;
     }
 }
