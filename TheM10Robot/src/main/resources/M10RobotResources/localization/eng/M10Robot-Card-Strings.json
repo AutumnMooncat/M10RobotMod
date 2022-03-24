@@ -136,7 +136,11 @@
   },
   "M10Robot:EvasionDown": {
     "NAME": "Evasion Down",
-    "DESCRIPTION": "Apply !M! Vulnerable and Lock-On to ALL enemies."
+    "DESCRIPTION": "m10robot:Swappable. NL Enemy takes !M! additional damage from all sources this turn."
+  },
+  "M10Robot:HealthDown": {
+    "NAME": "Health Down",
+    "DESCRIPTION": "m10robot:Swappable. NL Enemy loses !M! HP. NL If you have played *Evasion *Down this turn, repeat this effect."
   },
   "M10Robot:FeedForward": {
     "NAME": "Feed Forward",
@@ -153,10 +157,6 @@
   "M10Robot:FullAuto": {
     "NAME": "Inversion Beam",
     "DESCRIPTION": "Deal !D! damage to ALL enemies !M! times. NL Targets lose Strength this turn equal to unblocked damage taken."
-  },
-  "M10Robot:HealthDown": {
-    "NAME": "Health Down",
-    "DESCRIPTION": "ALL enemies lose !M! HP and Max HP each turn."
   },
   "M10Robot:HomeSweeper": {
     "NAME": "Home Sweeper",

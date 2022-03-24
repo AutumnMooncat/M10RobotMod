@@ -1,23 +1,18 @@
 package M10Robot.powers;
 
 import M10Robot.M10RobotMod;
-import M10Robot.actions.DecreaseMaxHPAction;
-import M10Robot.actions.FasterLoseHPAction;
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Color;
-import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.HealthBarRenderPower;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import com.megacrit.cardcrawl.rooms.AbstractRoom;
 
-public class HealthLossPower extends AbstractPower implements CloneablePowerInterface, HealthBarRenderPower {
+public class EvasionDownPower extends AbstractPower implements CloneablePowerInterface {
 
-    public static final String POWER_ID = M10RobotMod.makeID("HealthLossPower");
+    public static final String POWER_ID = M10RobotMod.makeID("EvasionDownPower");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
@@ -30,7 +25,7 @@ public class HealthLossPower extends AbstractPower implements CloneablePowerInte
     //private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power84.png"));
     //private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power32.png"));
 
-    public HealthLossPower(AbstractCreature owner, AbstractCreature source, int amount) {
+    public EvasionDownPower(AbstractCreature owner, AbstractCreature source, int amount) {
         this.name = NAME;
         this.ID = POWER_ID;
         this.owner = owner;
@@ -48,13 +43,25 @@ public class HealthLossPower extends AbstractPower implements CloneablePowerInte
     }
 
     @Override
-    public void atStartOfTurn() {
-        if (AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT && !AbstractDungeon.getMonsters().areMonstersBasicallyDead()) {
-            this.flash();
-            this.addToBot(new FasterLoseHPAction(owner, source, amount, AbstractGameAction.AttackEffect.FIRE));
-            this.addToBot(new DecreaseMaxHPAction(owner, amount));
-            //this.addToBot(new RemoveSpecificPowerAction(owner, owner, this));
+    public int onAttackedToChangeDamage(DamageInfo info, int damageAmount) {
+        flashWithoutSound();
+        if (info.type == DamageInfo.DamageType.NORMAL) {
+            return damageAmount;
         }
+        return damageAmount + amount;
+    }
+
+    @Override
+    public float atDamageFinalReceive(float damage, DamageInfo.DamageType type) {
+        if (type == DamageInfo.DamageType.NORMAL) {
+            return damage + amount;
+        }
+        return damage;
+    }
+
+    @Override
+    public void atEndOfRound() {
+        this.addToBot(new RemoveSpecificPowerAction(owner, owner, this));
     }
 
     public void updateDescription() {
@@ -63,16 +70,6 @@ public class HealthLossPower extends AbstractPower implements CloneablePowerInte
 
     @Override
     public AbstractPower makeCopy() {
-        return new HealthLossPower(owner, source, amount);
-    }
-
-    @Override
-    public int getHealthBarAmount() {
-        return amount;
-    }
-
-    @Override
-    public Color getColor() {
-        return hpBarColor;
+        return new EvasionDownPower(owner, source, amount);
     }
 }

@@ -36,9 +36,9 @@
     "NAME": "Next Card Overclock",
     "DESCRIPTIONS": ["#yOverclock the next card you play #b"," time."," times.","#yOverclock the next #b"," cards you play #b"]
   },
-  "M10Robot:HealthLossPower": {
-    "NAME": "Heath Loss",
-    "DESCRIPTIONS": ["At the start of its turn, loses #b"," HP and Max HP."]
+  "M10Robot:EvasionDownPower": {
+    "NAME": "Evasion Down",
+    "DESCRIPTIONS": ["Takes #b", " additional damage from all sources this turn."]
   },
   "M10Robot:HighExplosivePower": {
     "NAME": "High Explosives",
