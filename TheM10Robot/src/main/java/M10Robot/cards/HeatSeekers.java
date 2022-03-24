@@ -8,10 +8,16 @@ import M10Robot.cards.uniqueCards.UniqueCard;
 import M10Robot.characters.M10Robot;
 import M10Robot.orbs.SearchlightOrb;
 import basemod.helpers.CardModifierManager;
+import basemod.helpers.TooltipInfo;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.helpers.GameDictionary;
+import com.megacrit.cardcrawl.helpers.TipHelper;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
@@ -37,6 +43,8 @@ public class HeatSeekers extends AbstractSwappableCard implements UniqueCard {
     private static final int DAMAGE = 2;
     private static final int UPGRADE_PLUS_DMG = 2;
 
+    protected static ArrayList<TooltipInfo> toolTips;
+
     // /STAT DECLARATION/
 
     public HeatSeekers() {
@@ -53,6 +61,15 @@ public class HeatSeekers extends AbstractSwappableCard implements UniqueCard {
             setLinkedCard(linkedCard);
         }
         //CardModifierManager.addModifier(this, new AimedModifier());
+    }
+
+    @Override
+    public List<TooltipInfo> getCustomTooltips() {
+        if (toolTips == null) {
+            toolTips = new ArrayList<>();
+            toolTips.add(new TooltipInfo(TipHelper.capitalize(GameDictionary.LOCK_ON.NAMES[0]), GameDictionary.keywords.get(GameDictionary.LOCK_ON.NAMES[0])));
+        }
+        return toolTips;
     }
 
     // Actions the card should do.
