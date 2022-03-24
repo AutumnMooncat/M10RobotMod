@@ -4,12 +4,18 @@ import M10Robot.M10RobotMod;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.cards.abstractCards.AbstractSwappableCard;
 import M10Robot.characters.M10Robot;
+import basemod.helpers.TooltipInfo;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.helpers.GameDictionary;
+import com.megacrit.cardcrawl.helpers.TipHelper;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
@@ -35,6 +41,8 @@ public class AttackDown extends AbstractSwappableCard {
     private static final int EFFECT = 2;
     private static final int UPGRADE_PLUS_EFFECT = 1;
 
+    protected static ArrayList<TooltipInfo> toolTips;
+
     // /STAT DECLARATION/
 
     public AttackDown() {
@@ -49,6 +57,15 @@ public class AttackDown extends AbstractSwappableCard {
         } else {
             setLinkedCard(linkedCard);
         }
+    }
+
+    @Override
+    public List<TooltipInfo> getCustomTooltips() {
+        if (toolTips == null) {
+            toolTips = new ArrayList<>();
+            toolTips.add(new TooltipInfo(TipHelper.capitalize(GameDictionary.VULNERABLE.NAMES[0]), GameDictionary.keywords.get(GameDictionary.VULNERABLE.NAMES[0])));
+        }
+        return toolTips;
     }
 
     // Actions the card should do.
