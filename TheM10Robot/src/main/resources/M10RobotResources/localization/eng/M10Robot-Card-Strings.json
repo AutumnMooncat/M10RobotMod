@@ -337,7 +337,7 @@
   },
   "M10Robot:SplitBeam": {
     "NAME": "Split Beam",
-    "DESCRIPTION": "Deal !D! damage to a random enemy !M! times."
+    "DESCRIPTION": "Deal !D! damage !M! times. NL When m10robot:Extracted, increase this card's hits by !M10Robot:SecondMagic! this combat."
   },
   "M10Robot:SteelWall": {
     "NAME": "Steel Wall",
