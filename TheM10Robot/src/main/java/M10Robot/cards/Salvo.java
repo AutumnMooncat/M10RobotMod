@@ -2,17 +2,20 @@ package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
 import M10Robot.actions.SalvoAction;
-import M10Robot.cardModifiers.AimedModifier;
+import M10Robot.actions.UpgradeOrbsAction;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
 import M10Robot.orbs.AbstractCustomOrb;
-import M10Robot.orbs.OrbUpgradeField;
-import basemod.helpers.CardModifierManager;
+import M10Robot.orbs.ExtraOrbFields;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
+import com.megacrit.cardcrawl.powers.LockOnPower;
+
+import java.util.Iterator;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
@@ -34,7 +37,7 @@ public class Salvo extends AbstractDynamicCard {
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
     private static final int COST = 1;
-    private static final int DAMAGE = 6;
+    private static final int DAMAGE = 4;
     private static final int UPGRADE_PLUS_DMG = 2;
     private static final int BONUS = 1;
     private static final int UPGRADE_PLUS_BONUS = 1;
@@ -52,32 +55,16 @@ public class Salvo extends AbstractDynamicCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.addToBot(new SalvoAction(p, m, new DamageInfo(p, damage, damageTypeForTurn), false));
+        if (m.hasPower(LockOnPower.POWER_ID)) {
+            this.addToBot(new UpgradeOrbsAction(true, magicNumber));
+        }
     }
 
-    @Override
-    public void applyPowers() {
-        int base = baseDamage;
-        for (AbstractOrb orb : AbstractDungeon.player.orbs) {
-            if (OrbUpgradeField.UpgradeCount.timesUpgraded.get(orb) > 0 || (orb instanceof AbstractCustomOrb && ((AbstractCustomOrb) orb).timesUpgraded > 0)) {
-                baseDamage += magicNumber;
-            }
+    public void triggerOnGlowCheck() {
+        this.glowColor = AbstractCard.BLUE_BORDER_GLOW_COLOR.cpy();
+        if (AbstractDungeon.getMonsters().monsters.stream().anyMatch(m -> m.hasPower(LockOnPower.POWER_ID))) {
+            this.glowColor = AbstractCard.GOLD_BORDER_GLOW_COLOR.cpy();
         }
-        super.applyPowers();
-        baseDamage = base;
-        isDamageModified = damage != baseDamage;
-    }
-
-    @Override
-    public void calculateCardDamage(AbstractMonster mo) {
-        int base = baseDamage;
-        for (AbstractOrb orb : AbstractDungeon.player.orbs) {
-            if (OrbUpgradeField.UpgradeCount.timesUpgraded.get(orb) > 0 || (orb instanceof AbstractCustomOrb && ((AbstractCustomOrb) orb).timesUpgraded > 0)) {
-                baseDamage += magicNumber;
-            }
-        }
-        super.calculateCardDamage(mo);
-        baseDamage = base;
-        isDamageModified = damage != baseDamage;
     }
 
     // Upgraded stats.
@@ -85,8 +72,8 @@ public class Salvo extends AbstractDynamicCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            //upgradeDamage(UPGRADE_PLUS_DMG);
-            upgradeMagicNumber(UPGRADE_PLUS_BONUS);
+            upgradeDamage(UPGRADE_PLUS_DMG);
+            //upgradeMagicNumber(UPGRADE_PLUS_BONUS);
             initializeDescription();
         }
     }

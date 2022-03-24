@@ -280,8 +280,8 @@
     "DESCRIPTION": "m10robot:Spiky. NL Gain !B! Block. NL Deal !D! damage to ALL enemies."
   },
   "M10Robot:Salvo": {
-    "NAME": "Salvo",
-    "DESCRIPTION": "Deal !D! damage for each Channeled Orb. NL Deals !M! additional damage for each m10robot:Upgraded Orb."
+    "NAME": "Command",
+    "DESCRIPTION": "{@@}Deal !D! damage for each Channeled Orb. NL If the enemy has Lock-On, m10robot:Upgrade all your Orbs !M! time{!M!|>1=s}."
   },
   "M10Robot:ScrambleField": {
     "NAME": "Scramble Field",
