@@ -1,31 +1,21 @@
-package M10Robot.cards;
+package M10Robot.cutAndRework;
 
 import M10Robot.M10RobotMod;
 import M10Robot.cardModifiers.AimedModifier;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
 import M10Robot.vfx.BigExplosionEffect;
-import M10Robot.vfx.BurnToAshEffect;
 import basemod.helpers.CardModifierManager;
-import basemod.interfaces.XCostModifier;
-import basemod.patches.com.megacrit.cardcrawl.cards.AbstractCard.CardModifierPatches;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.core.CardCrawlGame;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
-import com.megacrit.cardcrawl.helpers.ScreenShake;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.relics.ChemicalX;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
-import com.megacrit.cardcrawl.vfx.combat.ExplosionSmallEffect;
 import com.megacrit.cardcrawl.vfx.combat.InversionBeamEffect;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
