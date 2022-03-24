@@ -79,7 +79,11 @@
   },
   "M10Robot:Byte": {
     "NAME": "Byte",
-    "DESCRIPTION": "{@@}Deal !D! damage. NL Apply !M! Vulnerable. NL All m10robot:Bits will attack this target !M10Robot:SecondMagic! time{!M10Robot:SecondMagic!|>1=s}."
+    "DESCRIPTION": "{@@}Deal !D! damage. NL Channel !M! m10robot:Bit{!M!|>1=s}. NL {!M10Robot:Info!|@=Shuffle|>0=Add} !M10Robot:SecondMagic! *Nibbles into your {!M10Robot:Info!|@=draw pile|>0=hand}."
+  },
+  "M10Robot:Nibble": {
+    "NAME": "Nibble",
+    "DESCRIPTION": "{@@}Gain !B! Block. NL Deal !D! damage. NL All m10robot:Bits will attack this target !M! time{!M!|>1=s}."
   },
   "M10Robot:CardSupplier": {
     "NAME": "Card Supplier",
@@ -193,10 +197,6 @@
   "M10Robot:MultiTool2": {
     "NAME": "Multi Tool",
     "DESCRIPTION": ""
-  },
-  "M10Robot:Nibble": {
-    "NAME": "Nibble",
-    "DESCRIPTION": "{@@}Deal !D! damage. NL Channel !M! m10robot:Bit{!M!|>1=s}."
   },
   "M10Robot:Overdrive": {
     "NAME": "Overdrive Form",

@@ -3,7 +3,7 @@ package M10Robot.augments;
 import CardAugments.cardmods.AbstractAugment;
 import M10Robot.M10RobotMod;
 import M10Robot.cards.Byte;
-import M10Robot.cards.Nibble;
+import M10Robot.cards.tokenCards.Nibble;
 import M10Robot.orbs.BitOrb;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.actions.defect.ChannelAction;
@@ -22,12 +22,8 @@ public class BitMod extends AbstractAugment {
     @Override
     public void onInitialApplication(AbstractCard card) {
         modifyBaseStat(card, BuffType.DAMAGE, BuffScale.MODERATE_DEBUFF);
-        if (card instanceof Nibble) {
-            card.magicNumber += ORBS;
-            setBaseVar = true;
-        }
         if (card instanceof Byte) {
-            ((Byte)card).baseSecondMagicNumber += ORBS;
+            card.magicNumber += ORBS;
             setBaseVar = true;
         }
         card.showEvokeValue = true;
