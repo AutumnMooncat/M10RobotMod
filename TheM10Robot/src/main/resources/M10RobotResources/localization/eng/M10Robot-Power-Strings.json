@@ -5,7 +5,7 @@
   },
   "M10Robot:AutoCasterPower": {
     "NAME": "Auto Caster",
-    "DESCRIPTIONS": ["The first #yOrb you #yChannel each turn is #yEvoked.","The first #b"," #yOrbs you #yChannel each turn are #yEvoked."]
+    "DESCRIPTIONS": ["At the start of your turn, #yEvoke your next Orb #b"," time."," times."]
   },
   "M10Robot:BalanceCurrentsPower": {
     "NAME": "Balance Currents",

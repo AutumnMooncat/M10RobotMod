@@ -5,6 +5,10 @@ import M10Robot.actions.EvokelessEvocationAction;
 import basemod.interfaces.CloneablePowerInterface;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.megacrit.cardcrawl.actions.defect.AnimateOrbAction;
+import com.megacrit.cardcrawl.actions.defect.EvokeOrbAction;
+import com.megacrit.cardcrawl.actions.defect.EvokeWithoutRemovingOrbAction;
+import com.megacrit.cardcrawl.actions.unique.MulticastAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.helpers.FontHelper;
@@ -18,10 +22,6 @@ public class AutoCasterPower extends AbstractPower implements CloneablePowerInte
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
-
-    private final Color color = new Color(0.0F, 1.0F, 0.0F, 1.0F);
-
-    private int evokedThisTurn;
 
     // We create 2 new textures *Using This Specific Texture Loader* - an 84x84 image and a 32x32 one.
     // There's a fallback "missing texture" image, so the game shouldn't crash if you accidentally put a non-existent file.
@@ -49,30 +49,20 @@ public class AutoCasterPower extends AbstractPower implements CloneablePowerInte
 
     @Override
     public void atStartOfTurn() {
-        evokedThisTurn = 0;
-    }
-
-    @Override
-    public void onChannel(AbstractOrb orb) {
-        if (evokedThisTurn < amount) {
-            evokedThisTurn++;
-            this.addToBot(new EvokelessEvocationAction(orb));
-            flash();
+        if (amount > 1) {
+            for(int i = 0; i < amount - 1; ++i) {// 46
+                this.addToBot(new EvokeWithoutRemovingOrbAction(1));// 47
+            }
+            this.addToBot(new AnimateOrbAction(1));
+            this.addToBot(new EvokeOrbAction(1));
         }
-    }
-
-    @Override
-    public void renderAmount(SpriteBatch sb, float x, float y, Color c) {
-        this.color.a = c.a;
-        c = this.color;
-        FontHelper.renderFontRightTopAligned(sb, FontHelper.powerAmountFont, Integer.toString(amount-evokedThisTurn), x, y, this.fontScale, c);
     }
 
     public void updateDescription() {
         if (amount == 1) {
-            this.description = DESCRIPTIONS[0];
+            this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1];
         } else {
-            this.description = DESCRIPTIONS[1] + this.amount + DESCRIPTIONS[2];
+            this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[2];
         }
     }
 
