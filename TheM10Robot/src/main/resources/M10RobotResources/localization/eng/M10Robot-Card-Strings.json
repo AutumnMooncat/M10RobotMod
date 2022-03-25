@@ -305,7 +305,7 @@
   },
   "M10Robot:Seeker": {
     "NAME": "Seeker",
-    "DESCRIPTION": "{@@}m10robot:Aimed. NL Deal !D! damage. NL Channel !M! m10robot:Searchlight{!M!|>1=s}."
+    "DESCRIPTION": "{@@}Deal !D! damage. NL Apply !M! Lock-On. NL If the enemy had Lock-On, draw !M10Robot:SecondMagic! card{!M10Robot:SecondMagic!|>1=s}."
   },
   "M10Robot:SelfDestruction": {
     "NAME": "Self Destruction",
