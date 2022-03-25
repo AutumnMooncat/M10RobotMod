@@ -4,6 +4,7 @@ import M10Robot.M10RobotMod;
 import M10Robot.actions.EvokeSpecificOrbMultipleTimesAction;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
+import com.megacrit.cardcrawl.actions.defect.AnimateOrbAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
@@ -46,9 +47,10 @@ public class EmptyBuffer extends AbstractDynamicCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        this.addToBot(new AnimateOrbAction(p.orbs.size()));
         for (AbstractOrb o : p.orbs) {
             if (!(o instanceof EmptyOrbSlot)) {
-                this.addToTop(new EvokeSpecificOrbMultipleTimesAction(o, magicNumber));
+                this.addToBot(new EvokeSpecificOrbMultipleTimesAction(o, magicNumber));
             }
         }
     }

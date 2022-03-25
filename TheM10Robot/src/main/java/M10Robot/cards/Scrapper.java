@@ -4,6 +4,7 @@ import M10Robot.M10RobotMod;
 import M10Robot.actions.ScrapperAction;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
+import com.megacrit.cardcrawl.actions.defect.AnimateOrbAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
@@ -43,6 +44,7 @@ public class Scrapper extends AbstractDynamicCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        this.addToBot(new AnimateOrbAction(1));
         this.addToBot(new ScrapperAction(magicNumber));
     }
 
