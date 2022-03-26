@@ -321,11 +321,11 @@
   },
   "M10Robot:SpectralCannon": {
     "NAME": "Spectral Cannon",
-    "DESCRIPTION": "Ethereal. NL Deal !D! damage to ALL enemies."
+    "DESCRIPTION": ""
   },
   "M10Robot:Speedloader": {
     "NAME": "Speedloader",
-    "DESCRIPTION": "{@@}Whenever you m10robot:Reload, draw !M! card{!M!|>1=s}."
+    "DESCRIPTION": ""
   },
   "M10Robot:SpikeBall": {
     "NAME": "Spike Shell",
