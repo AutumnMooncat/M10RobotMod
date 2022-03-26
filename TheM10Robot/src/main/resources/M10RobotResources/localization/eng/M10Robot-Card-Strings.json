@@ -337,7 +337,7 @@
   },
   "M10Robot:SpikyPlating": {
     "NAME": "Spiky Plating",
-    "DESCRIPTION": "Whenever you play a card, gain !M! m10robot:Spikes."
+    "DESCRIPTION": "Whenever you play a card, gain !M! m10robot:Spikes. NL Channel !M10Robot:SecondMagic! m10robot:Searchlights."
   },
   "M10Robot:SplitBeam": {
     "NAME": "Split Beam",
