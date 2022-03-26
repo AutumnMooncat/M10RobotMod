@@ -28,10 +28,10 @@ public class OverclockCardAction extends AbstractGameAction {
             CardCrawlGame.sound.play("GHOST_ORB_IGNITE_1", 0.1F);
             for (AbstractCard c : AbstractDungeon.player.hand.group) {
                 if (OverclockPatches.canOverclock(c)) {
-                    OverclockPatches.overclock(card, amount);
+                    OverclockPatches.overclock(c, amount);
                     c.superFlash();
                     if (c instanceof AbstractSwappableCard) {
-                        OverclockPatches.overclock(card.cardsToPreview, amount);
+                        OverclockPatches.overclock(c.cardsToPreview, amount);
                     }
                 }
             }
