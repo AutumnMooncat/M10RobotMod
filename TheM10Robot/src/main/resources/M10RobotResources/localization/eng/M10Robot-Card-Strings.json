@@ -112,7 +112,7 @@
   },
   "M10Robot:Disable": {
     "NAME": "Disable",
-    "DESCRIPTION": "{@@}Enemy loses !M! Strength this turn. NL Apply !M10Robot:SecondMagic! Weak{!M10Robot:Info!|>0= and Vulnerable}."
+    "DESCRIPTION": "{@@}Enemy loses !M! Strength this turn. NL Apply !M10Robot:SecondMagic! Weak{!M10Robot:Info!|>0=. NL Apply !M10Robot:SecondMagic! Vulnerable}."
   },
   "M10Robot:DividedAttention": {
     "NAME": "Divided Attention",
