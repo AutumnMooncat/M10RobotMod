@@ -372,8 +372,8 @@
     "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Gain !M! m10robot:Spikes for each enemy in combat."
   },
   "M10Robot:ThornWhip": {
-    "NAME": "Vine Whip",
-    "DESCRIPTION": "Deal !D! damage. NL Gain !M! m10robot:Spikes."
+    "NAME": "Lash",
+    "DESCRIPTION": "{@@}Deal !D! damage. NL Channel !M! m10robot:Searchlight{!M!|>1=s}."
   },
   "M10Robot:Tinker": {
     "NAME": "Tinker",
