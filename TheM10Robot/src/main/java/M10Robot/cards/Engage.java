@@ -45,6 +45,7 @@ public class Engage extends AbstractDynamicCard implements BranchingUpgradesCard
         magicNumber = baseMagicNumber = EFFECT;
         secondMagicNumber = baseSecondMagicNumber = DRAW;
         info = baseInfo = 0;
+        showEvokeValue = true;
     }
 
     // Actions the card should do.

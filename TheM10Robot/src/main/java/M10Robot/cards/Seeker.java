@@ -50,7 +50,6 @@ public class Seeker extends AbstractDynamicCard implements BranchingUpgradesCard
         baseDamage = damage = DAMAGE;
         magicNumber = baseMagicNumber = EFFECT;
         secondMagicNumber = baseSecondMagicNumber = CARDS;
-        showEvokeValue = true;
         //CardModifierManager.addModifier(this, new AimedModifier());
     }
 

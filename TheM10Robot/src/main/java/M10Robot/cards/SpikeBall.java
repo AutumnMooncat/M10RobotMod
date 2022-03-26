@@ -45,6 +45,7 @@ public class SpikeBall extends AbstractDynamicCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         block = baseBlock = AMOUNT;
         magicNumber = baseMagicNumber = SPIKES;
+        showEvokeValue = true;
         //CardModifierManager.addModifier(this, new HeavyModifier());
     }
 
