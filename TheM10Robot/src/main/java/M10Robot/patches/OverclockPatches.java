@@ -142,7 +142,7 @@ public class OverclockPatches {
             if (AbstractDungeon.player != null && getOverClockPercent(__instance) > 0) {
                 Color color = Settings.GREEN_TEXT_COLOR.cpy();
                 color.a = ___renderColor.a;
-                FontHelper.cardTitleFont.getData().setScale(1);
+                FontHelper.cardTitleFont.getData().setScale(__instance.drawScale);
                 FontHelper.renderRotatedText(sb, FontHelper.cardTitleFont, "+"+getOverClockPercent(__instance)+"%", __instance.current_x, __instance.current_y, 0.0F, 195.0F * __instance.drawScale * Settings.scale, __instance.angle, false, color);
             }
         }
