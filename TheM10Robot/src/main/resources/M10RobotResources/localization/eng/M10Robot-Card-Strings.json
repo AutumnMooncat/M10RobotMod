@@ -259,6 +259,10 @@
     "NAME": "Reflective Shell",
     "DESCRIPTION": "{@@}Fully blocked attacks are reflected onto the attacker !M! time{!M!|>1=s}."
   },
+  "M10Robot:Reroute": {
+    "NAME": "Reroute",
+    "DESCRIPTION": "{@@}Deal !D! damage. NL m10robot:Extract !M! card{!M!|>1=s}. NL When m10robot:Overclocked, increase its damage by !M10Robot:SecondMagic! this combat."
+  },
   "M10Robot:ReturningShield": {
     "NAME": "Returning Shield",
     "DESCRIPTION": "{@@}Gain !B! Block. NL Next turn, gain !B! Block{!M!|@=.|>0= and draw !M! additional }{!M!|1=card.|>1=cards.}"
