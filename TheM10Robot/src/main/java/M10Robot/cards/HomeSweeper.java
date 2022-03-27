@@ -60,13 +60,21 @@ public class HomeSweeper extends AbstractDynamicCard {
     }
 
     @Override
+    public void applyPowers() {
+        int temp = this.baseDamage;
+        this.baseDamage += (GameActionManager.turn-1) * magicNumber;
+        super.applyPowers();
+        this.baseDamage = temp;
+        this.isDamageModified = this.damage != this.baseDamage;
+    }
+
+    @Override
     public void calculateCardDamage(AbstractMonster mo) {
         int temp = this.baseDamage;
         this.baseDamage += (GameActionManager.turn-1) * magicNumber;
         super.calculateCardDamage(mo);
         this.baseDamage = temp;
         this.isDamageModified = this.damage != this.baseDamage;
-
     }
 
     // Upgraded stats.
