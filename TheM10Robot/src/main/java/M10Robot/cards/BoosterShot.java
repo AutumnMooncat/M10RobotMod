@@ -36,7 +36,7 @@ public class BoosterShot extends AbstractDynamicCard {
     private static final int COST = 2;
     private static final int DAMAGE = 10;
     private static final int UPGRADE_PLUS_DMG = 4;
-    private static final int UPGRADES = 1;
+    private static final int UPGRADES = 2;
     private static final int UPGRADE_PLUS_UPGRADES = 1;
 
     // /STAT DECLARATION/
@@ -45,14 +45,16 @@ public class BoosterShot extends AbstractDynamicCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = damage = DAMAGE;
         magicNumber = baseMagicNumber = UPGRADES;
-        CardModifierManager.addModifier(this, new AimedModifier());
+        //CardModifierManager.addModifier(this, new AimedModifier());
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
-        this.addToBot(new UpgradeOrbsAction(true, magicNumber));
+        if (!p.orbs.isEmpty()) {
+            this.addToBot(new UpgradeOrbsAction(p.orbs.get(0), magicNumber));
+        }
     }
 
     // Upgraded stats.

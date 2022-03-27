@@ -66,8 +66,8 @@
     "DESCRIPTION": "{@@}Deal !D! damage. NL Channel !M! m10robot:Bit{!M!|>1=s} for each Attack played this turn.{!Location!|0= NL (Attacks played: !M10Robot:Info!)}"
   },
   "M10Robot:BoosterShot": {
-    "NAME": "Booster Shot",
-    "DESCRIPTION": "{@@}m10robot:Aimed. NL Deal !D! damage. NL m10robot:Upgrade all your Orbs !M! time{!M!|>1=s}."
+    "NAME": "Booster",
+    "DESCRIPTION": "{@@}Deal !D! damage. NL m10robot:Upgrade your next Orb !M! time{!M!|-1,>1=s}."
   },
   "M10Robot:Bramble": {
     "NAME": "Bramble",
