@@ -1,9 +1,9 @@
-package M10Robot.cards;
+package M10Robot.cutAndRework;
 
 import M10Robot.M10RobotMod;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
-import M10Robot.powers.AutoCasterPower;
+import M10Robot.powers.ExtrapolatePower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -50,7 +50,7 @@ public class AutoCaster extends AbstractDynamicCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new ApplyPowerAction(p, p, new AutoCasterPower(p, magicNumber)));
+        this.addToBot(new ApplyPowerAction(p, p, new ExtrapolatePower(p, magicNumber)));
     }
 
     //Upgraded stats.
