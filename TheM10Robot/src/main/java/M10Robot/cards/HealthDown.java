@@ -34,7 +34,7 @@ public class HealthDown extends AbstractSwappableCard implements UniqueCard {
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
     private static final int COST = 1;
-    private static final int EFFECT = 6;
+    private static final int EFFECT = 7;
     private static final int UPGRADE_PLUS_EFFECT = 3;
 
     // /STAT DECLARATION/
