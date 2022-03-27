@@ -4,6 +4,7 @@ import M10Robot.cards.abstractCards.AbstractModdedCard;
 import M10Robot.cards.interfaces.CannotOverclock;
 import M10Robot.cards.interfaces.OnOverclockCard;
 import M10Robot.util.interfaces.OverclockBeforePlayItem;
+import basemod.Pair;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
@@ -39,6 +40,9 @@ public class OverclockPatches {
     }
 
     public static void overclock(AbstractCard c, int amount) {
+        if (!canOverclock(c)) {
+            return;
+        }
         OverclockField.overclocks.set(c, OverclockField.overclocks.get(c) + amount);
         if (c instanceof OnOverclockCard) {
             ((OnOverclockCard) c).onOverclock(amount);
@@ -54,7 +58,7 @@ public class OverclockPatches {
 
     public static int getOverClockPercent(AbstractCard c) {
         int amount = OverclockField.overclocks.get(c);
-        if (isCombatCard(c)) {
+        if (isCombatCard(c) && canOverclock(c)) {
             for (AbstractPower p : AbstractDungeon.player.powers) {
                 if (p instanceof OverclockBeforePlayItem) {
                     amount += ((OverclockBeforePlayItem) p).overclockAmount(c);
@@ -71,10 +75,10 @@ public class OverclockPatches {
 
     public static void onApplyPowers(AbstractCard card) {
         int rawPercent = getOverClockPercent(card);
-        card.magicNumber = (int) (card.baseMagicNumber * (100F + rawPercent) / 100F);
+        card.magicNumber = (int) Math.max(0, card.baseMagicNumber * (100F + rawPercent) / 100F);
         card.isMagicNumberModified = card.magicNumber != card.baseMagicNumber;
         if (card instanceof AbstractModdedCard) {
-            ((AbstractModdedCard) card).secondMagicNumber = (int) (((AbstractModdedCard) card).baseSecondMagicNumber * (100F + rawPercent) / 100F);
+            ((AbstractModdedCard) card).secondMagicNumber = (int) Math.max(0,((AbstractModdedCard) card).baseSecondMagicNumber * (100F + rawPercent) / 100F);
             ((AbstractModdedCard) card).isSecondMagicNumberModified = ((AbstractModdedCard) card).secondMagicNumber != ((AbstractModdedCard) card).baseSecondMagicNumber;
         }
     }
@@ -99,32 +103,41 @@ public class OverclockPatches {
     }
 
     private static boolean isCombatCard(AbstractCard c) {
-        return AbstractDungeon.getCurrRoom() != null && AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT && !AbstractDungeon.player.masterDeck.contains(c);
+        return AbstractDungeon.player != null && AbstractDungeon.currMapNode != null && AbstractDungeon.getCurrRoom() != null && AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT && !AbstractDungeon.player.masterDeck.contains(c);
     }
 
     @SpirePatch(clz = UseCardAction.class, method = SpirePatch.CONSTRUCTOR, paramtypez = {AbstractCard.class, AbstractCreature.class})
     public static class OnUseCard {
         @SpireInsertPatch(locator = Locator.class)
         public static void Insert(UseCardAction __instance, AbstractCard card, AbstractCreature target) {
+            int appliedOnPlay = 0;
+            for (AbstractPower p : AbstractDungeon.player.powers) {
+                if (p instanceof OverclockBeforePlayItem) {
+                    appliedOnPlay += ((OverclockBeforePlayItem) p).overclockAmount(card);
+                }
+            }
+            for (AbstractRelic r : AbstractDungeon.player.relics) {
+                if (r instanceof OverclockBeforePlayItem) {
+                    appliedOnPlay += ((OverclockBeforePlayItem) r).overclockAmount(card);
+                }
+            }
+            if (appliedOnPlay > 0) {
+                overclock(card, appliedOnPlay);
+                if (card instanceof OnOverclockCard) {
+                    ((OnOverclockCard) __instance).onOverclock(appliedOnPlay);
+                }
+            }
             if (!card.dontTriggerOnUseCard) {
-                int appliedOnPlay = 0;
                 for (AbstractPower p : AbstractDungeon.player.powers) {
                     if (p instanceof OverclockBeforePlayItem) {
-                        appliedOnPlay += ((OverclockBeforePlayItem) p).overclockAmount(card);
                         ((OverclockBeforePlayItem) p).onOverclock(card);
                     }
                 }
                 for (AbstractRelic r : AbstractDungeon.player.relics) {
                     if (r instanceof OverclockBeforePlayItem) {
-                        appliedOnPlay += ((OverclockBeforePlayItem) r).overclockAmount(card);
                         ((OverclockBeforePlayItem) r).onOverclock(card);
                     }
                 }
-                if (appliedOnPlay > 0 && card instanceof OnOverclockCard) {
-                    ((OnOverclockCard) card).onOverclock(appliedOnPlay);
-                }
-                OverclockField.overclocks.set(card, 0);
-                onRemove(card);
             }
         }
         private static class Locator extends SpireInsertLocator {
@@ -135,15 +148,76 @@ public class OverclockPatches {
         }
     }
 
+    @SpirePatch(clz = AbstractCard.class, method = "clearPowers")
+    public static class RemoveOverclocks {
+        @SpirePrefixPatch
+        public static void plz(AbstractCard __instance) {
+            OverclockField.overclocks.set(__instance, 0);
+            onRemove(__instance);
+        }
+    }
+
+    private static final Color M = new Color(1, 0, 1, 1);
+    private static final Color R = new Color(1, 0, 0, 1);
+    private static final Color Y = new Color(1, 1, 0, 1);
+    private static final Color G = new Color(0, 1, 0, 1);
+    private static final Color C = new Color(0, 1, 1, 1);
+    private static final Color B = new Color(0, 0, 1, 1);
+    private static final Pair<Color, Color> p300 = new Pair<>(R, M);
+    private static final Pair<Color, Color> p200 = new Pair<>(Y, R);
+    private static final Pair<Color, Color> p100 = new Pair<>(G, Y);
+    private static final Pair<Color, Color> p50 = new Pair<>(C, G);
+    private static final Pair<Color, Color> p0 = new Pair<>(B, C);
+
+    private static Color getOverclockColor(int percent) {
+        Pair<Color, Color> colors = getColors(percent);
+        //float grad = getGrad(percent);
+        return colors.getKey().cpy().lerp(colors.getValue(), getGrad(percent));
+        //return new Color(colors.getKey().r*(1-grad)+colors.getValue().r*grad, colors.getKey().g*(1-grad)+colors.getValue().g*grad, colors.getKey().b*(1-grad)+colors.getValue().b*grad, 1);
+    }
+
+    private static float getGrad(int percent) {
+        percent += 100;
+        if (percent >= 500) {
+            return 1;
+        } else if (percent >= 300) {
+            return (percent-300)/200f;
+        } else if (percent >= 200) {
+            return (percent-200)/100f;
+        } else if (percent >= 100) {
+            return (percent-100)/100f;
+        } else if (percent >= 50) {
+            return (percent-50)/50f;
+        } else {
+            return percent/50f;
+        }
+    }
+
+    private static Pair<Color, Color> getColors(int percent) {
+        percent += 100;
+        if (percent >= 300) {
+            return p300;
+        } else if (percent >= 200) {
+            return p200;
+        } else if (percent >= 100) {
+            return p100;
+        } else if (percent >= 50) {
+            return p50;
+        } else {
+            return p0;
+        }
+    }
+
     @SpirePatch(clz = AbstractCard.class, method = "renderTitle")
     public static class renderOverclockPercent {
         @SpirePostfixPatch
         public static void renderPlz(AbstractCard __instance, SpriteBatch sb, Color ___renderColor) {
-            if (AbstractDungeon.player != null && getOverClockPercent(__instance) > 0) {
-                Color color = Settings.GREEN_TEXT_COLOR.cpy();
+            int percent = getOverClockPercent(__instance);
+            if (AbstractDungeon.player != null && percent != 0) {
+                Color color = getOverclockColor(percent);
                 color.a = ___renderColor.a;
                 FontHelper.cardTitleFont.getData().setScale(__instance.drawScale);
-                FontHelper.renderRotatedText(sb, FontHelper.cardTitleFont, "+"+getOverClockPercent(__instance)+"%", __instance.current_x, __instance.current_y, 0.0F, 195.0F * __instance.drawScale * Settings.scale, __instance.angle, false, color);
+                FontHelper.renderRotatedText(sb, FontHelper.cardTitleFont, Math.max(0, 100+percent)+"%", __instance.current_x, __instance.current_y, 0.0F, 195.0F * __instance.drawScale * Settings.scale, __instance.angle, false, color);
             }
         }
     }
