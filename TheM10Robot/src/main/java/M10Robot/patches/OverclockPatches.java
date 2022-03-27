@@ -114,7 +114,7 @@ public class OverclockPatches {
 
     @SpirePatch(clz = UseCardAction.class, method = SpirePatch.CONSTRUCTOR, paramtypez = {AbstractCard.class, AbstractCreature.class})
     public static class OnUseCard {
-        @SpireInsertPatch(locator = Locator.class)
+        @SpirePrefixPatch
         public static void Insert(UseCardAction __instance, AbstractCard card, AbstractCreature target) {
             int appliedOnPlay = 0;
             for (AbstractPower p : AbstractDungeon.player.powers) {
@@ -127,9 +127,6 @@ public class OverclockPatches {
                     appliedOnPlay += ((OverclockBeforePlayItem) r).overclockAmount(card);
                 }
             }
-            if (appliedOnPlay > 0) {
-                overclock(card, appliedOnPlay);
-            }
             if (!card.dontTriggerOnUseCard) {
                 for (AbstractPower p : AbstractDungeon.player.powers) {
                     if (p instanceof OverclockBeforePlayItem) {
@@ -141,6 +138,9 @@ public class OverclockPatches {
                         ((OverclockBeforePlayItem) r).onOverclock(card);
                     }
                 }
+            }
+            if (appliedOnPlay > 0) {
+                overclock(card, appliedOnPlay);
             }
         }
         private static class Locator extends SpireInsertLocator {
