@@ -3,10 +3,6 @@
     "NAME": "Heavy Caliber",
     "DESCRIPTIONS": ["#yLoaded Attacks apply #b"," Vulnerable to their targets."]
   },
-  "M10Robot:AutoCasterPower": {
-    "NAME": "Auto Caster",
-    "DESCRIPTIONS": ["At the start of your turn, #yEvoke your next Orb #b"," time."," times."]
-  },
   "M10Robot:BalanceCurrentsPower": {
     "NAME": "Balance Currents",
     "DESCRIPTIONS": ["Whenever a debuff is applied to you, gain #b"," #yBlock."]
@@ -31,6 +27,10 @@
     "NAME": "Stasis",
     "DESCRIPTIONS": ["Other debuffs can not decrease this turn",
       "Other debuffs can not decrease for #b"," turns."]
+  },
+  "M10Robot:ExtrapolatePower": {
+    "NAME": "Extrapolate",
+    "DESCRIPTIONS": ["Whenever you #yExtract a card, #yOverclock it #b"," time."," times."]
   },
   "M10Robot:FollowupPower": {
     "NAME": "Next Card Overclock",

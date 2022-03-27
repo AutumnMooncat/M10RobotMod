@@ -17,6 +17,10 @@
     "NAME": "All In",
     "DESCRIPTION": "{@@}m10robot:Inert. NL m10robot:Overclock all cards in your hand X{!M!|>0= + !M!} times."
   },
+  "M10Robot:Analytics": {
+    "NAME": "Extrapolate",
+    "DESCRIPTION": "{@@}Whenever you m10robot:Extract a card, m10robot:Overclock it !M! time{!M!|>1=s}."
+  },
   "M10Robot:Ascension": {
     "NAME": "Ascension",
     "DESCRIPTION": "{@@}Draw !M! card{!M!|>1=s}. NL m10robot:Overclock all cards in your hand !M10Robot:SecondMagic! time{!M10Robot:SecondMagic!|>1=s}."
