@@ -34,7 +34,8 @@ public class OverclockPatches {
     @SpirePatch(clz = AbstractCard.class, method = "makeStatEquivalentCopy")
     public static class MakeStatEquivalentCopy {
         public static AbstractCard Postfix(AbstractCard result, AbstractCard self) {
-            OverclockField.overclocks.set(result, OverclockField.overclocks.get(self));
+            //OverclockField.overclocks.set(result, OverclockField.overclocks.get(self));
+            overclock(result, OverclockField.overclocks.get(self));
             return result;
         }
     }
