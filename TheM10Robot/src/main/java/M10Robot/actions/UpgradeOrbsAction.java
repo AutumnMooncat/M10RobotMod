@@ -121,11 +121,7 @@ public class UpgradeOrbsAction extends AbstractGameAction {
                     ReflectionHacks.setPrivate(o, AbstractOrb.class, "baseEvokeAmount", e + (ExtraOrbFields.ExtraFields.evokeIncrease.get(o) * amount));
                     o.evokeAmount += ExtraOrbFields.ExtraFields.evokeIncrease.get(o) * amount;
                 }
-                if (ExtraOrbFields.ExtraFields.baseName.get(o).equals("")) {
-                    ExtraOrbFields.ExtraFields.baseName.set(o, o.name);
-                }
                 ExtraOrbFields.upgradeCount(o, amount);
-                o.name = ExtraOrbFields.ExtraFields.baseName.get(o) + "+" + ExtraOrbFields.ExtraFields.timesUpgraded.get(o);
                 o.updateDescription();
                 CardCrawlGame.sound.play("ATTACK_FIRE");
 

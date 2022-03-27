@@ -25,7 +25,6 @@ public abstract class AbstractCustomOrb extends AbstractOrb {
     public static final String[] UPGRADE_TEXT = ORB_STRINGS.DESCRIPTION;
 
     public int timesUpgraded;
-    private String baseName;
     protected AbstractLinkedOrbPower linkedPower;
     protected AbstractPlayer p = AbstractDungeon.player;
     public final Texture idleImage;
@@ -54,7 +53,7 @@ public abstract class AbstractCustomOrb extends AbstractOrb {
 
     public AbstractCustomOrb(String ID, String baseName, int passiveAmount, int evokeAmount, int timesUpgraded, Texture idleImage, Texture attackImage, Texture hurtImage, Texture successImage, Texture failureImage, Texture throwImage) {
         this.ID = ID;
-        this.baseName = this.name = baseName;
+        this.name = baseName;
         this.passiveAmount = this.basePassiveAmount = passiveAmount;
         this.evokeAmount = this.baseEvokeAmount = evokeAmount;
 
@@ -79,7 +78,6 @@ public abstract class AbstractCustomOrb extends AbstractOrb {
 
     protected void upgradeName() {
         timesUpgraded++;
-        name = baseName + "+" + timesUpgraded;
     }
 
     protected void upgradePassive(int amount) {
