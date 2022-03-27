@@ -1,13 +1,14 @@
 package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
+import M10Robot.actions.MultichannelAction;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
+import M10Robot.orbs.BitOrb;
 import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.BranchingUpgradesCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -36,12 +37,11 @@ public class Seeker extends AbstractDynamicCard implements BranchingUpgradesCard
     public static final AbstractCard.CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
     private static final int COST = 1;
-    private static final int DAMAGE = 6;
-    private static final int UPGRADE_PLUS_DMG = 2;
-    private static final int EFFECT = 2;
+    private static final int DAMAGE = 8;
+    private static final int UPGRADE_PLUS_DMG = 3;
+    private static final int EFFECT = 1;
     private static final int UPGRADE_PLUS_EFFECT = 1;
-    private static final int CARDS = 1;
-    private static final int UPGRADE_PLUS_CARDS = 1;
+    private static final int ORBS = 1;
 
     // /STAT DECLARATION/
 
@@ -49,7 +49,8 @@ public class Seeker extends AbstractDynamicCard implements BranchingUpgradesCard
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = damage = DAMAGE;
         magicNumber = baseMagicNumber = EFFECT;
-        secondMagicNumber = baseSecondMagicNumber = CARDS;
+        secondMagicNumber = baseSecondMagicNumber = ORBS;
+        showEvokeValue = true;
         //CardModifierManager.addModifier(this, new AimedModifier());
     }
 
@@ -57,10 +58,11 @@ public class Seeker extends AbstractDynamicCard implements BranchingUpgradesCard
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         //this.addToBot(new AttackDamageRandomEnemyAction(this, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
-        this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         this.addToBot(new ApplyPowerAction(m, p, new LockOnPower(m, magicNumber)));
+        this.addToBot(new MultichannelAction(new BitOrb(), secondMagicNumber));
         if (m.hasPower(LockOnPower.POWER_ID)) {
-            this.addToBot(new DrawCardAction(secondMagicNumber));
+            //this.addToBot(new DrawCardAction(secondMagicNumber));
+            this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         }
     }
 
@@ -90,6 +92,6 @@ public class Seeker extends AbstractDynamicCard implements BranchingUpgradesCard
     }
 
     public void branchUpgrade() {
-        upgradeSecondMagicNumber(UPGRADE_PLUS_CARDS);
+        upgradeMagicNumber(UPGRADE_PLUS_EFFECT);
     }
 }
