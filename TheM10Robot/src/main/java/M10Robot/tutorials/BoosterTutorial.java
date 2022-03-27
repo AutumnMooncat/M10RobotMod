@@ -5,7 +5,7 @@
 //import M10Robot.cutStuff.boosters.PolishingKit;
 //import M10Robot.cutStuff.boosters.ScrapBooster;
 //import M10Robot.cutStuff.boosters.SubroutineDraw;
-//import M10Robot.cutStuff.TargetingSystem;
+//import M10Robot.cards.TargetingSystem;
 //import M10Robot.characters.M10Robot;
 //import M10Robot.patches.BoosterFieldPatch;
 //import basemod.ReflectionHacks;

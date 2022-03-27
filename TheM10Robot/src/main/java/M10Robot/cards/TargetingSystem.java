@@ -1,9 +1,9 @@
-package M10Robot.cutStuff;
+package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
-import M10Robot.cutStuff.powers.TargetingSystemPower;
+import M10Robot.powers.TargetingSystemPower;
 import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.BranchingUpgradesCard;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -16,7 +16,7 @@ public class TargetingSystem extends AbstractDynamicCard implements BranchingUpg
     // TEXT DECLARATION
 
     public static final String ID = M10RobotMod.makeID(TargetingSystem.class.getSimpleName());
-    public static final String IMG = makeCardPath("TargetingSystem.png");
+    public static final String IMG = makeCardPath("TargetingSystem2.png");
 
     // /TEXT DECLARATION/
 
@@ -29,6 +29,7 @@ public class TargetingSystem extends AbstractDynamicCard implements BranchingUpg
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
     private static final int COST = 1;
+    private static final int UPGRADE_COST = 0;
     private static final int LOCK = 1;
     private static final int UPGRADE_PLUS_LOCK = 1;
 
@@ -38,6 +39,7 @@ public class TargetingSystem extends AbstractDynamicCard implements BranchingUpg
     public TargetingSystem() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = LOCK;
+        info = baseInfo = TargetingSystemPower.THRESHOLD;
     }
 
     // Actions the card should do.

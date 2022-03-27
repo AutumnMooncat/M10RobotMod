@@ -360,8 +360,8 @@
     "DESCRIPTION": "{@@}Channel !M! m10robot:Searchlight{!M!|>1=s}."
   },
   "M10Robot:TargetingSystem": {
-    "NAME": "Targeting System",
-    "DESCRIPTION": ""
+    "NAME": "Heuristic Targeting",
+    "DESCRIPTION": "Whenever you deal !M10Robot:Info! or more unblocked attack damage, apply !M! Lock-On."
   },
   "M10Robot:ThermalImaging": {
     "NAME": "Thermal Imaging",
