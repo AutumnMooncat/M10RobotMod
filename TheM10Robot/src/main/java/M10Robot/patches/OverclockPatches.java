@@ -41,16 +41,19 @@ public class OverclockPatches {
     }
 
     public static void overclock(AbstractCard c, int amount) {
-        if (!canOverclock(c)) {
-            return;
+        if (amount != 0) {
+            if (!canOverclock(c)) {
+                return;
+            }
+            OverclockField.overclocks.set(c, OverclockField.overclocks.get(c) + amount);
+            if (c instanceof OnOverclockCard) {
+                ((OnOverclockCard) c).onOverclock(amount);
+            }
+            c.applyPowers();
+            c.initializeDescription();
+            //c.superFlash();
         }
-        OverclockField.overclocks.set(c, OverclockField.overclocks.get(c) + amount);
-        if (c instanceof OnOverclockCard) {
-            ((OnOverclockCard) c).onOverclock(amount);
-        }
-        c.applyPowers();
-        c.initializeDescription();
-        //c.superFlash();
+
     }
 
     public static boolean canOverclock(AbstractCard c) {
