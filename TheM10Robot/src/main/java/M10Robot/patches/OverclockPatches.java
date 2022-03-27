@@ -123,9 +123,6 @@ public class OverclockPatches {
             }
             if (appliedOnPlay > 0) {
                 overclock(card, appliedOnPlay);
-                if (card instanceof OnOverclockCard) {
-                    ((OnOverclockCard) __instance).onOverclock(appliedOnPlay);
-                }
             }
             if (!card.dontTriggerOnUseCard) {
                 for (AbstractPower p : AbstractDungeon.player.powers) {
