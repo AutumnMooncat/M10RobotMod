@@ -79,11 +79,13 @@ public class OverclockPatches {
 
     public static void onApplyPowers(AbstractCard card) {
         int rawPercent = getOverClockPercent(card);
-        card.magicNumber = (int) Math.max(0, card.baseMagicNumber * (100F + rawPercent) / 100F);
-        card.isMagicNumberModified = card.magicNumber != card.baseMagicNumber;
-        if (card instanceof AbstractModdedCard) {
-            ((AbstractModdedCard) card).secondMagicNumber = (int) Math.max(0,((AbstractModdedCard) card).baseSecondMagicNumber * (100F + rawPercent) / 100F);
-            ((AbstractModdedCard) card).isSecondMagicNumberModified = ((AbstractModdedCard) card).secondMagicNumber != ((AbstractModdedCard) card).baseSecondMagicNumber;
+        if (rawPercent != 0) {
+            card.magicNumber = (int) Math.max(0, card.baseMagicNumber * (100F + rawPercent) / 100F);
+            card.isMagicNumberModified = card.magicNumber != card.baseMagicNumber;
+            if (card instanceof AbstractModdedCard) {
+                ((AbstractModdedCard) card).secondMagicNumber = (int) Math.max(0,((AbstractModdedCard) card).baseSecondMagicNumber * (100F + rawPercent) / 100F);
+                ((AbstractModdedCard) card).isSecondMagicNumberModified = ((AbstractModdedCard) card).secondMagicNumber != ((AbstractModdedCard) card).baseSecondMagicNumber;
+            }
         }
     }
 
