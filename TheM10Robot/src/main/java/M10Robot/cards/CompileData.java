@@ -1,15 +1,13 @@
 package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
+import M10Robot.actions.ExtractAction;
 import M10Robot.actions.MultichannelAction;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
 import M10Robot.orbs.PresentOrb;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.DrawCardNextTurnPower;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
@@ -48,22 +46,17 @@ public class CompileData extends AbstractDynamicCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new MultichannelAction(new PresentOrb(magicNumber), secondMagicNumber));
-    }
-
-    @Override
-    public boolean canUpgrade() {
-        return true;
+        this.addToBot(new MultichannelAction(new PresentOrb(), secondMagicNumber));
+        this.addToBot(new ExtractAction(magicNumber));
     }
 
     //Upgraded stats.
     @Override
     public void upgrade() {
-        upgradeMagicNumber(UPGRADE_PLUS_UPGRADES);
-        ++this.timesUpgraded;
-        this.upgraded = true;
-        this.name = cardStrings.NAME + "+" + this.timesUpgraded;
-        this.initializeTitle();
-        initializeDescription();
+        if (!upgraded) {
+            upgradeName();
+            upgradeMagicNumber(UPGRADE_PLUS_UPGRADES);
+            initializeDescription();
+        }
     }
 }

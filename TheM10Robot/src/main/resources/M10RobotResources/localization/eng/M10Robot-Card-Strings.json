@@ -104,7 +104,7 @@
   },
   "M10Robot:CompileData": {
     "NAME": "Compile Data",
-    "DESCRIPTION": "{@@}Channel !M10Robot:SecondMagic! m10robot:Present{!M10Robot:SecondMagic!|>1=s}. NL m10robot:Upgrade {!M10Robot:SecondMagic!|@=it|>1=them} !M! time{!M!|>1=s}. NL Can be upgraded any number of times."
+    "DESCRIPTION": "{@@}Channel !M10Robot:SecondMagic! m10robot:Present{!M10Robot:SecondMagic!|>1=s}. NL m10robot:Extract !M! card{!M!|>1=s}."
   },
   "M10Robot:Concentration": {
     "NAME": "Deadlock",
