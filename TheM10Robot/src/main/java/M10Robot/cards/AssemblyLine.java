@@ -41,7 +41,7 @@ public class AssemblyLine extends AbstractDynamicCard implements BranchingUpgrad
     public AssemblyLine() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = ORBS;
-        secondMagicNumber = baseSecondMagicNumber = UPGRADES;
+        secondMagicNumber = baseSecondMagicNumber = 0;
         exhaust = true;
         showEvokeValue = true;
     }
@@ -50,7 +50,9 @@ public class AssemblyLine extends AbstractDynamicCard implements BranchingUpgrad
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.addToBot(new MultichannelAction(new PresentOrb(), magicNumber));
-        this.addToBot(new UpgradeOrbsAction(true, secondMagicNumber));
+        if (secondMagicNumber > 0) {
+            this.addToBot(new UpgradeOrbsAction(true, secondMagicNumber));
+        }
     }
 
     //Upgraded stats.
