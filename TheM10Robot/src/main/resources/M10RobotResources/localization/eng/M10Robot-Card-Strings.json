@@ -11,7 +11,7 @@
   },
   "M10Robot:AirRaid": {
     "NAME": "Air Strike",
-    "DESCRIPTION": "{@@}m10robot:Aimed. NL Deal !D! damage X{!M!|>0= + !M!} times."
+    "DESCRIPTION": ""
   },
   "M10Robot:AllIn": {
     "NAME": "All In",
@@ -51,7 +51,7 @@
   },
   "M10Robot:AutoCaster": {
     "NAME": "Auto Caster",
-    "DESCRIPTION": "{@@}At the start of your turn, Evoke your next Orb !M! time{!M!|>1=s}."
+    "DESCRIPTION": ""
   },
   "M10Robot:BalanceCurrents": {
     "NAME": "Balance Currents",
@@ -79,7 +79,7 @@
   },
   "M10Robot:BurstFire": {
     "NAME": "Burst Fire",
-    "DESCRIPTION": "Deal !D! damage !M! times."
+    "DESCRIPTION": ""
   },
   "M10Robot:Byte": {
     "NAME": "Byte",
@@ -91,8 +91,8 @@
   },
   "M10Robot:CardSupplier": {
     "NAME": "Card Supplier",
-    "DESCRIPTION": "{@@}m10robot:Relay !M! card{!M!|>1=s}.",
-    "EXTENDED_DESCRIPTION": ["Relay"]
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
   },
   "M10Robot:Cloaking": {
     "NAME": "Cloaking",
@@ -100,7 +100,7 @@
   },
   "M10Robot:Compensator": {
     "NAME": "Compensator",
-    "DESCRIPTION": "REWORK! NL At the end of your turn, reduce m10robot:Recoil by !M!."
+    "DESCRIPTION": ""
   },
   "M10Robot:CompileData": {
     "NAME": "Compile Data",
@@ -108,7 +108,7 @@
   },
   "M10Robot:Concentration": {
     "NAME": "Deadlock",
-    "DESCRIPTION": "{@@}Gain !M10Robot:SecondMagic! m10robot:Scrambled. NL At the start of your turn, draw !M! additional card{!M!|>1=s}."
+    "DESCRIPTION": ""
   },
   "M10Robot:Defend": {
     "NAME": "Defend",
@@ -124,7 +124,7 @@
   },
   "M10Robot:DoubleCaster": {
     "NAME": "Double Caster",
-    "DESCRIPTION": "{@@}The first {!M!|@=Orb|>1=!M! Orbs} you Evoke each turn {!M!|@=is|>1=are} Evoked twice."
+    "DESCRIPTION": ""
   },
   "M10Robot:EMP": {
     "NAME": "EMP",
@@ -152,7 +152,7 @@
   },
   "M10Robot:FeedForward": {
     "NAME": "Feed Forward",
-    "DESCRIPTION": "Deal !D! damage. NL Damage increases by !M! this combat for each subsequent card played this turn."
+    "DESCRIPTION": ""
   },
   "M10Robot:Filter": {
     "NAME": "Filter",
@@ -281,7 +281,7 @@
   },
   "M10Robot:Rumble": {
     "NAME": "Rumble",
-    "DESCRIPTION": "Whenever you play a card, gain !M! temporary Strength."
+    "DESCRIPTION": ""
   },
   "M10Robot:Rushdown": {
     "NAME": "Rush Down",
@@ -321,7 +321,7 @@
   },
   "M10Robot:SlotConversion": {
     "NAME": "Slot Conversion",
-    "DESCRIPTION": "While Equipped: NL Gain !M! Orb slots."
+    "DESCRIPTION": "."
   },
   "M10Robot:SolidWitch": {
     "NAME": "Solid Witch",
@@ -413,7 +413,7 @@
   },
   "M10Robot:WeaponPolish": {
     "NAME": "Weapon Polish",
-    "DESCRIPTION": "While Equipped: NL Playing an attack boosts its damage by !M! this combat."
+    "DESCRIPTION": ""
   },
   "M10Robot:WeaponPolishBooster": {
     "NAME": "Weapon Polish",
@@ -425,6 +425,6 @@
   },
   "M10Robot:WindUp": {
     "NAME": "Wind Up",
-    "DESCRIPTION": "Deal !D! damage. Increase the damage of ALL *Wind *Up cards by !M! this combat."
+    "DESCRIPTION": ""
   }
 }
