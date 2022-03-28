@@ -29,7 +29,8 @@ public class Pufferfish extends CustomRelic {
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("Pufferfish.png"));
 
     public static final int STACKS = 5;
-    private int hitsThisCombat = 0;
+    private boolean spikesActive;
+    private boolean wasHit;
 
     HashMap<String, Integer> stats = new HashMap<>();
     private final String DAMAGE_STAT = DESCRIPTIONS[2];
@@ -49,16 +50,24 @@ public class Pufferfish extends CustomRelic {
 
     @Override
     public void onTrigger() {
-        if (hitsThisCombat < STACKS) {
-            stats.put(DAMAGE_STAT, stats.get(DAMAGE_STAT) + STACKS - hitsThisCombat);
-            hitsThisCombat++;
+        if (spikesActive) {
+            stats.put(DAMAGE_STAT, stats.get(DAMAGE_STAT) + STACKS);
+            wasHit = true;
+        }
+    }
+
+    @Override
+    public void atTurnStart() {
+        if (wasHit) {
+            spikesActive = false;
         }
     }
 
     @Override
     public void atBattleStart() {
         flash();
-        hitsThisCombat = 0;
+        spikesActive = true;
+        wasHit = false;
         this.addToBot(new RelicAboveCreatureAction(AbstractDungeon.player, this));
         this.addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new SpikesPower(AbstractDungeon.player, STACKS)));
     }
@@ -74,8 +83,8 @@ public class Pufferfish extends CustomRelic {
         float stat = (float)stats.get(DAMAGE_STAT);
         // Relic Stats truncates these extended stats to 3 decimal places, so we do the same
         DecimalFormat perTurnFormat = new DecimalFormat("#.###");
-        builder.append(PER_TURN_STRING);
-        builder.append(perTurnFormat.format(stat / Math.max(totalTurns, 1)));
+        //builder.append(PER_TURN_STRING);
+        //builder.append(perTurnFormat.format(stat / Math.max(totalTurns, 1)));
         builder.append(PER_COMBAT_STRING);
         builder.append(perTurnFormat.format(stat / Math.max(totalCombats, 1)));
         return builder.toString();
