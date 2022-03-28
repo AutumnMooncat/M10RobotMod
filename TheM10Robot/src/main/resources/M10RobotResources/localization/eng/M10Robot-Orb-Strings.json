@@ -2,8 +2,7 @@
   "M10Robot:BombOrb": {
     "NAME": "Bomb",
     "DESCRIPTION": [
-      "#yPassive: When receiving attack damage, increase this Orb's damage by #b","% of the damage. NL #yEvoke: Deal #b"," damage to the enemy with the highest HP.",
-      " NL Absorption #b+", "%."
+      "#yPassive: When receiving attack damage, increase this Orb's damage by #b","% of the damage. NL #yEvoke: Deal #b"," damage to the enemy with the highest HP."
     ]
   },
   "M10Robot:BitOrb": {
@@ -16,15 +15,13 @@
   "M10Robot:PresentOrb": {
     "NAME": "Present",
     "DESCRIPTION": [
-      "#yPassive: Whenever you play an #yAttack, gain #b"," #yBlock. NL #yEvoke: Gain #b"," #yBlock.",
-      " NL #b+", " #yBlock per Attack. #b+", " #yBlock when #yEvoked."
+      "#yPassive: At the start of your turn, draw an additional card. NL #yEvoke: Draw #b"," cards."
     ]
   },
   "M10Robot:SearchlightOrb": {
     "NAME": "Searchlight",
     "DESCRIPTION": [
-      "#yPassive: When attacked, deal #b"," damage back. NL #yEvoke: Gain #b"," #ySpikes.",
-      " NL Damage #b+", ", #ySpikes #b+","."
+      "#yPassive: When attacked, deal #b"," damage back. NL #yEvoke: Gain #b"," #ySpikes."
     ]
   },
   "M10Robot:UpgradeText": {

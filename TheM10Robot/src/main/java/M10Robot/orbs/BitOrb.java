@@ -86,7 +86,7 @@ public class BitOrb extends AbstractCustomOrb {
 
     @Override
     public void onEvoke() { // 1.On Orb Evoke
-        this.addToBot(new BitEvokeAction(this, p, LOCK_ON));
+        this.addToTop(new BitEvokeAction(this, p, LOCK_ON));
     }
 
     @Override

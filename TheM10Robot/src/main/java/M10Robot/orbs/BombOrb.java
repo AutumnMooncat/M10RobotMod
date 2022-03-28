@@ -85,7 +85,7 @@ public class BombOrb extends AbstractCustomOrb {
 
     @Override
     public void onEvoke() { // 1.On Orb Evoke
-        this.addToBot(new BombEvokeAction(p, this));
+        this.addToTop(new BombEvokeAction(p, this));
     }
 
     @Override

@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
+import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -42,9 +43,9 @@ public class PresentOrb extends AbstractCustomOrb {
     private static final float PI_4 = 12.566371f;
 
     private static final int PASSIVE_AMOUNT = 1;
-    private static final int EVOKE_AMOUNT = 4;
+    private static final int EVOKE_AMOUNT = 2;
     private static final int UPGRADE_PLUS_PASSIVE_AMOUNT= 1;
-    private static final int UPGRADE_PLUS_EVOKE_AMOUNT = 2;
+    private static final int UPGRADE_PLUS_EVOKE_AMOUNT = 1;
 
     public PresentOrb() {
         this(0);
@@ -61,7 +62,7 @@ public class PresentOrb extends AbstractCustomOrb {
     public void upgrade() {
         if (canUpgrade()) {
             upgradeName(); //Cost will increase once we call upgradeName and increment timesUpgraded
-            upgradePassive(UPGRADE_PLUS_PASSIVE_AMOUNT);
+            //upgradePassive(UPGRADE_PLUS_PASSIVE_AMOUNT);
             upgradeEvoke(UPGRADE_PLUS_EVOKE_AMOUNT);
             CardCrawlGame.sound.play("ORB_LIGHTNING_CHANNEL", 0.1F);
             updateDescription();
@@ -70,25 +71,32 @@ public class PresentOrb extends AbstractCustomOrb {
 
     @Override
     public void updateDescription() { // Set the on-hover description of the orb
-        applyFocus(); // Apply Focus (Look at the next method)
+        applyFocusToEvokeOnly(); // Apply Focus (Look at the next method)
         description =
-                DESC[0] + passiveAmount + DESC[1] + evokeAmount + DESC[2]/* +
+                DESC[0] + evokeAmount + DESC[1]/* +
                 UPGRADE_TEXT[0] +
                 DESC[3] + UPGRADE_PLUS_PASSIVE_AMOUNT + DESC[4] + UPGRADE_PLUS_EVOKE_AMOUNT + DESC[5]*/;
     }
 
     @Override
-    public void onEvoke() { // 1.On Orb Evoke
-        this.addToBot(new GainBlockAction(p, evokeAmount));
+    public void onStartOfTurn() {
+        playAnimation(SUCCESS_IMG, MED_ANIM);
+        this.addToBot(new DrawCardAction(PASSIVE_AMOUNT)); //hardcoded so if something modifies passive amount the description is still accurate
     }
 
     @Override
+    public void onEvoke() { // 1.On Orb Evoke
+        playAnimation(SUCCESS_IMG, MED_ANIM);
+        this.addToTop(new DrawCardAction(evokeAmount));
+    }
+
+/*    @Override
     public void onPlayCard(AbstractCard card) {
         if (card.type == AbstractCard.CardType.ATTACK) {
             playAnimation(ATTACK_IMG, SHORT_ANIM);
             this.addToBot(new GainBlockAction(p, p, passiveAmount, true));
         }
-    }
+    }*/
 
     @Override
     public void onAttacked(DamageInfo info) {
@@ -116,10 +124,12 @@ public class PresentOrb extends AbstractCustomOrb {
         hb.render(sb);
     }
 
-    /*protected void renderText(SpriteBatch sb) {
-        FontHelper.renderFontCentered(sb, FontHelper.cardEnergyFont_L, String.valueOf(this.passiveAmount), this.cX + NUM_X_OFFSET + GENERIC_X_OFFSET, this.cY + this.bobEffect.y / 2.0F + NUM_Y_OFFSET + 20.0F * Settings.scale, this.c, this.fontScale);
-        FontHelper.renderFontCentered(sb, FontHelper.cardEnergyFont_L, String.valueOf(this.evokeAmount), this.cX + NUM_X_OFFSET + GENERIC_X_OFFSET, this.cY + this.bobEffect.y / 2.0F + NUM_Y_OFFSET - 4.0F * Settings.scale, new Color(0.2F, 1.0F, 1.0F, this.c.a), this.fontScale);
-    }*/
+    @Override
+    protected void renderText(SpriteBatch sb) {
+        if (this.showEvokeValue) {
+            FontHelper.renderFontCentered(sb, FontHelper.cardEnergyFont_L, Integer.toString(this.evokeAmount), this.cX + NUM_X_OFFSET, this.cY + this.bobEffect.y / 2.0F + NUM_Y_OFFSET - 4.0F * Settings.scale, new Color(0.2F, 1.0F, 1.0F, this.c.a), this.fontScale);
+        }
+    }
 
     @Override
     public void triggerEvokeAnimation() { // The evoke animation of this orb is the dark-orb activation effect.

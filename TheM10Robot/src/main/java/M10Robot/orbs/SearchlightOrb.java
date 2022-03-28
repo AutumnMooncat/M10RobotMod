@@ -90,14 +90,14 @@ public class SearchlightOrb extends AbstractCustomOrb {
 
     @Override
     public void onEvoke() { // 1.On Orb Evoke
-        this.addToBot(new AbstractGameAction() {
+        this.addToTop(new ApplyPowerAction(p, p, new SpikesPower(p, evokeAmount)));
+        this.addToTop(new AbstractGameAction() {
             @Override
             public void update() {
                 playAnimation(ATTACK_IMG, MED_ANIM);
                 this.isDone = true;
             }
         });
-        this.addToBot(new ApplyPowerAction(p, p, new SpikesPower(p, evokeAmount)));
     }
 
     @Override
