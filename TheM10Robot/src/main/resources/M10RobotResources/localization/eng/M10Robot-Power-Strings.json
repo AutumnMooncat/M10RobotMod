@@ -132,8 +132,8 @@
     "DESCRIPTIONS": ["Whenever you play a card, gain #b"," #ySpikes."]
   },
   "M10Robot:TargetingSystemPower": {
-    "NAME": "Targeting System",
-    "DESCRIPTIONS": ["Whenever you deal #b,"," or more unblocked attack damage, apply #b", " #yLock-On."]
+    "NAME": "Heuristics",
+    "DESCRIPTIONS": ["Whenever you deal #b"," or more unblocked attack damage, apply #b", " #yLock-On."]
   },
   "M10Robot:TauntPower": {
     "NAME": "Taunted",
