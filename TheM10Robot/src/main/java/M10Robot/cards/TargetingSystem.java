@@ -39,7 +39,6 @@ public class TargetingSystem extends AbstractDynamicCard implements BranchingUpg
     public TargetingSystem() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = LOCK;
-        info = baseInfo = TargetingSystemPower.THRESHOLD;
     }
 
     // Actions the card should do.

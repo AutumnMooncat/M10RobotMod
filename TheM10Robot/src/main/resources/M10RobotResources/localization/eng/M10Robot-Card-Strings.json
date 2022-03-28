@@ -361,7 +361,7 @@
   },
   "M10Robot:TargetingSystem": {
     "NAME": "Heuristics",
-    "DESCRIPTION": "Whenever you deal !M10Robot:Info! or more unblocked attack damage, apply !M! Lock-On."
+    "DESCRIPTION": "Whenever you Channel an Orb, apply !M! Lock-On to a random enemy."
   },
   "M10Robot:ThermalImaging": {
     "NAME": "Thermal Imaging",
