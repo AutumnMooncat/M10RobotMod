@@ -89,6 +89,18 @@ public class OverclockPatches {
         }
     }
 
+    public static void fixMagicNumbers() {
+        for (AbstractCard c : AbstractDungeon.player.hand.group) {
+            c.magicNumber = c.baseMagicNumber;
+            c.isMagicNumberModified = false;
+            if (c instanceof AbstractModdedCard) {
+                ((AbstractModdedCard) c).secondMagicNumber = ((AbstractModdedCard) c).baseSecondMagicNumber;
+                ((AbstractModdedCard) c).isSecondMagicNumberModified = false;
+            }
+        }
+        AbstractDungeon.player.onCardDrawOrDiscard();
+    }
+
     public static float onModifyDamageFinal(float damage, AbstractCard card) {
         return (damage * (100F + getOverClockPercent(card))) / 100F;
     }
@@ -109,7 +121,7 @@ public class OverclockPatches {
     }
 
     private static boolean isCombatCard(AbstractCard c) {
-        return AbstractDungeon.player != null && AbstractDungeon.currMapNode != null && AbstractDungeon.getCurrRoom() != null && AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT && !AbstractDungeon.player.masterDeck.contains(c);
+        return AbstractDungeon.player != null && AbstractDungeon.currMapNode != null && AbstractDungeon.getCurrRoom() != null && AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT && AbstractDungeon.player.hand.contains(c);
     }
 
     @SpirePatch(clz = UseCardAction.class, method = SpirePatch.CONSTRUCTOR, paramtypez = {AbstractCard.class, AbstractCreature.class})
@@ -140,6 +152,7 @@ public class OverclockPatches {
                 }
             }
             if (appliedOnPlay > 0) {
+                fixMagicNumbers();
                 overclock(card, appliedOnPlay);
             }
         }
