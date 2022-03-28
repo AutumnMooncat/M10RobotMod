@@ -1,4 +1,4 @@
-package M10Robot.cards;
+package M10Robot.cutAndRework;
 
 import M10Robot.M10RobotMod;
 import M10Robot.actions.BuffCardAction;
@@ -6,7 +6,6 @@ import M10Robot.cards.abstractCards.AbstractSwappableCard;
 import M10Robot.cards.uniqueCards.UniqueCard;
 import M10Robot.characters.M10Robot;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -50,7 +49,7 @@ public class WaveAnalyzer extends AbstractSwappableCard implements UniqueCard {
         block = baseBlock = BLOCK;
         magicNumber = baseMagicNumber = BOOST;
         if (linkedCard == null) {
-            setLinkedCard(new WaveGenerator(this));
+            setLinkedCard(null); // Nulled for now as this card is removed
         } else {
             setLinkedCard(linkedCard);
         }
