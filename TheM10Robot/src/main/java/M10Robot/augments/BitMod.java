@@ -23,6 +23,7 @@ public class BitMod extends AbstractAugment {
     public void onInitialApplication(AbstractCard card) {
         modifyBaseStat(card, BuffType.DAMAGE, BuffScale.MODERATE_DEBUFF);
         if (card instanceof Byte) {
+            card.baseMagicNumber += ORBS;
             card.magicNumber += ORBS;
             setBaseVar = true;
         }

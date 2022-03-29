@@ -2,6 +2,7 @@ package M10Robot.augments;
 
 import CardAugments.cardmods.AbstractAugment;
 import M10Robot.M10RobotMod;
+import M10Robot.cards.SpikeBall;
 import M10Robot.cards.SteelWall;
 import M10Robot.orbs.SearchlightOrb;
 import basemod.abstracts.AbstractCardModifier;
@@ -20,8 +21,9 @@ public class SearchMod extends AbstractAugment {
     @Override
     public void onInitialApplication(AbstractCard card) {
         modifyBaseStat(card, BuffType.BLOCK, BuffScale.MODERATE_DEBUFF);
-        if (card instanceof SteelWall) {
+        if (card instanceof SteelWall || card instanceof SpikeBall) {
             card.baseMagicNumber += ORBS;
+            card.magicNumber += ORBS;
         }
         card.showEvokeValue = true;
     }
