@@ -1,32 +1,7 @@
 {
-  "M10Robot:AmmoBoxPower": {
-    "NAME": "Heavy Caliber",
-    "DESCRIPTIONS": ["#yLoaded Attacks apply #b"," Vulnerable to their targets."]
-  },
   "M10Robot:BalanceCurrentsPower": {
     "NAME": "Balance Currents",
     "DESCRIPTIONS": ["Whenever a debuff is applied to you, gain #b"," #yBlock."]
-  },
-  "M10Robot:CompensatorPower": {
-    "NAME": "Compensator",
-    "DESCRIPTIONS": ["At the end of turn, reduce #yRecoil by #b","."]
-  },
-  "M10Robot:ComponentsPower": {
-    "NAME": "Components",
-    "DESCRIPTIONS": ["Components are used to #yOverclock cards and #yUpgrade Orbs. NL Current Components: #b","."]
-  },
-  "M10Robot:ConcentrationPower": {
-    "NAME": "Sturdy Structure",
-    "DESCRIPTIONS": ["Whenever you gain #yRecoil, gain #b"," #yBlock."]
-  },
-  "M10Robot:DoubleCasterPower": {
-    "NAME": "Double Caster",
-    "DESCRIPTIONS": ["The first #yOrb you #yEvoke each turn is #yEvoke #btwice.","The first #b"," #yOrbs you #yEvoke each turn are #yEvoke #btwice."]
-  },
-  "M10Robot:EMPPower": {
-    "NAME": "Stasis",
-    "DESCRIPTIONS": ["Other debuffs can not decrease this turn",
-      "Other debuffs can not decrease for #b"," turns."]
   },
   "M10Robot:ExtrapolatePower": {
     "NAME": "Extrapolate",
@@ -40,23 +15,10 @@
     "NAME": "Evasion Down",
     "DESCRIPTIONS": ["Takes #b", " additional damage from all sources this turn."]
   },
-  "M10Robot:HighExplosivePower": {
-    "NAME": "High Explosives",
-    "DESCRIPTIONS": ["#yBombs now hits ALL enemies #b"," time."," times."]
-  },
   "M10Robot:ImaginaryPower": {
     "NAME": "Imaginary Numbers",
     "DESCRIPTIONS": ["This turn, whenever you draw a card, randomize its cost between #b0 and #b1.",
       "For #b"," turns, whenever you draw a card, randomize its cost between #b0 and #b1."]
-  },
-  "M10Robot:LoseFocusPower": {
-    "NAME": "Focus Down",
-    "DESCRIPTIONS": ["At the end of this turn, lose #b", " #yFocus."]
-  },
-  "M10Robot:MomentumPower": {
-    "NAME": "Momentum",
-    "DESCRIPTIONS": ["Increases attack damage, #yBlock gained from cards, and cards drawn next turn by #b",". At the start of your turn, reduce Momentum by #b1.",
-      "Decreases attack damage, #yBlock gained from cards, and cards drawn next turn by #b",". At the start of your turn, increase Momentum by #b1."]
   },
   "M10Robot:OverdrivePower": {
     "NAME": "Overdrive",
@@ -65,14 +27,6 @@
   "M10Robot:PowerSavingsPower": {
     "NAME": "Power Savings",
     "DESCRIPTIONS": ["At the start of your turn, gain #b"," #yEnergy."]
-  },
-  "M10Robot:ProtectPower": {
-    "NAME": "Protect",
-    "DESCRIPTIONS": ["Whenever you would lose HP, lose #b"," less and reduce #yProtect by #b1. NL When depleted, you become #yScrambled and draw #b1 less card next turn."]
-  },
-  "M10Robot:QuickRepairPower": {
-    "NAME": "Quick Repair",
-    "DESCRIPTIONS": ["At the start of your turn, #yRepair #b","."]
   },
   "M10Robot:RAMUpgradePower": {
     "NAME": "RAM Upgrade",
@@ -85,43 +39,14 @@
                     "Negates the next #yRecoil you receive.",
                     "Negates the next #b"," #yRecoil you receive."]
   },
-  "M10Robot:RecoveryModePower": {
-    "NAME": "Recovery Mode",
-    "DESCRIPTIONS": ["Gain #b"," #yTemporary #yHP at the beginning of every turn, up to a maximum of #b","."]
-  },
   "M10Robot:ReflectiveShellPower": {
     "NAME": "Reflective Shell",
     "DESCRIPTIONS": ["Fully blocked attacks are reflected onto the attacker.",
                     "Fully blocked attacks are reflected onto the attacker #b"," times."]
   },
-  "M10Robot:RelayPower": {
-    "NAME": "Relay",
-    "DESCRIPTIONS": ["At the beginning of your next turn, add the following cards to your hand if they are still in play: "]
-  },
-  "M10Robot:ReshufflePower": {
-    "NAME": "Reshuffle",
-    "DESCRIPTIONS": ["Shuffle the next card you play into your draw pile.","Shuffle the next #b"," cards you play into your draw pile."]
-  },
   "M10Robot:RewindPower": {
     "NAME": "Rewind",
     "DESCRIPTIONS": ["The first time you lose #yBlock each turn, gain that much #yBlock next turn.","The first #b"," times you lose #yBlock each turn, gain that much #yBlock next turn."]
-  },
-  "M10Robot:RipostePower": {
-    "NAME": "Riposte",
-    "DESCRIPTIONS": ["The next time you are attacked, the attacker takes an equal amount of damage.","The next #b"," times you are attacked, the attacker takes an equal amount of damage."]
-  },
-  "M10Robot:RumblePower": {
-    "NAME": "Rumble",
-    "DESCRIPTIONS": ["Whenever you play a card, gain #b"," temporary #yStrength."]
-  },
-  "M10Robot:ScrambledPower": {
-    "NAME": "Scrambled",
-    "DESCRIPTIONS": ["Draw #b1 less card next turn.",
-                    "Draw #b1 less card for #b", " turns."]
-  },
-  "M10Robot:SpeedloaderPower": {
-    "NAME": "Speedloader",
-    "DESCRIPTIONS": ["Whenever you #yReload, draw #b"," card."," cards."]
   },
   "M10Robot:SpikesPower": {
     "NAME": "Spikes",
@@ -135,10 +60,6 @@
     "NAME": "Heuristics",
     "DESCRIPTIONS": ["Whenever you #yChannel and Orb, apply #b", " #yLock-On to a random enemy."]
   },
-  "M10Robot:TauntPower": {
-    "NAME": "Taunted",
-    "DESCRIPTIONS": ["This creature is forced to attack for #b", " turn.", " turns."]
-  },
   "M10Robot:TinkerPower": {
     "NAME": "Tinkering",
     "DESCRIPTIONS": ["#yUpgrade the next #yOrb you #yChannel #b"," time"," times."]
@@ -147,10 +68,6 @@
     "NAME": "Turbo Mode",
     "DESCRIPTIONS": ["At the beginning of your next turn, draw an additional card and gain [E] .",
       "At the beginning of your next #b"," turns, draw an additional card and gain [E] ."]
-  },
-  "M10Robot:WeaponPlatformPower": {
-    "NAME": "Weapon Platform",
-    "DESCRIPTIONS": ["At the end of your turn, deal #b"," damage to ALL enemies with #yLock-On."]
   },
   "M10Robot:WideAnglePower": {
     "NAME": "Wide Angle",
