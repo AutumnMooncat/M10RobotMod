@@ -5,7 +5,6 @@ import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.cards.interfaces.CannotOverclock;
 import M10Robot.characters.M10Robot;
 import M10Robot.powers.PowerSavingsPower;
-import M10Robot.powers.ScrambledPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;

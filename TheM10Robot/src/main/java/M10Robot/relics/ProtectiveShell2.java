@@ -1,7 +1,7 @@
 package M10Robot.relics;
 
 import M10Robot.M10RobotMod;
-import M10Robot.powers.ProtectPower;
+import M10Robot.cutStuff.powers.ProtectPower;
 import M10Robot.util.TextureLoader;
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;

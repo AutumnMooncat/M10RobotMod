@@ -4,7 +4,6 @@ import M10Robot.augments.AugmentHelper;
 import M10Robot.characters.M10Robot;
 import M10Robot.orbs.AbstractCustomOrb;
 import M10Robot.potions.*;
-import M10Robot.powers.EMPPower;
 import M10Robot.relics.*;
 import M10Robot.util.IDCheckDontTouchPls;
 import M10Robot.util.TextureLoader;
@@ -30,7 +29,6 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.CardHelper;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.*;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
 import org.apache.logging.log4j.LogManager;
@@ -80,7 +78,6 @@ public class M10RobotMod implements
         EditKeywordsSubscriber,
         EditCharactersSubscriber,
         PostInitializeSubscriber,
-        PostEnergyRechargeSubscriber,
         OnCardUseSubscriber,
         OnPlayerDamagedSubscriber {
     // Make sure to implement the subscribers *you* are using (read basemod wiki). Editing cards? EditCardsSubscriber.
@@ -732,18 +729,6 @@ public class M10RobotMod implements
     // in order to avoid conflicts if any other mod uses the same ID.
     public static String makeID(String idText) {
         return getModID() + ":" + idText;
-    }
-
-    @Override
-    public void receivePostEnergyRecharge() {
-        if (AbstractDungeon.player.hasPower(EMPPower.POWER_ID)) {
-            AbstractDungeon.player.getPower(EMPPower.POWER_ID).onSpecificTrigger();
-        }
-        for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
-            if (aM.hasPower(EMPPower.POWER_ID)) {
-                aM.getPower(EMPPower.POWER_ID).onSpecificTrigger();
-            }
-        }
     }
 
     @Override

@@ -1,32 +1,36 @@
-package M10Robot.powers;
+package M10Robot.cutStuff.powers;
 
 import M10Robot.M10RobotMod;
 import basemod.interfaces.CloneablePowerInterface;
-import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
-import com.megacrit.cardcrawl.actions.utility.UseCardAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.localization.PowerStrings;
+import com.megacrit.cardcrawl.orbs.AbstractOrb;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
-public class ReshufflePower extends AbstractPower implements CloneablePowerInterface {
+import java.util.ArrayList;
 
-    public static final String POWER_ID = M10RobotMod.makeID("ReshufflePower");
+public class DoubleCasterPower extends AbstractPower implements CloneablePowerInterface {
+
+    public static final String POWER_ID = M10RobotMod.makeID("DoubleCasterPower");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
     public static final String NAME = powerStrings.NAME;
     public static final String[] DESCRIPTIONS = powerStrings.DESCRIPTIONS;
 
-    private boolean justEvoked = true;
+    private int evokedThisTurn;
+    private final ArrayList<AbstractOrb> orbsEvokedThisTurn = new ArrayList<>();
+
+    private final Color color = new Color(0.0F, 1.0F, 0.0F, 1.0F);
 
     // We create 2 new textures *Using This Specific Texture Loader* - an 84x84 image and a 32x32 one.
     // There's a fallback "missing texture" image, so the game shouldn't crash if you accidentally put a non-existent file.
     //private static final Texture tex84 = TextureLoader.getTexture(makePowerPath("placeholder_power84.png"));
     //private static final Texture tex32 = TextureLoader.getTexture(makePowerPath("placeholder_power32.png"));
 
-    public ReshufflePower(AbstractCreature owner, int amount) {
+    public DoubleCasterPower(AbstractCreature owner, int amount) {
         this.name = NAME;
         this.ID = POWER_ID;
         this.owner = owner;
@@ -34,14 +38,38 @@ public class ReshufflePower extends AbstractPower implements CloneablePowerInter
 
         this.type = PowerType.BUFF;
         this.isTurnBased = false;
+        this.priority = Short.MAX_VALUE + 1;
 
         // We load those txtures here.
         //this.loadRegion("cExplosion");
-        this.loadRegion("rebound");
+        this.loadRegion("skillBurn");
         //this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
         //this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
 
         updateDescription();
+    }
+
+    @Override
+    public void atStartOfTurn() {
+        evokedThisTurn = 0;
+        orbsEvokedThisTurn.clear();
+    }
+
+    @Override
+    public void onEvokeOrb(AbstractOrb orb) {
+        if (evokedThisTurn < amount && !orbsEvokedThisTurn.contains(orb)) {
+            orbsEvokedThisTurn.add(orb);
+            evokedThisTurn++;
+            orb.onEvoke();
+            flash();
+        }
+    }
+
+    @Override
+    public void renderAmount(SpriteBatch sb, float x, float y, Color c) {
+        this.color.a = c.a;
+        c = this.color;
+        FontHelper.renderFontRightTopAligned(sb, FontHelper.powerAmountFont, Integer.toString(amount-evokedThisTurn), x, y, this.fontScale, c);
     }
 
     public void updateDescription() {
@@ -52,34 +80,9 @@ public class ReshufflePower extends AbstractPower implements CloneablePowerInter
         }
     }
 
-    public void onAfterUseCard(AbstractCard card, UseCardAction action) {
-        if (this.justEvoked) {
-            this.justEvoked = false;
-        } else {
-            //Don't waste a use if the card already was going to return
-            if (!card.shuffleBackIntoDrawPile && card.type != AbstractCard.CardType.POWER) {
-                this.flash();
-                //action.returnToHand = true;
-                card.shuffleBackIntoDrawPile = true;
-                this.addToTop(new AbstractGameAction() {
-                    @Override
-                    public void update() {
-                        card.shuffleBackIntoDrawPile = false;
-                        this.isDone = true;
-                    }
-                });
-            }
-            if (this.amount == 1) {
-                this.addToBot(new RemoveSpecificPowerAction(owner, owner, this));
-            } else {
-                this.addToBot(new ReducePowerAction(owner, owner, this, 1));
-            }
-        }
-    }
-
     @Override
     public AbstractPower makeCopy() {
-        return new ReshufflePower(owner, amount);
+        return new DoubleCasterPower(owner, amount);
     }
 
 }
