@@ -1,40 +1,11 @@
 [
   {
-    "PROPER_NAME": "Aimed",
-    "NAMES": [
-      "aimed"
-    ],
-    "DESCRIPTION": "Deals #b50% more damage to targets with #yLock-On."
-  },
-  {
-    "PROPER_NAME": "Augmented",
-    "NAMES": [
-      "augmented"
-    ],
-    "DESCRIPTION": "TBD for Augment mechanic"
-  },
-  {
-    "PROPER_NAME": "Components",
-    "NAMES": [
-      "components",
-      "component"
-    ],
-    "DESCRIPTION": "Resource used to #yUpgrade #yOrbs and #yOverclock cards."
-  },
-  {
     "PROPER_NAME": "Overclock",
     "NAMES": [
       "overclock",
       "overclocked"
     ],
     "DESCRIPTION": "Increases the base stats of cards by #b25% until played."
-  },
-  {
-    "PROPER_NAME": "Heavy",
-    "NAMES": [
-      "heavy"
-    ],
-    "DESCRIPTION": "Gain #yRecoil when this card is played, making your next attack deal #b50% less damage."
   },
   {
     "PROPER_NAME": "Inert",
@@ -52,63 +23,11 @@
     "DESCRIPTION": "Move the most recent cards in your discard pile to your hand."
   },
   {
-    "PROPER_NAME": "Plated Armor",
-    "NAMES": [
-      "Plated Armor",
-      "plated_armor"
-    ],
-    "DESCRIPTION": "Provides #yBlock at the end of your turn. Receiving unblocked attack damage reduces Plated Armor by #b1."
-  },
-  {
-    "PROPER_NAME": "Protect",
-    "NAMES": [
-      "protect"
-    ],
-    "DESCRIPTION": "Whenever you would lose HP, lose #b4 less and reduce Protect by #b1. NL When depleted, you become #yScrambled and draw #b1 less card next turn."
-  },
-  {
     "PROPER_NAME": "Recoil",
     "NAMES": [
       "recoil"
     ],
     "DESCRIPTION": "Your next attack deals #b50% less damage."
-  },
-  {
-    "PROPER_NAME": "Relay",
-    "NAMES": [
-      "relay"
-    ],
-    "DESCRIPTION": "At the beginning of your next turn, add the selected cards to your hand. Will not recover cards which are exhausted or otherwise removed from play."
-  },
-  {
-    "PROPER_NAME": "Reloading",
-    "NAMES": [
-      "reloading",
-      "loaded",
-      "reload"
-    ],
-    "DESCRIPTION": "Loaded cards become Reloading when played. NL Reloading cards are #yUnplayable and become Loaded when #yDiscarded or #yRight #yClicked at the cost of [E]"
-  },
-  {
-    "PROPER_NAME": "Reshuffle",
-    "NAMES": [
-      "reshuffle"
-    ],
-    "DESCRIPTION": "Shuffle this card into your draw pile when it is played."
-  },
-  {
-    "PROPER_NAME": "Returning",
-    "NAMES": [
-      "returning"
-    ],
-    "DESCRIPTION": "This card returns to your hand when played."
-  },
-  {
-    "PROPER_NAME": "Scrambled",
-    "NAMES": [
-      "scrambled"
-    ],
-    "DESCRIPTION": "Draw #b1 less card next turn."
   },
   {
     "PROPER_NAME": "Spikes",
@@ -123,13 +42,6 @@
       "spiky"
     ],
     "DESCRIPTION": "Damage scales with #ySpikes."
-  },
-  {
-    "PROPER_NAME": "Stasis",
-    "NAMES": [
-      "stasis"
-    ],
-    "DESCRIPTION": "Other debuffs can not decrease while #yStasis is active."
   },
   {
     "PROPER_NAME": "Stun",
@@ -182,7 +94,9 @@
     "PROPER_NAME": "Searchlight",
     "NAMES": [
       "searchlight",
-      "searchlights"
+      "searchlights",
+      "light",
+      "lights"
     ],
     "DESCRIPTION": "Orb: Deals damage when you are attacked. When #yEvoked, grants #ySpikes."
   }
