@@ -313,7 +313,7 @@
   },
   "M10Robot:Seeker": {
     "NAME": "Seeker",
-    "DESCRIPTION": "{@@}Apply !M! Lock-On. NL Channel !M10Robot:SecondMagic! m10robot:Bit{!M10Robot:SecondMagic!|>1=s}. NL If the enemy had Lock-On, deal !D! damage."
+    "DESCRIPTION": "{@@}Apply !M! Lock-On. NL If the enemy already had Lock-On, deal !D! damage."
   },
   "M10Robot:SelfDestruction": {
     "NAME": "Self Destruction",
@@ -365,11 +365,11 @@
   },
   "M10Robot:ThermalImaging": {
     "NAME": "Thermal Imaging",
-    "DESCRIPTION": "m10robot:Swappable. NL Apply !M! Lock-On. NL Increase the damage of *Heat *Seekers by !M10Robot:SecondMagic!."
+    "DESCRIPTION": "{@@}m10robot:Swappable. NL Apply !M! Lock-On. NL Channel !M10Robot:SecondMagic! m10robot:Bit{!M10Robot:SecondMagic!|>1=s}."
   },
   "M10Robot:HeatSeekers": {
     "NAME": "Heat Seekers",
-    "DESCRIPTION": "m10robot:Swappable. NL Deal !D! damage to ALL enemies."
+    "DESCRIPTION": "m10robot:Swappable. NL Deal !D! damage to ALL enemies with Lock-On."
   },
   "M10Robot:ThornField": {
     "NAME": "Thorn Field",
