@@ -1,20 +1,22 @@
 package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
-import M10Robot.actions.MultichannelAction;
-import M10Robot.cardModifiers.AimedModifier;
 import M10Robot.cards.abstractCards.AbstractSwappableCard;
 import M10Robot.cards.uniqueCards.UniqueCard;
 import M10Robot.characters.M10Robot;
-import M10Robot.orbs.SearchlightOrb;
-import basemod.helpers.CardModifierManager;
+import basemod.BaseMod;
 import basemod.helpers.TooltipInfo;
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
-import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.GameDictionary;
 import com.megacrit.cardcrawl.helpers.TipHelper;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.LockOnPower;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,8 +42,8 @@ public class HeatSeekers extends AbstractSwappableCard implements UniqueCard {
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
     private static final int COST = 0;
-    private static final int DAMAGE = 2;
-    private static final int UPGRADE_PLUS_DMG = 2;
+    private static final int DAMAGE = 7;
+    private static final int UPGRADE_PLUS_DMG = 3;
 
     protected static ArrayList<TooltipInfo> toolTips;
 
@@ -67,7 +69,8 @@ public class HeatSeekers extends AbstractSwappableCard implements UniqueCard {
     public List<TooltipInfo> getCustomTooltips() {
         if (toolTips == null) {
             toolTips = new ArrayList<>();
-            toolTips.add(new TooltipInfo(TipHelper.capitalize(GameDictionary.LOCK_ON.NAMES[0]), GameDictionary.keywords.get(GameDictionary.LOCK_ON.NAMES[0])));
+            toolTips.add(new TooltipInfo(TipHelper.capitalize(GameDictionary.CHANNEL.NAMES[0]), GameDictionary.keywords.get(GameDictionary.CHANNEL.NAMES[0])));
+            toolTips.add(new TooltipInfo(BaseMod.getKeywordTitle("m10robot:Bit"), BaseMod.getKeywordDescription("m10robot:Bit")));
         }
         return toolTips;
     }
@@ -75,7 +78,20 @@ public class HeatSeekers extends AbstractSwappableCard implements UniqueCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new DamageAllEnemiesAction(p, multiDamage, damageTypeForTurn, AbstractGameAction.AttackEffect.FIRE));
+        for (AbstractMonster aM: AbstractDungeon.getMonsters().monsters) {
+            if (!aM.isDeadOrEscaped() && aM.hasPower(LockOnPower.POWER_ID)) {
+                this.addToBot(new DamageAction(aM, new DamageInfo(p, multiDamage[AbstractDungeon.getMonsters().monsters.indexOf(aM)], damageTypeForTurn), AbstractGameAction.AttackEffect.FIRE, true));
+            }
+        }
+        //this.addToBot(new DamageAllEnemiesAction(p, multiDamage, damageTypeForTurn, AbstractGameAction.AttackEffect.FIRE));
+        //this.addToBot(new BuffCardAction(this, BuffCardAction.BUFF_TYPE.DAMAGE, magicNumber));
+    }
+
+    public void triggerOnGlowCheck() {
+        this.glowColor = Color.RED.cpy();
+        if (AbstractDungeon.getMonsters().monsters.stream().anyMatch(m -> m.hasPower(LockOnPower.POWER_ID))) {
+            this.glowColor = AbstractCard.GOLD_BORDER_GLOW_COLOR.cpy();
+        }
     }
 
     // Upgraded stats.
