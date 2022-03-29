@@ -45,8 +45,9 @@ public class BitOrb extends AbstractCustomOrb {
     private static final float MOUTH_OFFSET_Y = -35f * Settings.scale;
 
     private static final int PASSIVE_DAMAGE = 2;
-    private static final int EVOKE_DAMAGE = PASSIVE_DAMAGE * 2;
+    private static final int EVOKE_DAMAGE = 4;
     private static final int UPGRADE_PLUS_PASSIVE_DAMAGE = 1;
+    private static final int UPGRADE_PLUS_EVOKE_DAMAGE = 2;
     private static final int LOCK_ON = 2;
 
     public BitOrb() {
@@ -64,22 +65,17 @@ public class BitOrb extends AbstractCustomOrb {
         if (canUpgrade()) {
             upgradeName();
             upgradePassive(UPGRADE_PLUS_PASSIVE_DAMAGE);
+            upgradeEvoke(UPGRADE_PLUS_EVOKE_DAMAGE);
             CardCrawlGame.sound.play("ORB_LIGHTNING_CHANNEL", 0.1F);
             updateDescription();
         }
     }
 
     @Override
-    public void applyFocus() {
-        applyFocusToPassiveOnly();
-        this.evokeAmount = this.passiveAmount * 2;
-    }
-
-    @Override
     public void updateDescription() { // Set the on-hover description of the orb
         applyFocus();
         description =
-                DESC[0] + passiveAmount + DESC[1] + evokeAmount + DESC[2];
+                DESC[0] + passiveAmount + DESC[1] + evokeAmount + DESC[2] + LOCK_ON + DESC[3];
     }
 
     @Override

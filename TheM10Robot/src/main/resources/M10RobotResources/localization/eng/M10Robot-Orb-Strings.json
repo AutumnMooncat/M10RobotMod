@@ -8,7 +8,7 @@
   "M10Robot:BitOrb": {
     "NAME": "Bit",
     "DESCRIPTION": [
-      "#yPassive: Whenever you play an #yAttack, deal #b"," damage to the enemy with the lowest HP. NL #yEvoke: Deal #b"," damage and apply #b2 #yLock-On to a random enemy."
+      "#yPassive: Whenever you play an #yAttack, deal #b"," damage to the enemy with the lowest HP. NL #yEvoke: Deal #b"," damage and apply #b"," #yLock-On to a random enemy."
     ]
   },
   "M10Robot:PresentOrb": {
