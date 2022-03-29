@@ -132,7 +132,7 @@
   },
   "M10Robot:EmptyBuffer": {
     "NAME": "Empty Buffer",
-    "DESCRIPTION": "{@@}Evoke all your Orbs !M! time{!M!|>1=s}."
+    "DESCRIPTION": "{@@}{!M10Robot:Info!|@=Remove|1=Evoke} all your Orbs. NL Gain !M! Orb slot{!M!|>1=s} for each Orb {!M10Robot:Info!|@=removed|>0=Evoked}."
   },
   "M10Robot:EnergyShield": {
     "NAME": "Energy Shield",
