@@ -5,34 +5,40 @@ _**aka Even More Orange Juice The Spire**_
 
 This mod currently adds M10 Robot from the game 100% Orange Juice.
 
-Alongside them is a full suite of 75+ cards that are not guaranteed to play well with other mods. I did my best. While I do not yet know of any incompatibilities, please let me know if you find any.
+Alongside them is a full suite of 75 cards that are not guaranteed to play well with other mods. I did my best. While I do not yet know of any incompatibilities, please let me know if you find any.
 
-Character and some card assets are from 100% Orange Juice and are property of Orange_Juice and Fruitbat Factory. The remaining cards were drawn by me in my best attempt to immitate the original art style.
+Character, relic, and some card assets are from 100% Orange Juice and are property of Orange_Juice and Fruitbat Factory. The remaining cards were drawn by me in my best attempt to immitate the original art style.
 
-This mod is a work in progress, but it is still a fully playable (if not balanced) experience at the moment. Additional relics are planned, and new cards may be added in the future.
+This mod is a work in progress, but it is still a fully playable (if not balanced) experience at the moment.
 
 Features
 ---
 
-_New Card Types:_ 
-M10 Robot comes with 2 new card classifications. Alongside Attack, Skill, and Power, there are now Boosters and Modules. These 2 card types are unplayable, but may be equipped via Right Clicking them. Modules attach to the player while Boosters attach to cards.
+_**Overclocking:**_
+As one of the main mechanics available in the draft, Overclocking cards allows them to temporarily showcase much stronger effects than usual. Represented with a percentile above the name, Overclocking a card increases all relevant values on a card by the shown percent. While a Defend might give 5 Block, a 200% Defend will give 10. This increase is not limited to only damage and Block. A card that chennels 2 Orbs that is raised to 150% will channel 3, and a card that deals 4 damage 2 times will see a drastic improvement of dealing 6 damage 3 times when overclocked to 150%. Overclocking is performed in steps of 25% increases, however, this boost only lasts until the card is played, at which point the card will return to normal.
 
-_Boosters:_
-Booster cards come in 2 flavors: Extra Effect, and Value Modification, and can be used to alter how cards perform and function. Extra Effects add additional text and functionality to cards, while Value Modification increases the preexisting values on a card. An example of an Extra Effect would be "Modification: Draw 1 card". Once attached to a Defend, the Defend would now read: "Gain 5 Block. Draw 1 card.". An Example of a Value Modification would be "Modification: +4 Block". Once attached to the same Defend, it would now read "Gain 9 Block. Draw 1 card".". Cards with Boosters equipped will have a unique animation play and will have the card name color changed. Normal cards are White, upgraded cards are Green, boosted cards are Blue, and upgraded boosted cards are Purple. There is no limit to the amount of Boosters that can be applied to a single card.
+_**Spikes:**_
+M10 Robot is a character who can deal heavy damage to enemies while being attacked. Armed with Spikes, a new Thorns-lite power, M10 can deal damage back to attackers each time they are hit. In addition, there are cards that are considered Spiky, meaning they deal extra damage for each Spike you have. As a downside, Spikes are lost at the start of your turn once you are attacked. This means that should a turn pass where you are not attacked, Spikes will not be lost.
 
-_Modules:_ 
-M10 Robot has few Power cards, but they have many Module cards. Modules may be equipped on the player and act similar to powers, however, there are limitations to how many can be equipped at a time. M10 Robots second starter relic allows them to spawn with 4 Module Slots. Modules can be unequipped, discarding them in the process, if you need to change what Modules you are using on the fly.
+_**Lock-On:**_
+While Defect has a single card for applying Lock-On, M10 Robot has multiple ways to apply it. Aside from being useful for Orbs, there are synergistic cards that have extra effects should the target of the card have Lock-On. In addition, 3 of the 4 Orbs available are damage dealing Orbs, meaning that Lock-On can almost always be a valuable asset.
 
-_Orbs:_ 
-While M10 Robot uses the same Orb system as Defect, they have their own 4 unique Orbs to play with (though Defect Orbs will still work if you use Prismatic Shard). All of M10s Orbs have animations, and will react to various conditions such as attacking or M10 being damaged.
+_**Extraction:**_
+Providing M10 Robot with a strong way to control the flow of cards, Extracting is a mechanic that draws cards from the top of the discard pile, rather than the draw pile. This can allow for strategic playing of the same card multiple times per turn, as well as enabling certain cards that have extra effects if they were already played this turn.
 
-_Searchlight Orb_ - This allows M10 to play a more turtled playstyle. Each time you are attacked (so it triggers multiple times for multihits), this Orbs deals 2 damage back to the attacker, like Thorns. When evoked, it causes ALL enemies to lose HP, directly bypassing Block. Searchlight is effected by Focus, which will increase the recoil and evoke damages accordingly. 
+_**Orb Upgrades:**_
+As M10's Orbs are on average stronger than Defect's Orbs, M10 does not have access to Forcus in its draft. To compensate, M10 has access to Orb Upgrades. These upgrades are on an Orb by Orb basis, unlike Focus, which means that when an upgraded Orb is evoked, the new Orb taking its spot does not get the boost. As an upside, Orb Upgrades are generally stronger than a single Focus would be. In addition, all basegame Orbs and many modded Orbs are supported, should you get access to another character's Orbs mid run, or should another Character get access to M10's Orb Upgrade cards!
 
-_Bit Orb_ - In constract to Searchlight, this Orb is attentive to the player attacking, rather than being attacked. Each time you cause an attack on an enemy (triggering multiple times for AOE and multhits), this orb will do 1 damage to the target. What constitutes you causing an attack on the enemy is fairly encompassing, as things like Searchlight Orbs firing and poison damage activating both count as attacks you perform and will activate Bit Orb. When evoked, it deals damage to a random enemy equal to the total damage it has dealt with it's passive effect. Bit is effected by Focus, which will increase the amount of damage dealt by the passive effect.
+_**Orbs:**_ 
+While M10 Robot uses the same Orb system as Defect, they have their own 4 unique Orbs to play with (though Defect's Orbs will still work if you use Prismatic Shard). All of M10s Orbs have animations, and will react to various conditions such as attacking or M10 being damaged.
 
-_Bomb Orb_ - The polar opposite of the Dark Orb. This Orb when evoked deals 20 damage to ALL enemies, however, its passive effect lowers the damage that the evoke will do by 2 each turn. This allows for a different playstyle where trying to Evoke the orbs as quickly as possible will be the most rewarding option. Bomb Orb is effected by Focus, which will lower the damage decrease, eventually cancelling it out. Enough Focus will instead make Bomb Orbs increase in damage each turn!
+_Searchlight Orb_ - This allows M10 to play a more turtled playstyle. Each time you are attacked, this Orbs deals 2 damage back to the attacker, like Thorns. When evoked it provides 3 Spikes, allowing it to have a solid position in most Spikes and Reflect Damage builds. 
 
-_Present Orb_ - An orb that is closer to a factory that has no combat capabilities. When channeled, Presents choose a random Booster card and slowly assmble it. Presents have a 40% assembly rate, and this amount is added to the current progress at the beginning of your turn. Once progress hits 100%, it rolls over (keeping any overflow, so 120% rolls over to 20% progress) and adds the Booster to your hand. It then begins work on a new random Booster. The Booster that will be added to your hand can be previewed by hovering over the Orb. When evoked, assembly finishes immediately, skipping the assembly time. Present is effected by Focus, which increases the assembly rate. Assembly rates greater or equal to 100% guarentee a booster every turn!
+_Bit Orb_ - In constract to Searchlight, this Orb is attentive to the player attacking, rather than being attacked. Each time you play an Attack, it deals 2 damage to the enemy with the lowest HP, helping finish them off. When Evoked, the Bit instead targets a random enemy, dealing 4 damage and applying 2 Lock-On. The application of Lock-On allows bits to have a self sustaining damage increase, as well as fitting nicely into Lock-On archetype builds.
+
+_Bomb Orb_ - Designed as a spin on Dark Orbs, Bombs start with 6 damage when they are channeled. Each time you are attacked, the Bomb increases its stored damage by a percent of the inbound damage. When evoked, this stored up damage is dealt to the enemy with the most HP, helping you take down big threats.
+
+_Present Orb_ - Solidifying M10's draw power, Presents are about as difficult to get as Plasma is for Defect. Presents increase M10's start of turn draw by 1, and when evoked, draw 2 cards.
 
 ---
 
