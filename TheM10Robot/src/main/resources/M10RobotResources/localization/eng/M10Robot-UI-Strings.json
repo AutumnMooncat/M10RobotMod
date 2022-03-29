@@ -1,29 +1,4 @@
 {
-  "M10Robot:ChooseStance": {
-    "TEXT": ["Choose a Stance to enter.",
-      "Encore","Remain in your current Stance.",
-      "Shadowy Dance","Enter shadowsiren:Veil.",
-      "Abyssal Dance","Enter shadowsiren:Abyss.",
-      "Ashen Dance","Enter shadowsiren:Smoke.",
-      "Titan's Dance","Enter shadowsiren:Giant",
-      "Steadfast Dance","Enter shadowsiren:Hyper."]
-  },
-  "M10Robot:FetchFromAnywhere": {
-    "TEXT": ["Select a card to add to your hand. All Draw Pile cards are shown before Discard Pile and then Exhaust Pile cards"]
-  },
-  "M10Robot:Boosters": {
-    "TEXT": ["Boost",
-      "No appropriate cards",
-      "Viewing equipped boosters. Selected boosters will be unequipped and discarded.",
-      "Viewing equipped boosters."]
-  },
-  "M10Robot:Overclocking": {
-    "TEXT": ["Overclocking",
-      "#yLeft #yClick to #yOverclock this card, increasing it's base values. NL Cost: #b"," Components."]
-  },
-  "M10Robot:Reloadable": {
-    "TEXT": ["This card needs to be Reloaded."]
-  },
   "M10Robot:ModConfigs": {
     "TEXT": [
       "Show Boosters & Modules tutorial",
