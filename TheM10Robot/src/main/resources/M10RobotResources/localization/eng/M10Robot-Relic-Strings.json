@@ -1,36 +1,10 @@
 {
-  "M10Robot:BottledStar": {
-    "NAME": "Bottled Star",
-    "FLAVOR": "Now you can watch for shooting stars whenever you wish.",
-    "DESCRIPTIONS": [
-      "Upon pickup, choose a card. Whenever you play this card, deal #b5 damage to ALL enemies.",
-      "Choose a card for ",
-      "Whenever you play ",", deal #b5 damage to ALL enemies.",
-      "Damage dealt: "," NL Per combat: "," NL Per turn: "
-    ]
-  },
   "M10Robot:Eye": {
     "NAME": "Third Eye",
     "FLAVOR": "It's watching you.",
     "DESCRIPTIONS": [
       "At the start of each combat, apply #b"," #yLock-On to ALL enemies.",
       "#yLock-On applied: "
-    ]
-  },
-  "M10Robot:ProtectiveShell": {
-    "NAME": "Protective Shell",
-    "FLAVOR": "You were built to last.",
-    "DESCRIPTIONS": [
-      "At the start of each combat, gain #b"," #ym10robot:Protect.",
-      "Damage mitigated: "," NL Scrambles: "
-    ]
-  },
-  "M10Robot:ProtectiveShell2": {
-    "NAME": "Protective Shell Mk2",
-    "FLAVOR": "Your upgraded shell can withstand additional hits over its predecessor. New paint sold separately.",
-    "DESCRIPTIONS": [
-      "Replaces [#b9c5b4]Protective [#b9c5b4]Shell. At the start of each combat, gain #b"," #ym10robot:Protect.",
-      "Damage mitigated: "," NL Scrambles: "
     ]
   },
   "M10Robot:DualCore": {
