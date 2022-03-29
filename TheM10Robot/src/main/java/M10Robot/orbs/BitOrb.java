@@ -79,9 +79,7 @@ public class BitOrb extends AbstractCustomOrb {
     public void updateDescription() { // Set the on-hover description of the orb
         applyFocus();
         description =
-                DESC[0] + passiveAmount + DESC[1] /*+
-                UPGRADE_TEXT[0] +
-                DESC[2] + UPGRADE_PLUS_PASSIVE_DAMAGE + DESC[3]*/;
+                DESC[0] + passiveAmount + DESC[1] + evokeAmount + DESC[2];
     }
 
     @Override
