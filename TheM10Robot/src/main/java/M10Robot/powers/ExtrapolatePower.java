@@ -41,7 +41,7 @@ public class ExtrapolatePower extends AbstractPower implements CloneablePowerInt
         updateDescription();
     }
 
-    @Override
+/*    @Override
     public void atStartOfTurn() {
         if (amount > 1) {
             for(int i = 0; i < amount - 1; ++i) {// 46
@@ -50,7 +50,7 @@ public class ExtrapolatePower extends AbstractPower implements CloneablePowerInt
             this.addToBot(new AnimateOrbAction(1));
             this.addToBot(new EvokeOrbAction(1));
         }
-    }
+    }*/
 
     public void updateDescription() {
         if (amount == 1) {
