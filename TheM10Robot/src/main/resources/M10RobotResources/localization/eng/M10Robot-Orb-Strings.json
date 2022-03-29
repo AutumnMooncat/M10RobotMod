@@ -8,8 +8,7 @@
   "M10Robot:BitOrb": {
     "NAME": "Bit",
     "DESCRIPTION": [
-      "#yPassive: Whenever you play an #yAttack, deal #b"," damage to the enemy with the lowest HP. NL #yEvoke: Deal #btwice this Orb's damage and apply #b2 #yLock-On to a random enemy.",
-      " NL Damage #b+", "."
+      "#yPassive: Whenever you play an #yAttack, deal #b"," damage to the enemy with the lowest HP. NL #yEvoke: Deal #btwice this Orb's damage and apply #b2 #yLock-On to a random enemy."
     ]
   },
   "M10Robot:PresentOrb": {
@@ -22,11 +21,6 @@
     "NAME": "Searchlight",
     "DESCRIPTION": [
       "#yPassive: When attacked, deal #b"," damage back. NL #yEvoke: Gain #b"," #ySpikes."
-    ]
-  },
-  "M10Robot:UpgradeText": {
-    "DESCRIPTION": [
-      " NL  NL #yRight #yClick to upgrade. NL Cost: #b1 #yComponent."
     ]
   }
 }
