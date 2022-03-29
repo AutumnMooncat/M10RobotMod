@@ -1,10 +1,8 @@
 package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
-import M10Robot.actions.MultichannelAction;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
-import M10Robot.orbs.BitOrb;
 import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.BranchingUpgradesCard;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -36,12 +34,11 @@ public class Seeker extends AbstractDynamicCard implements BranchingUpgradesCard
     private static final AbstractCard.CardType TYPE = CardType.ATTACK;
     public static final AbstractCard.CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
-    private static final int COST = 1;
-    private static final int DAMAGE = 8;
+    private static final int COST = 0;
+    private static final int DAMAGE = 9;
     private static final int UPGRADE_PLUS_DMG = 3;
     private static final int EFFECT = 1;
     private static final int UPGRADE_PLUS_EFFECT = 1;
-    private static final int ORBS = 1;
 
     // /STAT DECLARATION/
 
@@ -49,17 +46,13 @@ public class Seeker extends AbstractDynamicCard implements BranchingUpgradesCard
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = damage = DAMAGE;
         magicNumber = baseMagicNumber = EFFECT;
-        secondMagicNumber = baseSecondMagicNumber = ORBS;
-        showEvokeValue = true;
         //CardModifierManager.addModifier(this, new AimedModifier());
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        //this.addToBot(new AttackDamageRandomEnemyAction(this, AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
         this.addToBot(new ApplyPowerAction(m, p, new LockOnPower(m, magicNumber)));
-        this.addToBot(new MultichannelAction(new BitOrb(), secondMagicNumber));
         if (m.hasPower(LockOnPower.POWER_ID)) {
             //this.addToBot(new DrawCardAction(secondMagicNumber));
             this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SLASH_HORIZONTAL));
