@@ -689,10 +689,6 @@ public class M10RobotMod implements
         BaseMod.loadCustomStringsFile(UIStrings.class,
                 getModID() + "Resources/localization/"+loadLocalizationIfAvailable("M10Robot-UI-Strings.json"));
 
-        // Stance Strings
-        BaseMod.loadCustomStringsFile(StanceStrings.class,
-                getModID() + "Resources/localization/"+loadLocalizationIfAvailable("M10Robot-Stance-Strings.json"));
-
         // Tutorial Strings
         BaseMod.loadCustomStringsFile(TutorialStrings.class,
                 getModID() + "Resources/localization/"+loadLocalizationIfAvailable("M10Robot-Tutorial-Strings.json"));
