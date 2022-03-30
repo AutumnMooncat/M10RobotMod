@@ -32,6 +32,7 @@ public class SpikesMod extends AbstractAugment {
         }
         if (card.rawDescription.contains(TEXT[4])) {
             card.baseMagicNumber += amount;
+            card.magicNumber += amount;
             setBaseVar = true;
         }
     }
