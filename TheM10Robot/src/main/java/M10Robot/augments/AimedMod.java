@@ -57,7 +57,7 @@ public class AimedMod extends AbstractAugment {
         return new CardBorderGlowManager.GlowInfo() {
             @Override
             public boolean test(AbstractCard abstractCard) {
-                return AbstractDungeon.getMonsters().monsters.stream().anyMatch(m -> m.hasPower(LockOnPower.POWER_ID));
+                return hasThisMod(abstractCard) && AbstractDungeon.getMonsters().monsters.stream().anyMatch(m -> m.hasPower(LockOnPower.POWER_ID));
             }
 
             @Override
