@@ -17,6 +17,7 @@ public class SearchMod extends AbstractAugment {
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
 
     private static final int ORBS = 1;
+    private boolean setBaseVar;
 
     @Override
     public void onInitialApplication(AbstractCard card) {
@@ -24,6 +25,7 @@ public class SearchMod extends AbstractAugment {
         if (card instanceof SteelWall || card instanceof SpikeBall) {
             card.baseMagicNumber += ORBS;
             card.magicNumber += ORBS;
+            setBaseVar = true;
         }
         card.showEvokeValue = true;
     }
@@ -40,7 +42,7 @@ public class SearchMod extends AbstractAugment {
 
     @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        if (card instanceof SteelWall) {
+        if (setBaseVar) {
             return rawDescription;
         }
         return rawDescription + String.format(TEXT[2], ORBS);
@@ -48,7 +50,7 @@ public class SearchMod extends AbstractAugment {
 
     @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
-        if (!(card instanceof SteelWall)) {
+        if (!setBaseVar) {
             this.addToBot(new ChannelAction(new SearchlightOrb()));
         }
     }
