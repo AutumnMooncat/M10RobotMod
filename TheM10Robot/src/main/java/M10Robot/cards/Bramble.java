@@ -53,12 +53,12 @@ public class Bramble extends AbstractDynamicCard {
     }
 
     @Override
-    public void applyPowers() {
+    protected void applyPowersToBlock() {
         this.baseBlock = magicNumber;
         if (AbstractDungeon.player.hasPower(SpikesPower.POWER_ID)) {
             baseBlock += AbstractDungeon.player.getPower(SpikesPower.POWER_ID).amount;
         }
-        super.applyPowers();
+        super.applyPowersToBlock();
     }
 
     //Upgraded stats.
