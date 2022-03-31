@@ -72,7 +72,7 @@
       "bit",
       "bits"
     ],
-    "DESCRIPTION": "Orb: Deals damage to the enemy with the lowest HP when you play an Attack. When #yEvoked, deals damage and applies #yLock-On to a random enemy."
+    "DESCRIPTION": "Orb: Deals damage to the enemy with the least HP when you play an Attack. When #yEvoked, deals damage and applies #yLock-On to a random enemy."
   },
   {
     "PROPER_NAME": "Bomb",
@@ -80,7 +80,7 @@
       "bomb",
       "bombs"
     ],
-    "DESCRIPTION": "Orb: Stores damage when attacked. When #yEvoked, deals damage to the enemy with the highest HP."
+    "DESCRIPTION": "Orb: Stores damage when you are attacked. When #yEvoked, deals damage to the enemy with the most HP."
   },
   {
     "PROPER_NAME": "Present",
