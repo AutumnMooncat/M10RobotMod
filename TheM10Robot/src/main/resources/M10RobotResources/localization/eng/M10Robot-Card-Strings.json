@@ -71,7 +71,7 @@
   },
   "M10Robot:Bramble": {
     "NAME": "Bramble",
-    "DESCRIPTION": "{@@}Gain !M! m10robot:Spikes. NL Gain Block equal to your m10robot:Spikes.{!Location!|0= NL (Gains !B! Block.)}"
+    "DESCRIPTION": "{@@}Gain !M! m10robot:Spikes. NL Gain Block equal to your m10robot:Spikes.{!Location!|0= NL (Gains !M10Robot:Info! Block)}"
   },
   "M10Robot:BriefRespite": {
     "NAME": "Brief Respite",

@@ -1,15 +1,14 @@
 package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
+import M10Robot.actions.GainRecalculatedBlockAction;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
 import M10Robot.powers.SpikesPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.NextTurnBlockPower;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
@@ -49,12 +48,21 @@ public class Bramble extends AbstractDynamicCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.addToBot(new ApplyPowerAction(p, p, new SpikesPower(p, magicNumber)));
-        this.addToBot(new GainBlockAction(p, p, block));
+        this.addToBot(new GainRecalculatedBlockAction(this));
+        //this.addToBot(new GainBlockAction(p, p, block));
     }
 
     @Override
     protected void applyPowersToBlock() {
-        this.baseBlock = magicNumber;
+        baseBlock = magicNumber;
+        if (AbstractDungeon.player.hasPower(SpikesPower.POWER_ID)) {
+            baseBlock += AbstractDungeon.player.getPower(SpikesPower.POWER_ID).amount;
+        }
+        baseInfo = baseBlock;
+        super.applyPowersToBlock();
+        info = block;
+        isInfoModified = info != baseInfo;
+        baseBlock = 0;
         if (AbstractDungeon.player.hasPower(SpikesPower.POWER_ID)) {
             baseBlock += AbstractDungeon.player.getPower(SpikesPower.POWER_ID).amount;
         }
