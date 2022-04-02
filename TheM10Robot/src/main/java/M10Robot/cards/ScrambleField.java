@@ -3,13 +3,16 @@ package M10Robot.cards;
 import M10Robot.M10RobotMod;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
+import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.relics.ChemicalX;
 import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
+import com.megacrit.cardcrawl.vfx.combat.IntimidateEffect;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
@@ -63,9 +66,14 @@ public class ScrambleField extends AbstractDynamicCard {
 
         effect += magicNumber;
 
-        for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
-            if (effect > 0) {
-                this.addToBot(new ApplyPowerAction(aM, p, new StrengthPower(aM, -effect), -effect));
+        if (effect > 0) {
+            this.addToBot(new SFXAction("ORB_PLASMA_CHANNEL"));
+            this.addToBot(new VFXAction(p, new IntimidateEffect(p.hb.cX, p.hb.cY), 0.7F));
+            this.addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, effect)));
+            for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
+                if (!aM.isDeadOrEscaped()) {
+                    this.addToBot(new ApplyPowerAction(aM, p, new StrengthPower(aM, -effect), -effect));
+                }
             }
         }
 

@@ -293,7 +293,7 @@
   },
   "M10Robot:ScrambleField": {
     "NAME": "Scramble Field",
-    "DESCRIPTION": "{@@}ALL enemies lose NL X{!M!|>0= + !M!} Strength."
+    "DESCRIPTION": "{@@}Gain X{!M!|>0= + !M!} Strength. NL ALL enemies lose NL X{!M!|>0= + !M!} Strength."
   },
   "M10Robot:ScrapBooster": {
     "NAME": "Scrap Booster",
