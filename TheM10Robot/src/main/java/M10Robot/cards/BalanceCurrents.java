@@ -16,7 +16,7 @@ public class BalanceCurrents extends AbstractDynamicCard {
     // TEXT DECLARATION
 
     public static final String ID = M10RobotMod.makeID(BalanceCurrents.class.getSimpleName());
-    public static final String IMG = makeCardPath("BalanceCurrents2.png");
+    public static final String IMG = makeCardPath("BalanceCurrents.png");
 
     // /TEXT DECLARATION/
 

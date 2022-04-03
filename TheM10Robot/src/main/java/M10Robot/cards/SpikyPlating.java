@@ -18,7 +18,7 @@ public class SpikyPlating extends AbstractDynamicCard {
     // TEXT DECLARATION
 
     public static final String ID = M10RobotMod.makeID(SpikyPlating.class.getSimpleName());
-    public static final String IMG = makeCardPath("SpikyPlating2.png");
+    public static final String IMG = makeCardPath("SpikyPlating.png");
 
     // /TEXT DECLARATION/
 
