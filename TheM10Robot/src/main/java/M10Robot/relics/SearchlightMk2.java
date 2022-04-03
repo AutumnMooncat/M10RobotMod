@@ -52,12 +52,12 @@ public class SearchlightMk2 extends CustomRelic {
         stats.put(UPGRADES_STAT, stats.get(UPGRADES_STAT) + UPGRADES);
     }
 
-    @Override
+    /*@Override
     public void atBattleStart() {
         flash();
         this.addToBot(new RelicAboveCreatureAction(AbstractDungeon.player, this));
         this.addToBot(new ChannelAction(new SearchlightOrb()));
-    }
+    }*/
 
     public String getStatsDescription() {
         return UPGRADES_STAT + stats.get(UPGRADES_STAT);

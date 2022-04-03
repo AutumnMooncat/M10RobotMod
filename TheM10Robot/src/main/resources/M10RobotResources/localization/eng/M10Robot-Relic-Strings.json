@@ -51,7 +51,7 @@
     "NAME": "Searchlight Mk2",
     "FLAVOR": "Upgraded Model! Same great taste!",
     "DESCRIPTIONS": [
-      "At the start of each combat, #yChannel #b1 #ySearchlight. Whenever you #yChannel a #ym10robot:Searchlight, #ym10robot:Upgrade it #b"," time.",
+      "Whenever you #yChannel a #ym10robot:Searchlight, #ym10robot:Upgrade it #b"," time.",
       "Orbs upgraded: "," NL Per combat: "," NL Per turn: "
     ]
   },
