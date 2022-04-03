@@ -3,10 +3,10 @@ package M10Robot.cards;
 import M10Robot.M10RobotMod;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
+import M10Robot.powers.RecoveryModePower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.MetallicizePower;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
@@ -34,8 +34,8 @@ public class RecoveryMode extends AbstractDynamicCard {
     private static final CardType TYPE = CardType.POWER;
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
-    private static final int COST = 2;
-    private static final int EFFECT = 5;
+    private static final int COST = 1;
+    private static final int EFFECT = 7;
     private static final int UPGRADE_PLUS_EFFECT = 2;
 
     // /STAT DECLARATION/
@@ -49,7 +49,8 @@ public class RecoveryMode extends AbstractDynamicCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new ApplyPowerAction(p, p, new MetallicizePower(p, magicNumber)));
+        //this.addToBot(new ApplyPowerAction(p, p, new MetallicizePower(p, magicNumber)));
+        this.addToBot(new ApplyPowerAction(p, p, new RecoveryModePower(p, magicNumber)));
     }
 
     //Upgraded stats.
@@ -57,7 +58,8 @@ public class RecoveryMode extends AbstractDynamicCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeMagicNumber(UPGRADE_PLUS_EFFECT);
+            isInnate = true;
+            //upgradeMagicNumber(UPGRADE_PLUS_EFFECT);
             initializeDescription();
         }
     }

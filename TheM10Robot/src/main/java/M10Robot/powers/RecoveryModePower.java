@@ -1,13 +1,13 @@
-package M10Robot.cutStuff.powers;
+package M10Robot.powers;
 
 import M10Robot.M10RobotMod;
 import basemod.interfaces.CloneablePowerInterface;
-import com.evacipated.cardcrawl.mod.stslib.actions.tempHp.AddTemporaryHPAction;
-import com.evacipated.cardcrawl.mod.stslib.patches.core.AbstractCreature.TempHPField;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.ui.panels.EnergyPanel;
 
 public class RecoveryModePower extends AbstractPower implements CloneablePowerInterface {
 
@@ -27,33 +27,27 @@ public class RecoveryModePower extends AbstractPower implements CloneablePowerIn
         this.ID = POWER_ID;
         this.owner = owner;
         this.amount = amount;
-
         this.type = PowerType.BUFF;
-        this.isTurnBased = false;
 
         // We load those txtures here.
-        //this.loadRegion("cExplosion");
-        this.loadRegion("deva");
-        //logger.info("Blasting Fuse?");
+        this.loadRegion("channel");
         //this.region128 = new TextureAtlas.AtlasRegion(tex84, 0, 0, 84, 84);
         //this.region48 = new TextureAtlas.AtlasRegion(tex32, 0, 0, 32, 32);
 
         updateDescription();
     }
 
-
     @Override
-    public void atStartOfTurn() {
-        int amt = Math.min(amount, Math.max(0, amount - TempHPField.tempHp.get(owner)));
-        if (amt > 0) {
+    public void atEndOfTurn(boolean isPlayer) {
+        if (EnergyPanel.getCurrentEnergy() > 0) {
             flash();
-            this.addToTop(new AddTemporaryHPAction(owner, owner, amt));
+            this.addToBot(new GainBlockAction(owner, amount));
         }
     }
 
     @Override
     public void updateDescription() {
-        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1] + amount + DESCRIPTIONS[2];
+        description = DESCRIPTIONS[0] + amount + DESCRIPTIONS[1];
     }
 
     @Override

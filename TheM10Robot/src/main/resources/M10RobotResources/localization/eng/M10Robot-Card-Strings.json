@@ -253,7 +253,7 @@
   },
   "M10Robot:RecoveryMode": {
     "NAME": "Recovery Mode",
-    "DESCRIPTION": "At the end of your turn, gain !M! Block."
+    "DESCRIPTION": "At the end of your turn, gain !M! Block if you have any unspent energy."
   },
   "M10Robot:RecklessAttack": {
     "NAME": "Reckless Attack",

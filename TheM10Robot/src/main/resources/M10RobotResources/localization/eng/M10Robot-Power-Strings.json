@@ -39,6 +39,10 @@
                     "Negates the next #yRecoil you receive.",
                     "Negates the next #b"," #yRecoil you receive."]
   },
+  "M10Robot:RecoveryModePower": {
+    "NAME": "Recovery Mode",
+    "DESCRIPTIONS": ["At the end of your turn, gain #b"," #yBlock if you have unspent energy."]
+  },
   "M10Robot:ReflectiveShellPower": {
     "NAME": "Reflective Shell",
     "DESCRIPTIONS": ["Fully blocked attacks are reflected onto the attacker.",
