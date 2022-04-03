@@ -45,7 +45,7 @@ public class SelfDestruction extends AbstractDynamicCard implements CannotOvercl
     private static final int COST = 3;
     private static final int DAMAGE = 20;
     private static final int UPGRADE_PLUS_DAMAGE = 8;
-    private static final int SELF_DAMAGE = 6;
+    private static final int SELF_DAMAGE = 5;
 
     // /STAT DECLARATION/
 
@@ -74,12 +74,12 @@ public class SelfDestruction extends AbstractDynamicCard implements CannotOvercl
             }
         });
         this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.NONE, true));*/
-        this.addToBot(new SelfDestructAction2(p, m, new DamageInfo(p, damage, damageTypeForTurn), 0));
-        this.addToBot(new DamageAction(p, new DamageInfo(p, secondMagicNumber, DamageInfo.DamageType.THORNS), true));
+        this.addToBot(new SelfDestructAction2(p, m, new DamageInfo(p, damage, damageTypeForTurn), secondMagicNumber));
+        //this.addToBot(new DamageAction(p, new DamageInfo(p, secondMagicNumber, DamageInfo.DamageType.THORNS), true));
         //We really don't want this to interact with Stasis
-        StunMonsterPower pow = new StunMonsterPower(m, 1);
-        pow.type = NeutralPowertypePatch.NEUTRAL;
-        this.addToBot(new ApplyPowerAction(m, p, pow, 1));
+        //StunMonsterPower pow = new StunMonsterPower(m, 1);
+        //pow.type = NeutralPowertypePatch.NEUTRAL;
+        this.addToBot(new ApplyPowerAction(m, p, new StunMonsterPower(m, 1)));
         //this.addToBot(new ApplyPowerAction(p, p, new RecoilPower(p, 1)));
     }
 
