@@ -2,17 +2,17 @@ package M10Robot.powers;
 
 import M10Robot.M10RobotMod;
 import M10Robot.cards.abstractCards.AbstractSwappableCard;
+import M10Robot.powers.interfaces.OnExtractPower;
 import basemod.interfaces.CloneablePowerInterface;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
-public class ImaginaryPower extends AbstractPower implements CloneablePowerInterface {
+public class ImaginaryPower extends AbstractPower implements CloneablePowerInterface, OnExtractPower {
 
     public static final String POWER_ID = M10RobotMod.makeID("ImaginaryPower");
     private static final PowerStrings powerStrings = CardCrawlGame.languagePack.getPowerStrings(POWER_ID);
@@ -77,4 +77,18 @@ public class ImaginaryPower extends AbstractPower implements CloneablePowerInter
         return new ImaginaryPower(owner, amount);
     }
 
+    @Override
+    public int modifyExtractAmount(int amount) {
+        return amount;
+    }
+
+    @Override
+    public void onExtractCard(AbstractCard card) {
+        if (card.cost >= 0) {
+            card.setCostForTurn(AbstractDungeon.cardRandomRng.random(1));
+            if (card instanceof AbstractSwappableCard) {
+                card.cardsToPreview.setCostForTurn(card.costForTurn);
+            }
+        }
+    }
 }
