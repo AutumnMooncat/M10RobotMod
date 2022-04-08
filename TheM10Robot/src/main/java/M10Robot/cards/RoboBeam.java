@@ -44,6 +44,7 @@ public class RoboBeam extends AbstractDynamicCard {
     public RoboBeam() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = damage = DAMAGE;
+        isMultiDamage = true;
     }
 
     // Actions the card should do.
@@ -54,7 +55,7 @@ public class RoboBeam extends AbstractDynamicCard {
                 @Override
                 public void update() {
                     AbstractMonster mo = AbstractDungeon.getRandomMonster();
-                    this.addToTop(new DamageAction(mo, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.NONE, true));
+                    this.addToTop(new DamageAction(mo, new DamageInfo(p, multiDamage[AbstractDungeon.getMonsters().monsters.indexOf(mo)], damageTypeForTurn), AbstractGameAction.AttackEffect.NONE, true));
                     this.addToTop(new SFXAction("ATTACK_MAGIC_BEAM_SHORT", 0.5F));
                     this.addToTop(new VFXAction(new SmallLaserEffect(mo.hb.cX, mo.hb.cY, p.hb.cX, p.hb.cY), 0.0F));
                     this.isDone = true;
