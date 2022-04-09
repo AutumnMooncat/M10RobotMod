@@ -61,7 +61,7 @@ public class Seeker extends AbstractDynamicCard implements BranchingUpgradesCard
 
     public void triggerOnGlowCheck() {
         this.glowColor = AbstractCard.BLUE_BORDER_GLOW_COLOR.cpy();
-        if (AbstractDungeon.getMonsters().monsters.stream().anyMatch(m -> m.hasPower(LockOnPower.POWER_ID))) {
+        if (AbstractDungeon.getMonsters().monsters.stream().anyMatch(m -> !m.isDeadOrEscaped() && m.hasPower(LockOnPower.POWER_ID))) {
             this.glowColor = AbstractCard.GOLD_BORDER_GLOW_COLOR.cpy();
         }
     }
