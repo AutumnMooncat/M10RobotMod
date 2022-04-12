@@ -40,7 +40,7 @@ public class PresentMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return M10RobotMod.enableChimeraCrossover && card.cost >= 0 && doesntUpgradeCost(card) && allowOrbMods() && card.rarity != AbstractCard.CardRarity.BASIC && card.rarity != AbstractCard.CardRarity.COMMON;
+        return M10RobotMod.enableChimeraCrossover && card.cost >= 0 && allowOrbMods() && card.rarity != AbstractCard.CardRarity.BASIC && card.rarity != AbstractCard.CardRarity.COMMON && cardCheck(card, c -> doesntUpgradeCost());
     }
 
     @Override
