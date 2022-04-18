@@ -337,7 +337,7 @@
   },
   "M10Robot:SpikeBall": {
     "NAME": "Spike Shell",
-    "DESCRIPTION": "Gain !B! Block. NL Channel !M! m10robot:Searchlights."
+    "DESCRIPTION": "Gain !B! Block. NL Gain !M! m10robot:Spikes."
   },
   "M10Robot:SpikyPlating": {
     "NAME": "Spiky Plating",

@@ -34,10 +34,10 @@ public class SpikeBall extends AbstractDynamicCard {
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
     private static final int COST = 2;
-    private static final int AMOUNT = 9;
+    private static final int AMOUNT = 10;
     private static final int UPGRADE_PLUS_AMOUNT = 4;
-    private static final int SPIKES = 2;
-    private static final int UPGRADE_PLUS_SPIKES = 1;
+    private static final int SPIKES = 5;
+    private static final int UPGRADE_PLUS_SPIKES = 2;
 
     // /STAT DECLARATION/
 
@@ -45,7 +45,7 @@ public class SpikeBall extends AbstractDynamicCard {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         block = baseBlock = AMOUNT;
         magicNumber = baseMagicNumber = SPIKES;
-        showEvokeValue = true;
+        //showEvokeValue = true;
         //CardModifierManager.addModifier(this, new HeavyModifier());
     }
 
@@ -53,8 +53,8 @@ public class SpikeBall extends AbstractDynamicCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.addToBot(new GainBlockAction(p, block));
-        //this.addToBot(new ApplyPowerAction(p, p, new SpikesPower(p, magicNumber)));
-        this.addToBot(new MultichannelAction(new SearchlightOrb(), magicNumber));
+        this.addToBot(new ApplyPowerAction(p, p, new SpikesPower(p, magicNumber)));
+        //this.addToBot(new MultichannelAction(new SearchlightOrb(), magicNumber));
     }
 
     // Upgraded stats.
@@ -63,7 +63,7 @@ public class SpikeBall extends AbstractDynamicCard {
         if (!upgraded) {
             upgradeName();
             upgradeBlock(UPGRADE_PLUS_AMOUNT);
-            //upgradeMagicNumber(UPGRADE_PLUS_SPIKES);
+            upgradeMagicNumber(UPGRADE_PLUS_SPIKES);
             initializeDescription();
         }
     }
