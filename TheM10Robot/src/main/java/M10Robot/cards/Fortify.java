@@ -30,7 +30,7 @@ public class Fortify extends AbstractDynamicCard {
 
     private static final int COST = 1;
     private static final int BLOCK = 6;
-    private static final int UPGRADE_PLUS_BLOCK = 2;
+    private static final int UPGRADE_PLUS_BLOCK = 3;
     private static final int ORBS = 1;
 
     // /STAT DECLARATION/
