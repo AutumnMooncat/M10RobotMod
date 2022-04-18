@@ -1,31 +1,10 @@
 Rework Ideas
 
-Form card doing overclocks isnt a great idea. Maybe replace with a different idea?
+Form card doing overclocks isn't a great idea. Maybe replace with a different idea?
 
-Momentum - See how it feels?
+Perhaps let overclocking be permanent for scaling but nerf the cards that overclock?
 
-Riposte - See how it feels?
-
-If Momentum is implemented, rework Scrambled to be stackable in cards reduced as well as turns
-
-Aimed modifier vs Spiky Modifier - Are they balanced against each other? Aimed is a free +50% damage; Spiky can scale infinitely, but drops off when attacked due to losing Spikes
-
-Spikes are probably too strong
-
-Upgrading Orbs is probably too strong
-
-There's no Orb Slot increase and no Focus, is this okay though?
-
-Orbs are maybe too strong in general?
-
-Present Orb implementation too strong as both cards give them upgrades out of the box.
-
-Spikes should decay more when hit?
-
-Bomb should automatically evoke when attacked? Makes it both easier and harder to use...
-Searchlight Mk2 - Hits all enemies?
-
-Cards to make:
+Cards to Make:
 
 -Orb Upgrades-
 Maybe 1 more Orb Upgrade card (There are currently 3)
@@ -35,43 +14,17 @@ Maybe 1 more Orb Upgrade card (There are currently 3)
 ? - ?
 ? - ?
 
--Stasis-
-? - ?
-? - ?
-
--Other-
-1-2 Cards with Reshuffle?
-
 Check List -  C    U    R
-Block      :  8    8    3
-Mitigation : 10    9    5
-Damage     : 14   15    7
-Draw       :  3    4    1
-AOE        :  2    4    4
+Block      :  8    8    2
+Mitigation :  9    10   3
+Damage     :  15   17   5
+Draw       :  4    8    2
+AOE        :  2.5  3    2
 Energy     :  0    3    1
 Cost Down  :  0    1    2
 
 Missing Slots: 0
-Missing 3 Swappable
-Missing 2 Retain
-Missing 1 Rare card that Draws
 Missing many Branching Upgrades
-
-Reworks:
-Byte - Move to uncommon and give additional effect?
-Compile Data nerf?
-Assembly Line nerf?
-Present Orb nerf?
-Air Strike - Bad art. Too strong?
-Full Throttle - Bad Art. Too strong.
-Health Down - Just Bad. Doesn't line up with any other cards/themes.
-
-Prototypes:
-? - Rare ? ? - Draw ? cards. Do something.
-
-Relics & Potions:
-Preparation Potion (?) - Upgrade the next ? Orbs you Channel.
-Reshuffle Potion (?) - Reshuffle the next ? cards you play.
 
 
 ? (?) - Whenever you Upgrade an Orb...
@@ -80,3 +33,40 @@ Reshuffle Potion (?) - Reshuffle the next ? cards you play.
 ? (?) - Whenever you Evoke an Orb...
 ? (?) - Upgrade the first ? Orbs you Channel each combat.
 Bottled ? (Uncommon) - Choose a card. Whenever you play it... (Spikes, Channel, Overclock, Upgrade)
+
+Mechanic Reworks:
+Aimed rework - Give more interesting effects to Aimed cards
+
+Branching Ideas:
+Thorn Field - Make branching to give more Spikes?
+Brief Respite / Quick Thinking - Branch for Extract?
+
+Card Reworks:
+Evasion Down - Watch for balance, might be too strong
+Byte / Nibble - Needs balance, currently too strong
+Wide Angle - Move to Rare? It's really strong.
+Overdrive Form - Too strong?
+Engage - Too strong as a 0 cost channel card? Especially with Extract mechanics
+
+Magnum Strike - Replace with new effect?
+Surveillance - Replace with new effect?
+
+Unstable Compound - Channel random Orb and upgrade it? Would need new Bomb channeling card.
+Atomize - rework? Make X cost channel X Bomb [Not Exhaust].
+Assembly Line - rework? - At the start of your turn, Channel a random Orb?
+
+Card Addons:
+If this is the only ? in your hand...
+If first card played...
+If unblocked damage... (Scrape Off / Inversion Beam)
+If target has Vulnerable / Lock-On... (Seeker)
+If you Extracted this turn...
+
+Card Ideas:
+Whenever you Extract...
+Whenever you apply Lock-On...
+Whenever you attack an enemy with Lock-On...
+
+Needs Art Reexport:
+
+Needs Art Revisit:
