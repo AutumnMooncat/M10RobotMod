@@ -184,7 +184,7 @@
   },
   "M10Robot:LightShow": {
     "NAME": "Light Show",
-    "DESCRIPTION": "{@@}Channel !M! m10robot:Searchlight{!M!|>1=s} for each Skill played this turn.{!Location!|0= NL (Skills played: !M10Robot:Info!)}"
+    "DESCRIPTION": "{@@}Gain !B! Block. NL Channel !M! m10robot:Searchlight{!M!|>1=s} for each Skill played this turn.{!Location!|0= NL (Skills played: !M10Robot:Info!)}"
   },
   "M10Robot:MagnumStrike": {
     "NAME": "Magnum Strike",
