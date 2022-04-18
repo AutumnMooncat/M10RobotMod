@@ -128,32 +128,34 @@ public class OverclockPatches {
     public static class OnUseCard {
         @SpirePrefixPatch
         public static void Insert(UseCardAction __instance, AbstractCard card, AbstractCreature target) {
-            int appliedOnPlay = 0;
-            for (AbstractPower p : AbstractDungeon.player.powers) {
-                if (p instanceof OverclockBeforePlayItem) {
-                    appliedOnPlay += ((OverclockBeforePlayItem) p).overclockAmount(card);
-                }
-            }
-            for (AbstractRelic r : AbstractDungeon.player.relics) {
-                if (r instanceof OverclockBeforePlayItem) {
-                    appliedOnPlay += ((OverclockBeforePlayItem) r).overclockAmount(card);
-                }
-            }
-            if (!card.dontTriggerOnUseCard) {
+            if (!(card instanceof CannotOverclock)) {
+                int appliedOnPlay = 0;
                 for (AbstractPower p : AbstractDungeon.player.powers) {
                     if (p instanceof OverclockBeforePlayItem) {
-                        ((OverclockBeforePlayItem) p).onOverclock(card);
+                        appliedOnPlay += ((OverclockBeforePlayItem) p).overclockAmount(card);
                     }
                 }
                 for (AbstractRelic r : AbstractDungeon.player.relics) {
                     if (r instanceof OverclockBeforePlayItem) {
-                        ((OverclockBeforePlayItem) r).onOverclock(card);
+                        appliedOnPlay += ((OverclockBeforePlayItem) r).overclockAmount(card);
                     }
                 }
-            }
-            if (appliedOnPlay > 0) {
-                fixMagicNumbers();
-                overclock(card, appliedOnPlay);
+                if (!card.dontTriggerOnUseCard) {
+                    for (AbstractPower p : AbstractDungeon.player.powers) {
+                        if (p instanceof OverclockBeforePlayItem) {
+                            ((OverclockBeforePlayItem) p).onOverclock(card);
+                        }
+                    }
+                    for (AbstractRelic r : AbstractDungeon.player.relics) {
+                        if (r instanceof OverclockBeforePlayItem) {
+                            ((OverclockBeforePlayItem) r).onOverclock(card);
+                        }
+                    }
+                }
+                if (appliedOnPlay > 0) {
+                    fixMagicNumbers();
+                    overclock(card, appliedOnPlay);
+                }
             }
         }
         private static class Locator extends SpireInsertLocator {
