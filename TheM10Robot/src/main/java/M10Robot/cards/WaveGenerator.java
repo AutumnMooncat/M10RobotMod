@@ -45,7 +45,7 @@ public class WaveGenerator extends AbstractDynamicCard {
     private static final int DAMAGE = 6;
     private static final int UPGRADE_PLUS_DAMAGE = 3;
     private static final int WEAK = 1;
-    private static final int BOOST = 2;
+    private static final int BOOST = 4;
     private static final int UPGRADE_PLUS_BOOST = 2;
 
     // /STAT DECLARATION/
