@@ -357,7 +357,7 @@
   },
   "M10Robot:Surveillance": {
     "NAME": "Surveillance",
-    "DESCRIPTION": "{@@}Channel !M! m10robot:Searchlight{!M!|>1=s}."
+    "DESCRIPTION": "{@@}Channel !M! m10robot:Searchlight{!M!|>1=s}. NL Gain !M10Robot:SecondMagic! m10robot:Spikes."
   },
   "M10Robot:TargetingSystem": {
     "NAME": "Heuristics",

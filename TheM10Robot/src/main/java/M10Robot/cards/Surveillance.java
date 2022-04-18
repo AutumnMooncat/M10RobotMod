@@ -5,6 +5,8 @@ import M10Robot.actions.MultichannelAction;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
 import M10Robot.orbs.SearchlightOrb;
+import M10Robot.powers.SpikesPower;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
@@ -15,7 +17,7 @@ public class Surveillance extends AbstractDynamicCard {
     // TEXT DECLARATION
 
     public static final String ID = M10RobotMod.makeID(Surveillance.class.getSimpleName());
-    public static final String IMG = makeCardPath("Surveillance.png");
+    public static final String IMG = makeCardPath("Plan.png");
 
     // /TEXT DECLARATION/
 
@@ -30,6 +32,7 @@ public class Surveillance extends AbstractDynamicCard {
     private static final int COST = 1;
     private static final int UPGRADE_COST = 0;
     private static final int ORBS = 1;
+    private static final int SPIKES = 3;
 
     // /STAT DECLARATION/
 
@@ -37,6 +40,7 @@ public class Surveillance extends AbstractDynamicCard {
     public Surveillance() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = ORBS;
+        secondMagicNumber = baseSecondMagicNumber = SPIKES;
         showEvokeValue = true;
     }
 
@@ -44,6 +48,7 @@ public class Surveillance extends AbstractDynamicCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.addToBot(new MultichannelAction(new SearchlightOrb(), magicNumber));
+        this.addToBot(new ApplyPowerAction(p, p, new SpikesPower(p, secondMagicNumber)));
     }
 
     //Upgraded stats.
