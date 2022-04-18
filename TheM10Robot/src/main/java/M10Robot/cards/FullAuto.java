@@ -55,7 +55,6 @@ public class FullAuto extends AbstractDynamicCard {
         for (int i = 0 ; i < magicNumber ; i++) {
             this.addToBot(new FullAutoAction(p, multiDamage, damageTypeForTurn, AbstractGameAction.AttackEffect.NONE));
         }
-        this.addToBot(new ApplyPowerAction(p, p, new RecoilPower(p, 1)));
     }
 
     // Upgraded stats.
