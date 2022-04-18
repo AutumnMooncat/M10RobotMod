@@ -164,7 +164,7 @@
   },
   "M10Robot:FullAuto": {
     "NAME": "Inversion Beam",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies !M! times. NL Targets lose Strength this turn equal to unblocked damage taken."
+    "DESCRIPTION": "Deal !D! damage to ALL enemies !M! times."
   },
   "M10Robot:HomeSweeper": {
     "NAME": "Home Sweeper",

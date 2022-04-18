@@ -9,6 +9,7 @@ import M10Robot.vfx.InversionBlastEffect;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -33,9 +34,10 @@ public class FullAuto extends AbstractDynamicCard {
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
     private static final int COST = 1;
-    private static final int DAMAGE = 2;
+    private static final int DAMAGE = 4;
     private static final int UPGRADE_PLUS_DMG = 1;
     private static final int HITS = 3;
+    private static final int UPGRADE_PLUS_HITS = 1;
 
     // /STAT DECLARATION/
 
@@ -53,7 +55,8 @@ public class FullAuto extends AbstractDynamicCard {
         this.addToBot(new SFXAction("ATTACK_FIRE"));
         this.addToBot(new VFXAction(p, new InversionBlastEffect(p.hb.cX, p.hb.cY, p.flipHorizontal), 0.1F));
         for (int i = 0 ; i < magicNumber ; i++) {
-            this.addToBot(new FullAutoAction(p, multiDamage, damageTypeForTurn, AbstractGameAction.AttackEffect.NONE));
+            //this.addToBot(new FullAutoAction(p, multiDamage, damageTypeForTurn, AbstractGameAction.AttackEffect.NONE));
+            this.addToBot(new DamageAllEnemiesAction(p, multiDamage, damageTypeForTurn, AbstractGameAction.AttackEffect.NONE, true));
         }
     }
 
