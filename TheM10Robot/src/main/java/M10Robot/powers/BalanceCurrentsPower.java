@@ -45,7 +45,7 @@ public class BalanceCurrentsPower extends AbstractPower implements CloneablePowe
     public void onApplyPower(AbstractPower power, AbstractCreature target, AbstractCreature source) {
         if (power.type == PowerType.DEBUFF && !power.ID.equals("Shackled") && source == this.owner && !target.hasPower("Artifact")) {
             this.flash();
-            this.addToBot(new GainBlockAction(owner, owner, amount));
+            this.addToBot(new GainBlockAction(owner, owner, amount, true));
         }
     }
 
