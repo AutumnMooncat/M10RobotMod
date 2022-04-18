@@ -3,7 +3,6 @@ package M10Robot.cards;
 import M10Robot.M10RobotMod;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
-import M10Robot.powers.RecoilPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -11,6 +10,7 @@ import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.LockOnPower;
 import com.megacrit.cardcrawl.vfx.combat.ExplosionSmallEffect;
 
 import static M10Robot.M10RobotMod.makeCardPath;
@@ -33,15 +33,17 @@ public class MagnumStrike extends AbstractDynamicCard {
     private static final CardType TYPE = CardType.ATTACK;
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
-    private static final int COST = 1;
+    private static final int COST = 2;
     private static final int DAMAGE = 12;
     private static final int UPGRADE_PLUS_DMG = 4;
+    private static final int EFFECT = 2;
 
     // /STAT DECLARATION/
 
     public MagnumStrike() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = damage = DAMAGE;
+        baseMagicNumber = magicNumber = EFFECT;
         this.tags.add(CardTags.STRIKE);
     }
 
@@ -50,7 +52,8 @@ public class MagnumStrike extends AbstractDynamicCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.addToBot(new VFXAction(new ExplosionSmallEffect(m.hb.cX, m.hb.cY), 0.1F));
         this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-        this.addToBot(new ApplyPowerAction(p, p, new RecoilPower(p, 1)));
+        //this.addToBot(new ApplyPowerAction(p, p, new RecoilPower(p, 1)));
+        this.addToBot(new ApplyPowerAction(m, p, new LockOnPower(m, magicNumber)));
     }
 
     // Upgraded stats.
