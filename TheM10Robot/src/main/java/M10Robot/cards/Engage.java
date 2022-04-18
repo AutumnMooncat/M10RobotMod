@@ -54,8 +54,8 @@ public class Engage extends AbstractDynamicCard implements BranchingUpgradesCard
         this.addToBot(new ApplyPowerAction(m, p, new VulnerablePower(m, magicNumber, false)));
         this.addToBot(new ApplyPowerAction(m, p, new LockOnPower(m, magicNumber)));
         if ((m != null && m.getIntentBaseDmg() >= 0) || info > 0) {
-            //this.addToBot(new DrawCardAction(secondMagicNumber));
-            this.addToBot(new MultichannelAction(new SearchlightOrb(), secondMagicNumber));
+            this.addToBot(new DrawCardAction(secondMagicNumber));
+            //this.addToBot(new MultichannelAction(new SearchlightOrb(), secondMagicNumber));
         }
     }
 

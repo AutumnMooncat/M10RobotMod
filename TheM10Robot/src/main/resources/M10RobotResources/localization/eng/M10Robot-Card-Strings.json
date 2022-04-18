@@ -140,7 +140,7 @@
   },
   "M10Robot:Engage": {
     "NAME": "Engage",
-    "DESCRIPTION": "{@@}Apply !M! Vulnerable. NL Apply !M! Lock-On. NL {!M10Robot:Info!|<1=If the enemy intends to attack, }Channel !M10Robot:SecondMagic! m10robot:Searchlight{!M10Robot:SecondMagic!|>1=s}."
+    "DESCRIPTION": "{@@}Apply !M! Vulnerable and Lock-On. NL {!M10Robot:Info!|@=If the enemy intends to attack, draw|>0=Draw} !M10Robot:SecondMagic! card{!M10Robot:SecondMagic!|>1=s}."
   },
   "M10Robot:EvasionDown": {
     "NAME": "Evasion Down",
