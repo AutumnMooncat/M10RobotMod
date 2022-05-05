@@ -100,7 +100,7 @@ public class AwakenedCore extends CustomRelic implements OverclockBeforePlayItem
 
     //Only spawn if we have the starter relic
     public boolean canSpawn() {
-        return AbstractDungeon.player.hasRelic(ProtectiveShell.ID);
+        return AbstractDungeon.player.hasRelic(DualCore.ID);
     }
 
     // Description
