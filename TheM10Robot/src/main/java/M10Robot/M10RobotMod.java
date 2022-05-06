@@ -179,7 +179,7 @@ public class M10RobotMod implements
 
 
     //Here we hold onto additional vars we care about
-    public static ModLabeledToggleButton showBoosterTutorialButton;
+    //public static ModLabeledToggleButton showBoosterTutorialButton;
     
     // =============== MAKE IMAGE PATHS =================
     
@@ -403,16 +403,16 @@ public class M10RobotMod implements
         float spacingY = 55f;
 
         //Used to set the tutorial setting
-        showBoosterTutorialButton = new ModLabeledToggleButton(TEXT[0],350.0f, currentYposition, Settings.CREAM_COLOR, FontHelper.charDescFont,
+        /*showBoosterTutorialButton = new ModLabeledToggleButton(TEXT[0],350.0f, currentYposition, Settings.CREAM_COLOR, FontHelper.charDescFont,
                 !m10RobotConfig.getBool(BOOSTER_TUTORIAL_SEEN), settingsPanel, (label) -> {}, (button) -> {
             m10RobotConfig.setBool(BOOSTER_TUTORIAL_SEEN, !button.enabled);
             boosterTutorialSeen = !button.enabled;
             try {m10RobotConfig.save();} catch (IOException e) {e.printStackTrace();}
         });
-        currentYposition -= spacingY;
+        currentYposition -= spacingY;*/
 
         //Used to set the unused self damage setting.
-        ModLabeledToggleButton enableChimeraCrossoverButton = new ModLabeledToggleButton(TEXT[3],350.0f, currentYposition, Settings.CREAM_COLOR, FontHelper.charDescFont,
+        ModLabeledToggleButton enableChimeraCrossoverButton = new ModLabeledToggleButton(TEXT[0],350.0f, currentYposition, Settings.CREAM_COLOR, FontHelper.charDescFont,
                 m10RobotConfig.getBool(ENABLE_CHIMERA_CROSSOVER), settingsPanel, (label) -> {}, (button) -> {
             m10RobotConfig.setBool(ENABLE_CHIMERA_CROSSOVER, button.enabled);
             enableChimeraCrossover = button.enabled;
@@ -421,7 +421,7 @@ public class M10RobotMod implements
         currentYposition -= spacingY;
 
         //Used for randomly talking when playing cards
-        ModLabeledToggleButton enableCardBattleTalkButton = new ModLabeledToggleButton(TEXT[4],350.0f, currentYposition, Settings.CREAM_COLOR, FontHelper.charDescFont,
+        ModLabeledToggleButton enableCardBattleTalkButton = new ModLabeledToggleButton(TEXT[1],350.0f, currentYposition, Settings.CREAM_COLOR, FontHelper.charDescFont,
                 m10RobotConfig.getBool(ENABLE_CARD_BATTLE_TALK_SETTING), settingsPanel, (label) -> {}, (button) -> {
             m10RobotConfig.setBool(ENABLE_CARD_BATTLE_TALK_SETTING, button.enabled);
             enableCardBattleTalkEffect = button.enabled;
@@ -431,14 +431,14 @@ public class M10RobotMod implements
                 enableCardBattleTalkButton.getX() + sliderOffset,
                 enableCardBattleTalkButton.getY() + 20f,
                 0, 100, m10RobotConfig.getInt(CARD_BATTLE_TALK_PROBABILITY_SETTING), "%.0f", settingsPanel, slider -> {
-            m10RobotConfig.setInt(CARD_BATTLE_TALK_PROBABILITY_SETTING, (int)slider.getValue());
-            cardTalkProbability = (int)slider.getValue();
+            m10RobotConfig.setInt(CARD_BATTLE_TALK_PROBABILITY_SETTING, Math.round(slider.getValue()));
+            cardTalkProbability = Math.round(slider.getValue());
             try {m10RobotConfig.save();} catch (IOException e) {e.printStackTrace();}
         });
         currentYposition -= spacingY;
 
         //Used for randomly talking when taking damage
-        ModLabeledToggleButton enableDamagedBattleTalkButton = new ModLabeledToggleButton(TEXT[5],350.0f, currentYposition, Settings.CREAM_COLOR, FontHelper.charDescFont,
+        ModLabeledToggleButton enableDamagedBattleTalkButton = new ModLabeledToggleButton(TEXT[2],350.0f, currentYposition, Settings.CREAM_COLOR, FontHelper.charDescFont,
                 m10RobotConfig.getBool(ENABLE_DAMAGED_BATTLE_TALK_SETTING), settingsPanel, (label) -> {}, (button) -> {
             m10RobotConfig.setBool(ENABLE_DAMAGED_BATTLE_TALK_SETTING, button.enabled);
             enableDamagedBattleTalkEffect = button.enabled;
@@ -455,7 +455,7 @@ public class M10RobotMod implements
         currentYposition -= spacingY;
 
         //Used for randomly talking when combat starts and ends
-        ModLabeledToggleButton enablePreBattleTalkButton = new ModLabeledToggleButton(TEXT[6],350.0f, currentYposition, Settings.CREAM_COLOR, FontHelper.charDescFont,
+        ModLabeledToggleButton enablePreBattleTalkButton = new ModLabeledToggleButton(TEXT[3],350.0f, currentYposition, Settings.CREAM_COLOR, FontHelper.charDescFont,
                 m10RobotConfig.getBool(ENABLE_PRE_BATTLE_TALK_SETTING), settingsPanel, (label) -> {}, (button) -> {
             m10RobotConfig.setBool(ENABLE_PRE_BATTLE_TALK_SETTING, button.enabled);
             enablePreBattleTalkEffect = button.enabled;
@@ -465,8 +465,8 @@ public class M10RobotMod implements
                 enablePreBattleTalkButton.getX() + sliderOffset,
                 enablePreBattleTalkButton.getY() + 20f,
                 0, 100, m10RobotConfig.getInt(PRE_BATTLE_TALK_PROBABILITY_SETTING), "%.0f", settingsPanel, slider -> {
-            m10RobotConfig.setInt(PRE_BATTLE_TALK_PROBABILITY_SETTING, (int)slider.getValue());
-            preTalkProbability = (int)slider.getValue();
+            m10RobotConfig.setInt(PRE_BATTLE_TALK_PROBABILITY_SETTING, Math.round(slider.getValue()));
+            preTalkProbability = Math.round(slider.getValue());
             try {m10RobotConfig.save();} catch (IOException e) {e.printStackTrace();}
         });
         currentYposition -= spacingY;
@@ -506,9 +506,9 @@ public class M10RobotMod implements
     private float getSliderPosition (ArrayList<String> stringsToCompare) {
         float longest = 0;
         for (String s : stringsToCompare) {
-            longest = Math.max(longest, FontHelper.getWidth(FontHelper.charDescFont, s, Settings.scale));
+            longest = Math.max(longest, FontHelper.getWidth(FontHelper.charDescFont, s, 1 / Settings.scale));
         }
-        return longest + 60f * Settings.scale;
+        return longest + 60f;
     }
     
     // =============== / POST-INITIALIZE/ =================

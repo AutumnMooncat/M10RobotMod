@@ -1,9 +1,6 @@
 {
   "M10Robot:ModConfigs": {
     "TEXT": [
-      "Show Boosters & Modules tutorial",
-      "Show Retoolable tutorial",
-      "",
       "Enable Chimera Cards crossover content",
       "Enable random card phrases. Defaults: true, 10%.",
       "Enable random phrases when attacked. Defaults: true, 20%.",
