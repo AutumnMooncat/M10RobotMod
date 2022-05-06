@@ -21,7 +21,7 @@
     "TEXT": ["Gift ", "", " NL Channel %d m10robot:Present."]
   },
   "M10Robot:RecoilMod": {
-    "TEXT": ["Magnum ", "", " NL m10robot:Recoil."]
+    "TEXT": ["Unbalanced ", "", " NL Your next attacks deals half damage."]
   },
   "M10Robot:SearchMod": {
     "TEXT": ["Search and ", "", " NL Channel %d m10robot:Searchlight."]
