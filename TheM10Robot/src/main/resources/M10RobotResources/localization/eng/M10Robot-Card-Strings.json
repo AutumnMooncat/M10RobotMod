@@ -23,7 +23,7 @@
   },
   "M10Robot:Ascension": {
     "NAME": "Ascension",
-    "DESCRIPTION": "{@@}Draw !M! card{!M!|>1=s}. NL m10robot:Overclock all cards in your hand !M10Robot:SecondMagic! time{!M10Robot:SecondMagic!|>1=s}."
+    "DESCRIPTION": "{@@}m10robot:Inert. NL Draw !M! card{!M!|>1=s}. NL m10robot:Overclock all cards in your hand !M10Robot:SecondMagic! time{!M10Robot:SecondMagic!|>1=s}."
   },
   "M10Robot:AssaultField": {
     "NAME": "Assault Field",
