@@ -29,6 +29,7 @@ public class OverclockPatches {
     @SpirePatch(clz = AbstractCard.class, method = SpirePatch.CLASS)
     public static class OverclockField {
         public static SpireField<Integer> overclocks = new SpireField<>(() -> 0);
+        public static SpireField<Integer> percentLastFrame = new SpireField<>(() -> 0);
     }
 
     @SpirePatch(clz = AbstractCard.class, method = "makeStatEquivalentCopy")
@@ -86,6 +87,10 @@ public class OverclockPatches {
                 ((AbstractModdedCard) card).secondMagicNumber = (int) Math.max(0,((AbstractModdedCard) card).baseSecondMagicNumber * (100F + rawPercent) / 100F);
                 ((AbstractModdedCard) card).isSecondMagicNumberModified = ((AbstractModdedCard) card).secondMagicNumber != ((AbstractModdedCard) card).baseSecondMagicNumber;
             }
+        }
+        if (!OverclockField.percentLastFrame.get(card).equals(rawPercent)) {
+            OverclockField.percentLastFrame.set(card, rawPercent);
+            card.initializeDescription();
         }
     }
 
