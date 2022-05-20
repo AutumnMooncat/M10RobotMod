@@ -1,5 +1,6 @@
 package M10Robot.actions;
 
+import M10Robot.orbs.AbstractCustomOrb;
 import M10Robot.orbs.ExtraOrbFields;
 import M10Robot.powers.SpikesPower;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
@@ -32,7 +33,11 @@ public class ScrapperAction extends AbstractGameAction {
                 AbstractOrb orb = AbstractDungeon.player.orbs.get(0);
                 int spikes = amount;
                 if (applyBonus) {
-                    spikes += (bonus * ExtraOrbFields.ExtraFields.timesUpgraded.get(orb));
+                    if (orb instanceof AbstractCustomOrb) {
+                        spikes += ((AbstractCustomOrb) orb).timesUpgraded;
+                    } else {
+                        spikes += (bonus * ExtraOrbFields.ExtraFields.timesUpgraded.get(orb));
+                    }
                 }
                 this.addToTop(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new SpikesPower(AbstractDungeon.player, spikes)));
                 if (!(orb instanceof EmptyOrbSlot)) {
