@@ -66,7 +66,7 @@ public class TargetingSystem extends AbstractDynamicCard implements BranchingUpg
     }
 
     public void branchUpgrade() {
-        this.isInnate = true;
+        upgradeBaseCost(UPGRADE_COST);
     }
 
 }
