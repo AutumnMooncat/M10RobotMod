@@ -39,8 +39,8 @@ public class EMP extends AbstractDynamicCard {
     private static final AbstractCard.CardType TYPE = CardType.ATTACK;
     public static final AbstractCard.CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
-    private static final int COST = 1;
-    private static final int DAMAGE = 6;
+    private static final int COST = 0;
+    private static final int DAMAGE = 3;
     private static final int UPGRADE_PLUS_DMG = 2;
     private static final int STR_DOWN = 2;
     private static final int UPGRADE_PLUS_STR_DOWN = 1;
@@ -79,7 +79,7 @@ public class EMP extends AbstractDynamicCard {
         if (!upgraded) {
             upgradeName();
             upgradeDamage(UPGRADE_PLUS_DMG);
-            upgradeMagicNumber(UPGRADE_PLUS_STR_DOWN);
+            //upgradeMagicNumber(UPGRADE_PLUS_STR_DOWN);
             initializeDescription();
         }
     }
