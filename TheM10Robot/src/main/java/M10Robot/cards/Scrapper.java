@@ -27,10 +27,12 @@ public class Scrapper extends AbstractDynamicCard {
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
-    private static final int COST = 1;
+    private static final int COST = 0;
     private static final int UPGRADE_COST = 0;
-    private static final int SPIKES = 4;
+    private static final int SPIKES = 3;
     private static final int UPGRADE_PLUS_SPIKES = 2;
+    private static final int SPU = 2;
+    private static final int UPGRADE_PLUS_SPU = 1;
 
     // /STAT DECLARATION/
 
@@ -38,6 +40,8 @@ public class Scrapper extends AbstractDynamicCard {
     public Scrapper() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         magicNumber = baseMagicNumber = SPIKES;
+        secondMagicNumber = baseSecondMagicNumber = SPU;
+        info = baseInfo = 0;
         showEvokeValue = true;
     }
 
@@ -45,7 +49,7 @@ public class Scrapper extends AbstractDynamicCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.addToBot(new AnimateOrbAction(1));
-        this.addToBot(new ScrapperAction(magicNumber));
+        this.addToBot(new ScrapperAction(magicNumber, secondMagicNumber, info != 0));
     }
 
     //Upgraded stats.
@@ -53,8 +57,10 @@ public class Scrapper extends AbstractDynamicCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeBaseCost(UPGRADE_COST);
+            //upgradeBaseCost(UPGRADE_COST);
             //upgradeMagicNumber(UPGRADE_PLUS_SPIKES);
+            //upgradeSecondMagicNumber(UPGRADE_PLUS_SPU);
+            upgradeInfo(1);
             initializeDescription();
         }
     }
