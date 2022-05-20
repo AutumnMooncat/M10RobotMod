@@ -8,12 +8,17 @@ import basemod.helpers.VfxBuilder;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
+import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
+import com.megacrit.cardcrawl.powers.LockOnPower;
+import com.megacrit.cardcrawl.powers.VulnerablePower;
 import com.megacrit.cardcrawl.vfx.AbstractGameEffect;
 import com.megacrit.cardcrawl.vfx.ShineSparkleEffect;
 import com.megacrit.cardcrawl.vfx.combat.FlickCoinEffect;
@@ -45,14 +50,16 @@ public class Railgun extends AbstractDynamicCard implements SkillAnimationAttack
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
     private static final int COST = 1;
-    private static final int DAMAGE = 12;
+    private static final int DAMAGE = 10;
     private static final int UPGRADE_PLUS_DMG = 4;
+    private static final int VULN = 1;
 
     // /STAT DECLARATION/
 
     public Railgun() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         baseDamage = damage = DAMAGE;
+        magicNumber = baseMagicNumber = VULN;
     }
 
     // Actions the card should do.
@@ -111,6 +118,9 @@ public class Railgun extends AbstractDynamicCard implements SkillAnimationAttack
         });
         this.addToBot(new SFXAction("WATCHER_HEART_PUNCH"));
         this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.NONE, true));
+        if (m.hasPower(LockOnPower.POWER_ID)) {
+            this.addToBot(new ApplyPowerAction(m, p, new VulnerablePower(m, magicNumber, false)));
+        }
     }
 
     public boolean canUse(AbstractPlayer p, AbstractMonster m) {
@@ -122,6 +132,13 @@ public class Railgun extends AbstractDynamicCard implements SkillAnimationAttack
             this.cantUseMessage = EXTENDED_DESCRIPTION[0];
         }
         return canUse;
+    }
+
+    public void triggerOnGlowCheck() {
+        this.glowColor = AbstractCard.BLUE_BORDER_GLOW_COLOR.cpy();
+        if (AbstractDungeon.getMonsters().monsters.stream().anyMatch(m -> m.hasPower(LockOnPower.POWER_ID))) {
+            this.glowColor = AbstractCard.GOLD_BORDER_GLOW_COLOR.cpy();
+        }
     }
 
     // Upgraded stats.

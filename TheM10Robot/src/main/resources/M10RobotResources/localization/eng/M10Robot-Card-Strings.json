@@ -240,7 +240,7 @@
   },
   "M10Robot:Railgun": {
     "NAME": "Railgun",
-    "DESCRIPTION": "Lose 1 Gold. NL Deal !D! damage.",
+    "DESCRIPTION": "Lose 1 Gold. NL Deal !D! damage. NL If the enemy has Lock-On, apply !M! Vulnerable.",
     "EXTENDED_DESCRIPTION": ["I have no gold."]
   },
   "M10Robot:RAMUpgrade": {
