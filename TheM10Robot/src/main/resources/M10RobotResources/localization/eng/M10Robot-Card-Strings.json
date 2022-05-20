@@ -27,7 +27,7 @@
   },
   "M10Robot:AssaultField": {
     "NAME": "Assault Field",
-    "DESCRIPTION": "{@@}Deal !D! damage to ALL enemies. NL Shuffle !M! *Assault{!Upgrades!|>0=+} into your draw pile."
+    "DESCRIPTION": "{@@}Deal !D! damage to ALL enemies. Shuffle !M! *Assault{!Upgrades!|>0=+} into your draw pile."
   },
   "M10Robot:Assault": {
     "NAME": "Assault",
@@ -120,7 +120,7 @@
   },
   "M10Robot:DividedAttention": {
     "NAME": "Divided Attention",
-    "DESCRIPTION": "{@@}Discard !M10Robot:SecondMagic! card{!M10Robot:SecondMagic!|>1=s}{!M10Robot:Info!|<1= at random}. NL m10robot:Extract !M! card{!M!|-1,>1=s} at random."
+    "DESCRIPTION": "{@@}Discard !M10Robot:SecondMagic! card{!M10Robot:SecondMagic!|>1=s}{!M10Robot:Info!|<1= at random}. m10robot:Extract !M! card{!M!|-1,>1=s} at random."
   },
   "M10Robot:DoubleCaster": {
     "NAME": "Double Caster",
@@ -168,7 +168,7 @@
   },
   "M10Robot:HomeSweeper": {
     "NAME": "Home Sweeper",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Deals !M! more damage per turn passed."
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. Deals !M! more damage per turn passed."
   },
   "M10Robot:ImaginaryNumbers": {
     "NAME": "Imaginary Numbers",
@@ -345,7 +345,7 @@
   },
   "M10Robot:SplitBeam": {
     "NAME": "Split Beam",
-    "DESCRIPTION": "Deal !D! damage !M! times. NL When m10robot:Extracted, increase this card's hits by !M10Robot:SecondMagic! this combat."
+    "DESCRIPTION": "Deal !D! damage !M! times. When m10robot:Extracted, increase its hits by !M10Robot:SecondMagic! this combat."
   },
   "M10Robot:SteelWall": {
     "NAME": "Steel Wall",
@@ -373,7 +373,7 @@
   },
   "M10Robot:ThornField": {
     "NAME": "Thorn Field",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Gain !M! m10robot:Spikes for each enemy in combat."
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. Gain !M! m10robot:Spikes for each enemy in combat."
   },
   "M10Robot:ThornWhip": {
     "NAME": "Lash",
@@ -397,7 +397,7 @@
   },
   "M10Robot:WaveGenerator": {
     "NAME": "Wave Generator",
-    "DESCRIPTION": "Deal !D! damage to ALL enemies. NL Increase this card's damage by !M! this combat."
+    "DESCRIPTION": "Deal !D! damage to ALL enemies. Increase this card's damage by !M! this combat."
   },
   "M10Robot:WaveAnalyzer": {
     "NAME": "Wave Analyzer",
