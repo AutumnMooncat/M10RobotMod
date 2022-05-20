@@ -245,7 +245,7 @@
   },
   "M10Robot:RAMUpgrade": {
     "NAME": "RAM Upgrade",
-    "DESCRIPTION": "{@@}Whenever you Channel an Orb, m10robot:Upgrade it !M! time{!M!|>1=s}."
+    "DESCRIPTION": "{@@}Gain !M! Orb slot{!M!|>1=s}. NL Whenever you Channel an Orb, m10robot:Upgrade it !M10Robot:SecondMagic! time{!M10Robot:SecondMagic!|>1=s}."
   },
   "M10Robot:RapidAssembly": {
     "NAME": "Rapid Assembly",

@@ -4,13 +4,15 @@ import M10Robot.M10RobotMod;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
 import M10Robot.powers.RAMUpgradePower;
+import com.evacipated.cardcrawl.mod.stslib.cards.interfaces.BranchingUpgradesCard;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.defect.IncreaseMaxOrbAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
-public class RAMUpgrade extends AbstractDynamicCard {
+public class RAMUpgrade extends AbstractDynamicCard implements BranchingUpgradesCard {
 
     /*
      * Wiki-page: https://github.com/daviscook477/BaseMod/wiki/Custom-Cards
@@ -37,20 +39,24 @@ public class RAMUpgrade extends AbstractDynamicCard {
     private static final int COST = 1;
     private static final int UPGRADE_COST = 0;
     private static final int EFFECT = 1;
+    private static final int SLOTS = 1;
     private static final int UPGRADE_PLUS_EFFECT = 1;
+    private static final int UPGRADE_PLUS_SLOTS = 1;
 
     // /STAT DECLARATION/
 
 
     public RAMUpgrade() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        magicNumber = baseMagicNumber = EFFECT;
+        magicNumber = baseMagicNumber = SLOTS;
+        secondMagicNumber = baseSecondMagicNumber = EFFECT;
     }
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new ApplyPowerAction(p, p, new RAMUpgradePower(p, magicNumber)));
+        this.addToBot(new IncreaseMaxOrbAction(this.magicNumber));
+        this.addToBot(new ApplyPowerAction(p, p, new RAMUpgradePower(p, secondMagicNumber)));
     }
 
     //Upgraded stats.
@@ -58,9 +64,20 @@ public class RAMUpgrade extends AbstractDynamicCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeBaseCost(UPGRADE_COST);
-            //upgradeMagicNumber(UPGRADE_PLUS_EFFECT);
+            if (isBranchUpgrade()) {
+                branchUpgrade();
+            } else {
+                baseUpgrade();
+            }
             initializeDescription();
         }
+    }
+
+    public void baseUpgrade() {
+        upgradeMagicNumber(UPGRADE_PLUS_SLOTS);
+    }
+
+    public void branchUpgrade() {
+        upgradeSecondMagicNumber(UPGRADE_PLUS_EFFECT);
     }
 }
