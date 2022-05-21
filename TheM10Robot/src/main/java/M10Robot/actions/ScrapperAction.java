@@ -34,7 +34,7 @@ public class ScrapperAction extends AbstractGameAction {
                 int spikes = amount;
                 if (applyBonus) {
                     if (orb instanceof AbstractCustomOrb) {
-                        spikes += ((AbstractCustomOrb) orb).timesUpgraded;
+                        spikes += (bonus * ((AbstractCustomOrb) orb).timesUpgraded);
                     } else {
                         spikes += (bonus * ExtraOrbFields.ExtraFields.timesUpgraded.get(orb));
                     }
