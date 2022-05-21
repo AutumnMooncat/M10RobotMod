@@ -132,7 +132,7 @@
   },
   "M10Robot:EmptyBuffer": {
     "NAME": "Empty Buffer",
-    "DESCRIPTION": "{@@}{!M10Robot:Info!|@=Remove|1=Evoke} all your Orbs. NL Gain !M! Orb slot{!M!|>1=s} for each Orb {!M10Robot:Info!|@=removed|>0=Evoked}."
+    "DESCRIPTION": "{@@}{!M10Robot:Info!|@=Remove|>0=Evoke} all your Orbs. NL Gain !M! Orb slot{!M!|>1=s} for each Orb {!M10Robot:Info!|@=removed|>0=Evoked}."
   },
   "M10Robot:EnergyShield": {
     "NAME": "Energy Shield",
@@ -305,7 +305,7 @@
   },
   "M10Robot:Scrapper": {
     "NAME": "Scrapper",
-    "DESCRIPTION": "{@@}Evoke your next Orb. NL Gain {!M10Robot:Info!|@=!M! m10robot:Spikes|1=!M10Robot:SecondMagic! m10robot:Spikes for each m10robot:Upgrade it had plus !M!}."
+    "DESCRIPTION": "{@@}Evoke your next Orb. NL Gain {!M10Robot:Info!|@=!M! m10robot:Spikes|>0=!M10Robot:SecondMagic! m10robot:Spikes for each m10robot:Upgrade it had plus !M!}."
   },
   "M10Robot:SecretRootkit": {
     "NAME": "Rootkit",
