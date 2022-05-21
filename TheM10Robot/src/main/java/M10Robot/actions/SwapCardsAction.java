@@ -53,13 +53,10 @@ public class SwapCardsAction extends AbstractGameAction {
                 AbstractDungeon.player.releaseCard();
             }
             AbstractDungeon.actionManager.cardQueue.removeIf(q -> q.card == toReplace);
+            this.addToTop(new UpdateAfterTransformAction(newCard));
             this.addToTop(new TransformCardInHandAction(index, newCard));
             //p.hand.group.remove(index);
             //p.hand.group.add(index, newCard);
-            p.hand.applyPowers();
-            p.hand.glowCheck();
-            newCard.superFlash();
-            newCard.initializeDescription();
         }
         this.isDone = true;
     }
