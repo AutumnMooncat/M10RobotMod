@@ -83,11 +83,11 @@
   },
   "M10Robot:Byte": {
     "NAME": "Byte",
-    "DESCRIPTION": "{@@}Deal !D! damage. NL Channel !M! m10robot:Bit{!M!|>1=s}. NL {!M10Robot:Info!|@=Shuffle|>0=Add} !M10Robot:SecondMagic! *Nibbles into your {!M10Robot:Info!|@=draw pile|>0=hand}."
+    "DESCRIPTION": "{@@}m10robot:Swappable. NL Deal !D! damage{!M10Robot:Info!|>0= to ALL enemies}. NL Channel !M! m10robot:Bits."
   },
   "M10Robot:Nibble": {
     "NAME": "Nibble",
-    "DESCRIPTION": "{@@}Gain !B! Block. NL Deal !D! damage. NL All m10robot:Bits will attack this target !M! time{!M!|>1=s}."
+    "DESCRIPTION": "{@@}m10robot:Swappable. NL Gain !B! Block. NL Deal !D! damage{!M10Robot:Info!|>0= to ALL enemies}."
   },
   "M10Robot:CardSupplier": {
     "NAME": "Card Supplier",
