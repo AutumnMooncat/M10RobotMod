@@ -1,6 +1,7 @@
 package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
+import M10Robot.actions.SelfDestructAction;
 import M10Robot.actions.SelfDestructAction2;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.cards.interfaces.CannotOverclock;
@@ -53,6 +54,7 @@ public class SelfDestruction extends AbstractDynamicCard implements CannotOvercl
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         damage = baseDamage = DAMAGE;
         secondMagicNumber = baseSecondMagicNumber = SELF_DAMAGE;
+        isMultiDamage = true;
         exhaust = true;
         //CardModifierManager.addModifier(this, new HeavyModifier());
     }
@@ -60,6 +62,7 @@ public class SelfDestruction extends AbstractDynamicCard implements CannotOvercl
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        this.addToBot(new ApplyPowerAction(m, p, new StunMonsterPower(m, 1)));
         /*this.addToBot(new AbstractGameAction() {
             @Override
             public void update() {
@@ -74,12 +77,12 @@ public class SelfDestruction extends AbstractDynamicCard implements CannotOvercl
             }
         });
         this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.NONE, true));*/
-        this.addToBot(new SelfDestructAction2(p, m, new DamageInfo(p, damage, damageTypeForTurn), secondMagicNumber));
+        this.addToBot(new SelfDestructAction(p, m, multiDamage, damageTypeForTurn, secondMagicNumber, false));
+        //this.addToBot(new SelfDestructAction2(p, m, new DamageInfo(p, damage, damageTypeForTurn), secondMagicNumber));
         //this.addToBot(new DamageAction(p, new DamageInfo(p, secondMagicNumber, DamageInfo.DamageType.THORNS), true));
         //We really don't want this to interact with Stasis
         //StunMonsterPower pow = new StunMonsterPower(m, 1);
         //pow.type = NeutralPowertypePatch.NEUTRAL;
-        this.addToBot(new ApplyPowerAction(m, p, new StunMonsterPower(m, 1)));
         //this.addToBot(new ApplyPowerAction(p, p, new RecoilPower(p, 1)));
     }
 
