@@ -10,7 +10,22 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 import javassist.CtBehavior;
 
 public class BonusDamagePowerPatches {
+
     @SpirePatch2(clz = AbstractPlayer.class, method = "damage")
+    @SpirePatch2(clz = AbstractMonster.class, method = "damage")
+    public static class ModifyBeforeBlock {
+        @SpirePrefixPatch()
+        public static void modify(AbstractCreature __instance, DamageInfo info) {
+            for (AbstractPower p : __instance.powers) {
+                if (p instanceof BonusDamagePower) {
+                    info.output = ((BonusDamagePower) p).modifyDamageBeforeBlock(__instance, info, info.output);
+                }
+            }
+        }
+    }
+
+
+    /*@SpirePatch2(clz = AbstractPlayer.class, method = "damage")
     public static class ModifyBeforeBlock {
         @SpireInsertPatch(locator = Locator.class, localvars = {"damageAmount"})
         public static void modify(AbstractCreature __instance, DamageInfo info, @ByRef int[] damageAmount) {
@@ -48,5 +63,5 @@ public class BonusDamagePowerPatches {
             Matcher matcher = new Matcher.MethodCallMatcher(AbstractMonster.class, "decrementBlock");
             return LineFinder.findInOrder(ctBehavior, matcher);
         }
-    }
+    }*/
 }

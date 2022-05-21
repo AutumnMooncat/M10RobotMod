@@ -13,6 +13,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.localization.PowerStrings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.IntangiblePower;
 
 public class EvasionDownPower extends AbstractPower implements CloneablePowerInterface, BonusDamagePower {
 
@@ -71,7 +72,7 @@ public class EvasionDownPower extends AbstractPower implements CloneablePowerInt
     @Override
     public int modifyDamageBeforeBlock(AbstractCreature target, DamageInfo info, int damage) {
         flashWithoutSound();
-        if (info.type == DamageInfo.DamageType.NORMAL) {
+        if (info.type == DamageInfo.DamageType.NORMAL || target.hasPower(IntangiblePower.POWER_ID)) {
             return damage;
         }
         return damage + amount;
