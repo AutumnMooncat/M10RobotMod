@@ -20,11 +20,11 @@ Uncommon   : 36
 Rare       : 15
 
 Cost List  -  C    U    R    T
-0 Cost     :  4    3    2    9
-1 Cost     :  16   26   6    48
-2 Cost     :  4    5    3    12
+0 Cost     :  5    4    2    11
+1 Cost     :  15   24   6    45    // Need at least 1 less Uncommon 1 cost
+2 Cost     :  4    6    3    13
 3 Cost     :  0    1    3    4
-4 Cost     :  0    0    0    0
+4 Cost     :  0    0    0    0     // Ideally add 1 or 2 4+ or Unplayable cost
 X Cost     :  0    1    1    2
 U Cost     :  0    0    0    0
 
@@ -50,18 +50,18 @@ Overclock  :  2    4    1    7
 Orb Upgr   :  1    4    0    5
 
 Synergies  -  C    U    R    T    (Direct/Indirect)
-Lock On    :  2/4  1/6  0/1  3/11
+Lock On    :  2/4  2/6  0/1  4/11
 Extract    :  2/2  3/2  0/0  5/4
 Spikes     :  3/0  1/0  0/0  4/0
-Overclock  :  0/4  1/7  0/1  1/12
-Orb Upgr   :  0/5  0/8  0/2  0/15
+Overclock  :  0/4  1/8  0/1  1/13
+Orb Upgr   :  1/5  0/8  0/2  1/15
 
 Archetypes -  C    U    R    T
-Lock On    :  9    8    1    18
+Lock On    :  9    9    1    19
 Extract    :  5    10   0    15
 Spikes     :  7    2    1    10
-Overclock  :  6    11   2    19
-Orb Upgr   :  6    12   2    20
+Overclock  :  6    12   2    20
+Orb Upgr   :  7    12   2    21
 
 Concepts   -  C    U    R    T
 Swappable  :  2    1    0    3
@@ -69,7 +69,7 @@ Branching  :  4    7    2    13
 
 Lock On Applier - Magnum Strike, Seeker, Thermal Imaging || Heuristics ||
 Lock On Synergy
-        Direct - Seeker, Heat Seekers || Command ||
+        Direct - Seeker, Heat Seekers || Command, Railgun ||
         Indirect - Surveillance, Fortify, Lash, Thermal Imaging || Atomize, Bitmask, Byte, Light Show, Unstable Compound, Wide Angle || Spiky Plating
 
 Extract Applier - Merge || Acceleration, Compile Data, Divided Attention, Filter, Reroute ||
@@ -85,9 +85,12 @@ Spikes Synergy
 Overclock Applier - Ascension, Prelude || Acceleration, All In, Extrapolate, Rapid Assembly || Overdrive Form
 Overclock Synergy
         Direct - || Reroute ||
-        Indirect - Assault Field, Returning Shield, Split Beam, Thorn Field || Booster, Byte, Nibble, Cloaking, Rush Down, Spike Shell, Wave Gen || Inversion Beam
+        Indirect - Assault Field, Returning Shield, Split Beam, Thorn Field || Booster, Byte, Nibble, Cloaking, Energy Shield, Rush Down, Spike Shell, Wave Gen || Inversion Beam
 
 Orb Upgrade Applier - Tinker || Atomize, Booster, Command, RAM Upgrade ||
+Orb Upgrade Synergy
+        Direct - Scrapper || ||
+        Indirect - (All cards that Channel Orbs)
 
 Swappables - Attack Down, Thermal Imaging || Evasion Down ||
 
@@ -107,17 +110,12 @@ Brief Respite / Quick Thinking - Branch for Extract?
 
 Card Reworks:
 Evasion Down - Watch for balance, might be too strong
-Byte / Nibble - Needs balance, currently too strong
 Wide Angle - Move to Rare? It's really strong.
 Overdrive Form - Too strong?
-Engage - Too strong as a 0 cost channel card? Especially with Extract mechanics
 Booster - Feels bad to play as a 2 cost for the effect it gives
-Heuristics - Branch is bad
 Byte / Nibble - Both too strong and too weak at the same time. Nibble needs a better effect
 
-Unstable Compound - Channel random Orb and upgrade it? Would need new Bomb channeling card.
 Atomize - rework? Make X cost channel X Bomb [Not Exhaust].
-Assembly Line - rework? - At the start of your turn, Channel a random Orb?
 
 Card Addons:
 If this is the only ? in your hand...
