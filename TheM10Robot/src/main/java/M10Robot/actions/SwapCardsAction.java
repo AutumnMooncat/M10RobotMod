@@ -59,6 +59,7 @@ public class SwapCardsAction extends AbstractGameAction {
             p.hand.applyPowers();
             p.hand.glowCheck();
             newCard.superFlash();
+            newCard.initializeDescription();
         }
         this.isDone = true;
     }

@@ -1,6 +1,7 @@
 package M10Robot.patches;
 
 import M10Robot.cards.abstractCards.AbstractModdedCard;
+import M10Robot.cards.abstractCards.AbstractSwappableCard;
 import M10Robot.cards.interfaces.CannotOverclock;
 import M10Robot.cards.interfaces.OnOverclockCard;
 import M10Robot.util.interfaces.OverclockBeforePlayItem;
@@ -176,6 +177,9 @@ public class OverclockPatches {
         @SpirePrefixPatch
         public static void plz(AbstractCard __instance) {
             OverclockField.overclocks.set(__instance, 0);
+            if (__instance instanceof AbstractSwappableCard && __instance.cardsToPreview != null) {
+                OverclockField.overclocks.set(__instance.cardsToPreview, 0);
+            }
             onRemove(__instance);
         }
     }
