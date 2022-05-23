@@ -351,6 +351,10 @@
     "NAME": "Steel Wall",
     "DESCRIPTION": "{@@}Gain !B! Block. NL Channel !M! m10robot:Searchlight{!M!|>1=s}."
   },
+  "M10Robot:StepUp": {
+    "NAME": "Step Up",
+    "DESCRIPTION": "{@@}m10robot:Inert. NL m10robot:Extract !M10Robot:SecondMagic! card{!M10Robot:SecondMagic!|>1=s}. NL m10robot:Overclock {!M10Robot:SecondMagic!|@=it|>1=them} !M! time{!M!|>1=s}."
+  },
   "M10Robot:Strike": {
     "NAME": "Strike",
     "DESCRIPTION": "Deal !D! damage."
