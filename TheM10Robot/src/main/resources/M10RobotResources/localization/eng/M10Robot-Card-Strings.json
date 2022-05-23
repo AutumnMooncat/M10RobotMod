@@ -156,7 +156,7 @@
   },
   "M10Robot:Filter": {
     "NAME": "Filter",
-    "DESCRIPTION": "{@@}Swap your draw and discard piles. NL m10robot:Extract !M! card{!M!|>1=s}."
+    "DESCRIPTION": "{@@}m10robot:Extract !M! card{!M!|>1=s}. NL Swap your draw and discard piles."
   },
   "M10Robot:Fortify": {
     "NAME": "Fortify",

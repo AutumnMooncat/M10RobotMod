@@ -50,8 +50,8 @@ public class Filter extends AbstractDynamicCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        this.addToBot(new SwapPilesAction());
         this.addToBot(new ExtractAction(magicNumber));
+        this.addToBot(new SwapPilesAction());
     }
 
     //Upgraded stats.
