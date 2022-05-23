@@ -172,7 +172,26 @@ public class OverclockPatches {
         }
     }
 
-    @SpirePatch(clz = AbstractCard.class, method = "clearPowers")
+    @SpirePatch2(clz = UseCardAction.class, method = "update")
+    public static class RemoveOverclocks {
+        @SpireInsertPatch(locator = Locator.class)
+        public static void plz(UseCardAction __instance, AbstractCard ___targetCard) {
+            OverclockField.overclocks.set(___targetCard, 0);
+            if (___targetCard instanceof AbstractSwappableCard && ___targetCard.cardsToPreview != null) {
+                OverclockField.overclocks.set(___targetCard.cardsToPreview, 0);
+            }
+            onRemove(___targetCard);
+        }
+        private static class Locator extends SpireInsertLocator {
+            @Override
+            public int[] Locate(CtBehavior ctBehavior) throws Exception {
+                Matcher m = new Matcher.MethodCallMatcher(AbstractDungeon.class, "getMonsters");
+                return LineFinder.findInOrder(ctBehavior, m);
+            }
+        }
+    }
+
+    /*@SpirePatch(clz = AbstractCard.class, method = "clearPowers")
     public static class RemoveOverclocks {
         @SpirePrefixPatch
         public static void plz(AbstractCard __instance) {
@@ -182,7 +201,9 @@ public class OverclockPatches {
             }
             onRemove(__instance);
         }
-    }
+    }*/
+
+
 
     private static final Color M = new Color(1, 0, 1, 1);
     private static final Color R = new Color(1, 0, 0, 1);

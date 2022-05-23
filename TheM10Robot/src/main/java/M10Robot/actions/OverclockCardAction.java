@@ -49,7 +49,7 @@ public class OverclockCardAction extends AbstractGameAction {
                 }
                 card = validCards.getRandomCard(true);
             }
-            if (card != null && OverclockPatches.canOverclock(card)) {
+            if (card != null) {
                 CardCrawlGame.sound.play("GHOST_ORB_IGNITE_1", 0.1F);
                 OverclockPatches.overclock(card, amount);
                 //CardModifierManager.addModifier(card, new OverclockModifier(amount));
