@@ -2,8 +2,10 @@ package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
 import M10Robot.cards.abstractCards.AbstractSwappableCard;
+import M10Robot.cards.interfaces.CannotOverclock;
+import M10Robot.cards.uniqueCards.UniqueCard;
 import M10Robot.characters.M10Robot;
-import M10Robot.powers.TinkerPower;
+import M10Robot.powers.FollowupPower;
 import basemod.BaseMod;
 import basemod.helpers.TooltipInfo;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
@@ -16,12 +18,12 @@ import java.util.List;
 
 import static M10Robot.M10RobotMod.makeCardPath;
 
-public class Tinker extends AbstractSwappableCard {
+public class Support extends AbstractSwappableCard implements UniqueCard, CannotOverclock {
 
     // TEXT DECLARATION
 
-    public static final String ID = M10RobotMod.makeID(Tinker.class.getSimpleName());
-    public static final String IMG = makeCardPath("Tinker.png");
+    public static final String ID = M10RobotMod.makeID(Support.class.getSimpleName());
+    public static final String IMG = makeCardPath("Support.png");
 
     // /TEXT DECLARATION/
 
@@ -42,16 +44,16 @@ public class Tinker extends AbstractSwappableCard {
 
     // /STAT DECLARATION/
 
-    public Tinker() {
+    public Support() {
         this(null);
     }
 
-    public Tinker(AbstractSwappableCard linkedCard) {
+    public Support(AbstractSwappableCard linkedCard) {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
         block = baseBlock = BLOCK;
         magicNumber = baseMagicNumber = CARDS;
         if (linkedCard == null) {
-            setLinkedCard(new Support(this));
+            setLinkedCard(new Tinker(this));
         } else {
             setLinkedCard(linkedCard);
         }
@@ -61,18 +63,16 @@ public class Tinker extends AbstractSwappableCard {
     public List<TooltipInfo> getCustomTooltips() {
         if (toolTips == null) {
             toolTips = new ArrayList<>();
-            toolTips.add(new TooltipInfo(BaseMod.getKeywordTitle("m10robot:inert"), BaseMod.getKeywordDescription("m10robot:inert")));
-            toolTips.add(new TooltipInfo(BaseMod.getKeywordTitle("m10robot:overclock"), BaseMod.getKeywordDescription("m10robot:overclock")));
+            toolTips.add(new TooltipInfo(BaseMod.getKeywordTitle("m10robot:upgrade"), BaseMod.getKeywordDescription("m10robot:upgrade")));
         }
         return toolTips;
     }
-
 
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         this.addToBot(new GainBlockAction(p, p, block));
-        this.addToBot(new ApplyPowerAction(p, p, new TinkerPower(p, magicNumber)));
+        this.addToBot(new ApplyPowerAction(p, p, new FollowupPower(p, 1, magicNumber)));
     }
 
     //Upgraded stats.

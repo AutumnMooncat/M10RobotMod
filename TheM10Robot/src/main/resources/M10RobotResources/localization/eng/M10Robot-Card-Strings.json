@@ -381,7 +381,11 @@
   },
   "M10Robot:Tinker": {
     "NAME": "Tinker",
-    "DESCRIPTION": "{@@}Gain !B! Block. NL m10robot:Upgrade the next Orb you Channel !M! time{!M!|>1=s}."
+    "DESCRIPTION": "{@@}m10robot:Swappable. NL Gain !B! Block. NL m10robot:Upgrade the next Orb you Channel !M! time{!M!|>1=s}."
+  },
+  "M10Robot:Support": {
+    "NAME": "Support",
+    "DESCRIPTION": "{@@}m10robot:Inert. m10robot:Swappable. NL Gain !B! Block. NL m10robot:Overclock the next card you play !M! time{!M!|>1=s}."
   },
   "M10Robot:Turbo": {
     "NAME": "Turbo",
