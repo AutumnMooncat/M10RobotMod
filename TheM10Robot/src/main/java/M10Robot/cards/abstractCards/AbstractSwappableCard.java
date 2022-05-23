@@ -13,8 +13,10 @@ public abstract class AbstractSwappableCard extends AbstractClickableCard {
     }
 
     protected void setLinkedCard(AbstractSwappableCard linkedCard) {
-        this.cardsToPreview = linkedCard;
-        this.cardsToPreview.cardsToPreview = this;
+        if (linkedCard != null) {
+            this.cardsToPreview = linkedCard;
+            this.cardsToPreview.cardsToPreview = this;
+        }
     }
 
     @Override
