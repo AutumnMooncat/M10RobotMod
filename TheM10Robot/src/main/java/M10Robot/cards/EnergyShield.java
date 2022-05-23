@@ -41,10 +41,10 @@ public class EnergyShield extends AbstractDynamicCard {
     private static final CardType TYPE = CardType.SKILL;
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
-    private static final int COST = 2;
-    private static final int BLOCK = 9;
+    private static final int COST = 1;
+    private static final int BLOCK = 8;
     private static final int UPGRADE_PLUS_BLOCK = 3;
-    private static final int NRG = 2;
+    private static final int NRG = 1;
 
     // /STAT DECLARATION/
 
