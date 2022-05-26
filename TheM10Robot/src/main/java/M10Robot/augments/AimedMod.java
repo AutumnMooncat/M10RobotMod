@@ -24,6 +24,9 @@ public class AimedMod extends AbstractAugment {
 
     @Override
     public float modifyDamageFinal(float damage, DamageInfo.DamageType type, AbstractCard card, AbstractMonster target) {
+        if (target == null) {
+            return damage;
+        }
         return target.hasPower(LockOnPower.POWER_ID) ? damage * MULTI : damage;
     }
 
