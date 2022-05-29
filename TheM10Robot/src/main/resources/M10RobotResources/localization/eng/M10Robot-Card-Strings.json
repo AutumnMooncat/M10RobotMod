@@ -136,7 +136,7 @@
   },
   "M10Robot:EnergyShield": {
     "NAME": "Energy Shield",
-    "DESCRIPTION": "{@@}Gain !B! Block. NL If you had no Block, gain {!M!|1=[E]|-1,2=[E] [E]|3=[E] [E] [E]|4=[E] [E] [E] [E]|5=[E] [E] [E] [E] [E]|@=!M! [E]} ."
+    "DESCRIPTION": "{@@}Gain !B! Block. NL If you had no Block, gain {!M!|-1,1=[E]|2=[E] [E]|3=[E] [E] [E]|4=[E] [E] [E] [E]|5=[E] [E] [E] [E] [E]|@=!M! [E]} ."
   },
   "M10Robot:Engage": {
     "NAME": "Engage",
