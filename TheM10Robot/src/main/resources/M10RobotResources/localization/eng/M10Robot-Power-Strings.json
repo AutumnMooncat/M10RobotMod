@@ -1,7 +1,7 @@
 {
   "M10Robot:BalanceCurrentsPower": {
     "NAME": "Balance Currents",
-    "DESCRIPTIONS": ["Whenever a debuff is applied to you, gain #b"," #yBlock."]
+    "DESCRIPTIONS": ["Whenever you apply a debuff, gain #b"," #yBlock."]
   },
   "M10Robot:ExtrapolatePower": {
     "NAME": "Extrapolate",
