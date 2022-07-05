@@ -5,7 +5,7 @@
   },
   "M10Robot:LockingPotion": {
     "NAME": "Locking Potion",
-    "DESCRIPTIONS": ["All enemies lose #b"," #yStrength this turn."]
+    "DESCRIPTIONS": ["ALL enemies lose #b"," #yStrength this turn."]
   },
   "M10Robot:NullPotion": {
     "NAME": "Nullifier",
