@@ -1,14 +1,10 @@
 {
-  "M10Robot:BoosterTutorial": {
+  "M10Robot:ExampleTutorial": {
     "TEXT": [
-      "#yBooster cards are a core mechanic for #yM10 #yRobot that can augment how #bother #bcards function. NL NL To equip a #yBooster card, #yRight #yClick it while it is in your hand.",
-      "There is no limit to the amount of #yBoosters that can be on a card, so have fun experimenting with various combinations!",
-      "Cards which have #yBoosters equipped will have their name change color. NL NL You can #bLeft #bClick on the #yEnergy #yIcon of the card view/unequip the actively equipped #yBosters.",
-      "#yModule cards are similar to #yBoosters but instead augment how the #bplayer functions. NL NL To equip a #yModule card, #yRight #yClick it while it is in your hand while you have a free #yModule #ySlot.",
-      "You may #bLeft #bClick your #yModular #yBody power to view and/or unquip your equipped modules, sending them to your #yDiscard #yPile."
+      ""
     ],
     "LABEL": [
-      "Boosters & Modules"
+      ""
     ]
   }
 }

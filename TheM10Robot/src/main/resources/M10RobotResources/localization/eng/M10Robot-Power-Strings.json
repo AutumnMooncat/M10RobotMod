@@ -34,10 +34,7 @@
   },
   "M10Robot:RecoilPower": {
     "NAME": "Recoil",
-    "DESCRIPTIONS": ["The next attack you play deals #b50% less damage",
-                    "The next #b"," attacks you play deal #b50% less damage",
-                    "Negates the next #yRecoil you receive.",
-                    "Negates the next #b"," #yRecoil you receive."]
+    "DESCRIPTIONS": [""]
   },
   "M10Robot:RecoveryModePower": {
     "NAME": "Recovery Mode",
