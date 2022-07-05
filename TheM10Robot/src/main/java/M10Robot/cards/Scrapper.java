@@ -60,6 +60,7 @@ public class Scrapper extends AbstractDynamicCard {
             //upgradeBaseCost(UPGRADE_COST);
             //upgradeMagicNumber(UPGRADE_PLUS_SPIKES);
             //upgradeSecondMagicNumber(UPGRADE_PLUS_SPU);
+            rawDescription = cardStrings.UPGRADE_DESCRIPTION;
             upgradeInfo(1);
             initializeDescription();
         }

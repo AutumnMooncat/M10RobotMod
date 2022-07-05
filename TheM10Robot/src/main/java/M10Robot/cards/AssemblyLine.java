@@ -75,5 +75,6 @@ public class AssemblyLine extends AbstractDynamicCard implements BranchingUpgrad
 
     public void branchUpgrade() {
         upgradeSecondMagicNumber(UPGRADE_PLUS_UPGRADES);
+        rawDescription = cardStrings.UPGRADE_DESCRIPTION;
     }
 }

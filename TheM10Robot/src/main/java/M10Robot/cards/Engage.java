@@ -79,5 +79,6 @@ public class Engage extends AbstractDynamicCard implements BranchingUpgradesCard
 
     public void branchUpgrade() {
         upgradeInfo(1);
+        rawDescription = cardStrings.UPGRADE_DESCRIPTION;
     }
 }

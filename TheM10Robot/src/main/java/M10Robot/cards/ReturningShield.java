@@ -76,5 +76,6 @@ public class ReturningShield extends AbstractDynamicCard implements BranchingUpg
 
     public void branchUpgrade() {
         upgradeMagicNumber(UPGRADE_PLUS_DRAW);
+        rawDescription = cardStrings.UPGRADE_DESCRIPTION;
     }
 }

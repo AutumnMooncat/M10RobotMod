@@ -70,5 +70,6 @@ public class DividedAttention extends AbstractDynamicCard implements BranchingUp
 
     public void branchUpgrade() {
         upgradeInfo(1);
+        rawDescription = cardStrings.UPGRADE_DESCRIPTION;
     }
 }

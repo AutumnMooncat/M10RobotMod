@@ -78,5 +78,6 @@ public class Disable extends AbstractDynamicCard implements BranchingUpgradesCar
 
     public void branchUpgrade() {
         upgradeInfo(UPGRADE_PLUS_INFO);
+        rawDescription = cardStrings.UPGRADE_DESCRIPTION;
     }
 }

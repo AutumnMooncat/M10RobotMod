@@ -35,7 +35,8 @@
   },
   "M10Robot:AssemblyLine": {
     "NAME": "Assembly Line",
-    "DESCRIPTION": "{@@}Channel !M! m10robot:Presents{!M10Robot:SecondMagic!|>0=. NL m10robot:Upgrade all your Orbs !M10Robot:SecondMagic! time}{!M10Robot:SecondMagic!|>1=s}."
+    "DESCRIPTION": "Channel !M! m10robot:Presents.",
+    "UPGRADE_DESCRIPTION": "Channel !M! m10robot:Presents. NL m10robot:Upgrade all your Orbs !M10Robot:SecondMagic! time{!M10Robot:SecondMagic!|>1=s}{@@}."
   },
   "M10Robot:AttackDown": {
     "NAME": "Attack Down",
@@ -59,7 +60,7 @@
   },
   "M10Robot:BatteryPack": {
     "NAME": "Battery Pack",
-    "DESCRIPTION": "{@@}Gain {!M!|1=[E]|-1,2=[E] [E]|3=[E] [E] [E]|4=[E] [E] [E] [E]|5=[E] [E] [E] [E] [E]|@=!M! [E]} ."
+    "DESCRIPTION": ""
   },
   "M10Robot:BitMask": {
     "NAME": "Bitmask",
@@ -67,7 +68,7 @@
   },
   "M10Robot:BoosterShot": {
     "NAME": "Booster",
-    "DESCRIPTION": "{@@}Deal !D! damage. NL m10robot:Upgrade your next Orb !M! time{!M!|-1,>1=s}."
+    "DESCRIPTION": "Deal !D! damage. NL m10robot:Upgrade your next Orb !M! times."
   },
   "M10Robot:Bramble": {
     "NAME": "Bramble",
@@ -83,11 +84,13 @@
   },
   "M10Robot:Byte": {
     "NAME": "Byte",
-    "DESCRIPTION": "{@@}m10robot:Swappable. NL Deal !D! damage{!M10Robot:Info!|>0= to ALL enemies}. NL Channel !M! m10robot:Bits."
+    "DESCRIPTION": "m10robot:Swappable. NL Deal !D! damage. NL Channel !M! m10robot:Bits.",
+    "UPGRADE_DESCRIPTION": "m10robot:Swappable. NL Deal !D! damage to ALL enemies. NL Channel !M! m10robot:Bits."
   },
   "M10Robot:Nibble": {
     "NAME": "Nibble",
-    "DESCRIPTION": "{@@}m10robot:Swappable. NL Gain !B! Block. NL Deal !D! damage{!M10Robot:Info!|>0= to ALL enemies}."
+    "DESCRIPTION": "m10robot:Swappable. NL Gain !B! Block. NL Deal !D! damage.",
+    "UPGRADE_DESCRIPTION": "m10robot:Swappable. NL Gain !B! Block. NL Deal !D! damage to ALL enemies."
   },
   "M10Robot:CardSupplier": {
     "NAME": "Card Supplier",
@@ -116,11 +119,13 @@
   },
   "M10Robot:Disable": {
     "NAME": "Disable",
-    "DESCRIPTION": "{@@}Enemy loses !M! Strength this turn. NL Apply !M10Robot:SecondMagic! Weak{!M10Robot:Info!|>0=. NL Apply !M10Robot:SecondMagic! Vulnerable}."
+    "DESCRIPTION": "Enemy loses !M! Strength this turn. NL Apply !M10Robot:SecondMagic! Weak.",
+    "UPGRADE_DESCRIPTION": "Enemy loses !M! Strength this turn. NL Apply !M10Robot:SecondMagic! Weak. NL Apply !M10Robot:SecondMagic! Vulnerable."
   },
   "M10Robot:DividedAttention": {
     "NAME": "Divided Attention",
-    "DESCRIPTION": "{@@}Discard !M10Robot:SecondMagic! card{!M10Robot:SecondMagic!|>1=s}{!M10Robot:Info!|<1= at random}. m10robot:Extract !M! card{!M!|-1,>1=s} at random."
+    "DESCRIPTION": "{@@}Discard !M10Robot:SecondMagic! card{!M10Robot:SecondMagic!|>1=s} at random. m10robot:Extract !M! cards at random.",
+    "UPGRADE_DESCRIPTION": "{@@}Discard !M10Robot:SecondMagic! card{!M10Robot:SecondMagic!|>1=s}. m10robot:Extract !M! cards at random."
   },
   "M10Robot:DoubleCaster": {
     "NAME": "Double Caster",
@@ -132,15 +137,17 @@
   },
   "M10Robot:EmptyBuffer": {
     "NAME": "Empty Buffer",
-    "DESCRIPTION": "{@@}{!M10Robot:Info!|@=Remove|>0=Evoke} all your Orbs. NL Gain !M! Orb slot{!M!|>1=s} for each Orb {!M10Robot:Info!|@=removed|>0=Evoked}."
+    "DESCRIPTION": "{@@}Remove all your Orbs. NL Gain !M! Orb slot{!M!|>1=s} for each Orb removed.",
+    "UPGRADE_DESCRIPTION": "{@@}Evoke all your Orbs. NL Gain !M! Orb slot{!M!|>1=s} for each Orb Evoked."
   },
   "M10Robot:EnergyShield": {
     "NAME": "Energy Shield",
-    "DESCRIPTION": "{@@}Gain !B! Block. NL If you had no Block, gain {!M!|-1,1=[E]|2=[E] [E]|3=[E] [E] [E]|4=[E] [E] [E] [E]|5=[E] [E] [E] [E] [E]|@=!M! [E]} ."
+    "DESCRIPTION": "{@@}Gain !B! Block. NL If you had no Block, gain {!M!|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=!M! [E]} ."
   },
   "M10Robot:Engage": {
     "NAME": "Engage",
-    "DESCRIPTION": "{@@}Apply !M! Vulnerable. NL Apply !M! Lock-On. NL {!M10Robot:Info!|@=If the enemy intends to attack, draw|>0=Draw} !M10Robot:SecondMagic! card{!M10Robot:SecondMagic!|>1=s}."
+    "DESCRIPTION": "{@@}Apply !M! Vulnerable. NL Apply !M! Lock-On. NL If the enemy intends to attack, draw !M10Robot:SecondMagic! card{!M10Robot:SecondMagic!|>1=s}.",
+    "UPGRADE_DESCRIPTION": "{@@}Apply !M! Vulnerable. NL Apply !M! Lock-On. NL Draw !M10Robot:SecondMagic! card{!M10Robot:SecondMagic!|>1=s}."
   },
   "M10Robot:EvasionDown": {
     "NAME": "Evasion Down",
@@ -220,7 +227,7 @@
   },
   "M10Robot:PowerSavings": {
     "NAME": "Power Savings",
-    "DESCRIPTION": "{@@}m10robot:Inert. NL Gain !M10Robot:SecondMagic! Weak. NL At the start of your turn, gain {!M!|-1,1=[E]|2=[E] [E]|3=[E] [E] [E]|4=[E] [E] [E] [E]|5=[E] [E] [E] [E] [E]|@=!M! [E]} ."
+    "DESCRIPTION": "{@@}m10robot:Inert. NL Gain !M10Robot:SecondMagic! Weak. NL At the start of your turn, gain {!M!|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=!M! [E]} ."
   },
   "M10Robot:Prelude": {
     "NAME": "Prelude",
@@ -269,7 +276,8 @@
   },
   "M10Robot:ReturningShield": {
     "NAME": "Returning Shield",
-    "DESCRIPTION": "{@@}Gain !B! Block. NL Next turn, gain !B! Block{!M!|@=.|>0= and draw !M! additional }{!M!|1=card.|>1=cards.}"
+    "DESCRIPTION": "Gain !B! Block. NL Next turn, gain !B! Block.",
+    "UPGRADE_DESCRIPTION": "Gain !B! Block. NL Next turn, gain !B! Block and draw !M! additional card{!M!|>1=s}{@@}."
   },
   "M10Robot:Rewind": {
     "NAME": "Rewind",
@@ -305,7 +313,8 @@
   },
   "M10Robot:Scrapper": {
     "NAME": "Scrapper",
-    "DESCRIPTION": "{@@}Evoke your next Orb. NL Gain {!M10Robot:Info!|@=!M! m10robot:Spikes|>0=!M10Robot:SecondMagic! m10robot:Spikes for each m10robot:Upgrade it had plus !M!}."
+    "DESCRIPTION": "Evoke your next Orb. NL Gain !M! m10robot:Spikes.",
+    "UPGRADE_DESCRIPTION": "Evoke your next Orb. NL Gain !M10Robot:SecondMagic! m10robot:Spikes for each m10robot:Upgrade it had plus !M!."
   },
   "M10Robot:SecretRootkit": {
     "NAME": "Rootkit",
@@ -313,7 +322,7 @@
   },
   "M10Robot:Seeker": {
     "NAME": "Seeker",
-    "DESCRIPTION": "{@@}Apply !M! Lock-On. NL If the enemy already had Lock-On, deal !D! damage."
+    "DESCRIPTION": "Apply !M! Lock-On. NL If the enemy already had Lock-On, deal !D! damage."
   },
   "M10Robot:SelfDestruction": {
     "NAME": "Self Destruction",
@@ -393,7 +402,7 @@
   },
   "M10Robot:Turbo": {
     "NAME": "Turbo",
-    "DESCRIPTION": "{@@}Next turn, gain {!M10Robot:SecondMagic!|-1,1=[E]|2=[E] [E]|3=[E] [E] [E]|4=[E] [E] [E] [E]|5=[E] [E] [E] [E] [E]|@=!M10Robot:SecondMagic! [E]} and draw !M! card{!M!|>1=s}."
+    "DESCRIPTION": "{@@}Next turn, gain {!M10Robot:SecondMagic!|-1,1=[E]|2=[E] [E]|3=[E] [E] [E]|@=!M10Robot:SecondMagic! [E]} and draw !M! card{!M!|>1=s}."
   },
   "M10Robot:UnstableCompound": {
     "NAME": "Unstable Compound",

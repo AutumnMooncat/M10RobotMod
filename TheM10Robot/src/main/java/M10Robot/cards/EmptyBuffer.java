@@ -65,6 +65,7 @@ public class EmptyBuffer extends AbstractDynamicCard {
             //upgradeMagicNumber(UPGRADE_PLUS_EVOKES);
             upgradeInfo(1);
             showEvokeValue = true;
+            rawDescription = cardStrings.UPGRADE_DESCRIPTION;
             initializeDescription();
         }
     }

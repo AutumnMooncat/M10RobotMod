@@ -107,6 +107,7 @@ public class Nibble extends AbstractSwappableCard implements UniqueCard {
             upgradeInfo(1);
             isMultiDamage = true;
             target = CardTarget.ALL_ENEMY;
+            rawDescription = cardStrings.UPGRADE_DESCRIPTION;
             initializeDescription();
             super.upgrade();
         }

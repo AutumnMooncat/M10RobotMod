@@ -91,6 +91,7 @@ public class Byte extends AbstractSwappableCard {
             upgradeInfo(1);
             isMultiDamage = true;
             target = CardTarget.ALL_ENEMY;
+            rawDescription = cardStrings.UPGRADE_DESCRIPTION;
             initializeDescription();
             super.upgrade();
         }
