@@ -179,6 +179,7 @@ public class OverclockPatches {
             OverclockField.overclocks.set(___targetCard, 0);
             if (___targetCard instanceof AbstractSwappableCard && ___targetCard.cardsToPreview != null) {
                 OverclockField.overclocks.set(___targetCard.cardsToPreview, 0);
+                onRemove(___targetCard.cardsToPreview);
             }
             onRemove(___targetCard);
         }
