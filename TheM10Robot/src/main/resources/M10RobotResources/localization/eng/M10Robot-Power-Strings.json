@@ -9,7 +9,9 @@
   },
   "M10Robot:FollowupPower": {
     "NAME": "Next Card Overclock",
-    "DESCRIPTIONS": ["#yOverclock the next card you play #b"," time."," times.","#yOverclock the next #b"," cards you play #b"]
+    "DESCRIPTIONS": ["#yOverclock the next card you play #b",
+                    " time."," times.",
+                    "#yOverclock the next #b"," cards you play #b"]
   },
   "M10Robot:EvasionDownPower": {
     "NAME": "Evasion Down",
@@ -18,7 +20,7 @@
   "M10Robot:ImaginaryPower": {
     "NAME": "Imaginary Numbers",
     "DESCRIPTIONS": ["This turn, whenever you draw a card, randomize its cost between #b0 and #b1.",
-      "For #b"," turns, whenever you draw a card, randomize its cost between #b0 and #b1."]
+                    "For #b"," turns, whenever you draw a card, randomize its cost between #b0 and #b1."]
   },
   "M10Robot:OverdrivePower": {
     "NAME": "Overdrive",
@@ -47,7 +49,8 @@
   },
   "M10Robot:RewindPower": {
     "NAME": "Rewind",
-    "DESCRIPTIONS": ["The first time you lose #yBlock each turn, gain that much #yBlock next turn.","The first #b"," times you lose #yBlock each turn, gain that much #yBlock next turn."]
+    "DESCRIPTIONS": ["The first time you lose #yBlock each turn, gain that much #yBlock next turn.",
+                    "The first #b"," times you lose #yBlock each turn, gain that much #yBlock next turn."]
   },
   "M10Robot:SpikesPower": {
     "NAME": "Spikes",
@@ -68,7 +71,7 @@
   "M10Robot:TurboPower": {
     "NAME": "Turbo Mode",
     "DESCRIPTIONS": ["At the beginning of your next turn, draw an additional card and gain [E] .",
-      "At the beginning of your next #b"," turns, draw an additional card and gain [E] ."]
+                    "At the beginning of your next #b"," turns, draw an additional card and gain [E] ."]
   },
   "M10Robot:WideAnglePower": {
     "NAME": "Wide Angle",
