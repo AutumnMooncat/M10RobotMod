@@ -90,7 +90,8 @@
   "M10Robot:Nibble": {
     "NAME": "깨물기",
     "DESCRIPTION": "m10robot:교체가능. NL 방어도를 !B! 얻습니다. NL 피해를 !D! 줍니다.",
-    "UPGRADE_DESCRIPTION": "m10robot:교체가능. NL 방어도를 !B! 얻습니다. NL 적 전체에게 피해를 !D! 줍니다."
+    "UPGRADE_DESCRIPTION": "m10robot:교체가능. NL 방어도를 !B! 얻습니다. NL 적 전체에게 피해를 !D! 줍니다.",
+    "EXTENDED_DESCRIPTION": ["m10robot:비트"]
   },
   "M10Robot:CardSupplier": {
     "NAME": "Card Supplier",
@@ -247,8 +248,8 @@
   },
   "M10Robot:Railgun": {
     "NAME": "레일건",
-    "DESCRIPTION": "골드를 1 잃습니다. NL 피해를 !D! 줍니다. NL 대상에게 조준 상태라면 취약을 !M! 부여합니다.",
-    "EXTENDED_DESCRIPTION": ["I have no gold."]
+    "DESCRIPTION": "골드를 1 잃습니다. NL 피해를 !D! 줍니다. NL 대상이 조준 상태라면 취약을 !M! 부여합니다.",
+    "EXTENDED_DESCRIPTION": ["골드가 없다."]
   },
   "M10Robot:RAMUpgrade": {
     "NAME": "램 업그레이드",
@@ -382,7 +383,8 @@
   },
   "M10Robot:HeatSeekers": {
     "NAME": "열추적",
-    "DESCRIPTION": "m10robot:교체가능. NL 조준 상태인 적 전체에게 !D! 피해를 줍니다."
+    "DESCRIPTION": "m10robot:교체가능. NL 조준 상태인 적 전체에게 !D! 피해를 줍니다.",
+    "EXTENDED_DESCRIPTION": ["m10robot:비트"]
   },
   "M10Robot:ThornField": {
     "NAME": "가시밭",
@@ -394,11 +396,13 @@
   },
   "M10Robot:Tinker": {
     "NAME": "땜장이",
-    "DESCRIPTION": "{@@}m10robot:교체가능. NL 빙어도를 !B! 얻습니다. NL 다음에 영창하는 구체 !M! 개를 m10robot:강화 합니다."
+    "DESCRIPTION": "{@@}m10robot:교체가능. NL 빙어도를 !B! 얻습니다. NL 다음에 영창하는 구체 !M! 개를 m10robot:강화 합니다.",
+    "EXTENDED_DESCRIPTION": ["m10robot:부동성", "m10robot:오버클럭"]
   },
   "M10Robot:Support": {
     "NAME": "지원",
-    "DESCRIPTION": "{@@}m10robot:부동성. m10robot:교체가능. NL 방어도를 !B! 얻습니다. NL 다음에 사용하는 카드 !M! 장을 m10robot:오버클럭 합니다."
+    "DESCRIPTION": "{@@}m10robot:부동성. m10robot:교체가능. NL 방어도를 !B! 얻습니다. NL 다음에 사용하는 카드 !M! 장을 m10robot:오버클럭 합니다.",
+    "EXTENDED_DESCRIPTION": ["m10robot:강화"]
   },
   "M10Robot:Turbo": {
     "NAME": "터보",

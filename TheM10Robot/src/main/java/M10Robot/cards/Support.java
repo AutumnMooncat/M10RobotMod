@@ -63,7 +63,7 @@ public class Support extends AbstractSwappableCard implements UniqueCard, Cannot
     public List<TooltipInfo> getCustomTooltips() {
         if (toolTips == null) {
             toolTips = new ArrayList<>();
-            toolTips.add(new TooltipInfo(BaseMod.getKeywordTitle("m10robot:upgrade"), BaseMod.getKeywordDescription("m10robot:upgrade")));
+            toolTips.add(new TooltipInfo(BaseMod.getKeywordTitle(cardStrings.EXTENDED_DESCRIPTION[0]), BaseMod.getKeywordDescription(cardStrings.EXTENDED_DESCRIPTION[0])));
         }
         return toolTips;
     }

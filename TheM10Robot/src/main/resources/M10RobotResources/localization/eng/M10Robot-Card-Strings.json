@@ -90,7 +90,8 @@
   "M10Robot:Nibble": {
     "NAME": "Nibble",
     "DESCRIPTION": "m10robot:Swappable. NL Gain !B! Block. NL Deal !D! damage.",
-    "UPGRADE_DESCRIPTION": "m10robot:Swappable. NL Gain !B! Block. NL Deal !D! damage to ALL enemies."
+    "UPGRADE_DESCRIPTION": "m10robot:Swappable. NL Gain !B! Block. NL Deal !D! damage to ALL enemies.",
+    "EXTENDED_DESCRIPTION": ["m10robot:Bits"]
   },
   "M10Robot:CardSupplier": {
     "NAME": "Card Supplier",
@@ -382,7 +383,8 @@
   },
   "M10Robot:HeatSeekers": {
     "NAME": "Heat Seekers",
-    "DESCRIPTION": "m10robot:Swappable. NL Deal !D! damage to ALL enemies with Lock-On."
+    "DESCRIPTION": "m10robot:Swappable. NL Deal !D! damage to ALL enemies with Lock-On.",
+    "EXTENDED_DESCRIPTION": ["m10robot:Bits"]
   },
   "M10Robot:ThornField": {
     "NAME": "Thorn Field",
@@ -394,11 +396,13 @@
   },
   "M10Robot:Tinker": {
     "NAME": "Tinker",
-    "DESCRIPTION": "{@@}m10robot:Swappable. NL Gain !B! Block. NL m10robot:Upgrade the next Orb you Channel !M! time{!M!|>1=s}."
+    "DESCRIPTION": "{@@}m10robot:Swappable. NL Gain !B! Block. NL m10robot:Upgrade the next Orb you Channel !M! time{!M!|>1=s}.",
+    "EXTENDED_DESCRIPTION": ["m10robot:Inert", "m10robot:Overclock"]
   },
   "M10Robot:Support": {
     "NAME": "Support",
-    "DESCRIPTION": "{@@}m10robot:Inert. m10robot:Swappable. NL Gain !B! Block. NL m10robot:Overclock the next card you play !M! time{!M!|>1=s}."
+    "DESCRIPTION": "{@@}m10robot:Inert. m10robot:Swappable. NL Gain !B! Block. NL m10robot:Overclock the next card you play !M! time{!M!|>1=s}.",
+    "EXTENDED_DESCRIPTION": ["m10robot:Upgrade"]
   },
   "M10Robot:Turbo": {
     "NAME": "Turbo",

@@ -61,8 +61,8 @@ public class Tinker extends AbstractSwappableCard {
     public List<TooltipInfo> getCustomTooltips() {
         if (toolTips == null) {
             toolTips = new ArrayList<>();
-            toolTips.add(new TooltipInfo(BaseMod.getKeywordTitle("m10robot:inert"), BaseMod.getKeywordDescription("m10robot:inert")));
-            toolTips.add(new TooltipInfo(BaseMod.getKeywordTitle("m10robot:overclock"), BaseMod.getKeywordDescription("m10robot:overclock")));
+            toolTips.add(new TooltipInfo(BaseMod.getKeywordTitle(cardStrings.EXTENDED_DESCRIPTION[0]), BaseMod.getKeywordDescription(cardStrings.EXTENDED_DESCRIPTION[0])));
+            toolTips.add(new TooltipInfo(BaseMod.getKeywordTitle(cardStrings.EXTENDED_DESCRIPTION[1]), BaseMod.getKeywordDescription(cardStrings.EXTENDED_DESCRIPTION[1])));
         }
         return toolTips;
     }
