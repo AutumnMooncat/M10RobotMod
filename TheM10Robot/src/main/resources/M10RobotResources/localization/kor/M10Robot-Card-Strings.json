@@ -62,7 +62,7 @@
     "NAME": "Battery Pack",
     "DESCRIPTION": ""
   },
-  "M10robot:BitMask": {
+  "M10Robot:BitMask": {
     "NAME": "비트마스크",
     "DESCRIPTION": "{@@}피해를 !D! 줍니다. NL 이번 턴 동안 사용한 공격 카드 한 장당 m10robot:비트 를 !M! 번 영창합니다.{!Location!|0= NL (사용한 공격 카드: !M10Robot:Info!)}"
   },
@@ -348,7 +348,7 @@
     "NAME": "반사 장갑",
     "DESCRIPTION": "방어도를 !B! 얻습니다. NL m10robot:반사 를 !M! 얻습니다."
   },
-  "M10robot:SpikyPlating": {
+  "M10Robot:SpikyPlating": {
     "NAME": "반발성 코팅",
     "DESCRIPTION": "카드를 사용할 때 마다 m10robot:반사 를 !M! 얻습니다. NL m10robot:서치라이트 를 !M10Robot:SecondMagic! 번 영창합니다."
   },
@@ -402,7 +402,7 @@
   },
   "M10Robot:Turbo": {
     "NAME": "터보",
-    "DESCRIPTION": "{@@}다음 턴에 {!M10Robot:SecondMagic!|-1,1=[E]|2=[E] [E]|3=[E] [E] [E]|@=!M10Robot:SecondMagic! [E]} 를 얻고 카드를 !M! 장 더 뽑습니다{!M!|>1=s}."
+    "DESCRIPTION": "{@@}다음 턴에 {!M10Robot:SecondMagic!|-1,1=[E]|2=[E] [E]|3=[E] [E] [E]|@=!M10Robot:SecondMagic! [E]} 를 얻고 카드를 !M! 장 더 뽑습니다."
   },
   "M10Robot:UnstableCompound": {
     "NAME": "불안정한 혼합물",
