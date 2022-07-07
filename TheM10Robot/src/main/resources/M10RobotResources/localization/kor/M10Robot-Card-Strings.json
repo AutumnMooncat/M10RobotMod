@@ -62,7 +62,7 @@
     "NAME": "Battery Pack",
     "DESCRIPTION": ""
   },
-  "m10robotBitMask": {
+  "M10robot:BitMask": {
     "NAME": "비트마스크",
     "DESCRIPTION": "{@@}피해를 !D! 줍니다. NL 이번 턴 동안 사용한 공격 카드 한 장당 m10robot:비트 를 !M! 번 영창합니다.{!Location!|0= NL (사용한 공격 카드: !M10Robot:Info!)}"
   },
@@ -191,7 +191,7 @@
   },
   "M10Robot:LightShow": {
     "NAME": "라이트 쇼",
-    "DESCRIPTION": "{@@}방어도를 !B! 얻습니다. NL 이번 턴 동안 사용한 스킬 카드 한 장당 m10robot:서차라이트 를 !M! 번 영창합니다.{!Location!|0= NL (사용한 스킬 카드: !M10Robot:Info!)}"
+    "DESCRIPTION": "{@@}방어도를 !B! 얻습니다. NL 이번 턴 동안 사용한 스킬 카드 한 장당 m10robot:서치라이트 를 !M! 번 영창합니다.{!Location!|0= NL (사용한 스킬 카드: !M10Robot:Info!)}"
   },
   "M10Robot:MagnumStrike": {
     "NAME": "대구경 타격",
