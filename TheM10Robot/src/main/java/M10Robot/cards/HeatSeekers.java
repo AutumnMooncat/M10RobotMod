@@ -70,7 +70,7 @@ public class HeatSeekers extends AbstractSwappableCard implements UniqueCard {
         if (toolTips == null) {
             toolTips = new ArrayList<>();
             toolTips.add(new TooltipInfo(TipHelper.capitalize(GameDictionary.CHANNEL.NAMES[0]), GameDictionary.keywords.get(GameDictionary.CHANNEL.NAMES[0])));
-            toolTips.add(new TooltipInfo(BaseMod.getKeywordTitle(cardStrings.EXTENDED_DESCRIPTION[0]), BaseMod.getKeywordDescription(cardStrings.EXTENDED_DESCRIPTION[0])));
+            toolTips.add(new TooltipInfo(BaseMod.getKeywordTitle(cardStrings.EXTENDED_DESCRIPTION[0].toLowerCase()), BaseMod.getKeywordDescription(cardStrings.EXTENDED_DESCRIPTION[0].toLowerCase())));
         }
         return toolTips;
     }

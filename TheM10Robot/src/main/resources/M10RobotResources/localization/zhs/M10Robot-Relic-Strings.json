@@ -1,0 +1,66 @@
+{
+  "M10Robot:Eye": {
+    "NAME": "第三只眼",
+    "FLAVOR": "它正在看着你。",
+    "DESCRIPTIONS": [
+      "在每场战斗开始时。给予所有敌人 #b"," 层 #y跟踪锁定 。",
+      "给予 #y跟踪锁定 : "
+    ]
+  },
+  "M10Robot:DualCore": {
+    "NAME": "双核",
+    "FLAVOR": "如此强大的处理能力!",
+    "DESCRIPTIONS": [
+      "每场战斗 #ym10robot:超频 你打出的第一张牌 #b"," 次。",
+      "攻击牌超频次数: "," NL 技能牌超频次数: "," NL 能力牌超频次数: "
+    ]
+  },
+  "M10Robot:AwakenedCore": {
+    "NAME": "觉醒核心",
+    "FLAVOR": "超频模式已就绪。",
+    "DESCRIPTIONS": [
+      "替换 [#b9c5b4]双核 。每回合 #ym10robot:超频 你打出的第一张牌 #b"," 次。",
+      "攻击牌超频次数: "," NL 技能牌超频次数: "," NL 能力牌超频次数: "
+    ]
+  },
+  "M10Robot:Froggy": {
+    "NAME": "青蛙",
+    "FLAVOR": "它的舌头很黏。",
+    "DESCRIPTIONS": [
+      "每当你 #ym10robot:选取 时，额外 #y选取 #b"," 张牌",
+      "额外选取次数: "," NL 每场战斗: "," NL 每回合: "
+    ]
+  },
+  "M10Robot:Pufferfish": {
+    "NAME": "河豚",
+    "FLAVOR": "看上去长满了刺。",
+    "DESCRIPTIONS": [
+      "在每场战斗开始时获得 #b"," 层 #ym10robot:刺 。",
+      "伤害数据: "," NL 每场战斗: "," NL 每回合: "
+    ]
+  },
+  "M10Robot:RoboBall": {
+    "NAME": "机器球",
+    "FLAVOR": "\"发现目标。开始破怪。\" - Robo Ball",
+    "DESCRIPTIONS": [
+      "每场战斗你受到的第一次攻击伤害为0，攻击者将受到等额伤害。",
+      "伤害数据: "," NL 每场战斗: "," NL 每回合: "
+    ]
+  },
+  "M10Robot:SearchlightMk2": {
+    "NAME": "探照灯MK2",
+    "FLAVOR": "型号升级！同样的美味！",
+    "DESCRIPTIONS": [
+      "每当你 #y生成 一个 #ym10robot:探照灯 ，将其 #ym10robot:改良 #b"," 次。",
+      "充能球改良次数: "," NL 每场战斗: "," NL 每回合: "
+    ]
+  },
+  "M10Robot:Ufo": {
+    "NAME": "UFO",
+    "FLAVOR": "它在去丛林舞会的路上迷路了。",
+    "DESCRIPTIONS": [
+      "每当你打出一张 #y能力牌 ，所有敌人本回合失去 #b"," 点 #y力量 。",
+      "失去力量: "," NL 每场战斗: "," NL 每回合: "
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "M10Robot:ModConfigs": {
+    "TEXT": [
+      "Enable Chimera Cards crossover content",
+      "Enable random card phrases. Defaults: true, 10%.",
+      "Enable random phrases when attacked. Defaults: true, 20%.",
+      "Enable random pre/post combat phrases. Defaults: true, 50%."
+    ],
+    "EXTRA_TEXT": [
+      "The M10 Robot",
+      "Adds M10 Robot (and cards) from 100% Orange Juice! NL See the Mod Options if you would like to change any configurations!"
+    ]
+  }
+}

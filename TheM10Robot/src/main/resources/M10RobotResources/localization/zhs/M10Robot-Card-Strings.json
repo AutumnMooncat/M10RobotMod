@@ -1,0 +1,451 @@
+{
+  "M10Robot:ExampleCard": {
+    "NAME": "Name",
+    "DESCRIPTION": "Main description",
+    "UPGRADE_DESCRIPTION": "Upgrade description",
+    "EXTENDED_DESCRIPTION": ["Extra Stuff"]
+  },
+  "M10Robot:Acceleration": {
+    "NAME": "加速",
+    "DESCRIPTION": "m10robot:惰性 。 NL m10robot:选取 !M! 张牌。 NL m10robot:超频 下 !M! 张牌 !M10Robot:SecondMagic! 次。"
+  },
+  "M10Robot:AirRaid": {
+    "NAME": "Air Strike",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:AllIn": {
+    "NAME": "全力以赴",
+    "DESCRIPTION": "{@@}m10robot:惰性 。 NL m10robot:超频 所有手牌 X{!M!|>0= + !M!} 次。"
+  },
+  "M10Robot:Analytics": {
+    "NAME": "推算",
+    "DESCRIPTION": "每当你 m10robot:选取 一张牌，将其 m10robot:超频 !M! 次。"
+  },
+  "M10Robot:Ascension": {
+    "NAME": "提升",
+    "DESCRIPTION": "m10robot:惰性 。 NL 抽 !M! 张牌。 NL m10robot:超频 所有手牌 !M10Robot:SecondMagic! 次。"
+  },
+  "M10Robot:AssaultField": {
+    "NAME": "范围冲击",
+    "DESCRIPTION": "{@@}对所有敌人造成 !D! 点伤害。 将 !M! 张 *冲击{!Upgrades!|>0=+} 加入你的抽牌堆。"
+  },
+  "M10Robot:Assault": {
+    "NAME": "冲击",
+    "DESCRIPTION": "对所有敌人造成 !D! 点伤害。 NL 抽 !M! 张牌。"
+  },
+  "M10Robot:AssemblyLine": {
+    "NAME": "流水线",
+    "DESCRIPTION": "生成 !M! 个 m10robot:须臾 。",
+    "UPGRADE_DESCRIPTION": "生成 !M! 个 m10robot:须臾 。 NL m10robot:改良 你的所有充能球 !M10Robot:SecondMagic! 次。"
+  },
+  "M10Robot:AttackDown": {
+    "NAME": "攻击下降",
+    "DESCRIPTION": "m10robot:交换 。 NL 给予所有敌人 !M! 层 虚弱 。"
+  },
+  "M10Robot:DefenseDown": {
+    "NAME": "防御下降",
+    "DESCRIPTION": "m10robot:交换 。 NL 给予所有敌人 !M! 层 易伤 。。"
+  },
+  "M10Robot:Atomize": {
+    "NAME": "裂变",
+    "DESCRIPTION": "生成 !M! 个 m10robot:炸弹 。 NL m10robot:改良 !M10Robot:SecondMagic! 次。"
+  },
+  "M10Robot:AutoCaster": {
+    "NAME": "Auto Caster",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:BalanceCurrents": {
+    "NAME": "电流平衡",
+    "DESCRIPTION": "每当你给予一次负面状态，获得 !M! 点 格挡 。"
+  },
+  "M10Robot:BatteryPack": {
+    "NAME": "Battery Pack",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:BitMask": {
+    "NAME": "比特掩码",
+    "DESCRIPTION": "造成 !D! 点伤害。 NL 本回合每打出一张攻击牌就生成 !M! 个 m10robot:比特 。"
+  },
+  "M10Robot:BoosterShot": {
+    "NAME": "增压",
+    "DESCRIPTION": "造成 !D! 点伤害。 NL m10robot:改良 你的下一个充能球 !M! 次。"
+  },
+  "M10Robot:Bramble": {
+    "NAME": "荆棘",
+    "DESCRIPTION": "获得 !M! 层 m10robot:刺 。 NL 获得 格挡 ，受 m10robot:刺 的加成。"
+  },
+  "M10Robot:BriefRespite": {
+    "NAME": "暂缓",
+    "DESCRIPTION": "获得 !B! 点 格挡 。 NL 抽 !M! 张牌。"
+  },
+  "M10Robot:BurstFire": {
+    "NAME": "Burst Fire",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:Byte": {
+    "NAME": "字节",
+    "DESCRIPTION": "m10robot:交换 。 NL 造成 !D! 点伤害。 NL 生成 !M! 个 m10robot:比特 。",
+    "UPGRADE_DESCRIPTION": "m10robot:交换 。 NL 对所有敌人造成 !D! 点伤害。 NL 生成 !M! 个 m10robot:比特 。"
+  },
+  "M10Robot:Nibble": {
+    "NAME": "轻啃",
+    "DESCRIPTION": "m10robot:交换 。 NL 获得 !B! 点 格挡 。 NL 造成 !D! 点伤害。",
+    "UPGRADE_DESCRIPTION": "m10robot:交换 。 NL 获得 !B! 点 格挡 。 NL 对所有敌人造成 !D! 点伤害。",
+    "EXTENDED_DESCRIPTION": ["m10robot:比特"]
+  },
+  "M10Robot:CardSupplier": {
+    "NAME": "Card Supplier",
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "M10Robot:Cloaking": {
+    "NAME": "斗篷",
+    "DESCRIPTION": "获得 !B! 点 格挡 。 NL 你的下一张攻击牌额外造成 !M! 点伤害。"
+  },
+  "M10Robot:Compensator": {
+    "NAME": "Compensator",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:CompileData": {
+    "NAME": "数据编译",
+    "DESCRIPTION": "生成 !M10Robot:SecondMagic! 个 m10robot:须臾 。 NL m10robot:选取 !M! 张牌。"
+  },
+  "M10Robot:Concentration": {
+    "NAME": "Deadlock",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:Defend": {
+    "NAME": "防御",
+    "DESCRIPTION": "获得 !B! 点 格挡 。"
+  },
+  "M10Robot:Disable": {
+    "NAME": "剥夺",
+    "DESCRIPTION": "目标本回合失去 !M! 点 力量 。 NL 给予 !M10Robot:SecondMagic! 层 虚弱 。",
+    "UPGRADE_DESCRIPTION": "目标本回合失去 !M! 点 力量 。 NL 给予 !M10Robot:SecondMagic! 层 虚弱 和 易伤 。"
+  },
+  "M10Robot:DividedAttention": {
+    "NAME": "内存分配",
+    "DESCRIPTION": "随机丢弃 !M10Robot:SecondMagic! 张牌。随机 m10robot:选取 !M! 张牌。",
+    "UPGRADE_DESCRIPTION": "选择丢弃 !M10Robot:SecondMagic! 张牌。随机 m10robot:选取 !M! 张牌。"
+  },
+  "M10Robot:DoubleCaster": {
+    "NAME": "Double Caster",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:EMP": {
+    "NAME": "电磁脉冲",
+    "DESCRIPTION": "所有敌人本回合失去 !M! 点 力量 。 NL 对所有敌人造成 !D! 点伤害。"
+  },
+  "M10Robot:EmptyBuffer": {
+    "NAME": "缓存空置",
+    "DESCRIPTION": "移除你所有的充能球。 NL 每移除一个充能球获得 !M!个充能球栏位。",
+    "UPGRADE_DESCRIPTION": " 激发 你所有的充能球。 NL 每 激发 一个充能球获得 !M!个充能球栏位。"
+  },
+  "M10Robot:EnergyShield": {
+    "NAME": "能量屏蔽",
+    "DESCRIPTION": "{@@}获得 !B! 点 格挡 。 NL 如果你没有 格挡 ，获得 {!M!|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=!M! [E]} 。"
+  },
+  "M10Robot:Engage": {
+    "NAME": "吸引",
+    "DESCRIPTION": "给予 !M! 层 易伤 。 NL 给予 !M! 层 跟踪锁定 。 NL 如果目标打算进攻，抽 !M10Robot:SecondMagic! 张牌。",
+    "UPGRADE_DESCRIPTION": "给予 !M! 层 易伤 。 NL 给予 !M! 层 跟踪锁定 。 NL 抽 !M10Robot:SecondMagic! 张牌。"
+  },
+  "M10Robot:EvasionDown": {
+    "NAME": "闪避下降",
+    "DESCRIPTION": "m10robot:交换 。 NL 目标本回合受到的所有来源伤害提高 !M! 点。"
+  },
+  "M10Robot:HealthDown": {
+    "NAME": "生命下降",
+    "DESCRIPTION": "m10robot:交换 。 NL 目标失去 !M! 点生命。 NL 本回合如果你打出过 *闪避下降 ，重复这次效果。"
+  },
+  "M10Robot:FeedForward": {
+    "NAME": "Feed Forward",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:Filter": {
+    "NAME": "过滤",
+    "DESCRIPTION": "{@@}m10robot:选取 !M! 张牌。 NL 交换你的抽牌堆和弃牌堆。"
+  },
+  "M10Robot:Fortify": {
+    "NAME": "加固",
+    "DESCRIPTION": "{@@}获得 !B! 点 格挡 。 NL 生成 !M! 个 m10robot:比特 。"
+  },
+  "M10Robot:FullAuto": {
+    "NAME": "转换光束",
+    "DESCRIPTION": "对所有敌人造成 !D! 点伤害 !M! 次。"
+  },
+  "M10Robot:HomeSweeper": {
+    "NAME": "垃圾回收",
+    "DESCRIPTION": "对所有敌人造成 !D! 点伤害。每经过一回合额外造成 !M! 点伤害。"
+  },
+  "M10Robot:ImaginaryNumbers": {
+    "NAME": "虚数",
+    "DESCRIPTION": "!M! 回合内，卡牌的耗能随机变为0或1。"
+  },
+  "M10Robot:ImmovableObject": {
+    "NAME": "固本",
+    "DESCRIPTION": "获得 !B! 点 格挡 。"
+  },
+  "M10Robot:Juggling": {
+    "NAME": "杂耍",
+    "DESCRIPTION": "抽 !M! 张牌。 NL 下一回合额外抽 !M10Robot:SecondMagic! 张牌。"
+  },
+  "M10Robot:LightShow": {
+    "NAME": "灯光秀",
+    "DESCRIPTION": "获得 !B! 点 格挡 。 NL 本回合每打出一张技能牌就生成 !M! 个 m10robot:探照灯 。"
+  },
+  "M10Robot:MagnumStrike": {
+    "NAME": "瓶子打击",
+    "DESCRIPTION": "造成 !D! 点伤害。 NL 给予 !M! 层 跟踪锁定 。"
+  },
+  "M10Robot:Merge": {
+    "NAME": "合并",
+    "DESCRIPTION": "抽 !M! 张牌。 NL m10robot:选取 !M! 张牌。"
+  },
+  "M10Robot:MultiTool": {
+    "NAME": "Multi Tool",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:MultiTool2": {
+    "NAME": "Multi Tool",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:Overdrive": {
+    "NAME": "过载模式",
+    "DESCRIPTION": "{@@}m10robot:惰性 。 NL 在你的回合开始时， m10robot:超频 所有手牌 !M! 次。"
+  },
+  "M10Robot:PerpetualAssembly": {
+    "NAME": "Perpetual Assembly",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:PileDriver": {
+    "NAME": "打桩机",
+    "DESCRIPTION": "m10robot:尖刺 。 NL 造成 !D! 点伤害。 NL 对另一名随机敌人造成 !D! 点伤害。"
+  },
+  "M10Robot:PolishingKit": {
+    "NAME": "Polishing Kit",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:PowerSavings": {
+    "NAME": "节能",
+    "DESCRIPTION": "{@@}m10robot:惰性 。 NL 获得 !M10Robot:SecondMagic! 层 虚弱 。 NL 在你的回合开始时，获得 {!M!|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=!M! [E]} 。"
+  },
+  "M10Robot:Prelude": {
+    "NAME": "前奏",
+    "DESCRIPTION": "m10robot:惰性 。 NL m10robot:超频 下 !M! 张牌 !M10Robot:SecondMagic! 次。"
+  },
+  "M10Robot:QuickBoot": {
+    "NAME": "快速启动",
+    "DESCRIPTION": "生成 !M! 个随机充能球。"
+  },
+  "M10Robot:QuickThinking": {
+    "NAME": "思维迅捷",
+    "DESCRIPTION": "抽 !M! 张牌。 NL 通过此方式抽到的攻击牌本回合耗能为0。"
+  },
+  "M10Robot:QuickRepair": {
+    "NAME": "快速维修",
+    "DESCRIPTION": "获得 !B! 点 格挡 。 NL 每当 m10robot:选取 时， NL 获得 !B! 点 格挡 。"
+  },
+  "M10Robot:Railgun": {
+    "NAME": "磁轨炮",
+    "DESCRIPTION": "失去1金币。 NL 造成 !D! 点伤害。 NL 如果目标拥有 跟踪锁定 ，给予 !M! 层 易伤 。",
+    "EXTENDED_DESCRIPTION": ["我没有钱。"]
+  },
+  "M10Robot:RAMUpgrade": {
+    "NAME": "内存升级",
+    "DESCRIPTION": "获得 !M!个充能球栏位。 NL 每当你生成一个充能球，将其 m10robot:改良 !M10Robot:SecondMagic! 次。"
+  },
+  "M10Robot:RapidAssembly": {
+    "NAME": "快速组装",
+    "DESCRIPTION": "m10robot:惰性 。 NL m10robot:超频 所有手牌 !M! 次。"
+  },
+  "M10Robot:RecoveryMode": {
+    "NAME": "复苏模式",
+    "DESCRIPTION": "在你的回合结束时，如果你还有剩余能量则获得 !M! 点 格挡 。"
+  },
+  "M10Robot:RecklessAttack": {
+    "NAME": "Reckless Attack",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:ReflectiveShell": {
+    "NAME": "光滑外壳",
+    "DESCRIPTION": "被完全格挡的攻击伤害将会对攻击者造成等额伤害 !M! 次。"
+  },
+  "M10Robot:Reroute": {
+    "NAME": "重定向",
+    "DESCRIPTION": "造成 !D! 点伤害。 NL m10robot:选取 !M! 张牌 。 NL 每当 m10robot:超频 时，在本场战斗中提升其伤害 !M10Robot:SecondMagic! 点。"
+  },
+  "M10Robot:ReturningShield": {
+    "NAME": "防护罩",
+    "DESCRIPTION": "获得 !B! 点 格挡 。 NL 在下一回合，获得 !B! 点 格挡 。",
+    "UPGRADE_DESCRIPTION": "获得 !B! 点 格挡 。 NL 在下一回合，获得 !B! 点 格挡 并额外抽 !M! 张牌。"
+  },
+  "M10Robot:Rewind": {
+    "NAME": "倒带",
+    "DESCRIPTION": "每回合你第 !M! 次失去 格挡 时，在下回合获得等量 格挡 。"
+  },
+  "M10Robot:RoboBeam": {
+    "NAME": "机器光束",
+    "DESCRIPTION": "对一名随机敌人造成 !D! 点伤害。 NL 本场战斗每过一回合就重复一次此效果。"
+  },
+  "M10Robot:Rumble": {
+    "NAME": "Rumble",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:Rushdown": {
+    "NAME": "急冲",
+    "DESCRIPTION": "m10robot:尖刺 。 NL 获得 !B! 点 格挡 。 NL 对所有敌人造成 !D! 点伤害。"
+  },
+  "M10Robot:Salvo": {
+    "NAME": "命令",
+    "DESCRIPTION": "每拥有一个充能球就造成一次 !D! 点伤害。 NL 如果目标拥有 跟踪锁定 ， m10robot:改良 你的所有充能球 !M! 次。"
+  },
+  "M10Robot:ScrambleField": {
+    "NAME": "干扰立场",
+    "DESCRIPTION": "{@@}获得 X{!M!|>0= + !M!} 点 力量 。 NL 所有敌人失去 NL X{!M!|>0= + !M!} 点 力量。"
+  },
+  "M10Robot:ScrapBooster": {
+    "NAME": "Scrap Booster",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:ScrapeOff": {
+    "NAME": "刮去",
+    "DESCRIPTION": "m10robot:尖刺 。 NL 造成 !D! 点伤害。 NL 获得等同于造成未被格挡的伤害。"
+  },
+  "M10Robot:Scrapper": {
+    "NAME": "拳击",
+    "DESCRIPTION": "激发你最右侧的充能球。 NL 获得 !M! 层 m10robot:刺 。",
+    "UPGRADE_DESCRIPTION": "激发你最右侧的充能球。 NL 其每拥有一次 m10robot:改良 就获得 !M10Robot:SecondMagic! 层 m10robot:刺 ，再额外获得 !M! 层 m10robot:刺 。"
+  },
+  "M10Robot:SecretRootkit": {
+    "NAME": "木马",
+    "DESCRIPTION": "抽 !M! 张牌。 NL 通过此方式抽到的牌本回合耗能为0。。"
+  },
+  "M10Robot:Seeker": {
+    "NAME": "探索",
+    "DESCRIPTION": "给予 !M! 层 跟踪锁定 。 NL 如果目标已经拥有 跟踪锁定 ，造成 !D! 点伤害。"
+  },
+  "M10Robot:SelfDestruction": {
+    "NAME": "自爆",
+    "DESCRIPTION": "m10robot:惰性 。 NL 失去 !M10Robot:SecondMagic! 点生命。 NL m10robot:击晕 目标。 NL 对所有敌人造成 !D! 点伤害。"
+  },
+  "M10Robot:SlotConversion": {
+    "NAME": "Slot Conversion",
+    "DESCRIPTION": "。"
+  },
+  "M10Robot:SolidWitch": {
+    "NAME": "固态合金",
+    "DESCRIPTION": "获得 !M! 层 无实体 。"
+  },
+  "M10Robot:SpectralCannon": {
+    "NAME": "Spectral Cannon",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:Speedloader": {
+    "NAME": "Speedloader",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:SpikeBall": {
+    "NAME": "钉壳",
+    "DESCRIPTION": "获得 !B! 点 格挡 。 NL 获得 !M! 层 m10robot:刺 。"
+  },
+  "M10Robot:SpikyPlating": {
+    "NAME": "尖刺镀层",
+    "DESCRIPTION": "每当你打出一张牌，获得 !M! 层 m10robot:刺 。 NL 生成 !M10Robot:SecondMagic! 个 m10robot:探照灯 。"
+  },
+  "M10Robot:SplitBeam": {
+    "NAME": "光束波",
+    "DESCRIPTION": "造成 !D! 点伤害 !M! 次。 每当被 m10robot:选取 ，本场战斗中提升这张牌的攻击次数 !M10Robot:SecondMagic! 次。"
+  },
+  "M10Robot:SteelWall": {
+    "NAME": "钢墙",
+    "DESCRIPTION": "获得 !B! 点 格挡 。 NL 生成 !M! 个 m10robot:探照灯 。"
+  },
+  "M10Robot:StepUp": {
+    "NAME": "快速步进",
+    "DESCRIPTION": "m10robot:惰性 。 NL m10robot:选取 !M10Robot:SecondMagic! 张牌。 NL 将其 m10robot:超频 !M! 次。"
+  },
+  "M10Robot:Strike": {
+    "NAME": "打击",
+    "DESCRIPTION": "造成 !D! 点伤害。"
+  },
+  "M10Robot:Surveillance": {
+    "NAME": "监控",
+    "DESCRIPTION": "生成 !M! 个 m10robot:探照灯 。 NL 获得 !M10Robot:SecondMagic! 层 m10robot:刺 。"
+  },
+  "M10Robot:TargetingSystem": {
+    "NAME": "启发",
+    "DESCRIPTION": "每当你生成一个充能球，给予随机敌人 !M! 层 跟踪锁定 。"
+  },
+  "M10Robot:ThermalImaging": {
+    "NAME": "热成像",
+    "DESCRIPTION": "m10robot:交换 。 NL 给予 !M! 层 跟踪锁定 。 NL 生成 !M10Robot:SecondMagic! 个 m10robot:比特 。"
+  },
+  "M10Robot:HeatSeekers": {
+    "NAME": "热探测",
+    "DESCRIPTION": "m10robot:交换 。 NL 对所有拥有 跟踪锁定 的敌人造成 !D! 点伤害。",
+    "EXTENDED_DESCRIPTION": ["m10robot:比特"]
+  },
+  "M10Robot:ThornField": {
+    "NAME": "荆棘盾",
+    "DESCRIPTION": "对所有敌人造成 !D! 点伤害。 战斗中每有一个敌人就获得 !M! 层 m10robot:刺 。"
+  },
+  "M10Robot:ThornWhip": {
+    "NAME": "晃动",
+    "DESCRIPTION": "造成 !D! 点伤害。 NL 生成 !M! 个 m10robot:探照灯 。"
+  },
+  "M10Robot:Tinker": {
+    "NAME": "修补",
+    "DESCRIPTION": "m10robot:交换 。 NL 获得 !B! 点 格挡 。 NL m10robot:改良 你生成的下一个充能球 !M! 次。",
+    "EXTENDED_DESCRIPTION": ["m10robot:惰性", "m10robot:超频"]
+  },
+  "M10Robot:Support": {
+    "NAME": "支持",
+    "DESCRIPTION": "m10robot:惰性 。 m10robot:交换 。 NL 获得 !B! 点 格挡 。 NL m10robot:超频 你打出的下一张牌 !M! 次。",
+    "EXTENDED_DESCRIPTION": ["m10robot:改良"]
+  },
+  "M10Robot:Turbo": {
+    "NAME": "涡轮",
+    "DESCRIPTION": "{@@}下一回合，获得 {!M10Robot:SecondMagic!|-1,1=[E]|2=[E] [E]|3=[E] [E] [E]|@=!M10Robot:SecondMagic! [E]} 并抽 !M! 张牌。"
+  },
+  "M10Robot:UnstableCompound": {
+    "NAME": "不稳定炸弹",
+    "DESCRIPTION": "生成 !M! 个 m10robot:炸弹 。 NL m10robot:改良 一个随机充能球 !M10Robot:SecondMagic! 次。"
+  },
+  "M10Robot:WarForged": {
+    "NAME": "War Forged",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:WaveGenerator": {
+    "NAME": "波形发生器",
+    "DESCRIPTION": "对所有敌人造成 !D! 点伤害。本场战斗中提升这张牌的伤害 !M! 点。"
+  },
+  "M10Robot:WaveAnalyzer": {
+    "NAME": "Wave Analyzer",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:WeaponPlatform": {
+    "NAME": "Weapon Platform",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:WeaponPoison": {
+    "NAME": "Weapon Poison",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:WeaponPolish": {
+    "NAME": "Weapon Polish",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:WeaponPolishBooster": {
+    "NAME": "Weapon Polish",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:WideAngle": {
+    "NAME": "广角镜头",
+    "DESCRIPTION": "每当你打出一张攻击牌， m10robot:比特 充能球现在将攻击 !M! 次。 NL 生成 !M10Robot:SecondMagic! 个 m10robot:比特 。"
+  },
+  "M10Robot:WindUp": {
+    "NAME": "Wind Up",
+    "DESCRIPTION": ""
+  }
+}

@@ -50,8 +50,8 @@ public class SpikyPotion extends CustomPotion {
         tips.clear();
         tips.add(new PowerTip(name, description));
         tips.add(new PowerTip(
-                BaseMod.getKeywordTitle("m10robot:spikes"),
-                BaseMod.getKeywordDescription("m10robot:spikes")
+                BaseMod.getKeywordTitle(potionStrings.DESCRIPTIONS[2].toLowerCase()),
+                BaseMod.getKeywordDescription(potionStrings.DESCRIPTIONS[2].toLowerCase())
         ));
     }
 

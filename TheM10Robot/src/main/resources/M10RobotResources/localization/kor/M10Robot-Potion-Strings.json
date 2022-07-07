@@ -13,10 +13,12 @@
   },
   "M10Robot:OverclockPotion": {
     "NAME": "오버클럭 포션",
-    "DESCRIPTIONS": ["손에 있는 모든 카드를 #b"," 번 #y오버클럭 합니다."]
+    "DESCRIPTIONS": ["손에 있는 모든 카드를 #b"," 번 #y오버클럭 합니다.",
+                    "m10robot:오버클럭"]
   },
   "M10Robot:SpikyPotion": {
     "NAME": "반발성 포션",
-    "DESCRIPTIONS": ["#y반사 를 #b"," 얻습니다."]
+    "DESCRIPTIONS": ["#y반사 를 #b"," 얻습니다.",
+                    "m10robot:반사"]
   }
 }

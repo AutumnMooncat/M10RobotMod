@@ -1,0 +1,106 @@
+[
+  {
+    "PROPER_NAME": "超频",
+    "NAMES": [
+      "超频",
+      "overclocked"
+    ],
+    "DESCRIPTION": "卡牌在打出前提升 #b25% 的基础数值。"
+  },
+  {
+    "PROPER_NAME": "惰性",
+    "NAMES": [
+      "惰性"
+    ],
+    "DESCRIPTION": "这张牌无法 #y超频 。"
+  },
+  {
+    "PROPER_NAME": "选取",
+    "NAMES": [
+      "选取",
+      "extracted"
+    ],
+    "DESCRIPTION": "将弃牌堆顶的一张牌加入手牌。"
+  },
+  {
+    "PROPER_NAME": "后坐力",
+    "NAMES": [
+      "后坐力"
+    ],
+    "DESCRIPTION": "你的下一张攻击牌减少 #r50% 伤害。"
+  },
+  {
+    "PROPER_NAME": "刺",
+    "NAMES": [
+      "刺"
+    ],
+    "DESCRIPTION": "每当受到 #y攻击 伤害时对攻击者造成伤害。 NL 在回合开始时，如果上回合被攻击，则失去所有刺。"
+  },
+  {
+    "PROPER_NAME": "尖刺",
+    "NAMES": [
+      "尖刺"
+    ],
+    "DESCRIPTION": "伤害受 #y刺 的加成。"
+  },
+  {
+    "PROPER_NAME": "击晕",
+    "NAMES": [
+      "击晕"
+    ],
+    "DESCRIPTION": "被击晕的敌人本回合不做出任何动作。"
+  },
+  {
+    "PROPER_NAME": "交换",
+    "NAMES": [
+      "交换",
+	  "swappable"
+    ],
+    "DESCRIPTION": "#y右击 可以切换这张牌的效果。"
+  },
+  {
+    "PROPER_NAME": "改良",
+    "NAMES": [
+      "改良",
+	  "upgrade",
+      "upgrades",
+      "upgraded"
+    ],
+    "DESCRIPTION": "改良充能球使之更加强大。充能球可以被改良任意次。"
+  },
+  {
+    "PROPER_NAME": "比特",
+    "NAMES": [
+      "比特",
+	  "bit",
+      "bits"
+    ],
+    "DESCRIPTION": "充能球:当你打出一张攻击牌时对生命值最低的敌人造成伤害。 #y激发 时，对随机敌人造成伤害并给予 #y跟踪锁定 。"
+  },
+  {
+    "PROPER_NAME": "炸弹",
+    "NAMES": [
+      "炸弹",
+      "bombs"
+    ],
+    "DESCRIPTION": "充能球: 在受到攻击时储存伤害。 #y激发 时，对生命值最高的敌人造成伤害。"
+  },
+  {
+    "PROPER_NAME": "须臾",
+    "NAMES": [
+      "须臾",
+      "presents"
+    ],
+    "DESCRIPTION": "充能球: 抽牌。"
+  },
+  {
+    "PROPER_NAME": "探照灯",
+    "NAMES": [
+      "探照灯",
+      "searchlights",
+      "light",
+      "lights"
+    ],
+    "DESCRIPTION": "充能球:在受到攻击时对攻击者造成伤害。 #y激发 时，获得 #y刺 。"
+  }
+]

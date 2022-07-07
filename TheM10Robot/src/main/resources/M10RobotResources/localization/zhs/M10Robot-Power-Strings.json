@@ -1,0 +1,80 @@
+{
+  "M10Robot:BalanceCurrentsPower": {
+    "NAME": "电流平衡",
+    "DESCRIPTIONS": ["每当你给予一次负面状态，获得 #b"," 点 #y格挡 。"]
+  },
+  "M10Robot:ExtrapolatePower": {
+    "NAME": "推算",
+    "DESCRIPTIONS": ["每当你 #y选取 一张牌，将其 #y超频 #b"," 次。"," 次。"]
+  },
+  "M10Robot:FollowupPower": {
+    "NAME": "超频准备",
+    "DESCRIPTIONS": ["#y超频 你打出的下1张牌 #b",
+                    " 次。"," 次。",
+                    "#y超频 你打出的下 #b"," 张牌 #b"]
+  },
+  "M10Robot:EvasionDownPower": {
+    "NAME": "闪避下降",
+    "DESCRIPTIONS": ["本回合提高受到的所有来源伤害 #b", " 点。"]
+  },
+  "M10Robot:ImaginaryPower": {
+    "NAME": "虚数",
+    "DESCRIPTIONS": ["本回合，每当你抽一张牌，将其耗能变为 #b0 或 #b1 。",
+                    "#b"," 回合内，每当你抽一张牌，将其耗能变为 #b0 或 #b1 。"]
+  },
+  "M10Robot:OverdrivePower": {
+    "NAME": "过载模式",
+    "DESCRIPTIONS": ["在你的回合开始时， #y超频 你的所有手牌 #b","%。"]
+  },
+  "M10Robot:PowerSavingsPower": {
+    "NAME": "能量储存",
+    "DESCRIPTIONS": ["在你的回合开始时，获得 #b"," 点 #y能量 。"]
+  },
+  "M10Robot:RAMUpgradePower": {
+    "NAME": "内存升级",
+    "DESCRIPTIONS": ["每当你 #y生成 一个 #y充能球 ，将其 #y改良 #b"," 次。"," 次。"]
+  },
+  "M10Robot:RecoilPower": {
+    "NAME": "Recoil",
+    "DESCRIPTIONS": [""]
+  },
+  "M10Robot:RecoveryModePower": {
+    "NAME": "复苏模式",
+    "DESCRIPTIONS": ["在你的回合结束时，如果你还有剩余能量则获得 #b"," 点 #y格挡 。"]
+  },
+  "M10Robot:ReflectiveShellPower": {
+    "NAME": "光滑外壳",
+    "DESCRIPTIONS": ["被完全格挡的攻击伤害将会对攻击者造成等额伤害。",
+                    "被完全格挡的攻击伤害将会对攻击者造成等额伤害 #b"," 次。"]
+  },
+  "M10Robot:RewindPower": {
+    "NAME": "倒带",
+    "DESCRIPTIONS": ["你每回合失去的第1次 #y格挡 将会在下回合获得等量 #y格挡 。",
+                    "你每回合失去的第 #b"," 次 #y格挡 将会在下回合获得等量 #y格挡 。"]
+  },
+  "M10Robot:SpikesPower": {
+    "NAME": "刺",
+    "DESCRIPTIONS": ["每当受到攻击时，对攻击者造成 #b"," 点伤害。 在你的回合开始时，如果上回合受到了攻击则失去所有刺。"]
+  },
+  "M10Robot:SpikyPlatingPower": {
+    "NAME": "尖刺镀层",
+    "DESCRIPTIONS": ["每当你打出一张牌，获得 #b"," 层 #y刺 。"]
+  },
+  "M10Robot:TargetingSystemPower": {
+    "NAME": "启发",
+    "DESCRIPTIONS": ["每当你 #y生成 一个充能球，给予随机敌人 #b", " 层 #y跟踪锁定 。"]
+  },
+  "M10Robot:TinkerPower": {
+    "NAME": "修补",
+    "DESCRIPTIONS": ["#y改良 你 #y生成 的下一个 #y充能球 #b"," 次。"," 次。"]
+  },
+  "M10Robot:TurboPower": {
+    "NAME": "涡轮模式",
+    "DESCRIPTIONS": ["在你的下1个回合开始时，额外抽1张牌并获得 [E] 。",
+                    "在你的下 #b"," 个回合开始时，额外抽1张牌并获得 [E] 。"]
+  },
+  "M10Robot:WideAnglePower": {
+    "NAME": "广角镜头",
+    "DESCRIPTIONS": ["每当你打出一张攻击牌， #y比特 充能球额外造成伤害 #b"," 次。"," 次。"]
+  }
+}

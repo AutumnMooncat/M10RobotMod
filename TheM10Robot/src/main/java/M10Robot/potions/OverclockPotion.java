@@ -48,8 +48,8 @@ public class OverclockPotion extends CustomPotion {
         tips.clear();
         tips.add(new PowerTip(name, description));
         tips.add(new PowerTip(
-                BaseMod.getKeywordTitle("m10robot:overclock"),
-                BaseMod.getKeywordDescription("m10robot:overclock")
+                BaseMod.getKeywordTitle(potionStrings.DESCRIPTIONS[2].toLowerCase()),
+                BaseMod.getKeywordDescription(potionStrings.DESCRIPTIONS[2].toLowerCase())
         ));
     }
 

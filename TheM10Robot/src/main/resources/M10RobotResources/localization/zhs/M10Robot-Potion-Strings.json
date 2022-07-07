@@ -1,0 +1,24 @@
+{
+  "M10Robot:BoosterPotion": {
+    "NAME": "增强药水",
+    "DESCRIPTIONS": ["#y改良 你所有的充能球 #b"," 次。"]
+  },
+  "M10Robot:LockingPotion": {
+    "NAME": "锁定药水",
+    "DESCRIPTIONS": ["所有敌人本回合失去 #b"," 点 #y力量 。"]
+  },
+  "M10Robot:NullPotion": {
+    "NAME": "归零药水",
+    "DESCRIPTIONS": ["抽 #b"," 张牌。"," 张牌。"," 你的所有手牌在打出前耗能变为0。"]
+  },
+  "M10Robot:OverclockPotion": {
+    "NAME": "超频药水",
+    "DESCRIPTIONS": ["#y超频 你的所有手牌 #b"," 次。",
+                    "m10robot:超频"]
+  },
+  "M10Robot:SpikyPotion": {
+    "NAME": "尖刺药水",
+    "DESCRIPTIONS": ["获得 #b"," 层 #y刺 。",
+                    "m10robot:刺"]
+  }
+}

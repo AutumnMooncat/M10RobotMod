@@ -13,10 +13,12 @@
   },
   "M10Robot:OverclockPotion": {
     "NAME": "Overclock Potion",
-    "DESCRIPTIONS": ["#yOverclock all cards in your hand #b"," times."]
+    "DESCRIPTIONS": ["#yOverclock all cards in your hand #b"," times.",
+                    "m10robot:Overclock"]
   },
   "M10Robot:SpikyPotion": {
     "NAME": "Spiky Potion",
-    "DESCRIPTIONS": ["Gain #b"," #ySpikes."]
+    "DESCRIPTIONS": ["Gain #b"," #ySpikes.",
+                    "m10robot:Spikes"]
   }
 }

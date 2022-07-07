@@ -1,0 +1,26 @@
+{
+  "M10Robot:BombOrb": {
+    "NAME": "炸弹",
+    "DESCRIPTION": [
+      "#y被动 : 每当受到攻击伤害时，提升充能球相当于本次伤害 #b","% 的伤害。 NL #y激发 : 对生命值最高的敌人造成 #b"," 点伤害。"
+    ]
+  },
+  "M10Robot:BitOrb": {
+    "NAME": "比特",
+    "DESCRIPTION": [
+      "#y被动 : 每当你打出一张 #y攻击牌 ，对生命值最低的敌人造成 #b"," 点伤害。 NL #y激发 : 对随机敌人造成 #b"," 点伤害并给予 #b"," 层 #y跟踪锁定 。"
+    ]
+  },
+  "M10Robot:PresentOrb": {
+    "NAME": "须臾",
+    "DESCRIPTION": [
+      "#y被动 : 在你的回合开始时，额外抽一张牌。 NL #y激发 : 抽 #b"," 张牌。"
+    ]
+  },
+  "M10Robot:SearchlightOrb": {
+    "NAME": "探照灯",
+    "DESCRIPTION": [
+      "#y被动 : 每当受到攻击伤害时，对攻击者造成 #b"," 点伤害。 NL #y激发 : 获得 #b"," 层 #y刺 。"
+    ]
+  }
+}

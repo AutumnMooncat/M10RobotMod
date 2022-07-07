@@ -1,0 +1,22 @@
+{
+  "M10Robot:AimedModifier": {
+    "EXTENDED_DESCRIPTION": [
+      "m10robot:Aimed NL "
+    ]
+  },
+  "M10Robot:HeavyModifier": {
+    "EXTENDED_DESCRIPTION": [
+      "m10robot:Heavy NL "
+    ]
+  },
+  "M10Robot:ReloadingModifier": {
+    "EXTENDED_DESCRIPTION": [
+      "m10robot:Reloading NL ", "m10robot:Loaded NL "
+    ]
+  },
+  "M10Robot:SpikyModifier": {
+    "EXTENDED_DESCRIPTION": [
+      "m10robot:Spiky NL "
+    ]
+  }
+}

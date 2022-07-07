@@ -1,0 +1,36 @@
+{
+  "M10Robot:Example": {
+    "TEXT": ["Prefix", "Suffix", "Description stuff"]
+  },
+  "M10Robot:AimedMod": {
+    "TEXT": ["Aimed ", "", " NL Deals 33% more damage to enemies with Lock-On."]
+  },
+  "M10Robot:BitMod": {
+    "TEXT": ["Bitey ", "", " NL Channel %d m10robot:Bit."]
+  },
+  "M10Robot:BombMod": {
+    "TEXT": ["Bomber ", "", " NL Channel %d m10robot:Bomb."]
+  },
+  "M10Robot:BoostMod": {
+    "TEXT": ["Boosting ", "", " NL m10robot:Upgrade your next Orb %d times."]
+  },
+  "M10Robot:HeuristicMod": {
+    "TEXT": ["Heuristic ", "", " NL If this deals unblocked attack damage, apply %d Lock-On."]
+  },
+  "M10Robot:PresentMod": {
+    "TEXT": ["Gift ", "", " NL Channel %d m10robot:Present."]
+  },
+  "M10Robot:SearchMod": {
+    "TEXT": ["Search and ", "", " NL Channel %d m10robot:Searchlight."]
+  },
+  "M10Robot:SpikesMod": {
+    "TEXT": ["Spiked ", "", " NL Gain %d m10robot:Spikes.",
+    "Translator note: The following is used to find cards that already give Spikes",
+      " NL Gain !M! m10robot:Spikes"]
+  },
+  "M10Robot:ExtractMod": {
+    "TEXT": ["Extractor ", "", " NL m10robot:Extract %d card.",
+      "Translator note: The following is used to find cards that already Extract",
+      " NL m10robot:Extract !M! card"]
+  }
+}

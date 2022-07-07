@@ -1,0 +1,67 @@
+{
+  "M10Robot:AttackTextContainer": {
+    "NAME": "Generic Attack Text",
+    "DESCRIPTION": "Extended Description used to hold text that will occasionally appear when playing an attack.",
+    "EXTENDED_DESCRIPTION": ["初始化攻击","目标重构","正在进行拆卸工作","造成损害"]
+  },
+  "M10Robot:SkillTextContainer": {
+    "NAME": "Generic Skill Text",
+    "DESCRIPTION": "Extended Description used to hold text that will occasionally appear when playing a skill.",
+    "EXTENDED_DESCRIPTION": ["技能运用","技术执行","战略实施","脚本运行"]
+  },
+  "M10Robot:PowerTextContainer": {
+    "NAME": "Generic Power Text",
+    "DESCRIPTION": "Extended Description used to hold text that will occasionally appear when playing a power.",
+    "EXTENDED_DESCRIPTION": ["能力装载","电源接通","机体升级"]
+  },
+  "M10Robot:BattleStartTextContainer": {
+    "NAME": "Battle Start Text",
+    "DESCRIPTION": "Extended Description used to hold text that will occasionally appear at the beginning of combat.",
+    "EXTENDED_DESCRIPTION": ["机体完整性：高","开始拆卸","检测到目标","武器系统：准备完毕"]
+  },
+  "M10Robot:LowHPBattleStartTextContainer": {
+    "NAME": "Low HP Battle Start Text",
+    "DESCRIPTION": "Extended Description used to hold text that will occasionally appear at the beginning of combat if you are badly injured.",
+    "EXTENDED_DESCRIPTION": ["机体完整性：低","战斗无法避免","风险提升","烟雾弹：可取"]
+  },
+  "M10Robot:BattleEndTextContainer": {
+    "NAME": "Battle End Text",
+    "DESCRIPTION": "Extended Description used to hold text that will occasionally appear at the end of combat.",
+    "EXTENDED_DESCRIPTION": ["拆卸完成","已执行清洁","目标确认消失"]
+  },
+  "M10Robot:BossFightTextContainer": {
+    "NAME": "Boss Fight Text",
+    "DESCRIPTION": "Extended Description used to hold text that will occasionally appear at the beginning of a boss fight.",
+    "EXTENDED_DESCRIPTION": ["检测到优先级目标","检测到威胁","敌方：已定位"]
+  },
+  "M10Robot:HealingTextContainer": {
+    "NAME": "Healing Text",
+    "DESCRIPTION": "Extended Description used to hold text that will occasionally appear when healing.",
+    "EXTENDED_DESCRIPTION": ["机体修复中","电流已矫正","补充冷却液","情绪改善","预期通过率提升"]
+  },
+  "M10Robot:FieldDamageTextContainer": {
+    "NAME": "Field Damage Text",
+    "DESCRIPTION": "Extended Description used to hold text that will occasionally appear when taking thorns damage.",
+    "EXTENDED_DESCRIPTION": ["伤害：令人恼火","机体：伸出","反馈：未被认可","终止"]
+  },
+  "M10Robot:LightDamageTextContainer": {
+    "NAME": "Light Damage Text",
+    "DESCRIPTION": "Extended Description used to hold text that will occasionally appear when taking light damage.",
+    "EXTENDED_DESCRIPTION": ["装甲：无效化","屏障：丢失","伤害：可支撑","伤害评估中..."]
+  },
+  "M10Robot:HeavyDamageTextContainer": {
+    "NAME": "Heavy Damage Text",
+    "DESCRIPTION": "Extended Description used to hold text that will occasionally appear when taking heavy damage.",
+    "EXTENDED_DESCRIPTION": ["装甲：忽略","机体：破损","伤害：十分严重","噢: 是的"]
+  },
+  "M10Robot:BlockedDamageTextContainer": {
+    "NAME": "Blocked Damage Text",
+    "DESCRIPTION": "Extended Description used to hold text that will occasionally appear when blocking damage.",
+    "EXTENDED_DESCRIPTION": ["伤害已被缓解","装甲生效中","护盾正常运作"]
+  },
+  "M10Robot:KOTextContainer": {
+    "NAME": "KO Text",
+    "DESCRIPTION": "Extended Description used to hold text that will occasionally appear when defeated in battle.",
+    "EXTENDED_DESCRIPTION": ["重启...失败...","机体内部坍缩","平衡：失去","计时器：故障","进程：中止"]
+  }
+}
