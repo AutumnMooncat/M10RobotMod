@@ -1,0 +1,116 @@
+[
+  {
+    "PROPER_NAME": "오버클럭",
+    "NAMES": [
+      "overclock",
+      "overclocked",
+      "오버클럭"
+    ],
+    "DESCRIPTION": "카드의 기본 효과를 사용하기 전까지 #b25% 증가시킵니다."
+  },
+  {
+    "PROPER_NAME": "부동성",
+    "NAMES": [
+      "inert",
+      "부동성"
+    ],
+    "DESCRIPTION": "이 카드는 #y오버클럭 할 수 없습니다."
+  },
+  {
+    "PROPER_NAME": "추출",
+    "NAMES": [
+      "extract",
+      "extracted",
+      "추출"
+    ],
+    "DESCRIPTION": "버린 카드 더미 맨 위에 있는 카드를 손으로 가져옵니다."
+  },
+  {
+    "PROPER_NAME": "반동",
+    "NAMES": [
+      "recoil",
+      "반동"
+    ],
+    "DESCRIPTION": "다음에 사용하는 공격 카드가 #b50% 적은 피해를 줍니다."
+  },
+  {
+    "PROPER_NAME": "반사",
+    "NAMES": [
+      "spikes",
+      "반사"
+    ],
+    "DESCRIPTION": "#y공격 피해를 받을 때 마다 수치 만큼의 피해를 되돌려줍니다. NL 공격받았다면, 자신의 턴 시작시 모든 반사 수치를 잃습니다."
+  },
+  {
+    "PROPER_NAME": "반발성",
+    "NAMES": [
+      "spiky",
+      "반발성"
+    ],
+    "DESCRIPTION": "#y반사 수치 만큼 피해량이 증가합니다."
+  },
+  {
+    "PROPER_NAME": "기절",
+    "NAMES": [
+      "stun",
+      "기절"
+    ],
+    "DESCRIPTION": "기절한 적은 이번 턴 동안 행동하지 않습니다."
+  },
+  {
+    "PROPER_NAME": "교체가능",
+    "NAMES": [
+      "swappable",
+      "교체가능"
+    ],
+    "DESCRIPTION": "#y우클릭 으로 카드의 효과를 변경합니다."
+  },
+  {
+    "PROPER_NAME": "강화",
+    "NAMES": [
+      "upgrade",
+      "upgrades",
+      "upgraded",
+      "강화"
+    ],
+    "DESCRIPTION": "구체를 강화하여 더욱 강력하게 만들 수 있습니다. 강화 횟수에는 제한이 없습니다."
+  },
+  {
+    "PROPER_NAME": "비트",
+    "NAMES": [
+      "bit",
+      "bits",
+      "비트"
+    ],
+    "DESCRIPTION": "구체: (지속)공격 카드를 사용할 때 마다 가장 체력이 낮은 적에게 피해를 줍니다. (발현)무작위 적에게 피해를 주고 #y조준 을 부여합니다."
+  },
+  {
+    "PROPER_NAME": "폭탄",
+    "NAMES": [
+      "bomb",
+      "bombs",
+      "폭탄"
+    ],
+    "DESCRIPTION": "구체: (지속)받은 피해를 저장합니다. (발현)가장 체력이 높은 적에게 누적된 피해를 줍니다."
+  },
+  {
+    "PROPER_NAME": "선물",
+    "NAMES": [
+      "present",
+      "presents",
+      "선물"
+    ],
+    "DESCRIPTION": "구체: (지속/발현)카드를 뽑습니다."
+  },
+  {
+    "PROPER_NAME": "서치라이트",
+    "NAMES": [
+      "searchlight",
+      "searchlights",
+      "light",
+      "lights",
+      "서치라이트"
+    ],
+    "DESCRIPTION": "구체: (지속)공격 받을 때 마다 피해를 줍니다. (발현)#y반사 를 얻습니다."
+  }
+]

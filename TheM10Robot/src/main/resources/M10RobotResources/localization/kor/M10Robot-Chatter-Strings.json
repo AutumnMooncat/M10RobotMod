@@ -1,0 +1,67 @@
+{
+  "M10Robot:AttackTextContainer": {
+    "NAME": "일반 공격 대사",
+    "DESCRIPTION": "Extended Description used to hold text that will occasionally appear when playing an attack.",
+    "EXTENDED_DESCRIPTION": ["공격 개시","대상 재지정","분해 과정 진행","피해 부여"]
+  },
+  "M10Robot:SkillTextContainer": {
+    "NAME": "Generic Skill Text",
+    "DESCRIPTION": "Extended Description used to hold text that will occasionally appear when playing a skill.",
+    "EXTENDED_DESCRIPTION": ["기술 활용","기교 실행","전략 적용","루틴 시행"]
+  },
+  "M10Robot:PowerTextContainer": {
+    "NAME": "Generic Power Text",
+    "DESCRIPTION": "Extended Description used to hold text that will occasionally appear when playing a power.",
+    "EXTENDED_DESCRIPTION": ["파워 부여","파워 가동","동체 강화 완료"]
+  },
+  "M10Robot:BattleStartTextContainer": {
+    "NAME": "Battle Start Text",
+    "DESCRIPTION": "Extended Description used to hold text that will occasionally appear at the beginning of combat.",
+    "EXTENDED_DESCRIPTION": ["동체 손상도: 낮음","분해 과정 개시","목표 포착","무장: 준비 완료"]
+  },
+  "M10Robot:LowHPBattleStartTextContainer": {
+    "NAME": "Low HP Battle Start Text",
+    "DESCRIPTION": "Extended Description used to hold text that will occasionally appear at the beginning of combat if you are badly injured.",
+    "EXTENDED_DESCRIPTION": ["동체 손상도: 높음","교전 회피 불가","분노 상승중","연막탄: 필요"]
+  },
+  "M10Robot:BattleEndTextContainer": {
+    "NAME": "Battle End Text",
+    "DESCRIPTION": "Extended Description used to hold text that will occasionally appear at the end of combat.",
+    "EXTENDED_DESCRIPTION": ["분해 과정 완료","청소작업 시행완료","목표 무력화"]
+  },
+  "M10Robot:BossFightTextContainer": {
+    "NAME": "Boss Fight Text",
+    "DESCRIPTION": "Extended Description used to hold text that will occasionally appear at the beginning of a boss fight.",
+    "EXTENDED_DESCRIPTION": ["고 우선도 목표 포착","위협 포착","적수: 발견"]
+  },
+  "M10Robot:HealingTextContainer": {
+    "NAME": "Healing Text",
+    "DESCRIPTION": "Extended Description used to hold text that will occasionally appear when healing.",
+    "EXTENDED_DESCRIPTION": ["동체 수리","회로 교정","냉각수 교체","기분: 개선","전망: 낙관적"]
+  },
+  "M10Robot:FieldDamageTextContainer": {
+    "NAME": "Field Damage Text",
+    "DESCRIPTION": "Extended Description used to hold text that will occasionally appear when taking thorns damage.",
+    "EXTENDED_DESCRIPTION": ["피해: 성가심","동체: 관통상","피드백: 지양할 것","중지 요구"]
+  },
+  "M10Robot:LightDamageTextContainer": {
+    "NAME": "Light Damage Text",
+    "DESCRIPTION": "Extended Description used to hold text that will occasionally appear when taking light damage.",
+    "EXTENDED_DESCRIPTION": ["장갑: 불충분","보호막: 없음","피해: 감당가능","손상 측정중..."]
+  },
+  "M10Robot:HeavyDamageTextContainer": {
+    "NAME": "Heavy Damage Text",
+    "DESCRIPTION": "Extended Description used to hold text that will occasionally appear when taking heavy damage.",
+    "EXTENDED_DESCRIPTION": ["장갑: 파훼됨","동체: 손상됨","피해: 심각함","으악: 예"]
+  },
+  "M10Robot:BlockedDamageTextContainer": {
+    "NAME": "Blocked Damage Text",
+    "DESCRIPTION": "Extended Description used to hold text that will occasionally appear when blocking damage.",
+    "EXTENDED_DESCRIPTION": ["피해: 방호됨.","장갑: 충분","보호막: 가동중"]
+  },
+  "M10Robot:KOTextContainer": {
+    "NAME": "KO Text",
+    "DESCRIPTION": "Extended Description used to hold text that will occasionally appear when defeated in battle.",
+    "EXTENDED_DESCRIPTION": ["재부팅 시퀀스... 실패.","동체 붕괴 임박","대칭성: 파괴됨","시간 안정화 장치: 오류","절차: 말소됨"]
+  }
+}

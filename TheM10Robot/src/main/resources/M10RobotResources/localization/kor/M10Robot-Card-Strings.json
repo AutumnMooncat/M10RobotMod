@@ -1,0 +1,447 @@
+{
+  "M10Robot:ExampleCard": {
+    "NAME": "Name",
+    "DESCRIPTION": "Main description",
+    "UPGRADE_DESCRIPTION": "Upgrade description",
+    "EXTENDED_DESCRIPTION": ["Extra Stuff"]
+  },
+  "M10Robot:Acceleration": {
+    "NAME": "가속",
+    "DESCRIPTION": "m10robot:부동성. NL 카드를 !M! 장 m10robot:추출 합니다. NL 다음에 사용하는 카드 !M! 장을 !M10Robot:SecondMagic! 번 m10robot:오버클럭 합니다."
+  },
+  "M10Robot:AirRaid": {
+    "NAME": "Air Strike",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:AllIn": {
+    "NAME": "올인",
+    "DESCRIPTION": "{@@}m10robot:부동성. NL 손에 있는 모든 카드를 X{!M!|>0= + !M!} 번 m10robot:오버클럭 합니다."
+  },
+  "M10Robot:Analytics": {
+    "NAME": "보외",
+    "DESCRIPTION": "{@@}카드를 m10robot:추출 할 때 마다 그 카드를 !M! 번 m10robot:오버클럭 합니다."
+  },
+  "M10Robot:Ascension": {
+    "NAME": "승천",
+    "DESCRIPTION": "{@@}m10robot:부동성. NL 카드를 !M! 장 뽑습니다. NL 손에 있는 모든 카드를 !M10Robot:SecondMagic! 번 m10robot:오버클럭 합니다."
+  },
+  "M10Robot:AssaultField": {
+    "NAME": "돌격지대",
+    "DESCRIPTION": "{@@}적 전체에게 피해를 !D! 줍니다. 뽑을 카드 더미에 *돌격{!Upgrades!|>0=+} 을 !M! 장 섞어 넣습니다."
+  },
+  "M10Robot:Assault": {
+    "NAME": "돌격",
+    "DESCRIPTION": "{@@}적 전체에게 피해를 !D! 줍니다. NL 카드를 !M! 장 뽑습니다."
+  },
+  "M10Robot:AssemblyLine": {
+    "NAME": "조립 공정",
+    "DESCRIPTION": "m10robot:선물 을 !M! 번 영창합니다.",
+    "UPGRADE_DESCRIPTION": "m10robot:선물 을 !M! 번 영창합니다. NL 모든 구체를 !M10Robot:SecondMagic! 번 m10robot:강화 합니다{@@}."
+  },
+  "M10Robot:AttackDown": {
+    "NAME": "공격력 다운",
+    "DESCRIPTION": "m10robot:교체가능. NL 적 전체에게 약화를 !M! 부여합니다."
+  },
+  "M10Robot:DefenseDown": {
+    "NAME": "방어력 다운",
+    "DESCRIPTION": "m10robot:교체가능. NL 적 전체에게 취약을 !M! 부여합니다."
+  },
+  "M10Robot:Atomize": {
+    "NAME": "원자화",
+    "DESCRIPTION": "{@@}m10robot:폭탄 을 !M! 번 영창합니다. NL 영챵한 폭탄 을 !M10Robot:SecondMagic! 번 m10robot:강화 합니다."
+  },
+  "M10Robot:AutoCaster": {
+    "NAME": "Auto Caster",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:BalanceCurrents": {
+    "NAME": "조율",
+    "DESCRIPTION": "적에게 부정적인 효과를 부여할 때 마다 방어도를 !M! 얻습니다."
+  },
+  "M10Robot:BatteryPack": {
+    "NAME": "Battery Pack",
+    "DESCRIPTION": ""
+  },
+  "m10robotBitMask": {
+    "NAME": "비트마스크",
+    "DESCRIPTION": "{@@}피해를 !D! 줍니다. NL 이번 턴 동안 사용한 공격 카드 한 장당 m10robot:비트 를 !M! 번 영창합니다.{!Location!|0= NL (사용한 공격 카드: !M10Robot:Info!)}"
+  },
+  "M10Robot:BoosterShot": {
+    "NAME": "부스터",
+    "DESCRIPTION": "피해를 !D! 줍니다. NL 가장 오른쪽의 구체를 !M! 번 m10robot:강화 합니다."
+  },
+  "M10Robot:Bramble": {
+    "NAME": "가시덤불",
+    "DESCRIPTION": "{@@} m10robot:반사 를 !M! 얻습니다. NL 보유한 m10robot:반사 만큼 방어도를 얻습니다.{!Location!|0= NL (방어도를 !M10Robot:Info! 얻습니다)}"
+  },
+  "M10Robot:BriefRespite": {
+    "NAME": "짧은 휴식",
+    "DESCRIPTION": "{@@}방어도를 !B! 얻습니다. NL 카드를 !M! 장 뽑습니다."
+  },
+  "M10Robot:BurstFire": {
+    "NAME": "Burst Fire",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:Byte": {
+    "NAME": "바이트",
+    "DESCRIPTION": "m10robot:교체가능. NL 피해를 !D! 줍니다. NL m10robot:비트 를 !M! 번 영창합니다.",
+    "UPGRADE_DESCRIPTION": "m10robot:교체가능. NL 적 전체에게 피해를 !D! 줍니다. NL m10robot:비트 를 !M! 번 영창합니다."
+  },
+  "M10Robot:Nibble": {
+    "NAME": "깨물기",
+    "DESCRIPTION": "m10robot:교체가능. NL 방어도를 !B! 얻습니다. NL 피해를 !D! 줍니다.",
+    "UPGRADE_DESCRIPTION": "m10robot:교체가능. NL 방어도를 !B! 얻습니다. NL 적 전체에게 피해를 !D! 줍니다."
+  },
+  "M10Robot:CardSupplier": {
+    "NAME": "Card Supplier",
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [""]
+  },
+  "M10Robot:Cloaking": {
+    "NAME": "은폐",
+    "DESCRIPTION": "방어도를 !B! 얻습니다. NL 다음에 사용하는 공격 카드의 피해량이 !M! 증가합니다."
+  },
+  "M10Robot:Compensator": {
+    "NAME": "Compensator",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:CompileData": {
+    "NAME": "데이터 컴파일링",
+    "DESCRIPTION": "{@@}m10robot:선물 을 !M10Robot:SecondMagic! 번 영창합니다. NL 카드를 !M! 장 m10robot:추출 합니다."
+  },
+  "M10Robot:Concentration": {
+    "NAME": "Deadlock",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:Defend": {
+    "NAME": "수비",
+    "DESCRIPTION": "방어도를 !B! 얻습니다."
+  },
+  "M10Robot:Disable": {
+    "NAME": "비활성화",
+    "DESCRIPTION": "이번 턴에만 힘을 !M! 감소시킵니다. NL 약화를 !M10Robot:SecondMagic! 부여합니다.",
+    "UPGRADE_DESCRIPTION": "이번 턴에만 힘을 !M! 감소시킵니다. NL 약화를 !M10Robot:SecondMagic! 부여합니다. NL 취약을 !M10Robot:SecondMagic! 부여합니다."
+  },
+  "M10Robot:DividedAttention": {
+    "NAME": "시선 분산",
+    "DESCRIPTION": "{@@}무작위 카드를 !M10Robot:SecondMagic! 장 버립니다. 무작위 카드 !M! 장을 m10robot:추출 합니다.",
+    "UPGRADE_DESCRIPTION": "{@@}카드를 !M10Robot:SecondMagic! 장 버립니다. 무작위 카드 !M! 장을 m10robot:추출 합니다."
+  },
+  "M10Robot:DoubleCaster": {
+    "NAME": "Double Caster",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:EMP": {
+    "NAME": "전자기 펄스",
+    "DESCRIPTION": "적 전체의 힘을 이번 턴 동안 !M! 감소시킵니다. NL 적 전체에게 피해를 !D! 줍니다."
+  },
+  "M10Robot:EmptyBuffer": {
+    "NAME": "버퍼 비우기",
+    "DESCRIPTION": "{@@}모든 구체를 제거합니다. NL 제거된 구체 하나당 !M! 개의 구체 슬롯을 얻습니다.",
+    "UPGRADE_DESCRIPTION": "{@@}모든 구체를 발현합니다. NL 발현된 구체 하나당 !M! 개의 구체 슬롯을 얻습니다."
+  },
+  "M10Robot:EnergyShield": {
+    "NAME": "에너지 보호막",
+    "DESCRIPTION": "{@@}방어도를 !B! 얻습니다. NL 방어도가 없으면 {!M!|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=!M! [E]} 를 얻습니다."
+  },
+  "M10Robot:Engage": {
+    "NAME": "교전",
+    "DESCRIPTION": "{@@}취약을 !M! 부여합니다. NL 조준을 !M! 부여합니다. NL 적이 공격할 의도가 있다면 카드를 !M10Robot:SecondMagic! 장 뽑습니다.",
+    "UPGRADE_DESCRIPTION": "{@@}취약을 !M! 부여합니다. NL 조준을 !M! 부여합니다. NL 카드를 !M10Robot:SecondMagic! 장 뽑습니다."
+  },
+  "M10Robot:EvasionDown": {
+    "NAME": "회피력 다운",
+    "DESCRIPTION": "m10robot:교체가능. NL 이번 턴 동안 대상이 받는 모든 피해가 !M! 만큼 증가합니다."
+  },
+  "M10Robot:HealthDown": {
+    "NAME": "체력 다운",
+    "DESCRIPTION": "m10robot:교체가능. NL 대상은 체력을 !M! 잃습니다. NL 이번 턴에 *회피력 *다운 을 사용했다면, 효과를 반복합니다."
+  },
+  "M10Robot:FeedForward": {
+    "NAME": "Feed Forward",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:Filter": {
+    "NAME": "필터",
+    "DESCRIPTION": "{@@}카드를 !M! 장 m10robot:추출 합니다. NL 뽑을 카드 더미와 버린 카드 더미를 뒤바꿉니다."
+  },
+  "M10Robot:Fortify": {
+    "NAME": "요새화",
+    "DESCRIPTION": "{@@}방어도를 !B! 얻습니다. NL m10robot:비트 를 !M! 번 영창합니다."
+  },
+  "M10Robot:FullAuto": {
+    "NAME": "반전 빔",
+    "DESCRIPTION": "적 전체에게 피해를 !D! 만큼 !M! 번 줍니다."
+  },
+  "M10Robot:HomeSweeper": {
+    "NAME": "집정리",
+    "DESCRIPTION": "적 전체에게 피해를 !D! 줍니다. 턴이 지날 때 마다 피해가 !M! 증가합니다."
+  },
+  "M10Robot:ImaginaryNumbers": {
+    "NAME": "허수",
+    "DESCRIPTION": "{@@}!M! 턴 동안 카드의 비용이 0 또는 1이 됩니다."
+  },
+  "M10Robot:ImmovableObject": {
+    "NAME": "움직이지 않는 물체",
+    "DESCRIPTION": "방어도를 !B! 얻습니다."
+  },
+  "M10Robot:Juggling": {
+    "NAME": "저글링",
+    "DESCRIPTION": "{@@}카드를 !M! 장 뽑습니다. NL 다음 턴에 카드를 !M10Robot:SecondMagic! 장 더 뽑습니다."
+  },
+  "M10Robot:LightShow": {
+    "NAME": "라이트 쇼",
+    "DESCRIPTION": "{@@}방어도를 !B! 얻습니다. NL 이번 턴 동안 사용한 스킬 카드 한 장당 m10robot:서차라이트 를 !M! 번 영창합니다.{!Location!|0= NL (사용한 스킬 카드: !M10Robot:Info!)}"
+  },
+  "M10Robot:MagnumStrike": {
+    "NAME": "대구경 타격",
+    "DESCRIPTION": "피해를 !D! 줍니다. NL 조준을 !M! 부여합니다."
+  },
+  "M10Robot:Merge": {
+    "NAME": "병합",
+    "DESCRIPTION": "{@@}카드를 !M! 장 뽑습니다. NL 카드를 !M! 장 m10robot:추출 합니다."
+  },
+  "M10Robot:MultiTool": {
+    "NAME": "Multi Tool",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:MultiTool2": {
+    "NAME": "Multi Tool",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:Overdrive": {
+    "NAME": "증속의 형상",
+    "DESCRIPTION": "{@@}m10robot:부동성. NL 내 턴 시작시 손에 있는 모든 카드를 !M! 번 m10robot:오버클럭 합니다."
+  },
+  "M10Robot:PerpetualAssembly": {
+    "NAME": "Perpetual Assembly",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:PileDriver": {
+    "NAME": "파일 드라이버",
+    "DESCRIPTION": "m10robot:반발성. NL 피해를 !D! 줍니다. NL 다른 무작위 적에게 피해를 !D! 줍니다."
+  },
+  "M10Robot:PolishingKit": {
+    "NAME": "Polishing Kit",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:PowerSavings": {
+    "NAME": "절전",
+    "DESCRIPTION": "{@@}m10robot:부동성. NL 약화를 !M10Robot:SecondMagic! 받습니다. NL 내 턴 시작 시마다 {!M!|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=!M! [E]} 를 얻습니다."
+  },
+  "M10Robot:Prelude": {
+    "NAME": "프렐류드",
+    "DESCRIPTION": "{@@}m10robot:부동성. NL 다음에 사용하는 카드 !M! 장을 !M10Robot:SecondMagic! 번 m10robot:오버클럭 합니다."
+  },
+  "M10Robot:QuickBoot": {
+    "NAME": "고속 부팅",
+    "DESCRIPTION": "무작위 구체를 !M! 번 영창합니다."
+  },
+  "M10Robot:QuickThinking": {
+    "NAME": "고속 사고",
+    "DESCRIPTION": "카드를 !M! 장 뽑습니다. NL 이 효과로 뽑은 공격 카드의 비용이 이번 턴 동안 0이 됩니다."
+  },
+  "M10Robot:QuickRepair": {
+    "NAME": "고속 수리",
+    "DESCRIPTION": "방어도를 !B! 얻습니다. NL 이 카드가 m10robot:추출 되면 NL 방어도를 !B! 얻습니다."
+  },
+  "M10Robot:Railgun": {
+    "NAME": "레일건",
+    "DESCRIPTION": "골드를 1 잃습니다. NL 피해를 !D! 줍니다. NL 대상에게 조준 상태라면 취약을 !M! 부여합니다.",
+    "EXTENDED_DESCRIPTION": ["I have no gold."]
+  },
+  "M10Robot:RAMUpgrade": {
+    "NAME": "램 업그레이드",
+    "DESCRIPTION": "{@@}구체 슬롯 !M! 개를 얻습니다. NL 구체를 영창할 때 마다  !M10Robot:SecondMagic! 번 m10robot:강화 합니다."
+  },
+  "M10Robot:RapidAssembly": {
+    "NAME": "신속 조립",
+    "DESCRIPTION": "m10robot:부동성. NL 손에 있는 모든 카드를 !M! 번 m10robot:오버클럭 합니다."
+  },
+  "M10Robot:RecoveryMode": {
+    "NAME": "수복 모드",
+    "DESCRIPTION": "매 턴 종료시, 남은 에너지가 있다면 방어도를 !M! 얻습니다."
+  },
+  "M10Robot:RecklessAttack": {
+    "NAME": "Reckless Attack",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:ReflectiveShell": {
+    "NAME": "반사 외갑",
+    "DESCRIPTION": "{@@}공격을 완전히 막았다면 그 피해를 !M! 번 까지 되돌려줍니다."
+  },
+  "M10Robot:Reroute": {
+    "NAME": "리루팅",
+    "DESCRIPTION": "{@@}피해를 !D! 줍니다. NL 카드를 !M! 장 m10robot:추출 합니다. NL 이 카드가 m10robot:오버클럭 될 때 마다 이번 전투동안 피해가 !M10Robot:SecondMagic! 증가합니다."
+  },
+  "M10Robot:ReturningShield": {
+    "NAME": "복귀형 보호막",
+    "DESCRIPTION": "방어도를 !B! 얻습니다. NL 다음 턴에 방어도를 !B! 얻습니다",
+    "UPGRADE_DESCRIPTION": "방어도를 !B! 얻습니다. NL 다음 턴에 방어도를 !B! 얻고 카드를 !M! 장 더 뽑습니다{@@}."
+  },
+  "M10Robot:Rewind": {
+    "NAME": "되감기",
+    "DESCRIPTION": "{@@}이번 턴 동안 방어도를 잃으면 다음 턴에 그 만큼 방어도를 얻습니다. 한 턴에 !M! 번 발동합니다."
+  },
+  "M10Robot:RoboBeam": {
+    "NAME": "로보 빔",
+    "DESCRIPTION": "무작위 적에게 피해를 !D! 줍니다. NL 지난 턴 수 만큼 반복합니다."
+  },
+  "M10Robot:Rumble": {
+    "NAME": "Rumble",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:Rushdown": {
+    "NAME": "추돌",
+    "DESCRIPTION": "m10robot:반발성. NL 방어도를 !B! 얻습니다. NL 적 전체에게 피해를 !D! 줍니다."
+  },
+  "M10Robot:Salvo": {
+    "NAME": "명령",
+    "DESCRIPTION": "{@@}영창된 구체 하나당 피해를 !D! 줍니다. NL 적이 조준 상태라면 모든 구체를 !M! 번 m10robot:강화 합니다."
+  },
+  "M10Robot:ScrambleField": {
+    "NAME": "교란 델타 필드",
+    "DESCRIPTION": "{@@}힘을 X{!M!|>0= + !M!} 얻습니다. NL 적 전체의 힘을 NL X{!M!|>0= + !M!} 감소시킵니다."
+  },
+  "M10Robot:ScrapBooster": {
+    "NAME": "Scrap Booster",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:ScrapeOff": {
+    "NAME": "쓸어내기",
+    "DESCRIPTION": "m10robot:반발성. NL 피해를 !D! 줍니다. NL 막히지 않은 피해량 만큼 방어도를 얻습니다."
+  },
+  "M10Robot:Scrapper": {
+    "NAME": "싸움꾼",
+    "DESCRIPTION": "가장 오른쪽의 구체를 발현합니다. NL m10robot:반사 를 !M! 얻습니다.",
+    "UPGRADE_DESCRIPTION": "가장 오른쪽의 구체를 발현합니다. 그 구체가 m10robot:강화 된 횟수의 !M10Robot:SecondMagic! 배에 !M!을 더한 만큼 m10robot:반사 를 얻습니다."
+  },
+  "M10Robot:SecretRootkit": {
+    "NAME": "루트킷",
+    "DESCRIPTION": "카드를 !M! 장 뽑습니다. NL 이 효과로 뽑은 카드의 비용이 이번 턴 동안 0이 됩니다."
+  },
+  "M10Robot:Seeker": {
+    "NAME": "수색자",
+    "DESCRIPTION": "조준을 !M! 부여합니다. NL 대상이 이미 조준 상태라면 피해를 !D! 줍니다."
+  },
+  "M10Robot:SelfDestruction": {
+    "NAME": "자폭",
+    "DESCRIPTION": "m10robot:부동성. NL 체력을 !M10Robot:SecondMagic! 잃습니다. NL 적을 m10robot:기절 시킵니다. NL 적 전체에게 !D! 피해를 줍니다."
+  },
+  "M10Robot:SlotConversion": {
+    "NAME": "Slot Conversion",
+    "DESCRIPTION": "."
+  },
+  "M10Robot:SolidWitch": {
+    "NAME": "굳센 마녀",
+    "DESCRIPTION": "불가침을 !M! 얻습니다."
+  },
+  "M10Robot:SpectralCannon": {
+    "NAME": "Spectral Cannon",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:Speedloader": {
+    "NAME": "Speedloader",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:SpikeBall": {
+    "NAME": "반사 장갑",
+    "DESCRIPTION": "방어도를 !B! 얻습니다. NL m10robot:반사 를 !M! 얻습니다."
+  },
+  "M10robot:SpikyPlating": {
+    "NAME": "반발성 코팅",
+    "DESCRIPTION": "카드를 사용할 때 마다 m10robot:반사 를 !M! 얻습니다. NL m10robot:서치라이트 를 !M10Robot:SecondMagic! 번 영창합니다."
+  },
+  "M10Robot:SplitBeam": {
+    "NAME": "분산 빔",
+    "DESCRIPTION": "피해를 !D! 만큼 !M! 번 줍니다. 이 카드가 m10robot:추출 되면 이번 전투 동안 공격 횟수가 !M10Robot:SecondMagic! 만큼 증가합니다."
+  },
+  "M10Robot:SteelWall": {
+    "NAME": "강철 장벽",
+    "DESCRIPTION": "{@@}방어도를 !B! 얻습니다. NL m10robot:서치라이트 를 !M! 번 영창합니다."
+  },
+  "M10Robot:StepUp": {
+    "NAME": "올라서기",
+    "DESCRIPTION": "{@@}m10robot:부동성. NL 카드를 !M10Robot:SecondMagic! 장 m10robot:추출 합니다. NL 그 카드를 !M! 번 m10robot:오버클럭 합니다."
+  },
+  "M10Robot:Strike": {
+    "NAME": "타격",
+    "DESCRIPTION": "피해를 !D! 줍니다."
+  },
+  "M10Robot:Surveillance": {
+    "NAME": "감시",
+    "DESCRIPTION": "{@@} m10robot:서치라이트 를 !M! 번 영창합니다. NL m10robot:반사 를 !M10Robot:SecondMagic! 얻습니다."
+  },
+  "M10Robot:TargetingSystem": {
+    "NAME": "발견법",
+    "DESCRIPTION": "구체를 영창할 때 마다 무작위 적에게 조준을 !M! 부여합니다."
+  },
+  "M10Robot:ThermalImaging": {
+    "NAME": "열화상",
+    "DESCRIPTION": "{@@}m10robot:교체가능. NL 조준을 !M! 부여합니다. NL m10robot:비트 를 !M10Robot:SecondMagic! 번 영창합니다."
+  },
+  "M10Robot:HeatSeekers": {
+    "NAME": "열추적",
+    "DESCRIPTION": "m10robot:교체가능. NL 조준 상태인 적 전체에게 !D! 피해를 줍니다."
+  },
+  "M10Robot:ThornField": {
+    "NAME": "가시밭",
+    "DESCRIPTION": "적 전체에게 !D! 피해를 줍니다. 전투중인 적 하나당 m10robot:반사 를 !M! 얻습니다."
+  },
+  "M10Robot:ThornWhip": {
+    "NAME": "채찍",
+    "DESCRIPTION": "{@@}피해를 !D! 줍니다. NL m10robot:서치라이트 를 !M! 번 영창합니다."
+  },
+  "M10Robot:Tinker": {
+    "NAME": "땜장이",
+    "DESCRIPTION": "{@@}m10robot:교체가능. NL 빙어도를 !B! 얻습니다. NL 다음에 영창하는 구체 !M! 개를 m10robot:강화 합니다."
+  },
+  "M10Robot:Support": {
+    "NAME": "지원",
+    "DESCRIPTION": "{@@}m10robot:부동성. m10robot:교체가능. NL 방어도를 !B! 얻습니다. NL 다음에 사용하는 카드 !M! 장을 m10robot:오버클럭 합니다."
+  },
+  "M10Robot:Turbo": {
+    "NAME": "터보",
+    "DESCRIPTION": "{@@}다음 턴에 {!M10Robot:SecondMagic!|-1,1=[E]|2=[E] [E]|3=[E] [E] [E]|@=!M10Robot:SecondMagic! [E]} 를 얻고 카드를 !M! 장 더 뽑습니다{!M!|>1=s}."
+  },
+  "M10Robot:UnstableCompound": {
+    "NAME": "불안정한 혼합물",
+    "DESCRIPTION": "{@@}m10robot:폭탄 을 !M! 번 영창합니다. NL 무작위 구체를 !M10Robot:SecondMagic! 번 m10robot:강화 합니다."
+  },
+  "M10Robot:WarForged": {
+    "NAME": "War Forged",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:WaveGenerator": {
+    "NAME": "파동 발생기",
+    "DESCRIPTION": "적 전체에게 !D! 피해를 줍니다. 이번 전투 동안 이 카드의 피해량이 !M! 증가합니다."
+  },
+  "M10Robot:WaveAnalyzer": {
+    "NAME": "Wave Analyzer",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:WeaponPlatform": {
+    "NAME": "Weapon Platform",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:WeaponPoison": {
+    "NAME": "Weapon Poison",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:WeaponPolish": {
+    "NAME": "Weapon Polish",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:WeaponPolishBooster": {
+    "NAME": "Weapon Polish",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:WideAngle": {
+    "NAME": "광각",
+    "DESCRIPTION": "{@@}공격 카드를 사용할 때 m10robot:비트 가 !M! 번 추가로 공격합니다. NL m10robot:비트 를 !M10Robot:SecondMagic! 번 영창합니다."
+  },
+  "M10Robot:WindUp": {
+    "NAME": "Wind Up",
+    "DESCRIPTION": ""
+  }
+}

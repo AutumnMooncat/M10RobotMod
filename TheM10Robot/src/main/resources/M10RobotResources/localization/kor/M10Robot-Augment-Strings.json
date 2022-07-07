@@ -1,0 +1,36 @@
+{
+  "M10Robot:Example": {
+    "TEXT": ["Prefix", "Suffix", "Description stuff"]
+  },
+  "M10Robot:AimedMod": {
+    "TEXT": ["조준된 ", "", " NL 조준이 부여된 대상에게 피해를 33% 추가로 줍니다."]
+  },
+  "M10Robot:BitMod": {
+    "TEXT": ["바이트 ", "", " NL m10robot:비트 를 %d 번 영창합니다."]
+  },
+  "M10Robot:BombMod": {
+    "TEXT": ["폭탄마 ", "", " NL m10robot:폭탄 을 %d 번 영창합니다."]
+  },
+  "M10Robot:BoostMod": {
+    "TEXT": ["부스팅 ", "", " NL 다음 구체를 %d 번 m10robot:강화 합니다."]
+  },
+  "M10Robot:HeuristicMod": {
+    "TEXT": ["발견적 ", "", " NL 막히지 않은 공격 피해를 주면 조준을 %d 부여합니다."]
+  },
+  "M10Robot:PresentMod": {
+    "TEXT": ["선물 ", "", " NL m10robot:선물 을 %d 번 영창합니다."]
+  },
+  "M10Robot:SearchMod": {
+    "TEXT": ["탐색과 ", "", " NL m10robot:서치라이트 를 %d 번 영창합니다."]
+  },
+  "M10Robot:SpikesMod": {
+    "TEXT": ["반사하는 ", "", " NL m10robot:반사 를 %d 얻습니다.",
+    "Translator note: The following is used to find cards that already give Spikes",
+      " NL m10robot:반사 를 !M! 얻습니다."]
+  },
+  "M10Robot:ExtractMod": {
+    "TEXT": ["추출기 ", "", " NL 카드를 %d 장 m10robot:추출 합니다.",
+      "Translator note: The following is used to find cards that already Extract",
+      " NL 카드를 !M! 장 m10robot:추출 합니다."]
+  }
+}

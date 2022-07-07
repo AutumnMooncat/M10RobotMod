@@ -1,0 +1,22 @@
+{
+  "M10Robot:AimedModifier": {
+    "EXTENDED_DESCRIPTION": [
+      "m10robot:조준된 NL "
+    ]
+  },
+  "M10Robot:HeavyModifier": {
+    "EXTENDED_DESCRIPTION": [
+      "m10robot:묵직한 NL "
+    ]
+  },
+  "M10Robot:ReloadingModifier": {
+    "EXTENDED_DESCRIPTION": [
+      "m10robot:재장전 NL ", "m10robot:장전된 NL "
+    ]
+  },
+  "M10Robot:SpikyModifier": {
+    "EXTENDED_DESCRIPTION": [
+      "m10robot:반사하는 NL "
+    ]
+  }
+}
