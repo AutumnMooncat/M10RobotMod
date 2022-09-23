@@ -34,7 +34,7 @@ public class SpikeBall extends AbstractDynamicCard {
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
     private static final int COST = 2;
-    private static final int AMOUNT = 10;
+    private static final int AMOUNT = 12;
     private static final int UPGRADE_PLUS_AMOUNT = 4;
     private static final int SPIKES = 5;
     private static final int UPGRADE_PLUS_SPIKES = 2;
