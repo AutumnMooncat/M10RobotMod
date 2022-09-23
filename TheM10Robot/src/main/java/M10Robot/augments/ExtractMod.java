@@ -18,12 +18,16 @@ public class ExtractMod extends AbstractAugment {
 
     @Override
     public void onInitialApplication(AbstractCard card) {
-        modifyBaseStat(card, BuffType.BLOCK, BuffScale.MINOR_DEBUFF);
         if (card.rawDescription.contains(TEXT[4])) {
             card.baseMagicNumber += EXTRACT;
             card.magicNumber += EXTRACT;
             setBaseVar = true;
         }
+    }
+
+    @Override
+    public float modifyBaseBlock(float block, AbstractCard card) {
+        return block * MINOR_DEBUFF;
     }
 
     @Override

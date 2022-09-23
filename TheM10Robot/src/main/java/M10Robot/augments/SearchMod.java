@@ -21,13 +21,17 @@ public class SearchMod extends AbstractAugment {
 
     @Override
     public void onInitialApplication(AbstractCard card) {
-        modifyBaseStat(card, BuffType.BLOCK, BuffScale.MODERATE_DEBUFF);
         if (card instanceof SteelWall || card instanceof SpikeBall) {
             card.baseMagicNumber += ORBS;
             card.magicNumber += ORBS;
             setBaseVar = true;
         }
         card.showEvokeValue = true;
+    }
+
+    @Override
+    public float modifyBaseBlock(float block, AbstractCard card) {
+        return block * MODERATE_DEBUFF;
     }
 
     @Override

@@ -8,8 +8,10 @@ import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.actions.defect.ChannelAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 public class BombMod extends AbstractAugment {
     public static final String ID = M10RobotMod.makeID("BombMod");
@@ -18,14 +20,17 @@ public class BombMod extends AbstractAugment {
     private static final int ORBS = 1;
 
     public void onInitialApplication(AbstractCard card) {
-        if (card.baseDamage > 1) {
-            modifyBaseStat(card, BuffType.DAMAGE, BuffScale.MODERATE_DEBUFF);
-        }
-
-        if (card.baseBlock > 1) {
-            modifyBaseStat(card, BuffType.BLOCK, BuffScale.MODERATE_DEBUFF);
-        }
         card.showEvokeValue = true;
+    }
+
+    @Override
+    public float modifyBaseDamage(float damage, DamageInfo.DamageType type, AbstractCard card, AbstractMonster target) {
+        return damage * MODERATE_DEBUFF;
+    }
+
+    @Override
+    public float modifyBaseBlock(float block, AbstractCard card) {
+        return block * MODERATE_DEBUFF;
     }
 
     public boolean validCard(AbstractCard card) {

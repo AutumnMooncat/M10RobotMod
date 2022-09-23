@@ -7,9 +7,11 @@ import M10Robot.cards.BoosterShot;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 public class BoostMod extends AbstractAugment {
     public static final String ID = M10RobotMod.makeID("BoostMod");
@@ -20,12 +22,16 @@ public class BoostMod extends AbstractAugment {
 
     @Override
     public void onInitialApplication(AbstractCard card) {
-        modifyBaseStat(card, BuffType.DAMAGE, BuffScale.MAJOR_DEBUFF);
         if (card instanceof BoosterShot) {
             card.baseMagicNumber += UPGRADES;
             card.magicNumber += UPGRADES;
             setBaseVar = true;
         }
+    }
+
+    @Override
+    public float modifyBaseDamage(float damage, DamageInfo.DamageType type, AbstractCard card, AbstractMonster target) {
+        return damage * MAJOR_DEBUFF;
     }
 
     @Override

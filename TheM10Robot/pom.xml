@@ -41,7 +41,8 @@
             <artifactId>basemod</artifactId>
             <version>5.27.0</version>
             <scope>system</scope>
-            <systemPath>${Steam.path}/workshop/content/646570/1605833019/BaseMod.jar</systemPath>
+            <!--<systemPath>${Steam.path}/workshop/content/646570/1605833019/BaseMod.jar</systemPath>-->
+            <systemPath>${Steam.path}/common/SlayTheSpire/mods/BaseMod.jar</systemPath>
             <!--<systemPath>${basedir}/../lib/BaseMod.jar</systemPath>-->
         </dependency>
         <dependency>
@@ -49,7 +50,8 @@
             <artifactId>StSLib</artifactId>
             <version>1.21.3</version>
             <scope>system</scope>
-            <systemPath>${Steam.path}/workshop/content/646570/1609158507/StSLib.jar</systemPath>
+            <!--<systemPath>${Steam.path}/workshop/content/646570/1609158507/StSLib.jar</systemPath>-->
+            <systemPath>${Steam.path}/common/SlayTheSpire/mods/StSLib.jar</systemPath>
             <!--<systemPath>${basedir}/../lib/StSLib.jar</systemPath>-->
         </dependency>
         <dependency>

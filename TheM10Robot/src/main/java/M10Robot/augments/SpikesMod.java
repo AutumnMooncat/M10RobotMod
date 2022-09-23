@@ -7,34 +7,39 @@ import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
+import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 public class SpikesMod extends AbstractAugment {
     public static final String ID = M10RobotMod.makeID("SpikesMod");
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
 
-    private int amount = 0;
+    private int damageComponent = 0;
+    private int blockComponent = 0;
     private boolean setBaseVar;
 
     @Override
-    public void onInitialApplication(AbstractCard card) {
-        if (card.baseDamage > 1) {
-            amount += card.baseDamage;
-            modifyBaseStat(card, BuffType.DAMAGE, BuffScale.MINOR_DEBUFF);
-            amount -= card.baseDamage;
-        }
-        if (card.baseBlock > 1) {
-            amount += card.baseBlock;
-            modifyBaseStat(card, BuffType.BLOCK, BuffScale.MINOR_DEBUFF);
-            amount -= card.baseBlock;
-        }
+    public float modifyBaseBlock(float block, AbstractCard card) {
+        blockComponent = (int) Math.ceil(block * (1 - MINOR_DEBUFF));
+        return block * MINOR_DEBUFF;
+    }
+
+    @Override
+    public float modifyBaseDamage(float damage, DamageInfo.DamageType type, AbstractCard card, AbstractMonster target) {
+        damageComponent = (int) Math.ceil(damage * (1 - MINOR_DEBUFF));
+        return damage * MINOR_DEBUFF;
+    }
+
+    @Override
+    public float modifyBaseMagic(float magic, AbstractCard card) {
         if (card.rawDescription.contains(TEXT[4])) {
-            card.baseMagicNumber += amount;
-            card.magicNumber += amount;
             setBaseVar = true;
+            return magic + damageComponent + blockComponent;
         }
+        return magic;
     }
 
     @Override
@@ -52,13 +57,13 @@ public class SpikesMod extends AbstractAugment {
         if (setBaseVar) {
             return rawDescription;
         }
-        return rawDescription + String.format(TEXT[2], amount);
+        return rawDescription + String.format(TEXT[2], damageComponent + blockComponent);
     }
 
     @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
         if (!setBaseVar) {
-            this.addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new SpikesPower(AbstractDungeon.player, amount)));
+            this.addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new SpikesPower(AbstractDungeon.player, damageComponent + blockComponent)));
         }
     }
 
