@@ -7,6 +7,7 @@ import M10Robot.characters.M10Robot;
 import M10Robot.orbs.SearchlightOrb;
 import M10Robot.powers.SpikesPower;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
@@ -33,12 +34,14 @@ public class Surveillance extends AbstractDynamicCard {
     private static final int UPGRADE_COST = 0;
     private static final int ORBS = 1;
     private static final int SPIKES = 3;
+    private static final int BLK = 3;
 
     // /STAT DECLARATION/
 
 
     public Surveillance() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        baseBlock = block = BLK;
         magicNumber = baseMagicNumber = ORBS;
         secondMagicNumber = baseSecondMagicNumber = SPIKES;
         showEvokeValue = true;
@@ -47,6 +50,7 @@ public class Surveillance extends AbstractDynamicCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
+        this.addToBot(new GainBlockAction(p, block));
         this.addToBot(new MultichannelAction(new SearchlightOrb(), magicNumber));
         this.addToBot(new ApplyPowerAction(p, p, new SpikesPower(p, secondMagicNumber)));
     }
