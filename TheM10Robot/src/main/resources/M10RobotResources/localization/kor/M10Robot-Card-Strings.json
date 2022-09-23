@@ -196,7 +196,7 @@
   },
   "M10Robot:MagnumStrike": {
     "NAME": "대구경 타격",
-    "DESCRIPTION": "피해를 !D! 줍니다. NL 조준을 !M! 부여합니다."
+    "DESCRIPTION": "피해를 !D! 줍니다. NL 약화를 !M! 부여합니다. NL 조준을 !M! 부여합니다."
   },
   "M10Robot:Merge": {
     "NAME": "병합",
@@ -371,7 +371,7 @@
   },
   "M10Robot:Surveillance": {
     "NAME": "감시",
-    "DESCRIPTION": "{@@} m10robot:서치라이트 를 !M! 번 영창합니다. NL m10robot:반사 를 !M10Robot:SecondMagic! 얻습니다."
+    "DESCRIPTION": "{@@}방어도를 !B! 얻습니다. NL m10robot:서치라이트 를 !M! 번 영창합니다. NL m10robot:반사 를 !M10Robot:SecondMagic! 얻습니다."
   },
   "M10Robot:TargetingSystem": {
     "NAME": "발견법",
