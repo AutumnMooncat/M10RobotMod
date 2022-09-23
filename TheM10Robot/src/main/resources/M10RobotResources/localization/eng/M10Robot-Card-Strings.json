@@ -196,7 +196,7 @@
   },
   "M10Robot:MagnumStrike": {
     "NAME": "Magnum Strike",
-    "DESCRIPTION": "Deal !D! damage. NL Apply !M! Lock-On"
+    "DESCRIPTION": "Deal !D! damage. NL Apply !M! Weak. NL Apply !M! Lock-On."
   },
   "M10Robot:Merge": {
     "NAME": "Merge",

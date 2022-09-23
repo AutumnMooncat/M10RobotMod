@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.LockOnPower;
+import com.megacrit.cardcrawl.powers.WeakPower;
 import com.megacrit.cardcrawl.vfx.combat.ExplosionSmallEffect;
 
 import static M10Robot.M10RobotMod.makeCardPath;
@@ -34,9 +35,10 @@ public class MagnumStrike extends AbstractDynamicCard {
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
     private static final int COST = 2;
-    private static final int DAMAGE = 12;
-    private static final int UPGRADE_PLUS_DMG = 4;
+    private static final int DAMAGE = 8;
+    private static final int UPGRADE_PLUS_DMG = 2;
     private static final int EFFECT = 2;
+    private static final int UP_EFFECT = 1;
 
     // /STAT DECLARATION/
 
@@ -53,6 +55,7 @@ public class MagnumStrike extends AbstractDynamicCard {
         this.addToBot(new VFXAction(new ExplosionSmallEffect(m.hb.cX, m.hb.cY), 0.1F));
         this.addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
         //this.addToBot(new ApplyPowerAction(p, p, new RecoilPower(p, 1)));
+        this.addToBot(new ApplyPowerAction(m, p, new WeakPower(m, magicNumber, false)));
         this.addToBot(new ApplyPowerAction(m, p, new LockOnPower(m, magicNumber)));
     }
 
@@ -62,6 +65,7 @@ public class MagnumStrike extends AbstractDynamicCard {
         if (!upgraded) {
             upgradeName();
             upgradeDamage(UPGRADE_PLUS_DMG);
+            upgradeMagicNumber(UP_EFFECT);
             initializeDescription();
         }
     }
