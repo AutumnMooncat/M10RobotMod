@@ -196,7 +196,7 @@
   },
   "M10Robot:MagnumStrike": {
     "NAME": "瓶子打击",
-    "DESCRIPTION": "造成 !D! 点伤害。 NL 给予 !M! 层 跟踪锁定 。"
+    "DESCRIPTION": "造成 !D! 点伤害。 NL 给予 !M! 层 虚弱 。 NL 给予 !M! 层 跟踪锁定 。"
   },
   "M10Robot:Merge": {
     "NAME": "合并",
@@ -371,7 +371,7 @@
   },
   "M10Robot:Surveillance": {
     "NAME": "监控",
-    "DESCRIPTION": "生成 !M! 个 m10robot:探照灯 。 NL 获得 !M10Robot:SecondMagic! 层 m10robot:刺 。"
+    "DESCRIPTION": "获得 !B! 点 格挡 。 NL 生成 !M! 个 m10robot:探照灯 。 NL 获得 !M10Robot:SecondMagic! 层 m10robot:刺 。"
   },
   "M10Robot:TargetingSystem": {
     "NAME": "启发",
