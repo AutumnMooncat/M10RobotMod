@@ -38,8 +38,9 @@ public class HomeSweeper extends AbstractDynamicCard {
 
     private static final int COST = 2;
     private static final int DAMAGE = 16;
-    private static final int UPGRADE_PLUS_DMG = 6;
+    private static final int UPGRADE_PLUS_DMG = 4;
     private static final int DAMAGE_PER_TURN_SCALING = 2;
+    private static final int UPGRADE_PLUS_SCALING = 1;
 
     // /STAT DECLARATION/
 
@@ -83,6 +84,7 @@ public class HomeSweeper extends AbstractDynamicCard {
         if (!upgraded) {
             upgradeName();
             upgradeDamage(UPGRADE_PLUS_DMG);
+            upgradeMagicNumber(UPGRADE_PLUS_SCALING);
             initializeDescription();
         }
     }
