@@ -28,7 +28,7 @@ public class DualCore extends CustomRelic implements OverclockBeforePlayItem {
     private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("Eyes.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("Eyes.png"));
 
-    public static final int STACKS = 2;
+    public static final int STACKS = 4;
 
     HashMap<String, Integer> stats = new HashMap<>();
     private final String ATTACKS_CLOCKED = DESCRIPTIONS[2];

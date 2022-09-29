@@ -28,7 +28,7 @@ public class AwakenedCore extends CustomRelic implements OverclockBeforePlayItem
     private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("Eyes2.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("Eyes.png"));
 
-    public static final int STACKS = 1;
+    public static final int STACKS = 2;
 
     HashMap<String, Integer> stats = new HashMap<>();
     private final String ATTACKS_CLOCKED = DESCRIPTIONS[2];
