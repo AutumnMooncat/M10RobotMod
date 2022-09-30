@@ -35,7 +35,7 @@
     "NAME": "Puffer Fish",
     "FLAVOR": "It looks very spiky.",
     "DESCRIPTIONS": [
-      "Start each combat with #b"," #ym10robot:Spikes.",
+      "At the start of your turn, gain #b"," #ym10robot:Spikes.",
       "Damage dealt: "," NL Per combat: "," NL Per turn: "
     ]
   },

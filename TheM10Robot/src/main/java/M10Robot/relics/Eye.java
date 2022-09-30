@@ -28,7 +28,7 @@ public class Eye extends CustomRelic {
     private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("Eye.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("Eye.png"));
 
-    public static final int STACKS = 1;
+    public static final int STACKS = 3;
 
     HashMap<String, Integer> stats = new HashMap<>();
     private final String APPLIED_STAT = DESCRIPTIONS[2];

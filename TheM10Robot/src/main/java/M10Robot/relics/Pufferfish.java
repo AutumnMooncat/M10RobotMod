@@ -28,8 +28,8 @@ public class Pufferfish extends CustomRelic {
     private static final Texture IMG = TextureLoader.getTexture(makeRelicPath("Pufferfish.png"));
     private static final Texture OUTLINE = TextureLoader.getTexture(makeRelicOutlinePath("Pufferfish.png"));
 
-    public static final int STACKS = 5;
-    private boolean spikesActive;
+    public static final int STACKS = 2;
+    private int spikesActive;
     private boolean wasHit;
 
     HashMap<String, Integer> stats = new HashMap<>();
@@ -50,8 +50,8 @@ public class Pufferfish extends CustomRelic {
 
     @Override
     public void onTrigger() {
-        if (spikesActive) {
-            stats.put(DAMAGE_STAT, stats.get(DAMAGE_STAT) + STACKS);
+        if (spikesActive > 0) {
+            stats.put(DAMAGE_STAT, stats.get(DAMAGE_STAT) + spikesActive);
             wasHit = true;
         }
     }
@@ -59,17 +59,20 @@ public class Pufferfish extends CustomRelic {
     @Override
     public void atTurnStart() {
         if (wasHit) {
-            spikesActive = false;
+            spikesActive = 0;
+            wasHit = false;
         }
+        spikesActive += STACKS;
+        flash();
+        this.addToBot(new RelicAboveCreatureAction(AbstractDungeon.player, this));
+        this.addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new SpikesPower(AbstractDungeon.player, STACKS)));
+
     }
 
     @Override
     public void atBattleStart() {
-        flash();
-        spikesActive = true;
+        spikesActive = 0;
         wasHit = false;
-        this.addToBot(new RelicAboveCreatureAction(AbstractDungeon.player, this));
-        this.addToBot(new ApplyPowerAction(AbstractDungeon.player, AbstractDungeon.player, new SpikesPower(AbstractDungeon.player, STACKS)));
     }
 
     public String getStatsDescription() {
@@ -83,8 +86,8 @@ public class Pufferfish extends CustomRelic {
         float stat = (float)stats.get(DAMAGE_STAT);
         // Relic Stats truncates these extended stats to 3 decimal places, so we do the same
         DecimalFormat perTurnFormat = new DecimalFormat("#.###");
-        //builder.append(PER_TURN_STRING);
-        //builder.append(perTurnFormat.format(stat / Math.max(totalTurns, 1)));
+        builder.append(PER_TURN_STRING);
+        builder.append(perTurnFormat.format(stat / Math.max(totalTurns, 1)));
         builder.append(PER_COMBAT_STRING);
         builder.append(perTurnFormat.format(stat / Math.max(totalCombats, 1)));
         return builder.toString();
