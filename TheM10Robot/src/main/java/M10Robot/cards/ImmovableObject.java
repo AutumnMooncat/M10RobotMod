@@ -28,7 +28,7 @@ public class ImmovableObject extends AbstractDynamicCard {
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
     private static final int COST = 3;
-    private static final int BLOCK = 25;
+    private static final int BLOCK = 30;
     private static final int UPGRADE_PLUS_BLOCK = 10;
 
     // /STAT DECLARATION/
@@ -36,6 +36,7 @@ public class ImmovableObject extends AbstractDynamicCard {
 
     public ImmovableObject() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
+        selfRetain = true;
         block = baseBlock = BLOCK;
         //magicNumber = baseMagicNumber = REPAIR;
     }
