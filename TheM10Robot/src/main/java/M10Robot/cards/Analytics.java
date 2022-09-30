@@ -36,15 +36,15 @@ public class Analytics extends AbstractDynamicCard {
 
     private static final int COST = 1;
     private static final int UPGRADE_COST = 0;
-    private static final int EVOKES = 1;
-    private static final int UPGRADE_PLUS_EVOKES = 1;
+    private static final int EFFECT = 1;
+    private static final int UPGRADE_PLUS_EFFECT = 1;
 
     // /STAT DECLARATION/
 
 
     public Analytics() {
         super(ID, IMG, COST, TYPE, COLOR, RARITY, TARGET);
-        magicNumber = baseMagicNumber = EVOKES;
+        magicNumber = baseMagicNumber = EFFECT;
     }
 
     // Actions the card should do.
@@ -58,7 +58,8 @@ public class Analytics extends AbstractDynamicCard {
     public void upgrade() {
         if (!upgraded) {
             upgradeName();
-            upgradeBaseCost(UPGRADE_COST);
+            //upgradeBaseCost(UPGRADE_COST);
+            upgradeMagicNumber(UPGRADE_PLUS_EFFECT);
             initializeDescription();
         }
     }
