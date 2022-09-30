@@ -79,7 +79,7 @@ public class EMP extends AbstractDynamicCard {
         if (!upgraded) {
             upgradeName();
             upgradeDamage(UPGRADE_PLUS_DMG);
-            //upgradeMagicNumber(UPGRADE_PLUS_STR_DOWN);
+            upgradeMagicNumber(UPGRADE_PLUS_STR_DOWN);
             initializeDescription();
         }
     }
