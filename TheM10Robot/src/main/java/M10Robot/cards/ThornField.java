@@ -67,7 +67,7 @@ public class ThornField extends AbstractDynamicCard {
         if (!upgraded) {
             upgradeName();
             upgradeDamage(UPGRADE_PLUS_DMG);
-            //upgradeMagicNumber(UPGRADE_PLUS_SPIKES);
+            upgradeMagicNumber(UPGRADE_PLUS_SPIKES);
             initializeDescription();
         }
     }
