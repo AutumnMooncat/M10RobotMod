@@ -63,7 +63,7 @@ public class BoosterShot extends AbstractDynamicCard {
         if (!upgraded) {
             upgradeName();
             upgradeDamage(UPGRADE_PLUS_DMG);
-            //upgradeMagicNumber(UPGRADE_PLUS_UPGRADES);
+            upgradeMagicNumber(UPGRADE_PLUS_UPGRADES);
             initializeDescription();
         }
     }
