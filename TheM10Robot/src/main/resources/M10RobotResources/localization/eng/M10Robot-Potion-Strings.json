@@ -1,7 +1,8 @@
 {
   "M10Robot:BoosterPotion": {
     "NAME": "Booster Potion",
-    "DESCRIPTIONS": ["#yUpgrade all your Orbs #b"," times."]
+    "DESCRIPTIONS": ["#yUpgrade all your Orbs #b"," times.",
+                    "m10robot:Upgrade"]
   },
   "M10Robot:LockingPotion": {
     "NAME": "Locking Potion",

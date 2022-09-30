@@ -47,8 +47,8 @@ public class BoosterPotion extends CustomPotion {
         tips.clear();
         tips.add(new PowerTip(name, description));
         tips.add(new PowerTip(
-                BaseMod.getKeywordTitle("m10robot:upgrade"),
-                BaseMod.getKeywordDescription("m10robot:upgrade")
+                BaseMod.getKeywordTitle(potionStrings.DESCRIPTIONS[2].toLowerCase()),
+                BaseMod.getKeywordDescription(potionStrings.DESCRIPTIONS[2].toLowerCase())
         ));
     }
 
