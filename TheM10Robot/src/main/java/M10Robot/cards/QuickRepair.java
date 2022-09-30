@@ -37,8 +37,8 @@ public class QuickRepair extends AbstractDynamicCard implements OnExtractCard {
     public static final CardColor COLOR = M10Robot.Enums.GREEN_SPRING_CARD_COLOR;
 
     private static final int COST = 1;
-    private static final int BLOCK = 6;
-    private static final int UPGRADE_PLUS_BLOCK = 2;
+    private static final int BLOCK = 7;
+    private static final int UPGRADE_PLUS_BLOCK = 3;
     private static final int PLATED = 3;
     private static final int UPGRADE_PLUS_PLATED = 2;
 
