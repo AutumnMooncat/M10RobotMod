@@ -1,0 +1,453 @@
+{
+  "M10Robot:ExampleCard": {
+    "NAME": "Name",
+    "DESCRIPTION": "Main description",
+    "UPGRADE_DESCRIPTION": "Улучшает description",
+    "EXTENDED_DESCRIPTION": [
+      "Extra Stuff"
+    ]
+  },
+  "M10Robot:Acceleration": {
+    "NAME": "Ускорение",
+    "DESCRIPTION": "{@@}m10robot:Инертная. NL m10robot:Извлекает !M! карт{!M!|@=|&1=у|&2,&3,&4=ы|&11,&12,&13,&14=}. NL m10robot:Разгоняет след. !M! разыгрываем{!M!|@=ых|&1=ую|&11=ых} карт{!M!|@=|&1=у|&2,&3,&4=ы|&11,&12,&13,&14=} !M10Robot:SecondMagic! раз{!M10Robot:SecondMagic!|@=|&2,&3,&4=а|&12,&13,&14=}."
+  },
+  "M10Robot:AirRaid": {
+    "NAME": "Air Strike",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:AllIn": {
+    "NAME": "Поставить всё",
+    "DESCRIPTION": "{@@}m10robot:Инертная. NL m10robot:Разгоняет все карты в руке X{!M!|>0= + !M!} раз."
+  },
+  "M10Robot:Analytics": {
+    "NAME": "Экстраполяция",
+    "DESCRIPTION": "{@@}m10robot:Разгоняет каждую m10robot:Извлекаемую карту !M! раз{!M!|@=|&2,&3,&4=а|&12,&13,&14=}."
+  },
+  "M10Robot:Ascension": {
+    "NAME": "Возвысить",
+    "DESCRIPTION": "{@@}m10robot:Инертная. NL Вы берёте !M! карт{!M!|@=|&1=у|&2,&3,&4=ы|&11,&12,&13,&14=}. NL m10robot:Разгоняет все карты в руке !M10Robot:SecondMagic! раз{!M10Robot:SecondMagic!|@=|&2,&3,&4=а|&12,&13,&14=}."
+  },
+  "M10Robot:AssaultField": {
+    "NAME": "Штурм области",
+    "DESCRIPTION": "{@@}Наносит !D! урона ВСЕМ врагам. Добавляет !M! *Штурм{!Upgrades!|>0=+} в стопку добора."
+  },
+  "M10Robot:Assault": {
+    "NAME": "Штурм",
+    "DESCRIPTION": "{@@}Наносит !D! урона ВСЕМ врагам. NL Вы берёте !M! карт{!M!|@=|&1=у|&2,&3,&4=ы|&11,&12,&13,&14=}."
+  },
+  "M10Robot:AssemblyLine": {
+    "NAME": "Линия сборки",
+    "DESCRIPTION": "{@@}Заряжает !M! m10robot:Подароч{!M!|@=ков|&1=ек|&2,&3,&4=ка|&11,&12,&13,&14=ков}.",
+    "UPGRADE_DESCRIPTION": "{@@}Заряжает !M! m10robot:Подароч{!M!|@=ов|&1=ек|&2,&3,&4=ка|&11,&12,&13,&14=ов}. NL m10robot:Улучшает все Сферы !M10Robot:SecondMagic! раз{!M10Robot:SecondMagic!|@=|&2,&3,&4=а|&12,&13,&14=}."
+  },
+  "M10Robot:AttackDown": {
+    "NAME": "Понизить атаку",
+    "DESCRIPTION": "m10robot:Многоликая. NL Накладывает !M! Слабости на ВСЕХ врагов."
+  },
+  "M10Robot:DefenseDown": {
+    "NAME": "Понизить защиту",
+    "DESCRIPTION": "m10robot:Многоликая. NL Накладывает !M! Уязвимости на ВСЕХ врагов."
+  },
+  "M10Robot:Atomize": {
+    "NAME": "Распылить",
+    "DESCRIPTION": "{@@}Заряжает !M! m10robot:Бомб{!M!|@=|&1=у|&2,&3,&4=ы|&11,&12,&13,&14=} и m10robot:Улучшает {!M!|@=их|1=её} !M10Robot:SecondMagic! раз{!M10Robot:SecondMagic!|@=|&2,&3,&4=а|&12,&13,&14=}."
+  },
+  "M10Robot:AutoCaster": {
+    "NAME": "Auto Caster",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:BalanceCurrents": {
+    "NAME": "Балансировка тока",
+    "DESCRIPTION": "Даёт !M! Защиты, когда вы накладываете отриц. эффект."
+  },
+  "M10Robot:BatteryPack": {
+    "NAME": "Набор батареек",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:BitMask": {
+    "NAME": "Битовая маска",
+    "DESCRIPTION": "{@@}Наносит !D! урона. NL Заряжает !M! m10robot:Бит{!M!|@=ов|&1=|&2,&3,&4=а|&11,&12,&13,&14=ов} за каждую Атаку разыгранную в этом ходу.{!Location!|0= NL ( Атак разыграно: !M10Robot:Info! )}"
+  },
+  "M10Robot:BoosterShot": {
+    "NAME": "Усилитель",
+    "DESCRIPTION": "{@@}Наносит !D! урона. NL m10robot:Улучшает след. в очереди Сферу !M! раз{!M!|@=|&2,&3,&4=а|&12,&13,&14=}."
+  },
+  "M10Robot:Bramble": {
+    "NAME": "Шипованная лоза",
+    "DESCRIPTION": "{@@}Даёт !M! m10robot:Колючек. NL Даёт Защиту, равную имеющимся m10robot:Колючкам.{!Location!|0= NL (Даёт !M10Robot:Info! Защиты)}"
+  },
+  "M10Robot:BriefRespite": {
+    "NAME": "Передышечка",
+    "DESCRIPTION": "{@@}Даёт !B! Защиты. NL Вы берёте !M! карт{!M!|@=|&1=у|&2,&3,&4=ы|&11,&12,&13,&14=}."
+  },
+  "M10Robot:BurstFire": {
+    "NAME": "Burst Fire",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:Byte": {
+    "NAME": "Байт",
+    "DESCRIPTION": "{@@}m10robot:Многоликая. NL Наносит !D! урона. NL Заряжает !M! m10robot:Бит{!M!|@=ов|&1=|&2,&3,&4=а|&11,&12,&13,&14=ов}.",
+    "UPGRADE_DESCRIPTION": "{@@}m10robot:Многоликая. NL Наносит !D! урона ВСЕМ врагам. NL Заряжает !M! m10robot:Бит{!M!|@=ов|&1=|&2,&3,&4=а|&11,&12,&13,&14=ов}."
+  },
+  "M10Robot:Nibble": {
+    "NAME": "Покусывать",
+    "DESCRIPTION": "m10robot:Многоликая. NL Даёт !B! Защиты. NL Наносит !D! урона.",
+    "UPGRADE_DESCRIPTION": "m10robot:Многоликая. NL Даёт !B! Защиты. NL Наносит !D! урона ВСЕМ врагам."
+  },
+  "M10Robot:CardSupplier": {
+    "NAME": "Card Supplier",
+    "DESCRIPTION": "",
+    "EXTENDED_DESCRIPTION": [
+      ""
+    ]
+  },
+  "M10Robot:Cloaking": {
+    "NAME": "Скрыться",
+    "DESCRIPTION": "Даёт !B! Защиты. NL Ваша след. Атака наносит !M! доп. урона."
+  },
+  "M10Robot:Compensator": {
+    "NAME": "Compensator",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:CompileData": {
+    "NAME": "Собрать данные",
+    "DESCRIPTION": "{@@}Заряжает !M10Robot:SecondMagic! m10robot:Подароч{!M!|@=ов|&1=ек|&2,&3,&4=ка|&11,&12,&13,&14=ов}. NL m10robot:Извлекает !M! карт{!M!|@=|&1=у|&2,&3,&4=ы|&11,&12,&13,&14=}."
+  },
+  "M10Robot:Concentration": {
+    "NAME": "Deadlock",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:Defend": {
+    "NAME": "Оборона",
+    "DESCRIPTION": "Даёт !B! Защиты."
+  },
+  "M10Robot:Disable": {
+    "NAME": "Вырубить",
+    "DESCRIPTION": "Враг теряет !M! Силы до конца своего хода. NL Накладывает !M10Robot:SecondMagic! Слабости.",
+    "UPGRADE_DESCRIPTION": "Враг теряет !M! Силы до конца своего хода. NL Накладывает !M10Robot:SecondMagic! Слабости. NL Накладывает !M10Robot:SecondMagic! Уязвимости."
+  },
+  "M10Robot:DividedAttention": {
+    "NAME": "Разделить внимание",
+    "DESCRIPTION": "{@@}Сбрасывает !M10Robot:SecondMagic! случ. карт{!M10Robot:SecondMagic!|@=|&1=у|&2,&3,&4=ы|&11,&12,&13,&14=}. m10robot:Извлекает !M! случ. карт{!M!|@=|&1=у|&2,&3,&4=ы|&11,&12,&13,&14=}.",
+    "UPGRADE_DESCRIPTION": "{@@}Сбрасывает !M10Robot:SecondMagic! случ. карт{!M10Robot:SecondMagic!|@=|&1=у|&2,&3,&4=ы|&11,&12,&13,&14=}. m10robot:Извлекает !M! случ. карт{!M!|@=|&1=у|&2,&3,&4=ы|&11,&12,&13,&14=}."
+  },
+  "M10Robot:DoubleCaster": {
+    "NAME": "Double Caster",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:EMP": {
+    "NAME": "ЭМИ",
+    "DESCRIPTION": "ВСЕ враги теряют !M! Силы до конца своего хода. NL Наносит !D! урона ВСЕМ врагам."
+  },
+  "M10Robot:EmptyBuffer": {
+    "NAME": "Пустой буфер",
+    "DESCRIPTION": "{@@}Удаляет все Заряженные сферы. NL За каждую удалённую сферу, даёт !M! слот{!M!|@=ов|&1=|&2,&3,&4=а|&11,&12,&13,&14=ов} для сфер.",
+    "UPGRADE_DESCRIPTION": "{@@}Разряжает все Заряженные сферы. NL За каждую Разряженную сферу, даёт !M! слот{!M!|@=ов|&1=|&2,&3,&4=а|&11,&12,&13,&14=ов} для сфер."
+  },
+  "M10Robot:EnergyShield": {
+    "NAME": "Энерго-щит",
+    "DESCRIPTION": "{@@}Даёт !B! Защиты. NL Даёт {!M!|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=!M! [E]}, если у вас не было Защиты."
+  },
+  "M10Robot:Engage": {
+    "NAME": "Привлечь",
+    "DESCRIPTION": "{@@}Накладывает !M! Уязвимости. NL Накладывает !M! m10robot:Захвата_цели. NL Вы берёте !M10Robot:SecondMagic! карт{!M!|@=|&1=у|&2,&3,&4=ы|&11,&12,&13,&14=}, если выбранный враг собирается атаковать.",
+    "UPGRADE_DESCRIPTION": "{@@}Накладывает !M! Уязвимости. NL Накладывает !M! m10robot:Захвата_цели. NL Вы берёте !M10Robot:SecondMagic! карт{!M!|@=|&1=у|&2,&3,&4=ы|&11,&12,&13,&14=}."
+  },
+  "M10Robot:EvasionDown": {
+    "NAME": "Снижение уклонения",
+    "DESCRIPTION": "m10robot:Многоликая. NL Увеличивает весь получаемый урон врага на !M! до конца хода."
+  },
+  "M10Robot:HealthDown": {
+    "NAME": "Снижение здоровья",
+    "DESCRIPTION": "m10robot:Многоликая. NL Отнимает !M! ОЗ. NL Разыгрывается дважды, если вы разыграли *Снижение *уклонения в этом ходу."
+  },
+  "M10Robot:FeedForward": {
+    "NAME": "Feed Forward",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:Filter": {
+    "NAME": "Фильтр",
+    "DESCRIPTION": "{@@}m10robot:Извлекает !M! карт{!M!|@=|&1=у|&2,&3,&4=ы|&11,&12,&13,&14=}. NL Меняет местами стопку добора и сброса."
+  },
+  "M10Robot:Fortify": {
+    "NAME": "Укрепиться",
+    "DESCRIPTION": "{@@}Даёт !B! Защиты. NL Заряжает !M! m10robot:Бит{!M!|@=ов|&1=|&2,&3,&4=а|&11,&12,&13,&14=ов}."
+  },
+  "M10Robot:FullAuto": {
+    "NAME": "Инверси-луч",
+    "DESCRIPTION": "Наносит !D! урона ВСЕМ врагам !M! раза."
+  },
+  "M10Robot:HomeSweeper": {
+    "NAME": "Прибраться дома",
+    "DESCRIPTION": "Наносит !D! урона ВСЕМ врагам. Повышает свой урон на !M! в конце каждого хода."
+  },
+  "M10Robot:ImaginaryNumbers": {
+    "NAME": "Мнимые числа",
+    "DESCRIPTION": "{@@}Меняет стоимость всех карт на 0 или 1 {!M!|@=на|1=в} след. !M! ход{!M!|@=ов|&1=|1=у|&2,&3,&4=а|&11,&12,&13,&14=ов}."
+  },
+  "M10Robot:ImmovableObject": {
+    "NAME": "Недвижимый объект",
+    "DESCRIPTION": "Даёт !B! Защиты."
+  },
+  "M10Robot:Juggling": {
+    "NAME": "Жонглировать",
+    "DESCRIPTION": "{@@}Вы берёте !M! карт{!M!|@=|&1=у|&2,&3,&4=ы|&11,&12,&13,&14=}. NL В след. ходу вы возьмёте на !M10Robot:SecondMagic! карт{!M10Robot:SecondMagic!|@=|&1=у|&2,&3,&4=ы|&11,&12,&13,&14=} больше."
+  },
+  "M10Robot:LightShow": {
+    "NAME": "Световое шоу",
+    "DESCRIPTION": "{@@}Даёт !B! Защиты. NL Заряжает !M! m10robot:Охработ{!M!|@=ов|&1=|&2,&3,&4=а|&11,&12,&13,&14=ов} за каждый Навык разыгранный в этом ходу.{!Location!|0= NL ( Навыков разыграно: !M10Robot:Info! )}"
+  },
+  "M10Robot:MagnumStrike": {
+    "NAME": "Удар магнумом",
+    "DESCRIPTION": "Наносит !D! урона. NL Накладывает !M! m10robot:Захвата_цели."
+  },
+  "M10Robot:Merge": {
+    "NAME": "Слияние",
+    "DESCRIPTION": "{@@}Вы берёте !M! карт{!M!|@=|&1=у|&2,&3,&4=ы|&11,&12,&13,&14=}. NL m10robot:Извлекает !M! карт{!M!|@=|&1=у|&2,&3,&4=ы|&11,&12,&13,&14=}."
+  },
+  "M10Robot:MultiTool": {
+    "NAME": "Multi Tool",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:MultiTool2": {
+    "NAME": "Multi Tool",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:Overdrive": {
+    "NAME": "Облик овердрайва",
+    "DESCRIPTION": "{@@}m10robot:Инертная. NL m10robot:Разгоняет все карты в руке !M! раз{!M!|@=|&2,&3,&4=а|&12,&13,&14=} в начале каждого вашего хода."
+  },
+  "M10Robot:PerpetualAssembly": {
+    "NAME": "Perpetual Assembly",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:PileDriver": {
+    "NAME": "Бросок на шею",
+    "DESCRIPTION": "m10robot:Колючая. NL Наносит !D! урона. NL Наносит !D! урон другому случ. врагу."
+  },
+  "M10Robot:PolishingKit": {
+    "NAME": "Polishing Kit",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:PowerSavings": {
+    "NAME": "Энергосбережение",
+    "DESCRIPTION": "{@@}m10robot:Инертная. NL Даёт !M10Robot:SecondMagic! Слабости. NL Даёт {!M!|1=[E]|2=[E] [E]|3=[E] [E] [E]|@=!M! [E]} в начале каждого вашего хода."
+  },
+  "M10Robot:Prelude": {
+    "NAME": "Вступление",
+    "DESCRIPTION": "{@@}m10robot:Инертная. NL m10robot:Разгоняет след. {!M!|>1=!M!} разыгрываем{!M!|@=ые|1=ую} {!M!|@=карты|1=карту} !M10Robot:SecondMagic! раза."
+  },
+  "M10Robot:QuickBoot": {
+    "NAME": "Быстрый запуск",
+    "DESCRIPTION": "{@@}Заряжает !M! случайн{!M!|@=ых|&1=ую|&2,&3=ые|&11,&12,&13=ых} сфер{!M!|@=|&1=у|&2,&3,&4=ы|&11,&12,&13,&14=}."
+  },
+  "M10Robot:QuickThinking": {
+    "NAME": "Быстрые размышления",
+    "DESCRIPTION": "Вы берёте !M! карты и снижаете до 0 стоимость каждой Атаки, которую вы берёте."
+  },
+  "M10Robot:QuickRepair": {
+    "NAME": "Быстрая починка",
+    "DESCRIPTION": "Даёт !B! Защиты. NL Даёт !B! Защиты, когда m10robot:Извлекается."
+  },
+  "M10Robot:Railgun": {
+    "NAME": "Рейлган",
+    "DESCRIPTION": "Отнимает 1 золота. NL Наносит !D! урона. NL Накладывает !M! Уязвимости, если у врага есть m10robot:Захват_цели.",
+    "EXTENDED_DESCRIPTION": [
+      "У меня нет золота."
+    ]
+  },
+  "M10Robot:RAMUpgrade": {
+    "NAME": "Улучшить ОП.",
+    "DESCRIPTION": "{@@}Даёт !M! слот{!M!|@=ов|&1=|&2,&3,&4=а|&11,&12,&13,&14=ов} для сфер. NL m10robot:Улучшает каждую заряжаемую сферу !M10Robot:SecondMagic! раз{!M10Robot:SecondMagic!|@=|&2,&3,&4=а|&12,&13,&14=}."
+  },
+  "M10Robot:RapidAssembly": {
+    "NAME": "Спешная сборка",
+    "DESCRIPTION": "m10robot:Инертная. NL m10robot:Разгоняет все карты в руке !M! раза."
+  },
+  "M10Robot:RecoveryMode": {
+    "NAME": "Режим восстановления",
+    "DESCRIPTION": "Даёт !M! Защиты в конце каждого вашего хода, если у вас осталась энергия."
+  },
+  "M10Robot:RecklessAttack": {
+    "NAME": "Reckless Attack",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:ReflectiveShell": {
+    "NAME": "Отражающий корпус",
+    "DESCRIPTION": "{@@}Возвращает полностью блокируемый урон в ответ на !M! атак{!M!|@=|&1=y|&2,&3,&4=и|&11,&12,&13,&14=}."
+  },
+  "M10Robot:Reroute": {
+    "NAME": "Перенаправить",
+    "DESCRIPTION": "{@@}Наносит !D! урона. NL m10robot:Извлекает !M! карт{!M!|@=|&1=у|&2,&3,&4=ы|&11,&12,&13,&14=}. NL Увеличивает свой урон на !M10Robot:SecondMagic! до конца боя, когда m10robot:Разгоняется."
+  },
+  "M10Robot:ReturningShield": {
+    "NAME": "Возвращающийся щит",
+    "DESCRIPTION": "Даёт !B! Защиты. NL Даёт !B! Защиты в начале вашего след. хода.",
+    "UPGRADE_DESCRIPTION": "{@@}Даёт !B! Защиты. NL Вы получаете !B! Защиты и берёте !M! карт{!M!|@=|&1=у|&2,&3,&4=ы|&11,&12,&13,&14=} в начале вашего след. хода."
+  },
+  "M10Robot:Rewind": {
+    "NAME": "Перемотать",
+    "DESCRIPTION": "{@@}Возвращает каждый ход {!M!|@=первую потерю|>1=!M! первые потери} Защиты в начале след. хода."
+  },
+  "M10Robot:RoboBeam": {
+    "NAME": "Роболуч",
+    "DESCRIPTION": "Наносит !D! урона случ. врагу за каждый прошедший ход."
+  },
+  "M10Robot:Rumble": {
+    "NAME": "Rumble",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:Rushdown": {
+    "NAME": "Мчаться",
+    "DESCRIPTION": "m10robot:Колючая. NL Даёт !B! Защиты. NL Наносит !D! урона ВСЕМ врагам."
+  },
+  "M10Robot:Salvo": {
+    "NAME": "Команда",
+    "DESCRIPTION": "{@@}Наносит !D! урона за каждую Заряженную сферу. NL m10robot:Улучшает все сферы !M! раз{!M!|@=|&2,&3,&4=а|&12,&13,&14=}, если у врага есть m10robot:Захват_цели."
+  },
+  "M10Robot:ScrambleField": {
+    "NAME": "Поле шифровки",
+    "DESCRIPTION": "{@@}Даёт X{!M!|>0= + !M!} Силы. NL ВСЕ враги теряют X{!M!|>0= + !M!} Силы."
+  },
+  "M10Robot:ScrapBooster": {
+    "NAME": "Scrap Booster",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:ScrapeOff": {
+    "NAME": "Соскребать",
+    "DESCRIPTION": "m10robot:Колючая. NL Наносит !D! урона. NL Даёт Защиту, равную нанесённому урону по ОЗ."
+  },
+  "M10Robot:Scrapper": {
+    "NAME": "Утилизация",
+    "DESCRIPTION": "Разряжает след. в очереди сферу. NL Даёт !M! m10robot:Колючек.",
+    "UPGRADE_DESCRIPTION": "Разряжает след. в очереди сферу. NL Даёт !M10Robot:SecondMagic! m10robot:Колючек за каждое её m10robot:Улучшение + !M!."
+  },
+  "M10Robot:SecretRootkit": {
+    "NAME": "Руткит",
+    "DESCRIPTION": "Вы берёте !M! карты и уменьшаете их стоимость до 0 на этот ход."
+  },
+  "M10Robot:Seeker": {
+    "NAME": "Поиск",
+    "DESCRIPTION": "Накладывает !M! m10robot:Захвата_цели. NL Наносит !D! урона, если у врага уже был m10robot:Захват_цели."
+  },
+  "M10Robot:SelfDestruction": {
+    "NAME": "Самоуничтожение",
+    "DESCRIPTION": "m10robot:Инертная. NL Отнимает !M10Robot:SecondMagic! ОЗ. NL m10robot:Оглушает врага. NL Наносит !D! урона ВСЕМ врагам."
+  },
+  "M10Robot:SlotConversion": {
+    "NAME": "Slot Conversion",
+    "DESCRIPTION": "."
+  },
+  "M10Robot:SolidWitch": {
+    "NAME": "Стойкая ведьма",
+    "DESCRIPTION": "Даёт !M! Неосязаемости."
+  },
+  "M10Robot:SpectralCannon": {
+    "NAME": "Spectral Cannon",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:Speedloader": {
+    "NAME": "Speedloader",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:SpikeBall": {
+    "NAME": "Колючий корпус",
+    "DESCRIPTION": "Даёт !B! Защиты. NL Даёт !M! m10robot:Колючек."
+  },
+  "M10Robot:SpikyPlating": {
+    "NAME": "Покрытие шипами",
+    "DESCRIPTION": "{@@}Даёт !M! m10robot:Колючек, когда вы разыгрываете карту. NL Заряжает !M10Robot:SecondMagic! m10robot:Охработ{!M10Robot:SecondMagic!|@=ов|&1=|&2,&3,&4=а|&11,&12,&13,&14=ов}."
+  },
+  "M10Robot:SplitBeam": {
+    "NAME": "Ветвистый луч",
+    "DESCRIPTION": "{@@}Наносит !D! урона !M! раз{!M!|@=|&2,&3,&4=а|&12,&13,&14=}. Увеличивает своё кол-во раз наносимого урона на !M10Robot:SecondMagic! до конца боя, когда m10robot:Извлекается."
+  },
+  "M10Robot:SteelWall": {
+    "NAME": "Стальная стена",
+    "DESCRIPTION": "{@@}Даёт !B! Защиты. NL Заряжает !M! m10robot:Охработ{!M!|@=ов|&1=|&2,&3,&4=а|&11,&12,&13,&14=ов}."
+  },
+  "M10Robot:StepUp": {
+    "NAME": "Повышение",
+    "DESCRIPTION": "{@@}m10robot:Инертная. NL m10robot:Извлекает !M10Robot:SecondMagic! карт{!M10Robot:SecondMagic!|@=|&1=у|&2,&3,&4=ы|&11,&12,&13,&14=}. NL m10robot:Разгоняет {!M10Robot:SecondMagic!|@=её|>1=их} !M! раз{!M!|@=|&2,&3,&4=а|&12,&13,&14=}."
+  },
+  "M10Robot:Strike": {
+    "NAME": "Удар",
+    "DESCRIPTION": "Наносит !D! урона."
+  },
+  "M10Robot:Surveillance": {
+    "NAME": "Наблюдение",
+    "DESCRIPTION": "{@@}Заряжает !M! m10robot:Охработ{!M!|@=ов|&1=|&2,&3,&4=а|&11,&12,&13,&14=ов}. NL Даёт !M10Robot:SecondMagic! m10robot:Колючек."
+  },
+  "M10Robot:TargetingSystem": {
+    "NAME": "Эвристика",
+    "DESCRIPTION": "Накладывает !M! m10robot:Захвата_цели на случ. врага, когда вы Заряжаете сферу."
+  },
+  "M10Robot:ThermalImaging": {
+    "NAME": "Тепловизор",
+    "DESCRIPTION": "{@@}m10robot:Многоликая. NL Накладывает !M! m10robot:Захвата_цели. NL Заряжает !M10Robot:SecondMagic! m10robot:Бит{!M10Robot:SecondMagic!|@=ов|&1=|&2,&3,&4=а|&11,&12,&13,&14=ов}."
+  },
+  "M10Robot:HeatSeekers": {
+    "NAME": "Поиски тепла",
+    "DESCRIPTION": "m10robot:Многоликая. NL Наносит !D! урона ВСЕМ врагам с m10robot:Захватом_цели."
+  },
+  "M10Robot:ThornField": {
+    "NAME": "Поле шипов",
+    "DESCRIPTION": "Наносит !D! урона ВСЕМ врагам. Даёт !M! m10robot:Колючек за каждого врага."
+  },
+  "M10Robot:ThornWhip": {
+    "NAME": "Хлестать",
+    "DESCRIPTION": "{@@}Наносит !D! урона. NL Заряжает !M! m10robot:Охработ{!M!|@=ов|&1=|&2,&3,&4=а|&11,&12,&13,&14=ов}."
+  },
+  "M10Robot:Tinker": {
+    "NAME": "Поправить",
+    "DESCRIPTION": "{@@}m10robot:Многоликая. NL Даёт !B! Защиты. NL m10robot:Улучшает след. заряжаемую сферу !M! раз{!M!|@=|&2,&3,&4=а|&12,&13,&14=}."
+  },
+  "M10Robot:Support": {
+    "NAME": "Поддержать",
+    "DESCRIPTION": "{@@}m10robot:Инертная. m10robot:Многоликая. NL Даёт !B! Защиты. NL m10robot:Разгоняет след. разыгрываемую карту !M! раз{!M!|@=|&2,&3,&4=а|&12,&13,&14=}."
+  },
+  "M10Robot:Turbo": {
+    "NAME": "Турбо",
+    "DESCRIPTION": "{@@}Вы получаете {!M10Robot:SecondMagic!|-1,1=[E]|2=[E] [E]|3=[E] [E] [E]|@=!M10Robot:SecondMagic! [E]} и берёте !M! карт{!M!|@=|&1=у|&2,&3,&4=ы|&11,&12,&13,&14=} в следующем ходу."
+  },
+  "M10Robot:UnstableCompound": {
+    "NAME": "Нестабильная смесь",
+    "DESCRIPTION": "{@@}Заряжает !M! m10robot:Бомб{!M!|@=|&1=у|&2,&3,&4=ы|&11,&12,&13,&14=}. NL m10robot:Улучшает случайную сферу !M10Robot:SecondMagic! раз{!M10Robot:SecondMagic!|@=|&2,&3,&4=а|&12,&13,&14=}."
+  },
+  "M10Robot:WarForged": {
+    "NAME": "War Forged",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:WaveGenerator": {
+    "NAME": "Генератор волн",
+    "DESCRIPTION": "Наносит !D! урона ВСЕМ врагам. Увеличивает свой урон на !M! до конца боя."
+  },
+  "M10Robot:WaveAnalyzer": {
+    "NAME": "Wave Analyzer",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:WeaponPlatform": {
+    "NAME": "Weapon Platform",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:WeaponPoison": {
+    "NAME": "Weapon Poison",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:WeaponPolish": {
+    "NAME": "Weapon Polish",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:WeaponPolishBooster": {
+    "NAME": "Weapon Polish",
+    "DESCRIPTION": ""
+  },
+  "M10Robot:WideAngle": {
+    "NAME": "Расширить диапозон",
+    "DESCRIPTION": "{@@}m10robot:Биты будут наносить урон !M! доп. раз{!M!|@=|&2,&3,&4=а|&12,&13,&14=}, когда вы разыгрываете Атаку. NL Заряжает !M10Robot:SecondMagic! m10robot:Бит{!M10Robot:SecondMagic!|@=ов|&1=|&2,&3,&4=а|&11,&12,&13,&14=ов}."
+  },
+  "M10Robot:WindUp": {
+    "NAME": "Wind Up",
+    "DESCRIPTION": ""
+  }
+}

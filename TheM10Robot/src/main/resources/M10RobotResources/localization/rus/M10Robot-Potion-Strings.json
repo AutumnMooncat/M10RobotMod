@@ -1,0 +1,25 @@
+{
+  "M10Robot:BoosterPotion": {
+    "NAME": "Ускоритель",
+    "DESCRIPTIONS": ["#yУлучшает все Сферы #b"," раза.",
+                    "m10robot:Улучшает"]
+  },
+  "M10Robot:LockingPotion": {
+    "NAME": "Зелье оков",
+    "DESCRIPTIONS": ["Все враги теряют #b"," #yСилы до конца своего хода."]
+  },
+  "M10Robot:NullPotion": {
+    "NAME": "Обнулитель",
+    "DESCRIPTIONS": ["Вы берёте #b"," карту и "," карты и ","снижаете  до #b0 стоимость всех карт в руке до разыгрывания."]
+  },
+  "M10Robot:OverclockPotion": {
+    "NAME": "Бутыль разгонки",
+    "DESCRIPTIONS": ["#yРазгоняет все карты в руке #b"," раза.",
+                    "m10robot:Разгоняет"]
+  },
+  "M10Robot:SpikyPotion": {
+    "NAME": "Склянка колючек",
+    "DESCRIPTIONS": ["Даёт #b"," #yКолючек.",
+                    "m10robot:Колючек"]
+  }
+}

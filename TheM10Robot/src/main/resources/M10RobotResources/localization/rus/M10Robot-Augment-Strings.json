@@ -1,0 +1,36 @@
+{
+  "M10Robot:Example": {
+    "TEXT": ["Prefix", "Suffix", "Description stuff"]
+  },
+  "M10Robot:AimedMod": {
+    "TEXT": ["☉ ", " ☉", " NL Наносит на 33% больше урона врагам с m10robot:Захватом_цели."]
+  },
+  "M10Robot:BitMod": {
+    "TEXT": ["Бит-", "", " NL Заряжает %d m10robot:Бита."]
+  },
+  "M10Robot:BombMod": {
+    "TEXT": ["", " с бомбой", " NL Заряжает %d m10robot:Бомбы."]
+  },
+  "M10Robot:BoostMod": {
+    "TEXT": ["", " на усиление", " NL m10robot:Улучшает след. в очереди Сферу %d раза."]
+  },
+  "M10Robot:HeuristicMod": {
+    "TEXT": ["", " эвристики", " NL Накладывает %d m10robot:Захвата_цели, если наносит урон по ОЗ."]
+  },
+  "M10Robot:PresentMod": {
+    "TEXT": ["", " в подарке", " NL Заряжает %d m10robot:Подарка."]
+  },
+  "M10Robot:SearchMod": {
+    "TEXT": ["Ребус «", "»", " NL Заряжает %d m10robot:Охработа."]
+  },
+  "M10Robot:SpikesMod": {
+    "TEXT": ["", " с шипами", " NL Даёт %d m10robot:Колючек.",
+    "Translator note: The following is used to find cards that already give Spikes",
+      " NL Даёт !M! m10robot:Колючек"]
+  },
+  "M10Robot:ExtractMod": {
+    "TEXT": ["", " на извлечение", " NL m10robot:Извлекает %d карту(ы).",
+      "Translator note: The following is used to find cards that already Extract",
+      " NL m10robot:Извлекает !M! карт"]
+  }
+}

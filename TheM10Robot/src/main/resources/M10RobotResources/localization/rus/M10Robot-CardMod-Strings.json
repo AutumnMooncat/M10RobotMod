@@ -1,0 +1,12 @@
+{
+  "M10Robot:AimedModifier": {
+    "EXTENDED_DESCRIPTION": [
+      "Наведённая NL "
+    ]
+  },
+  "M10Robot:SpikyModifier": {
+    "EXTENDED_DESCRIPTION": [
+      "m10robot:Колючая NL "
+    ]
+  }
+}
