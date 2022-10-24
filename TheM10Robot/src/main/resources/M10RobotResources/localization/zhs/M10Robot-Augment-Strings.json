@@ -24,7 +24,7 @@
     "TEXT": ["Search and ", "", " NL Channel %d m10robot:Searchlight."]
   },
   "M10Robot:SpikesMod": {
-    "TEXT": ["Spiked ", "", " NL Gain %d m10robot:Spikes.",
+    "TEXT": ["Spiked ", "", " NL Gain %s m10robot:Spikes.",
     "Translator note: The following is used to find cards that already give Spikes",
       " NL Gain !M! m10robot:Spikes"]
   },

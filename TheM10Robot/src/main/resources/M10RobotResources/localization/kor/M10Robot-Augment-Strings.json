@@ -24,7 +24,7 @@
     "TEXT": ["탐색과 ", "", " NL m10robot:서치라이트 를 %d 번 영창합니다."]
   },
   "M10Robot:SpikesMod": {
-    "TEXT": ["반사하는 ", "", " NL m10robot:반사 를 %d 얻습니다.",
+    "TEXT": ["반사하는 ", "", " NL m10robot:반사 를 %s 얻습니다.",
     "Translator note: The following is used to find cards that already give Spikes",
       " NL m10robot:반사 를 !M! 얻습니다."]
   },

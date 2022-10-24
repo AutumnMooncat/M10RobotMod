@@ -129,7 +129,7 @@ public class BombOrb extends AbstractCustomOrb {
     @Override
     public void render(SpriteBatch sb) {
         sb.setColor(new Color(1.0f, 1.0f, 1.0f, c.a));
-        sb.draw(img, cX - 48.0f, cY - 48.0f + bobEffect.y, 48.0f, 48.0f, 96.0f, 96.0f, scale + MathUtils.sin(angle / PI_4) * ORB_WAVY_DIST * Settings.scale, scale, angle, 0, 0, 96, 96, false, false);
+        sb.draw(img, cX - 48.0f, cY - 48.0f + bobEffect.y, 48.0f, 48.0f, 96.0f, 96.0f, scale + MathUtils.sin(angle / PI_4) * ORB_WAVY_DIST * Settings.scale, scale, angle, 0, 0, 96, 96, AbstractDungeon.player.flipHorizontal, false);
         renderText(sb);
         hb.render(sb);
     }

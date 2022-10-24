@@ -24,7 +24,7 @@
     "TEXT": ["Ребус «", "»", " NL Заряжает %d m10robot:Охработа."]
   },
   "M10Robot:SpikesMod": {
-    "TEXT": ["", " с шипами", " NL Даёт %d m10robot:Колючек.",
+    "TEXT": ["", " с шипами", " NL Даёт %s m10robot:Колючек.",
     "Translator note: The following is used to find cards that already give Spikes",
       " NL Даёт !M! m10robot:Колючек"]
   },

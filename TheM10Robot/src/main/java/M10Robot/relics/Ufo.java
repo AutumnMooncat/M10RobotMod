@@ -1,12 +1,14 @@
 package M10Robot.relics;
 
 import M10Robot.M10RobotMod;
+import M10Robot.actions.ApplyPowerActionWithFollowup;
 import M10Robot.util.TextureLoader;
 import basemod.abstracts.CustomRelic;
 import com.badlogic.gdx.graphics.Texture;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.RelicAboveCreatureAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -54,12 +56,19 @@ public class Ufo extends CustomRelic {
         if (c.type == AbstractCard.CardType.POWER) {
             flash();
             for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
-                this.addToBot(new RelicAboveCreatureAction(aM, this));
-                //this.addToBot(new ApplyPowerAction(aM, AbstractDungeon.player, new EMPPower(aM, STACKS)));
-                this.addToBot(new ApplyPowerAction(aM, AbstractDungeon.player, new StrengthPower(aM, -STACKS), -STACKS));
-                if (!aM.hasPower("Artifact")) {
-                    stats.put(APPLIED_STAT, stats.get(APPLIED_STAT) + STACKS);
-                    this.addToBot(new ApplyPowerAction(aM, AbstractDungeon.player, new GainStrengthPower(aM, STACKS), STACKS));
+                if (!aM.isDeadOrEscaped()) {
+                    this.addToBot(new RelicAboveCreatureAction(aM, this));
+                    //this.addToBot(new ApplyPowerAction(aM, AbstractDungeon.player, new EMPPower(aM, STACKS)));
+                    ApplyPowerAction p = new ApplyPowerAction(aM, AbstractDungeon.player, new StrengthPower(aM, -STACKS));
+                    AbstractGameAction a = new AbstractGameAction() {
+                        @Override
+                        public void update() {
+                            stats.put(APPLIED_STAT, stats.get(APPLIED_STAT) + STACKS);
+                            this.addToTop(new ApplyPowerAction(aM, AbstractDungeon.player, new GainStrengthPower(aM, STACKS)));
+                            this.isDone = true;
+                        }
+                    };
+                    this.addToBot(new ApplyPowerActionWithFollowup(p, a));
                 }
             }
         }
