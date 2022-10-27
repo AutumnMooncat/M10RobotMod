@@ -1,6 +1,7 @@
 package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
+import M10Robot.actions.AllInAction;
 import M10Robot.actions.OverclockCardAction;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.cards.interfaces.CannotOverclock;
@@ -50,23 +51,7 @@ public class AllIn extends AbstractDynamicCard implements CannotOverclock {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        int effect = this.energyOnUse;
-
-        if (p.hasRelic("Chemical X")) {
-            effect += ChemicalX.BOOST;
-            p.getRelic("Chemical X").flash();
-        }
-
-        effect += magicNumber;
-
-        if (effect > 0) {
-            this.addToBot(new OverclockCardAction(true, effect));
-        }
-
-        if (!this.freeToPlayOnce) {
-            p.energy.use(EnergyPanel.totalCount);
-        }
-
+        addToBot(new AllInAction(p, freeToPlayOnce, energyOnUse + magicNumber));
     }
 
     //Upgraded stats.

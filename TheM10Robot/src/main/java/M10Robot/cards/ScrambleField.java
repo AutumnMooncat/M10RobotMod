@@ -1,8 +1,10 @@
 package M10Robot.cards;
 
 import M10Robot.M10RobotMod;
+import M10Robot.actions.ScrambleFieldAction;
 import M10Robot.cards.abstractCards.AbstractDynamicCard;
 import M10Robot.characters.M10Robot;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.animations.VFXAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.utility.SFXAction;
@@ -57,30 +59,7 @@ public class ScrambleField extends AbstractDynamicCard {
     // Actions the card should do.
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
-        int effect = this.energyOnUse;
-
-        if (p.hasRelic("Chemical X")) {
-            effect += ChemicalX.BOOST;
-            p.getRelic("Chemical X").flash();
-        }
-
-        effect += magicNumber;
-
-        if (effect > 0) {
-            this.addToBot(new SFXAction("ORB_PLASMA_CHANNEL"));
-            this.addToBot(new VFXAction(p, new IntimidateEffect(p.hb.cX, p.hb.cY), 0.7F));
-            this.addToBot(new ApplyPowerAction(p, p, new StrengthPower(p, effect)));
-            for (AbstractMonster aM : AbstractDungeon.getMonsters().monsters) {
-                if (!aM.isDeadOrEscaped()) {
-                    this.addToBot(new ApplyPowerAction(aM, p, new StrengthPower(aM, -effect), -effect));
-                }
-            }
-        }
-
-        if (!this.freeToPlayOnce) {
-            p.energy.use(EnergyPanel.totalCount);
-        }
-
+        addToBot(new ScrambleFieldAction(p, freeToPlayOnce, energyOnUse + magicNumber));
     }
 
     //Upgraded stats.
