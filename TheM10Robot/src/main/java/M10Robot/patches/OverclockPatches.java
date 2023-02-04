@@ -79,13 +79,13 @@ public class OverclockPatches {
         return amount * PERCENT;
     }
 
-    public static void onApplyPowers(AbstractCard card) {
+    public static void overclockMagicNumber(AbstractCard card) {
         int rawPercent = getOverClockPercent(card);
         if (rawPercent != 0) {
-            card.magicNumber = (int) Math.max(0, card.baseMagicNumber * (100F + rawPercent) / 100F);
+            card.magicNumber = (int) Math.max(0, card.magicNumber * (100F + rawPercent) / 100F);
             card.isMagicNumberModified = card.magicNumber != card.baseMagicNumber;
             if (card instanceof AbstractModdedCard) {
-                ((AbstractModdedCard) card).secondMagicNumber = (int) Math.max(0,((AbstractModdedCard) card).baseSecondMagicNumber * (100F + rawPercent) / 100F);
+                ((AbstractModdedCard) card).secondMagicNumber = (int) Math.max(0,((AbstractModdedCard) card).secondMagicNumber * (100F + rawPercent) / 100F);
                 ((AbstractModdedCard) card).isSecondMagicNumberModified = ((AbstractModdedCard) card).secondMagicNumber != ((AbstractModdedCard) card).baseSecondMagicNumber;
             }
         }
@@ -257,6 +257,19 @@ public class OverclockPatches {
         }
     }
 
+    //Reset MagicNumber so we dont explode to infinity
+    @SpirePatch2(clz = AbstractCard.class, method = "applyPowers")
+    @SpirePatch2(clz = AbstractCard.class, method = "calculateCardDamage")
+    public static class ResetMagic {
+        @SpirePrefixPatch
+        public static void reset(AbstractCard __instance) {
+            __instance.magicNumber = __instance.baseMagicNumber;
+            if (__instance instanceof AbstractModdedCard) {
+                ((AbstractModdedCard) __instance).secondMagicNumber = ((AbstractModdedCard) __instance).baseSecondMagicNumber;
+            }
+        }
+    }
+
     @SpirePatch(clz = AbstractCard.class, method = "renderTitle")
     public static class renderOverclockPercent {
         @SpirePostfixPatch
@@ -273,10 +286,6 @@ public class OverclockPatches {
 
     @SpirePatch(clz = AbstractCard.class, method = "applyPowers")
     public static class OnApplyPowers {
-        public static void Postfix(AbstractCard __instance) {
-            onApplyPowers(__instance);
-        }
-
         @SpireInsertPatch(locator = DamageFinalLocator.class, localvars = {"tmp"})
         public static void damageFinalInsert(AbstractCard __instance, @ByRef float[] tmp) {
             tmp[0] = onModifyDamageFinal(tmp[0], __instance);
@@ -306,6 +315,10 @@ public class OverclockPatches {
 
     @SpirePatch(clz = AbstractCard.class, method = "applyPowersToBlock")
     public static class ApplyPowersToBlock {
+        public static void Postfix(AbstractCard __instance) {
+            overclockMagicNumber(__instance);
+        }
+
         @SpireInsertPatch(locator = BlockFinalLocator.class, localvars = {"tmp"})
         public static void blockFinalInsert(AbstractCard __instance, @ByRef float[] tmp) {
             tmp[0] = onModifyBlockFinal(tmp[0], __instance);
