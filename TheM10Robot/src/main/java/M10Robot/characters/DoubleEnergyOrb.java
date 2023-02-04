@@ -1,5 +1,6 @@
 package M10Robot.characters;
 
+import M10Robot.relics.Eye;
 import basemod.abstracts.CustomEnergyOrb;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -23,6 +24,8 @@ public class DoubleEnergyOrb extends CustomEnergyOrb {
     private static final float PRIMARY_ORB_IMG_SCALE = 1.15F * Settings.scale;
     private static final float X_OFFSET = 80f * Settings.scale;
     private static final float Y_OFFSET = 40f * Settings.scale;
+    private static final float X_OFFSET2 = 60f * Settings.scale;
+    private static final float Y_OFFSET2 = -20f * Settings.scale;
     private static final float MAX_LEAN_PER_LAYER = 4f;
     private static final float MAX_LEAN_AT_DISTANCE = 500f;
     protected Texture secondBaseLayer;
@@ -30,10 +33,19 @@ public class DoubleEnergyOrb extends CustomEnergyOrb {
     protected Texture[] secondNoEnergyLayers;
     protected float[] secondLayerSpeeds;
     protected float[] secondAngles;
+
+    protected Texture thirdBaseLayer;
+    protected Texture[] thirdEnergyLayers;
+    protected Texture[] thirdNoEnergyLayers;
+    protected float[] thirdLayerSpeeds;
+    protected float[] thirdAngles;
+
     protected float[] primaryXLean;
     protected float[] primaryYLean;
     protected float[] secondaryXLean;
     protected float[] secondaryYLean;
+    protected float[] thirdXLean;
+    protected float[] thirdYLean;
 
     public DoubleEnergyOrb(String[] orbTexturePaths, String orbVfxPath, float[] layerSpeeds) {
         super(orbTexturePaths, orbVfxPath, layerSpeeds);
@@ -47,10 +59,15 @@ public class DoubleEnergyOrb extends CustomEnergyOrb {
             this.secondEnergyLayers = new Texture[middleIdx];
             this.secondNoEnergyLayers = new Texture[middleIdx];
             this.secondBaseLayer = ImageMaster.loadImage(orbTexturePaths[middleIdx]);
+            this.thirdEnergyLayers = new Texture[middleIdx];
+            this.thirdNoEnergyLayers = new Texture[middleIdx];
+            this.thirdBaseLayer = ImageMaster.loadImage(orbTexturePaths[middleIdx]);
 
             for(int i = 0; i < middleIdx; ++i) {
                 this.secondEnergyLayers[i] = ImageMaster.loadImage(orbTexturePaths[i]);
                 this.secondNoEnergyLayers[i] = ImageMaster.loadImage(orbTexturePaths[i + middleIdx + 1]);
+                this.thirdEnergyLayers[i] = ImageMaster.loadImage(orbTexturePaths[i]);
+                this.thirdNoEnergyLayers[i] = ImageMaster.loadImage(orbTexturePaths[i + middleIdx + 1]);
             }
 
             this.orbVfx = ImageMaster.loadImage(orbVfxPath);
@@ -68,6 +85,20 @@ public class DoubleEnergyOrb extends CustomEnergyOrb {
             this.secondNoEnergyLayers[2] = ImageMaster.ENERGY_RED_LAYER3D;
             this.secondNoEnergyLayers[3] = ImageMaster.ENERGY_RED_LAYER4D;
             this.secondNoEnergyLayers[4] = ImageMaster.ENERGY_RED_LAYER5D;
+
+            this.thirdEnergyLayers = new Texture[5];
+            this.thirdNoEnergyLayers = new Texture[5];
+            this.thirdBaseLayer = ImageMaster.ENERGY_RED_LAYER6;
+            this.thirdEnergyLayers[0] = ImageMaster.ENERGY_RED_LAYER1;
+            this.thirdEnergyLayers[1] = ImageMaster.ENERGY_RED_LAYER2;
+            this.thirdEnergyLayers[2] = ImageMaster.ENERGY_RED_LAYER3;
+            this.thirdEnergyLayers[3] = ImageMaster.ENERGY_RED_LAYER4;
+            this.thirdEnergyLayers[4] = ImageMaster.ENERGY_RED_LAYER5;
+            this.thirdNoEnergyLayers[0] = ImageMaster.ENERGY_RED_LAYER1D;
+            this.thirdNoEnergyLayers[1] = ImageMaster.ENERGY_RED_LAYER2D;
+            this.thirdNoEnergyLayers[2] = ImageMaster.ENERGY_RED_LAYER3D;
+            this.thirdNoEnergyLayers[3] = ImageMaster.ENERGY_RED_LAYER4D;
+            this.thirdEnergyLayers[4] = ImageMaster.ENERGY_RED_LAYER5D;
         }
 
         if (layerSpeeds == null) {
@@ -76,10 +107,14 @@ public class DoubleEnergyOrb extends CustomEnergyOrb {
 
         this.secondLayerSpeeds = layerSpeeds;
         this.secondAngles = new float[this.secondLayerSpeeds.length];
+        this.thirdLayerSpeeds = layerSpeeds;
+        this.thirdAngles = new float[this.secondLayerSpeeds.length];
         this.primaryXLean = new float[this.energyLayers.length];
         this.primaryYLean = new float[this.energyLayers.length];
         this.secondaryXLean = new float[this.secondEnergyLayers.length];
         this.secondaryYLean = new float[this.secondEnergyLayers.length];
+        this.thirdXLean = new float[this.secondEnergyLayers.length];
+        this.thirdYLean = new float[this.secondEnergyLayers.length];
 
         assert this.secondEnergyLayers.length == this.secondLayerSpeeds.length;
 
@@ -95,8 +130,10 @@ public class DoubleEnergyOrb extends CustomEnergyOrb {
         for (int i = 0 ; i < this.secondAngles.length ; i++) {
             if (energyCount == 0) {
                 this.secondAngles[i] -= Gdx.graphics.getDeltaTime() * this.secondLayerSpeeds[d-1-i] / 4.0F;
+                this.thirdAngles[i] -= Gdx.graphics.getDeltaTime() * this.secondLayerSpeeds[d-1-i] / 4.0F;
             } else {
                 this.secondAngles[i] -= Gdx.graphics.getDeltaTime() * this.secondLayerSpeeds[d-1-i];
+                this.thirdAngles[i] -= Gdx.graphics.getDeltaTime() * this.secondLayerSpeeds[d-1-i];
             }
         }
     }
@@ -105,6 +142,18 @@ public class DoubleEnergyOrb extends CustomEnergyOrb {
         calculateLeanValues(current_x, current_y, enabled);
         sb.setColor(Color.WHITE);
         int i;
+        if (AbstractDungeon.player.hasRelic(Eye.ID)) {
+            if (enabled) {
+                for(i = 0; i < this.thirdEnergyLayers.length; ++i) {
+                    sb.draw(this.thirdEnergyLayers[i], current_x + thirdXLean[i] + X_OFFSET2 - SECOND_ORB_W /2F, current_y + thirdYLean[i] + Y_OFFSET2 - SECOND_ORB_W /2F, SECOND_ORB_W /2F, SECOND_ORB_W /2F, SECOND_ORB_W, SECOND_ORB_W, SECOND_ORB_IMG_SCALE, SECOND_ORB_IMG_SCALE, this.thirdAngles[i], 0, 0, SECOND_ORB_W, SECOND_ORB_W, false, false);
+                }
+            } else {
+                for(i = 0; i < this.thirdNoEnergyLayers.length; ++i) {
+                    sb.draw(this.thirdNoEnergyLayers[i], current_x + thirdXLean[i] + X_OFFSET2 - SECOND_ORB_W /2F, current_y + thirdYLean[i] + Y_OFFSET2 - SECOND_ORB_W /2F, SECOND_ORB_W /2F, SECOND_ORB_W /2F, SECOND_ORB_W, SECOND_ORB_W, SECOND_ORB_IMG_SCALE, SECOND_ORB_IMG_SCALE, this.thirdAngles[i], 0, 0, SECOND_ORB_W, SECOND_ORB_W, false, false);
+                }
+            }
+            sb.draw(this.thirdBaseLayer, current_x + X_OFFSET2 - SECOND_ORB_W /2F, current_y + Y_OFFSET2 - SECOND_ORB_W /2F, SECOND_ORB_W /2F, SECOND_ORB_W /2F, SECOND_ORB_W, SECOND_ORB_W, SECOND_ORB_IMG_SCALE, SECOND_ORB_IMG_SCALE, 0.0F, 0, 0, SECOND_ORB_W, SECOND_ORB_W, false, false);
+        }
         if (enabled) {
             for(i = 0; i < this.secondEnergyLayers.length; ++i) {
                 sb.draw(this.secondEnergyLayers[i], current_x + secondaryXLean[i] + X_OFFSET - SECOND_ORB_W /2F, current_y + secondaryYLean[i] + Y_OFFSET - SECOND_ORB_W /2F, SECOND_ORB_W /2F, SECOND_ORB_W /2F, SECOND_ORB_W, SECOND_ORB_W, SECOND_ORB_IMG_SCALE, SECOND_ORB_IMG_SCALE, this.secondAngles[i], 0, 0, SECOND_ORB_W, SECOND_ORB_W, false, false);
@@ -136,19 +185,26 @@ public class DoubleEnergyOrb extends CustomEnergyOrb {
                 primaryYLean[i] -= (Math.min(Math.abs(primaryYLean[i]), i * MAX_LEAN_PER_LAYER * PRIMARY_ORB_IMG_SCALE) * Math.signum(primaryYLean[i]));
                 secondaryXLean[i] -= (Math.min(Math.abs(secondaryXLean[i]), i * MAX_LEAN_PER_LAYER * SECOND_ORB_IMG_SCALE) * Math.signum(secondaryXLean[i]));
                 secondaryYLean[i] -= (Math.min(Math.abs(secondaryYLean[i]), i * MAX_LEAN_PER_LAYER * SECOND_ORB_IMG_SCALE) * Math.signum(secondaryYLean[i]));
+                thirdXLean[i] -= (Math.min(Math.abs(thirdXLean[i]), i * MAX_LEAN_PER_LAYER * SECOND_ORB_IMG_SCALE) * Math.signum(thirdXLean[i]));
+                thirdYLean[i] -= (Math.min(Math.abs(thirdYLean[i]), i * MAX_LEAN_PER_LAYER * SECOND_ORB_IMG_SCALE) * Math.signum(thirdYLean[i]));
             }
         } else {
             Vector2 pVec = new Vector2(InputHelper.mX - x, InputHelper.mY - y);
             Vector2 sVec = new Vector2(InputHelper.mX - (x+X_OFFSET), InputHelper.mY - (y+Y_OFFSET));
+            Vector2 tVec = new Vector2(InputHelper.mX - (x+X_OFFSET2), InputHelper.mY - (y+Y_OFFSET2));
             float primaryDist = Math.min(1, pVec.len()/MAX_LEAN_AT_DISTANCE);
             float secondaryDist = Math.min(1, sVec.len()/MAX_LEAN_AT_DISTANCE);
+            float thirdDist = Math.min(1, sVec.len()/MAX_LEAN_AT_DISTANCE);
             pVec.nor();
             sVec.nor();
+            tVec.nor();
             for (int i = 0 ; i < energyLayers.length ; i++) {
                 primaryXLean[i] = i * MAX_LEAN_PER_LAYER * primaryDist * pVec.x * PRIMARY_ORB_IMG_SCALE;
                 primaryYLean[i] = i * MAX_LEAN_PER_LAYER * primaryDist * pVec.y * PRIMARY_ORB_IMG_SCALE;
                 secondaryXLean[i] = i * MAX_LEAN_PER_LAYER * secondaryDist * sVec.x * SECOND_ORB_IMG_SCALE;
                 secondaryYLean[i] = i * MAX_LEAN_PER_LAYER * secondaryDist * sVec.y * SECOND_ORB_IMG_SCALE;
+                thirdXLean[i] = i * MAX_LEAN_PER_LAYER * thirdDist * tVec.x * SECOND_ORB_IMG_SCALE;
+                thirdYLean[i] = i * MAX_LEAN_PER_LAYER * thirdDist * tVec.y * SECOND_ORB_IMG_SCALE;
             }
         }
     }
