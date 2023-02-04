@@ -411,14 +411,14 @@ public class M10RobotMod implements
         });
         currentYposition -= spacingY;*/
 
-        //Used to set the unused self damage setting.
-        ModLabeledToggleButton enableChimeraCrossoverButton = new ModLabeledToggleButton(TEXT[0],350.0f, currentYposition, Settings.CREAM_COLOR, FontHelper.charDescFont,
+        //Moved
+        /*ModLabeledToggleButton enableChimeraCrossoverButton = new ModLabeledToggleButton(TEXT[0],350.0f, currentYposition, Settings.CREAM_COLOR, FontHelper.charDescFont,
                 m10RobotConfig.getBool(ENABLE_CHIMERA_CROSSOVER), settingsPanel, (label) -> {}, (button) -> {
             m10RobotConfig.setBool(ENABLE_CHIMERA_CROSSOVER, button.enabled);
             enableChimeraCrossover = button.enabled;
             try {m10RobotConfig.save();} catch (IOException e) {e.printStackTrace();}
         });
-        currentYposition -= spacingY;
+        currentYposition -= spacingY;*/
 
         //Used for randomly talking when playing cards
         ModLabeledToggleButton enableCardBattleTalkButton = new ModLabeledToggleButton(TEXT[1],350.0f, currentYposition, Settings.CREAM_COLOR, FontHelper.charDescFont,
@@ -472,7 +472,7 @@ public class M10RobotMod implements
         currentYposition -= spacingY;
 
         //settingsPanel.addUIElement(showBoosterTutorialButton);
-        settingsPanel.addUIElement(enableChimeraCrossoverButton);
+        //settingsPanel.addUIElement(enableChimeraCrossoverButton);
         settingsPanel.addUIElement(enableCardBattleTalkButton);
         settingsPanel.addUIElement(cardBattleTalkSlider);
         settingsPanel.addUIElement(enableDamagedBattleTalkButton);

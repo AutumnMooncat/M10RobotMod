@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 
 public class ExtractMod extends AbstractAugment {
-    public static final String ID = M10RobotMod.makeID("ExtractMod");
+    public static final String ID = M10RobotMod.makeID(ExtractMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
 
     private static final int EXTRACT = 1;
@@ -32,12 +32,17 @@ public class ExtractMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return M10RobotMod.enableChimeraCrossover && card.cost != -2 && card.baseBlock > 1;
+        return card.cost != -2 && card.baseBlock > 1;
     }
 
     @Override
-    public String modifyName(String cardName, AbstractCard card) {
-        return TEXT[0] + cardName + TEXT[1];
+    public String getPrefix() {
+        return TEXT[0];
+    }
+
+    @Override
+    public String getSufix() {
+        return TEXT[1];
     }
 
     @Override

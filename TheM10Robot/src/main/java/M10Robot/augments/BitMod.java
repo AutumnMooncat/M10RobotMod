@@ -14,7 +14,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 
 public class BitMod extends AbstractAugment {
-    public static final String ID = M10RobotMod.makeID("BitMod");
+    public static final String ID = M10RobotMod.makeID(BitMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
 
     private static final int ORBS = 1;
@@ -37,12 +37,17 @@ public class BitMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return M10RobotMod.enableChimeraCrossover && card.cost != -2 && allowOrbMods() && card.baseDamage > 1;
+        return card.cost != -2 && allowOrbMods() && card.baseDamage > 1;
     }
 
     @Override
-    public String modifyName(String cardName, AbstractCard card) {
-        return TEXT[0] + cardName + TEXT[1];
+    public String getPrefix() {
+        return TEXT[0];
+    }
+
+    @Override
+    public String getSufix() {
+        return TEXT[1];
     }
 
     @Override

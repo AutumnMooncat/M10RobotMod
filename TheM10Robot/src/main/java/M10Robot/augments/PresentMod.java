@@ -3,9 +3,7 @@ package M10Robot.augments;
 import CardAugments.cardmods.AbstractAugment;
 import M10Robot.M10RobotMod;
 import M10Robot.cards.AssemblyLine;
-import M10Robot.cards.Byte;
 import M10Robot.cards.CompileData;
-import M10Robot.orbs.BitOrb;
 import M10Robot.orbs.PresentOrb;
 import basemod.abstracts.AbstractCardModifier;
 import com.megacrit.cardcrawl.actions.defect.ChannelAction;
@@ -15,7 +13,7 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.core.CardCrawlGame;
 
 public class PresentMod extends AbstractAugment {
-    public static final String ID = M10RobotMod.makeID("PresentMod");
+    public static final String ID = M10RobotMod.makeID(PresentMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
 
     private static final int ORBS = 1;
@@ -40,12 +38,17 @@ public class PresentMod extends AbstractAugment {
 
     @Override
     public boolean validCard(AbstractCard card) {
-        return M10RobotMod.enableChimeraCrossover && card.cost >= 0 && allowOrbMods() && card.rarity != AbstractCard.CardRarity.BASIC && card.rarity != AbstractCard.CardRarity.COMMON && cardCheck(card, c -> doesntUpgradeCost());
+        return card.cost >= 0 && allowOrbMods() && card.rarity != AbstractCard.CardRarity.BASIC && card.rarity != AbstractCard.CardRarity.COMMON && cardCheck(card, c -> doesntUpgradeCost());
     }
 
     @Override
-    public String modifyName(String cardName, AbstractCard card) {
-        return TEXT[0] + cardName + TEXT[1];
+    public String getPrefix() {
+        return TEXT[0];
+    }
+
+    @Override
+    public String getSufix() {
+        return TEXT[1];
     }
 
     @Override

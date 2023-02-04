@@ -13,13 +13,13 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.LockOnPower;
 
 public class AimedMod extends AbstractAugment {
-    public static final String ID = M10RobotMod.makeID("AimedMod");
+    public static final String ID = M10RobotMod.makeID(AimedMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
 
     private static final float MULTI = 4/3F;
     @Override
     public boolean validCard(AbstractCard card) {
-        return M10RobotMod.enableChimeraCrossover && card.cost != -2 && card.baseDamage > 0 && card.type == AbstractCard.CardType.ATTACK && allowOrbMods();
+        return card.cost != -2 && card.baseDamage > 0 && card.type == AbstractCard.CardType.ATTACK && allowOrbMods();
     }
 
     @Override
@@ -31,8 +31,13 @@ public class AimedMod extends AbstractAugment {
     }
 
     @Override
-    public String modifyName(String cardName, AbstractCard card) {
-        return TEXT[0] + cardName + TEXT[1];
+    public String getPrefix() {
+        return TEXT[0];
+    }
+
+    @Override
+    public String getSufix() {
+        return TEXT[1];
     }
 
     @Override
