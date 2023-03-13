@@ -36,7 +36,7 @@ public class Analytics extends AbstractDynamicCard {
 
     private static final int COST = 1;
     private static final int UPGRADE_COST = 0;
-    private static final int EFFECT = 1;
+    private static final int EFFECT = 2;
     private static final int UPGRADE_PLUS_EFFECT = 1;
 
     // /STAT DECLARATION/
