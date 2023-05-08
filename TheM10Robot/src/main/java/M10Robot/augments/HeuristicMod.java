@@ -16,6 +16,7 @@ import com.megacrit.cardcrawl.powers.LockOnPower;
 public class HeuristicMod extends AbstractAugment {
     public static final String ID = M10RobotMod.makeID(HeuristicMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
+    public static final String[] EXTRA_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
 
     private static final int LOCK_ON = 1;
 
@@ -45,8 +46,13 @@ public class HeuristicMod extends AbstractAugment {
     }
 
     @Override
+    public String getAugmentDescription() {
+        return EXTRA_TEXT[0];
+    }
+
+    @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
-        return rawDescription + String.format(TEXT[2], LOCK_ON);
+        return insertAfterText(rawDescription , String.format(TEXT[2], LOCK_ON));
     }
 
     @Override

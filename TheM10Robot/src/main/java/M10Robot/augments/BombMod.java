@@ -16,6 +16,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 public class BombMod extends AbstractAugment {
     public static final String ID = M10RobotMod.makeID(BombMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
+    public static final String[] EXTRA_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
 
     private static final int ORBS = 1;
 
@@ -45,6 +46,11 @@ public class BombMod extends AbstractAugment {
     @Override
     public String getSuffix() {
         return TEXT[1];
+    }
+
+    @Override
+    public String getAugmentDescription() {
+        return EXTRA_TEXT[0];
     }
 
     public String modifyDescription(String rawDescription, AbstractCard card) {

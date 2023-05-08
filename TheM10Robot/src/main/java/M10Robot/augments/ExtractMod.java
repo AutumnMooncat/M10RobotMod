@@ -12,6 +12,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 public class ExtractMod extends AbstractAugment {
     public static final String ID = M10RobotMod.makeID(ExtractMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
+    public static final String[] EXTRA_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
 
     private static final int EXTRACT = 1;
     private boolean setBaseVar;
@@ -46,11 +47,16 @@ public class ExtractMod extends AbstractAugment {
     }
 
     @Override
+    public String getAugmentDescription() {
+        return EXTRA_TEXT[0];
+    }
+
+    @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
         if (setBaseVar) {
             return rawDescription;
         }
-        return rawDescription + String.format(TEXT[2], EXTRACT);
+        return insertAfterText(rawDescription , String.format(TEXT[2], EXTRACT));
     }
 
     @Override

@@ -15,6 +15,7 @@ import com.megacrit.cardcrawl.core.CardCrawlGame;
 public class SearchMod extends AbstractAugment {
     public static final String ID = M10RobotMod.makeID(SearchMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
+    public static final String[] EXTRA_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
 
     private static final int ORBS = 1;
     private boolean setBaseVar;
@@ -50,11 +51,16 @@ public class SearchMod extends AbstractAugment {
     }
 
     @Override
+    public String getAugmentDescription() {
+        return EXTRA_TEXT[0];
+    }
+
+    @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
         if (setBaseVar) {
             return rawDescription;
         }
-        return rawDescription + String.format(TEXT[2], ORBS);
+        return insertAfterText(rawDescription , String.format(TEXT[2], ORBS));
     }
 
     @Override

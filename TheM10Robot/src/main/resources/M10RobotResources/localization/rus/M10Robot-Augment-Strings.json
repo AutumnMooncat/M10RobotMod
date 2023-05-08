@@ -1,36 +1,46 @@
 {
   "M10Robot:Example": {
-    "TEXT": ["Prefix", "Suffix", "Description stuff"]
+    "TEXT": ["Prefix", "Suffix", "Description stuff"],
+    "EXTRA_TEXT": ["Tooltip"]
   },
   "M10Robot:AimedMod": {
-    "TEXT": ["☉ ", " ☉", " NL Наносит на 33% больше урона врагам с m10robot:Захватом_цели."]
+    "TEXT": [">", "<", " NL Наносит на 33% больше урона врагам с m10robot:Захватом_цели."],
+    "EXTRA_TEXT": ["Deals #b33% more damage to enemies with #yLock-On."]
   },
   "M10Robot:BitMod": {
-    "TEXT": ["Бит-", "", " NL Заряжает %d m10robot:Бита."]
+    "TEXT": ["Бит-", "", " NL Заряжает %d m10robot:Бита."],
+    "EXTRA_TEXT": ["Reduces damage by #b25%. NL #yChannels a #yBit."]
   },
   "M10Robot:BombMod": {
-    "TEXT": ["", " с бомбой", " NL Заряжает %d m10robot:Бомбы."]
+    "TEXT": ["", " с бомбой", " NL Заряжает %d m10robot:Бомбы."],
+    "EXTRA_TEXT": ["Reduces #yBlock and damage by #b25%. #yChannels a #yBomb."]
   },
   "M10Robot:BoostMod": {
-    "TEXT": ["", " на усиление", " NL m10robot:Улучшает след. в очереди Сферу %d раза."]
+    "TEXT": ["", " на усиление", " NL m10robot:Улучшает след. в очереди Сферу %d раза."],
+    "EXTRA_TEXT": ["Reduces damage by #b33%. NL #yUpgrades your next Orb #b2 times."]
   },
   "M10Robot:HeuristicMod": {
-    "TEXT": ["", " эвристики", " NL Накладывает %d m10robot:Захвата_цели, если наносит урон по ОЗ."]
+    "TEXT": ["", " эвристики", " NL Накладывает %d m10robot:Захвата_цели, если наносит урон по ОЗ."],
+    "EXTRA_TEXT": ["Reduces damage by #b20%.  NL Applies #b1 #yLock-On when dealing unblocked damage."]
   },
   "M10Robot:PresentMod": {
-    "TEXT": ["", " в подарке", " NL Заряжает %d m10robot:Подарка."]
+    "TEXT": ["", " в подарке", " NL Заряжает %d m10robot:Подарка."],
+    "EXTRA_TEXT": ["Increases cost by #b1. NL #yChannels a #yPresent."]
   },
   "M10Robot:SearchMod": {
-    "TEXT": ["Ребус «", "»", " NL Заряжает %d m10robot:Охработа."]
+    "TEXT": ["Ребус «", "»", " NL Заряжает %d m10robot:Охработа."],
+    "EXTRA_TEXT": ["Recudes #yBlock by #b25%. NL #yChannels a #ySearchlight."]
   },
   "M10Robot:SpikesMod": {
     "TEXT": ["", " с шипами", " NL Даёт %s m10robot:Колючек.",
     "Translator note: The following is used to find cards that already give Spikes",
-      " NL Даёт !M! m10robot:Колючек"]
+      " NL Даёт !M! m10robot:Колючек"],
+    "EXTRA_TEXT": ["Reduces #yBlock and damage by #b20%. Gives #ySpikes equal to #yBlock and damage lost."]
   },
   "M10Robot:ExtractMod": {
     "TEXT": ["", " на извлечение", " NL m10robot:Извлекает %d карту(ы).",
       "Translator note: The following is used to find cards that already Extract",
-      " NL m10robot:Извлекает !M! карт"]
+      " NL m10robot:Извлекает !M! карт"],
+    "EXTRA_TEXT": ["Reduces #yBlock by #b20%. NL #yExtracts a card."]
   }
 }

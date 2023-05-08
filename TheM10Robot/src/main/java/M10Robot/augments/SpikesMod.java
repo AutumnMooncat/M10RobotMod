@@ -17,6 +17,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 public class SpikesMod extends AbstractAugment implements DynvarCarrier {
     public static final String ID = M10RobotMod.makeID(SpikesMod.class.getSimpleName());
     public static final String[] TEXT = CardCrawlGame.languagePack.getUIString(ID).TEXT;
+    public static final String[] EXTRA_TEXT = CardCrawlGame.languagePack.getUIString(ID).EXTRA_TEXT;
     private static final String KEY = "!" + ID + "!";
 
     private int damageComponent = 0;
@@ -60,11 +61,16 @@ public class SpikesMod extends AbstractAugment implements DynvarCarrier {
     }
 
     @Override
+    public String getAugmentDescription() {
+        return EXTRA_TEXT[0];
+    }
+
+    @Override
     public String modifyDescription(String rawDescription, AbstractCard card) {
         if (setBaseVar) {
             return rawDescription;
         }
-        return rawDescription + String.format(TEXT[2], KEY);
+        return insertAfterText(rawDescription , String.format(TEXT[2], KEY));
     }
 
     @Override
